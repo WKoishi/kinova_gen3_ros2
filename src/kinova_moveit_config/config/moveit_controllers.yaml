@@ -1,0 +1,18 @@
+# MoveIt uses this configuration for controller management
+
+moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+
+moveit_simple_controller_manager:
+  controller_names:
+    - kinova_arm_controller
+
+  kinova_arm_controller:
+    type: FollowJointTrajectory
+    joints:
+      - Actuator1
+      - Actuator2
+      - Actuator3
+      - Actuator4
+      - Actuator5
+      - Actuator6
+      - Actuator7

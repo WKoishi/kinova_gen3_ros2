@@ -1,0 +1,12 @@
+{
+    "cmake.configureOnOpen": false,
+    "python.autoComplete.extraPaths": [
+        "/home/koishi/ros2/ws_moveit2/install/ros2controlcli/lib/python3.10/site-packages",
+        "/home/koishi/ros2/ws_moveit2/install/controller_manager/local/lib/python3.10/dist-packages",
+        "/home/koishi/ros2/ws_moveit2/install/moveit_task_constructor_msgs/local/lib/python3.10/dist-packages",
+        "/home/koishi/ros2/ws_moveit2/install/moveit_configs_utils/lib/python3.10/site-packages",
+        "/home/koishi/ros2/ws_moveit2/install/controller_manager_msgs/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}

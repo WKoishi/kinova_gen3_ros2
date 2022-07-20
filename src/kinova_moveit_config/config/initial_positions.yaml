@@ -1,0 +1,10 @@
+# Default initial positions for GEN3_URDF_V12's ros2_control fake system
+
+initial_positions:
+  Actuator1: 0
+  Actuator2: 0
+  Actuator3: 0
+  Actuator4: 0
+  Actuator5: 0
+  Actuator6: 0
+  Actuator7: 0

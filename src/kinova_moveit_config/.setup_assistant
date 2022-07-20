@@ -1,0 +1,25 @@
+moveit_setup_assistant_config:
+  urdf:
+    package: kortex_description
+    relative_path: arms/gen3/urdf/GEN3_URDF_V12.urdf
+  srdf:
+    relative_path: config/GEN3_URDF_V12.srdf
+  package_settings:
+    author_name: wkoishi
+    author_email: intelwzt@outlook.com
+    generated_timestamp: 1658234884
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
+  modified_urdf:
+    xacros:
+      - control_xacro
+  control_xacro:
+    command:
+      - position
+    state:
+      - position
+      - velocity
