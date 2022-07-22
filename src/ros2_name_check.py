@@ -2,7 +2,7 @@ import os
 from time import sleep
 
 PATH_SPILT = '/'
-FILE_TYPE = '.msg'
+FILE_TYPE = '.srv'
 
 def msg_name_format_check(name):
 
@@ -35,7 +35,7 @@ def msg_name_format_check(name):
 
 if __name__ == "__main__":
 
-    target_directory = "msg"
+    target_directory = "kortex_driver/srv"
 
     changed_msg_origin_name_list = []
 

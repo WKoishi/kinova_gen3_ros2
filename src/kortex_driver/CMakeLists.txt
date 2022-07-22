@@ -54,14 +54,29 @@ endforeach()
 list(APPEND msg_file_list "msg/non_generated/ApiOptions.msg")
 list(APPEND msg_file_list "msg/non_generated/KortexError.msg")
 
+set(srv_file_list "")
+foreach(folder ${srv_generated_dir_list})
+  file(GLOB srv_file_abs "${PROJECT_SOURCE_DIR}/srv/generated/${folder}/*.srv")
+  set(srv_file_rel "")
+  foreach(temp ${srv_file_abs})
+    string(REPLACE "${PROJECT_SOURCE_DIR}/" "" temp ${temp})
+    list(APPEND srv_file_rel ${temp})
+  endforeach()
+  list(APPEND srv_file_list ${srv_file_rel})
+endforeach()
+
+list(APPEND srv_file_list "srv/non_generated/SetApiOptions.srv")
+list(APPEND srv_file_list "srv/non_generated/SetDeviceID.srv")
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_file_list}
+  ${srv_file_list}
   DEPENDENCIES std_msgs
 )
 
-message(WARNING "${msg_file_rel}")
-message(WARNING "--------")
-message(WARNING "${PROJECT_SOURCE_DIR}")
+# message(WARNING "${msg_file_rel}")
+# message(WARNING "--------")
+# message(WARNING "${srv_file_list}")
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
