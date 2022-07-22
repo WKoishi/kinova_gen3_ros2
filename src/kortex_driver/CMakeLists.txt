@@ -7,13 +7,16 @@ endif()
 
 # Explicitely specify the build type in case the user did not do it
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
+  set(CMAKE_BUILD_TYPE Debug)
 endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+find_package(unique_identifier_msgs REQUIRED)
+find_package(action_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 #find_package(message_package REQUIRED)
@@ -68,11 +71,21 @@ endforeach()
 list(APPEND srv_file_list "srv/non_generated/SetApiOptions.srv")
 list(APPEND srv_file_list "srv/non_generated/SetDeviceID.srv")
 
+set(action_file_list "action/non_generated/FollowCartesianTrajectory.action")
+
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_file_list}
   ${srv_file_list}
-  DEPENDENCIES std_msgs
+  ${action_file_list}
+  DEPENDENCIES std_msgs builtin_interfaces unique_identifier_msgs action_msgs
 )
+
+# ament_target_dependencies(${PROJECT_NAME}
+#   rclcpp
+#   std_msgs
+#   builtin_interfaces
+#   moveit_ros_planning_interface
+# )
 
 # message(WARNING "${msg_file_rel}")
 # message(WARNING "--------")

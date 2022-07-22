@@ -1,6 +1,6 @@
 #The trajectory to follow
 CartesianWaypoint[] trajectory
-duration goal_time_tolerance
+builtin_interfaces/Duration goal_time_tolerance
 bool use_optimal_blending
 ---
 #result definition
