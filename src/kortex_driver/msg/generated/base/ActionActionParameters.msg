@@ -1,7 +1,7 @@
 
 TwistCommand[] send_twist_command
 WrenchCommand[] send_wrench_command
-Base_JointSpeeds[] send_joint_speeds
+BaseJointSpeeds[] send_joint_speeds
 ConstrainedPose[] reach_pose
 ConstrainedJointAngles[] reach_joint_angles
 uint32[] toggle_admittance_mode
@@ -18,7 +18,7 @@ Delay[] delay
 ActionHandle[] execute_action
 GripperCommand[] send_gripper_command
 GpioCommand[] send_gpio_command
-Base_Stop[] stop_action
+BaseStop[] stop_action
 PreComputedJointTrajectory[] play_pre_computed_trajectory
 SequenceHandle[] execute_sequence
 WaypointList[] execute_waypoint_list

@@ -1,3 +1,3 @@
 
 ControllerHandle controller_handle
-ControllerElementHandle_identifier oneof_identifier
+ControllerElementHandleIdentifier oneof_identifier

@@ -1,2 +1,2 @@
 
-Base_JointSpeeds joint_speeds
+BaseJointSpeeds joint_speeds

@@ -2,4 +2,4 @@
 Timestamp timestamp
 UserProfileHandle user_handle
 Connection connection
-ControllerNotification_state oneof_state
+ControllerNotificationState oneof_state

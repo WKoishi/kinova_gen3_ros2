@@ -1,2 +1,2 @@
 
-Base_GpioConfiguration[] port_configurations
+BaseGpioConfiguration[] port_configurations

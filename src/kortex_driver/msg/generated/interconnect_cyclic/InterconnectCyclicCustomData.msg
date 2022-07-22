@@ -1,5 +1,5 @@
 
-InterconnectCyclic_MessageId custom_data_id
+InterconnectCyclicMessageId custom_data_id
 uint32 custom_data_0
 uint32 custom_data_1
 uint32 custom_data_2
@@ -16,4 +16,4 @@ uint32 custom_data_12
 uint32 custom_data_13
 uint32 custom_data_14
 uint32 custom_data_15
-InterconnectCyclic_CustomData_tool_customData oneof_tool_customData
+InterconnectCyclicCustomDataToolCustomData oneof_tool_custom_data

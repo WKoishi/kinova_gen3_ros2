@@ -9,4 +9,4 @@ uint32 custom_data_5
 uint32 custom_data_6
 uint32 custom_data_7
 ActuatorCustomData[] actuators_custom_data
-InterconnectCyclic_CustomData interconnect_custom_data
+InterconnectCyclicCustomData interconnect_custom_data

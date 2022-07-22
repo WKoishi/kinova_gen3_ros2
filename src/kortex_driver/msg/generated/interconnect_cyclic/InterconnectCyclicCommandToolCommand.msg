@@ -1,0 +1,2 @@
+
+GripperCyclicCommand[] gripper_command

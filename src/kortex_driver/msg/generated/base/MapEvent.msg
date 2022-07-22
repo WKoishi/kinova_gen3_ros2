@@ -1,3 +1,3 @@
 
 string name
-MapEvent_events oneof_events
+MapEventEvents oneof_events

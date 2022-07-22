@@ -1,5 +1,5 @@
 
-InterconnectCyclic_MessageId feedback_id
+InterconnectCyclicMessageId feedback_id
 uint32 status_flags
 uint32 jitter_comm
 float32 imu_acceleration_x
@@ -14,4 +14,4 @@ uint32 fault_bank_a
 uint32 fault_bank_b
 uint32 warning_bank_a
 uint32 warning_bank_b
-InterconnectCyclic_Feedback_tool_feedback oneof_tool_feedback
+InterconnectCyclicFeedbackToolFeedback oneof_tool_feedback

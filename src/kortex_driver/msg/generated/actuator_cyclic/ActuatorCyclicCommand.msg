@@ -1,5 +1,5 @@
 
-ActuatorCyclic_MessageId command_id
+ActuatorCyclicMessageId command_id
 uint32 flags
 float32 position
 float32 velocity

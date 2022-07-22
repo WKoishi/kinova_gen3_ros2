@@ -1,2 +1,2 @@
 
-CartesianTrajectoryConstraint_type oneof_type
+CartesianTrajectoryConstraintType oneof_type

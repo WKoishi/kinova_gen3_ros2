@@ -1,2 +1,2 @@
 
-BridgeConfig[] bridgeConfig
+BridgeConfig[] bridge_config

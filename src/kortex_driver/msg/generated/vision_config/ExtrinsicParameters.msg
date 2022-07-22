@@ -1,3 +1,3 @@
 
-VisionConfig_RotationMatrix rotation
+VisionConfigRotationMatrix rotation
 TranslationVector translation

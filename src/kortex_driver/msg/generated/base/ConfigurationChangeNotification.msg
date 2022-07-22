@@ -3,4 +3,4 @@ uint32 event
 Timestamp timestamp
 UserProfileHandle user_handle
 Connection connection
-ConfigurationChangeNotification_configuration_change oneof_configuration_change
+ConfigurationChangeNotificationConfigurationChange oneof_configuration_change

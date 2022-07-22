@@ -1,5 +1,5 @@
 
-ActuatorCyclic_MessageId custom_data_id
+ActuatorCyclicMessageId custom_data_id
 uint32 custom_data_0
 uint32 custom_data_1
 uint32 custom_data_2

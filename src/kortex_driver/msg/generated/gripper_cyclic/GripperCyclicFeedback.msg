@@ -1,5 +1,5 @@
 
-GripperCyclic_MessageId feedback_id
+GripperCyclicMessageId feedback_id
 uint32 status_flags
 uint32 fault_bank_a
 uint32 fault_bank_b

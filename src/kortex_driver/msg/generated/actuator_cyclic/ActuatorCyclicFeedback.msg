@@ -1,5 +1,5 @@
 
-ActuatorCyclic_MessageId feedback_id
+ActuatorCyclicMessageId feedback_id
 uint32 status_flags
 uint32 jitter_comm
 float32 position

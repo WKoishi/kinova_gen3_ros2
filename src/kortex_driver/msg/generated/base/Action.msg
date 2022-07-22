@@ -2,4 +2,4 @@
 ActionHandle handle
 string name
 string application_data
-Action_action_parameters oneof_action_parameters
+ActionActionParameters oneof_action_parameters
