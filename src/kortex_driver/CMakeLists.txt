@@ -5,6 +5,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+set(CONAN_TARGET_PLATFORM "x86")
+
 # Explicitely specify the build type in case the user did not do it
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Debug)
@@ -19,6 +21,7 @@ find_package(unique_identifier_msgs REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
+find_package(Boost REQUIRED COMPONENTS system)
 #find_package(message_package REQUIRED)
 
 file(GLOB_RECURSE generated_files RELATIVE ${PROJECT_SOURCE_DIR} "src/generated/robot/*.cpp" "src/generated/simulation/*.cpp")
@@ -80,12 +83,79 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   DEPENDENCIES std_msgs builtin_interfaces unique_identifier_msgs action_msgs
 )
 
-# ament_target_dependencies(${PROJECT_NAME}
-#   rclcpp
-#   std_msgs
-#   builtin_interfaces
-#   moveit_ros_planning_interface
-# )
+# Include conan.cmake module and download Kortex API from artifactory
+include(${PROJECT_SOURCE_DIR}/cmake/conan.cmake)
+conan_check(REQUIRED)
+conan_add_remote(NAME kinova_public
+                URL https://artifactory.kinovaapps.com/artifactory/api/conan/conan-public)
+if("${CONAN_TARGET_PLATFORM}" STREQUAL "x86")
+  conan_cmake_run(CONANFILE conanfile.py
+                  UPDATE
+                  BASIC_SETUP CMAKE_TARGETS
+                  NO_OUTPUT_DIRS
+                  SETTINGS kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=5 kortex_api_cpp:compiler.libcxx=libstdc++11)
+elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "artik710")
+  conan_cmake_run(CONANFILE conanfile.py
+                  UPDATE
+                  BASIC_SETUP CMAKE_TARGETS
+                  NO_OUTPUT_DIRS
+                  SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=5 kortex_api_cpp:compiler.libcxx=libstdc++11
+                  ENV TARGET=artik710)
+elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "imx6")
+  conan_cmake_run(CONANFILE conanfile.py
+                  UPDATE
+                  BASIC_SETUP CMAKE_TARGETS
+                  NO_OUTPUT_DIRS
+                  SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=6.4 kortex_api_cpp:compiler.libcxx=libstdc++11
+                  ENV TARGET=imx6)
+elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "jetson")
+  conan_cmake_run(CONANFILE conanfile.py
+                  UPDATE
+                  BASIC_SETUP CMAKE_TARGETS
+                  NO_OUTPUT_DIRS
+                  SETTINGS kortex_api_cpp:arch=armv7 kortex_api_cpp:compiler=gcc kortex_api_cpp:compiler.version=7 kortex_api_cpp:compiler.libcxx=libstdc++11
+                  ENV TARGET=jetson)
+endif()
+
+include_directories(include include/${PROJECT_NAME})
+include_directories(include ${Boost_INCLUDE_DIRS})
+include_directories(include ${PROJECT_SOURCE_DIR}/src)
+include_directories(include ${PROJECT_SOURCE_DIR}/include)
+
+include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/client)
+include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/client_stubs)
+include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/messages)
+include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/common)
+include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include)
+link_directories(${PROJECT_SOURCE_DIR}/../kortex_api/lib/release)
+
+# Generated files library
+add_library(kortex_driver_generated_files ${generated_files})
+
+# link to ros generated library
+ament_target_dependencies(kortex_driver_generated_files
+  rclcpp
+  std_msgs
+  builtin_interfaces
+)
+rosidl_get_typesupport_target(cpp_typesupport_target
+  ${PROJECT_NAME} "rosidl_typesupport_cpp")
+target_link_libraries(kortex_driver_generated_files "${cpp_typesupport_target}")
+
+target_link_libraries(kortex_driver_generated_files CONAN_PKG::kortex_api_cpp ${catkin_LIBRARIES} gcov)
+
+# Remove deprecation warnings from Kortex API
+target_compile_options(kortex_driver_generated_files PRIVATE "-Wno-deprecated-declarations")
+
+# Non-generated files library (driver implementation)
+add_library(kortex_arm_driver_implementation ${non_generated_files})
+target_link_libraries(kortex_arm_driver_implementation CONAN_PKG::kortex_api_cpp ${catkin_LIBRARIES} gcov kortex_driver_generated_files)
+add_dependencies(kortex_arm_driver_implementation kortex_driver_generated_files)
+
+# Entry point executable for the driver
+add_executable(kortex_arm_driver src/non-generated/main.cpp)
+target_link_libraries(kortex_arm_driver CONAN_PKG::kortex_api_cpp ${catkin_LIBRARIES} gcov kortex_arm_driver_implementation)
+add_dependencies(kortex_arm_driver kortex_arm_driver_implementation)
 
 # message(WARNING "${msg_file_rel}")
 # message(WARNING "--------")
