@@ -28,7 +28,8 @@ def msg_name_format_check(name):
 
     if change_flag:
         new_name = ''.join(new_name_ls)
-        #print('changed:', name)
+    else:
+        new_name = name
 
     return change_flag, name, new_name
 
