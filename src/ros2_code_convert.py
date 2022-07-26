@@ -43,7 +43,7 @@ if __name__ == "__main__":
     ros2_header_dir = "install/kortex_driver/include/kortex_driver/kortex_driver"
     ros2_msg_dir = "src/kortex_driver/msg"
     ros2_srv_dir = "src/kortex_driver/srv"
-    target_directory = "src/kortex_driver/include/kortex_driver"
+    target_directory = "src/kortex_driver/src"
 
     for root, dirs, files in os.walk(ros2_header_dir):
         root_struct = root.split(PATH_SPLIT)
@@ -56,6 +56,8 @@ if __name__ == "__main__":
 
     if not ros2_header_list["msg"]:
         exit("error1")
+    if not ros2_header_list["srv"]:
+        exit("error2")
 
     for root, dirs, files in os.walk(ros2_msg_dir):
         for file in files:
@@ -65,7 +67,7 @@ if __name__ == "__main__":
                 ros2_msg_srv_list["msg"].append(file_name_struct[-1])
 
     if not ros2_msg_srv_list["msg"]:
-        exit("error2")
+        exit("error3")
 
     for root, dirs, files in os.walk(ros2_srv_dir):
         for file in files:
@@ -75,7 +77,7 @@ if __name__ == "__main__":
                 ros2_msg_srv_list["srv"].append(file_name_struct[-1])
 
     if not ros2_msg_srv_list["srv"]:
-        exit("error3")
+        exit("error4")
 
 
     define_pattern = re.compile(r"kortex_driver::\S{1,}")
@@ -86,7 +88,7 @@ if __name__ == "__main__":
         for file in files:
             file_path = os.path.join(root, file)
             file_name, file_type = os.path.splitext(file_path)
-            if file_type == ".h":
+            if file_type == ".cpp":
                 with open(file_path, 'r+', encoding='utf-8') as file_obj:
                     f_contents = file_obj.read()
                     f_data = f_contents.split('\n')
@@ -114,7 +116,7 @@ if __name__ == "__main__":
 
                                         new_line = line.replace(include_struct[-1], new_name)
                                         f_contents = f_contents.replace(line, new_line)
-                                        print(include_struct[-1], "->", new_name, "in file", file)
+                                        print(include_struct[-1], "->", new_name, file)
                                         sleep(0.01)
                                         header_change_count += 1
 
@@ -126,6 +128,9 @@ if __name__ == "__main__":
                                     new_line = line  # copy a str (it's ok!)
                                     for type_define in type_define_list:
                                         type_define_struct = type_define.split("::")
+                                        type_define_struct[1] = type_define_struct[1].strip('&')
+                                        type_define_struct[1] = type_define_struct[1].split('>')
+                                        type_define_struct[1] = type_define_struct[1][0]
                                         flag, _, new_name = msg_name_format_check(type_define_struct[1])
 
                                         if new_name in ros2_msg_srv_list["msg"]:
@@ -142,7 +147,7 @@ if __name__ == "__main__":
                                         
                                         new_type_define = type_define.replace(type_define_struct[1], new_name)
                                         new_line = new_line.replace(type_define, new_type_define)
-                                        print(type_define_struct[1], "->", new_name, "in file", file)
+                                        print(type_define, "->", new_type_define, file)
                                         sleep(0.01)
                                         
                                     f_contents = f_contents.replace(line, new_line)
