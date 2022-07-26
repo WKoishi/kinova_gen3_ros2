@@ -49,7 +49,7 @@ InterconnectConfigRobotServices::InterconnectConfigRobotServices(ros::NodeHandle
 {
 	m_api_options.timeout_ms = timeout_ms;
 
-	m_pub_Error = m_node_handle.advertise<kortex_driver::KortexError>("kortex_error", 1000);
+	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
 	m_serviceSetDeviceID = m_node_handle.advertiseService("interconnect_config/set_device_id", &InterconnectConfigRobotServices::SetDeviceID, this);
 	m_serviceSetApiOptions = m_node_handle.advertiseService("interconnect_config/set_api_options", &InterconnectConfigRobotServices::SetApiOptions, this);
@@ -70,14 +70,14 @@ InterconnectConfigRobotServices::InterconnectConfigRobotServices(ros::NodeHandle
 	m_serviceI2CWriteRegister = m_node_handle.advertiseService("interconnect_config/i2_c_write_register", &InterconnectConfigRobotServices::I2CWriteRegister, this);
 }
 
-bool InterconnectConfigRobotServices::SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res)
+bool InterconnectConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res)
+bool InterconnectConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -85,14 +85,14 @@ bool InterconnectConfigRobotServices::SetApiOptions(kortex_driver::SetApiOptions
 }
 
 
-bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::GetUARTConfiguration::Request  &req, kortex_driver::GetUARTConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::srv::GetUARTConfiguration::Request  &req, kortex_driver::srv::GetUARTConfiguration::Response &res)
 {
 	
 	Kinova::Api::Common::UARTDeviceIdentification input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::UARTConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -120,12 +120,12 @@ bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::GetUAR
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::SetUARTConfiguration::Request  &req, kortex_driver::SetUARTConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::srv::SetUARTConfiguration::Request  &req, kortex_driver::srv::SetUARTConfiguration::Response &res)
 {
 	
 	Kinova::Api::Common::UARTConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -152,14 +152,14 @@ bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::SetUAR
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::GetEthernetConfiguration::Request  &req, kortex_driver::GetEthernetConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::srv::GetEthernetConfiguration::Request  &req, kortex_driver::srv::GetEthernetConfiguration::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::EthernetDeviceIdentification input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::InterconnectConfig::EthernetConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -187,12 +187,12 @@ bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::Ge
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::SetEthernetConfiguration::Request  &req, kortex_driver::SetEthernetConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::srv::SetEthernetConfiguration::Request  &req, kortex_driver::srv::SetEthernetConfiguration::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::EthernetConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -219,14 +219,14 @@ bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::Se
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::GetGPIOConfiguration::Request  &req, kortex_driver::GetGPIOConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::srv::GetGPIOConfiguration::Request  &req, kortex_driver::srv::GetGPIOConfiguration::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOIdentification input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::InterconnectConfig::GPIOConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -254,12 +254,12 @@ bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::GetGPI
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::SetGPIOConfiguration::Request  &req, kortex_driver::SetGPIOConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::srv::SetGPIOConfiguration::Request  &req, kortex_driver::srv::SetGPIOConfiguration::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -286,14 +286,14 @@ bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::SetGPI
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::GetGPIOState::Request  &req, kortex_driver::GetGPIOState::Response &res)
+bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::srv::GetGPIOState::Request  &req, kortex_driver::srv::GetGPIOState::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOIdentification input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::InterconnectConfig::GPIOState output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -321,12 +321,12 @@ bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::GetGPIOState::
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::SetGPIOState::Request  &req, kortex_driver::SetGPIOState::Response &res)
+bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::srv::SetGPIOState::Request  &req, kortex_driver::srv::SetGPIOState::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOState input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -353,14 +353,14 @@ bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::SetGPIOState::
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::GetI2CConfiguration::Request  &req, kortex_driver::GetI2CConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::srv::GetI2CConfiguration::Request  &req, kortex_driver::srv::GetI2CConfiguration::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CDeviceIdentification input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::InterconnectConfig::I2CConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -388,12 +388,12 @@ bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::GetI2CC
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::SetI2CConfiguration::Request  &req, kortex_driver::SetI2CConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::srv::SetI2CConfiguration::Request  &req, kortex_driver::srv::SetI2CConfiguration::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -420,14 +420,14 @@ bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::SetI2CC
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CRead(kortex_driver::I2CRead::Request  &req, kortex_driver::I2CRead::Response &res)
+bool InterconnectConfigRobotServices::I2CRead(kortex_driver::srv::I2CRead::Request  &req, kortex_driver::srv::I2CRead::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CReadParameter input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::InterconnectConfig::I2CData output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -455,14 +455,14 @@ bool InterconnectConfigRobotServices::I2CRead(kortex_driver::I2CRead::Request  &
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::I2CReadRegister::Request  &req, kortex_driver::I2CReadRegister::Response &res)
+bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::srv::I2CReadRegister::Request  &req, kortex_driver::srv::I2CReadRegister::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CReadRegisterParameter input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::InterconnectConfig::I2CData output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -490,12 +490,12 @@ bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::I2CReadRegi
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::I2CWrite::Request  &req, kortex_driver::I2CWrite::Response &res)
+bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::srv::I2CWrite::Request  &req, kortex_driver::srv::I2CWrite::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CWriteParameter input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -522,12 +522,12 @@ bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::I2CWrite::Request 
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CWriteRegister(kortex_driver::I2CWriteRegister::Request  &req, kortex_driver::I2CWriteRegister::Response &res)
+bool InterconnectConfigRobotServices::I2CWriteRegister(kortex_driver::srv::I2CWriteRegister::Request  &req, kortex_driver::srv::I2CWriteRegister::Response &res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{

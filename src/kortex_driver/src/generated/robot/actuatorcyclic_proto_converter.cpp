@@ -16,14 +16,14 @@
  
 #include "kortex_driver/generated/robot/actuatorcyclic_proto_converter.h"
 
-int ToProtoData(kortex_driver::ActuatorCyclic_MessageId input, Kinova::Api::ActuatorCyclic::MessageId *output)
+int ToProtoData(kortex_driver::msg::ActuatorCyclicMessageId input, Kinova::Api::ActuatorCyclic::MessageId *output)
 {
 	
 	output->set_identifier(input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorCyclic_Command input, Kinova::Api::ActuatorCyclic::Command *output)
+int ToProtoData(kortex_driver::msg::ActuatorCyclicCommand input, Kinova::Api::ActuatorCyclic::Command *output)
 {
 	 
 	ToProtoData(input.command_id, output->mutable_command_id());
@@ -35,7 +35,7 @@ int ToProtoData(kortex_driver::ActuatorCyclic_Command input, Kinova::Api::Actuat
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorCyclic_Feedback input, Kinova::Api::ActuatorCyclic::Feedback *output)
+int ToProtoData(kortex_driver::msg::ActuatorCyclicFeedback input, Kinova::Api::ActuatorCyclic::Feedback *output)
 {
 	 
 	ToProtoData(input.feedback_id, output->mutable_feedback_id());
@@ -55,7 +55,7 @@ int ToProtoData(kortex_driver::ActuatorCyclic_Feedback input, Kinova::Api::Actua
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorCyclic_CustomData input, Kinova::Api::ActuatorCyclic::CustomData *output)
+int ToProtoData(kortex_driver::msg::ActuatorCyclicCustomData input, Kinova::Api::ActuatorCyclic::CustomData *output)
 {
 	 
 	ToProtoData(input.custom_data_id, output->mutable_custom_data_id());

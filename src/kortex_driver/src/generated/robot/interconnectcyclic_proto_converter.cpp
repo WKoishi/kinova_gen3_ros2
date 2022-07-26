@@ -16,14 +16,14 @@
  
 #include "kortex_driver/generated/robot/interconnectcyclic_proto_converter.h"
 
-int ToProtoData(kortex_driver::InterconnectCyclic_MessageId input, Kinova::Api::InterconnectCyclic::MessageId *output)
+int ToProtoData(kortex_driver::msg::InterconnectCyclicMessageId input, Kinova::Api::InterconnectCyclic::MessageId *output)
 {
 	
 	output->set_identifier(input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::InterconnectCyclic_Command input, Kinova::Api::InterconnectCyclic::Command *output)
+int ToProtoData(kortex_driver::msg::InterconnectCyclicCommand input, Kinova::Api::InterconnectCyclic::Command *output)
 {
 	 
 	ToProtoData(input.command_id, output->mutable_command_id());
@@ -35,7 +35,7 @@ int ToProtoData(kortex_driver::InterconnectCyclic_Command input, Kinova::Api::In
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::InterconnectCyclic_Feedback input, Kinova::Api::InterconnectCyclic::Feedback *output)
+int ToProtoData(kortex_driver::msg::InterconnectCyclicFeedback input, Kinova::Api::InterconnectCyclic::Feedback *output)
 {
 	 
 	ToProtoData(input.feedback_id, output->mutable_feedback_id());
@@ -60,7 +60,7 @@ int ToProtoData(kortex_driver::InterconnectCyclic_Feedback input, Kinova::Api::I
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::InterconnectCyclic_CustomData input, Kinova::Api::InterconnectCyclic::CustomData *output)
+int ToProtoData(kortex_driver::msg::InterconnectCyclicCustomData input, Kinova::Api::InterconnectCyclic::CustomData *output)
 {
 	 
 	ToProtoData(input.custom_data_id, output->mutable_custom_data_id());

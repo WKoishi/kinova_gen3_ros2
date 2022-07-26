@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/basecyclic_proto_converter.h"
 
-int ToProtoData(kortex_driver::ActuatorCommand input, Kinova::Api::BaseCyclic::ActuatorCommand *output)
+int ToProtoData(kortex_driver::msg::ActuatorCommand input, Kinova::Api::BaseCyclic::ActuatorCommand *output)
 {
 	
 	output->set_command_id(input.command_id);
@@ -28,7 +28,7 @@ int ToProtoData(kortex_driver::ActuatorCommand input, Kinova::Api::BaseCyclic::A
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorFeedback input, Kinova::Api::BaseCyclic::ActuatorFeedback *output)
+int ToProtoData(kortex_driver::msg::ActuatorFeedback input, Kinova::Api::BaseCyclic::ActuatorFeedback *output)
 {
 	
 	output->set_command_id(input.command_id);
@@ -48,7 +48,7 @@ int ToProtoData(kortex_driver::ActuatorFeedback input, Kinova::Api::BaseCyclic::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorCustomData input, Kinova::Api::BaseCyclic::ActuatorCustomData *output)
+int ToProtoData(kortex_driver::msg::ActuatorCustomData input, Kinova::Api::BaseCyclic::ActuatorCustomData *output)
 {
 	
 	output->set_command_id(input.command_id);
@@ -71,7 +71,7 @@ int ToProtoData(kortex_driver::ActuatorCustomData input, Kinova::Api::BaseCyclic
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BaseFeedback input, Kinova::Api::BaseCyclic::BaseFeedback *output)
+int ToProtoData(kortex_driver::msg::BaseFeedback input, Kinova::Api::BaseCyclic::BaseFeedback *output)
 {
 	
 	output->set_active_state_connection_identifier(input.active_state_connection_identifier);
@@ -117,7 +117,7 @@ int ToProtoData(kortex_driver::BaseFeedback input, Kinova::Api::BaseCyclic::Base
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BaseCyclic_CustomData input, Kinova::Api::BaseCyclic::CustomData *output)
+int ToProtoData(kortex_driver::msg::BaseCyclicCustomData input, Kinova::Api::BaseCyclic::CustomData *output)
 {
 	
 	output->set_frame_id(input.frame_id);
@@ -138,7 +138,7 @@ int ToProtoData(kortex_driver::BaseCyclic_CustomData input, Kinova::Api::BaseCyc
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BaseCyclic_Command input, Kinova::Api::BaseCyclic::Command *output)
+int ToProtoData(kortex_driver::msg::BaseCyclicCommand input, Kinova::Api::BaseCyclic::Command *output)
 {
 	
 	output->set_frame_id(input.frame_id); 
@@ -151,7 +151,7 @@ int ToProtoData(kortex_driver::BaseCyclic_Command input, Kinova::Api::BaseCyclic
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BaseCyclic_Feedback input, Kinova::Api::BaseCyclic::Feedback *output)
+int ToProtoData(kortex_driver::msg::BaseCyclicFeedback input, Kinova::Api::BaseCyclic::Feedback *output)
 {
 	
 	output->set_frame_id(input.frame_id); 

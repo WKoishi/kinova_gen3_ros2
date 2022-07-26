@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/interconnectconfig_ros_converter.h"
 
-int ToRosData(Kinova::Api::InterconnectConfig::EthernetDeviceIdentification input, kortex_driver::EthernetDeviceIdentification &output)
+int ToRosData(Kinova::Api::InterconnectConfig::EthernetDeviceIdentification input, kortex_driver::msg::EthernetDeviceIdentification &output)
 {
 	
 	output.device = input.device();
@@ -25,7 +25,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::EthernetDeviceIdentification inpu
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::EthernetConfiguration input, kortex_driver::EthernetConfiguration &output)
+int ToRosData(Kinova::Api::InterconnectConfig::EthernetConfiguration input, kortex_driver::msg::EthernetConfiguration &output)
 {
 	
 	output.device = input.device();
@@ -37,7 +37,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::EthernetConfiguration input, kort
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::GPIOIdentification input, kortex_driver::GPIOIdentification &output)
+int ToRosData(Kinova::Api::InterconnectConfig::GPIOIdentification input, kortex_driver::msg::GPIOIdentification &output)
 {
 	
 	output.identifier = input.identifier();
@@ -46,7 +46,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::GPIOIdentification input, kortex_
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::GPIOConfiguration input, kortex_driver::InterconnectConfig_GPIOConfiguration &output)
+int ToRosData(Kinova::Api::InterconnectConfig::GPIOConfiguration input, kortex_driver::msg::InterconnectConfigGPIOConfiguration &output)
 {
 	
 	output.identifier = input.identifier();
@@ -58,7 +58,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::GPIOConfiguration input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::GPIOState input, kortex_driver::GPIOState &output)
+int ToRosData(Kinova::Api::InterconnectConfig::GPIOState input, kortex_driver::msg::GPIOState &output)
 {
 	
 	output.identifier = input.identifier();
@@ -68,7 +68,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::GPIOState input, kortex_driver::G
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CDeviceIdentification input, kortex_driver::I2CDeviceIdentification &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CDeviceIdentification input, kortex_driver::msg::I2CDeviceIdentification &output)
 {
 	
 	output.device = input.device();
@@ -77,7 +77,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::I2CDeviceIdentification input, ko
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CConfiguration input, kortex_driver::I2CConfiguration &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CConfiguration input, kortex_driver::msg::I2CConfiguration &output)
 {
 	
 	output.device = input.device();
@@ -89,7 +89,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::I2CConfiguration input, kortex_dr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CReadParameter input, kortex_driver::I2CReadParameter &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CReadParameter input, kortex_driver::msg::I2CReadParameter &output)
 {
 	
 	output.device = input.device();
@@ -101,7 +101,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::I2CReadParameter input, kortex_dr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CReadRegisterParameter input, kortex_driver::I2CReadRegisterParameter &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CReadRegisterParameter input, kortex_driver::msg::I2CReadRegisterParameter &output)
 {
 	
 	output.device = input.device();
@@ -115,7 +115,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::I2CReadRegisterParameter input, k
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CWriteParameter input, kortex_driver::I2CWriteParameter &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CWriteParameter input, kortex_driver::msg::I2CWriteParameter &output)
 {
 	
 	output.device = input.device();
@@ -127,7 +127,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::I2CWriteParameter input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter input, kortex_driver::I2CWriteRegisterParameter &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter input, kortex_driver::msg::I2CWriteRegisterParameter &output)
 {
 	
 	output.device = input.device();
@@ -141,7 +141,7 @@ int ToRosData(Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter input, 
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectConfig::I2CData input, kortex_driver::I2CData &output)
+int ToRosData(Kinova::Api::InterconnectConfig::I2CData input, kortex_driver::msg::I2CData &output)
 {
 	
 	output.data = std::vector<uint8_t>(input.data().begin(), input.data().end());

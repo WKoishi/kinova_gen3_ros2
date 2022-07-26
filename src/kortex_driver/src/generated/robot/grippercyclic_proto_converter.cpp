@@ -16,14 +16,14 @@
  
 #include "kortex_driver/generated/robot/grippercyclic_proto_converter.h"
 
-int ToProtoData(kortex_driver::GripperCyclic_MessageId input, Kinova::Api::GripperCyclic::MessageId *output)
+int ToProtoData(kortex_driver::msg::GripperCyclicMessageId input, Kinova::Api::GripperCyclic::MessageId *output)
 {
 	
 	output->set_identifier(input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MotorCommand input, Kinova::Api::GripperCyclic::MotorCommand *output)
+int ToProtoData(kortex_driver::msg::MotorCommand input, Kinova::Api::GripperCyclic::MotorCommand *output)
 {
 	
 	output->set_motor_id(input.motor_id);
@@ -33,7 +33,7 @@ int ToProtoData(kortex_driver::MotorCommand input, Kinova::Api::GripperCyclic::M
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GripperCyclic_Command input, Kinova::Api::GripperCyclic::Command *output)
+int ToProtoData(kortex_driver::msg::GripperCyclicCommand input, Kinova::Api::GripperCyclic::Command *output)
 {
 	 
 	ToProtoData(input.command_id, output->mutable_command_id());
@@ -46,7 +46,7 @@ int ToProtoData(kortex_driver::GripperCyclic_Command input, Kinova::Api::Gripper
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MotorFeedback input, Kinova::Api::GripperCyclic::MotorFeedback *output)
+int ToProtoData(kortex_driver::msg::MotorFeedback input, Kinova::Api::GripperCyclic::MotorFeedback *output)
 {
 	
 	output->set_motor_id(input.motor_id);
@@ -58,7 +58,7 @@ int ToProtoData(kortex_driver::MotorFeedback input, Kinova::Api::GripperCyclic::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GripperCyclic_Feedback input, Kinova::Api::GripperCyclic::Feedback *output)
+int ToProtoData(kortex_driver::msg::GripperCyclicFeedback input, Kinova::Api::GripperCyclic::Feedback *output)
 {
 	 
 	ToProtoData(input.feedback_id, output->mutable_feedback_id());
@@ -75,7 +75,7 @@ int ToProtoData(kortex_driver::GripperCyclic_Feedback input, Kinova::Api::Grippe
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CustomDataUnit input, Kinova::Api::GripperCyclic::CustomDataUnit *output)
+int ToProtoData(kortex_driver::msg::CustomDataUnit input, Kinova::Api::GripperCyclic::CustomDataUnit *output)
 {
 	
 	output->set_custom_data_0(input.custom_data_0);
@@ -97,7 +97,7 @@ int ToProtoData(kortex_driver::CustomDataUnit input, Kinova::Api::GripperCyclic:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GripperCyclic_CustomData input, Kinova::Api::GripperCyclic::CustomData *output)
+int ToProtoData(kortex_driver::msg::GripperCyclicCustomData input, Kinova::Api::GripperCyclic::CustomData *output)
 {
 	 
 	ToProtoData(input.custom_data_id, output->mutable_custom_data_id()); 

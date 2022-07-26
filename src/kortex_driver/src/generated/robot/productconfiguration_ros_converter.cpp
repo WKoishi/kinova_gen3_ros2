@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/productconfiguration_ros_converter.h"
 
-int ToRosData(Kinova::Api::ProductConfiguration::CompleteProductConfiguration input, kortex_driver::CompleteProductConfiguration &output)
+int ToRosData(Kinova::Api::ProductConfiguration::CompleteProductConfiguration input, kortex_driver::msg::CompleteProductConfiguration &output)
 {
 	
 	output.kin = input.kin();
@@ -36,7 +36,7 @@ int ToRosData(Kinova::Api::ProductConfiguration::CompleteProductConfiguration in
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input, kortex_driver::ProductConfigurationEndEffectorType &output)
+int ToRosData(Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input, kortex_driver::msg::ProductConfigurationEndEffectorType &output)
 {
 	
 	output.end_effector_type = input.end_effector_type();

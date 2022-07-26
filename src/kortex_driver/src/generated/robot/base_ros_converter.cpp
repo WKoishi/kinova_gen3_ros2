@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/base_ros_converter.h"
 
-int ToRosData(Kinova::Api::Base::GpioConfigurationList input, kortex_driver::GpioConfigurationList &output)
+int ToRosData(Kinova::Api::Base::GpioConfigurationList input, kortex_driver::msg::GpioConfigurationList &output)
 {
 	
 	output.port_configurations.clear();
@@ -31,7 +31,7 @@ int ToRosData(Kinova::Api::Base::GpioConfigurationList input, kortex_driver::Gpi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::GpioConfiguration input, kortex_driver::Base_GpioConfiguration &output)
+int ToRosData(Kinova::Api::Base::GpioConfiguration input, kortex_driver::msg::BaseGpioConfiguration &output)
 {
 	
 	output.port_number = input.port_number();
@@ -47,7 +47,7 @@ int ToRosData(Kinova::Api::Base::GpioConfiguration input, kortex_driver::Base_Gp
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::GpioPinConfiguration input, kortex_driver::GpioPinConfiguration &output)
+int ToRosData(Kinova::Api::Base::GpioPinConfiguration input, kortex_driver::msg::GpioPinConfiguration &output)
 {
 	
 	output.pin_id = input.pin_id();
@@ -59,7 +59,7 @@ int ToRosData(Kinova::Api::Base::GpioPinConfiguration input, kortex_driver::Gpio
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::FullUserProfile input, kortex_driver::FullUserProfile &output)
+int ToRosData(Kinova::Api::Base::FullUserProfile input, kortex_driver::msg::FullUserProfile &output)
 {
 	
 	ToRosData(input.user_profile(), output.user_profile);
@@ -69,7 +69,7 @@ int ToRosData(Kinova::Api::Base::FullUserProfile input, kortex_driver::FullUserP
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::UserProfile input, kortex_driver::UserProfile &output)
+int ToRosData(Kinova::Api::Base::UserProfile input, kortex_driver::msg::UserProfile &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -82,7 +82,7 @@ int ToRosData(Kinova::Api::Base::UserProfile input, kortex_driver::UserProfile &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::UserProfileList input, kortex_driver::UserProfileList &output)
+int ToRosData(Kinova::Api::Base::UserProfileList input, kortex_driver::msg::UserProfileList &output)
 {
 	
 	output.user_profiles.clear();
@@ -97,7 +97,7 @@ int ToRosData(Kinova::Api::Base::UserProfileList input, kortex_driver::UserProfi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::UserList input, kortex_driver::UserList &output)
+int ToRosData(Kinova::Api::Base::UserList input, kortex_driver::msg::UserList &output)
 {
 	
 	output.user_handles.clear();
@@ -112,7 +112,7 @@ int ToRosData(Kinova::Api::Base::UserList input, kortex_driver::UserList &output
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::PasswordChange input, kortex_driver::PasswordChange &output)
+int ToRosData(Kinova::Api::Base::PasswordChange input, kortex_driver::msg::PasswordChange &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -123,7 +123,7 @@ int ToRosData(Kinova::Api::Base::PasswordChange input, kortex_driver::PasswordCh
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceHandle input, kortex_driver::SequenceHandle &output)
+int ToRosData(Kinova::Api::Base::SequenceHandle input, kortex_driver::msg::SequenceHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -133,7 +133,7 @@ int ToRosData(Kinova::Api::Base::SequenceHandle input, kortex_driver::SequenceHa
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::AdvancedSequenceHandle input, kortex_driver::AdvancedSequenceHandle &output)
+int ToRosData(Kinova::Api::Base::AdvancedSequenceHandle input, kortex_driver::msg::AdvancedSequenceHandle &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -143,7 +143,7 @@ int ToRosData(Kinova::Api::Base::AdvancedSequenceHandle input, kortex_driver::Ad
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTaskHandle input, kortex_driver::SequenceTaskHandle &output)
+int ToRosData(Kinova::Api::Base::SequenceTaskHandle input, kortex_driver::msg::SequenceTaskHandle &output)
 {
 	
 	ToRosData(input.sequence_handle(), output.sequence_handle);
@@ -153,7 +153,7 @@ int ToRosData(Kinova::Api::Base::SequenceTaskHandle input, kortex_driver::Sequen
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTask input, kortex_driver::SequenceTask &output)
+int ToRosData(Kinova::Api::Base::SequenceTask input, kortex_driver::msg::SequenceTask &output)
 {
 	
 	output.group_identifier = input.group_identifier();
@@ -164,7 +164,7 @@ int ToRosData(Kinova::Api::Base::SequenceTask input, kortex_driver::SequenceTask
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTasks input, kortex_driver::SequenceTasks &output)
+int ToRosData(Kinova::Api::Base::SequenceTasks input, kortex_driver::msg::SequenceTasks &output)
 {
 	
 	output.sequence_tasks.clear();
@@ -179,7 +179,7 @@ int ToRosData(Kinova::Api::Base::SequenceTasks input, kortex_driver::SequenceTas
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTasksConfiguration input, kortex_driver::SequenceTasksConfiguration &output)
+int ToRosData(Kinova::Api::Base::SequenceTasksConfiguration input, kortex_driver::msg::SequenceTasksConfiguration &output)
 {
 	
 	ToRosData(input.sequence_task_handle(), output.sequence_task_handle);
@@ -195,7 +195,7 @@ int ToRosData(Kinova::Api::Base::SequenceTasksConfiguration input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTaskConfiguration input, kortex_driver::SequenceTaskConfiguration &output)
+int ToRosData(Kinova::Api::Base::SequenceTaskConfiguration input, kortex_driver::msg::SequenceTaskConfiguration &output)
 {
 	
 	ToRosData(input.sequence_task_handle(), output.sequence_task_handle);
@@ -205,7 +205,7 @@ int ToRosData(Kinova::Api::Base::SequenceTaskConfiguration input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTasksRange input, kortex_driver::SequenceTasksRange &output)
+int ToRosData(Kinova::Api::Base::SequenceTasksRange input, kortex_driver::msg::SequenceTasksRange &output)
 {
 	
 	output.first_task_index = input.first_task_index();
@@ -215,7 +215,7 @@ int ToRosData(Kinova::Api::Base::SequenceTasksRange input, kortex_driver::Sequen
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceTasksPair input, kortex_driver::SequenceTasksPair &output)
+int ToRosData(Kinova::Api::Base::SequenceTasksPair input, kortex_driver::msg::SequenceTasksPair &output)
 {
 	
 	ToRosData(input.sequence_handle(), output.sequence_handle);
@@ -226,7 +226,7 @@ int ToRosData(Kinova::Api::Base::SequenceTasksPair input, kortex_driver::Sequenc
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Sequence input, kortex_driver::Sequence &output)
+int ToRosData(Kinova::Api::Base::Sequence input, kortex_driver::msg::Sequence &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -244,7 +244,7 @@ int ToRosData(Kinova::Api::Base::Sequence input, kortex_driver::Sequence &output
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceList input, kortex_driver::SequenceList &output)
+int ToRosData(Kinova::Api::Base::SequenceList input, kortex_driver::msg::SequenceList &output)
 {
 	
 	output.sequence_list.clear();
@@ -259,7 +259,7 @@ int ToRosData(Kinova::Api::Base::SequenceList input, kortex_driver::SequenceList
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::AppendActionInformation input, kortex_driver::AppendActionInformation &output)
+int ToRosData(Kinova::Api::Base::AppendActionInformation input, kortex_driver::msg::AppendActionInformation &output)
 {
 	
 	ToRosData(input.sequence_handle(), output.sequence_handle);
@@ -269,7 +269,7 @@ int ToRosData(Kinova::Api::Base::AppendActionInformation input, kortex_driver::A
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActionHandle input, kortex_driver::ActionHandle &output)
+int ToRosData(Kinova::Api::Base::ActionHandle input, kortex_driver::msg::ActionHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -280,7 +280,7 @@ int ToRosData(Kinova::Api::Base::ActionHandle input, kortex_driver::ActionHandle
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::RequestedActionType input, kortex_driver::RequestedActionType &output)
+int ToRosData(Kinova::Api::Base::RequestedActionType input, kortex_driver::msg::RequestedActionType &output)
 {
 	
 	output.action_type = input.action_type();
@@ -289,7 +289,7 @@ int ToRosData(Kinova::Api::Base::RequestedActionType input, kortex_driver::Reque
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Action input, kortex_driver::Action &output)
+int ToRosData(Kinova::Api::Base::Action input, kortex_driver::msg::Action &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -484,7 +484,7 @@ int ToRosData(Kinova::Api::Base::Action input, kortex_driver::Action &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Snapshot input, kortex_driver::Snapshot &output)
+int ToRosData(Kinova::Api::Base::Snapshot input, kortex_driver::msg::Snapshot &output)
 {
 	
 	output.snapshot_type = input.snapshot_type();
@@ -493,7 +493,7 @@ int ToRosData(Kinova::Api::Base::Snapshot input, kortex_driver::Snapshot &output
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SwitchControlMapping input, kortex_driver::SwitchControlMapping &output)
+int ToRosData(Kinova::Api::Base::SwitchControlMapping input, kortex_driver::msg::SwitchControlMapping &output)
 {
 	
 	output.controller_identifier = input.controller_identifier();
@@ -504,7 +504,7 @@ int ToRosData(Kinova::Api::Base::SwitchControlMapping input, kortex_driver::Swit
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ChangeTwist input, kortex_driver::ChangeTwist &output)
+int ToRosData(Kinova::Api::Base::ChangeTwist input, kortex_driver::msg::ChangeTwist &output)
 {
 	
 	output.linear = input.linear();
@@ -514,7 +514,7 @@ int ToRosData(Kinova::Api::Base::ChangeTwist input, kortex_driver::ChangeTwist &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ChangeJointSpeeds input, kortex_driver::ChangeJointSpeeds &output)
+int ToRosData(Kinova::Api::Base::ChangeJointSpeeds input, kortex_driver::msg::ChangeJointSpeeds &output)
 {
 	
 	ToRosData(input.joint_speeds(), output.joint_speeds);
@@ -523,7 +523,7 @@ int ToRosData(Kinova::Api::Base::ChangeJointSpeeds input, kortex_driver::ChangeJ
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ChangeWrench input, kortex_driver::ChangeWrench &output)
+int ToRosData(Kinova::Api::Base::ChangeWrench input, kortex_driver::msg::ChangeWrench &output)
 {
 	
 	output.force = input.force();
@@ -533,7 +533,7 @@ int ToRosData(Kinova::Api::Base::ChangeWrench input, kortex_driver::ChangeWrench
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::EmergencyStop input, kortex_driver::EmergencyStop &output)
+int ToRosData(Kinova::Api::Base::EmergencyStop input, kortex_driver::msg::EmergencyStop &output)
 {
 	
 
@@ -541,7 +541,7 @@ int ToRosData(Kinova::Api::Base::EmergencyStop input, kortex_driver::EmergencySt
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Faults input, kortex_driver::Faults &output)
+int ToRosData(Kinova::Api::Base::Faults input, kortex_driver::msg::Faults &output)
 {
 	
 
@@ -549,7 +549,7 @@ int ToRosData(Kinova::Api::Base::Faults input, kortex_driver::Faults &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Delay input, kortex_driver::Delay &output)
+int ToRosData(Kinova::Api::Base::Delay input, kortex_driver::msg::Delay &output)
 {
 	
 	output.duration = input.duration();
@@ -558,7 +558,7 @@ int ToRosData(Kinova::Api::Base::Delay input, kortex_driver::Delay &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Stop input, kortex_driver::Base_Stop &output)
+int ToRosData(Kinova::Api::Base::Stop input, kortex_driver::msg::BaseStop &output)
 {
 	
 
@@ -566,7 +566,7 @@ int ToRosData(Kinova::Api::Base::Stop input, kortex_driver::Base_Stop &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActionList input, kortex_driver::ActionList &output)
+int ToRosData(Kinova::Api::Base::ActionList input, kortex_driver::msg::ActionList &output)
 {
 	
 	output.action_list.clear();
@@ -581,7 +581,7 @@ int ToRosData(Kinova::Api::Base::ActionList input, kortex_driver::ActionList &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Timeout input, kortex_driver::Timeout &output)
+int ToRosData(Kinova::Api::Base::Timeout input, kortex_driver::msg::Timeout &output)
 {
 	
 	output.value = input.value();
@@ -590,7 +590,7 @@ int ToRosData(Kinova::Api::Base::Timeout input, kortex_driver::Timeout &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Ssid input, kortex_driver::Ssid &output)
+int ToRosData(Kinova::Api::Base::Ssid input, kortex_driver::msg::Ssid &output)
 {
 	
 	output.identifier = input.identifier();
@@ -599,7 +599,7 @@ int ToRosData(Kinova::Api::Base::Ssid input, kortex_driver::Ssid &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CommunicationInterfaceConfiguration input, kortex_driver::CommunicationInterfaceConfiguration &output)
+int ToRosData(Kinova::Api::Base::CommunicationInterfaceConfiguration input, kortex_driver::msg::CommunicationInterfaceConfiguration &output)
 {
 	
 	output.type = input.type();
@@ -609,7 +609,7 @@ int ToRosData(Kinova::Api::Base::CommunicationInterfaceConfiguration input, kort
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::NetworkHandle input, kortex_driver::NetworkHandle &output)
+int ToRosData(Kinova::Api::Base::NetworkHandle input, kortex_driver::msg::NetworkHandle &output)
 {
 	
 	output.type = input.type();
@@ -618,7 +618,7 @@ int ToRosData(Kinova::Api::Base::NetworkHandle input, kortex_driver::NetworkHand
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::IPv4Configuration input, kortex_driver::IPv4Configuration &output)
+int ToRosData(Kinova::Api::Base::IPv4Configuration input, kortex_driver::msg::IPv4Configuration &output)
 {
 	
 	output.ip_address = input.ip_address();
@@ -630,7 +630,7 @@ int ToRosData(Kinova::Api::Base::IPv4Configuration input, kortex_driver::IPv4Con
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::IPv4Information input, kortex_driver::IPv4Information &output)
+int ToRosData(Kinova::Api::Base::IPv4Information input, kortex_driver::msg::IPv4Information &output)
 {
 	
 	output.ip_address = input.ip_address();
@@ -641,7 +641,7 @@ int ToRosData(Kinova::Api::Base::IPv4Information input, kortex_driver::IPv4Infor
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::FullIPv4Configuration input, kortex_driver::FullIPv4Configuration &output)
+int ToRosData(Kinova::Api::Base::FullIPv4Configuration input, kortex_driver::msg::FullIPv4Configuration &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -651,7 +651,7 @@ int ToRosData(Kinova::Api::Base::FullIPv4Configuration input, kortex_driver::Ful
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WifiInformation input, kortex_driver::WifiInformation &output)
+int ToRosData(Kinova::Api::Base::WifiInformation input, kortex_driver::msg::WifiInformation &output)
 {
 	
 	ToRosData(input.ssid(), output.ssid);
@@ -666,7 +666,7 @@ int ToRosData(Kinova::Api::Base::WifiInformation input, kortex_driver::WifiInfor
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WifiInformationList input, kortex_driver::WifiInformationList &output)
+int ToRosData(Kinova::Api::Base::WifiInformationList input, kortex_driver::msg::WifiInformationList &output)
 {
 	
 	output.wifi_information_list.clear();
@@ -681,7 +681,7 @@ int ToRosData(Kinova::Api::Base::WifiInformationList input, kortex_driver::WifiI
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WifiConfiguration input, kortex_driver::WifiConfiguration &output)
+int ToRosData(Kinova::Api::Base::WifiConfiguration input, kortex_driver::msg::WifiConfiguration &output)
 {
 	
 	ToRosData(input.ssid(), output.ssid);
@@ -692,7 +692,7 @@ int ToRosData(Kinova::Api::Base::WifiConfiguration input, kortex_driver::WifiCon
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WifiConfigurationList input, kortex_driver::WifiConfigurationList &output)
+int ToRosData(Kinova::Api::Base::WifiConfigurationList input, kortex_driver::msg::WifiConfigurationList &output)
 {
 	
 	output.wifi_configuration_list.clear();
@@ -707,7 +707,7 @@ int ToRosData(Kinova::Api::Base::WifiConfigurationList input, kortex_driver::Wif
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ProtectionZoneHandle input, kortex_driver::ProtectionZoneHandle &output)
+int ToRosData(Kinova::Api::Base::ProtectionZoneHandle input, kortex_driver::msg::ProtectionZoneHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -717,7 +717,7 @@ int ToRosData(Kinova::Api::Base::ProtectionZoneHandle input, kortex_driver::Prot
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::RotationMatrixRow input, kortex_driver::Base_RotationMatrixRow &output)
+int ToRosData(Kinova::Api::Base::RotationMatrixRow input, kortex_driver::msg::BaseRotationMatrixRow &output)
 {
 	
 	output.column1 = input.column1();
@@ -728,7 +728,7 @@ int ToRosData(Kinova::Api::Base::RotationMatrixRow input, kortex_driver::Base_Ro
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::RotationMatrix input, kortex_driver::Base_RotationMatrix &output)
+int ToRosData(Kinova::Api::Base::RotationMatrix input, kortex_driver::msg::BaseRotationMatrix &output)
 {
 	
 	ToRosData(input.row1(), output.row1);
@@ -739,7 +739,7 @@ int ToRosData(Kinova::Api::Base::RotationMatrix input, kortex_driver::Base_Rotat
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Point input, kortex_driver::Point &output)
+int ToRosData(Kinova::Api::Base::Point input, kortex_driver::msg::Point &output)
 {
 	
 	output.x = input.x();
@@ -750,7 +750,7 @@ int ToRosData(Kinova::Api::Base::Point input, kortex_driver::Point &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ZoneShape input, kortex_driver::ZoneShape &output)
+int ToRosData(Kinova::Api::Base::ZoneShape input, kortex_driver::msg::ZoneShape &output)
 {
 	
 	output.shape_type = input.shape_type();
@@ -767,7 +767,7 @@ int ToRosData(Kinova::Api::Base::ZoneShape input, kortex_driver::ZoneShape &outp
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ProtectionZone input, kortex_driver::ProtectionZone &output)
+int ToRosData(Kinova::Api::Base::ProtectionZone input, kortex_driver::msg::ProtectionZone &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -794,7 +794,7 @@ int ToRosData(Kinova::Api::Base::ProtectionZone input, kortex_driver::Protection
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ProtectionZoneList input, kortex_driver::ProtectionZoneList &output)
+int ToRosData(Kinova::Api::Base::ProtectionZoneList input, kortex_driver::msg::ProtectionZoneList &output)
 {
 	
 	output.protection_zones.clear();
@@ -809,7 +809,7 @@ int ToRosData(Kinova::Api::Base::ProtectionZoneList input, kortex_driver::Protec
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CartesianLimitation input, kortex_driver::CartesianLimitation &output)
+int ToRosData(Kinova::Api::Base::CartesianLimitation input, kortex_driver::msg::CartesianLimitation &output)
 {
 	
 	output.type = input.type();
@@ -820,7 +820,7 @@ int ToRosData(Kinova::Api::Base::CartesianLimitation input, kortex_driver::Carte
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TwistLimitation input, kortex_driver::TwistLimitation &output)
+int ToRosData(Kinova::Api::Base::TwistLimitation input, kortex_driver::msg::TwistLimitation &output)
 {
 	
 	output.linear = input.linear();
@@ -830,7 +830,7 @@ int ToRosData(Kinova::Api::Base::TwistLimitation input, kortex_driver::TwistLimi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WrenchLimitation input, kortex_driver::WrenchLimitation &output)
+int ToRosData(Kinova::Api::Base::WrenchLimitation input, kortex_driver::msg::WrenchLimitation &output)
 {
 	
 	output.force = input.force();
@@ -840,7 +840,7 @@ int ToRosData(Kinova::Api::Base::WrenchLimitation input, kortex_driver::WrenchLi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CartesianLimitationList input, kortex_driver::CartesianLimitationList &output)
+int ToRosData(Kinova::Api::Base::CartesianLimitationList input, kortex_driver::msg::CartesianLimitationList &output)
 {
 	
 	output.limitations.clear();
@@ -855,7 +855,7 @@ int ToRosData(Kinova::Api::Base::CartesianLimitationList input, kortex_driver::C
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointLimitation input, kortex_driver::JointLimitation &output)
+int ToRosData(Kinova::Api::Base::JointLimitation input, kortex_driver::msg::JointLimitation &output)
 {
 	
 	output.joint_identifier = input.joint_identifier();
@@ -866,7 +866,7 @@ int ToRosData(Kinova::Api::Base::JointLimitation input, kortex_driver::JointLimi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointsLimitationsList input, kortex_driver::JointsLimitationsList &output)
+int ToRosData(Kinova::Api::Base::JointsLimitationsList input, kortex_driver::msg::JointsLimitationsList &output)
 {
 	
 	output.joints_limitations.clear();
@@ -881,7 +881,7 @@ int ToRosData(Kinova::Api::Base::JointsLimitationsList input, kortex_driver::Joi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Query input, kortex_driver::Query &output)
+int ToRosData(Kinova::Api::Base::Query input, kortex_driver::msg::Query &output)
 {
 	
 	ToRosData(input.start_timestamp(), output.start_timestamp);
@@ -892,7 +892,7 @@ int ToRosData(Kinova::Api::Base::Query input, kortex_driver::Query &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConfigurationChangeNotification input, kortex_driver::ConfigurationChangeNotification &output)
+int ToRosData(Kinova::Api::Base::ConfigurationChangeNotification input, kortex_driver::msg::ConfigurationChangeNotification &output)
 {
 	
 	output.event = input.event();
@@ -995,7 +995,7 @@ int ToRosData(Kinova::Api::Base::ConfigurationChangeNotification input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MappingInfoNotification input, kortex_driver::MappingInfoNotification &output)
+int ToRosData(Kinova::Api::Base::MappingInfoNotification input, kortex_driver::msg::MappingInfoNotification &output)
 {
 	
 	output.controller_identifier = input.controller_identifier();
@@ -1009,7 +1009,7 @@ int ToRosData(Kinova::Api::Base::MappingInfoNotification input, kortex_driver::M
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControlModeInformation input, kortex_driver::Base_ControlModeInformation &output)
+int ToRosData(Kinova::Api::Base::ControlModeInformation input, kortex_driver::msg::BaseControlModeInformation &output)
 {
 	
 	output.mode = input.mode();
@@ -1018,7 +1018,7 @@ int ToRosData(Kinova::Api::Base::ControlModeInformation input, kortex_driver::Ba
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControlModeNotification input, kortex_driver::Base_ControlModeNotification &output)
+int ToRosData(Kinova::Api::Base::ControlModeNotification input, kortex_driver::msg::BaseControlModeNotification &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -1030,7 +1030,7 @@ int ToRosData(Kinova::Api::Base::ControlModeNotification input, kortex_driver::B
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ServoingModeInformation input, kortex_driver::ServoingModeInformation &output)
+int ToRosData(Kinova::Api::Base::ServoingModeInformation input, kortex_driver::msg::ServoingModeInformation &output)
 {
 	
 	output.servoing_mode = input.servoing_mode();
@@ -1039,7 +1039,7 @@ int ToRosData(Kinova::Api::Base::ServoingModeInformation input, kortex_driver::S
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::OperatingModeInformation input, kortex_driver::OperatingModeInformation &output)
+int ToRosData(Kinova::Api::Base::OperatingModeInformation input, kortex_driver::msg::OperatingModeInformation &output)
 {
 	
 	output.operating_mode = input.operating_mode();
@@ -1049,7 +1049,7 @@ int ToRosData(Kinova::Api::Base::OperatingModeInformation input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::OperatingModeNotification input, kortex_driver::OperatingModeNotification &output)
+int ToRosData(Kinova::Api::Base::OperatingModeNotification input, kortex_driver::msg::OperatingModeNotification &output)
 {
 	
 	output.operating_mode = input.operating_mode();
@@ -1062,7 +1062,7 @@ int ToRosData(Kinova::Api::Base::OperatingModeNotification input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ServoingModeNotification input, kortex_driver::ServoingModeNotification &output)
+int ToRosData(Kinova::Api::Base::ServoingModeNotification input, kortex_driver::msg::ServoingModeNotification &output)
 {
 	
 	output.servoing_mode = input.servoing_mode();
@@ -1074,7 +1074,7 @@ int ToRosData(Kinova::Api::Base::ServoingModeNotification input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceInfoNotification input, kortex_driver::SequenceInfoNotification &output)
+int ToRosData(Kinova::Api::Base::SequenceInfoNotification input, kortex_driver::msg::SequenceInfoNotification &output)
 {
 	
 	output.event_identifier = input.event_identifier();
@@ -1090,7 +1090,7 @@ int ToRosData(Kinova::Api::Base::SequenceInfoNotification input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceInformation input, kortex_driver::SequenceInformation &output)
+int ToRosData(Kinova::Api::Base::SequenceInformation input, kortex_driver::msg::SequenceInformation &output)
 {
 	
 	output.event_identifier = input.event_identifier();
@@ -1101,7 +1101,7 @@ int ToRosData(Kinova::Api::Base::SequenceInformation input, kortex_driver::Seque
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ProtectionZoneNotification input, kortex_driver::ProtectionZoneNotification &output)
+int ToRosData(Kinova::Api::Base::ProtectionZoneNotification input, kortex_driver::msg::ProtectionZoneNotification &output)
 {
 	
 	output.event = input.event();
@@ -1114,7 +1114,7 @@ int ToRosData(Kinova::Api::Base::ProtectionZoneNotification input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ProtectionZoneInformation input, kortex_driver::ProtectionZoneInformation &output)
+int ToRosData(Kinova::Api::Base::ProtectionZoneInformation input, kortex_driver::msg::ProtectionZoneInformation &output)
 {
 	
 	output.event = input.event();
@@ -1123,7 +1123,7 @@ int ToRosData(Kinova::Api::Base::ProtectionZoneInformation input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::UserNotification input, kortex_driver::UserNotification &output)
+int ToRosData(Kinova::Api::Base::UserNotification input, kortex_driver::msg::UserNotification &output)
 {
 	
 	output.user_event = input.user_event();
@@ -1136,7 +1136,7 @@ int ToRosData(Kinova::Api::Base::UserNotification input, kortex_driver::UserNoti
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerHandle input, kortex_driver::ControllerHandle &output)
+int ToRosData(Kinova::Api::Base::ControllerHandle input, kortex_driver::msg::ControllerHandle &output)
 {
 	
 	output.type = input.type();
@@ -1146,7 +1146,7 @@ int ToRosData(Kinova::Api::Base::ControllerHandle input, kortex_driver::Controll
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerElementHandle input, kortex_driver::ControllerElementHandle &output)
+int ToRosData(Kinova::Api::Base::ControllerElementHandle input, kortex_driver::msg::ControllerElementHandle &output)
 {
 	
 	ToRosData(input.controller_handle(), output.controller_handle);
@@ -1168,7 +1168,7 @@ int ToRosData(Kinova::Api::Base::ControllerElementHandle input, kortex_driver::C
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerNotification input, kortex_driver::ControllerNotification &output)
+int ToRosData(Kinova::Api::Base::ControllerNotification input, kortex_driver::msg::ControllerNotification &output)
 {
 	
 	ToRosData(input.timestamp(), output.timestamp);
@@ -1198,7 +1198,7 @@ int ToRosData(Kinova::Api::Base::ControllerNotification input, kortex_driver::Co
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerList input, kortex_driver::ControllerList &output)
+int ToRosData(Kinova::Api::Base::ControllerList input, kortex_driver::msg::ControllerList &output)
 {
 	
 	output.handles.clear();
@@ -1213,7 +1213,7 @@ int ToRosData(Kinova::Api::Base::ControllerList input, kortex_driver::Controller
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerState input, kortex_driver::ControllerState &output)
+int ToRosData(Kinova::Api::Base::ControllerState input, kortex_driver::msg::ControllerState &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -1223,7 +1223,7 @@ int ToRosData(Kinova::Api::Base::ControllerState input, kortex_driver::Controlle
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerElementState input, kortex_driver::ControllerElementState &output)
+int ToRosData(Kinova::Api::Base::ControllerElementState input, kortex_driver::msg::ControllerElementState &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -1234,7 +1234,7 @@ int ToRosData(Kinova::Api::Base::ControllerElementState input, kortex_driver::Co
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActionNotification input, kortex_driver::ActionNotification &output)
+int ToRosData(Kinova::Api::Base::ActionNotification input, kortex_driver::msg::ActionNotification &output)
 {
 	
 	output.action_event = input.action_event();
@@ -1255,7 +1255,7 @@ int ToRosData(Kinova::Api::Base::ActionNotification input, kortex_driver::Action
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TrajectoryInfo input, kortex_driver::TrajectoryInfo &output)
+int ToRosData(Kinova::Api::Base::TrajectoryInfo input, kortex_driver::msg::TrajectoryInfo &output)
 {
 	
 	output.trajectory_info_type = input.trajectory_info_type();
@@ -1266,7 +1266,7 @@ int ToRosData(Kinova::Api::Base::TrajectoryInfo input, kortex_driver::Trajectory
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActionExecutionState input, kortex_driver::ActionExecutionState &output)
+int ToRosData(Kinova::Api::Base::ActionExecutionState input, kortex_driver::msg::ActionExecutionState &output)
 {
 	
 	output.action_event = input.action_event();
@@ -1276,7 +1276,7 @@ int ToRosData(Kinova::Api::Base::ActionExecutionState input, kortex_driver::Acti
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::RobotEventNotification input, kortex_driver::RobotEventNotification &output)
+int ToRosData(Kinova::Api::Base::RobotEventNotification input, kortex_driver::msg::RobotEventNotification &output)
 {
 	
 	output.event = input.event();
@@ -1289,7 +1289,7 @@ int ToRosData(Kinova::Api::Base::RobotEventNotification input, kortex_driver::Ro
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::FactoryNotification input, kortex_driver::FactoryNotification &output)
+int ToRosData(Kinova::Api::Base::FactoryNotification input, kortex_driver::msg::FactoryNotification &output)
 {
 	
 	output.event = input.event();
@@ -1301,7 +1301,7 @@ int ToRosData(Kinova::Api::Base::FactoryNotification input, kortex_driver::Facto
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::NetworkNotification input, kortex_driver::NetworkNotification &output)
+int ToRosData(Kinova::Api::Base::NetworkNotification input, kortex_driver::msg::NetworkNotification &output)
 {
 	
 	output.event = input.event();
@@ -1313,7 +1313,7 @@ int ToRosData(Kinova::Api::Base::NetworkNotification input, kortex_driver::Netwo
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConfigurationChangeNotificationList input, kortex_driver::ConfigurationChangeNotificationList &output)
+int ToRosData(Kinova::Api::Base::ConfigurationChangeNotificationList input, kortex_driver::msg::ConfigurationChangeNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1328,7 +1328,7 @@ int ToRosData(Kinova::Api::Base::ConfigurationChangeNotificationList input, kort
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MappingInfoNotificationList input, kortex_driver::MappingInfoNotificationList &output)
+int ToRosData(Kinova::Api::Base::MappingInfoNotificationList input, kortex_driver::msg::MappingInfoNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1343,7 +1343,7 @@ int ToRosData(Kinova::Api::Base::MappingInfoNotificationList input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControlModeNotificationList input, kortex_driver::ControlModeNotificationList &output)
+int ToRosData(Kinova::Api::Base::ControlModeNotificationList input, kortex_driver::msg::ControlModeNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1358,7 +1358,7 @@ int ToRosData(Kinova::Api::Base::ControlModeNotificationList input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::OperatingModeNotificationList input, kortex_driver::OperatingModeNotificationList &output)
+int ToRosData(Kinova::Api::Base::OperatingModeNotificationList input, kortex_driver::msg::OperatingModeNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1373,7 +1373,7 @@ int ToRosData(Kinova::Api::Base::OperatingModeNotificationList input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ServoingModeNotificationList input, kortex_driver::ServoingModeNotificationList &output)
+int ToRosData(Kinova::Api::Base::ServoingModeNotificationList input, kortex_driver::msg::ServoingModeNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1388,7 +1388,7 @@ int ToRosData(Kinova::Api::Base::ServoingModeNotificationList input, kortex_driv
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SequenceInfoNotificationList input, kortex_driver::SequenceInfoNotificationList &output)
+int ToRosData(Kinova::Api::Base::SequenceInfoNotificationList input, kortex_driver::msg::SequenceInfoNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1403,7 +1403,7 @@ int ToRosData(Kinova::Api::Base::SequenceInfoNotificationList input, kortex_driv
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ProtectionZoneNotificationList input, kortex_driver::ProtectionZoneNotificationList &output)
+int ToRosData(Kinova::Api::Base::ProtectionZoneNotificationList input, kortex_driver::msg::ProtectionZoneNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1418,7 +1418,7 @@ int ToRosData(Kinova::Api::Base::ProtectionZoneNotificationList input, kortex_dr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::UserNotificationList input, kortex_driver::UserNotificationList &output)
+int ToRosData(Kinova::Api::Base::UserNotificationList input, kortex_driver::msg::UserNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1433,7 +1433,7 @@ int ToRosData(Kinova::Api::Base::UserNotificationList input, kortex_driver::User
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SafetyNotificationList input, kortex_driver::SafetyNotificationList &output)
+int ToRosData(Kinova::Api::Base::SafetyNotificationList input, kortex_driver::msg::SafetyNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1448,7 +1448,7 @@ int ToRosData(Kinova::Api::Base::SafetyNotificationList input, kortex_driver::Sa
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerNotificationList input, kortex_driver::ControllerNotificationList &output)
+int ToRosData(Kinova::Api::Base::ControllerNotificationList input, kortex_driver::msg::ControllerNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1463,7 +1463,7 @@ int ToRosData(Kinova::Api::Base::ControllerNotificationList input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActionNotificationList input, kortex_driver::ActionNotificationList &output)
+int ToRosData(Kinova::Api::Base::ActionNotificationList input, kortex_driver::msg::ActionNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1478,7 +1478,7 @@ int ToRosData(Kinova::Api::Base::ActionNotificationList input, kortex_driver::Ac
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::RobotEventNotificationList input, kortex_driver::RobotEventNotificationList &output)
+int ToRosData(Kinova::Api::Base::RobotEventNotificationList input, kortex_driver::msg::RobotEventNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1493,7 +1493,7 @@ int ToRosData(Kinova::Api::Base::RobotEventNotificationList input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::NetworkNotificationList input, kortex_driver::NetworkNotificationList &output)
+int ToRosData(Kinova::Api::Base::NetworkNotificationList input, kortex_driver::msg::NetworkNotificationList &output)
 {
 	
 	output.notifications.clear();
@@ -1508,7 +1508,7 @@ int ToRosData(Kinova::Api::Base::NetworkNotificationList input, kortex_driver::N
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MappingHandle input, kortex_driver::MappingHandle &output)
+int ToRosData(Kinova::Api::Base::MappingHandle input, kortex_driver::msg::MappingHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -1518,7 +1518,7 @@ int ToRosData(Kinova::Api::Base::MappingHandle input, kortex_driver::MappingHand
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SafetyEvent input, kortex_driver::SafetyEvent &output)
+int ToRosData(Kinova::Api::Base::SafetyEvent input, kortex_driver::msg::SafetyEvent &output)
 {
 	
 	ToRosData(input.safety_handle(), output.safety_handle);
@@ -1527,7 +1527,7 @@ int ToRosData(Kinova::Api::Base::SafetyEvent input, kortex_driver::SafetyEvent &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerEvent input, kortex_driver::ControllerEvent &output)
+int ToRosData(Kinova::Api::Base::ControllerEvent input, kortex_driver::msg::ControllerEvent &output)
 {
 	
 	output.input_type = input.input_type();
@@ -1538,7 +1538,7 @@ int ToRosData(Kinova::Api::Base::ControllerEvent input, kortex_driver::Controlle
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::GpioEvent input, kortex_driver::GpioEvent &output)
+int ToRosData(Kinova::Api::Base::GpioEvent input, kortex_driver::msg::GpioEvent &output)
 {
 	
 	output.input_type = input.input_type();
@@ -1549,7 +1549,7 @@ int ToRosData(Kinova::Api::Base::GpioEvent input, kortex_driver::GpioEvent &outp
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapEvent input, kortex_driver::MapEvent &output)
+int ToRosData(Kinova::Api::Base::MapEvent input, kortex_driver::msg::MapEvent &output)
 {
 	
 	output.name = input.name();
@@ -1585,7 +1585,7 @@ int ToRosData(Kinova::Api::Base::MapEvent input, kortex_driver::MapEvent &output
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapElement input, kortex_driver::MapElement &output)
+int ToRosData(Kinova::Api::Base::MapElement input, kortex_driver::msg::MapElement &output)
 {
 	
 	ToRosData(input.event(), output.event);
@@ -1596,7 +1596,7 @@ int ToRosData(Kinova::Api::Base::MapElement input, kortex_driver::MapElement &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActivateMapHandle input, kortex_driver::ActivateMapHandle &output)
+int ToRosData(Kinova::Api::Base::ActivateMapHandle input, kortex_driver::msg::ActivateMapHandle &output)
 {
 	
 	ToRosData(input.mapping_handle(), output.mapping_handle);
@@ -1607,7 +1607,7 @@ int ToRosData(Kinova::Api::Base::ActivateMapHandle input, kortex_driver::Activat
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Map input, kortex_driver::Map &output)
+int ToRosData(Kinova::Api::Base::Map input, kortex_driver::msg::Map &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -1624,7 +1624,7 @@ int ToRosData(Kinova::Api::Base::Map input, kortex_driver::Map &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapHandle input, kortex_driver::MapHandle &output)
+int ToRosData(Kinova::Api::Base::MapHandle input, kortex_driver::msg::MapHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -1634,7 +1634,7 @@ int ToRosData(Kinova::Api::Base::MapHandle input, kortex_driver::MapHandle &outp
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapList input, kortex_driver::MapList &output)
+int ToRosData(Kinova::Api::Base::MapList input, kortex_driver::msg::MapList &output)
 {
 	
 	output.map_list.clear();
@@ -1649,7 +1649,7 @@ int ToRosData(Kinova::Api::Base::MapList input, kortex_driver::MapList &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapGroupHandle input, kortex_driver::MapGroupHandle &output)
+int ToRosData(Kinova::Api::Base::MapGroupHandle input, kortex_driver::msg::MapGroupHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -1659,7 +1659,7 @@ int ToRosData(Kinova::Api::Base::MapGroupHandle input, kortex_driver::MapGroupHa
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapGroup input, kortex_driver::MapGroup &output)
+int ToRosData(Kinova::Api::Base::MapGroup input, kortex_driver::msg::MapGroup &output)
 {
 	
 	ToRosData(input.group_handle(), output.group_handle);
@@ -1686,7 +1686,7 @@ int ToRosData(Kinova::Api::Base::MapGroup input, kortex_driver::MapGroup &output
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MapGroupList input, kortex_driver::MapGroupList &output)
+int ToRosData(Kinova::Api::Base::MapGroupList input, kortex_driver::msg::MapGroupList &output)
 {
 	
 	output.map_groups.clear();
@@ -1701,7 +1701,7 @@ int ToRosData(Kinova::Api::Base::MapGroupList input, kortex_driver::MapGroupList
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Mapping input, kortex_driver::Mapping &output)
+int ToRosData(Kinova::Api::Base::Mapping input, kortex_driver::msg::Mapping &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -1729,7 +1729,7 @@ int ToRosData(Kinova::Api::Base::Mapping input, kortex_driver::Mapping &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::MappingList input, kortex_driver::MappingList &output)
+int ToRosData(Kinova::Api::Base::MappingList input, kortex_driver::msg::MappingList &output)
 {
 	
 	output.mappings.clear();
@@ -1744,7 +1744,7 @@ int ToRosData(Kinova::Api::Base::MappingList input, kortex_driver::MappingList &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TransformationMatrix input, kortex_driver::TransformationMatrix &output)
+int ToRosData(Kinova::Api::Base::TransformationMatrix input, kortex_driver::msg::TransformationMatrix &output)
 {
 	
 	ToRosData(input.r0(), output.r0);
@@ -1756,7 +1756,7 @@ int ToRosData(Kinova::Api::Base::TransformationMatrix input, kortex_driver::Tran
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TransformationRow input, kortex_driver::TransformationRow &output)
+int ToRosData(Kinova::Api::Base::TransformationRow input, kortex_driver::msg::TransformationRow &output)
 {
 	
 	output.c0 = input.c0();
@@ -1768,7 +1768,7 @@ int ToRosData(Kinova::Api::Base::TransformationRow input, kortex_driver::Transfo
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Pose input, kortex_driver::Pose &output)
+int ToRosData(Kinova::Api::Base::Pose input, kortex_driver::msg::Pose &output)
 {
 	
 	output.x = input.x();
@@ -1782,7 +1782,7 @@ int ToRosData(Kinova::Api::Base::Pose input, kortex_driver::Pose &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Position input, kortex_driver::Base_Position &output)
+int ToRosData(Kinova::Api::Base::Position input, kortex_driver::msg::BasePosition &output)
 {
 	
 	output.x = input.x();
@@ -1793,7 +1793,7 @@ int ToRosData(Kinova::Api::Base::Position input, kortex_driver::Base_Position &o
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Orientation input, kortex_driver::Orientation &output)
+int ToRosData(Kinova::Api::Base::Orientation input, kortex_driver::msg::Orientation &output)
 {
 	
 	output.theta_x = input.theta_x();
@@ -1804,7 +1804,7 @@ int ToRosData(Kinova::Api::Base::Orientation input, kortex_driver::Orientation &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CartesianSpeed input, kortex_driver::CartesianSpeed &output)
+int ToRosData(Kinova::Api::Base::CartesianSpeed input, kortex_driver::msg::CartesianSpeed &output)
 {
 	
 	output.translation = input.translation();
@@ -1814,7 +1814,7 @@ int ToRosData(Kinova::Api::Base::CartesianSpeed input, kortex_driver::CartesianS
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CartesianTrajectoryConstraint input, kortex_driver::CartesianTrajectoryConstraint &output)
+int ToRosData(Kinova::Api::Base::CartesianTrajectoryConstraint input, kortex_driver::msg::CartesianTrajectoryConstraint &output)
 {
 	
 
@@ -1838,7 +1838,7 @@ int ToRosData(Kinova::Api::Base::CartesianTrajectoryConstraint input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointTrajectoryConstraint input, kortex_driver::JointTrajectoryConstraint &output)
+int ToRosData(Kinova::Api::Base::JointTrajectoryConstraint input, kortex_driver::msg::JointTrajectoryConstraint &output)
 {
 	
 	output.type = input.type();
@@ -1848,7 +1848,7 @@ int ToRosData(Kinova::Api::Base::JointTrajectoryConstraint input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Wrench input, kortex_driver::Wrench &output)
+int ToRosData(Kinova::Api::Base::Wrench input, kortex_driver::msg::Wrench &output)
 {
 	
 	output.force_x = input.force_x();
@@ -1862,7 +1862,7 @@ int ToRosData(Kinova::Api::Base::Wrench input, kortex_driver::Wrench &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Twist input, kortex_driver::Twist &output)
+int ToRosData(Kinova::Api::Base::Twist input, kortex_driver::msg::Twist &output)
 {
 	
 	output.linear_x = input.linear_x();
@@ -1876,7 +1876,7 @@ int ToRosData(Kinova::Api::Base::Twist input, kortex_driver::Twist &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Admittance input, kortex_driver::Admittance &output)
+int ToRosData(Kinova::Api::Base::Admittance input, kortex_driver::msg::Admittance &output)
 {
 	
 	output.admittance_mode = input.admittance_mode();
@@ -1885,7 +1885,7 @@ int ToRosData(Kinova::Api::Base::Admittance input, kortex_driver::Admittance &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConstrainedPose input, kortex_driver::ConstrainedPose &output)
+int ToRosData(Kinova::Api::Base::ConstrainedPose input, kortex_driver::msg::ConstrainedPose &output)
 {
 	
 	ToRosData(input.target_pose(), output.target_pose);
@@ -1895,7 +1895,7 @@ int ToRosData(Kinova::Api::Base::ConstrainedPose input, kortex_driver::Constrain
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConstrainedPosition input, kortex_driver::ConstrainedPosition &output)
+int ToRosData(Kinova::Api::Base::ConstrainedPosition input, kortex_driver::msg::ConstrainedPosition &output)
 {
 	
 	ToRosData(input.target_position(), output.target_position);
@@ -1905,7 +1905,7 @@ int ToRosData(Kinova::Api::Base::ConstrainedPosition input, kortex_driver::Const
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConstrainedOrientation input, kortex_driver::ConstrainedOrientation &output)
+int ToRosData(Kinova::Api::Base::ConstrainedOrientation input, kortex_driver::msg::ConstrainedOrientation &output)
 {
 	
 	ToRosData(input.target_orientation(), output.target_orientation);
@@ -1915,7 +1915,7 @@ int ToRosData(Kinova::Api::Base::ConstrainedOrientation input, kortex_driver::Co
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WrenchCommand input, kortex_driver::WrenchCommand &output)
+int ToRosData(Kinova::Api::Base::WrenchCommand input, kortex_driver::msg::WrenchCommand &output)
 {
 	
 	output.reference_frame = input.reference_frame();
@@ -1927,7 +1927,7 @@ int ToRosData(Kinova::Api::Base::WrenchCommand input, kortex_driver::WrenchComma
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TwistCommand input, kortex_driver::TwistCommand &output)
+int ToRosData(Kinova::Api::Base::TwistCommand input, kortex_driver::msg::TwistCommand &output)
 {
 	
 	output.reference_frame = input.reference_frame();
@@ -1938,7 +1938,7 @@ int ToRosData(Kinova::Api::Base::TwistCommand input, kortex_driver::TwistCommand
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConstrainedJointAngles input, kortex_driver::ConstrainedJointAngles &output)
+int ToRosData(Kinova::Api::Base::ConstrainedJointAngles input, kortex_driver::msg::ConstrainedJointAngles &output)
 {
 	
 	ToRosData(input.joint_angles(), output.joint_angles);
@@ -1948,7 +1948,7 @@ int ToRosData(Kinova::Api::Base::ConstrainedJointAngles input, kortex_driver::Co
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ConstrainedJointAngle input, kortex_driver::ConstrainedJointAngle &output)
+int ToRosData(Kinova::Api::Base::ConstrainedJointAngle input, kortex_driver::msg::ConstrainedJointAngle &output)
 {
 	
 	output.joint_identifier = input.joint_identifier();
@@ -1959,7 +1959,7 @@ int ToRosData(Kinova::Api::Base::ConstrainedJointAngle input, kortex_driver::Con
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointAngles input, kortex_driver::JointAngles &output)
+int ToRosData(Kinova::Api::Base::JointAngles input, kortex_driver::msg::JointAngles &output)
 {
 	
 	output.joint_angles.clear();
@@ -1974,7 +1974,7 @@ int ToRosData(Kinova::Api::Base::JointAngles input, kortex_driver::JointAngles &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointAngle input, kortex_driver::JointAngle &output)
+int ToRosData(Kinova::Api::Base::JointAngle input, kortex_driver::msg::JointAngle &output)
 {
 	
 	output.joint_identifier = input.joint_identifier();
@@ -1984,7 +1984,7 @@ int ToRosData(Kinova::Api::Base::JointAngle input, kortex_driver::JointAngle &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointSpeeds input, kortex_driver::Base_JointSpeeds &output)
+int ToRosData(Kinova::Api::Base::JointSpeeds input, kortex_driver::msg::BaseJointSpeeds &output)
 {
 	
 	output.joint_speeds.clear();
@@ -2000,7 +2000,7 @@ int ToRosData(Kinova::Api::Base::JointSpeeds input, kortex_driver::Base_JointSpe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointSpeed input, kortex_driver::JointSpeed &output)
+int ToRosData(Kinova::Api::Base::JointSpeed input, kortex_driver::msg::JointSpeed &output)
 {
 	
 	output.joint_identifier = input.joint_identifier();
@@ -2011,7 +2011,7 @@ int ToRosData(Kinova::Api::Base::JointSpeed input, kortex_driver::JointSpeed &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointTorques input, kortex_driver::JointTorques &output)
+int ToRosData(Kinova::Api::Base::JointTorques input, kortex_driver::msg::JointTorques &output)
 {
 	
 	output.joint_torques.clear();
@@ -2027,7 +2027,7 @@ int ToRosData(Kinova::Api::Base::JointTorques input, kortex_driver::JointTorques
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::JointTorque input, kortex_driver::JointTorque &output)
+int ToRosData(Kinova::Api::Base::JointTorque input, kortex_driver::msg::JointTorque &output)
 {
 	
 	output.joint_identifier = input.joint_identifier();
@@ -2038,7 +2038,7 @@ int ToRosData(Kinova::Api::Base::JointTorque input, kortex_driver::JointTorque &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::GripperCommand input, kortex_driver::GripperCommand &output)
+int ToRosData(Kinova::Api::Base::GripperCommand input, kortex_driver::msg::GripperCommand &output)
 {
 	
 	output.mode = input.mode();
@@ -2049,7 +2049,7 @@ int ToRosData(Kinova::Api::Base::GripperCommand input, kortex_driver::GripperCom
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::GripperRequest input, kortex_driver::GripperRequest &output)
+int ToRosData(Kinova::Api::Base::GripperRequest input, kortex_driver::msg::GripperRequest &output)
 {
 	
 	output.mode = input.mode();
@@ -2058,7 +2058,7 @@ int ToRosData(Kinova::Api::Base::GripperRequest input, kortex_driver::GripperReq
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Gripper input, kortex_driver::Gripper &output)
+int ToRosData(Kinova::Api::Base::Gripper input, kortex_driver::msg::Gripper &output)
 {
 	
 	output.finger.clear();
@@ -2073,7 +2073,7 @@ int ToRosData(Kinova::Api::Base::Gripper input, kortex_driver::Gripper &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Finger input, kortex_driver::Finger &output)
+int ToRosData(Kinova::Api::Base::Finger input, kortex_driver::msg::Finger &output)
 {
 	
 	output.finger_identifier = input.finger_identifier();
@@ -2083,7 +2083,7 @@ int ToRosData(Kinova::Api::Base::Finger input, kortex_driver::Finger &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::GpioCommand input, kortex_driver::GpioCommand &output)
+int ToRosData(Kinova::Api::Base::GpioCommand input, kortex_driver::msg::GpioCommand &output)
 {
 	
 	output.port_identifier = input.port_identifier();
@@ -2095,7 +2095,7 @@ int ToRosData(Kinova::Api::Base::GpioCommand input, kortex_driver::GpioCommand &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::SystemTime input, kortex_driver::SystemTime &output)
+int ToRosData(Kinova::Api::Base::SystemTime input, kortex_driver::msg::SystemTime &output)
 {
 	
 	output.sec = input.sec();
@@ -2109,7 +2109,7 @@ int ToRosData(Kinova::Api::Base::SystemTime input, kortex_driver::SystemTime &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerConfigurationMode input, kortex_driver::ControllerConfigurationMode &output)
+int ToRosData(Kinova::Api::Base::ControllerConfigurationMode input, kortex_driver::msg::ControllerConfigurationMode &output)
 {
 	
 	output.enable = input.enable();
@@ -2118,7 +2118,7 @@ int ToRosData(Kinova::Api::Base::ControllerConfigurationMode input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerConfiguration input, kortex_driver::ControllerConfiguration &output)
+int ToRosData(Kinova::Api::Base::ControllerConfiguration input, kortex_driver::msg::ControllerConfiguration &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -2131,7 +2131,7 @@ int ToRosData(Kinova::Api::Base::ControllerConfiguration input, kortex_driver::C
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ControllerConfigurationList input, kortex_driver::ControllerConfigurationList &output)
+int ToRosData(Kinova::Api::Base::ControllerConfigurationList input, kortex_driver::msg::ControllerConfigurationList &output)
 {
 	
 	output.controller_configurations.clear();
@@ -2146,7 +2146,7 @@ int ToRosData(Kinova::Api::Base::ControllerConfigurationList input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ActuatorInformation input, kortex_driver::ActuatorInformation &output)
+int ToRosData(Kinova::Api::Base::ActuatorInformation input, kortex_driver::msg::ActuatorInformation &output)
 {
 	
 	output.count = input.count();
@@ -2155,7 +2155,7 @@ int ToRosData(Kinova::Api::Base::ActuatorInformation input, kortex_driver::Actua
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ArmStateInformation input, kortex_driver::ArmStateInformation &output)
+int ToRosData(Kinova::Api::Base::ArmStateInformation input, kortex_driver::msg::ArmStateInformation &output)
 {
 	
 	output.active_state = input.active_state();
@@ -2165,7 +2165,7 @@ int ToRosData(Kinova::Api::Base::ArmStateInformation input, kortex_driver::ArmSt
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::ArmStateNotification input, kortex_driver::ArmStateNotification &output)
+int ToRosData(Kinova::Api::Base::ArmStateNotification input, kortex_driver::msg::ArmStateNotification &output)
 {
 	
 	output.active_state = input.active_state();
@@ -2176,7 +2176,7 @@ int ToRosData(Kinova::Api::Base::ArmStateNotification input, kortex_driver::ArmS
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CapSenseConfig input, kortex_driver::Base_CapSenseConfig &output)
+int ToRosData(Kinova::Api::Base::CapSenseConfig input, kortex_driver::msg::BaseCapSenseConfig &output)
 {
 	
 	output.identifier = input.identifier();
@@ -2190,7 +2190,7 @@ int ToRosData(Kinova::Api::Base::CapSenseConfig input, kortex_driver::Base_CapSe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::BridgeList input, kortex_driver::BridgeList &output)
+int ToRosData(Kinova::Api::Base::BridgeList input, kortex_driver::msg::BridgeList &output)
 {
 	
 	output.bridgeConfig.clear();
@@ -2205,7 +2205,7 @@ int ToRosData(Kinova::Api::Base::BridgeList input, kortex_driver::BridgeList &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::BridgeResult input, kortex_driver::BridgeResult &output)
+int ToRosData(Kinova::Api::Base::BridgeResult input, kortex_driver::msg::BridgeResult &output)
 {
 	
 	ToRosData(input.bridge_id(), output.bridge_id);
@@ -2215,7 +2215,7 @@ int ToRosData(Kinova::Api::Base::BridgeResult input, kortex_driver::BridgeResult
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::BridgeIdentifier input, kortex_driver::BridgeIdentifier &output)
+int ToRosData(Kinova::Api::Base::BridgeIdentifier input, kortex_driver::msg::BridgeIdentifier &output)
 {
 	
 	output.bridge_id = input.bridge_id();
@@ -2224,7 +2224,7 @@ int ToRosData(Kinova::Api::Base::BridgeIdentifier input, kortex_driver::BridgeId
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::BridgeConfig input, kortex_driver::BridgeConfig &output)
+int ToRosData(Kinova::Api::Base::BridgeConfig input, kortex_driver::msg::BridgeConfig &output)
 {
 	
 	output.device_identifier = input.device_identifier();
@@ -2236,7 +2236,7 @@ int ToRosData(Kinova::Api::Base::BridgeConfig input, kortex_driver::BridgeConfig
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::BridgePortConfig input, kortex_driver::BridgePortConfig &output)
+int ToRosData(Kinova::Api::Base::BridgePortConfig input, kortex_driver::msg::BridgePortConfig &output)
 {
 	
 	output.target_port = input.target_port();
@@ -2246,7 +2246,7 @@ int ToRosData(Kinova::Api::Base::BridgePortConfig input, kortex_driver::BridgePo
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::PreComputedJointTrajectory input, kortex_driver::PreComputedJointTrajectory &output)
+int ToRosData(Kinova::Api::Base::PreComputedJointTrajectory input, kortex_driver::msg::PreComputedJointTrajectory &output)
 {
 	
 	output.mode = input.mode();
@@ -2262,7 +2262,7 @@ int ToRosData(Kinova::Api::Base::PreComputedJointTrajectory input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::PreComputedJointTrajectoryElement input, kortex_driver::PreComputedJointTrajectoryElement &output)
+int ToRosData(Kinova::Api::Base::PreComputedJointTrajectoryElement input, kortex_driver::msg::PreComputedJointTrajectoryElement &output)
 {
 	
 	output.joint_angles.clear();
@@ -2286,7 +2286,7 @@ int ToRosData(Kinova::Api::Base::PreComputedJointTrajectoryElement input, kortex
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TrajectoryErrorElement input, kortex_driver::TrajectoryErrorElement &output)
+int ToRosData(Kinova::Api::Base::TrajectoryErrorElement input, kortex_driver::msg::TrajectoryErrorElement &output)
 {
 	
 	output.error_type = input.error_type();
@@ -2302,7 +2302,7 @@ int ToRosData(Kinova::Api::Base::TrajectoryErrorElement input, kortex_driver::Tr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::TrajectoryErrorReport input, kortex_driver::TrajectoryErrorReport &output)
+int ToRosData(Kinova::Api::Base::TrajectoryErrorReport input, kortex_driver::msg::TrajectoryErrorReport &output)
 {
 	
 	output.trajectory_error_elements.clear();
@@ -2317,7 +2317,7 @@ int ToRosData(Kinova::Api::Base::TrajectoryErrorReport input, kortex_driver::Tra
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WaypointValidationReport input, kortex_driver::WaypointValidationReport &output)
+int ToRosData(Kinova::Api::Base::WaypointValidationReport input, kortex_driver::msg::WaypointValidationReport &output)
 {
 	
 	ToRosData(input.trajectory_error_report(), output.trajectory_error_report);
@@ -2327,7 +2327,7 @@ int ToRosData(Kinova::Api::Base::WaypointValidationReport input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::Waypoint input, kortex_driver::Waypoint &output)
+int ToRosData(Kinova::Api::Base::Waypoint input, kortex_driver::msg::Waypoint &output)
 {
 	
 	output.name = input.name();
@@ -2355,7 +2355,7 @@ int ToRosData(Kinova::Api::Base::Waypoint input, kortex_driver::Waypoint &output
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::AngularWaypoint input, kortex_driver::AngularWaypoint &output)
+int ToRosData(Kinova::Api::Base::AngularWaypoint input, kortex_driver::msg::AngularWaypoint &output)
 {
 	
 	output.angles.clear();
@@ -2374,7 +2374,7 @@ int ToRosData(Kinova::Api::Base::AngularWaypoint input, kortex_driver::AngularWa
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::CartesianWaypoint input, kortex_driver::CartesianWaypoint &output)
+int ToRosData(Kinova::Api::Base::CartesianWaypoint input, kortex_driver::msg::CartesianWaypoint &output)
 {
 	
 	ToRosData(input.pose(), output.pose);
@@ -2387,7 +2387,7 @@ int ToRosData(Kinova::Api::Base::CartesianWaypoint input, kortex_driver::Cartesi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::WaypointList input, kortex_driver::WaypointList &output)
+int ToRosData(Kinova::Api::Base::WaypointList input, kortex_driver::msg::WaypointList &output)
 {
 	
 	output.waypoints.clear();
@@ -2404,7 +2404,7 @@ int ToRosData(Kinova::Api::Base::WaypointList input, kortex_driver::WaypointList
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::KinematicTrajectoryConstraints input, kortex_driver::KinematicTrajectoryConstraints &output)
+int ToRosData(Kinova::Api::Base::KinematicTrajectoryConstraints input, kortex_driver::msg::KinematicTrajectoryConstraints &output)
 {
 	
 	output.angular_velocities.clear();
@@ -2419,7 +2419,7 @@ int ToRosData(Kinova::Api::Base::KinematicTrajectoryConstraints input, kortex_dr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::FirmwareBundleVersions input, kortex_driver::FirmwareBundleVersions &output)
+int ToRosData(Kinova::Api::Base::FirmwareBundleVersions input, kortex_driver::msg::FirmwareBundleVersions &output)
 {
 	
 	output.main_bundle_version = input.main_bundle_version();
@@ -2435,7 +2435,7 @@ int ToRosData(Kinova::Api::Base::FirmwareBundleVersions input, kortex_driver::Fi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::FirmwareComponentVersion input, kortex_driver::FirmwareComponentVersion &output)
+int ToRosData(Kinova::Api::Base::FirmwareComponentVersion input, kortex_driver::msg::FirmwareComponentVersion &output)
 {
 	
 	output.name = input.name();
@@ -2446,7 +2446,7 @@ int ToRosData(Kinova::Api::Base::FirmwareComponentVersion input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Base::IKData input, kortex_driver::IKData &output)
+int ToRosData(Kinova::Api::Base::IKData input, kortex_driver::msg::IKData &output)
 {
 	
 	ToRosData(input.cartesian_pose(), output.cartesian_pose);

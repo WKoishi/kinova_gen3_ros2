@@ -16,14 +16,14 @@
  
 #include "kortex_driver/generated/robot/interconnectconfig_proto_converter.h"
 
-int ToProtoData(kortex_driver::EthernetDeviceIdentification input, Kinova::Api::InterconnectConfig::EthernetDeviceIdentification *output)
+int ToProtoData(kortex_driver::msg::EthernetDeviceIdentification input, Kinova::Api::InterconnectConfig::EthernetDeviceIdentification *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::EthernetDevice)input.device);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::EthernetConfiguration input, Kinova::Api::InterconnectConfig::EthernetConfiguration *output)
+int ToProtoData(kortex_driver::msg::EthernetConfiguration input, Kinova::Api::InterconnectConfig::EthernetConfiguration *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::EthernetDevice)input.device);
@@ -33,14 +33,14 @@ int ToProtoData(kortex_driver::EthernetConfiguration input, Kinova::Api::Interco
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GPIOIdentification input, Kinova::Api::InterconnectConfig::GPIOIdentification *output)
+int ToProtoData(kortex_driver::msg::GPIOIdentification input, Kinova::Api::InterconnectConfig::GPIOIdentification *output)
 {
 	
 	output->set_identifier((Kinova::Api::InterconnectConfig::GPIOIdentifier)input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::InterconnectConfig_GPIOConfiguration input, Kinova::Api::InterconnectConfig::GPIOConfiguration *output)
+int ToProtoData(kortex_driver::msg::InterconnectConfigGPIOConfiguration input, Kinova::Api::InterconnectConfig::GPIOConfiguration *output)
 {
 	
 	output->set_identifier((Kinova::Api::InterconnectConfig::GPIOIdentifier)input.identifier);
@@ -50,7 +50,7 @@ int ToProtoData(kortex_driver::InterconnectConfig_GPIOConfiguration input, Kinov
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GPIOState input, Kinova::Api::InterconnectConfig::GPIOState *output)
+int ToProtoData(kortex_driver::msg::GPIOState input, Kinova::Api::InterconnectConfig::GPIOState *output)
 {
 	
 	output->set_identifier((Kinova::Api::InterconnectConfig::GPIOIdentifier)input.identifier);
@@ -58,14 +58,14 @@ int ToProtoData(kortex_driver::GPIOState input, Kinova::Api::InterconnectConfig:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CDeviceIdentification input, Kinova::Api::InterconnectConfig::I2CDeviceIdentification *output)
+int ToProtoData(kortex_driver::msg::I2CDeviceIdentification input, Kinova::Api::InterconnectConfig::I2CDeviceIdentification *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::I2CDevice)input.device);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CConfiguration input, Kinova::Api::InterconnectConfig::I2CConfiguration *output)
+int ToProtoData(kortex_driver::msg::I2CConfiguration input, Kinova::Api::InterconnectConfig::I2CConfiguration *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::I2CDevice)input.device);
@@ -75,7 +75,7 @@ int ToProtoData(kortex_driver::I2CConfiguration input, Kinova::Api::Interconnect
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CReadParameter input, Kinova::Api::InterconnectConfig::I2CReadParameter *output)
+int ToProtoData(kortex_driver::msg::I2CReadParameter input, Kinova::Api::InterconnectConfig::I2CReadParameter *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::I2CDevice)input.device);
@@ -85,7 +85,7 @@ int ToProtoData(kortex_driver::I2CReadParameter input, Kinova::Api::Interconnect
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CReadRegisterParameter input, Kinova::Api::InterconnectConfig::I2CReadRegisterParameter *output)
+int ToProtoData(kortex_driver::msg::I2CReadRegisterParameter input, Kinova::Api::InterconnectConfig::I2CReadRegisterParameter *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::I2CDevice)input.device);
@@ -97,7 +97,7 @@ int ToProtoData(kortex_driver::I2CReadRegisterParameter input, Kinova::Api::Inte
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CWriteParameter input, Kinova::Api::InterconnectConfig::I2CWriteParameter *output)
+int ToProtoData(kortex_driver::msg::I2CWriteParameter input, Kinova::Api::InterconnectConfig::I2CWriteParameter *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::I2CDevice)input.device);
@@ -107,7 +107,7 @@ int ToProtoData(kortex_driver::I2CWriteParameter input, Kinova::Api::Interconnec
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CWriteRegisterParameter input, Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter *output)
+int ToProtoData(kortex_driver::msg::I2CWriteRegisterParameter input, Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter *output)
 {
 	
 	output->set_device((Kinova::Api::InterconnectConfig::I2CDevice)input.device);
@@ -119,7 +119,7 @@ int ToProtoData(kortex_driver::I2CWriteRegisterParameter input, Kinova::Api::Int
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::I2CData input, Kinova::Api::InterconnectConfig::I2CData *output)
+int ToProtoData(kortex_driver::msg::I2CData input, Kinova::Api::InterconnectConfig::I2CData *output)
 {
 	
 	output->set_data(std::string(input.data.begin(), input.data.end()));

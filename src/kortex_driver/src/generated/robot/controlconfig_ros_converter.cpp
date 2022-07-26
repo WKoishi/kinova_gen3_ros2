@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/controlconfig_ros_converter.h"
 
-int ToRosData(Kinova::Api::ControlConfig::GravityVector input, kortex_driver::GravityVector &output)
+int ToRosData(Kinova::Api::ControlConfig::GravityVector input, kortex_driver::msg::GravityVector &output)
 {
 	
 	output.x = input.x();
@@ -27,7 +27,7 @@ int ToRosData(Kinova::Api::ControlConfig::GravityVector input, kortex_driver::Gr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::Position input, kortex_driver::ControlConfig_Position &output)
+int ToRosData(Kinova::Api::ControlConfig::Position input, kortex_driver::msg::ControlConfigPosition &output)
 {
 	
 	output.x = input.x();
@@ -38,7 +38,7 @@ int ToRosData(Kinova::Api::ControlConfig::Position input, kortex_driver::Control
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::PayloadInformation input, kortex_driver::PayloadInformation &output)
+int ToRosData(Kinova::Api::ControlConfig::PayloadInformation input, kortex_driver::msg::PayloadInformation &output)
 {
 	
 	output.payload_mass = input.payload_mass();
@@ -48,7 +48,7 @@ int ToRosData(Kinova::Api::ControlConfig::PayloadInformation input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::CartesianTransform input, kortex_driver::CartesianTransform &output)
+int ToRosData(Kinova::Api::ControlConfig::CartesianTransform input, kortex_driver::msg::CartesianTransform &output)
 {
 	
 	output.x = input.x();
@@ -62,7 +62,7 @@ int ToRosData(Kinova::Api::ControlConfig::CartesianTransform input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::ToolConfiguration input, kortex_driver::ToolConfiguration &output)
+int ToRosData(Kinova::Api::ControlConfig::ToolConfiguration input, kortex_driver::msg::ToolConfiguration &output)
 {
 	
 	ToRosData(input.tool_transform(), output.tool_transform);
@@ -73,7 +73,7 @@ int ToRosData(Kinova::Api::ControlConfig::ToolConfiguration input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::ControlConfigurationNotification input, kortex_driver::ControlConfigurationNotification &output)
+int ToRosData(Kinova::Api::ControlConfig::ControlConfigurationNotification input, kortex_driver::msg::ControlConfigurationNotification &output)
 {
 	
 	output.event = input.event();
@@ -85,7 +85,7 @@ int ToRosData(Kinova::Api::ControlConfig::ControlConfigurationNotification input
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::CartesianReferenceFrameInfo input, kortex_driver::CartesianReferenceFrameInfo &output)
+int ToRosData(Kinova::Api::ControlConfig::CartesianReferenceFrameInfo input, kortex_driver::msg::CartesianReferenceFrameInfo &output)
 {
 	
 	output.reference_frame = input.reference_frame();
@@ -94,7 +94,7 @@ int ToRosData(Kinova::Api::ControlConfig::CartesianReferenceFrameInfo input, kor
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::TwistLinearSoftLimit input, kortex_driver::TwistLinearSoftLimit &output)
+int ToRosData(Kinova::Api::ControlConfig::TwistLinearSoftLimit input, kortex_driver::msg::TwistLinearSoftLimit &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -104,7 +104,7 @@ int ToRosData(Kinova::Api::ControlConfig::TwistLinearSoftLimit input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::TwistAngularSoftLimit input, kortex_driver::TwistAngularSoftLimit &output)
+int ToRosData(Kinova::Api::ControlConfig::TwistAngularSoftLimit input, kortex_driver::msg::TwistAngularSoftLimit &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -114,7 +114,7 @@ int ToRosData(Kinova::Api::ControlConfig::TwistAngularSoftLimit input, kortex_dr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::JointSpeedSoftLimits input, kortex_driver::JointSpeedSoftLimits &output)
+int ToRosData(Kinova::Api::ControlConfig::JointSpeedSoftLimits input, kortex_driver::msg::JointSpeedSoftLimits &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -128,7 +128,7 @@ int ToRosData(Kinova::Api::ControlConfig::JointSpeedSoftLimits input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::JointAccelerationSoftLimits input, kortex_driver::JointAccelerationSoftLimits &output)
+int ToRosData(Kinova::Api::ControlConfig::JointAccelerationSoftLimits input, kortex_driver::msg::JointAccelerationSoftLimits &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -142,7 +142,7 @@ int ToRosData(Kinova::Api::ControlConfig::JointAccelerationSoftLimits input, kor
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::KinematicLimits input, kortex_driver::KinematicLimits &output)
+int ToRosData(Kinova::Api::ControlConfig::KinematicLimits input, kortex_driver::msg::KinematicLimits &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -163,7 +163,7 @@ int ToRosData(Kinova::Api::ControlConfig::KinematicLimits input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::KinematicLimitsList input, kortex_driver::KinematicLimitsList &output)
+int ToRosData(Kinova::Api::ControlConfig::KinematicLimitsList input, kortex_driver::msg::KinematicLimitsList &output)
 {
 	
 	output.kinematic_limits_list.clear();
@@ -178,7 +178,7 @@ int ToRosData(Kinova::Api::ControlConfig::KinematicLimitsList input, kortex_driv
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::DesiredSpeeds input, kortex_driver::DesiredSpeeds &output)
+int ToRosData(Kinova::Api::ControlConfig::DesiredSpeeds input, kortex_driver::msg::DesiredSpeeds &output)
 {
 	
 	output.linear = input.linear();
@@ -193,7 +193,7 @@ int ToRosData(Kinova::Api::ControlConfig::DesiredSpeeds input, kortex_driver::De
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::LinearTwist input, kortex_driver::LinearTwist &output)
+int ToRosData(Kinova::Api::ControlConfig::LinearTwist input, kortex_driver::msg::LinearTwist &output)
 {
 	
 	output.linear = input.linear();
@@ -202,7 +202,7 @@ int ToRosData(Kinova::Api::ControlConfig::LinearTwist input, kortex_driver::Line
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::AngularTwist input, kortex_driver::AngularTwist &output)
+int ToRosData(Kinova::Api::ControlConfig::AngularTwist input, kortex_driver::msg::AngularTwist &output)
 {
 	
 	output.angular = input.angular();
@@ -211,7 +211,7 @@ int ToRosData(Kinova::Api::ControlConfig::AngularTwist input, kortex_driver::Ang
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::JointSpeeds input, kortex_driver::ControlConfig_JointSpeeds &output)
+int ToRosData(Kinova::Api::ControlConfig::JointSpeeds input, kortex_driver::msg::ControlConfigJointSpeeds &output)
 {
 	
 	output.joint_speed.clear();
@@ -224,7 +224,7 @@ int ToRosData(Kinova::Api::ControlConfig::JointSpeeds input, kortex_driver::Cont
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::ControlModeInformation input, kortex_driver::ControlConfig_ControlModeInformation &output)
+int ToRosData(Kinova::Api::ControlConfig::ControlModeInformation input, kortex_driver::msg::ControlConfigControlModeInformation &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -233,7 +233,7 @@ int ToRosData(Kinova::Api::ControlConfig::ControlModeInformation input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ControlConfig::ControlModeNotification input, kortex_driver::ControlConfig_ControlModeNotification &output)
+int ToRosData(Kinova::Api::ControlConfig::ControlModeNotification input, kortex_driver::msg::ControlConfigControlModeNotification &output)
 {
 	
 	output.control_mode = input.control_mode();

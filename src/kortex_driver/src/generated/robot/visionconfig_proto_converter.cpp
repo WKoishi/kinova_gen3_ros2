@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
-int ToProtoData(kortex_driver::SensorSettings input, Kinova::Api::VisionConfig::SensorSettings *output)
+int ToProtoData(kortex_driver::msg::SensorSettings input, Kinova::Api::VisionConfig::SensorSettings *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -26,14 +26,14 @@ int ToProtoData(kortex_driver::SensorSettings input, Kinova::Api::VisionConfig::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SensorIdentifier input, Kinova::Api::VisionConfig::SensorIdentifier *output)
+int ToProtoData(kortex_driver::msg::SensorIdentifier input, Kinova::Api::VisionConfig::SensorIdentifier *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::IntrinsicProfileIdentifier input, Kinova::Api::VisionConfig::IntrinsicProfileIdentifier *output)
+int ToProtoData(kortex_driver::msg::IntrinsicProfileIdentifier input, Kinova::Api::VisionConfig::IntrinsicProfileIdentifier *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -41,7 +41,7 @@ int ToProtoData(kortex_driver::IntrinsicProfileIdentifier input, Kinova::Api::Vi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::OptionIdentifier input, Kinova::Api::VisionConfig::OptionIdentifier *output)
+int ToProtoData(kortex_driver::msg::OptionIdentifier input, Kinova::Api::VisionConfig::OptionIdentifier *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -49,7 +49,7 @@ int ToProtoData(kortex_driver::OptionIdentifier input, Kinova::Api::VisionConfig
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::OptionValue input, Kinova::Api::VisionConfig::OptionValue *output)
+int ToProtoData(kortex_driver::msg::OptionValue input, Kinova::Api::VisionConfig::OptionValue *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -58,7 +58,7 @@ int ToProtoData(kortex_driver::OptionValue input, Kinova::Api::VisionConfig::Opt
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::OptionInformation input, Kinova::Api::VisionConfig::OptionInformation *output)
+int ToProtoData(kortex_driver::msg::OptionInformation input, Kinova::Api::VisionConfig::OptionInformation *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -72,7 +72,7 @@ int ToProtoData(kortex_driver::OptionInformation input, Kinova::Api::VisionConfi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SensorFocusAction input, Kinova::Api::VisionConfig::SensorFocusAction *output)
+int ToProtoData(kortex_driver::msg::SensorFocusAction input, Kinova::Api::VisionConfig::SensorFocusAction *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -88,7 +88,7 @@ int ToProtoData(kortex_driver::SensorFocusAction input, Kinova::Api::VisionConfi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FocusPoint input, Kinova::Api::VisionConfig::FocusPoint *output)
+int ToProtoData(kortex_driver::msg::FocusPoint input, Kinova::Api::VisionConfig::FocusPoint *output)
 {
 	
 	output->set_x(input.x);
@@ -96,14 +96,14 @@ int ToProtoData(kortex_driver::FocusPoint input, Kinova::Api::VisionConfig::Focu
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ManualFocus input, Kinova::Api::VisionConfig::ManualFocus *output)
+int ToProtoData(kortex_driver::msg::ManualFocus input, Kinova::Api::VisionConfig::ManualFocus *output)
 {
 	
 	output->set_value(input.value);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::VisionNotification input, Kinova::Api::VisionConfig::VisionNotification *output)
+int ToProtoData(kortex_driver::msg::VisionNotification input, Kinova::Api::VisionConfig::VisionNotification *output)
 {
 	
 	output->set_event((Kinova::Api::VisionConfig::VisionEvent)input.event);
@@ -112,7 +112,7 @@ int ToProtoData(kortex_driver::VisionNotification input, Kinova::Api::VisionConf
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::IntrinsicParameters input, Kinova::Api::VisionConfig::IntrinsicParameters *output)
+int ToProtoData(kortex_driver::msg::IntrinsicParameters input, Kinova::Api::VisionConfig::IntrinsicParameters *output)
 {
 	
 	output->set_sensor((Kinova::Api::VisionConfig::Sensor)input.sensor);
@@ -125,7 +125,7 @@ int ToProtoData(kortex_driver::IntrinsicParameters input, Kinova::Api::VisionCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::DistortionCoefficients input, Kinova::Api::VisionConfig::DistortionCoefficients *output)
+int ToProtoData(kortex_driver::msg::DistortionCoefficients input, Kinova::Api::VisionConfig::DistortionCoefficients *output)
 {
 	
 	output->set_k1(input.k1);
@@ -136,7 +136,7 @@ int ToProtoData(kortex_driver::DistortionCoefficients input, Kinova::Api::Vision
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ExtrinsicParameters input, Kinova::Api::VisionConfig::ExtrinsicParameters *output)
+int ToProtoData(kortex_driver::msg::ExtrinsicParameters input, Kinova::Api::VisionConfig::ExtrinsicParameters *output)
 {
 	 
 	ToProtoData(input.rotation, output->mutable_rotation()); 
@@ -144,7 +144,7 @@ int ToProtoData(kortex_driver::ExtrinsicParameters input, Kinova::Api::VisionCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::VisionConfig_RotationMatrix input, Kinova::Api::VisionConfig::RotationMatrix *output)
+int ToProtoData(kortex_driver::msg::VisionConfigRotationMatrix input, Kinova::Api::VisionConfig::RotationMatrix *output)
 {
 	 
 	ToProtoData(input.row1, output->mutable_row1()); 
@@ -153,7 +153,7 @@ int ToProtoData(kortex_driver::VisionConfig_RotationMatrix input, Kinova::Api::V
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::VisionConfig_RotationMatrixRow input, Kinova::Api::VisionConfig::RotationMatrixRow *output)
+int ToProtoData(kortex_driver::msg::VisionConfigRotationMatrixRow input, Kinova::Api::VisionConfig::RotationMatrixRow *output)
 {
 	
 	output->set_column1(input.column1);
@@ -162,7 +162,7 @@ int ToProtoData(kortex_driver::VisionConfig_RotationMatrixRow input, Kinova::Api
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TranslationVector input, Kinova::Api::VisionConfig::TranslationVector *output)
+int ToProtoData(kortex_driver::msg::TranslationVector input, Kinova::Api::VisionConfig::TranslationVector *output)
 {
 	
 	output->set_t_x(input.t_x);

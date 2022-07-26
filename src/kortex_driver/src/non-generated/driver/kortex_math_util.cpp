@@ -112,9 +112,9 @@ float KortexMathUtil::findDistanceToBoundary(float value, float limit)
     return distance;
 }
 
-kortex_driver::Twist KortexMathUtil::substractTwists(const kortex_driver::Twist& a, const kortex_driver::Twist& b)
+kortex_driver::msg::Twist KortexMathUtil::substractTwists(const kortex_driver::msg::Twist& a, const kortex_driver::msg::Twist& b)
 {
-    kortex_driver::Twist c;
+    kortex_driver::msg::Twist c;
     c.linear_x = a.linear_x - b.linear_x;
     c.linear_y = a.linear_y - b.linear_y;
     c.linear_z = a.linear_z - b.linear_z;

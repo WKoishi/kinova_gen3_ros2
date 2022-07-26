@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/devicemanager_ros_converter.h"
 
-int ToRosData(Kinova::Api::DeviceManager::DeviceHandles input, kortex_driver::DeviceHandles &output)
+int ToRosData(Kinova::Api::DeviceManager::DeviceHandles input, kortex_driver::msg::DeviceHandles &output)
 {
 	
 	output.device_handle.clear();

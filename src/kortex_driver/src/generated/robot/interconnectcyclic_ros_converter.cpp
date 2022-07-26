@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/interconnectcyclic_ros_converter.h"
 
-int ToRosData(Kinova::Api::InterconnectCyclic::MessageId input, kortex_driver::InterconnectCyclic_MessageId &output)
+int ToRosData(Kinova::Api::InterconnectCyclic::MessageId input, kortex_driver::msg::InterconnectCyclicMessageId &output)
 {
 	
 	output.identifier = input.identifier();
@@ -25,7 +25,7 @@ int ToRosData(Kinova::Api::InterconnectCyclic::MessageId input, kortex_driver::I
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectCyclic::Command input, kortex_driver::InterconnectCyclic_Command &output)
+int ToRosData(Kinova::Api::InterconnectCyclic::Command input, kortex_driver::msg::InterconnectCyclicCommand &output)
 {
 	
 	ToRosData(input.command_id(), output.command_id);
@@ -46,7 +46,7 @@ int ToRosData(Kinova::Api::InterconnectCyclic::Command input, kortex_driver::Int
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectCyclic::Feedback input, kortex_driver::InterconnectCyclic_Feedback &output)
+int ToRosData(Kinova::Api::InterconnectCyclic::Feedback input, kortex_driver::msg::InterconnectCyclicFeedback &output)
 {
 	
 	ToRosData(input.feedback_id(), output.feedback_id);
@@ -80,7 +80,7 @@ int ToRosData(Kinova::Api::InterconnectCyclic::Feedback input, kortex_driver::In
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::InterconnectCyclic::CustomData input, kortex_driver::InterconnectCyclic_CustomData &output)
+int ToRosData(Kinova::Api::InterconnectCyclic::CustomData input, kortex_driver::msg::InterconnectCyclicCustomData &output)
 {
 	
 	ToRosData(input.custom_data_id(), output.custom_data_id);

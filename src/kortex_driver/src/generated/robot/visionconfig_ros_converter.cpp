@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
-int ToRosData(Kinova::Api::VisionConfig::SensorSettings input, kortex_driver::SensorSettings &output)
+int ToRosData(Kinova::Api::VisionConfig::SensorSettings input, kortex_driver::msg::SensorSettings &output)
 {
 	
 	output.sensor = input.sensor();
@@ -28,7 +28,7 @@ int ToRosData(Kinova::Api::VisionConfig::SensorSettings input, kortex_driver::Se
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::SensorIdentifier input, kortex_driver::SensorIdentifier &output)
+int ToRosData(Kinova::Api::VisionConfig::SensorIdentifier input, kortex_driver::msg::SensorIdentifier &output)
 {
 	
 	output.sensor = input.sensor();
@@ -37,7 +37,7 @@ int ToRosData(Kinova::Api::VisionConfig::SensorIdentifier input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input, kortex_driver::IntrinsicProfileIdentifier &output)
+int ToRosData(Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input, kortex_driver::msg::IntrinsicProfileIdentifier &output)
 {
 	
 	output.sensor = input.sensor();
@@ -47,7 +47,7 @@ int ToRosData(Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input, korte
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::OptionIdentifier input, kortex_driver::OptionIdentifier &output)
+int ToRosData(Kinova::Api::VisionConfig::OptionIdentifier input, kortex_driver::msg::OptionIdentifier &output)
 {
 	
 	output.sensor = input.sensor();
@@ -57,7 +57,7 @@ int ToRosData(Kinova::Api::VisionConfig::OptionIdentifier input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::OptionValue input, kortex_driver::OptionValue &output)
+int ToRosData(Kinova::Api::VisionConfig::OptionValue input, kortex_driver::msg::OptionValue &output)
 {
 	
 	output.sensor = input.sensor();
@@ -68,7 +68,7 @@ int ToRosData(Kinova::Api::VisionConfig::OptionValue input, kortex_driver::Optio
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::OptionInformation input, kortex_driver::OptionInformation &output)
+int ToRosData(Kinova::Api::VisionConfig::OptionInformation input, kortex_driver::msg::OptionInformation &output)
 {
 	
 	output.sensor = input.sensor();
@@ -84,7 +84,7 @@ int ToRosData(Kinova::Api::VisionConfig::OptionInformation input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::SensorFocusAction input, kortex_driver::SensorFocusAction &output)
+int ToRosData(Kinova::Api::VisionConfig::SensorFocusAction input, kortex_driver::msg::SensorFocusAction &output)
 {
 	
 	output.sensor = input.sensor();
@@ -113,7 +113,7 @@ int ToRosData(Kinova::Api::VisionConfig::SensorFocusAction input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::FocusPoint input, kortex_driver::FocusPoint &output)
+int ToRosData(Kinova::Api::VisionConfig::FocusPoint input, kortex_driver::msg::FocusPoint &output)
 {
 	
 	output.x = input.x();
@@ -123,7 +123,7 @@ int ToRosData(Kinova::Api::VisionConfig::FocusPoint input, kortex_driver::FocusP
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::ManualFocus input, kortex_driver::ManualFocus &output)
+int ToRosData(Kinova::Api::VisionConfig::ManualFocus input, kortex_driver::msg::ManualFocus &output)
 {
 	
 	output.value = input.value();
@@ -132,7 +132,7 @@ int ToRosData(Kinova::Api::VisionConfig::ManualFocus input, kortex_driver::Manua
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::VisionNotification input, kortex_driver::VisionNotification &output)
+int ToRosData(Kinova::Api::VisionConfig::VisionNotification input, kortex_driver::msg::VisionNotification &output)
 {
 	
 	output.event = input.event();
@@ -143,7 +143,7 @@ int ToRosData(Kinova::Api::VisionConfig::VisionNotification input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::IntrinsicParameters input, kortex_driver::IntrinsicParameters &output)
+int ToRosData(Kinova::Api::VisionConfig::IntrinsicParameters input, kortex_driver::msg::IntrinsicParameters &output)
 {
 	
 	output.sensor = input.sensor();
@@ -158,7 +158,7 @@ int ToRosData(Kinova::Api::VisionConfig::IntrinsicParameters input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::DistortionCoefficients input, kortex_driver::DistortionCoefficients &output)
+int ToRosData(Kinova::Api::VisionConfig::DistortionCoefficients input, kortex_driver::msg::DistortionCoefficients &output)
 {
 	
 	output.k1 = input.k1();
@@ -171,7 +171,7 @@ int ToRosData(Kinova::Api::VisionConfig::DistortionCoefficients input, kortex_dr
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::ExtrinsicParameters input, kortex_driver::ExtrinsicParameters &output)
+int ToRosData(Kinova::Api::VisionConfig::ExtrinsicParameters input, kortex_driver::msg::ExtrinsicParameters &output)
 {
 	
 	ToRosData(input.rotation(), output.rotation);
@@ -181,7 +181,7 @@ int ToRosData(Kinova::Api::VisionConfig::ExtrinsicParameters input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::RotationMatrix input, kortex_driver::VisionConfig_RotationMatrix &output)
+int ToRosData(Kinova::Api::VisionConfig::RotationMatrix input, kortex_driver::msg::VisionConfigRotationMatrix &output)
 {
 	
 	ToRosData(input.row1(), output.row1);
@@ -192,7 +192,7 @@ int ToRosData(Kinova::Api::VisionConfig::RotationMatrix input, kortex_driver::Vi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::RotationMatrixRow input, kortex_driver::VisionConfig_RotationMatrixRow &output)
+int ToRosData(Kinova::Api::VisionConfig::RotationMatrixRow input, kortex_driver::msg::VisionConfigRotationMatrixRow &output)
 {
 	
 	output.column1 = input.column1();
@@ -203,7 +203,7 @@ int ToRosData(Kinova::Api::VisionConfig::RotationMatrixRow input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::VisionConfig::TranslationVector input, kortex_driver::TranslationVector &output)
+int ToRosData(Kinova::Api::VisionConfig::TranslationVector input, kortex_driver::msg::TranslationVector &output)
 {
 	
 	output.t_x = input.t_x();

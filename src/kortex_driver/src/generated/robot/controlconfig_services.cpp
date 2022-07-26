@@ -49,10 +49,10 @@ ControlConfigRobotServices::ControlConfigRobotServices(ros::NodeHandle& node_han
 {
 	m_api_options.timeout_ms = timeout_ms;
 
-	m_pub_Error = m_node_handle.advertise<kortex_driver::KortexError>("kortex_error", 1000);
-	m_pub_ControlConfigurationTopic = m_node_handle.advertise<kortex_driver::ControlConfigurationNotification>("control_configuration_topic", 1000);
+	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_ControlConfigurationTopic = m_node_handle.advertise<kortex_driver::msg::ControlConfigurationNotification>("control_configuration_topic", 1000);
 	m_is_activated_ControlConfigurationTopic = false;
-	m_pub_ControlModeTopic = m_node_handle.advertise<kortex_driver::ControlConfig_ControlModeNotification>("control_mode_topic", 1000);
+	m_pub_ControlModeTopic = m_node_handle.advertise<kortex_driver::msg::ControlConfigControlModeNotification>("control_mode_topic", 1000);
 	m_is_activated_ControlModeTopic = false;
 
 	m_serviceSetDeviceID = m_node_handle.advertiseService("control_config/set_device_id", &ControlConfigRobotServices::SetDeviceID, this);
@@ -90,14 +90,14 @@ ControlConfigRobotServices::ControlConfigRobotServices(ros::NodeHandle& node_han
 	m_serviceControlConfig_OnNotificationControlModeTopic = m_node_handle.advertiseService("control_config/activate_publishing_of_control_mode_topic", &ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic, this);
 }
 
-bool ControlConfigRobotServices::SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res)
+bool ControlConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool ControlConfigRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res)
+bool ControlConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -105,12 +105,12 @@ bool ControlConfigRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Req
 }
 
 
-bool ControlConfigRobotServices::SetGravityVector(kortex_driver::SetGravityVector::Request  &req, kortex_driver::SetGravityVector::Response &res)
+bool ControlConfigRobotServices::SetGravityVector(kortex_driver::srv::SetGravityVector::Request  &req, kortex_driver::srv::SetGravityVector::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::GravityVector input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -137,12 +137,12 @@ bool ControlConfigRobotServices::SetGravityVector(kortex_driver::SetGravityVecto
 	return true;
 }
 
-bool ControlConfigRobotServices::GetGravityVector(kortex_driver::GetGravityVector::Request  &req, kortex_driver::GetGravityVector::Response &res)
+bool ControlConfigRobotServices::GetGravityVector(kortex_driver::srv::GetGravityVector::Request  &req, kortex_driver::srv::GetGravityVector::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::GravityVector output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -170,12 +170,12 @@ bool ControlConfigRobotServices::GetGravityVector(kortex_driver::GetGravityVecto
 	return true;
 }
 
-bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::SetPayloadInformation::Request  &req, kortex_driver::SetPayloadInformation::Response &res)
+bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::srv::SetPayloadInformation::Request  &req, kortex_driver::srv::SetPayloadInformation::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -202,12 +202,12 @@ bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::SetPayload
 	return true;
 }
 
-bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::GetPayloadInformation::Request  &req, kortex_driver::GetPayloadInformation::Response &res)
+bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::srv::GetPayloadInformation::Request  &req, kortex_driver::srv::GetPayloadInformation::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -235,12 +235,12 @@ bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::GetPayload
 	return true;
 }
 
-bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::SetToolConfiguration::Request  &req, kortex_driver::SetToolConfiguration::Response &res)
+bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::srv::SetToolConfiguration::Request  &req, kortex_driver::srv::SetToolConfiguration::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -267,12 +267,12 @@ bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::SetToolConf
 	return true;
 }
 
-bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::GetToolConfiguration::Request  &req, kortex_driver::GetToolConfiguration::Response &res)
+bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::srv::GetToolConfiguration::Request  &req, kortex_driver::srv::GetToolConfiguration::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -300,7 +300,7 @@ bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::GetToolConf
 	return true;
 }
 
-bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_driver::OnNotificationControlConfigurationTopic::Request  &req, kortex_driver::OnNotificationControlConfigurationTopic::Response &res)
+bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_driver::srv::OnNotificationControlConfigurationTopic::Request  &req, kortex_driver::srv::OnNotificationControlConfigurationTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -310,7 +310,7 @@ bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -341,17 +341,17 @@ bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_
 }
 void ControlConfigRobotServices::cb_ControlConfigurationTopic(Kinova::Api::ControlConfig::ControlConfigurationNotification notif)
 {
-	kortex_driver::ControlConfigurationNotification ros_msg;
+	kortex_driver::msg::ControlConfigurationNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ControlConfigurationTopic.publish(ros_msg);
 }
 
-bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::ControlConfig_Unsubscribe::Request  &req, kortex_driver::ControlConfig_Unsubscribe::Response &res)
+bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::srv::ControlConfigUnsubscribe::Request  &req, kortex_driver::srv::ControlConfigUnsubscribe::Response &res)
 {
 	
 	Kinova::Api::Common::NotificationHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -378,12 +378,12 @@ bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::Contro
 	return true;
 }
 
-bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::SetCartesianReferenceFrame::Request  &req, kortex_driver::SetCartesianReferenceFrame::Response &res)
+bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::srv::SetCartesianReferenceFrame::Request  &req, kortex_driver::srv::SetCartesianReferenceFrame::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::CartesianReferenceFrameInfo input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -410,12 +410,12 @@ bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::SetCa
 	return true;
 }
 
-bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::GetCartesianReferenceFrame::Request  &req, kortex_driver::GetCartesianReferenceFrame::Response &res)
+bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::srv::GetCartesianReferenceFrame::Request  &req, kortex_driver::srv::GetCartesianReferenceFrame::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::CartesianReferenceFrameInfo output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -443,12 +443,12 @@ bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::GetCa
 	return true;
 }
 
-bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::ControlConfig_GetControlMode::Request  &req, kortex_driver::ControlConfig_GetControlMode::Response &res)
+bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::srv::ControlConfigGetControlMode::Request  &req, kortex_driver::srv::ControlConfigGetControlMode::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -476,12 +476,12 @@ bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::Con
 	return true;
 }
 
-bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::SetJointSpeedSoftLimits::Request  &req, kortex_driver::SetJointSpeedSoftLimits::Response &res)
+bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::srv::SetJointSpeedSoftLimits::Request  &req, kortex_driver::srv::SetJointSpeedSoftLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::JointSpeedSoftLimits input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -508,12 +508,12 @@ bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::SetJoint
 	return true;
 }
 
-bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::SetTwistLinearSoftLimit::Request  &req, kortex_driver::SetTwistLinearSoftLimit::Response &res)
+bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::srv::SetTwistLinearSoftLimit::Request  &req, kortex_driver::srv::SetTwistLinearSoftLimit::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::TwistLinearSoftLimit input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -540,12 +540,12 @@ bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::SetTwist
 	return true;
 }
 
-bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::SetTwistAngularSoftLimit::Request  &req, kortex_driver::SetTwistAngularSoftLimit::Response &res)
+bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::srv::SetTwistAngularSoftLimit::Request  &req, kortex_driver::srv::SetTwistAngularSoftLimit::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::TwistAngularSoftLimit input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -572,12 +572,12 @@ bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::SetTwis
 	return true;
 }
 
-bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::SetJointAccelerationSoftLimits::Request  &req, kortex_driver::SetJointAccelerationSoftLimits::Response &res)
+bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::srv::SetJointAccelerationSoftLimits::Request  &req, kortex_driver::srv::SetJointAccelerationSoftLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::JointAccelerationSoftLimits input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -604,12 +604,12 @@ bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::S
 	return true;
 }
 
-bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::GetKinematicHardLimits::Request  &req, kortex_driver::GetKinematicHardLimits::Response &res)
+bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::srv::GetKinematicHardLimits::Request  &req, kortex_driver::srv::GetKinematicHardLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::KinematicLimits output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -637,14 +637,14 @@ bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::GetKinema
 	return true;
 }
 
-bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::GetKinematicSoftLimits::Request  &req, kortex_driver::GetKinematicSoftLimits::Response &res)
+bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::srv::GetKinematicSoftLimits::Request  &req, kortex_driver::srv::GetKinematicSoftLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::ControlConfig::KinematicLimits output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -672,12 +672,12 @@ bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::GetKinema
 	return true;
 }
 
-bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::GetAllKinematicSoftLimits::Request  &req, kortex_driver::GetAllKinematicSoftLimits::Response &res)
+bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::srv::GetAllKinematicSoftLimits::Request  &req, kortex_driver::srv::GetAllKinematicSoftLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::KinematicLimitsList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -705,12 +705,12 @@ bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::GetAll
 	return true;
 }
 
-bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::SetDesiredLinearTwist::Request  &req, kortex_driver::SetDesiredLinearTwist::Response &res)
+bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::srv::SetDesiredLinearTwist::Request  &req, kortex_driver::srv::SetDesiredLinearTwist::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::LinearTwist input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -737,12 +737,12 @@ bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::SetDesired
 	return true;
 }
 
-bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::SetDesiredAngularTwist::Request  &req, kortex_driver::SetDesiredAngularTwist::Response &res)
+bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::srv::SetDesiredAngularTwist::Request  &req, kortex_driver::srv::SetDesiredAngularTwist::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::AngularTwist input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -769,12 +769,12 @@ bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::SetDesire
 	return true;
 }
 
-bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::SetDesiredJointSpeeds::Request  &req, kortex_driver::SetDesiredJointSpeeds::Response &res)
+bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::srv::SetDesiredJointSpeeds::Request  &req, kortex_driver::srv::SetDesiredJointSpeeds::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::JointSpeeds input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -801,12 +801,12 @@ bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::SetDesired
 	return true;
 }
 
-bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::GetDesiredSpeeds::Request  &req, kortex_driver::GetDesiredSpeeds::Response &res)
+bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::srv::GetDesiredSpeeds::Request  &req, kortex_driver::srv::GetDesiredSpeeds::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::DesiredSpeeds output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -834,12 +834,12 @@ bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::GetDesiredSpeed
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::ResetGravityVector::Request  &req, kortex_driver::ResetGravityVector::Response &res)
+bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::srv::ResetGravityVector::Request  &req, kortex_driver::srv::ResetGravityVector::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::GravityVector output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -867,12 +867,12 @@ bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::ResetGravityV
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::ResetPayloadInformation::Request  &req, kortex_driver::ResetPayloadInformation::Response &res)
+bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::srv::ResetPayloadInformation::Request  &req, kortex_driver::srv::ResetPayloadInformation::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -900,12 +900,12 @@ bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::ResetPay
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::ResetToolConfiguration::Request  &req, kortex_driver::ResetToolConfiguration::Response &res)
+bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::srv::ResetToolConfiguration::Request  &req, kortex_driver::srv::ResetToolConfiguration::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -933,14 +933,14 @@ bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::ResetTool
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::ResetJointSpeedSoftLimits::Request  &req, kortex_driver::ResetJointSpeedSoftLimits::Response &res)
+bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::srv::ResetJointSpeedSoftLimits::Request  &req, kortex_driver::srv::ResetJointSpeedSoftLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::ControlConfig::JointSpeedSoftLimits output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -968,14 +968,14 @@ bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::ResetJ
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::ResetTwistLinearSoftLimit::Request  &req, kortex_driver::ResetTwistLinearSoftLimit::Response &res)
+bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::srv::ResetTwistLinearSoftLimit::Request  &req, kortex_driver::srv::ResetTwistLinearSoftLimit::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::ControlConfig::TwistLinearSoftLimit output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1003,14 +1003,14 @@ bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::ResetT
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::ResetTwistAngularSoftLimit::Request  &req, kortex_driver::ResetTwistAngularSoftLimit::Response &res)
+bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::srv::ResetTwistAngularSoftLimit::Request  &req, kortex_driver::srv::ResetTwistAngularSoftLimit::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::ControlConfig::TwistAngularSoftLimit output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1038,14 +1038,14 @@ bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::Reset
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver::ResetJointAccelerationSoftLimits::Request  &req, kortex_driver::ResetJointAccelerationSoftLimits::Response &res)
+bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver::srv::ResetJointAccelerationSoftLimits::Request  &req, kortex_driver::srv::ResetJointAccelerationSoftLimits::Response &res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::ControlConfig::JointAccelerationSoftLimits output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1073,7 +1073,7 @@ bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver:
 	return true;
 }
 
-bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(kortex_driver::ControlConfig_OnNotificationControlModeTopic::Request  &req, kortex_driver::ControlConfig_OnNotificationControlModeTopic::Response &res)
+bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -1083,7 +1083,7 @@ bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(ko
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1114,7 +1114,7 @@ bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(ko
 }
 void ControlConfigRobotServices::cb_ControlModeTopic(Kinova::Api::ControlConfig::ControlModeNotification notif)
 {
-	kortex_driver::ControlConfig_ControlModeNotification ros_msg;
+	kortex_driver::msg::ControlConfigControlModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ControlModeTopic.publish(ros_msg);
 }

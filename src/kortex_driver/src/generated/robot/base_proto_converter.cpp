@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/base_proto_converter.h"
 
-int ToProtoData(kortex_driver::GpioConfigurationList input, Kinova::Api::Base::GpioConfigurationList *output)
+int ToProtoData(kortex_driver::msg::GpioConfigurationList input, Kinova::Api::Base::GpioConfigurationList *output)
 {
 	 
 	output->clear_port_configurations();
@@ -27,7 +27,7 @@ int ToProtoData(kortex_driver::GpioConfigurationList input, Kinova::Api::Base::G
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_GpioConfiguration input, Kinova::Api::Base::GpioConfiguration *output)
+int ToProtoData(kortex_driver::msg::BaseGpioConfiguration input, Kinova::Api::Base::GpioConfiguration *output)
 {
 	
 	output->set_port_number(input.port_number); 
@@ -39,7 +39,7 @@ int ToProtoData(kortex_driver::Base_GpioConfiguration input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GpioPinConfiguration input, Kinova::Api::Base::GpioPinConfiguration *output)
+int ToProtoData(kortex_driver::msg::GpioPinConfiguration input, Kinova::Api::Base::GpioPinConfiguration *output)
 {
 	
 	output->set_pin_id(input.pin_id);
@@ -49,7 +49,7 @@ int ToProtoData(kortex_driver::GpioPinConfiguration input, Kinova::Api::Base::Gp
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FullUserProfile input, Kinova::Api::Base::FullUserProfile *output)
+int ToProtoData(kortex_driver::msg::FullUserProfile input, Kinova::Api::Base::FullUserProfile *output)
 {
 	 
 	ToProtoData(input.user_profile, output->mutable_user_profile());
@@ -57,7 +57,7 @@ int ToProtoData(kortex_driver::FullUserProfile input, Kinova::Api::Base::FullUse
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UserProfile input, Kinova::Api::Base::UserProfile *output)
+int ToProtoData(kortex_driver::msg::UserProfile input, Kinova::Api::Base::UserProfile *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -68,7 +68,7 @@ int ToProtoData(kortex_driver::UserProfile input, Kinova::Api::Base::UserProfile
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UserProfileList input, Kinova::Api::Base::UserProfileList *output)
+int ToProtoData(kortex_driver::msg::UserProfileList input, Kinova::Api::Base::UserProfileList *output)
 {
 	 
 	output->clear_user_profiles();
@@ -79,7 +79,7 @@ int ToProtoData(kortex_driver::UserProfileList input, Kinova::Api::Base::UserPro
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UserList input, Kinova::Api::Base::UserList *output)
+int ToProtoData(kortex_driver::msg::UserList input, Kinova::Api::Base::UserList *output)
 {
 	 
 	output->clear_user_handles();
@@ -90,7 +90,7 @@ int ToProtoData(kortex_driver::UserList input, Kinova::Api::Base::UserList *outp
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PasswordChange input, Kinova::Api::Base::PasswordChange *output)
+int ToProtoData(kortex_driver::msg::PasswordChange input, Kinova::Api::Base::PasswordChange *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -99,7 +99,7 @@ int ToProtoData(kortex_driver::PasswordChange input, Kinova::Api::Base::Password
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceHandle input, Kinova::Api::Base::SequenceHandle *output)
+int ToProtoData(kortex_driver::msg::SequenceHandle input, Kinova::Api::Base::SequenceHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -107,7 +107,7 @@ int ToProtoData(kortex_driver::SequenceHandle input, Kinova::Api::Base::Sequence
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::AdvancedSequenceHandle input, Kinova::Api::Base::AdvancedSequenceHandle *output)
+int ToProtoData(kortex_driver::msg::AdvancedSequenceHandle input, Kinova::Api::Base::AdvancedSequenceHandle *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -115,7 +115,7 @@ int ToProtoData(kortex_driver::AdvancedSequenceHandle input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTaskHandle input, Kinova::Api::Base::SequenceTaskHandle *output)
+int ToProtoData(kortex_driver::msg::SequenceTaskHandle input, Kinova::Api::Base::SequenceTaskHandle *output)
 {
 	 
 	ToProtoData(input.sequence_handle, output->mutable_sequence_handle());
@@ -123,7 +123,7 @@ int ToProtoData(kortex_driver::SequenceTaskHandle input, Kinova::Api::Base::Sequ
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTask input, Kinova::Api::Base::SequenceTask *output)
+int ToProtoData(kortex_driver::msg::SequenceTask input, Kinova::Api::Base::SequenceTask *output)
 {
 	
 	output->set_group_identifier(input.group_identifier); 
@@ -132,7 +132,7 @@ int ToProtoData(kortex_driver::SequenceTask input, Kinova::Api::Base::SequenceTa
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTasks input, Kinova::Api::Base::SequenceTasks *output)
+int ToProtoData(kortex_driver::msg::SequenceTasks input, Kinova::Api::Base::SequenceTasks *output)
 {
 	 
 	output->clear_sequence_tasks();
@@ -143,7 +143,7 @@ int ToProtoData(kortex_driver::SequenceTasks input, Kinova::Api::Base::SequenceT
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTasksConfiguration input, Kinova::Api::Base::SequenceTasksConfiguration *output)
+int ToProtoData(kortex_driver::msg::SequenceTasksConfiguration input, Kinova::Api::Base::SequenceTasksConfiguration *output)
 {
 	 
 	ToProtoData(input.sequence_task_handle, output->mutable_sequence_task_handle()); 
@@ -155,7 +155,7 @@ int ToProtoData(kortex_driver::SequenceTasksConfiguration input, Kinova::Api::Ba
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTaskConfiguration input, Kinova::Api::Base::SequenceTaskConfiguration *output)
+int ToProtoData(kortex_driver::msg::SequenceTaskConfiguration input, Kinova::Api::Base::SequenceTaskConfiguration *output)
 {
 	 
 	ToProtoData(input.sequence_task_handle, output->mutable_sequence_task_handle()); 
@@ -163,7 +163,7 @@ int ToProtoData(kortex_driver::SequenceTaskConfiguration input, Kinova::Api::Bas
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTasksRange input, Kinova::Api::Base::SequenceTasksRange *output)
+int ToProtoData(kortex_driver::msg::SequenceTasksRange input, Kinova::Api::Base::SequenceTasksRange *output)
 {
 	
 	output->set_first_task_index(input.first_task_index);
@@ -171,7 +171,7 @@ int ToProtoData(kortex_driver::SequenceTasksRange input, Kinova::Api::Base::Sequ
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceTasksPair input, Kinova::Api::Base::SequenceTasksPair *output)
+int ToProtoData(kortex_driver::msg::SequenceTasksPair input, Kinova::Api::Base::SequenceTasksPair *output)
 {
 	 
 	ToProtoData(input.sequence_handle, output->mutable_sequence_handle());
@@ -180,7 +180,7 @@ int ToProtoData(kortex_driver::SequenceTasksPair input, Kinova::Api::Base::Seque
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Sequence input, Kinova::Api::Base::Sequence *output)
+int ToProtoData(kortex_driver::msg::Sequence input, Kinova::Api::Base::Sequence *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -194,7 +194,7 @@ int ToProtoData(kortex_driver::Sequence input, Kinova::Api::Base::Sequence *outp
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceList input, Kinova::Api::Base::SequenceList *output)
+int ToProtoData(kortex_driver::msg::SequenceList input, Kinova::Api::Base::SequenceList *output)
 {
 	 
 	output->clear_sequence_list();
@@ -205,7 +205,7 @@ int ToProtoData(kortex_driver::SequenceList input, Kinova::Api::Base::SequenceLi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::AppendActionInformation input, Kinova::Api::Base::AppendActionInformation *output)
+int ToProtoData(kortex_driver::msg::AppendActionInformation input, Kinova::Api::Base::AppendActionInformation *output)
 {
 	 
 	ToProtoData(input.sequence_handle, output->mutable_sequence_handle()); 
@@ -213,7 +213,7 @@ int ToProtoData(kortex_driver::AppendActionInformation input, Kinova::Api::Base:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActionHandle input, Kinova::Api::Base::ActionHandle *output)
+int ToProtoData(kortex_driver::msg::ActionHandle input, Kinova::Api::Base::ActionHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -222,14 +222,14 @@ int ToProtoData(kortex_driver::ActionHandle input, Kinova::Api::Base::ActionHand
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::RequestedActionType input, Kinova::Api::Base::RequestedActionType *output)
+int ToProtoData(kortex_driver::msg::RequestedActionType input, Kinova::Api::Base::RequestedActionType *output)
 {
 	
 	output->set_action_type((Kinova::Api::Base::ActionType)input.action_type);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Action input, Kinova::Api::Base::Action *output)
+int ToProtoData(kortex_driver::msg::Action input, Kinova::Api::Base::Action *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -330,14 +330,14 @@ int ToProtoData(kortex_driver::Action input, Kinova::Api::Base::Action *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Snapshot input, Kinova::Api::Base::Snapshot *output)
+int ToProtoData(kortex_driver::msg::Snapshot input, Kinova::Api::Base::Snapshot *output)
 {
 	
 	output->set_snapshot_type((Kinova::Api::Base::SnapshotType)input.snapshot_type);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SwitchControlMapping input, Kinova::Api::Base::SwitchControlMapping *output)
+int ToProtoData(kortex_driver::msg::SwitchControlMapping input, Kinova::Api::Base::SwitchControlMapping *output)
 {
 	
 	output->set_controller_identifier(input.controller_identifier); 
@@ -346,7 +346,7 @@ int ToProtoData(kortex_driver::SwitchControlMapping input, Kinova::Api::Base::Sw
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ChangeTwist input, Kinova::Api::Base::ChangeTwist *output)
+int ToProtoData(kortex_driver::msg::ChangeTwist input, Kinova::Api::Base::ChangeTwist *output)
 {
 	
 	output->set_linear(input.linear);
@@ -354,14 +354,14 @@ int ToProtoData(kortex_driver::ChangeTwist input, Kinova::Api::Base::ChangeTwist
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ChangeJointSpeeds input, Kinova::Api::Base::ChangeJointSpeeds *output)
+int ToProtoData(kortex_driver::msg::ChangeJointSpeeds input, Kinova::Api::Base::ChangeJointSpeeds *output)
 {
 	 
 	ToProtoData(input.joint_speeds, output->mutable_joint_speeds());
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ChangeWrench input, Kinova::Api::Base::ChangeWrench *output)
+int ToProtoData(kortex_driver::msg::ChangeWrench input, Kinova::Api::Base::ChangeWrench *output)
 {
 	
 	output->set_force(input.force);
@@ -369,32 +369,32 @@ int ToProtoData(kortex_driver::ChangeWrench input, Kinova::Api::Base::ChangeWren
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::EmergencyStop input, Kinova::Api::Base::EmergencyStop *output)
+int ToProtoData(kortex_driver::msg::EmergencyStop input, Kinova::Api::Base::EmergencyStop *output)
 {
 	
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Faults input, Kinova::Api::Base::Faults *output)
+int ToProtoData(kortex_driver::msg::Faults input, Kinova::Api::Base::Faults *output)
 {
 	
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Delay input, Kinova::Api::Base::Delay *output)
+int ToProtoData(kortex_driver::msg::Delay input, Kinova::Api::Base::Delay *output)
 {
 	
 	output->set_duration(input.duration);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_Stop input, Kinova::Api::Base::Stop *output)
+int ToProtoData(kortex_driver::msg::BaseStop input, Kinova::Api::Base::Stop *output)
 {
 	
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActionList input, Kinova::Api::Base::ActionList *output)
+int ToProtoData(kortex_driver::msg::ActionList input, Kinova::Api::Base::ActionList *output)
 {
 	 
 	output->clear_action_list();
@@ -405,21 +405,21 @@ int ToProtoData(kortex_driver::ActionList input, Kinova::Api::Base::ActionList *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Timeout input, Kinova::Api::Base::Timeout *output)
+int ToProtoData(kortex_driver::msg::Timeout input, Kinova::Api::Base::Timeout *output)
 {
 	
 	output->set_value(input.value);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Ssid input, Kinova::Api::Base::Ssid *output)
+int ToProtoData(kortex_driver::msg::Ssid input, Kinova::Api::Base::Ssid *output)
 {
 	
 	output->set_identifier(input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CommunicationInterfaceConfiguration input, Kinova::Api::Base::CommunicationInterfaceConfiguration *output)
+int ToProtoData(kortex_driver::msg::CommunicationInterfaceConfiguration input, Kinova::Api::Base::CommunicationInterfaceConfiguration *output)
 {
 	
 	output->set_type((Kinova::Api::Base::NetworkType)input.type);
@@ -427,14 +427,14 @@ int ToProtoData(kortex_driver::CommunicationInterfaceConfiguration input, Kinova
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::NetworkHandle input, Kinova::Api::Base::NetworkHandle *output)
+int ToProtoData(kortex_driver::msg::NetworkHandle input, Kinova::Api::Base::NetworkHandle *output)
 {
 	
 	output->set_type((Kinova::Api::Base::NetworkType)input.type);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::IPv4Configuration input, Kinova::Api::Base::IPv4Configuration *output)
+int ToProtoData(kortex_driver::msg::IPv4Configuration input, Kinova::Api::Base::IPv4Configuration *output)
 {
 	
 	output->set_ip_address(input.ip_address);
@@ -444,7 +444,7 @@ int ToProtoData(kortex_driver::IPv4Configuration input, Kinova::Api::Base::IPv4C
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::IPv4Information input, Kinova::Api::Base::IPv4Information *output)
+int ToProtoData(kortex_driver::msg::IPv4Information input, Kinova::Api::Base::IPv4Information *output)
 {
 	
 	output->set_ip_address(input.ip_address);
@@ -453,7 +453,7 @@ int ToProtoData(kortex_driver::IPv4Information input, Kinova::Api::Base::IPv4Inf
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FullIPv4Configuration input, Kinova::Api::Base::FullIPv4Configuration *output)
+int ToProtoData(kortex_driver::msg::FullIPv4Configuration input, Kinova::Api::Base::FullIPv4Configuration *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle()); 
@@ -461,7 +461,7 @@ int ToProtoData(kortex_driver::FullIPv4Configuration input, Kinova::Api::Base::F
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WifiInformation input, Kinova::Api::Base::WifiInformation *output)
+int ToProtoData(kortex_driver::msg::WifiInformation input, Kinova::Api::Base::WifiInformation *output)
 {
 	 
 	ToProtoData(input.ssid, output->mutable_ssid());
@@ -474,7 +474,7 @@ int ToProtoData(kortex_driver::WifiInformation input, Kinova::Api::Base::WifiInf
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WifiInformationList input, Kinova::Api::Base::WifiInformationList *output)
+int ToProtoData(kortex_driver::msg::WifiInformationList input, Kinova::Api::Base::WifiInformationList *output)
 {
 	 
 	output->clear_wifi_information_list();
@@ -485,7 +485,7 @@ int ToProtoData(kortex_driver::WifiInformationList input, Kinova::Api::Base::Wif
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WifiConfiguration input, Kinova::Api::Base::WifiConfiguration *output)
+int ToProtoData(kortex_driver::msg::WifiConfiguration input, Kinova::Api::Base::WifiConfiguration *output)
 {
 	 
 	ToProtoData(input.ssid, output->mutable_ssid());
@@ -494,7 +494,7 @@ int ToProtoData(kortex_driver::WifiConfiguration input, Kinova::Api::Base::WifiC
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WifiConfigurationList input, Kinova::Api::Base::WifiConfigurationList *output)
+int ToProtoData(kortex_driver::msg::WifiConfigurationList input, Kinova::Api::Base::WifiConfigurationList *output)
 {
 	 
 	output->clear_wifi_configuration_list();
@@ -505,7 +505,7 @@ int ToProtoData(kortex_driver::WifiConfigurationList input, Kinova::Api::Base::W
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProtectionZoneHandle input, Kinova::Api::Base::ProtectionZoneHandle *output)
+int ToProtoData(kortex_driver::msg::ProtectionZoneHandle input, Kinova::Api::Base::ProtectionZoneHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -513,7 +513,7 @@ int ToProtoData(kortex_driver::ProtectionZoneHandle input, Kinova::Api::Base::Pr
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_RotationMatrixRow input, Kinova::Api::Base::RotationMatrixRow *output)
+int ToProtoData(kortex_driver::msg::BaseRotationMatrixRow input, Kinova::Api::Base::RotationMatrixRow *output)
 {
 	
 	output->set_column1(input.column1);
@@ -522,7 +522,7 @@ int ToProtoData(kortex_driver::Base_RotationMatrixRow input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_RotationMatrix input, Kinova::Api::Base::RotationMatrix *output)
+int ToProtoData(kortex_driver::msg::BaseRotationMatrix input, Kinova::Api::Base::RotationMatrix *output)
 {
 	 
 	ToProtoData(input.row1, output->mutable_row1()); 
@@ -531,7 +531,7 @@ int ToProtoData(kortex_driver::Base_RotationMatrix input, Kinova::Api::Base::Rot
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Point input, Kinova::Api::Base::Point *output)
+int ToProtoData(kortex_driver::msg::Point input, Kinova::Api::Base::Point *output)
 {
 	
 	output->set_x(input.x);
@@ -540,7 +540,7 @@ int ToProtoData(kortex_driver::Point input, Kinova::Api::Base::Point *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ZoneShape input, Kinova::Api::Base::ZoneShape *output)
+int ToProtoData(kortex_driver::msg::ZoneShape input, Kinova::Api::Base::ZoneShape *output)
 {
 	
 	output->set_shape_type((Kinova::Api::Base::ShapeType)input.shape_type); 
@@ -555,7 +555,7 @@ int ToProtoData(kortex_driver::ZoneShape input, Kinova::Api::Base::ZoneShape *ou
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProtectionZone input, Kinova::Api::Base::ProtectionZone *output)
+int ToProtoData(kortex_driver::msg::ProtectionZone input, Kinova::Api::Base::ProtectionZone *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -576,7 +576,7 @@ int ToProtoData(kortex_driver::ProtectionZone input, Kinova::Api::Base::Protecti
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProtectionZoneList input, Kinova::Api::Base::ProtectionZoneList *output)
+int ToProtoData(kortex_driver::msg::ProtectionZoneList input, Kinova::Api::Base::ProtectionZoneList *output)
 {
 	 
 	output->clear_protection_zones();
@@ -587,7 +587,7 @@ int ToProtoData(kortex_driver::ProtectionZoneList input, Kinova::Api::Base::Prot
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianLimitation input, Kinova::Api::Base::CartesianLimitation *output)
+int ToProtoData(kortex_driver::msg::CartesianLimitation input, Kinova::Api::Base::CartesianLimitation *output)
 {
 	
 	output->set_type((Kinova::Api::Base::LimitationType)input.type);
@@ -596,7 +596,7 @@ int ToProtoData(kortex_driver::CartesianLimitation input, Kinova::Api::Base::Car
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TwistLimitation input, Kinova::Api::Base::TwistLimitation *output)
+int ToProtoData(kortex_driver::msg::TwistLimitation input, Kinova::Api::Base::TwistLimitation *output)
 {
 	
 	output->set_linear(input.linear);
@@ -604,7 +604,7 @@ int ToProtoData(kortex_driver::TwistLimitation input, Kinova::Api::Base::TwistLi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WrenchLimitation input, Kinova::Api::Base::WrenchLimitation *output)
+int ToProtoData(kortex_driver::msg::WrenchLimitation input, Kinova::Api::Base::WrenchLimitation *output)
 {
 	
 	output->set_force(input.force);
@@ -612,7 +612,7 @@ int ToProtoData(kortex_driver::WrenchLimitation input, Kinova::Api::Base::Wrench
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianLimitationList input, Kinova::Api::Base::CartesianLimitationList *output)
+int ToProtoData(kortex_driver::msg::CartesianLimitationList input, Kinova::Api::Base::CartesianLimitationList *output)
 {
 	 
 	output->clear_limitations();
@@ -623,7 +623,7 @@ int ToProtoData(kortex_driver::CartesianLimitationList input, Kinova::Api::Base:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointLimitation input, Kinova::Api::Base::JointLimitation *output)
+int ToProtoData(kortex_driver::msg::JointLimitation input, Kinova::Api::Base::JointLimitation *output)
 {
 	
 	output->set_joint_identifier(input.joint_identifier);
@@ -632,7 +632,7 @@ int ToProtoData(kortex_driver::JointLimitation input, Kinova::Api::Base::JointLi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointsLimitationsList input, Kinova::Api::Base::JointsLimitationsList *output)
+int ToProtoData(kortex_driver::msg::JointsLimitationsList input, Kinova::Api::Base::JointsLimitationsList *output)
 {
 	 
 	output->clear_joints_limitations();
@@ -643,7 +643,7 @@ int ToProtoData(kortex_driver::JointsLimitationsList input, Kinova::Api::Base::J
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Query input, Kinova::Api::Base::Query *output)
+int ToProtoData(kortex_driver::msg::Query input, Kinova::Api::Base::Query *output)
 {
 	 
 	ToProtoData(input.start_timestamp, output->mutable_start_timestamp()); 
@@ -652,7 +652,7 @@ int ToProtoData(kortex_driver::Query input, Kinova::Api::Base::Query *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConfigurationChangeNotification input, Kinova::Api::Base::ConfigurationChangeNotification *output)
+int ToProtoData(kortex_driver::msg::ConfigurationChangeNotification input, Kinova::Api::Base::ConfigurationChangeNotification *output)
 {
 	
 	output->set_event((Kinova::Api::Base::ConfigurationNotificationEvent)input.event); 
@@ -706,7 +706,7 @@ int ToProtoData(kortex_driver::ConfigurationChangeNotification input, Kinova::Ap
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MappingInfoNotification input, Kinova::Api::Base::MappingInfoNotification *output)
+int ToProtoData(kortex_driver::msg::MappingInfoNotification input, Kinova::Api::Base::MappingInfoNotification *output)
 {
 	
 	output->set_controller_identifier(input.controller_identifier); 
@@ -718,14 +718,14 @@ int ToProtoData(kortex_driver::MappingInfoNotification input, Kinova::Api::Base:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_ControlModeInformation input, Kinova::Api::Base::ControlModeInformation *output)
+int ToProtoData(kortex_driver::msg::BaseControlModeInformation input, Kinova::Api::Base::ControlModeInformation *output)
 {
 	
 	output->set_mode((Kinova::Api::Base::ControlMode)input.mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_ControlModeNotification input, Kinova::Api::Base::ControlModeNotification *output)
+int ToProtoData(kortex_driver::msg::BaseControlModeNotification input, Kinova::Api::Base::ControlModeNotification *output)
 {
 	
 	output->set_control_mode((Kinova::Api::Base::ControlMode)input.control_mode); 
@@ -735,14 +735,14 @@ int ToProtoData(kortex_driver::Base_ControlModeNotification input, Kinova::Api::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ServoingModeInformation input, Kinova::Api::Base::ServoingModeInformation *output)
+int ToProtoData(kortex_driver::msg::ServoingModeInformation input, Kinova::Api::Base::ServoingModeInformation *output)
 {
 	
 	output->set_servoing_mode((Kinova::Api::Base::ServoingMode)input.servoing_mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::OperatingModeInformation input, Kinova::Api::Base::OperatingModeInformation *output)
+int ToProtoData(kortex_driver::msg::OperatingModeInformation input, Kinova::Api::Base::OperatingModeInformation *output)
 {
 	
 	output->set_operating_mode((Kinova::Api::Base::OperatingMode)input.operating_mode); 
@@ -750,7 +750,7 @@ int ToProtoData(kortex_driver::OperatingModeInformation input, Kinova::Api::Base
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::OperatingModeNotification input, Kinova::Api::Base::OperatingModeNotification *output)
+int ToProtoData(kortex_driver::msg::OperatingModeNotification input, Kinova::Api::Base::OperatingModeNotification *output)
 {
 	
 	output->set_operating_mode((Kinova::Api::Base::OperatingMode)input.operating_mode); 
@@ -761,7 +761,7 @@ int ToProtoData(kortex_driver::OperatingModeNotification input, Kinova::Api::Bas
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ServoingModeNotification input, Kinova::Api::Base::ServoingModeNotification *output)
+int ToProtoData(kortex_driver::msg::ServoingModeNotification input, Kinova::Api::Base::ServoingModeNotification *output)
 {
 	
 	output->set_servoing_mode((Kinova::Api::Base::ServoingMode)input.servoing_mode); 
@@ -771,7 +771,7 @@ int ToProtoData(kortex_driver::ServoingModeNotification input, Kinova::Api::Base
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceInfoNotification input, Kinova::Api::Base::SequenceInfoNotification *output)
+int ToProtoData(kortex_driver::msg::SequenceInfoNotification input, Kinova::Api::Base::SequenceInfoNotification *output)
 {
 	
 	output->set_event_identifier((Kinova::Api::Base::EventIdSequenceInfoNotification)input.event_identifier); 
@@ -785,7 +785,7 @@ int ToProtoData(kortex_driver::SequenceInfoNotification input, Kinova::Api::Base
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceInformation input, Kinova::Api::Base::SequenceInformation *output)
+int ToProtoData(kortex_driver::msg::SequenceInformation input, Kinova::Api::Base::SequenceInformation *output)
 {
 	
 	output->set_event_identifier((Kinova::Api::Base::EventIdSequenceInfoNotification)input.event_identifier);
@@ -794,7 +794,7 @@ int ToProtoData(kortex_driver::SequenceInformation input, Kinova::Api::Base::Seq
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProtectionZoneNotification input, Kinova::Api::Base::ProtectionZoneNotification *output)
+int ToProtoData(kortex_driver::msg::ProtectionZoneNotification input, Kinova::Api::Base::ProtectionZoneNotification *output)
 {
 	
 	output->set_event((Kinova::Api::Base::ProtectionZoneEvent)input.event); 
@@ -805,14 +805,14 @@ int ToProtoData(kortex_driver::ProtectionZoneNotification input, Kinova::Api::Ba
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProtectionZoneInformation input, Kinova::Api::Base::ProtectionZoneInformation *output)
+int ToProtoData(kortex_driver::msg::ProtectionZoneInformation input, Kinova::Api::Base::ProtectionZoneInformation *output)
 {
 	
 	output->set_event((Kinova::Api::Base::ProtectionZoneEvent)input.event);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UserNotification input, Kinova::Api::Base::UserNotification *output)
+int ToProtoData(kortex_driver::msg::UserNotification input, Kinova::Api::Base::UserNotification *output)
 {
 	
 	output->set_user_event((Kinova::Api::Base::UserEvent)input.user_event); 
@@ -823,7 +823,7 @@ int ToProtoData(kortex_driver::UserNotification input, Kinova::Api::Base::UserNo
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerHandle input, Kinova::Api::Base::ControllerHandle *output)
+int ToProtoData(kortex_driver::msg::ControllerHandle input, Kinova::Api::Base::ControllerHandle *output)
 {
 	
 	output->set_type((Kinova::Api::Base::ControllerType)input.type);
@@ -831,7 +831,7 @@ int ToProtoData(kortex_driver::ControllerHandle input, Kinova::Api::Base::Contro
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerElementHandle input, Kinova::Api::Base::ControllerElementHandle *output)
+int ToProtoData(kortex_driver::msg::ControllerElementHandle input, Kinova::Api::Base::ControllerElementHandle *output)
 {
 	 
 	ToProtoData(input.controller_handle, output->mutable_controller_handle());
@@ -846,7 +846,7 @@ int ToProtoData(kortex_driver::ControllerElementHandle input, Kinova::Api::Base:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerNotification input, Kinova::Api::Base::ControllerNotification *output)
+int ToProtoData(kortex_driver::msg::ControllerNotification input, Kinova::Api::Base::ControllerNotification *output)
 {
 	 
 	ToProtoData(input.timestamp, output->mutable_timestamp()); 
@@ -863,7 +863,7 @@ int ToProtoData(kortex_driver::ControllerNotification input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerList input, Kinova::Api::Base::ControllerList *output)
+int ToProtoData(kortex_driver::msg::ControllerList input, Kinova::Api::Base::ControllerList *output)
 {
 	 
 	output->clear_handles();
@@ -874,7 +874,7 @@ int ToProtoData(kortex_driver::ControllerList input, Kinova::Api::Base::Controll
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerState input, Kinova::Api::Base::ControllerState *output)
+int ToProtoData(kortex_driver::msg::ControllerState input, Kinova::Api::Base::ControllerState *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -882,7 +882,7 @@ int ToProtoData(kortex_driver::ControllerState input, Kinova::Api::Base::Control
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerElementState input, Kinova::Api::Base::ControllerElementState *output)
+int ToProtoData(kortex_driver::msg::ControllerElementState input, Kinova::Api::Base::ControllerElementState *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -891,7 +891,7 @@ int ToProtoData(kortex_driver::ControllerElementState input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActionNotification input, Kinova::Api::Base::ActionNotification *output)
+int ToProtoData(kortex_driver::msg::ActionNotification input, Kinova::Api::Base::ActionNotification *output)
 {
 	
 	output->set_action_event((Kinova::Api::Base::ActionEvent)input.action_event); 
@@ -908,7 +908,7 @@ int ToProtoData(kortex_driver::ActionNotification input, Kinova::Api::Base::Acti
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TrajectoryInfo input, Kinova::Api::Base::TrajectoryInfo *output)
+int ToProtoData(kortex_driver::msg::TrajectoryInfo input, Kinova::Api::Base::TrajectoryInfo *output)
 {
 	
 	output->set_trajectory_info_type((Kinova::Api::Base::TrajectoryInfoType)input.trajectory_info_type);
@@ -917,7 +917,7 @@ int ToProtoData(kortex_driver::TrajectoryInfo input, Kinova::Api::Base::Trajecto
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActionExecutionState input, Kinova::Api::Base::ActionExecutionState *output)
+int ToProtoData(kortex_driver::msg::ActionExecutionState input, Kinova::Api::Base::ActionExecutionState *output)
 {
 	
 	output->set_action_event((Kinova::Api::Base::ActionEvent)input.action_event); 
@@ -925,7 +925,7 @@ int ToProtoData(kortex_driver::ActionExecutionState input, Kinova::Api::Base::Ac
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::RobotEventNotification input, Kinova::Api::Base::RobotEventNotification *output)
+int ToProtoData(kortex_driver::msg::RobotEventNotification input, Kinova::Api::Base::RobotEventNotification *output)
 {
 	
 	output->set_event((Kinova::Api::Base::RobotEvent)input.event); 
@@ -936,7 +936,7 @@ int ToProtoData(kortex_driver::RobotEventNotification input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FactoryNotification input, Kinova::Api::Base::FactoryNotification *output)
+int ToProtoData(kortex_driver::msg::FactoryNotification input, Kinova::Api::Base::FactoryNotification *output)
 {
 	
 	output->set_event((Kinova::Api::Base::FactoryEvent)input.event); 
@@ -946,7 +946,7 @@ int ToProtoData(kortex_driver::FactoryNotification input, Kinova::Api::Base::Fac
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::NetworkNotification input, Kinova::Api::Base::NetworkNotification *output)
+int ToProtoData(kortex_driver::msg::NetworkNotification input, Kinova::Api::Base::NetworkNotification *output)
 {
 	
 	output->set_event((Kinova::Api::Base::NetworkEvent)input.event); 
@@ -956,7 +956,7 @@ int ToProtoData(kortex_driver::NetworkNotification input, Kinova::Api::Base::Net
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConfigurationChangeNotificationList input, Kinova::Api::Base::ConfigurationChangeNotificationList *output)
+int ToProtoData(kortex_driver::msg::ConfigurationChangeNotificationList input, Kinova::Api::Base::ConfigurationChangeNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -967,7 +967,7 @@ int ToProtoData(kortex_driver::ConfigurationChangeNotificationList input, Kinova
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MappingInfoNotificationList input, Kinova::Api::Base::MappingInfoNotificationList *output)
+int ToProtoData(kortex_driver::msg::MappingInfoNotificationList input, Kinova::Api::Base::MappingInfoNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -978,7 +978,7 @@ int ToProtoData(kortex_driver::MappingInfoNotificationList input, Kinova::Api::B
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlModeNotificationList input, Kinova::Api::Base::ControlModeNotificationList *output)
+int ToProtoData(kortex_driver::msg::ControlModeNotificationList input, Kinova::Api::Base::ControlModeNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -989,7 +989,7 @@ int ToProtoData(kortex_driver::ControlModeNotificationList input, Kinova::Api::B
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::OperatingModeNotificationList input, Kinova::Api::Base::OperatingModeNotificationList *output)
+int ToProtoData(kortex_driver::msg::OperatingModeNotificationList input, Kinova::Api::Base::OperatingModeNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1000,7 +1000,7 @@ int ToProtoData(kortex_driver::OperatingModeNotificationList input, Kinova::Api:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ServoingModeNotificationList input, Kinova::Api::Base::ServoingModeNotificationList *output)
+int ToProtoData(kortex_driver::msg::ServoingModeNotificationList input, Kinova::Api::Base::ServoingModeNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1011,7 +1011,7 @@ int ToProtoData(kortex_driver::ServoingModeNotificationList input, Kinova::Api::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SequenceInfoNotificationList input, Kinova::Api::Base::SequenceInfoNotificationList *output)
+int ToProtoData(kortex_driver::msg::SequenceInfoNotificationList input, Kinova::Api::Base::SequenceInfoNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1022,7 +1022,7 @@ int ToProtoData(kortex_driver::SequenceInfoNotificationList input, Kinova::Api::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProtectionZoneNotificationList input, Kinova::Api::Base::ProtectionZoneNotificationList *output)
+int ToProtoData(kortex_driver::msg::ProtectionZoneNotificationList input, Kinova::Api::Base::ProtectionZoneNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1033,7 +1033,7 @@ int ToProtoData(kortex_driver::ProtectionZoneNotificationList input, Kinova::Api
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UserNotificationList input, Kinova::Api::Base::UserNotificationList *output)
+int ToProtoData(kortex_driver::msg::UserNotificationList input, Kinova::Api::Base::UserNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1044,7 +1044,7 @@ int ToProtoData(kortex_driver::UserNotificationList input, Kinova::Api::Base::Us
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyNotificationList input, Kinova::Api::Base::SafetyNotificationList *output)
+int ToProtoData(kortex_driver::msg::SafetyNotificationList input, Kinova::Api::Base::SafetyNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1055,7 +1055,7 @@ int ToProtoData(kortex_driver::SafetyNotificationList input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerNotificationList input, Kinova::Api::Base::ControllerNotificationList *output)
+int ToProtoData(kortex_driver::msg::ControllerNotificationList input, Kinova::Api::Base::ControllerNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1066,7 +1066,7 @@ int ToProtoData(kortex_driver::ControllerNotificationList input, Kinova::Api::Ba
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActionNotificationList input, Kinova::Api::Base::ActionNotificationList *output)
+int ToProtoData(kortex_driver::msg::ActionNotificationList input, Kinova::Api::Base::ActionNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1077,7 +1077,7 @@ int ToProtoData(kortex_driver::ActionNotificationList input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::RobotEventNotificationList input, Kinova::Api::Base::RobotEventNotificationList *output)
+int ToProtoData(kortex_driver::msg::RobotEventNotificationList input, Kinova::Api::Base::RobotEventNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1088,7 +1088,7 @@ int ToProtoData(kortex_driver::RobotEventNotificationList input, Kinova::Api::Ba
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::NetworkNotificationList input, Kinova::Api::Base::NetworkNotificationList *output)
+int ToProtoData(kortex_driver::msg::NetworkNotificationList input, Kinova::Api::Base::NetworkNotificationList *output)
 {
 	 
 	output->clear_notifications();
@@ -1099,7 +1099,7 @@ int ToProtoData(kortex_driver::NetworkNotificationList input, Kinova::Api::Base:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MappingHandle input, Kinova::Api::Base::MappingHandle *output)
+int ToProtoData(kortex_driver::msg::MappingHandle input, Kinova::Api::Base::MappingHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -1107,14 +1107,14 @@ int ToProtoData(kortex_driver::MappingHandle input, Kinova::Api::Base::MappingHa
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyEvent input, Kinova::Api::Base::SafetyEvent *output)
+int ToProtoData(kortex_driver::msg::SafetyEvent input, Kinova::Api::Base::SafetyEvent *output)
 {
 	 
 	ToProtoData(input.safety_handle, output->mutable_safety_handle());
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerEvent input, Kinova::Api::Base::ControllerEvent *output)
+int ToProtoData(kortex_driver::msg::ControllerEvent input, Kinova::Api::Base::ControllerEvent *output)
 {
 	
 	output->set_input_type((Kinova::Api::Base::ControllerInputType)input.input_type);
@@ -1123,7 +1123,7 @@ int ToProtoData(kortex_driver::ControllerEvent input, Kinova::Api::Base::Control
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GpioEvent input, Kinova::Api::Base::GpioEvent *output)
+int ToProtoData(kortex_driver::msg::GpioEvent input, Kinova::Api::Base::GpioEvent *output)
 {
 	
 	output->set_input_type((Kinova::Api::Base::ControllerInputType)input.input_type);
@@ -1132,7 +1132,7 @@ int ToProtoData(kortex_driver::GpioEvent input, Kinova::Api::Base::GpioEvent *ou
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapEvent input, Kinova::Api::Base::MapEvent *output)
+int ToProtoData(kortex_driver::msg::MapEvent input, Kinova::Api::Base::MapEvent *output)
 {
 	
 	output->set_name(input.name);
@@ -1151,7 +1151,7 @@ int ToProtoData(kortex_driver::MapEvent input, Kinova::Api::Base::MapEvent *outp
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapElement input, Kinova::Api::Base::MapElement *output)
+int ToProtoData(kortex_driver::msg::MapElement input, Kinova::Api::Base::MapElement *output)
 {
 	 
 	ToProtoData(input.event, output->mutable_event()); 
@@ -1160,7 +1160,7 @@ int ToProtoData(kortex_driver::MapElement input, Kinova::Api::Base::MapElement *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActivateMapHandle input, Kinova::Api::Base::ActivateMapHandle *output)
+int ToProtoData(kortex_driver::msg::ActivateMapHandle input, Kinova::Api::Base::ActivateMapHandle *output)
 {
 	 
 	ToProtoData(input.mapping_handle, output->mutable_mapping_handle()); 
@@ -1169,7 +1169,7 @@ int ToProtoData(kortex_driver::ActivateMapHandle input, Kinova::Api::Base::Activ
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Map input, Kinova::Api::Base::Map *output)
+int ToProtoData(kortex_driver::msg::Map input, Kinova::Api::Base::Map *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -1182,7 +1182,7 @@ int ToProtoData(kortex_driver::Map input, Kinova::Api::Base::Map *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapHandle input, Kinova::Api::Base::MapHandle *output)
+int ToProtoData(kortex_driver::msg::MapHandle input, Kinova::Api::Base::MapHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -1190,7 +1190,7 @@ int ToProtoData(kortex_driver::MapHandle input, Kinova::Api::Base::MapHandle *ou
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapList input, Kinova::Api::Base::MapList *output)
+int ToProtoData(kortex_driver::msg::MapList input, Kinova::Api::Base::MapList *output)
 {
 	 
 	output->clear_map_list();
@@ -1201,7 +1201,7 @@ int ToProtoData(kortex_driver::MapList input, Kinova::Api::Base::MapList *output
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapGroupHandle input, Kinova::Api::Base::MapGroupHandle *output)
+int ToProtoData(kortex_driver::msg::MapGroupHandle input, Kinova::Api::Base::MapGroupHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -1209,7 +1209,7 @@ int ToProtoData(kortex_driver::MapGroupHandle input, Kinova::Api::Base::MapGroup
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapGroup input, Kinova::Api::Base::MapGroup *output)
+int ToProtoData(kortex_driver::msg::MapGroup input, Kinova::Api::Base::MapGroup *output)
 {
 	 
 	ToProtoData(input.group_handle, output->mutable_group_handle());
@@ -1230,7 +1230,7 @@ int ToProtoData(kortex_driver::MapGroup input, Kinova::Api::Base::MapGroup *outp
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MapGroupList input, Kinova::Api::Base::MapGroupList *output)
+int ToProtoData(kortex_driver::msg::MapGroupList input, Kinova::Api::Base::MapGroupList *output)
 {
 	 
 	output->clear_map_groups();
@@ -1241,7 +1241,7 @@ int ToProtoData(kortex_driver::MapGroupList input, Kinova::Api::Base::MapGroupLi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Mapping input, Kinova::Api::Base::Mapping *output)
+int ToProtoData(kortex_driver::msg::Mapping input, Kinova::Api::Base::Mapping *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -1263,7 +1263,7 @@ int ToProtoData(kortex_driver::Mapping input, Kinova::Api::Base::Mapping *output
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MappingList input, Kinova::Api::Base::MappingList *output)
+int ToProtoData(kortex_driver::msg::MappingList input, Kinova::Api::Base::MappingList *output)
 {
 	 
 	output->clear_mappings();
@@ -1274,7 +1274,7 @@ int ToProtoData(kortex_driver::MappingList input, Kinova::Api::Base::MappingList
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TransformationMatrix input, Kinova::Api::Base::TransformationMatrix *output)
+int ToProtoData(kortex_driver::msg::TransformationMatrix input, Kinova::Api::Base::TransformationMatrix *output)
 {
 	 
 	ToProtoData(input.r0, output->mutable_r0()); 
@@ -1284,7 +1284,7 @@ int ToProtoData(kortex_driver::TransformationMatrix input, Kinova::Api::Base::Tr
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TransformationRow input, Kinova::Api::Base::TransformationRow *output)
+int ToProtoData(kortex_driver::msg::TransformationRow input, Kinova::Api::Base::TransformationRow *output)
 {
 	
 	output->set_c0(input.c0);
@@ -1294,7 +1294,7 @@ int ToProtoData(kortex_driver::TransformationRow input, Kinova::Api::Base::Trans
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Pose input, Kinova::Api::Base::Pose *output)
+int ToProtoData(kortex_driver::msg::Pose input, Kinova::Api::Base::Pose *output)
 {
 	
 	output->set_x(input.x);
@@ -1306,7 +1306,7 @@ int ToProtoData(kortex_driver::Pose input, Kinova::Api::Base::Pose *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_Position input, Kinova::Api::Base::Position *output)
+int ToProtoData(kortex_driver::msg::BasePosition input, Kinova::Api::Base::Position *output)
 {
 	
 	output->set_x(input.x);
@@ -1315,7 +1315,7 @@ int ToProtoData(kortex_driver::Base_Position input, Kinova::Api::Base::Position 
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Orientation input, Kinova::Api::Base::Orientation *output)
+int ToProtoData(kortex_driver::msg::Orientation input, Kinova::Api::Base::Orientation *output)
 {
 	
 	output->set_theta_x(input.theta_x);
@@ -1324,7 +1324,7 @@ int ToProtoData(kortex_driver::Orientation input, Kinova::Api::Base::Orientation
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianSpeed input, Kinova::Api::Base::CartesianSpeed *output)
+int ToProtoData(kortex_driver::msg::CartesianSpeed input, Kinova::Api::Base::CartesianSpeed *output)
 {
 	
 	output->set_translation(input.translation);
@@ -1332,7 +1332,7 @@ int ToProtoData(kortex_driver::CartesianSpeed input, Kinova::Api::Base::Cartesia
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianTrajectoryConstraint input, Kinova::Api::Base::CartesianTrajectoryConstraint *output)
+int ToProtoData(kortex_driver::msg::CartesianTrajectoryConstraint input, Kinova::Api::Base::CartesianTrajectoryConstraint *output)
 {
 	
 	if(input.oneof_type.speed.size() > 0)
@@ -1346,7 +1346,7 @@ int ToProtoData(kortex_driver::CartesianTrajectoryConstraint input, Kinova::Api:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointTrajectoryConstraint input, Kinova::Api::Base::JointTrajectoryConstraint *output)
+int ToProtoData(kortex_driver::msg::JointTrajectoryConstraint input, Kinova::Api::Base::JointTrajectoryConstraint *output)
 {
 	
 	output->set_type((Kinova::Api::Base::JointTrajectoryConstraintType)input.type);
@@ -1354,7 +1354,7 @@ int ToProtoData(kortex_driver::JointTrajectoryConstraint input, Kinova::Api::Bas
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Wrench input, Kinova::Api::Base::Wrench *output)
+int ToProtoData(kortex_driver::msg::Wrench input, Kinova::Api::Base::Wrench *output)
 {
 	
 	output->set_force_x(input.force_x);
@@ -1366,7 +1366,7 @@ int ToProtoData(kortex_driver::Wrench input, Kinova::Api::Base::Wrench *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Twist input, Kinova::Api::Base::Twist *output)
+int ToProtoData(kortex_driver::msg::Twist input, Kinova::Api::Base::Twist *output)
 {
 	
 	output->set_linear_x(input.linear_x);
@@ -1378,14 +1378,14 @@ int ToProtoData(kortex_driver::Twist input, Kinova::Api::Base::Twist *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Admittance input, Kinova::Api::Base::Admittance *output)
+int ToProtoData(kortex_driver::msg::Admittance input, Kinova::Api::Base::Admittance *output)
 {
 	
 	output->set_admittance_mode((Kinova::Api::Base::AdmittanceMode)input.admittance_mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConstrainedPose input, Kinova::Api::Base::ConstrainedPose *output)
+int ToProtoData(kortex_driver::msg::ConstrainedPose input, Kinova::Api::Base::ConstrainedPose *output)
 {
 	 
 	ToProtoData(input.target_pose, output->mutable_target_pose()); 
@@ -1393,7 +1393,7 @@ int ToProtoData(kortex_driver::ConstrainedPose input, Kinova::Api::Base::Constra
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConstrainedPosition input, Kinova::Api::Base::ConstrainedPosition *output)
+int ToProtoData(kortex_driver::msg::ConstrainedPosition input, Kinova::Api::Base::ConstrainedPosition *output)
 {
 	 
 	ToProtoData(input.target_position, output->mutable_target_position()); 
@@ -1401,7 +1401,7 @@ int ToProtoData(kortex_driver::ConstrainedPosition input, Kinova::Api::Base::Con
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConstrainedOrientation input, Kinova::Api::Base::ConstrainedOrientation *output)
+int ToProtoData(kortex_driver::msg::ConstrainedOrientation input, Kinova::Api::Base::ConstrainedOrientation *output)
 {
 	 
 	ToProtoData(input.target_orientation, output->mutable_target_orientation()); 
@@ -1409,7 +1409,7 @@ int ToProtoData(kortex_driver::ConstrainedOrientation input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WrenchCommand input, Kinova::Api::Base::WrenchCommand *output)
+int ToProtoData(kortex_driver::msg::WrenchCommand input, Kinova::Api::Base::WrenchCommand *output)
 {
 	
 	output->set_reference_frame((Kinova::Api::Common::CartesianReferenceFrame)input.reference_frame);
@@ -1419,7 +1419,7 @@ int ToProtoData(kortex_driver::WrenchCommand input, Kinova::Api::Base::WrenchCom
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TwistCommand input, Kinova::Api::Base::TwistCommand *output)
+int ToProtoData(kortex_driver::msg::TwistCommand input, Kinova::Api::Base::TwistCommand *output)
 {
 	
 	output->set_reference_frame((Kinova::Api::Common::CartesianReferenceFrame)input.reference_frame); 
@@ -1428,7 +1428,7 @@ int ToProtoData(kortex_driver::TwistCommand input, Kinova::Api::Base::TwistComma
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConstrainedJointAngles input, Kinova::Api::Base::ConstrainedJointAngles *output)
+int ToProtoData(kortex_driver::msg::ConstrainedJointAngles input, Kinova::Api::Base::ConstrainedJointAngles *output)
 {
 	 
 	ToProtoData(input.joint_angles, output->mutable_joint_angles()); 
@@ -1436,7 +1436,7 @@ int ToProtoData(kortex_driver::ConstrainedJointAngles input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ConstrainedJointAngle input, Kinova::Api::Base::ConstrainedJointAngle *output)
+int ToProtoData(kortex_driver::msg::ConstrainedJointAngle input, Kinova::Api::Base::ConstrainedJointAngle *output)
 {
 	
 	output->set_joint_identifier(input.joint_identifier);
@@ -1445,7 +1445,7 @@ int ToProtoData(kortex_driver::ConstrainedJointAngle input, Kinova::Api::Base::C
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointAngles input, Kinova::Api::Base::JointAngles *output)
+int ToProtoData(kortex_driver::msg::JointAngles input, Kinova::Api::Base::JointAngles *output)
 {
 	 
 	output->clear_joint_angles();
@@ -1456,7 +1456,7 @@ int ToProtoData(kortex_driver::JointAngles input, Kinova::Api::Base::JointAngles
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointAngle input, Kinova::Api::Base::JointAngle *output)
+int ToProtoData(kortex_driver::msg::JointAngle input, Kinova::Api::Base::JointAngle *output)
 {
 	
 	output->set_joint_identifier(input.joint_identifier);
@@ -1464,7 +1464,7 @@ int ToProtoData(kortex_driver::JointAngle input, Kinova::Api::Base::JointAngle *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_JointSpeeds input, Kinova::Api::Base::JointSpeeds *output)
+int ToProtoData(kortex_driver::msg::BaseJointSpeeds input, Kinova::Api::Base::JointSpeeds *output)
 {
 	 
 	output->clear_joint_speeds();
@@ -1476,7 +1476,7 @@ int ToProtoData(kortex_driver::Base_JointSpeeds input, Kinova::Api::Base::JointS
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointSpeed input, Kinova::Api::Base::JointSpeed *output)
+int ToProtoData(kortex_driver::msg::JointSpeed input, Kinova::Api::Base::JointSpeed *output)
 {
 	
 	output->set_joint_identifier(input.joint_identifier);
@@ -1485,7 +1485,7 @@ int ToProtoData(kortex_driver::JointSpeed input, Kinova::Api::Base::JointSpeed *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointTorques input, Kinova::Api::Base::JointTorques *output)
+int ToProtoData(kortex_driver::msg::JointTorques input, Kinova::Api::Base::JointTorques *output)
 {
 	 
 	output->clear_joint_torques();
@@ -1497,7 +1497,7 @@ int ToProtoData(kortex_driver::JointTorques input, Kinova::Api::Base::JointTorqu
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointTorque input, Kinova::Api::Base::JointTorque *output)
+int ToProtoData(kortex_driver::msg::JointTorque input, Kinova::Api::Base::JointTorque *output)
 {
 	
 	output->set_joint_identifier(input.joint_identifier);
@@ -1506,7 +1506,7 @@ int ToProtoData(kortex_driver::JointTorque input, Kinova::Api::Base::JointTorque
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GripperCommand input, Kinova::Api::Base::GripperCommand *output)
+int ToProtoData(kortex_driver::msg::GripperCommand input, Kinova::Api::Base::GripperCommand *output)
 {
 	
 	output->set_mode((Kinova::Api::Base::GripperMode)input.mode); 
@@ -1515,14 +1515,14 @@ int ToProtoData(kortex_driver::GripperCommand input, Kinova::Api::Base::GripperC
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GripperRequest input, Kinova::Api::Base::GripperRequest *output)
+int ToProtoData(kortex_driver::msg::GripperRequest input, Kinova::Api::Base::GripperRequest *output)
 {
 	
 	output->set_mode((Kinova::Api::Base::GripperMode)input.mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Gripper input, Kinova::Api::Base::Gripper *output)
+int ToProtoData(kortex_driver::msg::Gripper input, Kinova::Api::Base::Gripper *output)
 {
 	 
 	output->clear_finger();
@@ -1533,7 +1533,7 @@ int ToProtoData(kortex_driver::Gripper input, Kinova::Api::Base::Gripper *output
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Finger input, Kinova::Api::Base::Finger *output)
+int ToProtoData(kortex_driver::msg::Finger input, Kinova::Api::Base::Finger *output)
 {
 	
 	output->set_finger_identifier(input.finger_identifier);
@@ -1541,7 +1541,7 @@ int ToProtoData(kortex_driver::Finger input, Kinova::Api::Base::Finger *output)
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::GpioCommand input, Kinova::Api::Base::GpioCommand *output)
+int ToProtoData(kortex_driver::msg::GpioCommand input, Kinova::Api::Base::GpioCommand *output)
 {
 	
 	output->set_port_identifier(input.port_identifier);
@@ -1551,7 +1551,7 @@ int ToProtoData(kortex_driver::GpioCommand input, Kinova::Api::Base::GpioCommand
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SystemTime input, Kinova::Api::Base::SystemTime *output)
+int ToProtoData(kortex_driver::msg::SystemTime input, Kinova::Api::Base::SystemTime *output)
 {
 	
 	output->set_sec(input.sec);
@@ -1563,14 +1563,14 @@ int ToProtoData(kortex_driver::SystemTime input, Kinova::Api::Base::SystemTime *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerConfigurationMode input, Kinova::Api::Base::ControllerConfigurationMode *output)
+int ToProtoData(kortex_driver::msg::ControllerConfigurationMode input, Kinova::Api::Base::ControllerConfigurationMode *output)
 {
 	
 	output->set_enable(input.enable);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerConfiguration input, Kinova::Api::Base::ControllerConfiguration *output)
+int ToProtoData(kortex_driver::msg::ControllerConfiguration input, Kinova::Api::Base::ControllerConfiguration *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -1581,7 +1581,7 @@ int ToProtoData(kortex_driver::ControllerConfiguration input, Kinova::Api::Base:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControllerConfigurationList input, Kinova::Api::Base::ControllerConfigurationList *output)
+int ToProtoData(kortex_driver::msg::ControllerConfigurationList input, Kinova::Api::Base::ControllerConfigurationList *output)
 {
 	 
 	output->clear_controller_configurations();
@@ -1592,14 +1592,14 @@ int ToProtoData(kortex_driver::ControllerConfigurationList input, Kinova::Api::B
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorInformation input, Kinova::Api::Base::ActuatorInformation *output)
+int ToProtoData(kortex_driver::msg::ActuatorInformation input, Kinova::Api::Base::ActuatorInformation *output)
 {
 	
 	output->set_count(input.count);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ArmStateInformation input, Kinova::Api::Base::ArmStateInformation *output)
+int ToProtoData(kortex_driver::msg::ArmStateInformation input, Kinova::Api::Base::ArmStateInformation *output)
 {
 	
 	output->set_active_state((Kinova::Api::Common::ArmState)input.active_state); 
@@ -1607,7 +1607,7 @@ int ToProtoData(kortex_driver::ArmStateInformation input, Kinova::Api::Base::Arm
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ArmStateNotification input, Kinova::Api::Base::ArmStateNotification *output)
+int ToProtoData(kortex_driver::msg::ArmStateNotification input, Kinova::Api::Base::ArmStateNotification *output)
 {
 	
 	output->set_active_state((Kinova::Api::Common::ArmState)input.active_state); 
@@ -1616,7 +1616,7 @@ int ToProtoData(kortex_driver::ArmStateNotification input, Kinova::Api::Base::Ar
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Base_CapSenseConfig input, Kinova::Api::Base::CapSenseConfig *output)
+int ToProtoData(kortex_driver::msg::BaseCapSenseConfig input, Kinova::Api::Base::CapSenseConfig *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -1628,7 +1628,7 @@ int ToProtoData(kortex_driver::Base_CapSenseConfig input, Kinova::Api::Base::Cap
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BridgeList input, Kinova::Api::Base::BridgeList *output)
+int ToProtoData(kortex_driver::msg::BridgeList input, Kinova::Api::Base::BridgeList *output)
 {
 	 
 	output->clear_bridgeconfig();
@@ -1639,7 +1639,7 @@ int ToProtoData(kortex_driver::BridgeList input, Kinova::Api::Base::BridgeList *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BridgeResult input, Kinova::Api::Base::BridgeResult *output)
+int ToProtoData(kortex_driver::msg::BridgeResult input, Kinova::Api::Base::BridgeResult *output)
 {
 	 
 	ToProtoData(input.bridge_id, output->mutable_bridge_id());
@@ -1647,14 +1647,14 @@ int ToProtoData(kortex_driver::BridgeResult input, Kinova::Api::Base::BridgeResu
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BridgeIdentifier input, Kinova::Api::Base::BridgeIdentifier *output)
+int ToProtoData(kortex_driver::msg::BridgeIdentifier input, Kinova::Api::Base::BridgeIdentifier *output)
 {
 	
 	output->set_bridge_id(input.bridge_id);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BridgeConfig input, Kinova::Api::Base::BridgeConfig *output)
+int ToProtoData(kortex_driver::msg::BridgeConfig input, Kinova::Api::Base::BridgeConfig *output)
 {
 	
 	output->set_device_identifier(input.device_identifier);
@@ -1664,7 +1664,7 @@ int ToProtoData(kortex_driver::BridgeConfig input, Kinova::Api::Base::BridgeConf
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BridgePortConfig input, Kinova::Api::Base::BridgePortConfig *output)
+int ToProtoData(kortex_driver::msg::BridgePortConfig input, Kinova::Api::Base::BridgePortConfig *output)
 {
 	
 	output->set_target_port(input.target_port);
@@ -1672,7 +1672,7 @@ int ToProtoData(kortex_driver::BridgePortConfig input, Kinova::Api::Base::Bridge
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PreComputedJointTrajectory input, Kinova::Api::Base::PreComputedJointTrajectory *output)
+int ToProtoData(kortex_driver::msg::PreComputedJointTrajectory input, Kinova::Api::Base::PreComputedJointTrajectory *output)
 {
 	
 	output->set_mode((Kinova::Api::Base::TrajectoryContinuityMode)input.mode); 
@@ -1684,7 +1684,7 @@ int ToProtoData(kortex_driver::PreComputedJointTrajectory input, Kinova::Api::Ba
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PreComputedJointTrajectoryElement input, Kinova::Api::Base::PreComputedJointTrajectoryElement *output)
+int ToProtoData(kortex_driver::msg::PreComputedJointTrajectoryElement input, Kinova::Api::Base::PreComputedJointTrajectoryElement *output)
 {
 	
 	output->clear_joint_angles();
@@ -1706,7 +1706,7 @@ int ToProtoData(kortex_driver::PreComputedJointTrajectoryElement input, Kinova::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TrajectoryErrorElement input, Kinova::Api::Base::TrajectoryErrorElement *output)
+int ToProtoData(kortex_driver::msg::TrajectoryErrorElement input, Kinova::Api::Base::TrajectoryErrorElement *output)
 {
 	
 	output->set_error_type((Kinova::Api::Base::TrajectoryErrorType)input.error_type);
@@ -1720,7 +1720,7 @@ int ToProtoData(kortex_driver::TrajectoryErrorElement input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TrajectoryErrorReport input, Kinova::Api::Base::TrajectoryErrorReport *output)
+int ToProtoData(kortex_driver::msg::TrajectoryErrorReport input, Kinova::Api::Base::TrajectoryErrorReport *output)
 {
 	 
 	output->clear_trajectory_error_elements();
@@ -1731,7 +1731,7 @@ int ToProtoData(kortex_driver::TrajectoryErrorReport input, Kinova::Api::Base::T
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WaypointValidationReport input, Kinova::Api::Base::WaypointValidationReport *output)
+int ToProtoData(kortex_driver::msg::WaypointValidationReport input, Kinova::Api::Base::WaypointValidationReport *output)
 {
 	 
 	ToProtoData(input.trajectory_error_report, output->mutable_trajectory_error_report()); 
@@ -1739,7 +1739,7 @@ int ToProtoData(kortex_driver::WaypointValidationReport input, Kinova::Api::Base
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Waypoint input, Kinova::Api::Base::Waypoint *output)
+int ToProtoData(kortex_driver::msg::Waypoint input, Kinova::Api::Base::Waypoint *output)
 {
 	
 	output->set_name(input.name);
@@ -1754,7 +1754,7 @@ int ToProtoData(kortex_driver::Waypoint input, Kinova::Api::Base::Waypoint *outp
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::AngularWaypoint input, Kinova::Api::Base::AngularWaypoint *output)
+int ToProtoData(kortex_driver::msg::AngularWaypoint input, Kinova::Api::Base::AngularWaypoint *output)
 {
 	
 	output->clear_angles();
@@ -1771,7 +1771,7 @@ int ToProtoData(kortex_driver::AngularWaypoint input, Kinova::Api::Base::Angular
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianWaypoint input, Kinova::Api::Base::CartesianWaypoint *output)
+int ToProtoData(kortex_driver::msg::CartesianWaypoint input, Kinova::Api::Base::CartesianWaypoint *output)
 {
 	 
 	ToProtoData(input.pose, output->mutable_pose());
@@ -1782,7 +1782,7 @@ int ToProtoData(kortex_driver::CartesianWaypoint input, Kinova::Api::Base::Carte
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::WaypointList input, Kinova::Api::Base::WaypointList *output)
+int ToProtoData(kortex_driver::msg::WaypointList input, Kinova::Api::Base::WaypointList *output)
 {
 	 
 	output->clear_waypoints();
@@ -1795,7 +1795,7 @@ int ToProtoData(kortex_driver::WaypointList input, Kinova::Api::Base::WaypointLi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::KinematicTrajectoryConstraints input, Kinova::Api::Base::KinematicTrajectoryConstraints *output)
+int ToProtoData(kortex_driver::msg::KinematicTrajectoryConstraints input, Kinova::Api::Base::KinematicTrajectoryConstraints *output)
 {
 	
 	output->clear_angular_velocities();
@@ -1808,7 +1808,7 @@ int ToProtoData(kortex_driver::KinematicTrajectoryConstraints input, Kinova::Api
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FirmwareBundleVersions input, Kinova::Api::Base::FirmwareBundleVersions *output)
+int ToProtoData(kortex_driver::msg::FirmwareBundleVersions input, Kinova::Api::Base::FirmwareBundleVersions *output)
 {
 	
 	output->set_main_bundle_version(input.main_bundle_version); 
@@ -1820,7 +1820,7 @@ int ToProtoData(kortex_driver::FirmwareBundleVersions input, Kinova::Api::Base::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FirmwareComponentVersion input, Kinova::Api::Base::FirmwareComponentVersion *output)
+int ToProtoData(kortex_driver::msg::FirmwareComponentVersion input, Kinova::Api::Base::FirmwareComponentVersion *output)
 {
 	
 	output->set_name(input.name);
@@ -1829,7 +1829,7 @@ int ToProtoData(kortex_driver::FirmwareComponentVersion input, Kinova::Api::Base
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::IKData input, Kinova::Api::Base::IKData *output)
+int ToProtoData(kortex_driver::msg::IKData input, Kinova::Api::Base::IKData *output)
 {
 	 
 	ToProtoData(input.cartesian_pose, output->mutable_cartesian_pose()); 

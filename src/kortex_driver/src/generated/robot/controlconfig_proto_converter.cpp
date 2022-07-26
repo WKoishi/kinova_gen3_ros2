@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/controlconfig_proto_converter.h"
 
-int ToProtoData(kortex_driver::GravityVector input, Kinova::Api::ControlConfig::GravityVector *output)
+int ToProtoData(kortex_driver::msg::GravityVector input, Kinova::Api::ControlConfig::GravityVector *output)
 {
 	
 	output->set_x(input.x);
@@ -25,7 +25,7 @@ int ToProtoData(kortex_driver::GravityVector input, Kinova::Api::ControlConfig::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlConfig_Position input, Kinova::Api::ControlConfig::Position *output)
+int ToProtoData(kortex_driver::msg::ControlConfigPosition input, Kinova::Api::ControlConfig::Position *output)
 {
 	
 	output->set_x(input.x);
@@ -34,7 +34,7 @@ int ToProtoData(kortex_driver::ControlConfig_Position input, Kinova::Api::Contro
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PayloadInformation input, Kinova::Api::ControlConfig::PayloadInformation *output)
+int ToProtoData(kortex_driver::msg::PayloadInformation input, Kinova::Api::ControlConfig::PayloadInformation *output)
 {
 	
 	output->set_payload_mass(input.payload_mass); 
@@ -42,7 +42,7 @@ int ToProtoData(kortex_driver::PayloadInformation input, Kinova::Api::ControlCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianTransform input, Kinova::Api::ControlConfig::CartesianTransform *output)
+int ToProtoData(kortex_driver::msg::CartesianTransform input, Kinova::Api::ControlConfig::CartesianTransform *output)
 {
 	
 	output->set_x(input.x);
@@ -54,7 +54,7 @@ int ToProtoData(kortex_driver::CartesianTransform input, Kinova::Api::ControlCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ToolConfiguration input, Kinova::Api::ControlConfig::ToolConfiguration *output)
+int ToProtoData(kortex_driver::msg::ToolConfiguration input, Kinova::Api::ControlConfig::ToolConfiguration *output)
 {
 	 
 	ToProtoData(input.tool_transform, output->mutable_tool_transform());
@@ -63,7 +63,7 @@ int ToProtoData(kortex_driver::ToolConfiguration input, Kinova::Api::ControlConf
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlConfigurationNotification input, Kinova::Api::ControlConfig::ControlConfigurationNotification *output)
+int ToProtoData(kortex_driver::msg::ControlConfigurationNotification input, Kinova::Api::ControlConfig::ControlConfigurationNotification *output)
 {
 	
 	output->set_event((Kinova::Api::ControlConfig::ControlConfigurationEvent)input.event); 
@@ -73,14 +73,14 @@ int ToProtoData(kortex_driver::ControlConfigurationNotification input, Kinova::A
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CartesianReferenceFrameInfo input, Kinova::Api::ControlConfig::CartesianReferenceFrameInfo *output)
+int ToProtoData(kortex_driver::msg::CartesianReferenceFrameInfo input, Kinova::Api::ControlConfig::CartesianReferenceFrameInfo *output)
 {
 	
 	output->set_reference_frame((Kinova::Api::Common::CartesianReferenceFrame)input.reference_frame);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TwistLinearSoftLimit input, Kinova::Api::ControlConfig::TwistLinearSoftLimit *output)
+int ToProtoData(kortex_driver::msg::TwistLinearSoftLimit input, Kinova::Api::ControlConfig::TwistLinearSoftLimit *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode);
@@ -88,7 +88,7 @@ int ToProtoData(kortex_driver::TwistLinearSoftLimit input, Kinova::Api::ControlC
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TwistAngularSoftLimit input, Kinova::Api::ControlConfig::TwistAngularSoftLimit *output)
+int ToProtoData(kortex_driver::msg::TwistAngularSoftLimit input, Kinova::Api::ControlConfig::TwistAngularSoftLimit *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode);
@@ -96,7 +96,7 @@ int ToProtoData(kortex_driver::TwistAngularSoftLimit input, Kinova::Api::Control
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointSpeedSoftLimits input, Kinova::Api::ControlConfig::JointSpeedSoftLimits *output)
+int ToProtoData(kortex_driver::msg::JointSpeedSoftLimits input, Kinova::Api::ControlConfig::JointSpeedSoftLimits *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode);
@@ -108,7 +108,7 @@ int ToProtoData(kortex_driver::JointSpeedSoftLimits input, Kinova::Api::ControlC
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::JointAccelerationSoftLimits input, Kinova::Api::ControlConfig::JointAccelerationSoftLimits *output)
+int ToProtoData(kortex_driver::msg::JointAccelerationSoftLimits input, Kinova::Api::ControlConfig::JointAccelerationSoftLimits *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode);
@@ -120,7 +120,7 @@ int ToProtoData(kortex_driver::JointAccelerationSoftLimits input, Kinova::Api::C
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::KinematicLimits input, Kinova::Api::ControlConfig::KinematicLimits *output)
+int ToProtoData(kortex_driver::msg::KinematicLimits input, Kinova::Api::ControlConfig::KinematicLimits *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode);
@@ -139,7 +139,7 @@ int ToProtoData(kortex_driver::KinematicLimits input, Kinova::Api::ControlConfig
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::KinematicLimitsList input, Kinova::Api::ControlConfig::KinematicLimitsList *output)
+int ToProtoData(kortex_driver::msg::KinematicLimitsList input, Kinova::Api::ControlConfig::KinematicLimitsList *output)
 {
 	 
 	output->clear_kinematic_limits_list();
@@ -150,7 +150,7 @@ int ToProtoData(kortex_driver::KinematicLimitsList input, Kinova::Api::ControlCo
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::DesiredSpeeds input, Kinova::Api::ControlConfig::DesiredSpeeds *output)
+int ToProtoData(kortex_driver::msg::DesiredSpeeds input, Kinova::Api::ControlConfig::DesiredSpeeds *output)
 {
 	
 	output->set_linear(input.linear);
@@ -163,21 +163,21 @@ int ToProtoData(kortex_driver::DesiredSpeeds input, Kinova::Api::ControlConfig::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::LinearTwist input, Kinova::Api::ControlConfig::LinearTwist *output)
+int ToProtoData(kortex_driver::msg::LinearTwist input, Kinova::Api::ControlConfig::LinearTwist *output)
 {
 	
 	output->set_linear(input.linear);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::AngularTwist input, Kinova::Api::ControlConfig::AngularTwist *output)
+int ToProtoData(kortex_driver::msg::AngularTwist input, Kinova::Api::ControlConfig::AngularTwist *output)
 {
 	
 	output->set_angular(input.angular);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlConfig_JointSpeeds input, Kinova::Api::ControlConfig::JointSpeeds *output)
+int ToProtoData(kortex_driver::msg::ControlConfigJointSpeeds input, Kinova::Api::ControlConfig::JointSpeeds *output)
 {
 	
 	output->clear_joint_speed();
@@ -188,14 +188,14 @@ int ToProtoData(kortex_driver::ControlConfig_JointSpeeds input, Kinova::Api::Con
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlConfig_ControlModeInformation input, Kinova::Api::ControlConfig::ControlModeInformation *output)
+int ToProtoData(kortex_driver::msg::ControlConfigControlModeInformation input, Kinova::Api::ControlConfig::ControlModeInformation *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlConfig_ControlModeNotification input, Kinova::Api::ControlConfig::ControlModeNotification *output)
+int ToProtoData(kortex_driver::msg::ControlConfigControlModeNotification input, Kinova::Api::ControlConfig::ControlModeNotification *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ControlConfig::ControlMode)input.control_mode); 

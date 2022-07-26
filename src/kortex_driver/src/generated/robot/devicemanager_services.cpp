@@ -49,7 +49,7 @@ DeviceManagerRobotServices::DeviceManagerRobotServices(ros::NodeHandle& node_han
 {
 	m_api_options.timeout_ms = timeout_ms;
 
-	m_pub_Error = m_node_handle.advertise<kortex_driver::KortexError>("kortex_error", 1000);
+	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
 	m_serviceSetDeviceID = m_node_handle.advertiseService("device_manager/set_device_id", &DeviceManagerRobotServices::SetDeviceID, this);
 	m_serviceSetApiOptions = m_node_handle.advertiseService("device_manager/set_api_options", &DeviceManagerRobotServices::SetApiOptions, this);
@@ -57,14 +57,14 @@ DeviceManagerRobotServices::DeviceManagerRobotServices(ros::NodeHandle& node_han
 	m_serviceReadAllDevices = m_node_handle.advertiseService("device_manager/read_all_devices", &DeviceManagerRobotServices::ReadAllDevices, this);
 }
 
-bool DeviceManagerRobotServices::SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res)
+bool DeviceManagerRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool DeviceManagerRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res)
+bool DeviceManagerRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -72,12 +72,12 @@ bool DeviceManagerRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Req
 }
 
 
-bool DeviceManagerRobotServices::ReadAllDevices(kortex_driver::ReadAllDevices::Request  &req, kortex_driver::ReadAllDevices::Response &res)
+bool DeviceManagerRobotServices::ReadAllDevices(kortex_driver::srv::ReadAllDevices::Request  &req, kortex_driver::srv::ReadAllDevices::Response &res)
 {
 	
 	Kinova::Api::DeviceManager::DeviceHandles output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{

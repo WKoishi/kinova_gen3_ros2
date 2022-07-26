@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/basecyclic_ros_converter.h"
 
-int ToRosData(Kinova::Api::BaseCyclic::ActuatorCommand input, kortex_driver::ActuatorCommand &output)
+int ToRosData(Kinova::Api::BaseCyclic::ActuatorCommand input, kortex_driver::msg::ActuatorCommand &output)
 {
 	
 	output.command_id = input.command_id();
@@ -30,7 +30,7 @@ int ToRosData(Kinova::Api::BaseCyclic::ActuatorCommand input, kortex_driver::Act
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::BaseCyclic::ActuatorFeedback input, kortex_driver::ActuatorFeedback &output)
+int ToRosData(Kinova::Api::BaseCyclic::ActuatorFeedback input, kortex_driver::msg::ActuatorFeedback &output)
 {
 	
 	output.command_id = input.command_id();
@@ -52,7 +52,7 @@ int ToRosData(Kinova::Api::BaseCyclic::ActuatorFeedback input, kortex_driver::Ac
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::BaseCyclic::ActuatorCustomData input, kortex_driver::ActuatorCustomData &output)
+int ToRosData(Kinova::Api::BaseCyclic::ActuatorCustomData input, kortex_driver::msg::ActuatorCustomData &output)
 {
 	
 	output.command_id = input.command_id();
@@ -77,7 +77,7 @@ int ToRosData(Kinova::Api::BaseCyclic::ActuatorCustomData input, kortex_driver::
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::BaseCyclic::BaseFeedback input, kortex_driver::BaseFeedback &output)
+int ToRosData(Kinova::Api::BaseCyclic::BaseFeedback input, kortex_driver::msg::BaseFeedback &output)
 {
 	
 	output.active_state_connection_identifier = input.active_state_connection_identifier();
@@ -125,7 +125,7 @@ int ToRosData(Kinova::Api::BaseCyclic::BaseFeedback input, kortex_driver::BaseFe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::BaseCyclic::CustomData input, kortex_driver::BaseCyclic_CustomData &output)
+int ToRosData(Kinova::Api::BaseCyclic::CustomData input, kortex_driver::msg::BaseCyclicCustomData &output)
 {
 	
 	output.frame_id = input.frame_id();
@@ -150,7 +150,7 @@ int ToRosData(Kinova::Api::BaseCyclic::CustomData input, kortex_driver::BaseCycl
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::BaseCyclic::Command input, kortex_driver::BaseCyclic_Command &output)
+int ToRosData(Kinova::Api::BaseCyclic::Command input, kortex_driver::msg::BaseCyclicCommand &output)
 {
 	
 	output.frame_id = input.frame_id();
@@ -167,7 +167,7 @@ int ToRosData(Kinova::Api::BaseCyclic::Command input, kortex_driver::BaseCyclic_
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::BaseCyclic::Feedback input, kortex_driver::BaseCyclic_Feedback &output)
+int ToRosData(Kinova::Api::BaseCyclic::Feedback input, kortex_driver::msg::BaseCyclicFeedback &output)
 {
 	
 	output.frame_id = input.frame_id();

@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/devicemanager_proto_converter.h"
 
-int ToProtoData(kortex_driver::DeviceHandles input, Kinova::Api::DeviceManager::DeviceHandles *output)
+int ToProtoData(kortex_driver::msg::DeviceHandles input, Kinova::Api::DeviceManager::DeviceHandles *output)
 {
 	 
 	output->clear_device_handle();

@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/productconfiguration_proto_converter.h"
 
-int ToProtoData(kortex_driver::CompleteProductConfiguration input, Kinova::Api::ProductConfiguration::CompleteProductConfiguration *output)
+int ToProtoData(kortex_driver::msg::CompleteProductConfiguration input, Kinova::Api::ProductConfiguration::CompleteProductConfiguration *output)
 {
 	
 	output->set_kin(input.kin);
@@ -34,7 +34,7 @@ int ToProtoData(kortex_driver::CompleteProductConfiguration input, Kinova::Api::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ProductConfigurationEndEffectorType input, Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType *output)
+int ToProtoData(kortex_driver::msg::ProductConfigurationEndEffectorType input, Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType *output)
 {
 	
 	output->set_end_effector_type((Kinova::Api::ProductConfiguration::EndEffectorType)input.end_effector_type);

@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/deviceconfig_ros_converter.h"
 
-int ToRosData(Kinova::Api::DeviceConfig::DeviceType input, kortex_driver::DeviceType &output)
+int ToRosData(Kinova::Api::DeviceConfig::DeviceType input, kortex_driver::msg::DeviceType &output)
 {
 	
 	output.device_type = input.device_type();
@@ -25,7 +25,7 @@ int ToRosData(Kinova::Api::DeviceConfig::DeviceType input, kortex_driver::Device
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::RunMode input, kortex_driver::RunMode &output)
+int ToRosData(Kinova::Api::DeviceConfig::RunMode input, kortex_driver::msg::RunMode &output)
 {
 	
 	output.run_mode = input.run_mode();
@@ -34,7 +34,7 @@ int ToRosData(Kinova::Api::DeviceConfig::RunMode input, kortex_driver::RunMode &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::FirmwareVersion input, kortex_driver::FirmwareVersion &output)
+int ToRosData(Kinova::Api::DeviceConfig::FirmwareVersion input, kortex_driver::msg::FirmwareVersion &output)
 {
 	
 	output.firmware_version = input.firmware_version();
@@ -43,7 +43,7 @@ int ToRosData(Kinova::Api::DeviceConfig::FirmwareVersion input, kortex_driver::F
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::BootloaderVersion input, kortex_driver::BootloaderVersion &output)
+int ToRosData(Kinova::Api::DeviceConfig::BootloaderVersion input, kortex_driver::msg::BootloaderVersion &output)
 {
 	
 	output.bootloader_version = input.bootloader_version();
@@ -52,7 +52,7 @@ int ToRosData(Kinova::Api::DeviceConfig::BootloaderVersion input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::ModelNumber input, kortex_driver::ModelNumber &output)
+int ToRosData(Kinova::Api::DeviceConfig::ModelNumber input, kortex_driver::msg::ModelNumber &output)
 {
 	
 	output.model_number = input.model_number();
@@ -61,7 +61,7 @@ int ToRosData(Kinova::Api::DeviceConfig::ModelNumber input, kortex_driver::Model
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::PartNumber input, kortex_driver::PartNumber &output)
+int ToRosData(Kinova::Api::DeviceConfig::PartNumber input, kortex_driver::msg::PartNumber &output)
 {
 	
 	output.part_number = input.part_number();
@@ -70,7 +70,7 @@ int ToRosData(Kinova::Api::DeviceConfig::PartNumber input, kortex_driver::PartNu
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SerialNumber input, kortex_driver::SerialNumber &output)
+int ToRosData(Kinova::Api::DeviceConfig::SerialNumber input, kortex_driver::msg::SerialNumber &output)
 {
 	
 	output.serial_number = input.serial_number();
@@ -79,7 +79,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SerialNumber input, kortex_driver::Seri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::MACAddress input, kortex_driver::MACAddress &output)
+int ToRosData(Kinova::Api::DeviceConfig::MACAddress input, kortex_driver::msg::MACAddress &output)
 {
 	
 	output.mac_address = std::vector<uint8_t>(input.mac_address().begin(), input.mac_address().end());
@@ -88,7 +88,7 @@ int ToRosData(Kinova::Api::DeviceConfig::MACAddress input, kortex_driver::MACAdd
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::IPv4Settings input, kortex_driver::IPv4Settings &output)
+int ToRosData(Kinova::Api::DeviceConfig::IPv4Settings input, kortex_driver::msg::IPv4Settings &output)
 {
 	
 	output.ipv4_address = input.ipv4_address();
@@ -99,7 +99,7 @@ int ToRosData(Kinova::Api::DeviceConfig::IPv4Settings input, kortex_driver::IPv4
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::PartNumberRevision input, kortex_driver::PartNumberRevision &output)
+int ToRosData(Kinova::Api::DeviceConfig::PartNumberRevision input, kortex_driver::msg::PartNumberRevision &output)
 {
 	
 	output.part_number_revision = input.part_number_revision();
@@ -108,7 +108,7 @@ int ToRosData(Kinova::Api::DeviceConfig::PartNumberRevision input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::PowerOnSelfTestResult input, kortex_driver::PowerOnSelfTestResult &output)
+int ToRosData(Kinova::Api::DeviceConfig::PowerOnSelfTestResult input, kortex_driver::msg::PowerOnSelfTestResult &output)
 {
 	
 	output.power_on_self_test_result = input.power_on_self_test_result();
@@ -117,7 +117,7 @@ int ToRosData(Kinova::Api::DeviceConfig::PowerOnSelfTestResult input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::RebootRqst input, kortex_driver::RebootRqst &output)
+int ToRosData(Kinova::Api::DeviceConfig::RebootRqst input, kortex_driver::msg::RebootRqst &output)
 {
 	
 	output.delay = input.delay();
@@ -126,7 +126,7 @@ int ToRosData(Kinova::Api::DeviceConfig::RebootRqst input, kortex_driver::Reboot
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyInformation input, kortex_driver::SafetyInformation &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyInformation input, kortex_driver::msg::SafetyInformation &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -145,7 +145,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyInformation input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyInformationList input, kortex_driver::SafetyInformationList &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyInformationList input, kortex_driver::msg::SafetyInformationList &output)
 {
 	
 	output.information.clear();
@@ -160,7 +160,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyInformationList input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyEnable input, kortex_driver::SafetyEnable &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyEnable input, kortex_driver::msg::SafetyEnable &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -170,7 +170,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyEnable input, kortex_driver::Safe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyThreshold input, kortex_driver::SafetyThreshold &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyThreshold input, kortex_driver::msg::SafetyThreshold &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -180,7 +180,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyThreshold input, kortex_driver::S
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyConfiguration input, kortex_driver::SafetyConfiguration &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyConfiguration input, kortex_driver::msg::SafetyConfiguration &output)
 {
 	
 	ToRosData(input.handle(), output.handle);
@@ -192,7 +192,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyConfiguration input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyConfigurationList input, kortex_driver::SafetyConfigurationList &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyConfigurationList input, kortex_driver::msg::SafetyConfigurationList &output)
 {
 	
 	output.configuration.clear();
@@ -207,7 +207,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyConfigurationList input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::SafetyStatus input, kortex_driver::SafetyStatus &output)
+int ToRosData(Kinova::Api::DeviceConfig::SafetyStatus input, kortex_driver::msg::SafetyStatus &output)
 {
 	
 	output.value = input.value();
@@ -216,7 +216,7 @@ int ToRosData(Kinova::Api::DeviceConfig::SafetyStatus input, kortex_driver::Safe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::CalibrationParameter input, kortex_driver::CalibrationParameter &output)
+int ToRosData(Kinova::Api::DeviceConfig::CalibrationParameter input, kortex_driver::msg::CalibrationParameter &output)
 {
 	
 	output.calibration_parameter_identifier = input.calibration_parameter_identifier();
@@ -243,7 +243,7 @@ int ToRosData(Kinova::Api::DeviceConfig::CalibrationParameter input, kortex_driv
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::Calibration input, kortex_driver::Calibration &output)
+int ToRosData(Kinova::Api::DeviceConfig::Calibration input, kortex_driver::msg::Calibration &output)
 {
 	
 	output.calibration_item = input.calibration_item();
@@ -259,7 +259,7 @@ int ToRosData(Kinova::Api::DeviceConfig::Calibration input, kortex_driver::Calib
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::CalibrationElement input, kortex_driver::CalibrationElement &output)
+int ToRosData(Kinova::Api::DeviceConfig::CalibrationElement input, kortex_driver::msg::CalibrationElement &output)
 {
 	
 	output.calibration_item = input.calibration_item();
@@ -268,7 +268,7 @@ int ToRosData(Kinova::Api::DeviceConfig::CalibrationElement input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::CalibrationResult input, kortex_driver::CalibrationResult &output)
+int ToRosData(Kinova::Api::DeviceConfig::CalibrationResult input, kortex_driver::msg::CalibrationResult &output)
 {
 	
 	output.calibration_status = input.calibration_status();
@@ -278,7 +278,7 @@ int ToRosData(Kinova::Api::DeviceConfig::CalibrationResult input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::CapSenseConfig input, kortex_driver::DeviceConfig_CapSenseConfig &output)
+int ToRosData(Kinova::Api::DeviceConfig::CapSenseConfig input, kortex_driver::msg::DeviceConfigCapSenseConfig &output)
 {
 	
 	output.mode = input.mode();
@@ -289,7 +289,7 @@ int ToRosData(Kinova::Api::DeviceConfig::CapSenseConfig input, kortex_driver::De
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::DeviceConfig::CapSenseRegister input, kortex_driver::CapSenseRegister &output)
+int ToRosData(Kinova::Api::DeviceConfig::CapSenseRegister input, kortex_driver::msg::CapSenseRegister &output)
 {
 	
 	output.address = input.address();

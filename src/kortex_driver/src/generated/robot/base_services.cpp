@@ -49,34 +49,34 @@ BaseRobotServices::BaseRobotServices(ros::NodeHandle& node_handle, Kinova::Api::
 {
 	m_api_options.timeout_ms = timeout_ms;
 
-	m_pub_Error = m_node_handle.advertise<kortex_driver::KortexError>("kortex_error", 1000);
-	m_pub_ConfigurationChangeTopic = m_node_handle.advertise<kortex_driver::ConfigurationChangeNotification>("configuration_change_topic", 1000);
+	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_ConfigurationChangeTopic = m_node_handle.advertise<kortex_driver::msg::ConfigurationChangeNotification>("configuration_change_topic", 1000);
 	m_is_activated_ConfigurationChangeTopic = false;
-	m_pub_MappingInfoTopic = m_node_handle.advertise<kortex_driver::MappingInfoNotification>("mapping_info_topic", 1000);
+	m_pub_MappingInfoTopic = m_node_handle.advertise<kortex_driver::msg::MappingInfoNotification>("mapping_info_topic", 1000);
 	m_is_activated_MappingInfoTopic = false;
-	m_pub_ControlModeTopic = m_node_handle.advertise<kortex_driver::Base_ControlModeNotification>("control_mode_topic", 1000);
+	m_pub_ControlModeTopic = m_node_handle.advertise<kortex_driver::msg::BaseControlModeNotification>("control_mode_topic", 1000);
 	m_is_activated_ControlModeTopic = false;
-	m_pub_OperatingModeTopic = m_node_handle.advertise<kortex_driver::OperatingModeNotification>("operating_mode_topic", 1000);
+	m_pub_OperatingModeTopic = m_node_handle.advertise<kortex_driver::msg::OperatingModeNotification>("operating_mode_topic", 1000);
 	m_is_activated_OperatingModeTopic = false;
-	m_pub_SequenceInfoTopic = m_node_handle.advertise<kortex_driver::SequenceInfoNotification>("sequence_info_topic", 1000);
+	m_pub_SequenceInfoTopic = m_node_handle.advertise<kortex_driver::msg::SequenceInfoNotification>("sequence_info_topic", 1000);
 	m_is_activated_SequenceInfoTopic = false;
-	m_pub_ProtectionZoneTopic = m_node_handle.advertise<kortex_driver::ProtectionZoneNotification>("protection_zone_topic", 1000);
+	m_pub_ProtectionZoneTopic = m_node_handle.advertise<kortex_driver::msg::ProtectionZoneNotification>("protection_zone_topic", 1000);
 	m_is_activated_ProtectionZoneTopic = false;
-	m_pub_UserTopic = m_node_handle.advertise<kortex_driver::UserNotification>("user_topic", 1000);
+	m_pub_UserTopic = m_node_handle.advertise<kortex_driver::msg::UserNotification>("user_topic", 1000);
 	m_is_activated_UserTopic = false;
-	m_pub_ControllerTopic = m_node_handle.advertise<kortex_driver::ControllerNotification>("controller_topic", 1000);
+	m_pub_ControllerTopic = m_node_handle.advertise<kortex_driver::msg::ControllerNotification>("controller_topic", 1000);
 	m_is_activated_ControllerTopic = false;
-	m_pub_ActionTopic = m_node_handle.advertise<kortex_driver::ActionNotification>("action_topic", 1000);
+	m_pub_ActionTopic = m_node_handle.advertise<kortex_driver::msg::ActionNotification>("action_topic", 1000);
 	m_is_activated_ActionTopic = false;
-	m_pub_RobotEventTopic = m_node_handle.advertise<kortex_driver::RobotEventNotification>("robot_event_topic", 1000);
+	m_pub_RobotEventTopic = m_node_handle.advertise<kortex_driver::msg::RobotEventNotification>("robot_event_topic", 1000);
 	m_is_activated_RobotEventTopic = false;
-	m_pub_ServoingModeTopic = m_node_handle.advertise<kortex_driver::ServoingModeNotification>("servoing_mode_topic", 1000);
+	m_pub_ServoingModeTopic = m_node_handle.advertise<kortex_driver::msg::ServoingModeNotification>("servoing_mode_topic", 1000);
 	m_is_activated_ServoingModeTopic = false;
-	m_pub_FactoryTopic = m_node_handle.advertise<kortex_driver::FactoryNotification>("factory_topic", 1000);
+	m_pub_FactoryTopic = m_node_handle.advertise<kortex_driver::msg::FactoryNotification>("factory_topic", 1000);
 	m_is_activated_FactoryTopic = false;
-	m_pub_NetworkTopic = m_node_handle.advertise<kortex_driver::NetworkNotification>("network_topic", 1000);
+	m_pub_NetworkTopic = m_node_handle.advertise<kortex_driver::msg::NetworkNotification>("network_topic", 1000);
 	m_is_activated_NetworkTopic = false;
-	m_pub_ArmStateTopic = m_node_handle.advertise<kortex_driver::ArmStateNotification>("arm_state_topic", 1000);
+	m_pub_ArmStateTopic = m_node_handle.advertise<kortex_driver::msg::ArmStateNotification>("arm_state_topic", 1000);
 	m_is_activated_ArmStateTopic = false;
 
 	m_serviceSetDeviceID = m_node_handle.advertiseService("base/set_device_id", &BaseRobotServices::SetDeviceID, this);
@@ -232,14 +232,14 @@ BaseRobotServices::BaseRobotServices(ros::NodeHandle& node_handle, Kinova::Api::
 	m_serviceValidateWaypointList = m_node_handle.advertiseService("base/validate_waypoint_list", &BaseRobotServices::ValidateWaypointList, this);
 }
 
-bool BaseRobotServices::SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res)
+bool BaseRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool BaseRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res)
+bool BaseRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -247,14 +247,14 @@ bool BaseRobotServices::SetApiOptions(kortex_driver::SetApiOptions::Request  &re
 }
 
 
-bool BaseRobotServices::CreateUserProfile(kortex_driver::CreateUserProfile::Request  &req, kortex_driver::CreateUserProfile::Response &res)
+bool BaseRobotServices::CreateUserProfile(kortex_driver::srv::CreateUserProfile::Request  &req, kortex_driver::srv::CreateUserProfile::Response &res)
 {
 	
 	Kinova::Api::Base::FullUserProfile input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::UserProfileHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -282,12 +282,12 @@ bool BaseRobotServices::CreateUserProfile(kortex_driver::CreateUserProfile::Requ
 	return true;
 }
 
-bool BaseRobotServices::UpdateUserProfile(kortex_driver::UpdateUserProfile::Request  &req, kortex_driver::UpdateUserProfile::Response &res)
+bool BaseRobotServices::UpdateUserProfile(kortex_driver::srv::UpdateUserProfile::Request  &req, kortex_driver::srv::UpdateUserProfile::Response &res)
 {
 	
 	Kinova::Api::Base::UserProfile input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -314,14 +314,14 @@ bool BaseRobotServices::UpdateUserProfile(kortex_driver::UpdateUserProfile::Requ
 	return true;
 }
 
-bool BaseRobotServices::ReadUserProfile(kortex_driver::ReadUserProfile::Request  &req, kortex_driver::ReadUserProfile::Response &res)
+bool BaseRobotServices::ReadUserProfile(kortex_driver::srv::ReadUserProfile::Request  &req, kortex_driver::srv::ReadUserProfile::Response &res)
 {
 	
 	Kinova::Api::Common::UserProfileHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::UserProfile output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -349,12 +349,12 @@ bool BaseRobotServices::ReadUserProfile(kortex_driver::ReadUserProfile::Request 
 	return true;
 }
 
-bool BaseRobotServices::DeleteUserProfile(kortex_driver::DeleteUserProfile::Request  &req, kortex_driver::DeleteUserProfile::Response &res)
+bool BaseRobotServices::DeleteUserProfile(kortex_driver::srv::DeleteUserProfile::Request  &req, kortex_driver::srv::DeleteUserProfile::Response &res)
 {
 	
 	Kinova::Api::Common::UserProfileHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -381,12 +381,12 @@ bool BaseRobotServices::DeleteUserProfile(kortex_driver::DeleteUserProfile::Requ
 	return true;
 }
 
-bool BaseRobotServices::ReadAllUserProfiles(kortex_driver::ReadAllUserProfiles::Request  &req, kortex_driver::ReadAllUserProfiles::Response &res)
+bool BaseRobotServices::ReadAllUserProfiles(kortex_driver::srv::ReadAllUserProfiles::Request  &req, kortex_driver::srv::ReadAllUserProfiles::Response &res)
 {
 	
 	Kinova::Api::Base::UserProfileList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -414,12 +414,12 @@ bool BaseRobotServices::ReadAllUserProfiles(kortex_driver::ReadAllUserProfiles::
 	return true;
 }
 
-bool BaseRobotServices::ReadAllUsers(kortex_driver::ReadAllUsers::Request  &req, kortex_driver::ReadAllUsers::Response &res)
+bool BaseRobotServices::ReadAllUsers(kortex_driver::srv::ReadAllUsers::Request  &req, kortex_driver::srv::ReadAllUsers::Response &res)
 {
 	
 	Kinova::Api::Base::UserList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -447,12 +447,12 @@ bool BaseRobotServices::ReadAllUsers(kortex_driver::ReadAllUsers::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::ChangePassword(kortex_driver::ChangePassword::Request  &req, kortex_driver::ChangePassword::Response &res)
+bool BaseRobotServices::ChangePassword(kortex_driver::srv::ChangePassword::Request  &req, kortex_driver::srv::ChangePassword::Response &res)
 {
 	
 	Kinova::Api::Base::PasswordChange input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -479,14 +479,14 @@ bool BaseRobotServices::ChangePassword(kortex_driver::ChangePassword::Request  &
 	return true;
 }
 
-bool BaseRobotServices::CreateSequence(kortex_driver::CreateSequence::Request  &req, kortex_driver::CreateSequence::Response &res)
+bool BaseRobotServices::CreateSequence(kortex_driver::srv::CreateSequence::Request  &req, kortex_driver::srv::CreateSequence::Response &res)
 {
 	
 	Kinova::Api::Base::Sequence input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::SequenceHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -514,12 +514,12 @@ bool BaseRobotServices::CreateSequence(kortex_driver::CreateSequence::Request  &
 	return true;
 }
 
-bool BaseRobotServices::UpdateSequence(kortex_driver::UpdateSequence::Request  &req, kortex_driver::UpdateSequence::Response &res)
+bool BaseRobotServices::UpdateSequence(kortex_driver::srv::UpdateSequence::Request  &req, kortex_driver::srv::UpdateSequence::Response &res)
 {
 	
 	Kinova::Api::Base::Sequence input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -546,14 +546,14 @@ bool BaseRobotServices::UpdateSequence(kortex_driver::UpdateSequence::Request  &
 	return true;
 }
 
-bool BaseRobotServices::ReadSequence(kortex_driver::ReadSequence::Request  &req, kortex_driver::ReadSequence::Response &res)
+bool BaseRobotServices::ReadSequence(kortex_driver::srv::ReadSequence::Request  &req, kortex_driver::srv::ReadSequence::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::Sequence output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -581,12 +581,12 @@ bool BaseRobotServices::ReadSequence(kortex_driver::ReadSequence::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::DeleteSequence(kortex_driver::DeleteSequence::Request  &req, kortex_driver::DeleteSequence::Response &res)
+bool BaseRobotServices::DeleteSequence(kortex_driver::srv::DeleteSequence::Request  &req, kortex_driver::srv::DeleteSequence::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -613,12 +613,12 @@ bool BaseRobotServices::DeleteSequence(kortex_driver::DeleteSequence::Request  &
 	return true;
 }
 
-bool BaseRobotServices::ReadAllSequences(kortex_driver::ReadAllSequences::Request  &req, kortex_driver::ReadAllSequences::Response &res)
+bool BaseRobotServices::ReadAllSequences(kortex_driver::srv::ReadAllSequences::Request  &req, kortex_driver::srv::ReadAllSequences::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -646,12 +646,12 @@ bool BaseRobotServices::ReadAllSequences(kortex_driver::ReadAllSequences::Reques
 	return true;
 }
 
-bool BaseRobotServices::PlaySequence(kortex_driver::PlaySequence::Request  &req, kortex_driver::PlaySequence::Response &res)
+bool BaseRobotServices::PlaySequence(kortex_driver::srv::PlaySequence::Request  &req, kortex_driver::srv::PlaySequence::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -678,12 +678,12 @@ bool BaseRobotServices::PlaySequence(kortex_driver::PlaySequence::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::PlayAdvancedSequence(kortex_driver::PlayAdvancedSequence::Request  &req, kortex_driver::PlayAdvancedSequence::Response &res)
+bool BaseRobotServices::PlayAdvancedSequence(kortex_driver::srv::PlayAdvancedSequence::Request  &req, kortex_driver::srv::PlayAdvancedSequence::Response &res)
 {
 	
 	Kinova::Api::Base::AdvancedSequenceHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -710,10 +710,10 @@ bool BaseRobotServices::PlayAdvancedSequence(kortex_driver::PlayAdvancedSequence
 	return true;
 }
 
-bool BaseRobotServices::StopSequence(kortex_driver::StopSequence::Request  &req, kortex_driver::StopSequence::Response &res)
+bool BaseRobotServices::StopSequence(kortex_driver::srv::StopSequence::Request  &req, kortex_driver::srv::StopSequence::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -740,10 +740,10 @@ bool BaseRobotServices::StopSequence(kortex_driver::StopSequence::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::PauseSequence(kortex_driver::PauseSequence::Request  &req, kortex_driver::PauseSequence::Response &res)
+bool BaseRobotServices::PauseSequence(kortex_driver::srv::PauseSequence::Request  &req, kortex_driver::srv::PauseSequence::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -770,10 +770,10 @@ bool BaseRobotServices::PauseSequence(kortex_driver::PauseSequence::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::ResumeSequence(kortex_driver::ResumeSequence::Request  &req, kortex_driver::ResumeSequence::Response &res)
+bool BaseRobotServices::ResumeSequence(kortex_driver::srv::ResumeSequence::Request  &req, kortex_driver::srv::ResumeSequence::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -800,14 +800,14 @@ bool BaseRobotServices::ResumeSequence(kortex_driver::ResumeSequence::Request  &
 	return true;
 }
 
-bool BaseRobotServices::CreateProtectionZone(kortex_driver::CreateProtectionZone::Request  &req, kortex_driver::CreateProtectionZone::Response &res)
+bool BaseRobotServices::CreateProtectionZone(kortex_driver::srv::CreateProtectionZone::Request  &req, kortex_driver::srv::CreateProtectionZone::Response &res)
 {
 	
 	Kinova::Api::Base::ProtectionZone input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::ProtectionZoneHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -835,12 +835,12 @@ bool BaseRobotServices::CreateProtectionZone(kortex_driver::CreateProtectionZone
 	return true;
 }
 
-bool BaseRobotServices::UpdateProtectionZone(kortex_driver::UpdateProtectionZone::Request  &req, kortex_driver::UpdateProtectionZone::Response &res)
+bool BaseRobotServices::UpdateProtectionZone(kortex_driver::srv::UpdateProtectionZone::Request  &req, kortex_driver::srv::UpdateProtectionZone::Response &res)
 {
 	
 	Kinova::Api::Base::ProtectionZone input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -867,14 +867,14 @@ bool BaseRobotServices::UpdateProtectionZone(kortex_driver::UpdateProtectionZone
 	return true;
 }
 
-bool BaseRobotServices::ReadProtectionZone(kortex_driver::ReadProtectionZone::Request  &req, kortex_driver::ReadProtectionZone::Response &res)
+bool BaseRobotServices::ReadProtectionZone(kortex_driver::srv::ReadProtectionZone::Request  &req, kortex_driver::srv::ReadProtectionZone::Response &res)
 {
 	
 	Kinova::Api::Base::ProtectionZoneHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::ProtectionZone output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -902,12 +902,12 @@ bool BaseRobotServices::ReadProtectionZone(kortex_driver::ReadProtectionZone::Re
 	return true;
 }
 
-bool BaseRobotServices::DeleteProtectionZone(kortex_driver::DeleteProtectionZone::Request  &req, kortex_driver::DeleteProtectionZone::Response &res)
+bool BaseRobotServices::DeleteProtectionZone(kortex_driver::srv::DeleteProtectionZone::Request  &req, kortex_driver::srv::DeleteProtectionZone::Response &res)
 {
 	
 	Kinova::Api::Base::ProtectionZoneHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -934,12 +934,12 @@ bool BaseRobotServices::DeleteProtectionZone(kortex_driver::DeleteProtectionZone
 	return true;
 }
 
-bool BaseRobotServices::ReadAllProtectionZones(kortex_driver::ReadAllProtectionZones::Request  &req, kortex_driver::ReadAllProtectionZones::Response &res)
+bool BaseRobotServices::ReadAllProtectionZones(kortex_driver::srv::ReadAllProtectionZones::Request  &req, kortex_driver::srv::ReadAllProtectionZones::Response &res)
 {
 	
 	Kinova::Api::Base::ProtectionZoneList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -967,14 +967,14 @@ bool BaseRobotServices::ReadAllProtectionZones(kortex_driver::ReadAllProtectionZ
 	return true;
 }
 
-bool BaseRobotServices::CreateMapping(kortex_driver::CreateMapping::Request  &req, kortex_driver::CreateMapping::Response &res)
+bool BaseRobotServices::CreateMapping(kortex_driver::srv::CreateMapping::Request  &req, kortex_driver::srv::CreateMapping::Response &res)
 {
 	
 	Kinova::Api::Base::Mapping input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::MappingHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1002,14 +1002,14 @@ bool BaseRobotServices::CreateMapping(kortex_driver::CreateMapping::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::ReadMapping(kortex_driver::ReadMapping::Request  &req, kortex_driver::ReadMapping::Response &res)
+bool BaseRobotServices::ReadMapping(kortex_driver::srv::ReadMapping::Request  &req, kortex_driver::srv::ReadMapping::Response &res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::Mapping output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1037,12 +1037,12 @@ bool BaseRobotServices::ReadMapping(kortex_driver::ReadMapping::Request  &req, k
 	return true;
 }
 
-bool BaseRobotServices::UpdateMapping(kortex_driver::UpdateMapping::Request  &req, kortex_driver::UpdateMapping::Response &res)
+bool BaseRobotServices::UpdateMapping(kortex_driver::srv::UpdateMapping::Request  &req, kortex_driver::srv::UpdateMapping::Response &res)
 {
 	
 	Kinova::Api::Base::Mapping input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1069,12 +1069,12 @@ bool BaseRobotServices::UpdateMapping(kortex_driver::UpdateMapping::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::DeleteMapping(kortex_driver::DeleteMapping::Request  &req, kortex_driver::DeleteMapping::Response &res)
+bool BaseRobotServices::DeleteMapping(kortex_driver::srv::DeleteMapping::Request  &req, kortex_driver::srv::DeleteMapping::Response &res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1101,12 +1101,12 @@ bool BaseRobotServices::DeleteMapping(kortex_driver::DeleteMapping::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::ReadAllMappings(kortex_driver::ReadAllMappings::Request  &req, kortex_driver::ReadAllMappings::Response &res)
+bool BaseRobotServices::ReadAllMappings(kortex_driver::srv::ReadAllMappings::Request  &req, kortex_driver::srv::ReadAllMappings::Response &res)
 {
 	
 	Kinova::Api::Base::MappingList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1134,14 +1134,14 @@ bool BaseRobotServices::ReadAllMappings(kortex_driver::ReadAllMappings::Request 
 	return true;
 }
 
-bool BaseRobotServices::CreateMap(kortex_driver::CreateMap::Request  &req, kortex_driver::CreateMap::Response &res)
+bool BaseRobotServices::CreateMap(kortex_driver::srv::CreateMap::Request  &req, kortex_driver::srv::CreateMap::Response &res)
 {
 	
 	Kinova::Api::Base::Map input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::MapHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1169,14 +1169,14 @@ bool BaseRobotServices::CreateMap(kortex_driver::CreateMap::Request  &req, korte
 	return true;
 }
 
-bool BaseRobotServices::ReadMap(kortex_driver::ReadMap::Request  &req, kortex_driver::ReadMap::Response &res)
+bool BaseRobotServices::ReadMap(kortex_driver::srv::ReadMap::Request  &req, kortex_driver::srv::ReadMap::Response &res)
 {
 	
 	Kinova::Api::Base::MapHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::Map output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1204,12 +1204,12 @@ bool BaseRobotServices::ReadMap(kortex_driver::ReadMap::Request  &req, kortex_dr
 	return true;
 }
 
-bool BaseRobotServices::UpdateMap(kortex_driver::UpdateMap::Request  &req, kortex_driver::UpdateMap::Response &res)
+bool BaseRobotServices::UpdateMap(kortex_driver::srv::UpdateMap::Request  &req, kortex_driver::srv::UpdateMap::Response &res)
 {
 	
 	Kinova::Api::Base::Map input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1236,12 +1236,12 @@ bool BaseRobotServices::UpdateMap(kortex_driver::UpdateMap::Request  &req, korte
 	return true;
 }
 
-bool BaseRobotServices::DeleteMap(kortex_driver::DeleteMap::Request  &req, kortex_driver::DeleteMap::Response &res)
+bool BaseRobotServices::DeleteMap(kortex_driver::srv::DeleteMap::Request  &req, kortex_driver::srv::DeleteMap::Response &res)
 {
 	
 	Kinova::Api::Base::MapHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1268,14 +1268,14 @@ bool BaseRobotServices::DeleteMap(kortex_driver::DeleteMap::Request  &req, korte
 	return true;
 }
 
-bool BaseRobotServices::ReadAllMaps(kortex_driver::ReadAllMaps::Request  &req, kortex_driver::ReadAllMaps::Response &res)
+bool BaseRobotServices::ReadAllMaps(kortex_driver::srv::ReadAllMaps::Request  &req, kortex_driver::srv::ReadAllMaps::Response &res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::MapList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1303,12 +1303,12 @@ bool BaseRobotServices::ReadAllMaps(kortex_driver::ReadAllMaps::Request  &req, k
 	return true;
 }
 
-bool BaseRobotServices::ActivateMap(kortex_driver::ActivateMap::Request  &req, kortex_driver::ActivateMap::Response &res)
+bool BaseRobotServices::ActivateMap(kortex_driver::srv::ActivateMap::Request  &req, kortex_driver::srv::ActivateMap::Response &res)
 {
 	
 	Kinova::Api::Base::ActivateMapHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1335,14 +1335,14 @@ bool BaseRobotServices::ActivateMap(kortex_driver::ActivateMap::Request  &req, k
 	return true;
 }
 
-bool BaseRobotServices::CreateAction(kortex_driver::CreateAction::Request  &req, kortex_driver::CreateAction::Response &res)
+bool BaseRobotServices::CreateAction(kortex_driver::srv::CreateAction::Request  &req, kortex_driver::srv::CreateAction::Response &res)
 {
 	
 	Kinova::Api::Base::Action input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::ActionHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1370,14 +1370,14 @@ bool BaseRobotServices::CreateAction(kortex_driver::CreateAction::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::ReadAction(kortex_driver::ReadAction::Request  &req, kortex_driver::ReadAction::Response &res)
+bool BaseRobotServices::ReadAction(kortex_driver::srv::ReadAction::Request  &req, kortex_driver::srv::ReadAction::Response &res)
 {
 	
 	Kinova::Api::Base::ActionHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::Action output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1405,14 +1405,14 @@ bool BaseRobotServices::ReadAction(kortex_driver::ReadAction::Request  &req, kor
 	return true;
 }
 
-bool BaseRobotServices::ReadAllActions(kortex_driver::ReadAllActions::Request  &req, kortex_driver::ReadAllActions::Response &res)
+bool BaseRobotServices::ReadAllActions(kortex_driver::srv::ReadAllActions::Request  &req, kortex_driver::srv::ReadAllActions::Response &res)
 {
 	
 	Kinova::Api::Base::RequestedActionType input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::ActionList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1440,12 +1440,12 @@ bool BaseRobotServices::ReadAllActions(kortex_driver::ReadAllActions::Request  &
 	return true;
 }
 
-bool BaseRobotServices::DeleteAction(kortex_driver::DeleteAction::Request  &req, kortex_driver::DeleteAction::Response &res)
+bool BaseRobotServices::DeleteAction(kortex_driver::srv::DeleteAction::Request  &req, kortex_driver::srv::DeleteAction::Response &res)
 {
 	
 	Kinova::Api::Base::ActionHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1472,12 +1472,12 @@ bool BaseRobotServices::DeleteAction(kortex_driver::DeleteAction::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::UpdateAction(kortex_driver::UpdateAction::Request  &req, kortex_driver::UpdateAction::Response &res)
+bool BaseRobotServices::UpdateAction(kortex_driver::srv::UpdateAction::Request  &req, kortex_driver::srv::UpdateAction::Response &res)
 {
 	
 	Kinova::Api::Base::Action input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1504,12 +1504,12 @@ bool BaseRobotServices::UpdateAction(kortex_driver::UpdateAction::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::ExecuteActionFromReference(kortex_driver::ExecuteActionFromReference::Request  &req, kortex_driver::ExecuteActionFromReference::Response &res)
+bool BaseRobotServices::ExecuteActionFromReference(kortex_driver::srv::ExecuteActionFromReference::Request  &req, kortex_driver::srv::ExecuteActionFromReference::Response &res)
 {
 	
 	Kinova::Api::Base::ActionHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1536,12 +1536,12 @@ bool BaseRobotServices::ExecuteActionFromReference(kortex_driver::ExecuteActionF
 	return true;
 }
 
-bool BaseRobotServices::ExecuteAction(kortex_driver::ExecuteAction::Request  &req, kortex_driver::ExecuteAction::Response &res)
+bool BaseRobotServices::ExecuteAction(kortex_driver::srv::ExecuteAction::Request  &req, kortex_driver::srv::ExecuteAction::Response &res)
 {
 	
 	Kinova::Api::Base::Action input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1568,10 +1568,10 @@ bool BaseRobotServices::ExecuteAction(kortex_driver::ExecuteAction::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::PauseAction(kortex_driver::PauseAction::Request  &req, kortex_driver::PauseAction::Response &res)
+bool BaseRobotServices::PauseAction(kortex_driver::srv::PauseAction::Request  &req, kortex_driver::srv::PauseAction::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1598,10 +1598,10 @@ bool BaseRobotServices::PauseAction(kortex_driver::PauseAction::Request  &req, k
 	return true;
 }
 
-bool BaseRobotServices::StopAction(kortex_driver::StopAction::Request  &req, kortex_driver::StopAction::Response &res)
+bool BaseRobotServices::StopAction(kortex_driver::srv::StopAction::Request  &req, kortex_driver::srv::StopAction::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1628,10 +1628,10 @@ bool BaseRobotServices::StopAction(kortex_driver::StopAction::Request  &req, kor
 	return true;
 }
 
-bool BaseRobotServices::ResumeAction(kortex_driver::ResumeAction::Request  &req, kortex_driver::ResumeAction::Response &res)
+bool BaseRobotServices::ResumeAction(kortex_driver::srv::ResumeAction::Request  &req, kortex_driver::srv::ResumeAction::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1658,14 +1658,14 @@ bool BaseRobotServices::ResumeAction(kortex_driver::ResumeAction::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::GetIPv4Configuration(kortex_driver::GetIPv4Configuration::Request  &req, kortex_driver::GetIPv4Configuration::Response &res)
+bool BaseRobotServices::GetIPv4Configuration(kortex_driver::srv::GetIPv4Configuration::Request  &req, kortex_driver::srv::GetIPv4Configuration::Response &res)
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::IPv4Configuration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1693,12 +1693,12 @@ bool BaseRobotServices::GetIPv4Configuration(kortex_driver::GetIPv4Configuration
 	return true;
 }
 
-bool BaseRobotServices::SetIPv4Configuration(kortex_driver::SetIPv4Configuration::Request  &req, kortex_driver::SetIPv4Configuration::Response &res)
+bool BaseRobotServices::SetIPv4Configuration(kortex_driver::srv::SetIPv4Configuration::Request  &req, kortex_driver::srv::SetIPv4Configuration::Response &res)
 {
 	
 	Kinova::Api::Base::FullIPv4Configuration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1725,12 +1725,12 @@ bool BaseRobotServices::SetIPv4Configuration(kortex_driver::SetIPv4Configuration
 	return true;
 }
 
-bool BaseRobotServices::SetCommunicationInterfaceEnable(kortex_driver::SetCommunicationInterfaceEnable::Request  &req, kortex_driver::SetCommunicationInterfaceEnable::Response &res)
+bool BaseRobotServices::SetCommunicationInterfaceEnable(kortex_driver::srv::SetCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::SetCommunicationInterfaceEnable::Response &res)
 {
 	
 	Kinova::Api::Base::CommunicationInterfaceConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1757,14 +1757,14 @@ bool BaseRobotServices::SetCommunicationInterfaceEnable(kortex_driver::SetCommun
 	return true;
 }
 
-bool BaseRobotServices::IsCommunicationInterfaceEnable(kortex_driver::IsCommunicationInterfaceEnable::Request  &req, kortex_driver::IsCommunicationInterfaceEnable::Response &res)
+bool BaseRobotServices::IsCommunicationInterfaceEnable(kortex_driver::srv::IsCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::IsCommunicationInterfaceEnable::Response &res)
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::CommunicationInterfaceConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1792,12 +1792,12 @@ bool BaseRobotServices::IsCommunicationInterfaceEnable(kortex_driver::IsCommunic
 	return true;
 }
 
-bool BaseRobotServices::GetAvailableWifi(kortex_driver::GetAvailableWifi::Request  &req, kortex_driver::GetAvailableWifi::Response &res)
+bool BaseRobotServices::GetAvailableWifi(kortex_driver::srv::GetAvailableWifi::Request  &req, kortex_driver::srv::GetAvailableWifi::Response &res)
 {
 	
 	Kinova::Api::Base::WifiInformationList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1825,14 +1825,14 @@ bool BaseRobotServices::GetAvailableWifi(kortex_driver::GetAvailableWifi::Reques
 	return true;
 }
 
-bool BaseRobotServices::GetWifiInformation(kortex_driver::GetWifiInformation::Request  &req, kortex_driver::GetWifiInformation::Response &res)
+bool BaseRobotServices::GetWifiInformation(kortex_driver::srv::GetWifiInformation::Request  &req, kortex_driver::srv::GetWifiInformation::Response &res)
 {
 	
 	Kinova::Api::Base::Ssid input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::WifiInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1860,12 +1860,12 @@ bool BaseRobotServices::GetWifiInformation(kortex_driver::GetWifiInformation::Re
 	return true;
 }
 
-bool BaseRobotServices::AddWifiConfiguration(kortex_driver::AddWifiConfiguration::Request  &req, kortex_driver::AddWifiConfiguration::Response &res)
+bool BaseRobotServices::AddWifiConfiguration(kortex_driver::srv::AddWifiConfiguration::Request  &req, kortex_driver::srv::AddWifiConfiguration::Response &res)
 {
 	
 	Kinova::Api::Base::WifiConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1892,12 +1892,12 @@ bool BaseRobotServices::AddWifiConfiguration(kortex_driver::AddWifiConfiguration
 	return true;
 }
 
-bool BaseRobotServices::DeleteWifiConfiguration(kortex_driver::DeleteWifiConfiguration::Request  &req, kortex_driver::DeleteWifiConfiguration::Response &res)
+bool BaseRobotServices::DeleteWifiConfiguration(kortex_driver::srv::DeleteWifiConfiguration::Request  &req, kortex_driver::srv::DeleteWifiConfiguration::Response &res)
 {
 	
 	Kinova::Api::Base::Ssid input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1924,12 +1924,12 @@ bool BaseRobotServices::DeleteWifiConfiguration(kortex_driver::DeleteWifiConfigu
 	return true;
 }
 
-bool BaseRobotServices::GetAllConfiguredWifis(kortex_driver::GetAllConfiguredWifis::Request  &req, kortex_driver::GetAllConfiguredWifis::Response &res)
+bool BaseRobotServices::GetAllConfiguredWifis(kortex_driver::srv::GetAllConfiguredWifis::Request  &req, kortex_driver::srv::GetAllConfiguredWifis::Response &res)
 {
 	
 	Kinova::Api::Base::WifiConfigurationList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1957,12 +1957,12 @@ bool BaseRobotServices::GetAllConfiguredWifis(kortex_driver::GetAllConfiguredWif
 	return true;
 }
 
-bool BaseRobotServices::ConnectWifi(kortex_driver::ConnectWifi::Request  &req, kortex_driver::ConnectWifi::Response &res)
+bool BaseRobotServices::ConnectWifi(kortex_driver::srv::ConnectWifi::Request  &req, kortex_driver::srv::ConnectWifi::Response &res)
 {
 	
 	Kinova::Api::Base::Ssid input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -1989,10 +1989,10 @@ bool BaseRobotServices::ConnectWifi(kortex_driver::ConnectWifi::Request  &req, k
 	return true;
 }
 
-bool BaseRobotServices::DisconnectWifi(kortex_driver::DisconnectWifi::Request  &req, kortex_driver::DisconnectWifi::Response &res)
+bool BaseRobotServices::DisconnectWifi(kortex_driver::srv::DisconnectWifi::Request  &req, kortex_driver::srv::DisconnectWifi::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2019,12 +2019,12 @@ bool BaseRobotServices::DisconnectWifi(kortex_driver::DisconnectWifi::Request  &
 	return true;
 }
 
-bool BaseRobotServices::GetConnectedWifiInformation(kortex_driver::GetConnectedWifiInformation::Request  &req, kortex_driver::GetConnectedWifiInformation::Response &res)
+bool BaseRobotServices::GetConnectedWifiInformation(kortex_driver::srv::GetConnectedWifiInformation::Request  &req, kortex_driver::srv::GetConnectedWifiInformation::Response &res)
 {
 	
 	Kinova::Api::Base::WifiInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2052,12 +2052,12 @@ bool BaseRobotServices::GetConnectedWifiInformation(kortex_driver::GetConnectedW
 	return true;
 }
 
-bool BaseRobotServices::Base_Unsubscribe(kortex_driver::Base_Unsubscribe::Request  &req, kortex_driver::Base_Unsubscribe::Response &res)
+bool BaseRobotServices::Base_Unsubscribe(kortex_driver::srv::BaseUnsubscribe::Request  &req, kortex_driver::srv::BaseUnsubscribe::Response &res)
 {
 	
 	Kinova::Api::Common::NotificationHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2084,7 +2084,7 @@ bool BaseRobotServices::Base_Unsubscribe(kortex_driver::Base_Unsubscribe::Reques
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationConfigurationChangeTopic(kortex_driver::OnNotificationConfigurationChangeTopic::Request  &req, kortex_driver::OnNotificationConfigurationChangeTopic::Response &res)
+bool BaseRobotServices::OnNotificationConfigurationChangeTopic(kortex_driver::srv::OnNotificationConfigurationChangeTopic::Request  &req, kortex_driver::srv::OnNotificationConfigurationChangeTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2094,7 +2094,7 @@ bool BaseRobotServices::OnNotificationConfigurationChangeTopic(kortex_driver::On
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2125,12 +2125,12 @@ bool BaseRobotServices::OnNotificationConfigurationChangeTopic(kortex_driver::On
 }
 void BaseRobotServices::cb_ConfigurationChangeTopic(Kinova::Api::Base::ConfigurationChangeNotification notif)
 {
-	kortex_driver::ConfigurationChangeNotification ros_msg;
+	kortex_driver::msg::ConfigurationChangeNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ConfigurationChangeTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationMappingInfoTopic(kortex_driver::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::OnNotificationMappingInfoTopic::Response &res)
+bool BaseRobotServices::OnNotificationMappingInfoTopic(kortex_driver::srv::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::srv::OnNotificationMappingInfoTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2140,7 +2140,7 @@ bool BaseRobotServices::OnNotificationMappingInfoTopic(kortex_driver::OnNotifica
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2171,12 +2171,12 @@ bool BaseRobotServices::OnNotificationMappingInfoTopic(kortex_driver::OnNotifica
 }
 void BaseRobotServices::cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoNotification notif)
 {
-	kortex_driver::MappingInfoNotification ros_msg;
+	kortex_driver::msg::MappingInfoNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_MappingInfoTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::Base_OnNotificationControlModeTopic(kortex_driver::Base_OnNotificationControlModeTopic::Request  &req, kortex_driver::Base_OnNotificationControlModeTopic::Response &res)
+bool BaseRobotServices::Base_OnNotificationControlModeTopic(kortex_driver::srv::BaseOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::BaseOnNotificationControlModeTopic::Response &res)
 {
 	ROS_WARN("The base/activate_publishing_of_control_mode_topic service is now deprecated and will be removed in a future release.");
 	
@@ -2187,7 +2187,7 @@ bool BaseRobotServices::Base_OnNotificationControlModeTopic(kortex_driver::Base_
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2218,12 +2218,12 @@ bool BaseRobotServices::Base_OnNotificationControlModeTopic(kortex_driver::Base_
 }
 void BaseRobotServices::cb_ControlModeTopic(Kinova::Api::Base::ControlModeNotification notif)
 {
-	kortex_driver::Base_ControlModeNotification ros_msg;
+	kortex_driver::msg::BaseControlModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ControlModeTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationOperatingModeTopic(kortex_driver::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::OnNotificationOperatingModeTopic::Response &res)
+bool BaseRobotServices::OnNotificationOperatingModeTopic(kortex_driver::srv::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::srv::OnNotificationOperatingModeTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2233,7 +2233,7 @@ bool BaseRobotServices::OnNotificationOperatingModeTopic(kortex_driver::OnNotifi
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2264,12 +2264,12 @@ bool BaseRobotServices::OnNotificationOperatingModeTopic(kortex_driver::OnNotifi
 }
 void BaseRobotServices::cb_OperatingModeTopic(Kinova::Api::Base::OperatingModeNotification notif)
 {
-	kortex_driver::OperatingModeNotification ros_msg;
+	kortex_driver::msg::OperatingModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_OperatingModeTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationSequenceInfoTopic(kortex_driver::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::OnNotificationSequenceInfoTopic::Response &res)
+bool BaseRobotServices::OnNotificationSequenceInfoTopic(kortex_driver::srv::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::srv::OnNotificationSequenceInfoTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2279,7 +2279,7 @@ bool BaseRobotServices::OnNotificationSequenceInfoTopic(kortex_driver::OnNotific
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2310,12 +2310,12 @@ bool BaseRobotServices::OnNotificationSequenceInfoTopic(kortex_driver::OnNotific
 }
 void BaseRobotServices::cb_SequenceInfoTopic(Kinova::Api::Base::SequenceInfoNotification notif)
 {
-	kortex_driver::SequenceInfoNotification ros_msg;
+	kortex_driver::msg::SequenceInfoNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_SequenceInfoTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationProtectionZoneTopic(kortex_driver::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::OnNotificationProtectionZoneTopic::Response &res)
+bool BaseRobotServices::OnNotificationProtectionZoneTopic(kortex_driver::srv::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::srv::OnNotificationProtectionZoneTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2325,7 +2325,7 @@ bool BaseRobotServices::OnNotificationProtectionZoneTopic(kortex_driver::OnNotif
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2356,12 +2356,12 @@ bool BaseRobotServices::OnNotificationProtectionZoneTopic(kortex_driver::OnNotif
 }
 void BaseRobotServices::cb_ProtectionZoneTopic(Kinova::Api::Base::ProtectionZoneNotification notif)
 {
-	kortex_driver::ProtectionZoneNotification ros_msg;
+	kortex_driver::msg::ProtectionZoneNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ProtectionZoneTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationUserTopic(kortex_driver::OnNotificationUserTopic::Request  &req, kortex_driver::OnNotificationUserTopic::Response &res)
+bool BaseRobotServices::OnNotificationUserTopic(kortex_driver::srv::OnNotificationUserTopic::Request  &req, kortex_driver::srv::OnNotificationUserTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2371,7 +2371,7 @@ bool BaseRobotServices::OnNotificationUserTopic(kortex_driver::OnNotificationUse
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2402,12 +2402,12 @@ bool BaseRobotServices::OnNotificationUserTopic(kortex_driver::OnNotificationUse
 }
 void BaseRobotServices::cb_UserTopic(Kinova::Api::Base::UserNotification notif)
 {
-	kortex_driver::UserNotification ros_msg;
+	kortex_driver::msg::UserNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_UserTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationControllerTopic(kortex_driver::OnNotificationControllerTopic::Request  &req, kortex_driver::OnNotificationControllerTopic::Response &res)
+bool BaseRobotServices::OnNotificationControllerTopic(kortex_driver::srv::OnNotificationControllerTopic::Request  &req, kortex_driver::srv::OnNotificationControllerTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2417,7 +2417,7 @@ bool BaseRobotServices::OnNotificationControllerTopic(kortex_driver::OnNotificat
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2448,12 +2448,12 @@ bool BaseRobotServices::OnNotificationControllerTopic(kortex_driver::OnNotificat
 }
 void BaseRobotServices::cb_ControllerTopic(Kinova::Api::Base::ControllerNotification notif)
 {
-	kortex_driver::ControllerNotification ros_msg;
+	kortex_driver::msg::ControllerNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ControllerTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationActionTopic(kortex_driver::OnNotificationActionTopic::Request  &req, kortex_driver::OnNotificationActionTopic::Response &res)
+bool BaseRobotServices::OnNotificationActionTopic(kortex_driver::srv::OnNotificationActionTopic::Request  &req, kortex_driver::srv::OnNotificationActionTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2463,7 +2463,7 @@ bool BaseRobotServices::OnNotificationActionTopic(kortex_driver::OnNotificationA
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2494,12 +2494,12 @@ bool BaseRobotServices::OnNotificationActionTopic(kortex_driver::OnNotificationA
 }
 void BaseRobotServices::cb_ActionTopic(Kinova::Api::Base::ActionNotification notif)
 {
-	kortex_driver::ActionNotification ros_msg;
+	kortex_driver::msg::ActionNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ActionTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationRobotEventTopic(kortex_driver::OnNotificationRobotEventTopic::Request  &req, kortex_driver::OnNotificationRobotEventTopic::Response &res)
+bool BaseRobotServices::OnNotificationRobotEventTopic(kortex_driver::srv::OnNotificationRobotEventTopic::Request  &req, kortex_driver::srv::OnNotificationRobotEventTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2509,7 +2509,7 @@ bool BaseRobotServices::OnNotificationRobotEventTopic(kortex_driver::OnNotificat
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2540,18 +2540,18 @@ bool BaseRobotServices::OnNotificationRobotEventTopic(kortex_driver::OnNotificat
 }
 void BaseRobotServices::cb_RobotEventTopic(Kinova::Api::Base::RobotEventNotification notif)
 {
-	kortex_driver::RobotEventNotification ros_msg;
+	kortex_driver::msg::RobotEventNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_RobotEventTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::PlayCartesianTrajectory(kortex_driver::PlayCartesianTrajectory::Request  &req, kortex_driver::PlayCartesianTrajectory::Response &res)
+bool BaseRobotServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesianTrajectory::Request  &req, kortex_driver::srv::PlayCartesianTrajectory::Response &res)
 {
 	ROS_WARN("The base/play_cartesian_trajectory service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedPose input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2578,13 +2578,13 @@ bool BaseRobotServices::PlayCartesianTrajectory(kortex_driver::PlayCartesianTraj
 	return true;
 }
 
-bool BaseRobotServices::PlayCartesianTrajectoryPosition(kortex_driver::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::PlayCartesianTrajectoryPosition::Response &res)
+bool BaseRobotServices::PlayCartesianTrajectoryPosition(kortex_driver::srv::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryPosition::Response &res)
 {
 	ROS_WARN("The base/play_cartesian_trajectory_position service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedPosition input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2611,13 +2611,13 @@ bool BaseRobotServices::PlayCartesianTrajectoryPosition(kortex_driver::PlayCarte
 	return true;
 }
 
-bool BaseRobotServices::PlayCartesianTrajectoryOrientation(kortex_driver::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::PlayCartesianTrajectoryOrientation::Response &res)
+bool BaseRobotServices::PlayCartesianTrajectoryOrientation(kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response &res)
 {
 	ROS_WARN("The base/play_cartesian_trajectory_orientation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedOrientation input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2644,10 +2644,10 @@ bool BaseRobotServices::PlayCartesianTrajectoryOrientation(kortex_driver::PlayCa
 	return true;
 }
 
-bool BaseRobotServices::Stop(kortex_driver::Stop::Request  &req, kortex_driver::Stop::Response &res)
+bool BaseRobotServices::Stop(kortex_driver::srv::Stop::Request  &req, kortex_driver::srv::Stop::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2674,12 +2674,12 @@ bool BaseRobotServices::Stop(kortex_driver::Stop::Request  &req, kortex_driver::
 	return true;
 }
 
-bool BaseRobotServices::GetMeasuredCartesianPose(kortex_driver::GetMeasuredCartesianPose::Request  &req, kortex_driver::GetMeasuredCartesianPose::Response &res)
+bool BaseRobotServices::GetMeasuredCartesianPose(kortex_driver::srv::GetMeasuredCartesianPose::Request  &req, kortex_driver::srv::GetMeasuredCartesianPose::Response &res)
 {
 	
 	Kinova::Api::Base::Pose output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2707,12 +2707,12 @@ bool BaseRobotServices::GetMeasuredCartesianPose(kortex_driver::GetMeasuredCarte
 	return true;
 }
 
-bool BaseRobotServices::SendWrenchCommand(kortex_driver::SendWrenchCommand::Request  &req, kortex_driver::SendWrenchCommand::Response &res)
+bool BaseRobotServices::SendWrenchCommand(kortex_driver::srv::SendWrenchCommand::Request  &req, kortex_driver::srv::SendWrenchCommand::Response &res)
 {
 	
 	Kinova::Api::Base::WrenchCommand input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2739,12 +2739,12 @@ bool BaseRobotServices::SendWrenchCommand(kortex_driver::SendWrenchCommand::Requ
 	return true;
 }
 
-bool BaseRobotServices::SendWrenchJoystickCommand(kortex_driver::SendWrenchJoystickCommand::Request  &req, kortex_driver::SendWrenchJoystickCommand::Response &res)
+bool BaseRobotServices::SendWrenchJoystickCommand(kortex_driver::srv::SendWrenchJoystickCommand::Request  &req, kortex_driver::srv::SendWrenchJoystickCommand::Response &res)
 {
 	
 	Kinova::Api::Base::WrenchCommand input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2771,12 +2771,12 @@ bool BaseRobotServices::SendWrenchJoystickCommand(kortex_driver::SendWrenchJoyst
 	return true;
 }
 
-bool BaseRobotServices::SendTwistJoystickCommand(kortex_driver::SendTwistJoystickCommand::Request  &req, kortex_driver::SendTwistJoystickCommand::Response &res)
+bool BaseRobotServices::SendTwistJoystickCommand(kortex_driver::srv::SendTwistJoystickCommand::Request  &req, kortex_driver::srv::SendTwistJoystickCommand::Response &res)
 {
 	
 	Kinova::Api::Base::TwistCommand input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2803,12 +2803,12 @@ bool BaseRobotServices::SendTwistJoystickCommand(kortex_driver::SendTwistJoystic
 	return true;
 }
 
-bool BaseRobotServices::SendTwistCommand(kortex_driver::SendTwistCommand::Request  &req, kortex_driver::SendTwistCommand::Response &res)
+bool BaseRobotServices::SendTwistCommand(kortex_driver::srv::SendTwistCommand::Request  &req, kortex_driver::srv::SendTwistCommand::Response &res)
 {
 	
 	Kinova::Api::Base::TwistCommand input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2835,13 +2835,13 @@ bool BaseRobotServices::SendTwistCommand(kortex_driver::SendTwistCommand::Reques
 	return true;
 }
 
-bool BaseRobotServices::PlayJointTrajectory(kortex_driver::PlayJointTrajectory::Request  &req, kortex_driver::PlayJointTrajectory::Response &res)
+bool BaseRobotServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTrajectory::Request  &req, kortex_driver::srv::PlayJointTrajectory::Response &res)
 {
 	ROS_WARN("The base/play_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedJointAngles input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2868,13 +2868,13 @@ bool BaseRobotServices::PlayJointTrajectory(kortex_driver::PlayJointTrajectory::
 	return true;
 }
 
-bool BaseRobotServices::PlaySelectedJointTrajectory(kortex_driver::PlaySelectedJointTrajectory::Request  &req, kortex_driver::PlaySelectedJointTrajectory::Response &res)
+bool BaseRobotServices::PlaySelectedJointTrajectory(kortex_driver::srv::PlaySelectedJointTrajectory::Request  &req, kortex_driver::srv::PlaySelectedJointTrajectory::Response &res)
 {
 	ROS_WARN("The base/play_selected_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedJointAngle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2901,12 +2901,12 @@ bool BaseRobotServices::PlaySelectedJointTrajectory(kortex_driver::PlaySelectedJ
 	return true;
 }
 
-bool BaseRobotServices::GetMeasuredJointAngles(kortex_driver::GetMeasuredJointAngles::Request  &req, kortex_driver::GetMeasuredJointAngles::Response &res)
+bool BaseRobotServices::GetMeasuredJointAngles(kortex_driver::srv::GetMeasuredJointAngles::Request  &req, kortex_driver::srv::GetMeasuredJointAngles::Response &res)
 {
 	
 	Kinova::Api::Base::JointAngles output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2934,12 +2934,12 @@ bool BaseRobotServices::GetMeasuredJointAngles(kortex_driver::GetMeasuredJointAn
 	return true;
 }
 
-bool BaseRobotServices::SendJointSpeedsCommand(kortex_driver::SendJointSpeedsCommand::Request  &req, kortex_driver::SendJointSpeedsCommand::Response &res)
+bool BaseRobotServices::SendJointSpeedsCommand(kortex_driver::srv::SendJointSpeedsCommand::Request  &req, kortex_driver::srv::SendJointSpeedsCommand::Response &res)
 {
 	
 	Kinova::Api::Base::JointSpeeds input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2966,12 +2966,12 @@ bool BaseRobotServices::SendJointSpeedsCommand(kortex_driver::SendJointSpeedsCom
 	return true;
 }
 
-bool BaseRobotServices::SendSelectedJointSpeedCommand(kortex_driver::SendSelectedJointSpeedCommand::Request  &req, kortex_driver::SendSelectedJointSpeedCommand::Response &res)
+bool BaseRobotServices::SendSelectedJointSpeedCommand(kortex_driver::srv::SendSelectedJointSpeedCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedCommand::Response &res)
 {
 	
 	Kinova::Api::Base::JointSpeed input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -2998,12 +2998,12 @@ bool BaseRobotServices::SendSelectedJointSpeedCommand(kortex_driver::SendSelecte
 	return true;
 }
 
-bool BaseRobotServices::SendGripperCommand(kortex_driver::SendGripperCommand::Request  &req, kortex_driver::SendGripperCommand::Response &res)
+bool BaseRobotServices::SendGripperCommand(kortex_driver::srv::SendGripperCommand::Request  &req, kortex_driver::srv::SendGripperCommand::Response &res)
 {
 	
 	Kinova::Api::Base::GripperCommand input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3030,14 +3030,14 @@ bool BaseRobotServices::SendGripperCommand(kortex_driver::SendGripperCommand::Re
 	return true;
 }
 
-bool BaseRobotServices::GetMeasuredGripperMovement(kortex_driver::GetMeasuredGripperMovement::Request  &req, kortex_driver::GetMeasuredGripperMovement::Response &res)
+bool BaseRobotServices::GetMeasuredGripperMovement(kortex_driver::srv::GetMeasuredGripperMovement::Request  &req, kortex_driver::srv::GetMeasuredGripperMovement::Response &res)
 {
 	
 	Kinova::Api::Base::GripperRequest input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::Gripper output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3065,12 +3065,12 @@ bool BaseRobotServices::GetMeasuredGripperMovement(kortex_driver::GetMeasuredGri
 	return true;
 }
 
-bool BaseRobotServices::SetAdmittance(kortex_driver::SetAdmittance::Request  &req, kortex_driver::SetAdmittance::Response &res)
+bool BaseRobotServices::SetAdmittance(kortex_driver::srv::SetAdmittance::Request  &req, kortex_driver::srv::SetAdmittance::Response &res)
 {
 	
 	Kinova::Api::Base::Admittance input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3097,12 +3097,12 @@ bool BaseRobotServices::SetAdmittance(kortex_driver::SetAdmittance::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::SetOperatingMode(kortex_driver::SetOperatingMode::Request  &req, kortex_driver::SetOperatingMode::Response &res)
+bool BaseRobotServices::SetOperatingMode(kortex_driver::srv::SetOperatingMode::Request  &req, kortex_driver::srv::SetOperatingMode::Response &res)
 {
 	
 	Kinova::Api::Base::OperatingModeInformation input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3129,10 +3129,10 @@ bool BaseRobotServices::SetOperatingMode(kortex_driver::SetOperatingMode::Reques
 	return true;
 }
 
-bool BaseRobotServices::ApplyEmergencyStop(kortex_driver::ApplyEmergencyStop::Request  &req, kortex_driver::ApplyEmergencyStop::Response &res)
+bool BaseRobotServices::ApplyEmergencyStop(kortex_driver::srv::ApplyEmergencyStop::Request  &req, kortex_driver::srv::ApplyEmergencyStop::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3159,10 +3159,10 @@ bool BaseRobotServices::ApplyEmergencyStop(kortex_driver::ApplyEmergencyStop::Re
 	return true;
 }
 
-bool BaseRobotServices::Base_ClearFaults(kortex_driver::Base_ClearFaults::Request  &req, kortex_driver::Base_ClearFaults::Response &res)
+bool BaseRobotServices::Base_ClearFaults(kortex_driver::srv::BaseClearFaults::Request  &req, kortex_driver::srv::BaseClearFaults::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3189,13 +3189,13 @@ bool BaseRobotServices::Base_ClearFaults(kortex_driver::Base_ClearFaults::Reques
 	return true;
 }
 
-bool BaseRobotServices::Base_GetControlMode(kortex_driver::Base_GetControlMode::Request  &req, kortex_driver::Base_GetControlMode::Response &res)
+bool BaseRobotServices::Base_GetControlMode(kortex_driver::srv::BaseGetControlMode::Request  &req, kortex_driver::srv::BaseGetControlMode::Response &res)
 {
 	ROS_WARN("The base/get_control_mode service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ControlModeInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3223,12 +3223,12 @@ bool BaseRobotServices::Base_GetControlMode(kortex_driver::Base_GetControlMode::
 	return true;
 }
 
-bool BaseRobotServices::GetOperatingMode(kortex_driver::GetOperatingMode::Request  &req, kortex_driver::GetOperatingMode::Response &res)
+bool BaseRobotServices::GetOperatingMode(kortex_driver::srv::GetOperatingMode::Request  &req, kortex_driver::srv::GetOperatingMode::Response &res)
 {
 	
 	Kinova::Api::Base::OperatingModeInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3256,12 +3256,12 @@ bool BaseRobotServices::GetOperatingMode(kortex_driver::GetOperatingMode::Reques
 	return true;
 }
 
-bool BaseRobotServices::SetServoingMode(kortex_driver::SetServoingMode::Request  &req, kortex_driver::SetServoingMode::Response &res)
+bool BaseRobotServices::SetServoingMode(kortex_driver::srv::SetServoingMode::Request  &req, kortex_driver::srv::SetServoingMode::Response &res)
 {
 	
 	Kinova::Api::Base::ServoingModeInformation input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3288,12 +3288,12 @@ bool BaseRobotServices::SetServoingMode(kortex_driver::SetServoingMode::Request 
 	return true;
 }
 
-bool BaseRobotServices::GetServoingMode(kortex_driver::GetServoingMode::Request  &req, kortex_driver::GetServoingMode::Response &res)
+bool BaseRobotServices::GetServoingMode(kortex_driver::srv::GetServoingMode::Request  &req, kortex_driver::srv::GetServoingMode::Response &res)
 {
 	
 	Kinova::Api::Base::ServoingModeInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3321,7 +3321,7 @@ bool BaseRobotServices::GetServoingMode(kortex_driver::GetServoingMode::Request 
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationServoingModeTopic(kortex_driver::OnNotificationServoingModeTopic::Request  &req, kortex_driver::OnNotificationServoingModeTopic::Response &res)
+bool BaseRobotServices::OnNotificationServoingModeTopic(kortex_driver::srv::OnNotificationServoingModeTopic::Request  &req, kortex_driver::srv::OnNotificationServoingModeTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3331,7 +3331,7 @@ bool BaseRobotServices::OnNotificationServoingModeTopic(kortex_driver::OnNotific
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3362,15 +3362,15 @@ bool BaseRobotServices::OnNotificationServoingModeTopic(kortex_driver::OnNotific
 }
 void BaseRobotServices::cb_ServoingModeTopic(Kinova::Api::Base::ServoingModeNotification notif)
 {
-	kortex_driver::ServoingModeNotification ros_msg;
+	kortex_driver::msg::ServoingModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ServoingModeTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::RestoreFactorySettings(kortex_driver::RestoreFactorySettings::Request  &req, kortex_driver::RestoreFactorySettings::Response &res)
+bool BaseRobotServices::RestoreFactorySettings(kortex_driver::srv::RestoreFactorySettings::Request  &req, kortex_driver::srv::RestoreFactorySettings::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3397,7 +3397,7 @@ bool BaseRobotServices::RestoreFactorySettings(kortex_driver::RestoreFactorySett
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationFactoryTopic(kortex_driver::OnNotificationFactoryTopic::Request  &req, kortex_driver::OnNotificationFactoryTopic::Response &res)
+bool BaseRobotServices::OnNotificationFactoryTopic(kortex_driver::srv::OnNotificationFactoryTopic::Request  &req, kortex_driver::srv::OnNotificationFactoryTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3407,7 +3407,7 @@ bool BaseRobotServices::OnNotificationFactoryTopic(kortex_driver::OnNotification
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3438,17 +3438,17 @@ bool BaseRobotServices::OnNotificationFactoryTopic(kortex_driver::OnNotification
 }
 void BaseRobotServices::cb_FactoryTopic(Kinova::Api::Base::FactoryNotification notif)
 {
-	kortex_driver::FactoryNotification ros_msg;
+	kortex_driver::msg::FactoryNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_FactoryTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::GetAllConnectedControllers(kortex_driver::GetAllConnectedControllers::Request  &req, kortex_driver::GetAllConnectedControllers::Response &res)
+bool BaseRobotServices::GetAllConnectedControllers(kortex_driver::srv::GetAllConnectedControllers::Request  &req, kortex_driver::srv::GetAllConnectedControllers::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3476,14 +3476,14 @@ bool BaseRobotServices::GetAllConnectedControllers(kortex_driver::GetAllConnecte
 	return true;
 }
 
-bool BaseRobotServices::GetControllerState(kortex_driver::GetControllerState::Request  &req, kortex_driver::GetControllerState::Response &res)
+bool BaseRobotServices::GetControllerState(kortex_driver::srv::GetControllerState::Request  &req, kortex_driver::srv::GetControllerState::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::ControllerState output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3511,12 +3511,12 @@ bool BaseRobotServices::GetControllerState(kortex_driver::GetControllerState::Re
 	return true;
 }
 
-bool BaseRobotServices::GetActuatorCount(kortex_driver::GetActuatorCount::Request  &req, kortex_driver::GetActuatorCount::Response &res)
+bool BaseRobotServices::GetActuatorCount(kortex_driver::srv::GetActuatorCount::Request  &req, kortex_driver::srv::GetActuatorCount::Response &res)
 {
 	
 	Kinova::Api::Base::ActuatorInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3544,10 +3544,10 @@ bool BaseRobotServices::GetActuatorCount(kortex_driver::GetActuatorCount::Reques
 	return true;
 }
 
-bool BaseRobotServices::StartWifiScan(kortex_driver::StartWifiScan::Request  &req, kortex_driver::StartWifiScan::Response &res)
+bool BaseRobotServices::StartWifiScan(kortex_driver::srv::StartWifiScan::Request  &req, kortex_driver::srv::StartWifiScan::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3574,14 +3574,14 @@ bool BaseRobotServices::StartWifiScan(kortex_driver::StartWifiScan::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::GetConfiguredWifi(kortex_driver::GetConfiguredWifi::Request  &req, kortex_driver::GetConfiguredWifi::Response &res)
+bool BaseRobotServices::GetConfiguredWifi(kortex_driver::srv::GetConfiguredWifi::Request  &req, kortex_driver::srv::GetConfiguredWifi::Response &res)
 {
 	
 	Kinova::Api::Base::Ssid input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::WifiConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3609,7 +3609,7 @@ bool BaseRobotServices::GetConfiguredWifi(kortex_driver::GetConfiguredWifi::Requ
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationNetworkTopic(kortex_driver::OnNotificationNetworkTopic::Request  &req, kortex_driver::OnNotificationNetworkTopic::Response &res)
+bool BaseRobotServices::OnNotificationNetworkTopic(kortex_driver::srv::OnNotificationNetworkTopic::Request  &req, kortex_driver::srv::OnNotificationNetworkTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3619,7 +3619,7 @@ bool BaseRobotServices::OnNotificationNetworkTopic(kortex_driver::OnNotification
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3650,17 +3650,17 @@ bool BaseRobotServices::OnNotificationNetworkTopic(kortex_driver::OnNotification
 }
 void BaseRobotServices::cb_NetworkTopic(Kinova::Api::Base::NetworkNotification notif)
 {
-	kortex_driver::NetworkNotification ros_msg;
+	kortex_driver::msg::NetworkNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_NetworkTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::GetArmState(kortex_driver::GetArmState::Request  &req, kortex_driver::GetArmState::Response &res)
+bool BaseRobotServices::GetArmState(kortex_driver::srv::GetArmState::Request  &req, kortex_driver::srv::GetArmState::Response &res)
 {
 	
 	Kinova::Api::Base::ArmStateInformation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3688,7 +3688,7 @@ bool BaseRobotServices::GetArmState(kortex_driver::GetArmState::Request  &req, k
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationArmStateTopic(kortex_driver::OnNotificationArmStateTopic::Request  &req, kortex_driver::OnNotificationArmStateTopic::Response &res)
+bool BaseRobotServices::OnNotificationArmStateTopic(kortex_driver::srv::OnNotificationArmStateTopic::Request  &req, kortex_driver::srv::OnNotificationArmStateTopic::Response &res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3698,7 +3698,7 @@ bool BaseRobotServices::OnNotificationArmStateTopic(kortex_driver::OnNotificatio
 	ToProtoData(req.input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3729,19 +3729,19 @@ bool BaseRobotServices::OnNotificationArmStateTopic(kortex_driver::OnNotificatio
 }
 void BaseRobotServices::cb_ArmStateTopic(Kinova::Api::Base::ArmStateNotification notif)
 {
-	kortex_driver::ArmStateNotification ros_msg;
+	kortex_driver::msg::ArmStateNotification ros_msg;
 	ToRosData(notif, ros_msg);
 	m_pub_ArmStateTopic.publish(ros_msg);
 }
 
-bool BaseRobotServices::GetIPv4Information(kortex_driver::GetIPv4Information::Request  &req, kortex_driver::GetIPv4Information::Response &res)
+bool BaseRobotServices::GetIPv4Information(kortex_driver::srv::GetIPv4Information::Request  &req, kortex_driver::srv::GetIPv4Information::Response &res)
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::IPv4Information output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3769,12 +3769,12 @@ bool BaseRobotServices::GetIPv4Information(kortex_driver::GetIPv4Information::Re
 	return true;
 }
 
-bool BaseRobotServices::SetWifiCountryCode(kortex_driver::SetWifiCountryCode::Request  &req, kortex_driver::SetWifiCountryCode::Response &res)
+bool BaseRobotServices::SetWifiCountryCode(kortex_driver::srv::SetWifiCountryCode::Request  &req, kortex_driver::srv::SetWifiCountryCode::Response &res)
 {
 	
 	Kinova::Api::Common::CountryCode input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3801,12 +3801,12 @@ bool BaseRobotServices::SetWifiCountryCode(kortex_driver::SetWifiCountryCode::Re
 	return true;
 }
 
-bool BaseRobotServices::GetWifiCountryCode(kortex_driver::GetWifiCountryCode::Request  &req, kortex_driver::GetWifiCountryCode::Response &res)
+bool BaseRobotServices::GetWifiCountryCode(kortex_driver::srv::GetWifiCountryCode::Request  &req, kortex_driver::srv::GetWifiCountryCode::Response &res)
 {
 	
 	Kinova::Api::Common::CountryCode output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3834,12 +3834,12 @@ bool BaseRobotServices::GetWifiCountryCode(kortex_driver::GetWifiCountryCode::Re
 	return true;
 }
 
-bool BaseRobotServices::Base_SetCapSenseConfig(kortex_driver::Base_SetCapSenseConfig::Request  &req, kortex_driver::Base_SetCapSenseConfig::Response &res)
+bool BaseRobotServices::Base_SetCapSenseConfig(kortex_driver::srv::BaseSetCapSenseConfig::Request  &req, kortex_driver::srv::BaseSetCapSenseConfig::Response &res)
 {
 	
 	Kinova::Api::Base::CapSenseConfig input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3866,12 +3866,12 @@ bool BaseRobotServices::Base_SetCapSenseConfig(kortex_driver::Base_SetCapSenseCo
 	return true;
 }
 
-bool BaseRobotServices::Base_GetCapSenseConfig(kortex_driver::Base_GetCapSenseConfig::Request  &req, kortex_driver::Base_GetCapSenseConfig::Response &res)
+bool BaseRobotServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetCapSenseConfig::Request  &req, kortex_driver::srv::BaseGetCapSenseConfig::Response &res)
 {
 	
 	Kinova::Api::Base::CapSenseConfig output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3899,13 +3899,13 @@ bool BaseRobotServices::Base_GetCapSenseConfig(kortex_driver::Base_GetCapSenseCo
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsSpeedHardLimitation(kortex_driver::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::GetAllJointsSpeedHardLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response &res)
 {
 	ROS_WARN("The base/get_all_joints_speed_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::JointsLimitationsList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3933,13 +3933,13 @@ bool BaseRobotServices::GetAllJointsSpeedHardLimitation(kortex_driver::GetAllJoi
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsTorqueHardLimitation(kortex_driver::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::GetAllJointsTorqueHardLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response &res)
 {
 	ROS_WARN("The base/get_all_joints_torque_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::JointsLimitationsList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -3967,13 +3967,13 @@ bool BaseRobotServices::GetAllJointsTorqueHardLimitation(kortex_driver::GetAllJo
 	return true;
 }
 
-bool BaseRobotServices::GetTwistHardLimitation(kortex_driver::GetTwistHardLimitation::Request  &req, kortex_driver::GetTwistHardLimitation::Response &res)
+bool BaseRobotServices::GetTwistHardLimitation(kortex_driver::srv::GetTwistHardLimitation::Request  &req, kortex_driver::srv::GetTwistHardLimitation::Response &res)
 {
 	ROS_WARN("The base/get_twist_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::TwistLimitation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4001,13 +4001,13 @@ bool BaseRobotServices::GetTwistHardLimitation(kortex_driver::GetTwistHardLimita
 	return true;
 }
 
-bool BaseRobotServices::GetWrenchHardLimitation(kortex_driver::GetWrenchHardLimitation::Request  &req, kortex_driver::GetWrenchHardLimitation::Response &res)
+bool BaseRobotServices::GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHardLimitation::Request  &req, kortex_driver::srv::GetWrenchHardLimitation::Response &res)
 {
 	ROS_WARN("The base/get_wrench_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::WrenchLimitation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4035,12 +4035,12 @@ bool BaseRobotServices::GetWrenchHardLimitation(kortex_driver::GetWrenchHardLimi
 	return true;
 }
 
-bool BaseRobotServices::SendJointSpeedsJoystickCommand(kortex_driver::SendJointSpeedsJoystickCommand::Request  &req, kortex_driver::SendJointSpeedsJoystickCommand::Response &res)
+bool BaseRobotServices::SendJointSpeedsJoystickCommand(kortex_driver::srv::SendJointSpeedsJoystickCommand::Request  &req, kortex_driver::srv::SendJointSpeedsJoystickCommand::Response &res)
 {
 	
 	Kinova::Api::Base::JointSpeeds input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4067,12 +4067,12 @@ bool BaseRobotServices::SendJointSpeedsJoystickCommand(kortex_driver::SendJointS
 	return true;
 }
 
-bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::SendSelectedJointSpeedJoystickCommand::Request  &req, kortex_driver::SendSelectedJointSpeedJoystickCommand::Response &res)
+bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Response &res)
 {
 	
 	Kinova::Api::Base::JointSpeed input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4099,14 +4099,14 @@ bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::Sen
 	return true;
 }
 
-bool BaseRobotServices::EnableBridge(kortex_driver::EnableBridge::Request  &req, kortex_driver::EnableBridge::Response &res)
+bool BaseRobotServices::EnableBridge(kortex_driver::srv::EnableBridge::Request  &req, kortex_driver::srv::EnableBridge::Response &res)
 {
 	
 	Kinova::Api::Base::BridgeConfig input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::BridgeResult output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4134,14 +4134,14 @@ bool BaseRobotServices::EnableBridge(kortex_driver::EnableBridge::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::DisableBridge(kortex_driver::DisableBridge::Request  &req, kortex_driver::DisableBridge::Response &res)
+bool BaseRobotServices::DisableBridge(kortex_driver::srv::DisableBridge::Request  &req, kortex_driver::srv::DisableBridge::Response &res)
 {
 	
 	Kinova::Api::Base::BridgeIdentifier input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::BridgeResult output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4169,12 +4169,12 @@ bool BaseRobotServices::DisableBridge(kortex_driver::DisableBridge::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::GetBridgeList(kortex_driver::GetBridgeList::Request  &req, kortex_driver::GetBridgeList::Response &res)
+bool BaseRobotServices::GetBridgeList(kortex_driver::srv::GetBridgeList::Request  &req, kortex_driver::srv::GetBridgeList::Response &res)
 {
 	
 	Kinova::Api::Base::BridgeList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4202,14 +4202,14 @@ bool BaseRobotServices::GetBridgeList(kortex_driver::GetBridgeList::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::GetBridgeConfig(kortex_driver::GetBridgeConfig::Request  &req, kortex_driver::GetBridgeConfig::Response &res)
+bool BaseRobotServices::GetBridgeConfig(kortex_driver::srv::GetBridgeConfig::Request  &req, kortex_driver::srv::GetBridgeConfig::Response &res)
 {
 	
 	Kinova::Api::Base::BridgeIdentifier input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::BridgeConfig output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4237,12 +4237,12 @@ bool BaseRobotServices::GetBridgeConfig(kortex_driver::GetBridgeConfig::Request 
 	return true;
 }
 
-bool BaseRobotServices::PlayPreComputedJointTrajectory(kortex_driver::PlayPreComputedJointTrajectory::Request  &req, kortex_driver::PlayPreComputedJointTrajectory::Response &res)
+bool BaseRobotServices::PlayPreComputedJointTrajectory(kortex_driver::srv::PlayPreComputedJointTrajectory::Request  &req, kortex_driver::srv::PlayPreComputedJointTrajectory::Response &res)
 {
 	
 	Kinova::Api::Base::PreComputedJointTrajectory input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4269,12 +4269,12 @@ bool BaseRobotServices::PlayPreComputedJointTrajectory(kortex_driver::PlayPreCom
 	return true;
 }
 
-bool BaseRobotServices::GetProductConfiguration(kortex_driver::GetProductConfiguration::Request  &req, kortex_driver::GetProductConfiguration::Response &res)
+bool BaseRobotServices::GetProductConfiguration(kortex_driver::srv::GetProductConfiguration::Request  &req, kortex_driver::srv::GetProductConfiguration::Response &res)
 {
 	
 	Kinova::Api::ProductConfiguration::CompleteProductConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4302,12 +4302,12 @@ bool BaseRobotServices::GetProductConfiguration(kortex_driver::GetProductConfigu
 	return true;
 }
 
-bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(kortex_driver::UpdateEndEffectorTypeConfiguration::Request  &req, kortex_driver::UpdateEndEffectorTypeConfiguration::Response &res)
+bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Request  &req, kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Response &res)
 {
 	
 	Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4334,10 +4334,10 @@ bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(kortex_driver::Update
 	return true;
 }
 
-bool BaseRobotServices::RestoreFactoryProductConfiguration(kortex_driver::RestoreFactoryProductConfiguration::Request  &req, kortex_driver::RestoreFactoryProductConfiguration::Response &res)
+bool BaseRobotServices::RestoreFactoryProductConfiguration(kortex_driver::srv::RestoreFactoryProductConfiguration::Request  &req, kortex_driver::srv::RestoreFactoryProductConfiguration::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4364,12 +4364,12 @@ bool BaseRobotServices::RestoreFactoryProductConfiguration(kortex_driver::Restor
 	return true;
 }
 
-bool BaseRobotServices::GetTrajectoryErrorReport(kortex_driver::GetTrajectoryErrorReport::Request  &req, kortex_driver::GetTrajectoryErrorReport::Response &res)
+bool BaseRobotServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTrajectoryErrorReport::Request  &req, kortex_driver::srv::GetTrajectoryErrorReport::Response &res)
 {
 	
 	Kinova::Api::Base::TrajectoryErrorReport output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4397,13 +4397,13 @@ bool BaseRobotServices::GetTrajectoryErrorReport(kortex_driver::GetTrajectoryErr
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(kortex_driver::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::GetAllJointsSpeedSoftLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response &res)
 {
 	ROS_WARN("The base/get_all_joints_speed_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::JointsLimitationsList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4431,13 +4431,13 @@ bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(kortex_driver::GetAllJoi
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(kortex_driver::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::GetAllJointsTorqueSoftLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response &res)
 {
 	ROS_WARN("The base/get_all_joints_torque_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::JointsLimitationsList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4465,13 +4465,13 @@ bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(kortex_driver::GetAllJo
 	return true;
 }
 
-bool BaseRobotServices::GetTwistSoftLimitation(kortex_driver::GetTwistSoftLimitation::Request  &req, kortex_driver::GetTwistSoftLimitation::Response &res)
+bool BaseRobotServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftLimitation::Request  &req, kortex_driver::srv::GetTwistSoftLimitation::Response &res)
 {
 	ROS_WARN("The base/get_twist_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::TwistLimitation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4499,13 +4499,13 @@ bool BaseRobotServices::GetTwistSoftLimitation(kortex_driver::GetTwistSoftLimita
 	return true;
 }
 
-bool BaseRobotServices::GetWrenchSoftLimitation(kortex_driver::GetWrenchSoftLimitation::Request  &req, kortex_driver::GetWrenchSoftLimitation::Response &res)
+bool BaseRobotServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSoftLimitation::Request  &req, kortex_driver::srv::GetWrenchSoftLimitation::Response &res)
 {
 	ROS_WARN("The base/get_wrench_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::WrenchLimitation output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4533,12 +4533,12 @@ bool BaseRobotServices::GetWrenchSoftLimitation(kortex_driver::GetWrenchSoftLimi
 	return true;
 }
 
-bool BaseRobotServices::SetControllerConfigurationMode(kortex_driver::SetControllerConfigurationMode::Request  &req, kortex_driver::SetControllerConfigurationMode::Response &res)
+bool BaseRobotServices::SetControllerConfigurationMode(kortex_driver::srv::SetControllerConfigurationMode::Request  &req, kortex_driver::srv::SetControllerConfigurationMode::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerConfigurationMode input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4565,12 +4565,12 @@ bool BaseRobotServices::SetControllerConfigurationMode(kortex_driver::SetControl
 	return true;
 }
 
-bool BaseRobotServices::GetControllerConfigurationMode(kortex_driver::GetControllerConfigurationMode::Request  &req, kortex_driver::GetControllerConfigurationMode::Response &res)
+bool BaseRobotServices::GetControllerConfigurationMode(kortex_driver::srv::GetControllerConfigurationMode::Request  &req, kortex_driver::srv::GetControllerConfigurationMode::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerConfigurationMode output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4598,12 +4598,12 @@ bool BaseRobotServices::GetControllerConfigurationMode(kortex_driver::GetControl
 	return true;
 }
 
-bool BaseRobotServices::StartTeaching(kortex_driver::StartTeaching::Request  &req, kortex_driver::StartTeaching::Response &res)
+bool BaseRobotServices::StartTeaching(kortex_driver::srv::StartTeaching::Request  &req, kortex_driver::srv::StartTeaching::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4630,10 +4630,10 @@ bool BaseRobotServices::StartTeaching(kortex_driver::StartTeaching::Request  &re
 	return true;
 }
 
-bool BaseRobotServices::StopTeaching(kortex_driver::StopTeaching::Request  &req, kortex_driver::StopTeaching::Response &res)
+bool BaseRobotServices::StopTeaching(kortex_driver::srv::StopTeaching::Request  &req, kortex_driver::srv::StopTeaching::Response &res)
 {
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4660,14 +4660,14 @@ bool BaseRobotServices::StopTeaching(kortex_driver::StopTeaching::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::AddSequenceTasks(kortex_driver::AddSequenceTasks::Request  &req, kortex_driver::AddSequenceTasks::Response &res)
+bool BaseRobotServices::AddSequenceTasks(kortex_driver::srv::AddSequenceTasks::Request  &req, kortex_driver::srv::AddSequenceTasks::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTasksConfiguration input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::SequenceTasksRange output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4695,12 +4695,12 @@ bool BaseRobotServices::AddSequenceTasks(kortex_driver::AddSequenceTasks::Reques
 	return true;
 }
 
-bool BaseRobotServices::UpdateSequenceTask(kortex_driver::UpdateSequenceTask::Request  &req, kortex_driver::UpdateSequenceTask::Response &res)
+bool BaseRobotServices::UpdateSequenceTask(kortex_driver::srv::UpdateSequenceTask::Request  &req, kortex_driver::srv::UpdateSequenceTask::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTaskConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4727,12 +4727,12 @@ bool BaseRobotServices::UpdateSequenceTask(kortex_driver::UpdateSequenceTask::Re
 	return true;
 }
 
-bool BaseRobotServices::SwapSequenceTasks(kortex_driver::SwapSequenceTasks::Request  &req, kortex_driver::SwapSequenceTasks::Response &res)
+bool BaseRobotServices::SwapSequenceTasks(kortex_driver::srv::SwapSequenceTasks::Request  &req, kortex_driver::srv::SwapSequenceTasks::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTasksPair input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4759,14 +4759,14 @@ bool BaseRobotServices::SwapSequenceTasks(kortex_driver::SwapSequenceTasks::Requ
 	return true;
 }
 
-bool BaseRobotServices::ReadSequenceTask(kortex_driver::ReadSequenceTask::Request  &req, kortex_driver::ReadSequenceTask::Response &res)
+bool BaseRobotServices::ReadSequenceTask(kortex_driver::srv::ReadSequenceTask::Request  &req, kortex_driver::srv::ReadSequenceTask::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::SequenceTask output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4794,14 +4794,14 @@ bool BaseRobotServices::ReadSequenceTask(kortex_driver::ReadSequenceTask::Reques
 	return true;
 }
 
-bool BaseRobotServices::ReadAllSequenceTasks(kortex_driver::ReadAllSequenceTasks::Request  &req, kortex_driver::ReadAllSequenceTasks::Response &res)
+bool BaseRobotServices::ReadAllSequenceTasks(kortex_driver::srv::ReadAllSequenceTasks::Request  &req, kortex_driver::srv::ReadAllSequenceTasks::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::SequenceTasks output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4829,12 +4829,12 @@ bool BaseRobotServices::ReadAllSequenceTasks(kortex_driver::ReadAllSequenceTasks
 	return true;
 }
 
-bool BaseRobotServices::DeleteSequenceTask(kortex_driver::DeleteSequenceTask::Request  &req, kortex_driver::DeleteSequenceTask::Response &res)
+bool BaseRobotServices::DeleteSequenceTask(kortex_driver::srv::DeleteSequenceTask::Request  &req, kortex_driver::srv::DeleteSequenceTask::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4861,12 +4861,12 @@ bool BaseRobotServices::DeleteSequenceTask(kortex_driver::DeleteSequenceTask::Re
 	return true;
 }
 
-bool BaseRobotServices::DeleteAllSequenceTasks(kortex_driver::DeleteAllSequenceTasks::Request  &req, kortex_driver::DeleteAllSequenceTasks::Response &res)
+bool BaseRobotServices::DeleteAllSequenceTasks(kortex_driver::srv::DeleteAllSequenceTasks::Request  &req, kortex_driver::srv::DeleteAllSequenceTasks::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4893,12 +4893,12 @@ bool BaseRobotServices::DeleteAllSequenceTasks(kortex_driver::DeleteAllSequenceT
 	return true;
 }
 
-bool BaseRobotServices::TakeSnapshot(kortex_driver::TakeSnapshot::Request  &req, kortex_driver::TakeSnapshot::Response &res)
+bool BaseRobotServices::TakeSnapshot(kortex_driver::srv::TakeSnapshot::Request  &req, kortex_driver::srv::TakeSnapshot::Response &res)
 {
 	
 	Kinova::Api::Base::Snapshot input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4925,12 +4925,12 @@ bool BaseRobotServices::TakeSnapshot(kortex_driver::TakeSnapshot::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::GetFirmwareBundleVersions(kortex_driver::GetFirmwareBundleVersions::Request  &req, kortex_driver::GetFirmwareBundleVersions::Response &res)
+bool BaseRobotServices::GetFirmwareBundleVersions(kortex_driver::srv::GetFirmwareBundleVersions::Request  &req, kortex_driver::srv::GetFirmwareBundleVersions::Response &res)
 {
 	
 	Kinova::Api::Base::FirmwareBundleVersions output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4958,12 +4958,12 @@ bool BaseRobotServices::GetFirmwareBundleVersions(kortex_driver::GetFirmwareBund
 	return true;
 }
 
-bool BaseRobotServices::ExecuteWaypointTrajectory(kortex_driver::ExecuteWaypointTrajectory::Request  &req, kortex_driver::ExecuteWaypointTrajectory::Response &res)
+bool BaseRobotServices::ExecuteWaypointTrajectory(kortex_driver::srv::ExecuteWaypointTrajectory::Request  &req, kortex_driver::srv::ExecuteWaypointTrajectory::Response &res)
 {
 	
 	Kinova::Api::Base::WaypointList input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -4990,12 +4990,12 @@ bool BaseRobotServices::ExecuteWaypointTrajectory(kortex_driver::ExecuteWaypoint
 	return true;
 }
 
-bool BaseRobotServices::MoveSequenceTask(kortex_driver::MoveSequenceTask::Request  &req, kortex_driver::MoveSequenceTask::Response &res)
+bool BaseRobotServices::MoveSequenceTask(kortex_driver::srv::MoveSequenceTask::Request  &req, kortex_driver::srv::MoveSequenceTask::Response &res)
 {
 	
 	Kinova::Api::Base::SequenceTasksPair input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5022,14 +5022,14 @@ bool BaseRobotServices::MoveSequenceTask(kortex_driver::MoveSequenceTask::Reques
 	return true;
 }
 
-bool BaseRobotServices::DuplicateMapping(kortex_driver::DuplicateMapping::Request  &req, kortex_driver::DuplicateMapping::Response &res)
+bool BaseRobotServices::DuplicateMapping(kortex_driver::srv::DuplicateMapping::Request  &req, kortex_driver::srv::DuplicateMapping::Response &res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::MappingHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5057,14 +5057,14 @@ bool BaseRobotServices::DuplicateMapping(kortex_driver::DuplicateMapping::Reques
 	return true;
 }
 
-bool BaseRobotServices::DuplicateMap(kortex_driver::DuplicateMap::Request  &req, kortex_driver::DuplicateMap::Response &res)
+bool BaseRobotServices::DuplicateMap(kortex_driver::srv::DuplicateMap::Request  &req, kortex_driver::srv::DuplicateMap::Response &res)
 {
 	
 	Kinova::Api::Base::MapHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::MapHandle output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5092,12 +5092,12 @@ bool BaseRobotServices::DuplicateMap(kortex_driver::DuplicateMap::Request  &req,
 	return true;
 }
 
-bool BaseRobotServices::SetControllerConfiguration(kortex_driver::SetControllerConfiguration::Request  &req, kortex_driver::SetControllerConfiguration::Response &res)
+bool BaseRobotServices::SetControllerConfiguration(kortex_driver::srv::SetControllerConfiguration::Request  &req, kortex_driver::srv::SetControllerConfiguration::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerConfiguration input;
 	ToProtoData(req.input, &input);
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5124,14 +5124,14 @@ bool BaseRobotServices::SetControllerConfiguration(kortex_driver::SetControllerC
 	return true;
 }
 
-bool BaseRobotServices::GetControllerConfiguration(kortex_driver::GetControllerConfiguration::Request  &req, kortex_driver::GetControllerConfiguration::Response &res)
+bool BaseRobotServices::GetControllerConfiguration(kortex_driver::srv::GetControllerConfiguration::Request  &req, kortex_driver::srv::GetControllerConfiguration::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerHandle input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::ControllerConfiguration output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5159,12 +5159,12 @@ bool BaseRobotServices::GetControllerConfiguration(kortex_driver::GetControllerC
 	return true;
 }
 
-bool BaseRobotServices::GetAllControllerConfigurations(kortex_driver::GetAllControllerConfigurations::Request  &req, kortex_driver::GetAllControllerConfigurations::Response &res)
+bool BaseRobotServices::GetAllControllerConfigurations(kortex_driver::srv::GetAllControllerConfigurations::Request  &req, kortex_driver::srv::GetAllControllerConfigurations::Response &res)
 {
 	
 	Kinova::Api::Base::ControllerConfigurationList output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5192,14 +5192,14 @@ bool BaseRobotServices::GetAllControllerConfigurations(kortex_driver::GetAllCont
 	return true;
 }
 
-bool BaseRobotServices::ComputeForwardKinematics(kortex_driver::ComputeForwardKinematics::Request  &req, kortex_driver::ComputeForwardKinematics::Response &res)
+bool BaseRobotServices::ComputeForwardKinematics(kortex_driver::srv::ComputeForwardKinematics::Request  &req, kortex_driver::srv::ComputeForwardKinematics::Response &res)
 {
 	
 	Kinova::Api::Base::JointAngles input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::Pose output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5227,14 +5227,14 @@ bool BaseRobotServices::ComputeForwardKinematics(kortex_driver::ComputeForwardKi
 	return true;
 }
 
-bool BaseRobotServices::ComputeInverseKinematics(kortex_driver::ComputeInverseKinematics::Request  &req, kortex_driver::ComputeInverseKinematics::Response &res)
+bool BaseRobotServices::ComputeInverseKinematics(kortex_driver::srv::ComputeInverseKinematics::Request  &req, kortex_driver::srv::ComputeInverseKinematics::Response &res)
 {
 	
 	Kinova::Api::Base::IKData input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::JointAngles output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{
@@ -5262,14 +5262,14 @@ bool BaseRobotServices::ComputeInverseKinematics(kortex_driver::ComputeInverseKi
 	return true;
 }
 
-bool BaseRobotServices::ValidateWaypointList(kortex_driver::ValidateWaypointList::Request  &req, kortex_driver::ValidateWaypointList::Response &res)
+bool BaseRobotServices::ValidateWaypointList(kortex_driver::srv::ValidateWaypointList::Request  &req, kortex_driver::srv::ValidateWaypointList::Response &res)
 {
 	
 	Kinova::Api::Base::WaypointList input;
 	ToProtoData(req.input, &input);
 	Kinova::Api::Base::WaypointValidationReport output;
 	
-	kortex_driver::KortexError result_error;
+	kortex_driver::msg::KortexError result_error;
 	
 	try
 	{

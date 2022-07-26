@@ -13,11 +13,11 @@
 #include "kortex_driver/non-generated/kortex_arm_simulation.h"
 #include "kortex_driver/ErrorCodes.h"
 #include "kortex_driver/SubErrorCodes.h"
-#include "kortex_driver/ActionNotification.h"
-#include "kortex_driver/ActionEvent.h"
-#include "kortex_driver/JointTrajectoryConstraintType.h"
-#include "kortex_driver/GripperMode.h"
-#include "kortex_driver/CartesianReferenceFrame.h"
+#include "kortex_driver/msg/action_notification.hpp"
+#include "kortex_driver/msg/action_event.hpp"
+#include "kortex_driver/msg/joint_trajectory_constraint_type.hpp"
+#include "kortex_driver/msg/gripper_mode.hpp"
+#include "kortex_driver/msg/cartesian_reference_frame.hpp"
 
 #include "trajectory_msgs/JointTrajectory.h"
 #include "controller_manager_msgs/SwitchController.h"
@@ -155,7 +155,7 @@ KortexArmSimulation::KortexArmSimulation(ros::NodeHandle& node_handle): m_node_h
         m_pub_position_controllers.push_back(m_node_handle.advertise<std_msgs::Float64>(
             "/" + m_robot_name + "/" + m_prefix + "joint_" + std::to_string(i+1) + "_position_controller/command", 1000));
     }
-    m_pub_action_topic = m_node_handle.advertise<kortex_driver::ActionNotification>("action_topic", 1000);
+    m_pub_action_topic = m_node_handle.advertise<kortex_driver::msg::ActionNotification>("action_topic", 1000);
     m_sub_joint_state = m_node_handle.subscribe("/" + m_robot_name + "/" + "joint_states", 1, &KortexArmSimulation::cb_joint_states, this);
     m_feedback.actuators.resize(GetDOF());
     m_feedback.interconnect.oneof_tool_feedback.gripper_feedback.resize(1);
@@ -210,7 +210,7 @@ KortexArmSimulation::~KortexArmSimulation()
     JoinThreadAndCancelAction();
 }
 
-kortex_driver::BaseCyclic_Feedback KortexArmSimulation::GetFeedback()
+kortex_driver::msg::BaseCyclicFeedback KortexArmSimulation::GetFeedback()
 {
     // If the feedback is not yet received, return now
     if (!m_first_state_received)
@@ -267,7 +267,7 @@ kortex_driver::BaseCyclic_Feedback KortexArmSimulation::GetFeedback()
     return m_feedback;
 }
 
-kortex_driver::CreateAction::Response KortexArmSimulation::CreateAction(const kortex_driver::CreateAction::Request& req)
+kortex_driver::srv::CreateAction::Response KortexArmSimulation::CreateAction(const kortex_driver::srv::CreateAction::Request& req)
 {
     auto new_action = req.input;
     unsigned int identifier = FIRST_CREATED_ACTION_ID;
@@ -284,10 +284,10 @@ kortex_driver::CreateAction::Response KortexArmSimulation::CreateAction(const ko
     // Add Action to map if type is supported
     switch (new_action.handle.action_type)
     {
-        case kortex_driver::ActionType::REACH_JOINT_ANGLES:
-        case kortex_driver::ActionType::REACH_POSE:
-        case kortex_driver::ActionType::SEND_GRIPPER_COMMAND:
-        case kortex_driver::ActionType::TIME_DELAY:
+        case kortex_driver::msg::ActionType::REACH_JOINT_ANGLES:
+        case kortex_driver::msg::ActionType::REACH_POSE:
+        case kortex_driver::msg::ActionType::SEND_GRIPPER_COMMAND:
+        case kortex_driver::msg::ActionType::TIME_DELAY:
             new_action.handle.identifier = identifier;
             new_action.handle.permission = 7;
             m_map_actions.emplace(std::make_pair(identifier, new_action));
@@ -297,15 +297,15 @@ kortex_driver::CreateAction::Response KortexArmSimulation::CreateAction(const ko
             break;
     }
     // Return ActionHandle for added action
-    kortex_driver::CreateAction::Response response;
+    kortex_driver::srv::CreateAction::Response response;
     response.output = new_action.handle;
     return response;
 }
 
-kortex_driver::ReadAction::Response KortexArmSimulation::ReadAction(const kortex_driver::ReadAction::Request& req)
+kortex_driver::srv::ReadAction::Response KortexArmSimulation::ReadAction(const kortex_driver::srv::ReadAction::Request& req)
 {
     auto input = req.input;
-    kortex_driver::ReadAction::Response response;
+    kortex_driver::srv::ReadAction::Response response;
     auto it = m_map_actions.find(input.identifier);
     if (it != m_map_actions.end())
     {
@@ -314,11 +314,11 @@ kortex_driver::ReadAction::Response KortexArmSimulation::ReadAction(const kortex
     return response;
 }
 
-kortex_driver::ReadAllActions::Response KortexArmSimulation::ReadAllActions(const kortex_driver::ReadAllActions::Request& req)
+kortex_driver::srv::ReadAllActions::Response KortexArmSimulation::ReadAllActions(const kortex_driver::srv::ReadAllActions::Request& req)
 {
     auto input = req.input;
-    kortex_driver::ReadAllActions::Response response;
-    kortex_driver::ActionList action_list;
+    kortex_driver::srv::ReadAllActions::Response response;
+    kortex_driver::msg::ActionList action_list;
     for (auto a : m_map_actions)
     {
         // If requested action type is specified and matches iterated action's type, add it to the list
@@ -332,7 +332,7 @@ kortex_driver::ReadAllActions::Response KortexArmSimulation::ReadAllActions(cons
     return response;
 }
 
-kortex_driver::DeleteAction::Response KortexArmSimulation::DeleteAction(const kortex_driver::DeleteAction::Request& req)
+kortex_driver::srv::DeleteAction::Response KortexArmSimulation::DeleteAction(const kortex_driver::srv::DeleteAction::Request& req)
 {
     auto handle = req.input;
     // If the action is not a default action
@@ -354,10 +354,10 @@ kortex_driver::DeleteAction::Response KortexArmSimulation::DeleteAction(const ko
         ROS_ERROR("Cannot delete default simulated actions.");
     }
     
-    return kortex_driver::DeleteAction::Response();
+    return kortex_driver::srv::DeleteAction::Response();
 }
 
-kortex_driver::UpdateAction::Response KortexArmSimulation::UpdateAction(const kortex_driver::UpdateAction::Request& req)
+kortex_driver::srv::UpdateAction::Response KortexArmSimulation::UpdateAction(const kortex_driver::srv::UpdateAction::Request& req)
 {
     auto action = req.input;
     // If the action is not a default action
@@ -386,10 +386,10 @@ kortex_driver::UpdateAction::Response KortexArmSimulation::UpdateAction(const ko
        ROS_ERROR("Cannot update default simulated actions."); 
     }
 
-    return kortex_driver::UpdateAction::Response();
+    return kortex_driver::srv::UpdateAction::Response();
 }
 
-kortex_driver::ExecuteActionFromReference::Response KortexArmSimulation::ExecuteActionFromReference(const kortex_driver::ExecuteActionFromReference::Request& req)
+kortex_driver::srv::ExecuteActionFromReference::Response KortexArmSimulation::ExecuteActionFromReference(const kortex_driver::srv::ExecuteActionFromReference::Request& req)
 {
     auto handle = req.input;
     auto it = m_map_actions.find(handle.identifier);
@@ -403,19 +403,19 @@ kortex_driver::ExecuteActionFromReference::Response KortexArmSimulation::Execute
         ROS_ERROR("Could not find action with given identifier %d", handle.identifier);
     }
     
-    return kortex_driver::ExecuteActionFromReference::Response();
+    return kortex_driver::srv::ExecuteActionFromReference::Response();
 }
 
-kortex_driver::ExecuteAction::Response KortexArmSimulation::ExecuteAction(const kortex_driver::ExecuteAction::Request& req)
+kortex_driver::srv::ExecuteAction::Response KortexArmSimulation::ExecuteAction(const kortex_driver::srv::ExecuteAction::Request& req)
 {
     auto action = req.input;
     // Add Action to map if type is supported
     switch (action.handle.action_type)
     {
-        case kortex_driver::ActionType::REACH_JOINT_ANGLES:
-        case kortex_driver::ActionType::REACH_POSE:
-        case kortex_driver::ActionType::SEND_GRIPPER_COMMAND:
-        case kortex_driver::ActionType::TIME_DELAY:
+        case kortex_driver::msg::ActionType::REACH_JOINT_ANGLES:
+        case kortex_driver::msg::ActionType::REACH_POSE:
+        case kortex_driver::msg::ActionType::SEND_GRIPPER_COMMAND:
+        case kortex_driver::msg::ActionType::TIME_DELAY:
             JoinThreadAndCancelAction(); // this will block until the thread is joined and current action finished
             m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
             break;
@@ -424,10 +424,10 @@ kortex_driver::ExecuteAction::Response KortexArmSimulation::ExecuteAction(const 
             break;
     }
 
-    return kortex_driver::ExecuteAction::Response();
+    return kortex_driver::srv::ExecuteAction::Response();
 }
 
-kortex_driver::StopAction::Response KortexArmSimulation::StopAction(const kortex_driver::StopAction::Request& req)
+kortex_driver::srv::StopAction::Response KortexArmSimulation::StopAction(const kortex_driver::srv::StopAction::Request& req)
 {
     if (m_is_action_being_executed.load())
     {
@@ -440,29 +440,29 @@ kortex_driver::StopAction::Response KortexArmSimulation::StopAction(const kortex
         m_gripper_action_client->cancelAllGoals();
     }
     
-    return kortex_driver::StopAction::Response();
+    return kortex_driver::srv::StopAction::Response();
 }
 
-kortex_driver::PlayCartesianTrajectory::Response KortexArmSimulation::PlayCartesianTrajectory(const kortex_driver::PlayCartesianTrajectory::Request& req)
+kortex_driver::srv::PlayCartesianTrajectory::Response KortexArmSimulation::PlayCartesianTrajectory(const kortex_driver::srv::PlayCartesianTrajectory::Request& req)
 {
     auto constrained_pose = req.input;
-    kortex_driver::Action action;
+    kortex_driver::msg::Action action;
     action.name = "PlayCartesianTrajectory";
-    action.handle.action_type = kortex_driver::ActionType::REACH_POSE;
+    action.handle.action_type = kortex_driver::msg::ActionType::REACH_POSE;
     action.oneof_action_parameters.reach_pose.push_back(constrained_pose);
 
     JoinThreadAndCancelAction(); // this will block until the thread is joined and current action finished
     m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
     
-    return kortex_driver::PlayCartesianTrajectory::Response();
+    return kortex_driver::srv::PlayCartesianTrajectory::Response();
 }
 
-kortex_driver::SendTwistCommand::Response KortexArmSimulation::SendTwistCommand(const kortex_driver::SendTwistCommand::Request& req)
+kortex_driver::srv::SendTwistCommand::Response KortexArmSimulation::SendTwistCommand(const kortex_driver::srv::SendTwistCommand::Request& req)
 {
     auto twist_command = req.input;
-    kortex_driver::Action action;
+    kortex_driver::msg::Action action;
     action.name = "SendTwistCommand";
-    action.handle.action_type = kortex_driver::ActionType::SEND_TWIST_COMMAND;
+    action.handle.action_type = kortex_driver::msg::ActionType::SEND_TWIST_COMMAND;
     action.oneof_action_parameters.send_twist_command.push_back(twist_command);
 
     // Convert orientations to rad
@@ -474,35 +474,35 @@ kortex_driver::SendTwistCommand::Response KortexArmSimulation::SendTwistCommand(
     m_twist_command = twist_command.twist;
 
     // If we are already executing twist control, don't cancel the thread
-    if (m_current_action_type != kortex_driver::ActionType::SEND_TWIST_COMMAND)
+    if (m_current_action_type != kortex_driver::msg::ActionType::SEND_TWIST_COMMAND)
     {
         JoinThreadAndCancelAction(); // this will block until the thread is joined and current action finished
         m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
     }
 
-    return kortex_driver::SendTwistCommand::Response();
+    return kortex_driver::srv::SendTwistCommand::Response();
 }
 
-kortex_driver::PlayJointTrajectory::Response KortexArmSimulation::PlayJointTrajectory(const kortex_driver::PlayJointTrajectory::Request& req)
+kortex_driver::srv::PlayJointTrajectory::Response KortexArmSimulation::PlayJointTrajectory(const kortex_driver::srv::PlayJointTrajectory::Request& req)
 {
     auto constrained_joint_angles = req.input;
-    kortex_driver::Action action;
+    kortex_driver::msg::Action action;
     action.name = "PlayJointTrajectory";
-    action.handle.action_type = kortex_driver::ActionType::REACH_JOINT_ANGLES;
+    action.handle.action_type = kortex_driver::msg::ActionType::REACH_JOINT_ANGLES;
     action.oneof_action_parameters.reach_joint_angles.push_back(constrained_joint_angles);
 
     JoinThreadAndCancelAction(); // this will block until the thread is joined and current action finished
     m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
     
-    return kortex_driver::PlayJointTrajectory::Response();
+    return kortex_driver::srv::PlayJointTrajectory::Response();
 }
 
-kortex_driver::SendJointSpeedsCommand::Response KortexArmSimulation::SendJointSpeedsCommand(const kortex_driver::SendJointSpeedsCommand::Request& req)
+kortex_driver::srv::SendJointSpeedsCommand::Response KortexArmSimulation::SendJointSpeedsCommand(const kortex_driver::srv::SendJointSpeedsCommand::Request& req)
 {
     auto joint_speeds = req.input;
-    kortex_driver::Action action;
+    kortex_driver::msg::Action action;
     action.name = "SendJointSpeedsCommand";
-    action.handle.action_type = kortex_driver::ActionType::SEND_JOINT_SPEEDS;
+    action.handle.action_type = kortex_driver::msg::ActionType::SEND_JOINT_SPEEDS;
 
     // Convert radians in degrees
     for (unsigned int i = 0; i < joint_speeds.joint_speeds.size(); i++)
@@ -521,30 +521,30 @@ kortex_driver::SendJointSpeedsCommand::Response KortexArmSimulation::SendJointSp
         });
 
     // If we are already executing joint speed control, don't cancel the thread
-    if (m_current_action_type != kortex_driver::ActionType::SEND_JOINT_SPEEDS)
+    if (m_current_action_type != kortex_driver::msg::ActionType::SEND_JOINT_SPEEDS)
     {
         JoinThreadAndCancelAction(); // this will block until the thread is joined and current action finished
         m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
     }
     
-    return kortex_driver::SendJointSpeedsCommand::Response();
+    return kortex_driver::srv::SendJointSpeedsCommand::Response();
 }
 
-kortex_driver::SendGripperCommand::Response KortexArmSimulation::SendGripperCommand(const kortex_driver::SendGripperCommand::Request& req)
+kortex_driver::srv::SendGripperCommand::Response KortexArmSimulation::SendGripperCommand(const kortex_driver::srv::SendGripperCommand::Request& req)
 {
     auto gripper_command = req.input;
-    kortex_driver::Action action;
+    kortex_driver::msg::Action action;
     action.name = "GripperCommand";
-    action.handle.action_type = kortex_driver::ActionType::SEND_GRIPPER_COMMAND;
+    action.handle.action_type = kortex_driver::msg::ActionType::SEND_GRIPPER_COMMAND;
     action.oneof_action_parameters.send_gripper_command.push_back(gripper_command);
 
     JoinThreadAndCancelAction(); // this will block until the thread is joined and current action finished
     m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
     
-    return kortex_driver::SendGripperCommand::Response();
+    return kortex_driver::srv::SendGripperCommand::Response();
 }
 
-kortex_driver::Stop::Response KortexArmSimulation::Stop(const kortex_driver::Stop::Request& req)
+kortex_driver::srv::Stop::Response KortexArmSimulation::Stop(const kortex_driver::srv::Stop::Request& req)
 {
     // If an action is ongoing, cancel it first
     if (m_is_action_being_executed.load())
@@ -556,10 +556,10 @@ kortex_driver::Stop::Response KortexArmSimulation::Stop(const kortex_driver::Sto
     {
         m_gripper_action_client->cancelAllGoals();
     }
-    return kortex_driver::Stop::Response();
+    return kortex_driver::srv::Stop::Response();
 }
 
-kortex_driver::ApplyEmergencyStop::Response KortexArmSimulation::ApplyEmergencyStop(const kortex_driver::ApplyEmergencyStop::Request& req)
+kortex_driver::srv::ApplyEmergencyStop::Response KortexArmSimulation::ApplyEmergencyStop(const kortex_driver::srv::ApplyEmergencyStop::Request& req)
 {
     // If an action is ongoing, cancel it first
     if (m_is_action_being_executed.load())
@@ -571,7 +571,7 @@ kortex_driver::ApplyEmergencyStop::Response KortexArmSimulation::ApplyEmergencyS
     {
         m_gripper_action_client->cancelAllGoals();
     }
-    return kortex_driver::ApplyEmergencyStop::Response();
+    return kortex_driver::srv::ApplyEmergencyStop::Response();
 }
 
 void KortexArmSimulation::cb_joint_states(const sensor_msgs::JointState& state)
@@ -583,16 +583,16 @@ void KortexArmSimulation::cb_joint_states(const sensor_msgs::JointState& state)
 
 void KortexArmSimulation::CreateDefaultActions()
 {
-    kortex_driver::Action retract, home, zero;
-    kortex_driver::ConstrainedJointAngles retract_angles, home_angles, zero_angles;
+    kortex_driver::msg::Action retract, home, zero;
+    kortex_driver::msg::ConstrainedJointAngles retract_angles, home_angles, zero_angles;
     // Retract
     retract.handle.identifier = 1;
-    retract.handle.action_type = kortex_driver::ActionType::REACH_JOINT_ANGLES;
+    retract.handle.action_type = kortex_driver::msg::ActionType::REACH_JOINT_ANGLES;
     retract.handle.permission = 7;
     retract.name = "Retract";
     for (int i = 0; i < m_degrees_of_freedom; i++)
     {
-        kortex_driver::JointAngle a;
+        kortex_driver::msg::JointAngle a;
         a.joint_identifier = i;
         auto named_target = m_moveit_arm_interface->getNamedTargetValues("retract");
         double moveit_angle = named_target[m_prefix + "joint_"+std::to_string(i+1)]; // rad
@@ -602,12 +602,12 @@ void KortexArmSimulation::CreateDefaultActions()
     retract.oneof_action_parameters.reach_joint_angles.push_back(retract_angles);
     // Home
     home.handle.identifier = 2;
-    home.handle.action_type = kortex_driver::ActionType::REACH_JOINT_ANGLES;
+    home.handle.action_type = kortex_driver::msg::ActionType::REACH_JOINT_ANGLES;
     home.handle.permission = 7;
     home.name = "Home";
     for (int i = 0; i < m_degrees_of_freedom; i++)
     {
-        kortex_driver::JointAngle a;
+        kortex_driver::msg::JointAngle a;
         a.joint_identifier = i;
         auto named_target = m_moveit_arm_interface->getNamedTargetValues("home");
         double moveit_angle = named_target[m_prefix + "joint_"+std::to_string(i+1)]; // rad
@@ -617,12 +617,12 @@ void KortexArmSimulation::CreateDefaultActions()
     home.oneof_action_parameters.reach_joint_angles.push_back(home_angles);
     // Zero
     zero.handle.identifier = 3;
-    zero.handle.action_type = kortex_driver::ActionType::REACH_JOINT_ANGLES;
+    zero.handle.action_type = kortex_driver::msg::ActionType::REACH_JOINT_ANGLES;
     zero.handle.permission = 7;
     zero.name = "Zero";
     for (int i = 0; i < m_degrees_of_freedom; i++)
     {
-        kortex_driver::JointAngle a;
+        kortex_driver::msg::JointAngle a;
         a.joint_identifier = i;
         auto named_target = m_moveit_arm_interface->getNamedTargetValues("vertical");
         double moveit_angle = named_target[m_prefix + "joint_"+std::to_string(i+1)]; // rad
@@ -680,9 +680,9 @@ bool KortexArmSimulation::SwitchControllerType(ControllerType new_type)
     return success;
 }
 
-kortex_driver::KortexError KortexArmSimulation::FillKortexError(uint32_t code, uint32_t subCode, const std::string& description) const
+kortex_driver::msg::KortexError KortexArmSimulation::FillKortexError(uint32_t code, uint32_t subCode, const std::string& description) const
 {
-    kortex_driver::KortexError error;
+    kortex_driver::msg::KortexError error;
     error.code = code;
     error.subCode = subCode;
     error.description = description;
@@ -701,14 +701,14 @@ void KortexArmSimulation::JoinThreadAndCancelAction()
     m_action_preempted = false;
 }
 
-void KortexArmSimulation::PlayAction(const kortex_driver::Action& action)
+void KortexArmSimulation::PlayAction(const kortex_driver::msg::Action& action)
 {
-    auto action_result = FillKortexError(kortex_driver::ErrorCodes::ERROR_NONE, kortex_driver::SubErrorCodes::SUB_ERROR_NONE);
+    auto action_result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_NONE, kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE);
 
     // Notify action started
-    kortex_driver::ActionNotification start_notif;
+    kortex_driver::msg::ActionNotification start_notif;
     start_notif.handle = action.handle;
-    start_notif.action_event = kortex_driver::ActionEvent::ACTION_START;
+    start_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_START;
     m_pub_action_topic.publish(start_notif);
     m_is_action_being_executed = true;
     m_current_action_type = action.handle.action_type;
@@ -716,48 +716,48 @@ void KortexArmSimulation::PlayAction(const kortex_driver::Action& action)
     // Switch executor on the action type
     switch (action.handle.action_type)
     {
-        case kortex_driver::ActionType::REACH_JOINT_ANGLES:
+        case kortex_driver::msg::ActionType::REACH_JOINT_ANGLES:
             action_result = ExecuteReachJointAngles(action);
             break;
-        case kortex_driver::ActionType::REACH_POSE:
+        case kortex_driver::msg::ActionType::REACH_POSE:
             action_result = ExecuteReachPose(action);
             break;
-        case kortex_driver::ActionType::SEND_JOINT_SPEEDS:
+        case kortex_driver::msg::ActionType::SEND_JOINT_SPEEDS:
             action_result = ExecuteSendJointSpeeds(action);
             break;
-        case kortex_driver::ActionType::SEND_TWIST_COMMAND:
+        case kortex_driver::msg::ActionType::SEND_TWIST_COMMAND:
             action_result = ExecuteSendTwist(action);
             break;
-        case kortex_driver::ActionType::SEND_GRIPPER_COMMAND:
+        case kortex_driver::msg::ActionType::SEND_GRIPPER_COMMAND:
             action_result = ExecuteSendGripperCommand(action);
             break;
-        case kortex_driver::ActionType::TIME_DELAY:
+        case kortex_driver::msg::ActionType::TIME_DELAY:
             action_result = ExecuteTimeDelay(action);
             break;
         default:
-            action_result = FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE, kortex_driver::SubErrorCodes::UNSUPPORTED_ACTION);
+            action_result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE, kortex_driver::msg::SubErrorCodes::UNSUPPORTED_ACTION);
             break;
     }
     
     // Oddly enough, gripper actions don't send notifications through Kortex API when they end
-    if (action.handle.action_type != kortex_driver::ActionType::SEND_GRIPPER_COMMAND)
+    if (action.handle.action_type != kortex_driver::msg::ActionType::SEND_GRIPPER_COMMAND)
     {
-        kortex_driver::ActionNotification end_notif;
+        kortex_driver::msg::ActionNotification end_notif;
         end_notif.handle = action.handle;
         // Action was cancelled by user and is not a velocity command
-        if (m_action_preempted.load() && action.handle.action_type != kortex_driver::ActionType::SEND_JOINT_SPEEDS)
+        if (m_action_preempted.load() && action.handle.action_type != kortex_driver::msg::ActionType::SEND_JOINT_SPEEDS)
         {
             // Notify ACTION_ABORT
-            end_notif.action_event = kortex_driver::ActionEvent::ACTION_ABORT;
+            end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_ABORT;
             ROS_WARN("Action was aborted by user.");
         }
         // Action ended on its own
         else
         {
-            if (action_result.code != kortex_driver::ErrorCodes::ERROR_NONE)
+            if (action_result.code != kortex_driver::msg::ErrorCodes::ERROR_NONE)
             {
                 // Notify ACTION_ABORT
-                end_notif.action_event = kortex_driver::ActionEvent::ACTION_ABORT;
+                end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_ABORT;
                 end_notif.abort_details = action_result.subCode;
                 ROS_WARN("Action was failed : \nError code is %d\nSub-error code is %d\nError description is : %s", 
                             action_result.code,
@@ -767,7 +767,7 @@ void KortexArmSimulation::PlayAction(const kortex_driver::Action& action)
             else
             {
                 // Notify ACTION_END
-                end_notif.action_event = kortex_driver::ActionEvent::ACTION_END;
+                end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_END;
             }
         }
         m_pub_action_topic.publish(end_notif);
@@ -776,28 +776,28 @@ void KortexArmSimulation::PlayAction(const kortex_driver::Action& action)
     m_is_action_being_executed = false;
 }
 
-kortex_driver::KortexError KortexArmSimulation::ExecuteReachJointAngles(const kortex_driver::Action& action)
+kortex_driver::msg::KortexError KortexArmSimulation::ExecuteReachJointAngles(const kortex_driver::msg::Action& action)
 {
-    auto result = FillKortexError(kortex_driver::ErrorCodes::ERROR_NONE, kortex_driver::SubErrorCodes::SUB_ERROR_NONE);
+    auto result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_NONE, kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE);
     if (action.oneof_action_parameters.reach_joint_angles.size() != 1)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                    kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                    kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                     "Error playing joint angles action : action is malformed.");
     }
     auto constrained_joint_angles = action.oneof_action_parameters.reach_joint_angles[0];
     if (constrained_joint_angles.joint_angles.joint_angles.size() != GetDOF())
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing joint angles action : action contains " + std::to_string(constrained_joint_angles.joint_angles.joint_angles.size()) + " joint angles but arm has " + std::to_string(GetDOF()));
     }
 
     // Switch to trajectory controller
     if (!SwitchControllerType(ControllerType::kTrajectory))
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::METHOD_FAILED,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::METHOD_FAILED,
                                 "Error playing joint angles action : simulated trajectory controller could not be switched to.");
     }
 
@@ -831,8 +831,8 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteReachJointAngles(const ko
     }
     else 
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Unsupported number of joints, expected 6 or 7");
     }
     for (int i = 0; i < constrained_joint_angles.joint_angles.joint_angles.size(); i++)
@@ -857,13 +857,13 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteReachJointAngles(const ko
     switch (constrained_joint_angles.constraint.type)
     {
         // If the duration is supplied, set the duration of the velocity profiles with that value
-        case kortex_driver::JointTrajectoryConstraintType::JOINT_CONSTRAINT_DURATION:
+        case kortex_driver::msg::JointTrajectoryConstraintType::JOINT_CONSTRAINT_DURATION:
         {
             // Error check on the given duration
             if (constrained_joint_angles.constraint.value <= 0.0f)
             {
-                return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+                return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Invalid duration constraint : it has to be higher than 0.0!");
             }
             // Set the velocity profiles
@@ -876,14 +876,14 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteReachJointAngles(const ko
             break;
         }
         // If a max velocity is supplied for each joint, we need to find the limiting duration with this velocity constraint
-        case kortex_driver::JointTrajectoryConstraintType::JOINT_CONSTRAINT_SPEED:
+        case kortex_driver::msg::JointTrajectoryConstraintType::JOINT_CONSTRAINT_SPEED:
         {
             // Error check on the given velocity
             float max_velocity = m_math_util.toRad(constrained_joint_angles.constraint.value);
             if (max_velocity <= 0.0f)
             {
-                return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+                return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Invalid velocity constraint : it has to be higher than 0.0!");
             }
             // Find the limiting duration with given velocity
@@ -1000,23 +1000,23 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteReachJointAngles(const ko
         auto status = m_follow_joint_trajectory_action_client->getResult();
         if (status->error_code != status->SUCCESSFUL)
         {
-            result = FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                        kortex_driver::SubErrorCodes::INVALID_PARAM,
+            result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                        kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                         status->error_string);
         }
     }
     return result;
 }
 
-kortex_driver::KortexError KortexArmSimulation::ExecuteReachPose(const kortex_driver::Action& action)
+kortex_driver::msg::KortexError KortexArmSimulation::ExecuteReachPose(const kortex_driver::msg::Action& action)
 {
-    kortex_driver::KortexError result;
-    result.code = kortex_driver::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::SubErrorCodes::SUB_ERROR_NONE;
+    kortex_driver::msg::KortexError result;
+    result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
+    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.reach_pose.size() != 1)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing pose action : action is malformed.");
     }
     auto constrained_pose = action.oneof_action_parameters.reach_pose[0];
@@ -1024,8 +1024,8 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteReachPose(const kortex_dr
     // Switch to trajectory controller
     if (!SwitchControllerType(ControllerType::kTrajectory))
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::METHOD_FAILED,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::METHOD_FAILED,
                                 "Error playing pose action : simulated trajectory controller could not be switched to.");
     }
 
@@ -1209,38 +1209,38 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteReachPose(const kortex_dr
         auto status = m_follow_joint_trajectory_action_client->getResult();
         if (status->error_code != status->SUCCESSFUL)
         {
-            result = FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                        kortex_driver::SubErrorCodes::INVALID_PARAM,
+            result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                        kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                         status->error_string);
         }
     }
     return result;
 }
 
-kortex_driver::KortexError KortexArmSimulation::ExecuteSendJointSpeeds(const kortex_driver::Action& action)
+kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendJointSpeeds(const kortex_driver::msg::Action& action)
 {
-    kortex_driver::KortexError result;
-    result.code = kortex_driver::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::SubErrorCodes::SUB_ERROR_NONE;
+    kortex_driver::msg::KortexError result;
+    result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
+    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.send_joint_speeds.size() != 1)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing joints speeds : action is malformed.");
     }
     auto joint_speeds = action.oneof_action_parameters.send_joint_speeds[0];
     if (joint_speeds.joint_speeds.size() != GetDOF())
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing joint speeds action : action contains " + std::to_string(joint_speeds.joint_speeds.size()) + " joint speeds but arm has " + std::to_string(GetDOF()));
     }
 
     // Switch to trajectory controller
     if (!SwitchControllerType(ControllerType::kIndividual))
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::METHOD_FAILED,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::METHOD_FAILED,
                                 "Error playing joint speeds action : simulated positions controllers could not be switched to.");
     }
 
@@ -1352,15 +1352,15 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteSendJointSpeeds(const kor
     return result;
 }
 
-kortex_driver::KortexError KortexArmSimulation::ExecuteSendTwist(const kortex_driver::Action& action)
+kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendTwist(const kortex_driver::msg::Action& action)
 {
-    kortex_driver::KortexError result;
-    result.code = kortex_driver::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::SubErrorCodes::SUB_ERROR_NONE;
+    kortex_driver::msg::KortexError result;
+    result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
+    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.send_twist_command.size() != 1)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing twist action : action is malformed.");
     }
     auto twist = action.oneof_action_parameters.send_twist_command[0];
@@ -1368,16 +1368,16 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteSendTwist(const kortex_dr
     // Switch to trajectory controller
     if (!SwitchControllerType(ControllerType::kIndividual))
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::METHOD_FAILED,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::METHOD_FAILED,
                                 "Error playing joint speeds action : simulated positions controllers could not be switched to.");
     }
 
     // Only mixed frame is supported in simulation
-    if (twist.reference_frame != kortex_driver::CartesianReferenceFrame::CARTESIAN_REFERENCE_FRAME_MIXED)
+    if (twist.reference_frame != kortex_driver::msg::CartesianReferenceFrame::CARTESIAN_REFERENCE_FRAME_MIXED)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing twist action : only mixed frame is supported in simulation.");
     }
 
@@ -1397,8 +1397,8 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteSendTwist(const kortex_dr
     std::vector<double> previous_commands = commands; // in rad
     std::vector<double> previous_velocity_commands(GetDOF(), 0.0); // in rad/s
     std::vector<bool> stopped(GetDOF(), false);
-    kortex_driver::Twist twist_command = m_twist_command;
-    kortex_driver::Twist previous_twist_command;
+    kortex_driver::msg::Twist twist_command = m_twist_command;
+    kortex_driver::msg::Twist previous_twist_command;
 
     // While we're not done
     while (ros::ok())
@@ -1412,7 +1412,7 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteSendTwist(const kortex_dr
         // Calculate actual twist command considering max linear and angular accelerations
         double max_linear_twist_delta = JOINT_TRAJECTORY_TIMESTEP_SECONDS * m_max_cartesian_acceleration_linear;
         double max_angular_twist_delta = JOINT_TRAJECTORY_TIMESTEP_SECONDS * m_max_cartesian_acceleration_angular;
-        kortex_driver::Twist delta_twist = m_math_util.substractTwists(m_twist_command, previous_twist_command);
+        kortex_driver::msg::Twist delta_twist = m_math_util.substractTwists(m_twist_command, previous_twist_command);
 
         // If the velocity change is within acceleration limits for this timestep
         if (fabs(delta_twist.linear_x) < fabs(max_linear_twist_delta))
@@ -1564,30 +1564,30 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteSendTwist(const kortex_dr
     return result;
 }
 
-kortex_driver::KortexError KortexArmSimulation::ExecuteSendGripperCommand(const kortex_driver::Action& action)
+kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendGripperCommand(const kortex_driver::msg::Action& action)
 {
-    kortex_driver::KortexError result;
-    result.code = kortex_driver::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::SubErrorCodes::SUB_ERROR_NONE;
+    kortex_driver::msg::KortexError result;
+    result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
+    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.send_gripper_command.size() != 1)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing gripper command action : action is malformed.");
     }
     auto gripper_command = action.oneof_action_parameters.send_gripper_command[0];
 
     if (gripper_command.gripper.finger.size() != 1)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                kortex_driver::SubErrorCodes::INVALID_PARAM,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                kortex_driver::msg::SubErrorCodes::INVALID_PARAM,
                                 "Error playing gripper command action : there must be exactly one finger");
     }
 
-    if (gripper_command.mode != kortex_driver::GripperMode::GRIPPER_POSITION)
+    if (gripper_command.mode != kortex_driver::msg::GripperMode::GRIPPER_POSITION)
     {
-        return FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                            kortex_driver::SubErrorCodes::UNSUPPORTED_ACTION,
+        return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                            kortex_driver::msg::SubErrorCodes::UNSUPPORTED_ACTION,
                             "Error playing gripper command action : gripper mode " + std::to_string(gripper_command.mode) + " is not supported; only position is.");
     }
 
@@ -1622,18 +1622,18 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteSendGripperCommand(const 
         
         if (!status->reached_goal)
         {
-            result = FillKortexError(kortex_driver::ErrorCodes::ERROR_DEVICE,
-                                        kortex_driver::SubErrorCodes::METHOD_FAILED,
+            result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
+                                        kortex_driver::msg::SubErrorCodes::METHOD_FAILED,
                                         "The gripper command failed during execution.");
         }
     }
     return result;
 }
 
-kortex_driver::KortexError KortexArmSimulation::ExecuteTimeDelay(const kortex_driver::Action& action)
+kortex_driver::msg::KortexError KortexArmSimulation::ExecuteTimeDelay(const kortex_driver::msg::Action& action)
 {
-    auto result = FillKortexError(kortex_driver::ErrorCodes::ERROR_NONE,
-                                kortex_driver::SubErrorCodes::SUB_ERROR_NONE);
+    auto result = FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_NONE,
+                                kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE);
     if (!action.oneof_action_parameters.delay.empty())
     {
         auto start = std::chrono::system_clock::now();
@@ -1647,21 +1647,21 @@ kortex_driver::KortexError KortexArmSimulation::ExecuteTimeDelay(const kortex_dr
     }
     else
     {
-        result.code = kortex_driver::ErrorCodes::ERROR_DEVICE;
-        result.subCode = kortex_driver::SubErrorCodes::INVALID_PARAM;
+        result.code = kortex_driver::msg::ErrorCodes::ERROR_DEVICE;
+        result.subCode = kortex_driver::msg::SubErrorCodes::INVALID_PARAM;
         result.description = "Error playing time delay action : action is malformed.";
     }
     return result;
 }
 
-void KortexArmSimulation::new_joint_speeds_cb(const kortex_driver::Base_JointSpeeds& joint_speeds)
+void KortexArmSimulation::new_joint_speeds_cb(const kortex_driver::msg::BaseJointSpeeds& joint_speeds)
 {
     kortex_driver::SendJointSpeedsCommandRequest req;
     req.input = joint_speeds;
     SendJointSpeedsCommand(req);
 }
 
-void KortexArmSimulation::new_twist_cb(const kortex_driver::TwistCommand& twist)
+void KortexArmSimulation::new_twist_cb(const kortex_driver::msg::TwistCommand& twist)
 {
     // TODO Implement
 }

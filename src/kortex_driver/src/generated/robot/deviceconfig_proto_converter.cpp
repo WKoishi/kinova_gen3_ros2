@@ -16,63 +16,63 @@
  
 #include "kortex_driver/generated/robot/deviceconfig_proto_converter.h"
 
-int ToProtoData(kortex_driver::DeviceType input, Kinova::Api::DeviceConfig::DeviceType *output)
+int ToProtoData(kortex_driver::msg::DeviceType input, Kinova::Api::DeviceConfig::DeviceType *output)
 {
 	
 	output->set_device_type((Kinova::Api::Common::DeviceTypes)input.device_type);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::RunMode input, Kinova::Api::DeviceConfig::RunMode *output)
+int ToProtoData(kortex_driver::msg::RunMode input, Kinova::Api::DeviceConfig::RunMode *output)
 {
 	
 	output->set_run_mode((Kinova::Api::DeviceConfig::RunModes)input.run_mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FirmwareVersion input, Kinova::Api::DeviceConfig::FirmwareVersion *output)
+int ToProtoData(kortex_driver::msg::FirmwareVersion input, Kinova::Api::DeviceConfig::FirmwareVersion *output)
 {
 	
 	output->set_firmware_version(input.firmware_version);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::BootloaderVersion input, Kinova::Api::DeviceConfig::BootloaderVersion *output)
+int ToProtoData(kortex_driver::msg::BootloaderVersion input, Kinova::Api::DeviceConfig::BootloaderVersion *output)
 {
 	
 	output->set_bootloader_version(input.bootloader_version);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ModelNumber input, Kinova::Api::DeviceConfig::ModelNumber *output)
+int ToProtoData(kortex_driver::msg::ModelNumber input, Kinova::Api::DeviceConfig::ModelNumber *output)
 {
 	
 	output->set_model_number(input.model_number);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PartNumber input, Kinova::Api::DeviceConfig::PartNumber *output)
+int ToProtoData(kortex_driver::msg::PartNumber input, Kinova::Api::DeviceConfig::PartNumber *output)
 {
 	
 	output->set_part_number(input.part_number);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SerialNumber input, Kinova::Api::DeviceConfig::SerialNumber *output)
+int ToProtoData(kortex_driver::msg::SerialNumber input, Kinova::Api::DeviceConfig::SerialNumber *output)
 {
 	
 	output->set_serial_number(input.serial_number);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::MACAddress input, Kinova::Api::DeviceConfig::MACAddress *output)
+int ToProtoData(kortex_driver::msg::MACAddress input, Kinova::Api::DeviceConfig::MACAddress *output)
 {
 	
 	output->set_mac_address(std::string(input.mac_address.begin(), input.mac_address.end()));
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::IPv4Settings input, Kinova::Api::DeviceConfig::IPv4Settings *output)
+int ToProtoData(kortex_driver::msg::IPv4Settings input, Kinova::Api::DeviceConfig::IPv4Settings *output)
 {
 	
 	output->set_ipv4_address(input.ipv4_address);
@@ -81,28 +81,28 @@ int ToProtoData(kortex_driver::IPv4Settings input, Kinova::Api::DeviceConfig::IP
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PartNumberRevision input, Kinova::Api::DeviceConfig::PartNumberRevision *output)
+int ToProtoData(kortex_driver::msg::PartNumberRevision input, Kinova::Api::DeviceConfig::PartNumberRevision *output)
 {
 	
 	output->set_part_number_revision(input.part_number_revision);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PowerOnSelfTestResult input, Kinova::Api::DeviceConfig::PowerOnSelfTestResult *output)
+int ToProtoData(kortex_driver::msg::PowerOnSelfTestResult input, Kinova::Api::DeviceConfig::PowerOnSelfTestResult *output)
 {
 	
 	output->set_power_on_self_test_result(input.power_on_self_test_result);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::RebootRqst input, Kinova::Api::DeviceConfig::RebootRqst *output)
+int ToProtoData(kortex_driver::msg::RebootRqst input, Kinova::Api::DeviceConfig::RebootRqst *output)
 {
 	
 	output->set_delay(input.delay);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyInformation input, Kinova::Api::DeviceConfig::SafetyInformation *output)
+int ToProtoData(kortex_driver::msg::SafetyInformation input, Kinova::Api::DeviceConfig::SafetyInformation *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -119,7 +119,7 @@ int ToProtoData(kortex_driver::SafetyInformation input, Kinova::Api::DeviceConfi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyInformationList input, Kinova::Api::DeviceConfig::SafetyInformationList *output)
+int ToProtoData(kortex_driver::msg::SafetyInformationList input, Kinova::Api::DeviceConfig::SafetyInformationList *output)
 {
 	 
 	output->clear_information();
@@ -130,7 +130,7 @@ int ToProtoData(kortex_driver::SafetyInformationList input, Kinova::Api::DeviceC
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyEnable input, Kinova::Api::DeviceConfig::SafetyEnable *output)
+int ToProtoData(kortex_driver::msg::SafetyEnable input, Kinova::Api::DeviceConfig::SafetyEnable *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -138,7 +138,7 @@ int ToProtoData(kortex_driver::SafetyEnable input, Kinova::Api::DeviceConfig::Sa
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyThreshold input, Kinova::Api::DeviceConfig::SafetyThreshold *output)
+int ToProtoData(kortex_driver::msg::SafetyThreshold input, Kinova::Api::DeviceConfig::SafetyThreshold *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -146,7 +146,7 @@ int ToProtoData(kortex_driver::SafetyThreshold input, Kinova::Api::DeviceConfig:
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyConfiguration input, Kinova::Api::DeviceConfig::SafetyConfiguration *output)
+int ToProtoData(kortex_driver::msg::SafetyConfiguration input, Kinova::Api::DeviceConfig::SafetyConfiguration *output)
 {
 	 
 	ToProtoData(input.handle, output->mutable_handle());
@@ -156,7 +156,7 @@ int ToProtoData(kortex_driver::SafetyConfiguration input, Kinova::Api::DeviceCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyConfigurationList input, Kinova::Api::DeviceConfig::SafetyConfigurationList *output)
+int ToProtoData(kortex_driver::msg::SafetyConfigurationList input, Kinova::Api::DeviceConfig::SafetyConfigurationList *output)
 {
 	 
 	output->clear_configuration();
@@ -167,14 +167,14 @@ int ToProtoData(kortex_driver::SafetyConfigurationList input, Kinova::Api::Devic
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyStatus input, Kinova::Api::DeviceConfig::SafetyStatus *output)
+int ToProtoData(kortex_driver::msg::SafetyStatus input, Kinova::Api::DeviceConfig::SafetyStatus *output)
 {
 	
 	output->set_value((Kinova::Api::Common::SafetyStatusValue)input.value);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CalibrationParameter input, Kinova::Api::DeviceConfig::CalibrationParameter *output)
+int ToProtoData(kortex_driver::msg::CalibrationParameter input, Kinova::Api::DeviceConfig::CalibrationParameter *output)
 {
 	
 	output->set_calibration_parameter_identifier(input.calibration_parameter_identifier);
@@ -193,7 +193,7 @@ int ToProtoData(kortex_driver::CalibrationParameter input, Kinova::Api::DeviceCo
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Calibration input, Kinova::Api::DeviceConfig::Calibration *output)
+int ToProtoData(kortex_driver::msg::Calibration input, Kinova::Api::DeviceConfig::Calibration *output)
 {
 	
 	output->set_calibration_item((Kinova::Api::DeviceConfig::CalibrationItem)input.calibration_item); 
@@ -205,14 +205,14 @@ int ToProtoData(kortex_driver::Calibration input, Kinova::Api::DeviceConfig::Cal
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CalibrationElement input, Kinova::Api::DeviceConfig::CalibrationElement *output)
+int ToProtoData(kortex_driver::msg::CalibrationElement input, Kinova::Api::DeviceConfig::CalibrationElement *output)
 {
 	
 	output->set_calibration_item((Kinova::Api::DeviceConfig::CalibrationItem)input.calibration_item);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CalibrationResult input, Kinova::Api::DeviceConfig::CalibrationResult *output)
+int ToProtoData(kortex_driver::msg::CalibrationResult input, Kinova::Api::DeviceConfig::CalibrationResult *output)
 {
 	
 	output->set_calibration_status((Kinova::Api::DeviceConfig::CalibrationStatus)input.calibration_status);
@@ -220,7 +220,7 @@ int ToProtoData(kortex_driver::CalibrationResult input, Kinova::Api::DeviceConfi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::DeviceConfig_CapSenseConfig input, Kinova::Api::DeviceConfig::CapSenseConfig *output)
+int ToProtoData(kortex_driver::msg::DeviceConfigCapSenseConfig input, Kinova::Api::DeviceConfig::CapSenseConfig *output)
 {
 	
 	output->set_mode((Kinova::Api::DeviceConfig::CapSenseMode)input.mode);
@@ -229,7 +229,7 @@ int ToProtoData(kortex_driver::DeviceConfig_CapSenseConfig input, Kinova::Api::D
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CapSenseRegister input, Kinova::Api::DeviceConfig::CapSenseRegister *output)
+int ToProtoData(kortex_driver::msg::CapSenseRegister input, Kinova::Api::DeviceConfig::CapSenseRegister *output)
 {
 	
 	output->set_address(input.address);

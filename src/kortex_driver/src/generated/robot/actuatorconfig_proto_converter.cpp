@@ -16,14 +16,14 @@
  
 #include "kortex_driver/generated/robot/actuatorconfig_proto_converter.h"
 
-int ToProtoData(kortex_driver::AxisPosition input, Kinova::Api::ActuatorConfig::AxisPosition *output)
+int ToProtoData(kortex_driver::msg::AxisPosition input, Kinova::Api::ActuatorConfig::AxisPosition *output)
 {
 	
 	output->set_position(input.position);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::AxisOffsets input, Kinova::Api::ActuatorConfig::AxisOffsets *output)
+int ToProtoData(kortex_driver::msg::AxisOffsets input, Kinova::Api::ActuatorConfig::AxisOffsets *output)
 {
 	
 	output->set_absolute_offset(input.absolute_offset);
@@ -31,7 +31,7 @@ int ToProtoData(kortex_driver::AxisOffsets input, Kinova::Api::ActuatorConfig::A
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TorqueCalibration input, Kinova::Api::ActuatorConfig::TorqueCalibration *output)
+int ToProtoData(kortex_driver::msg::TorqueCalibration input, Kinova::Api::ActuatorConfig::TorqueCalibration *output)
 {
 	
 	output->set_global_gain(input.global_gain);
@@ -49,35 +49,35 @@ int ToProtoData(kortex_driver::TorqueCalibration input, Kinova::Api::ActuatorCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::TorqueOffset input, Kinova::Api::ActuatorConfig::TorqueOffset *output)
+int ToProtoData(kortex_driver::msg::TorqueOffset input, Kinova::Api::ActuatorConfig::TorqueOffset *output)
 {
 	
 	output->set_torque_offset(input.torque_offset);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ActuatorConfig_ControlModeInformation input, Kinova::Api::ActuatorConfig::ControlModeInformation *output)
+int ToProtoData(kortex_driver::msg::ActuatorConfigControlModeInformation input, Kinova::Api::ActuatorConfig::ControlModeInformation *output)
 {
 	
 	output->set_control_mode((Kinova::Api::ActuatorConfig::ControlMode)input.control_mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlLoop input, Kinova::Api::ActuatorConfig::ControlLoop *output)
+int ToProtoData(kortex_driver::msg::ControlLoop input, Kinova::Api::ActuatorConfig::ControlLoop *output)
 {
 	
 	output->set_control_loop(input.control_loop);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::LoopSelection input, Kinova::Api::ActuatorConfig::LoopSelection *output)
+int ToProtoData(kortex_driver::msg::LoopSelection input, Kinova::Api::ActuatorConfig::LoopSelection *output)
 {
 	
 	output->set_loop_selection((Kinova::Api::ActuatorConfig::ControlLoopSelection)input.loop_selection);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::VectorDriveParameters input, Kinova::Api::ActuatorConfig::VectorDriveParameters *output)
+int ToProtoData(kortex_driver::msg::VectorDriveParameters input, Kinova::Api::ActuatorConfig::VectorDriveParameters *output)
 {
 	
 	output->set_kpq(input.kpq);
@@ -87,7 +87,7 @@ int ToProtoData(kortex_driver::VectorDriveParameters input, Kinova::Api::Actuato
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::EncoderDerivativeParameters input, Kinova::Api::ActuatorConfig::EncoderDerivativeParameters *output)
+int ToProtoData(kortex_driver::msg::EncoderDerivativeParameters input, Kinova::Api::ActuatorConfig::EncoderDerivativeParameters *output)
 {
 	
 	output->set_max_window_width(input.max_window_width);
@@ -95,7 +95,7 @@ int ToProtoData(kortex_driver::EncoderDerivativeParameters input, Kinova::Api::A
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::ControlLoopParameters input, Kinova::Api::ActuatorConfig::ControlLoopParameters *output)
+int ToProtoData(kortex_driver::msg::ControlLoopParameters input, Kinova::Api::ActuatorConfig::ControlLoopParameters *output)
 {
 	
 	output->set_loop_selection((Kinova::Api::ActuatorConfig::ControlLoopSelection)input.loop_selection);
@@ -115,7 +115,7 @@ int ToProtoData(kortex_driver::ControlLoopParameters input, Kinova::Api::Actuato
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::FrequencyResponse input, Kinova::Api::ActuatorConfig::FrequencyResponse *output)
+int ToProtoData(kortex_driver::msg::FrequencyResponse input, Kinova::Api::ActuatorConfig::FrequencyResponse *output)
 {
 	
 	output->set_loop_selection((Kinova::Api::ActuatorConfig::ControlLoopSelection)input.loop_selection);
@@ -126,7 +126,7 @@ int ToProtoData(kortex_driver::FrequencyResponse input, Kinova::Api::ActuatorCon
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::StepResponse input, Kinova::Api::ActuatorConfig::StepResponse *output)
+int ToProtoData(kortex_driver::msg::StepResponse input, Kinova::Api::ActuatorConfig::StepResponse *output)
 {
 	
 	output->set_loop_selection((Kinova::Api::ActuatorConfig::ControlLoopSelection)input.loop_selection);
@@ -136,7 +136,7 @@ int ToProtoData(kortex_driver::StepResponse input, Kinova::Api::ActuatorConfig::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::RampResponse input, Kinova::Api::ActuatorConfig::RampResponse *output)
+int ToProtoData(kortex_driver::msg::RampResponse input, Kinova::Api::ActuatorConfig::RampResponse *output)
 {
 	
 	output->set_loop_selection((Kinova::Api::ActuatorConfig::ControlLoopSelection)input.loop_selection);
@@ -146,7 +146,7 @@ int ToProtoData(kortex_driver::RampResponse input, Kinova::Api::ActuatorConfig::
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CustomDataSelection input, Kinova::Api::ActuatorConfig::CustomDataSelection *output)
+int ToProtoData(kortex_driver::msg::CustomDataSelection input, Kinova::Api::ActuatorConfig::CustomDataSelection *output)
 {
 	 
 	output->clear_channel();
@@ -157,21 +157,21 @@ int ToProtoData(kortex_driver::CustomDataSelection input, Kinova::Api::ActuatorC
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CommandModeInformation input, Kinova::Api::ActuatorConfig::CommandModeInformation *output)
+int ToProtoData(kortex_driver::msg::CommandModeInformation input, Kinova::Api::ActuatorConfig::CommandModeInformation *output)
 {
 	
 	output->set_command_mode((Kinova::Api::ActuatorConfig::CommandMode)input.command_mode);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Servoing input, Kinova::Api::ActuatorConfig::Servoing *output)
+int ToProtoData(kortex_driver::msg::Servoing input, Kinova::Api::ActuatorConfig::Servoing *output)
 {
 	
 	output->set_enabled(input.enabled);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::PositionCommand input, Kinova::Api::ActuatorConfig::PositionCommand *output)
+int ToProtoData(kortex_driver::msg::PositionCommand input, Kinova::Api::ActuatorConfig::PositionCommand *output)
 {
 	
 	output->set_position(input.position);
@@ -180,7 +180,7 @@ int ToProtoData(kortex_driver::PositionCommand input, Kinova::Api::ActuatorConfi
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CoggingFeedforwardModeInformation input, Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation *output)
+int ToProtoData(kortex_driver::msg::CoggingFeedforwardModeInformation input, Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation *output)
 {
 	
 	output->set_cogging_feedforward_mode((Kinova::Api::ActuatorConfig::CoggingFeedforwardMode)input.cogging_feedforward_mode);

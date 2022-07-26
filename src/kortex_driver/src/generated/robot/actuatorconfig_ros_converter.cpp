@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/actuatorconfig_ros_converter.h"
 
-int ToRosData(Kinova::Api::ActuatorConfig::AxisPosition input, kortex_driver::AxisPosition &output)
+int ToRosData(Kinova::Api::ActuatorConfig::AxisPosition input, kortex_driver::msg::AxisPosition &output)
 {
 	
 	output.position = input.position();
@@ -25,7 +25,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::AxisPosition input, kortex_driver::Ax
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::AxisOffsets input, kortex_driver::AxisOffsets &output)
+int ToRosData(Kinova::Api::ActuatorConfig::AxisOffsets input, kortex_driver::msg::AxisOffsets &output)
 {
 	
 	output.absolute_offset = input.absolute_offset();
@@ -35,7 +35,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::AxisOffsets input, kortex_driver::Axi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::TorqueCalibration input, kortex_driver::TorqueCalibration &output)
+int ToRosData(Kinova::Api::ActuatorConfig::TorqueCalibration input, kortex_driver::msg::TorqueCalibration &output)
 {
 	
 	output.global_gain = input.global_gain();
@@ -55,7 +55,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::TorqueCalibration input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::TorqueOffset input, kortex_driver::TorqueOffset &output)
+int ToRosData(Kinova::Api::ActuatorConfig::TorqueOffset input, kortex_driver::msg::TorqueOffset &output)
 {
 	
 	output.torque_offset = input.torque_offset();
@@ -64,7 +64,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::TorqueOffset input, kortex_driver::To
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::ControlModeInformation input, kortex_driver::ActuatorConfig_ControlModeInformation &output)
+int ToRosData(Kinova::Api::ActuatorConfig::ControlModeInformation input, kortex_driver::msg::ActuatorConfigControlModeInformation &output)
 {
 	
 	output.control_mode = input.control_mode();
@@ -73,7 +73,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::ControlModeInformation input, kortex_
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::ControlLoop input, kortex_driver::ControlLoop &output)
+int ToRosData(Kinova::Api::ActuatorConfig::ControlLoop input, kortex_driver::msg::ControlLoop &output)
 {
 	
 	output.control_loop = input.control_loop();
@@ -82,7 +82,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::ControlLoop input, kortex_driver::Con
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::LoopSelection input, kortex_driver::LoopSelection &output)
+int ToRosData(Kinova::Api::ActuatorConfig::LoopSelection input, kortex_driver::msg::LoopSelection &output)
 {
 	
 	output.loop_selection = input.loop_selection();
@@ -91,7 +91,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::LoopSelection input, kortex_driver::L
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::VectorDriveParameters input, kortex_driver::VectorDriveParameters &output)
+int ToRosData(Kinova::Api::ActuatorConfig::VectorDriveParameters input, kortex_driver::msg::VectorDriveParameters &output)
 {
 	
 	output.kpq = input.kpq();
@@ -103,7 +103,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::VectorDriveParameters input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::EncoderDerivativeParameters input, kortex_driver::EncoderDerivativeParameters &output)
+int ToRosData(Kinova::Api::ActuatorConfig::EncoderDerivativeParameters input, kortex_driver::msg::EncoderDerivativeParameters &output)
 {
 	
 	output.max_window_width = input.max_window_width();
@@ -113,7 +113,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::EncoderDerivativeParameters input, ko
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::ControlLoopParameters input, kortex_driver::ControlLoopParameters &output)
+int ToRosData(Kinova::Api::ActuatorConfig::ControlLoopParameters input, kortex_driver::msg::ControlLoopParameters &output)
 {
 	
 	output.loop_selection = input.loop_selection();
@@ -135,7 +135,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::ControlLoopParameters input, kortex_d
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::FrequencyResponse input, kortex_driver::FrequencyResponse &output)
+int ToRosData(Kinova::Api::ActuatorConfig::FrequencyResponse input, kortex_driver::msg::FrequencyResponse &output)
 {
 	
 	output.loop_selection = input.loop_selection();
@@ -148,7 +148,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::FrequencyResponse input, kortex_drive
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::StepResponse input, kortex_driver::StepResponse &output)
+int ToRosData(Kinova::Api::ActuatorConfig::StepResponse input, kortex_driver::msg::StepResponse &output)
 {
 	
 	output.loop_selection = input.loop_selection();
@@ -160,7 +160,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::StepResponse input, kortex_driver::St
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::RampResponse input, kortex_driver::RampResponse &output)
+int ToRosData(Kinova::Api::ActuatorConfig::RampResponse input, kortex_driver::msg::RampResponse &output)
 {
 	
 	output.loop_selection = input.loop_selection();
@@ -172,7 +172,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::RampResponse input, kortex_driver::Ra
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::CustomDataSelection input, kortex_driver::CustomDataSelection &output)
+int ToRosData(Kinova::Api::ActuatorConfig::CustomDataSelection input, kortex_driver::msg::CustomDataSelection &output)
 {
 	
 	output.channel.clear();
@@ -185,7 +185,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::CustomDataSelection input, kortex_dri
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::CommandModeInformation input, kortex_driver::CommandModeInformation &output)
+int ToRosData(Kinova::Api::ActuatorConfig::CommandModeInformation input, kortex_driver::msg::CommandModeInformation &output)
 {
 	
 	output.command_mode = input.command_mode();
@@ -194,7 +194,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::CommandModeInformation input, kortex_
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::Servoing input, kortex_driver::Servoing &output)
+int ToRosData(Kinova::Api::ActuatorConfig::Servoing input, kortex_driver::msg::Servoing &output)
 {
 	
 	output.enabled = input.enabled();
@@ -203,7 +203,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::Servoing input, kortex_driver::Servoi
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::PositionCommand input, kortex_driver::PositionCommand &output)
+int ToRosData(Kinova::Api::ActuatorConfig::PositionCommand input, kortex_driver::msg::PositionCommand &output)
 {
 	
 	output.position = input.position();
@@ -214,7 +214,7 @@ int ToRosData(Kinova::Api::ActuatorConfig::PositionCommand input, kortex_driver:
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation input, kortex_driver::CoggingFeedforwardModeInformation &output)
+int ToRosData(Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation input, kortex_driver::msg::CoggingFeedforwardModeInformation &output)
 {
 	
 	output.cogging_feedforward_mode = input.cogging_feedforward_mode();

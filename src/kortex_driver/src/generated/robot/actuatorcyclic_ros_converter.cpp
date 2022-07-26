@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/actuatorcyclic_ros_converter.h"
 
-int ToRosData(Kinova::Api::ActuatorCyclic::MessageId input, kortex_driver::ActuatorCyclic_MessageId &output)
+int ToRosData(Kinova::Api::ActuatorCyclic::MessageId input, kortex_driver::msg::ActuatorCyclicMessageId &output)
 {
 	
 	output.identifier = input.identifier();
@@ -25,7 +25,7 @@ int ToRosData(Kinova::Api::ActuatorCyclic::MessageId input, kortex_driver::Actua
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorCyclic::Command input, kortex_driver::ActuatorCyclic_Command &output)
+int ToRosData(Kinova::Api::ActuatorCyclic::Command input, kortex_driver::msg::ActuatorCyclicCommand &output)
 {
 	
 	ToRosData(input.command_id(), output.command_id);
@@ -39,7 +39,7 @@ int ToRosData(Kinova::Api::ActuatorCyclic::Command input, kortex_driver::Actuato
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorCyclic::Feedback input, kortex_driver::ActuatorCyclic_Feedback &output)
+int ToRosData(Kinova::Api::ActuatorCyclic::Feedback input, kortex_driver::msg::ActuatorCyclicFeedback &output)
 {
 	
 	ToRosData(input.feedback_id(), output.feedback_id);
@@ -61,7 +61,7 @@ int ToRosData(Kinova::Api::ActuatorCyclic::Feedback input, kortex_driver::Actuat
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::ActuatorCyclic::CustomData input, kortex_driver::ActuatorCyclic_CustomData &output)
+int ToRosData(Kinova::Api::ActuatorCyclic::CustomData input, kortex_driver::msg::ActuatorCyclicCustomData &output)
 {
 	
 	ToRosData(input.custom_data_id(), output.custom_data_id);

@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/common_ros_converter.h"
 
-int ToRosData(Kinova::Api::Common::DeviceHandle input, kortex_driver::DeviceHandle &output)
+int ToRosData(Kinova::Api::Common::DeviceHandle input, kortex_driver::msg::DeviceHandle &output)
 {
 	
 	output.device_type = input.device_type();
@@ -27,7 +27,7 @@ int ToRosData(Kinova::Api::Common::DeviceHandle input, kortex_driver::DeviceHand
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::Empty input, kortex_driver::Empty &output)
+int ToRosData(Kinova::Api::Common::Empty input, kortex_driver::msg::Empty &output)
 {
 	
 
@@ -35,7 +35,7 @@ int ToRosData(Kinova::Api::Common::Empty input, kortex_driver::Empty &output)
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::NotificationOptions input, kortex_driver::NotificationOptions &output)
+int ToRosData(Kinova::Api::Common::NotificationOptions input, kortex_driver::msg::NotificationOptions &output)
 {
 	
 	output.type = input.type();
@@ -46,7 +46,7 @@ int ToRosData(Kinova::Api::Common::NotificationOptions input, kortex_driver::Not
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::SafetyHandle input, kortex_driver::SafetyHandle &output)
+int ToRosData(Kinova::Api::Common::SafetyHandle input, kortex_driver::msg::SafetyHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -55,7 +55,7 @@ int ToRosData(Kinova::Api::Common::SafetyHandle input, kortex_driver::SafetyHand
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::NotificationHandle input, kortex_driver::NotificationHandle &output)
+int ToRosData(Kinova::Api::Common::NotificationHandle input, kortex_driver::msg::NotificationHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -64,7 +64,7 @@ int ToRosData(Kinova::Api::Common::NotificationHandle input, kortex_driver::Noti
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::SafetyNotification input, kortex_driver::SafetyNotification &output)
+int ToRosData(Kinova::Api::Common::SafetyNotification input, kortex_driver::msg::SafetyNotification &output)
 {
 	
 	ToRosData(input.safety_handle(), output.safety_handle);
@@ -77,7 +77,7 @@ int ToRosData(Kinova::Api::Common::SafetyNotification input, kortex_driver::Safe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::Timestamp input, kortex_driver::Timestamp &output)
+int ToRosData(Kinova::Api::Common::Timestamp input, kortex_driver::msg::Timestamp &output)
 {
 	
 	output.sec = input.sec();
@@ -87,7 +87,7 @@ int ToRosData(Kinova::Api::Common::Timestamp input, kortex_driver::Timestamp &ou
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::UserProfileHandle input, kortex_driver::UserProfileHandle &output)
+int ToRosData(Kinova::Api::Common::UserProfileHandle input, kortex_driver::msg::UserProfileHandle &output)
 {
 	
 	output.identifier = input.identifier();
@@ -97,7 +97,7 @@ int ToRosData(Kinova::Api::Common::UserProfileHandle input, kortex_driver::UserP
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::Connection input, kortex_driver::Connection &output)
+int ToRosData(Kinova::Api::Common::Connection input, kortex_driver::msg::Connection &output)
 {
 	
 	ToRosData(input.user_handle(), output.user_handle);
@@ -108,7 +108,7 @@ int ToRosData(Kinova::Api::Common::Connection input, kortex_driver::Connection &
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::UARTConfiguration input, kortex_driver::UARTConfiguration &output)
+int ToRosData(Kinova::Api::Common::UARTConfiguration input, kortex_driver::msg::UARTConfiguration &output)
 {
 	
 	output.port_id = input.port_id();
@@ -122,7 +122,7 @@ int ToRosData(Kinova::Api::Common::UARTConfiguration input, kortex_driver::UARTC
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::UARTDeviceIdentification input, kortex_driver::UARTDeviceIdentification &output)
+int ToRosData(Kinova::Api::Common::UARTDeviceIdentification input, kortex_driver::msg::UARTDeviceIdentification &output)
 {
 	
 	output.port_id = input.port_id();
@@ -131,7 +131,7 @@ int ToRosData(Kinova::Api::Common::UARTDeviceIdentification input, kortex_driver
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::Common::CountryCode input, kortex_driver::CountryCode &output)
+int ToRosData(Kinova::Api::Common::CountryCode input, kortex_driver::msg::CountryCode &output)
 {
 	
 	output.identifier = input.identifier();

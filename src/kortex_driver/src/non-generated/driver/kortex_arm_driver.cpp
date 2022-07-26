@@ -44,7 +44,7 @@ KortexArmDriver::KortexArmDriver(ros::NodeHandle nh):   m_node_handle(nh),
     }
 
     // Start the thread to publish the feedback and joint states
-    m_pub_base_feedback = m_node_handle.advertise<kortex_driver::BaseCyclic_Feedback>("base_feedback", 1000);
+    m_pub_base_feedback = m_node_handle.advertise<kortex_driver::msg::BaseCyclicFeedback>("base_feedback", 1000);
     m_pub_joint_state = m_node_handle.advertise<sensor_msgs::JointState>("base_feedback/joint_state", 1000);
     if (m_is_real_robot)
     {
@@ -641,7 +641,7 @@ void KortexArmDriver::publishRobotFeedback()
         }
 
         m_consecutive_base_cyclic_timeouts = 0;
-        kortex_driver::BaseCyclic_Feedback base_feedback;
+        kortex_driver::msg::BaseCyclicFeedback base_feedback;
         ToRosData(feedback_from_api, base_feedback);
 
         joint_state.name.resize(base_feedback.actuators.size() + base_feedback.interconnect.oneof_tool_feedback.gripper_feedback[0].motor.size());

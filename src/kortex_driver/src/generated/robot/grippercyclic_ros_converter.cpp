@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/grippercyclic_ros_converter.h"
 
-int ToRosData(Kinova::Api::GripperCyclic::MessageId input, kortex_driver::GripperCyclic_MessageId &output)
+int ToRosData(Kinova::Api::GripperCyclic::MessageId input, kortex_driver::msg::GripperCyclicMessageId &output)
 {
 	
 	output.identifier = input.identifier();
@@ -25,7 +25,7 @@ int ToRosData(Kinova::Api::GripperCyclic::MessageId input, kortex_driver::Grippe
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::GripperCyclic::MotorCommand input, kortex_driver::MotorCommand &output)
+int ToRosData(Kinova::Api::GripperCyclic::MotorCommand input, kortex_driver::msg::MotorCommand &output)
 {
 	
 	output.motor_id = input.motor_id();
@@ -37,7 +37,7 @@ int ToRosData(Kinova::Api::GripperCyclic::MotorCommand input, kortex_driver::Mot
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::GripperCyclic::Command input, kortex_driver::GripperCyclic_Command &output)
+int ToRosData(Kinova::Api::GripperCyclic::Command input, kortex_driver::msg::GripperCyclicCommand &output)
 {
 	
 	ToRosData(input.command_id(), output.command_id);
@@ -54,7 +54,7 @@ int ToRosData(Kinova::Api::GripperCyclic::Command input, kortex_driver::GripperC
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::GripperCyclic::MotorFeedback input, kortex_driver::MotorFeedback &output)
+int ToRosData(Kinova::Api::GripperCyclic::MotorFeedback input, kortex_driver::msg::MotorFeedback &output)
 {
 	
 	output.motor_id = input.motor_id();
@@ -68,7 +68,7 @@ int ToRosData(Kinova::Api::GripperCyclic::MotorFeedback input, kortex_driver::Mo
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::GripperCyclic::Feedback input, kortex_driver::GripperCyclic_Feedback &output)
+int ToRosData(Kinova::Api::GripperCyclic::Feedback input, kortex_driver::msg::GripperCyclicFeedback &output)
 {
 	
 	ToRosData(input.feedback_id(), output.feedback_id);
@@ -89,7 +89,7 @@ int ToRosData(Kinova::Api::GripperCyclic::Feedback input, kortex_driver::Gripper
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::GripperCyclic::CustomDataUnit input, kortex_driver::CustomDataUnit &output)
+int ToRosData(Kinova::Api::GripperCyclic::CustomDataUnit input, kortex_driver::msg::CustomDataUnit &output)
 {
 	
 	output.custom_data_0 = input.custom_data_0();
@@ -113,7 +113,7 @@ int ToRosData(Kinova::Api::GripperCyclic::CustomDataUnit input, kortex_driver::C
 	
 	return 0;
 }
-int ToRosData(Kinova::Api::GripperCyclic::CustomData input, kortex_driver::GripperCyclic_CustomData &output)
+int ToRosData(Kinova::Api::GripperCyclic::CustomData input, kortex_driver::msg::GripperCyclicCustomData &output)
 {
 	
 	ToRosData(input.custom_data_id(), output.custom_data_id);

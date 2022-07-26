@@ -45,7 +45,7 @@
 DeviceManagerSimulationServices::DeviceManagerSimulationServices(ros::NodeHandle& node_handle): 
 	IDeviceManagerServices(node_handle)
 {
-	m_pub_Error = m_node_handle.advertise<kortex_driver::KortexError>("kortex_error", 1000);
+	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
 	m_serviceSetDeviceID = m_node_handle.advertiseService("device_manager/set_device_id", &DeviceManagerSimulationServices::SetDeviceID, this);
 	m_serviceSetApiOptions = m_node_handle.advertiseService("device_manager/set_api_options", &DeviceManagerSimulationServices::SetApiOptions, this);
@@ -53,20 +53,20 @@ DeviceManagerSimulationServices::DeviceManagerSimulationServices(ros::NodeHandle
 	m_serviceReadAllDevices = m_node_handle.advertiseService("device_manager/read_all_devices", &DeviceManagerSimulationServices::ReadAllDevices, this);
 }
 
-bool DeviceManagerSimulationServices::SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res)
+bool DeviceManagerSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool DeviceManagerSimulationServices::SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res)
+bool DeviceManagerSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool DeviceManagerSimulationServices::ReadAllDevices(kortex_driver::ReadAllDevices::Request  &req, kortex_driver::ReadAllDevices::Response &res)
+bool DeviceManagerSimulationServices::ReadAllDevices(kortex_driver::srv::ReadAllDevices::Request  &req, kortex_driver::srv::ReadAllDevices::Response &res)
 {
 	
 	

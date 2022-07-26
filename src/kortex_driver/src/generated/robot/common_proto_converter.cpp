@@ -16,7 +16,7 @@
  
 #include "kortex_driver/generated/robot/common_proto_converter.h"
 
-int ToProtoData(kortex_driver::DeviceHandle input, Kinova::Api::Common::DeviceHandle *output)
+int ToProtoData(kortex_driver::msg::DeviceHandle input, Kinova::Api::Common::DeviceHandle *output)
 {
 	
 	output->set_device_type((Kinova::Api::Common::DeviceTypes)input.device_type);
@@ -25,13 +25,13 @@ int ToProtoData(kortex_driver::DeviceHandle input, Kinova::Api::Common::DeviceHa
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Empty input, Kinova::Api::Common::Empty *output)
+int ToProtoData(kortex_driver::msg::Empty input, Kinova::Api::Common::Empty *output)
 {
 	
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::NotificationOptions input, Kinova::Api::Common::NotificationOptions *output)
+int ToProtoData(kortex_driver::msg::NotificationOptions input, Kinova::Api::Common::NotificationOptions *output)
 {
 	
 	output->set_type((Kinova::Api::Common::NotificationType)input.type);
@@ -40,21 +40,21 @@ int ToProtoData(kortex_driver::NotificationOptions input, Kinova::Api::Common::N
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyHandle input, Kinova::Api::Common::SafetyHandle *output)
+int ToProtoData(kortex_driver::msg::SafetyHandle input, Kinova::Api::Common::SafetyHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::NotificationHandle input, Kinova::Api::Common::NotificationHandle *output)
+int ToProtoData(kortex_driver::msg::NotificationHandle input, Kinova::Api::Common::NotificationHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::SafetyNotification input, Kinova::Api::Common::SafetyNotification *output)
+int ToProtoData(kortex_driver::msg::SafetyNotification input, Kinova::Api::Common::SafetyNotification *output)
 {
 	 
 	ToProtoData(input.safety_handle, output->mutable_safety_handle());
@@ -65,7 +65,7 @@ int ToProtoData(kortex_driver::SafetyNotification input, Kinova::Api::Common::Sa
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Timestamp input, Kinova::Api::Common::Timestamp *output)
+int ToProtoData(kortex_driver::msg::Timestamp input, Kinova::Api::Common::Timestamp *output)
 {
 	
 	output->set_sec(input.sec);
@@ -73,7 +73,7 @@ int ToProtoData(kortex_driver::Timestamp input, Kinova::Api::Common::Timestamp *
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UserProfileHandle input, Kinova::Api::Common::UserProfileHandle *output)
+int ToProtoData(kortex_driver::msg::UserProfileHandle input, Kinova::Api::Common::UserProfileHandle *output)
 {
 	
 	output->set_identifier(input.identifier);
@@ -81,7 +81,7 @@ int ToProtoData(kortex_driver::UserProfileHandle input, Kinova::Api::Common::Use
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::Connection input, Kinova::Api::Common::Connection *output)
+int ToProtoData(kortex_driver::msg::Connection input, Kinova::Api::Common::Connection *output)
 {
 	 
 	ToProtoData(input.user_handle, output->mutable_user_handle());
@@ -90,7 +90,7 @@ int ToProtoData(kortex_driver::Connection input, Kinova::Api::Common::Connection
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UARTConfiguration input, Kinova::Api::Common::UARTConfiguration *output)
+int ToProtoData(kortex_driver::msg::UARTConfiguration input, Kinova::Api::Common::UARTConfiguration *output)
 {
 	
 	output->set_port_id(input.port_id);
@@ -102,14 +102,14 @@ int ToProtoData(kortex_driver::UARTConfiguration input, Kinova::Api::Common::UAR
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::UARTDeviceIdentification input, Kinova::Api::Common::UARTDeviceIdentification *output)
+int ToProtoData(kortex_driver::msg::UARTDeviceIdentification input, Kinova::Api::Common::UARTDeviceIdentification *output)
 {
 	
 	output->set_port_id(input.port_id);
 	
 	return 0;
 }
-int ToProtoData(kortex_driver::CountryCode input, Kinova::Api::Common::CountryCode *output)
+int ToProtoData(kortex_driver::msg::CountryCode input, Kinova::Api::Common::CountryCode *output)
 {
 	
 	output->set_identifier((Kinova::Api::Common::CountryCodeIdentifier)input.identifier);
