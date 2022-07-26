@@ -22,10 +22,7 @@
 #include "BaseCyclicClientRpc.h"
 #include "Errors.pb.h"
 #include "kortex_driver/non-generated/kortex_math_util.h"
-#include "kortex_driver/FollowCartesianTrajectoryAction.h"
-#include "kortex_driver/FollowCartesianTrajectoryActionFeedback.h"
-#include "kortex_driver/FollowCartesianTrajectoryActionGoal.h"
-#include "kortex_driver/FollowCartesianTrajectoryActionResult.h"
+#include "kortex_driver/action/follow_cartesian_trajectory.hpp"
 
 class CartesianTrajectoryActionServer
 {
