@@ -17,7 +17,7 @@
 #ifndef _KORTEX_VISIONCONFIG_ROS_CONVERTER_H_
 #define _KORTEX_VISIONCONFIG_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,39 +41,39 @@
 #include "kortex_driver/generated/robot/interconnectconfig_ros_converter.h"
 
 
-#include "kortex_driver/SensorSettings.h"
-#include "kortex_driver/SensorIdentifier.h"
-#include "kortex_driver/IntrinsicProfileIdentifier.h"
-#include "kortex_driver/OptionIdentifier.h"
-#include "kortex_driver/OptionValue.h"
-#include "kortex_driver/OptionInformation.h"
-#include "kortex_driver/SensorFocusAction.h"
-#include "kortex_driver/FocusPoint.h"
-#include "kortex_driver/ManualFocus.h"
-#include "kortex_driver/VisionNotification.h"
-#include "kortex_driver/IntrinsicParameters.h"
-#include "kortex_driver/DistortionCoefficients.h"
-#include "kortex_driver/ExtrinsicParameters.h"
-#include "kortex_driver/VisionConfig_RotationMatrix.h"
-#include "kortex_driver/VisionConfig_RotationMatrixRow.h"
-#include "kortex_driver/TranslationVector.h"
+#include "kortex_driver/msg/sensor_settings.hpp"
+#include "kortex_driver/msg/sensor_identifier.hpp"
+#include "kortex_driver/msg/intrinsic_profile_identifier.hpp"
+#include "kortex_driver/msg/option_identifier.hpp"
+#include "kortex_driver/msg/option_value.hpp"
+#include "kortex_driver/msg/option_information.hpp"
+#include "kortex_driver/msg/sensor_focus_action.hpp"
+#include "kortex_driver/msg/focus_point.hpp"
+#include "kortex_driver/msg/manual_focus.hpp"
+#include "kortex_driver/msg/vision_notification.hpp"
+#include "kortex_driver/msg/intrinsic_parameters.hpp"
+#include "kortex_driver/msg/distortion_coefficients.hpp"
+#include "kortex_driver/msg/extrinsic_parameters.hpp"
+#include "kortex_driver/msg/vision_config_rotation_matrix.hpp"
+#include "kortex_driver/msg/vision_config_rotation_matrix_row.hpp"
+#include "kortex_driver/msg/translation_vector.hpp"
 
 
-int ToRosData(Kinova::Api::VisionConfig::SensorSettings input, kortex_driver::SensorSettings &output);
-int ToRosData(Kinova::Api::VisionConfig::SensorIdentifier input, kortex_driver::SensorIdentifier &output);
-int ToRosData(Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input, kortex_driver::IntrinsicProfileIdentifier &output);
-int ToRosData(Kinova::Api::VisionConfig::OptionIdentifier input, kortex_driver::OptionIdentifier &output);
-int ToRosData(Kinova::Api::VisionConfig::OptionValue input, kortex_driver::OptionValue &output);
-int ToRosData(Kinova::Api::VisionConfig::OptionInformation input, kortex_driver::OptionInformation &output);
-int ToRosData(Kinova::Api::VisionConfig::SensorFocusAction input, kortex_driver::SensorFocusAction &output);
-int ToRosData(Kinova::Api::VisionConfig::FocusPoint input, kortex_driver::FocusPoint &output);
-int ToRosData(Kinova::Api::VisionConfig::ManualFocus input, kortex_driver::ManualFocus &output);
-int ToRosData(Kinova::Api::VisionConfig::VisionNotification input, kortex_driver::VisionNotification &output);
-int ToRosData(Kinova::Api::VisionConfig::IntrinsicParameters input, kortex_driver::IntrinsicParameters &output);
-int ToRosData(Kinova::Api::VisionConfig::DistortionCoefficients input, kortex_driver::DistortionCoefficients &output);
-int ToRosData(Kinova::Api::VisionConfig::ExtrinsicParameters input, kortex_driver::ExtrinsicParameters &output);
-int ToRosData(Kinova::Api::VisionConfig::RotationMatrix input, kortex_driver::VisionConfig_RotationMatrix &output);
-int ToRosData(Kinova::Api::VisionConfig::RotationMatrixRow input, kortex_driver::VisionConfig_RotationMatrixRow &output);
-int ToRosData(Kinova::Api::VisionConfig::TranslationVector input, kortex_driver::TranslationVector &output);
+int ToRosData(Kinova::Api::VisionConfig::SensorSettings input, kortex_driver::msg::SensorSettings &output);
+int ToRosData(Kinova::Api::VisionConfig::SensorIdentifier input, kortex_driver::msg::SensorIdentifier &output);
+int ToRosData(Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input, kortex_driver::msg::IntrinsicProfileIdentifier &output);
+int ToRosData(Kinova::Api::VisionConfig::OptionIdentifier input, kortex_driver::msg::OptionIdentifier &output);
+int ToRosData(Kinova::Api::VisionConfig::OptionValue input, kortex_driver::msg::OptionValue &output);
+int ToRosData(Kinova::Api::VisionConfig::OptionInformation input, kortex_driver::msg::OptionInformation &output);
+int ToRosData(Kinova::Api::VisionConfig::SensorFocusAction input, kortex_driver::msg::SensorFocusAction &output);
+int ToRosData(Kinova::Api::VisionConfig::FocusPoint input, kortex_driver::msg::FocusPoint &output);
+int ToRosData(Kinova::Api::VisionConfig::ManualFocus input, kortex_driver::msg::ManualFocus &output);
+int ToRosData(Kinova::Api::VisionConfig::VisionNotification input, kortex_driver::msg::VisionNotification &output);
+int ToRosData(Kinova::Api::VisionConfig::IntrinsicParameters input, kortex_driver::msg::IntrinsicParameters &output);
+int ToRosData(Kinova::Api::VisionConfig::DistortionCoefficients input, kortex_driver::msg::DistortionCoefficients &output);
+int ToRosData(Kinova::Api::VisionConfig::ExtrinsicParameters input, kortex_driver::msg::ExtrinsicParameters &output);
+int ToRosData(Kinova::Api::VisionConfig::RotationMatrix input, kortex_driver::msg::VisionConfigRotationMatrix &output);
+int ToRosData(Kinova::Api::VisionConfig::RotationMatrixRow input, kortex_driver::msg::VisionConfigRotationMatrixRow &output);
+int ToRosData(Kinova::Api::VisionConfig::TranslationVector input, kortex_driver::msg::TranslationVector &output);
 
 #endif

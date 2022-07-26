@@ -17,38 +17,38 @@
 #ifndef _KORTEX_ACTUATORCONFIG_SERVICES_INTERFACE_H_
 #define _KORTEX_ACTUATORCONFIG_SERVICES_INTERFACE_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
 #include <cstdio>
 #include <iostream>
 #include <chrono>
-#include "kortex_driver/GetAxisOffsets.h"
-#include "kortex_driver/SetAxisOffsets.h"
-#include "kortex_driver/SetTorqueOffset.h"
-#include "kortex_driver/ActuatorConfig_GetControlMode.h"
-#include "kortex_driver/SetControlMode.h"
-#include "kortex_driver/GetActivatedControlLoop.h"
-#include "kortex_driver/SetActivatedControlLoop.h"
-#include "kortex_driver/GetControlLoopParameters.h"
-#include "kortex_driver/SetControlLoopParameters.h"
-#include "kortex_driver/SelectCustomData.h"
-#include "kortex_driver/GetSelectedCustomData.h"
-#include "kortex_driver/SetCommandMode.h"
-#include "kortex_driver/ActuatorConfig_ClearFaults.h"
-#include "kortex_driver/SetServoing.h"
-#include "kortex_driver/MoveToPosition.h"
-#include "kortex_driver/GetCommandMode.h"
-#include "kortex_driver/GetServoing.h"
-#include "kortex_driver/GetTorqueOffset.h"
-#include "kortex_driver/SetCoggingFeedforwardMode.h"
-#include "kortex_driver/GetCoggingFeedforwardMode.h"
+#include "kortex_driver/srv/get_axis_offsets.hpp"
+#include "kortex_driver/srv/set_axis_offsets.hpp"
+#include "kortex_driver/srv/set_torque_offset.hpp"
+#include "kortex_driver/srv/actuator_config_get_control_mode.hpp"
+#include "kortex_driver/srv/set_control_mode.hpp"
+#include "kortex_driver/srv/get_activated_control_loop.hpp"
+#include "kortex_driver/srv/set_activated_control_loop.hpp"
+#include "kortex_driver/srv/get_control_loop_parameters.hpp"
+#include "kortex_driver/srv/set_control_loop_parameters.hpp"
+#include "kortex_driver/srv/select_custom_data.hpp"
+#include "kortex_driver/srv/get_selected_custom_data.hpp"
+#include "kortex_driver/srv/set_command_mode.hpp"
+#include "kortex_driver/srv/actuator_config_clear_faults.hpp"
+#include "kortex_driver/srv/set_servoing.hpp"
+#include "kortex_driver/srv/move_to_position.hpp"
+#include "kortex_driver/srv/get_command_mode.hpp"
+#include "kortex_driver/srv/get_servoing.hpp"
+#include "kortex_driver/srv/get_torque_offset.hpp"
+#include "kortex_driver/srv/set_cogging_feedforward_mode.hpp"
+#include "kortex_driver/srv/get_cogging_feedforward_mode.hpp"
 
-#include "kortex_driver/KortexError.h"
-#include "kortex_driver/SetDeviceID.h"
-#include "kortex_driver/SetApiOptions.h"
-#include "kortex_driver/ApiOptions.h"
+#include "kortex_driver/msg/kortex_error.hpp"
+#include "kortex_driver/srv/set_device_id.hpp"
+#include "kortex_driver/srv/set_api_options.hpp"
+#include "kortex_driver/msg/api_options.hpp"
 
 using namespace std;
 
@@ -57,28 +57,28 @@ class IActuatorConfigServices
     public:
         IActuatorConfigServices(ros::NodeHandle& node_handle) : m_node_handle(node_handle) {}
 
-        virtual bool SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res) = 0;
-        virtual bool SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res) = 0;
-        virtual bool GetAxisOffsets(kortex_driver::GetAxisOffsets::Request  &req, kortex_driver::GetAxisOffsets::Response &res) = 0;
-        virtual bool SetAxisOffsets(kortex_driver::SetAxisOffsets::Request  &req, kortex_driver::SetAxisOffsets::Response &res) = 0;
-        virtual bool SetTorqueOffset(kortex_driver::SetTorqueOffset::Request  &req, kortex_driver::SetTorqueOffset::Response &res) = 0;
-        virtual bool ActuatorConfig_GetControlMode(kortex_driver::ActuatorConfig_GetControlMode::Request  &req, kortex_driver::ActuatorConfig_GetControlMode::Response &res) = 0;
-        virtual bool SetControlMode(kortex_driver::SetControlMode::Request  &req, kortex_driver::SetControlMode::Response &res) = 0;
-        virtual bool GetActivatedControlLoop(kortex_driver::GetActivatedControlLoop::Request  &req, kortex_driver::GetActivatedControlLoop::Response &res) = 0;
-        virtual bool SetActivatedControlLoop(kortex_driver::SetActivatedControlLoop::Request  &req, kortex_driver::SetActivatedControlLoop::Response &res) = 0;
-        virtual bool GetControlLoopParameters(kortex_driver::GetControlLoopParameters::Request  &req, kortex_driver::GetControlLoopParameters::Response &res) = 0;
-        virtual bool SetControlLoopParameters(kortex_driver::SetControlLoopParameters::Request  &req, kortex_driver::SetControlLoopParameters::Response &res) = 0;
-        virtual bool SelectCustomData(kortex_driver::SelectCustomData::Request  &req, kortex_driver::SelectCustomData::Response &res) = 0;
-        virtual bool GetSelectedCustomData(kortex_driver::GetSelectedCustomData::Request  &req, kortex_driver::GetSelectedCustomData::Response &res) = 0;
-        virtual bool SetCommandMode(kortex_driver::SetCommandMode::Request  &req, kortex_driver::SetCommandMode::Response &res) = 0;
-        virtual bool ActuatorConfig_ClearFaults(kortex_driver::ActuatorConfig_ClearFaults::Request  &req, kortex_driver::ActuatorConfig_ClearFaults::Response &res) = 0;
-        virtual bool SetServoing(kortex_driver::SetServoing::Request  &req, kortex_driver::SetServoing::Response &res) = 0;
-        virtual bool MoveToPosition(kortex_driver::MoveToPosition::Request  &req, kortex_driver::MoveToPosition::Response &res) = 0;
-        virtual bool GetCommandMode(kortex_driver::GetCommandMode::Request  &req, kortex_driver::GetCommandMode::Response &res) = 0;
-        virtual bool GetServoing(kortex_driver::GetServoing::Request  &req, kortex_driver::GetServoing::Response &res) = 0;
-        virtual bool GetTorqueOffset(kortex_driver::GetTorqueOffset::Request  &req, kortex_driver::GetTorqueOffset::Response &res) = 0;
-        virtual bool SetCoggingFeedforwardMode(kortex_driver::SetCoggingFeedforwardMode::Request  &req, kortex_driver::SetCoggingFeedforwardMode::Response &res) = 0;
-        virtual bool GetCoggingFeedforwardMode(kortex_driver::GetCoggingFeedforwardMode::Request  &req, kortex_driver::GetCoggingFeedforwardMode::Response &res) = 0;
+        virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) = 0;
+        virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) = 0;
+        virtual bool GetAxisOffsets(kortex_driver::srv::GetAxisOffsets::Request  &req, kortex_driver::srv::GetAxisOffsets::Response &res) = 0;
+        virtual bool SetAxisOffsets(kortex_driver::srv::SetAxisOffsets::Request  &req, kortex_driver::srv::SetAxisOffsets::Response &res) = 0;
+        virtual bool SetTorqueOffset(kortex_driver::srv::SetTorqueOffset::Request  &req, kortex_driver::srv::SetTorqueOffset::Response &res) = 0;
+        virtual bool ActuatorConfig_GetControlMode(kortex_driver::srv::ActuatorConfigGetControlMode::Request  &req, kortex_driver::srv::ActuatorConfigGetControlMode::Response &res) = 0;
+        virtual bool SetControlMode(kortex_driver::srv::SetControlMode::Request  &req, kortex_driver::srv::SetControlMode::Response &res) = 0;
+        virtual bool GetActivatedControlLoop(kortex_driver::srv::GetActivatedControlLoop::Request  &req, kortex_driver::srv::GetActivatedControlLoop::Response &res) = 0;
+        virtual bool SetActivatedControlLoop(kortex_driver::srv::SetActivatedControlLoop::Request  &req, kortex_driver::srv::SetActivatedControlLoop::Response &res) = 0;
+        virtual bool GetControlLoopParameters(kortex_driver::srv::GetControlLoopParameters::Request  &req, kortex_driver::srv::GetControlLoopParameters::Response &res) = 0;
+        virtual bool SetControlLoopParameters(kortex_driver::srv::SetControlLoopParameters::Request  &req, kortex_driver::srv::SetControlLoopParameters::Response &res) = 0;
+        virtual bool SelectCustomData(kortex_driver::srv::SelectCustomData::Request  &req, kortex_driver::srv::SelectCustomData::Response &res) = 0;
+        virtual bool GetSelectedCustomData(kortex_driver::srv::GetSelectedCustomData::Request  &req, kortex_driver::srv::GetSelectedCustomData::Response &res) = 0;
+        virtual bool SetCommandMode(kortex_driver::srv::SetCommandMode::Request  &req, kortex_driver::srv::SetCommandMode::Response &res) = 0;
+        virtual bool ActuatorConfig_ClearFaults(kortex_driver::srv::ActuatorConfigClearFaults::Request  &req, kortex_driver::srv::ActuatorConfigClearFaults::Response &res) = 0;
+        virtual bool SetServoing(kortex_driver::srv::SetServoing::Request  &req, kortex_driver::srv::SetServoing::Response &res) = 0;
+        virtual bool MoveToPosition(kortex_driver::srv::MoveToPosition::Request  &req, kortex_driver::srv::MoveToPosition::Response &res) = 0;
+        virtual bool GetCommandMode(kortex_driver::srv::GetCommandMode::Request  &req, kortex_driver::srv::GetCommandMode::Response &res) = 0;
+        virtual bool GetServoing(kortex_driver::srv::GetServoing::Request  &req, kortex_driver::srv::GetServoing::Response &res) = 0;
+        virtual bool GetTorqueOffset(kortex_driver::srv::GetTorqueOffset::Request  &req, kortex_driver::srv::GetTorqueOffset::Response &res) = 0;
+        virtual bool SetCoggingFeedforwardMode(kortex_driver::srv::SetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::SetCoggingFeedforwardMode::Response &res) = 0;
+        virtual bool GetCoggingFeedforwardMode(kortex_driver::srv::GetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::GetCoggingFeedforwardMode::Response &res) = 0;
 
 protected:
         ros::NodeHandle m_node_handle;

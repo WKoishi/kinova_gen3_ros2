@@ -17,7 +17,7 @@
 #ifndef _KORTEX_DEVICECONFIG_PROTO_CONVERTER_H_
 #define _KORTEX_DEVICECONFIG_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,57 +41,57 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/DeviceType.h"
-#include "kortex_driver/RunMode.h"
-#include "kortex_driver/FirmwareVersion.h"
-#include "kortex_driver/BootloaderVersion.h"
-#include "kortex_driver/ModelNumber.h"
-#include "kortex_driver/PartNumber.h"
-#include "kortex_driver/SerialNumber.h"
-#include "kortex_driver/MACAddress.h"
-#include "kortex_driver/IPv4Settings.h"
-#include "kortex_driver/PartNumberRevision.h"
-#include "kortex_driver/PowerOnSelfTestResult.h"
-#include "kortex_driver/RebootRqst.h"
-#include "kortex_driver/SafetyInformation.h"
-#include "kortex_driver/SafetyInformationList.h"
-#include "kortex_driver/SafetyEnable.h"
-#include "kortex_driver/SafetyThreshold.h"
-#include "kortex_driver/SafetyConfiguration.h"
-#include "kortex_driver/SafetyConfigurationList.h"
-#include "kortex_driver/SafetyStatus.h"
-#include "kortex_driver/CalibrationParameter.h"
-#include "kortex_driver/Calibration.h"
-#include "kortex_driver/CalibrationElement.h"
-#include "kortex_driver/CalibrationResult.h"
-#include "kortex_driver/DeviceConfig_CapSenseConfig.h"
-#include "kortex_driver/CapSenseRegister.h"
+#include "kortex_driver/msg/device_type.hpp"
+#include "kortex_driver/msg/run_mode.hpp"
+#include "kortex_driver/msg/firmware_version.hpp"
+#include "kortex_driver/msg/bootloader_version.hpp"
+#include "kortex_driver/msg/model_number.hpp"
+#include "kortex_driver/msg/part_number.hpp"
+#include "kortex_driver/msg/serial_number.hpp"
+#include "kortex_driver/msg/mac_address.hpp"
+#include "kortex_driver/msg/i_pv4_settings.hpp"
+#include "kortex_driver/msg/part_number_revision.hpp"
+#include "kortex_driver/msg/power_on_self_test_result.hpp"
+#include "kortex_driver/msg/reboot_rqst.hpp"
+#include "kortex_driver/msg/safety_information.hpp"
+#include "kortex_driver/msg/safety_information_list.hpp"
+#include "kortex_driver/msg/safety_enable.hpp"
+#include "kortex_driver/msg/safety_threshold.hpp"
+#include "kortex_driver/msg/safety_configuration.hpp"
+#include "kortex_driver/msg/safety_configuration_list.hpp"
+#include "kortex_driver/msg/safety_status.hpp"
+#include "kortex_driver/msg/calibration_parameter.hpp"
+#include "kortex_driver/msg/calibration.hpp"
+#include "kortex_driver/msg/calibration_element.hpp"
+#include "kortex_driver/msg/calibration_result.hpp"
+#include "kortex_driver/msg/device_config_cap_sense_config.hpp"
+#include "kortex_driver/msg/cap_sense_register.hpp"
 
 
-int ToProtoData(kortex_driver::DeviceType input, Kinova::Api::DeviceConfig::DeviceType *output);
-int ToProtoData(kortex_driver::RunMode input, Kinova::Api::DeviceConfig::RunMode *output);
-int ToProtoData(kortex_driver::FirmwareVersion input, Kinova::Api::DeviceConfig::FirmwareVersion *output);
-int ToProtoData(kortex_driver::BootloaderVersion input, Kinova::Api::DeviceConfig::BootloaderVersion *output);
-int ToProtoData(kortex_driver::ModelNumber input, Kinova::Api::DeviceConfig::ModelNumber *output);
-int ToProtoData(kortex_driver::PartNumber input, Kinova::Api::DeviceConfig::PartNumber *output);
-int ToProtoData(kortex_driver::SerialNumber input, Kinova::Api::DeviceConfig::SerialNumber *output);
-int ToProtoData(kortex_driver::MACAddress input, Kinova::Api::DeviceConfig::MACAddress *output);
-int ToProtoData(kortex_driver::IPv4Settings input, Kinova::Api::DeviceConfig::IPv4Settings *output);
-int ToProtoData(kortex_driver::PartNumberRevision input, Kinova::Api::DeviceConfig::PartNumberRevision *output);
-int ToProtoData(kortex_driver::PowerOnSelfTestResult input, Kinova::Api::DeviceConfig::PowerOnSelfTestResult *output);
-int ToProtoData(kortex_driver::RebootRqst input, Kinova::Api::DeviceConfig::RebootRqst *output);
-int ToProtoData(kortex_driver::SafetyInformation input, Kinova::Api::DeviceConfig::SafetyInformation *output);
-int ToProtoData(kortex_driver::SafetyInformationList input, Kinova::Api::DeviceConfig::SafetyInformationList *output);
-int ToProtoData(kortex_driver::SafetyEnable input, Kinova::Api::DeviceConfig::SafetyEnable *output);
-int ToProtoData(kortex_driver::SafetyThreshold input, Kinova::Api::DeviceConfig::SafetyThreshold *output);
-int ToProtoData(kortex_driver::SafetyConfiguration input, Kinova::Api::DeviceConfig::SafetyConfiguration *output);
-int ToProtoData(kortex_driver::SafetyConfigurationList input, Kinova::Api::DeviceConfig::SafetyConfigurationList *output);
-int ToProtoData(kortex_driver::SafetyStatus input, Kinova::Api::DeviceConfig::SafetyStatus *output);
-int ToProtoData(kortex_driver::CalibrationParameter input, Kinova::Api::DeviceConfig::CalibrationParameter *output);
-int ToProtoData(kortex_driver::Calibration input, Kinova::Api::DeviceConfig::Calibration *output);
-int ToProtoData(kortex_driver::CalibrationElement input, Kinova::Api::DeviceConfig::CalibrationElement *output);
-int ToProtoData(kortex_driver::CalibrationResult input, Kinova::Api::DeviceConfig::CalibrationResult *output);
-int ToProtoData(kortex_driver::DeviceConfig_CapSenseConfig input, Kinova::Api::DeviceConfig::CapSenseConfig *output);
-int ToProtoData(kortex_driver::CapSenseRegister input, Kinova::Api::DeviceConfig::CapSenseRegister *output);
+int ToProtoData(kortex_driver::msg::DeviceType input, Kinova::Api::DeviceConfig::DeviceType *output);
+int ToProtoData(kortex_driver::msg::RunMode input, Kinova::Api::DeviceConfig::RunMode *output);
+int ToProtoData(kortex_driver::msg::FirmwareVersion input, Kinova::Api::DeviceConfig::FirmwareVersion *output);
+int ToProtoData(kortex_driver::msg::BootloaderVersion input, Kinova::Api::DeviceConfig::BootloaderVersion *output);
+int ToProtoData(kortex_driver::msg::ModelNumber input, Kinova::Api::DeviceConfig::ModelNumber *output);
+int ToProtoData(kortex_driver::msg::PartNumber input, Kinova::Api::DeviceConfig::PartNumber *output);
+int ToProtoData(kortex_driver::msg::SerialNumber input, Kinova::Api::DeviceConfig::SerialNumber *output);
+int ToProtoData(kortex_driver::msg::MACAddress input, Kinova::Api::DeviceConfig::MACAddress *output);
+int ToProtoData(kortex_driver::msg::IPv4Settings input, Kinova::Api::DeviceConfig::IPv4Settings *output);
+int ToProtoData(kortex_driver::msg::PartNumberRevision input, Kinova::Api::DeviceConfig::PartNumberRevision *output);
+int ToProtoData(kortex_driver::msg::PowerOnSelfTestResult input, Kinova::Api::DeviceConfig::PowerOnSelfTestResult *output);
+int ToProtoData(kortex_driver::msg::RebootRqst input, Kinova::Api::DeviceConfig::RebootRqst *output);
+int ToProtoData(kortex_driver::msg::SafetyInformation input, Kinova::Api::DeviceConfig::SafetyInformation *output);
+int ToProtoData(kortex_driver::msg::SafetyInformationList input, Kinova::Api::DeviceConfig::SafetyInformationList *output);
+int ToProtoData(kortex_driver::msg::SafetyEnable input, Kinova::Api::DeviceConfig::SafetyEnable *output);
+int ToProtoData(kortex_driver::msg::SafetyThreshold input, Kinova::Api::DeviceConfig::SafetyThreshold *output);
+int ToProtoData(kortex_driver::msg::SafetyConfiguration input, Kinova::Api::DeviceConfig::SafetyConfiguration *output);
+int ToProtoData(kortex_driver::msg::SafetyConfigurationList input, Kinova::Api::DeviceConfig::SafetyConfigurationList *output);
+int ToProtoData(kortex_driver::msg::SafetyStatus input, Kinova::Api::DeviceConfig::SafetyStatus *output);
+int ToProtoData(kortex_driver::msg::CalibrationParameter input, Kinova::Api::DeviceConfig::CalibrationParameter *output);
+int ToProtoData(kortex_driver::msg::Calibration input, Kinova::Api::DeviceConfig::Calibration *output);
+int ToProtoData(kortex_driver::msg::CalibrationElement input, Kinova::Api::DeviceConfig::CalibrationElement *output);
+int ToProtoData(kortex_driver::msg::CalibrationResult input, Kinova::Api::DeviceConfig::CalibrationResult *output);
+int ToProtoData(kortex_driver::msg::DeviceConfigCapSenseConfig input, Kinova::Api::DeviceConfig::CapSenseConfig *output);
+int ToProtoData(kortex_driver::msg::CapSenseRegister input, Kinova::Api::DeviceConfig::CapSenseRegister *output);
 
 #endif

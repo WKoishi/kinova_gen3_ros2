@@ -21,7 +21,7 @@
 #include <ControlConfig.pb.h>
 #include <Errors.pb.h>
 
-#include <ros/ros.h>
+#include "rclcpp/rclcpp.hpp"
 #include <actionlib/server/simple_action_server.h>
 #include <control_msgs/FollowJointTrajectoryAction.h>
 

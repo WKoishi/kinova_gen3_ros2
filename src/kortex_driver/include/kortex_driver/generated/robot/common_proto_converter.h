@@ -17,7 +17,7 @@
 #ifndef _KORTEX_COMMON_PROTO_CONVERTER_H_
 #define _KORTEX_COMMON_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,31 +41,31 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/DeviceHandle.h"
-#include "kortex_driver/Empty.h"
-#include "kortex_driver/NotificationOptions.h"
-#include "kortex_driver/SafetyHandle.h"
-#include "kortex_driver/NotificationHandle.h"
-#include "kortex_driver/SafetyNotification.h"
-#include "kortex_driver/Timestamp.h"
-#include "kortex_driver/UserProfileHandle.h"
-#include "kortex_driver/Connection.h"
-#include "kortex_driver/UARTConfiguration.h"
-#include "kortex_driver/UARTDeviceIdentification.h"
-#include "kortex_driver/CountryCode.h"
+#include "kortex_driver/msg/device_handle.hpp"
+#include "kortex_driver/msg/empty.hpp"
+#include "kortex_driver/msg/notification_options.hpp"
+#include "kortex_driver/msg/safety_handle.hpp"
+#include "kortex_driver/msg/notification_handle.hpp"
+#include "kortex_driver/msg/safety_notification.hpp"
+#include "kortex_driver/msg/timestamp.hpp"
+#include "kortex_driver/msg/user_profile_handle.hpp"
+#include "kortex_driver/msg/connection.hpp"
+#include "kortex_driver/msg/uart_configuration.hpp"
+#include "kortex_driver/msg/uart_device_identification.hpp"
+#include "kortex_driver/msg/country_code.hpp"
 
 
-int ToProtoData(kortex_driver::DeviceHandle input, Kinova::Api::Common::DeviceHandle *output);
-int ToProtoData(kortex_driver::Empty input, Kinova::Api::Common::Empty *output);
-int ToProtoData(kortex_driver::NotificationOptions input, Kinova::Api::Common::NotificationOptions *output);
-int ToProtoData(kortex_driver::SafetyHandle input, Kinova::Api::Common::SafetyHandle *output);
-int ToProtoData(kortex_driver::NotificationHandle input, Kinova::Api::Common::NotificationHandle *output);
-int ToProtoData(kortex_driver::SafetyNotification input, Kinova::Api::Common::SafetyNotification *output);
-int ToProtoData(kortex_driver::Timestamp input, Kinova::Api::Common::Timestamp *output);
-int ToProtoData(kortex_driver::UserProfileHandle input, Kinova::Api::Common::UserProfileHandle *output);
-int ToProtoData(kortex_driver::Connection input, Kinova::Api::Common::Connection *output);
-int ToProtoData(kortex_driver::UARTConfiguration input, Kinova::Api::Common::UARTConfiguration *output);
-int ToProtoData(kortex_driver::UARTDeviceIdentification input, Kinova::Api::Common::UARTDeviceIdentification *output);
-int ToProtoData(kortex_driver::CountryCode input, Kinova::Api::Common::CountryCode *output);
+int ToProtoData(kortex_driver::msg::DeviceHandle input, Kinova::Api::Common::DeviceHandle *output);
+int ToProtoData(kortex_driver::msg::Empty input, Kinova::Api::Common::Empty *output);
+int ToProtoData(kortex_driver::msg::NotificationOptions input, Kinova::Api::Common::NotificationOptions *output);
+int ToProtoData(kortex_driver::msg::SafetyHandle input, Kinova::Api::Common::SafetyHandle *output);
+int ToProtoData(kortex_driver::msg::NotificationHandle input, Kinova::Api::Common::NotificationHandle *output);
+int ToProtoData(kortex_driver::msg::SafetyNotification input, Kinova::Api::Common::SafetyNotification *output);
+int ToProtoData(kortex_driver::msg::Timestamp input, Kinova::Api::Common::Timestamp *output);
+int ToProtoData(kortex_driver::msg::UserProfileHandle input, Kinova::Api::Common::UserProfileHandle *output);
+int ToProtoData(kortex_driver::msg::Connection input, Kinova::Api::Common::Connection *output);
+int ToProtoData(kortex_driver::msg::UARTConfiguration input, Kinova::Api::Common::UARTConfiguration *output);
+int ToProtoData(kortex_driver::msg::UARTDeviceIdentification input, Kinova::Api::Common::UARTDeviceIdentification *output);
+int ToProtoData(kortex_driver::msg::CountryCode input, Kinova::Api::Common::CountryCode *output);
 
 #endif

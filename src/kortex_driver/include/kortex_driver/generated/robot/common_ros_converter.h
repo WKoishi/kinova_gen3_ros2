@@ -17,7 +17,7 @@
 #ifndef _KORTEX_COMMON_ROS_CONVERTER_H_
 #define _KORTEX_COMMON_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,31 +41,31 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/DeviceHandle.h"
-#include "kortex_driver/Empty.h"
-#include "kortex_driver/NotificationOptions.h"
-#include "kortex_driver/SafetyHandle.h"
-#include "kortex_driver/NotificationHandle.h"
-#include "kortex_driver/SafetyNotification.h"
-#include "kortex_driver/Timestamp.h"
-#include "kortex_driver/UserProfileHandle.h"
-#include "kortex_driver/Connection.h"
-#include "kortex_driver/UARTConfiguration.h"
-#include "kortex_driver/UARTDeviceIdentification.h"
-#include "kortex_driver/CountryCode.h"
+#include "kortex_driver/msg/device_handle.hpp"
+#include "kortex_driver/msg/empty.hpp"
+#include "kortex_driver/msg/notification_options.hpp"
+#include "kortex_driver/msg/safety_handle.hpp"
+#include "kortex_driver/msg/notification_handle.hpp"
+#include "kortex_driver/msg/safety_notification.hpp"
+#include "kortex_driver/msg/timestamp.hpp"
+#include "kortex_driver/msg/user_profile_handle.hpp"
+#include "kortex_driver/msg/connection.hpp"
+#include "kortex_driver/msg/uart_configuration.hpp"
+#include "kortex_driver/msg/uart_device_identification.hpp"
+#include "kortex_driver/msg/country_code.hpp"
 
 
-int ToRosData(Kinova::Api::Common::DeviceHandle input, kortex_driver::DeviceHandle &output);
-int ToRosData(Kinova::Api::Common::Empty input, kortex_driver::Empty &output);
-int ToRosData(Kinova::Api::Common::NotificationOptions input, kortex_driver::NotificationOptions &output);
-int ToRosData(Kinova::Api::Common::SafetyHandle input, kortex_driver::SafetyHandle &output);
-int ToRosData(Kinova::Api::Common::NotificationHandle input, kortex_driver::NotificationHandle &output);
-int ToRosData(Kinova::Api::Common::SafetyNotification input, kortex_driver::SafetyNotification &output);
-int ToRosData(Kinova::Api::Common::Timestamp input, kortex_driver::Timestamp &output);
-int ToRosData(Kinova::Api::Common::UserProfileHandle input, kortex_driver::UserProfileHandle &output);
-int ToRosData(Kinova::Api::Common::Connection input, kortex_driver::Connection &output);
-int ToRosData(Kinova::Api::Common::UARTConfiguration input, kortex_driver::UARTConfiguration &output);
-int ToRosData(Kinova::Api::Common::UARTDeviceIdentification input, kortex_driver::UARTDeviceIdentification &output);
-int ToRosData(Kinova::Api::Common::CountryCode input, kortex_driver::CountryCode &output);
+int ToRosData(Kinova::Api::Common::DeviceHandle input, kortex_driver::msg::DeviceHandle &output);
+int ToRosData(Kinova::Api::Common::Empty input, kortex_driver::msg::Empty &output);
+int ToRosData(Kinova::Api::Common::NotificationOptions input, kortex_driver::msg::NotificationOptions &output);
+int ToRosData(Kinova::Api::Common::SafetyHandle input, kortex_driver::msg::SafetyHandle &output);
+int ToRosData(Kinova::Api::Common::NotificationHandle input, kortex_driver::msg::NotificationHandle &output);
+int ToRosData(Kinova::Api::Common::SafetyNotification input, kortex_driver::msg::SafetyNotification &output);
+int ToRosData(Kinova::Api::Common::Timestamp input, kortex_driver::msg::Timestamp &output);
+int ToRosData(Kinova::Api::Common::UserProfileHandle input, kortex_driver::msg::UserProfileHandle &output);
+int ToRosData(Kinova::Api::Common::Connection input, kortex_driver::msg::Connection &output);
+int ToRosData(Kinova::Api::Common::UARTConfiguration input, kortex_driver::msg::UARTConfiguration &output);
+int ToRosData(Kinova::Api::Common::UARTDeviceIdentification input, kortex_driver::msg::UARTDeviceIdentification &output);
+int ToRosData(Kinova::Api::Common::CountryCode input, kortex_driver::msg::CountryCode &output);
 
 #endif

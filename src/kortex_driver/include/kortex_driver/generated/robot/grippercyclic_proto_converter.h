@@ -17,7 +17,7 @@
 #ifndef _KORTEX_GRIPPERCYCLIC_PROTO_CONVERTER_H_
 #define _KORTEX_GRIPPERCYCLIC_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,21 +41,21 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/GripperCyclic_MessageId.h"
-#include "kortex_driver/MotorCommand.h"
-#include "kortex_driver/GripperCyclic_Command.h"
-#include "kortex_driver/MotorFeedback.h"
-#include "kortex_driver/GripperCyclic_Feedback.h"
-#include "kortex_driver/CustomDataUnit.h"
-#include "kortex_driver/GripperCyclic_CustomData.h"
+#include "kortex_driver/msg/gripper_cyclic_message_id.hpp"
+#include "kortex_driver/msg/motor_command.hpp"
+#include "kortex_driver/msg/gripper_cyclic_command.hpp"
+#include "kortex_driver/msg/motor_feedback.hpp"
+#include "kortex_driver/msg/gripper_cyclic_feedback.hpp"
+#include "kortex_driver/msg/custom_data_unit.hpp"
+#include "kortex_driver/msg/gripper_cyclic_custom_data.hpp"
 
 
-int ToProtoData(kortex_driver::GripperCyclic_MessageId input, Kinova::Api::GripperCyclic::MessageId *output);
-int ToProtoData(kortex_driver::MotorCommand input, Kinova::Api::GripperCyclic::MotorCommand *output);
-int ToProtoData(kortex_driver::GripperCyclic_Command input, Kinova::Api::GripperCyclic::Command *output);
-int ToProtoData(kortex_driver::MotorFeedback input, Kinova::Api::GripperCyclic::MotorFeedback *output);
-int ToProtoData(kortex_driver::GripperCyclic_Feedback input, Kinova::Api::GripperCyclic::Feedback *output);
-int ToProtoData(kortex_driver::CustomDataUnit input, Kinova::Api::GripperCyclic::CustomDataUnit *output);
-int ToProtoData(kortex_driver::GripperCyclic_CustomData input, Kinova::Api::GripperCyclic::CustomData *output);
+int ToProtoData(kortex_driver::msg::GripperCyclicMessageId input, Kinova::Api::GripperCyclic::MessageId *output);
+int ToProtoData(kortex_driver::msg::MotorCommand input, Kinova::Api::GripperCyclic::MotorCommand *output);
+int ToProtoData(kortex_driver::msg::GripperCyclicCommand input, Kinova::Api::GripperCyclic::Command *output);
+int ToProtoData(kortex_driver::msg::MotorFeedback input, Kinova::Api::GripperCyclic::MotorFeedback *output);
+int ToProtoData(kortex_driver::msg::GripperCyclicFeedback input, Kinova::Api::GripperCyclic::Feedback *output);
+int ToProtoData(kortex_driver::msg::CustomDataUnit input, Kinova::Api::GripperCyclic::CustomDataUnit *output);
+int ToProtoData(kortex_driver::msg::GripperCyclicCustomData input, Kinova::Api::GripperCyclic::CustomData *output);
 
 #endif

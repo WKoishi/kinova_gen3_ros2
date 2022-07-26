@@ -17,7 +17,7 @@
 #ifndef _KORTEX_INTERCONNECTCYCLIC_ROS_CONVERTER_H_
 #define _KORTEX_INTERCONNECTCYCLIC_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,15 +41,15 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/InterconnectCyclic_MessageId.h"
-#include "kortex_driver/InterconnectCyclic_Command.h"
-#include "kortex_driver/InterconnectCyclic_Feedback.h"
-#include "kortex_driver/InterconnectCyclic_CustomData.h"
+#include "kortex_driver/msg/interconnect_cyclic_message_id.hpp"
+#include "kortex_driver/msg/interconnect_cyclic_command.hpp"
+#include "kortex_driver/msg/interconnect_cyclic_feedback.hpp"
+#include "kortex_driver/msg/interconnect_cyclic_custom_data.hpp"
 
 
-int ToRosData(Kinova::Api::InterconnectCyclic::MessageId input, kortex_driver::InterconnectCyclic_MessageId &output);
-int ToRosData(Kinova::Api::InterconnectCyclic::Command input, kortex_driver::InterconnectCyclic_Command &output);
-int ToRosData(Kinova::Api::InterconnectCyclic::Feedback input, kortex_driver::InterconnectCyclic_Feedback &output);
-int ToRosData(Kinova::Api::InterconnectCyclic::CustomData input, kortex_driver::InterconnectCyclic_CustomData &output);
+int ToRosData(Kinova::Api::InterconnectCyclic::MessageId input, kortex_driver::msg::InterconnectCyclicMessageId &output);
+int ToRosData(Kinova::Api::InterconnectCyclic::Command input, kortex_driver::msg::InterconnectCyclicCommand &output);
+int ToRosData(Kinova::Api::InterconnectCyclic::Feedback input, kortex_driver::msg::InterconnectCyclicFeedback &output);
+int ToRosData(Kinova::Api::InterconnectCyclic::CustomData input, kortex_driver::msg::InterconnectCyclicCustomData &output);
 
 #endif

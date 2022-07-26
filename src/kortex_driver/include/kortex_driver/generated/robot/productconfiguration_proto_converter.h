@@ -17,7 +17,7 @@
 #ifndef _KORTEX_PRODUCTCONFIGURATION_PROTO_CONVERTER_H_
 #define _KORTEX_PRODUCTCONFIGURATION_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,11 +41,11 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/CompleteProductConfiguration.h"
-#include "kortex_driver/ProductConfigurationEndEffectorType.h"
+#include "kortex_driver/msg/complete_product_configuration.hpp"
+#include "kortex_driver/msg/product_configuration_end_effector_type.hpp"
 
 
-int ToProtoData(kortex_driver::CompleteProductConfiguration input, Kinova::Api::ProductConfiguration::CompleteProductConfiguration *output);
-int ToProtoData(kortex_driver::ProductConfigurationEndEffectorType input, Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType *output);
+int ToProtoData(kortex_driver::msg::CompleteProductConfiguration input, Kinova::Api::ProductConfiguration::CompleteProductConfiguration *output);
+int ToProtoData(kortex_driver::msg::ProductConfigurationEndEffectorType input, Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType *output);
 
 #endif

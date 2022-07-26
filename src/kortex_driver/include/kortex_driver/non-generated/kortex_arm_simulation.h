@@ -14,7 +14,7 @@
 */
 
 // ROS
-#include <ros/ros.h>
+#include "rclcpp/rclcpp.hpp"
 #include <std_msgs/Empty.h>
 #include <control_msgs/JointTrajectoryControllerState.h>
 #include <control_msgs/FollowJointTrajectoryAction.h>
@@ -40,29 +40,29 @@
 // Kortex
 #include "kortex_driver/non-generated/kortex_math_util.h"
 
-#include "kortex_driver/ActionType.h"
-#include "kortex_driver/KortexError.h"
-#include "kortex_driver/BaseCyclic_Feedback.h"
+#include "kortex_driver/msg/action_type.hpp"
+#include "kortex_driver/msg/kortex_error.hpp"
+#include "kortex_driver/msg/base_cyclic_feedback.hpp"
 
-#include "kortex_driver/CreateAction.h"
-#include "kortex_driver/ReadAction.h"
-#include "kortex_driver/ReadAllActions.h"
-#include "kortex_driver/DeleteAction.h"
-#include "kortex_driver/UpdateAction.h"
-#include "kortex_driver/ExecuteActionFromReference.h"
-#include "kortex_driver/ExecuteAction.h"
-#include "kortex_driver/PauseAction.h"
-#include "kortex_driver/StopAction.h"
-#include "kortex_driver/ResumeAction.h"
+#include "kortex_driver/srv/create_action.hpp"
+#include "kortex_driver/srv/read_action.hpp"
+#include "kortex_driver/srv/read_all_actions.hpp"
+#include "kortex_driver/srv/delete_action.hpp"
+#include "kortex_driver/srv/update_action.hpp"
+#include "kortex_driver/srv/execute_action_from_reference.hpp"
+#include "kortex_driver/srv/execute_action.hpp"
+#include "kortex_driver/srv/pause_action.hpp"
+#include "kortex_driver/srv/stop_action.hpp"
+#include "kortex_driver/srv/resume_action.hpp"
 
-#include "kortex_driver/PlayCartesianTrajectory.h"
-#include "kortex_driver/Stop.h"
-#include "kortex_driver/GetMeasuredCartesianPose.h"
-#include "kortex_driver/SendTwistCommand.h"
-#include "kortex_driver/PlayJointTrajectory.h"
-#include "kortex_driver/SendJointSpeedsCommand.h"
-#include "kortex_driver/SendGripperCommand.h"
-#include "kortex_driver/ApplyEmergencyStop.h"
+#include "kortex_driver/srv/play_cartesian_trajectory.hpp"
+#include "kortex_driver/srv/stop.hpp"
+#include "kortex_driver/srv/get_measured_cartesian_pose.hpp"
+#include "kortex_driver/srv/send_twist_command.hpp"
+#include "kortex_driver/srv/play_joint_trajectory.hpp"
+#include "kortex_driver/srv/send_joint_speeds_command.hpp"
+#include "kortex_driver/srv/send_gripper_command.hpp"
+#include "kortex_driver/srv/apply_emergency_stop.hpp"
 
 enum class ControllerType
 {
@@ -79,26 +79,26 @@ class KortexArmSimulation
     std::unordered_map<uint32_t, kortex_driver::Action> GetActionsMap() const {return m_map_actions;}
     int GetDOF() const {return m_degrees_of_freedom;}
 
-    kortex_driver::BaseCyclic_Feedback GetFeedback();
+    kortex_driver::msg::BaseCyclicFeedback GetFeedback();
 
     // Handlers for simulated Kortex API functions
     // Actions API
-    kortex_driver::CreateAction::Response CreateAction(const kortex_driver::CreateAction::Request& req);
-    kortex_driver::ReadAction::Response ReadAction(const kortex_driver::ReadAction::Request& req);
-    kortex_driver::ReadAllActions::Response ReadAllActions(const kortex_driver::ReadAllActions::Request& req);
-    kortex_driver::DeleteAction::Response DeleteAction(const kortex_driver::DeleteAction::Request& req);
-    kortex_driver::UpdateAction::Response UpdateAction(const kortex_driver::UpdateAction::Request& req);
-    kortex_driver::ExecuteActionFromReference::Response ExecuteActionFromReference(const kortex_driver::ExecuteActionFromReference::Request& req);
-    kortex_driver::ExecuteAction::Response ExecuteAction(const kortex_driver::ExecuteAction::Request& req);
-    kortex_driver::StopAction::Response StopAction(const kortex_driver::StopAction::Request& req);
+    kortex_driver::srv::CreateAction::Response CreateAction(const kortex_driver::srv::CreateAction::Request& req);
+    kortex_driver::srv::ReadAction::Response ReadAction(const kortex_driver::srv::ReadAction::Request& req);
+    kortex_driver::srv::ReadAllActions::Response ReadAllActions(const kortex_driver::srv::ReadAllActions::Request& req);
+    kortex_driver::srv::DeleteAction::Response DeleteAction(const kortex_driver::srv::DeleteAction::Request& req);
+    kortex_driver::srv::UpdateAction::Response UpdateAction(const kortex_driver::srv::UpdateAction::Request& req);
+    kortex_driver::srv::ExecuteActionFromReference::Response ExecuteActionFromReference(const kortex_driver::srv::ExecuteActionFromReference::Request& req);
+    kortex_driver::srv::ExecuteAction::Response ExecuteAction(const kortex_driver::srv::ExecuteAction::Request& req);
+    kortex_driver::srv::StopAction::Response StopAction(const kortex_driver::srv::StopAction::Request& req);
     // Other RPCs
-    kortex_driver::PlayCartesianTrajectory::Response PlayCartesianTrajectory(const kortex_driver::PlayCartesianTrajectory::Request& req);
-    kortex_driver::SendTwistCommand::Response SendTwistCommand(const kortex_driver::SendTwistCommand::Request& req);
-    kortex_driver::PlayJointTrajectory::Response PlayJointTrajectory(const kortex_driver::PlayJointTrajectory::Request& req);
-    kortex_driver::SendJointSpeedsCommand::Response SendJointSpeedsCommand(const kortex_driver::SendJointSpeedsCommand::Request& req);
-    kortex_driver::SendGripperCommand::Response SendGripperCommand(const kortex_driver::SendGripperCommand::Request& req);
-    kortex_driver::Stop::Response Stop(const kortex_driver::Stop::Request& req);
-    kortex_driver::ApplyEmergencyStop::Response ApplyEmergencyStop(const kortex_driver::ApplyEmergencyStop::Request& req);
+    kortex_driver::srv::PlayCartesianTrajectory::Response PlayCartesianTrajectory(const kortex_driver::srv::PlayCartesianTrajectory::Request& req);
+    kortex_driver::srv::SendTwistCommand::Response SendTwistCommand(const kortex_driver::srv::SendTwistCommand::Request& req);
+    kortex_driver::srv::PlayJointTrajectory::Response PlayJointTrajectory(const kortex_driver::srv::PlayJointTrajectory::Request& req);
+    kortex_driver::srv::SendJointSpeedsCommand::Response SendJointSpeedsCommand(const kortex_driver::srv::SendJointSpeedsCommand::Request& req);
+    kortex_driver::srv::SendGripperCommand::Response SendGripperCommand(const kortex_driver::srv::SendGripperCommand::Request& req);
+    kortex_driver::srv::Stop::Response Stop(const kortex_driver::srv::Stop::Request& req);
+    kortex_driver::srv::ApplyEmergencyStop::Response ApplyEmergencyStop(const kortex_driver::srv::ApplyEmergencyStop::Request& req);
 
   private:
     // ROS
@@ -123,7 +123,7 @@ class KortexArmSimulation
     std::vector<std::string> m_trajectory_controllers_list;
     std::vector<std::string> m_position_controllers_list;
     std::vector<double> m_velocity_commands;
-    kortex_driver::Twist m_twist_command;
+    kortex_driver::msg::Twist m_twist_command;
 
     // Action clients
     std::unique_ptr<actionlib::SimpleActionClient<control_msgs::FollowJointTrajectoryAction>> m_follow_joint_trajectory_action_client;
@@ -183,7 +183,7 @@ class KortexArmSimulation
     void cb_joint_states(const sensor_msgs::JointState& state);
     sensor_msgs::JointState m_current_state;
     bool m_first_state_received;
-    kortex_driver::BaseCyclic_Feedback m_feedback;
+    kortex_driver::msg::BaseCyclicFeedback m_feedback;
     std::mutex m_state_mutex;
 
     // Helper functions
@@ -192,13 +192,13 @@ class KortexArmSimulation
     bool SwitchControllerType(ControllerType new_type);
     void PlayAction(const kortex_driver::Action& action);
     void JoinThreadAndCancelAction();
-    kortex_driver::KortexError FillKortexError(uint32_t code, uint32_t subCode, const std::string& description = std::string()) const;
-    kortex_driver::KortexError ExecuteReachJointAngles(const kortex_driver::Action& action);
-    kortex_driver::KortexError ExecuteReachPose(const kortex_driver::Action& action);
-    kortex_driver::KortexError ExecuteSendJointSpeeds(const kortex_driver::Action& action);
-    kortex_driver::KortexError ExecuteSendTwist(const kortex_driver::Action& action);
-    kortex_driver::KortexError ExecuteSendGripperCommand(const kortex_driver::Action& action);
-    kortex_driver::KortexError ExecuteTimeDelay(const kortex_driver::Action& action);
+    kortex_driver::msg::KortexError FillKortexError(uint32_t code, uint32_t subCode, const std::string& description = std::string()) const;
+    kortex_driver::msg::KortexError ExecuteReachJointAngles(const kortex_driver::Action& action);
+    kortex_driver::msg::KortexError ExecuteReachPose(const kortex_driver::Action& action);
+    kortex_driver::msg::KortexError ExecuteSendJointSpeeds(const kortex_driver::Action& action);
+    kortex_driver::msg::KortexError ExecuteSendTwist(const kortex_driver::Action& action);
+    kortex_driver::msg::KortexError ExecuteSendGripperCommand(const kortex_driver::Action& action);
+    kortex_driver::msg::KortexError ExecuteTimeDelay(const kortex_driver::Action& action);
 
     // Callbacks
     void new_joint_speeds_cb(const kortex_driver::Base_JointSpeeds& joint_speeds);

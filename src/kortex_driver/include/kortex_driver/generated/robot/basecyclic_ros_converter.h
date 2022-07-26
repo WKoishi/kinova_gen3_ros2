@@ -17,7 +17,7 @@
 #ifndef _KORTEX_BASECYCLIC_ROS_CONVERTER_H_
 #define _KORTEX_BASECYCLIC_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,21 +41,21 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/ActuatorCommand.h"
-#include "kortex_driver/ActuatorFeedback.h"
-#include "kortex_driver/ActuatorCustomData.h"
-#include "kortex_driver/BaseFeedback.h"
-#include "kortex_driver/BaseCyclic_CustomData.h"
-#include "kortex_driver/BaseCyclic_Command.h"
-#include "kortex_driver/BaseCyclic_Feedback.h"
+#include "kortex_driver/msg/actuator_command.hpp"
+#include "kortex_driver/msg/actuator_feedback.hpp"
+#include "kortex_driver/msg/actuator_custom_data.hpp"
+#include "kortex_driver/msg/base_feedback.hpp"
+#include "kortex_driver/msg/base_cyclic_custom_data.hpp"
+#include "kortex_driver/msg/base_cyclic_command.hpp"
+#include "kortex_driver/msg/base_cyclic_feedback.hpp"
 
 
-int ToRosData(Kinova::Api::BaseCyclic::ActuatorCommand input, kortex_driver::ActuatorCommand &output);
-int ToRosData(Kinova::Api::BaseCyclic::ActuatorFeedback input, kortex_driver::ActuatorFeedback &output);
-int ToRosData(Kinova::Api::BaseCyclic::ActuatorCustomData input, kortex_driver::ActuatorCustomData &output);
-int ToRosData(Kinova::Api::BaseCyclic::BaseFeedback input, kortex_driver::BaseFeedback &output);
-int ToRosData(Kinova::Api::BaseCyclic::CustomData input, kortex_driver::BaseCyclic_CustomData &output);
-int ToRosData(Kinova::Api::BaseCyclic::Command input, kortex_driver::BaseCyclic_Command &output);
-int ToRosData(Kinova::Api::BaseCyclic::Feedback input, kortex_driver::BaseCyclic_Feedback &output);
+int ToRosData(Kinova::Api::BaseCyclic::ActuatorCommand input, kortex_driver::msg::ActuatorCommand &output);
+int ToRosData(Kinova::Api::BaseCyclic::ActuatorFeedback input, kortex_driver::msg::ActuatorFeedback &output);
+int ToRosData(Kinova::Api::BaseCyclic::ActuatorCustomData input, kortex_driver::msg::ActuatorCustomData &output);
+int ToRosData(Kinova::Api::BaseCyclic::BaseFeedback input, kortex_driver::msg::BaseFeedback &output);
+int ToRosData(Kinova::Api::BaseCyclic::CustomData input, kortex_driver::msg::BaseCyclicCustomData &output);
+int ToRosData(Kinova::Api::BaseCyclic::Command input, kortex_driver::msg::BaseCyclicCommand &output);
+int ToRosData(Kinova::Api::BaseCyclic::Feedback input, kortex_driver::msg::BaseCyclicFeedback &output);
 
 #endif

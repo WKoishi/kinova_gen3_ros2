@@ -17,7 +17,7 @@
 #ifndef _KORTEX_GRIPPERCYCLIC_ROS_CONVERTER_H_
 #define _KORTEX_GRIPPERCYCLIC_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,21 +41,21 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/GripperCyclic_MessageId.h"
-#include "kortex_driver/MotorCommand.h"
-#include "kortex_driver/GripperCyclic_Command.h"
-#include "kortex_driver/MotorFeedback.h"
-#include "kortex_driver/GripperCyclic_Feedback.h"
-#include "kortex_driver/CustomDataUnit.h"
-#include "kortex_driver/GripperCyclic_CustomData.h"
+#include "kortex_driver/msg/gripper_cyclic_message_id.hpp"
+#include "kortex_driver/msg/motor_command.hpp"
+#include "kortex_driver/msg/gripper_cyclic_command.hpp"
+#include "kortex_driver/msg/motor_feedback.hpp"
+#include "kortex_driver/msg/gripper_cyclic_feedback.hpp"
+#include "kortex_driver/msg/custom_data_unit.hpp"
+#include "kortex_driver/msg/gripper_cyclic_custom_data.hpp"
 
 
-int ToRosData(Kinova::Api::GripperCyclic::MessageId input, kortex_driver::GripperCyclic_MessageId &output);
-int ToRosData(Kinova::Api::GripperCyclic::MotorCommand input, kortex_driver::MotorCommand &output);
-int ToRosData(Kinova::Api::GripperCyclic::Command input, kortex_driver::GripperCyclic_Command &output);
-int ToRosData(Kinova::Api::GripperCyclic::MotorFeedback input, kortex_driver::MotorFeedback &output);
-int ToRosData(Kinova::Api::GripperCyclic::Feedback input, kortex_driver::GripperCyclic_Feedback &output);
-int ToRosData(Kinova::Api::GripperCyclic::CustomDataUnit input, kortex_driver::CustomDataUnit &output);
-int ToRosData(Kinova::Api::GripperCyclic::CustomData input, kortex_driver::GripperCyclic_CustomData &output);
+int ToRosData(Kinova::Api::GripperCyclic::MessageId input, kortex_driver::msg::GripperCyclicMessageId &output);
+int ToRosData(Kinova::Api::GripperCyclic::MotorCommand input, kortex_driver::msg::MotorCommand &output);
+int ToRosData(Kinova::Api::GripperCyclic::Command input, kortex_driver::msg::GripperCyclicCommand &output);
+int ToRosData(Kinova::Api::GripperCyclic::MotorFeedback input, kortex_driver::msg::MotorFeedback &output);
+int ToRosData(Kinova::Api::GripperCyclic::Feedback input, kortex_driver::msg::GripperCyclicFeedback &output);
+int ToRosData(Kinova::Api::GripperCyclic::CustomDataUnit input, kortex_driver::msg::CustomDataUnit &output);
+int ToRosData(Kinova::Api::GripperCyclic::CustomData input, kortex_driver::msg::GripperCyclicCustomData &output);
 
 #endif

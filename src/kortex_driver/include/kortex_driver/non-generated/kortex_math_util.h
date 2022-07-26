@@ -12,7 +12,7 @@
  */
 
 #include <cmath>
-#include "kortex_driver/Twist.h"
+#include "kortex_driver/msg/twist.hpp"
 
 class KortexMathUtil
 {
@@ -31,8 +31,8 @@ public:
     static double absolute_position_from_relative(double relative_position, double min_value, double max_value);
     static float findDistanceToBoundary(float value, float limit);
     
-    // kortex_driver::Twist helper functions
-    static kortex_driver::Twist substractTwists(const kortex_driver::Twist& a, const kortex_driver::Twist& b);
+    // kortex_driver::msg::Twist helper functions
+    static kortex_driver::msg::Twist substractTwists(const kortex_driver::msg::Twist& a, const kortex_driver::msg::Twist& b);
 };
 
 #endif

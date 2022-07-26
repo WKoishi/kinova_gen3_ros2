@@ -17,7 +17,7 @@
 #ifndef _KORTEX_ACTUATORCONFIG_PROTO_CONVERTER_H_
 #define _KORTEX_ACTUATORCONFIG_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,43 +41,43 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/AxisPosition.h"
-#include "kortex_driver/AxisOffsets.h"
-#include "kortex_driver/TorqueCalibration.h"
-#include "kortex_driver/TorqueOffset.h"
-#include "kortex_driver/ActuatorConfig_ControlModeInformation.h"
-#include "kortex_driver/ControlLoop.h"
-#include "kortex_driver/LoopSelection.h"
-#include "kortex_driver/VectorDriveParameters.h"
-#include "kortex_driver/EncoderDerivativeParameters.h"
-#include "kortex_driver/ControlLoopParameters.h"
-#include "kortex_driver/FrequencyResponse.h"
-#include "kortex_driver/StepResponse.h"
-#include "kortex_driver/RampResponse.h"
-#include "kortex_driver/CustomDataSelection.h"
-#include "kortex_driver/CommandModeInformation.h"
-#include "kortex_driver/Servoing.h"
-#include "kortex_driver/PositionCommand.h"
-#include "kortex_driver/CoggingFeedforwardModeInformation.h"
+#include "kortex_driver/msg/axis_position.hpp"
+#include "kortex_driver/msg/axis_offsets.hpp"
+#include "kortex_driver/msg/torque_calibration.hpp"
+#include "kortex_driver/msg/torque_offset.hpp"
+#include "kortex_driver/msg/actuator_config_control_mode_information.hpp"
+#include "kortex_driver/msg/control_loop.hpp"
+#include "kortex_driver/msg/loop_selection.hpp"
+#include "kortex_driver/msg/vector_drive_parameters.hpp"
+#include "kortex_driver/msg/encoder_derivative_parameters.hpp"
+#include "kortex_driver/msg/control_loop_parameters.hpp"
+#include "kortex_driver/msg/frequency_response.hpp"
+#include "kortex_driver/msg/step_response.hpp"
+#include "kortex_driver/msg/ramp_response.hpp"
+#include "kortex_driver/msg/custom_data_selection.hpp"
+#include "kortex_driver/msg/command_mode_information.hpp"
+#include "kortex_driver/msg/servoing.hpp"
+#include "kortex_driver/msg/position_command.hpp"
+#include "kortex_driver/msg/cogging_feedforward_mode_information.hpp"
 
 
-int ToProtoData(kortex_driver::AxisPosition input, Kinova::Api::ActuatorConfig::AxisPosition *output);
-int ToProtoData(kortex_driver::AxisOffsets input, Kinova::Api::ActuatorConfig::AxisOffsets *output);
-int ToProtoData(kortex_driver::TorqueCalibration input, Kinova::Api::ActuatorConfig::TorqueCalibration *output);
-int ToProtoData(kortex_driver::TorqueOffset input, Kinova::Api::ActuatorConfig::TorqueOffset *output);
-int ToProtoData(kortex_driver::ActuatorConfig_ControlModeInformation input, Kinova::Api::ActuatorConfig::ControlModeInformation *output);
-int ToProtoData(kortex_driver::ControlLoop input, Kinova::Api::ActuatorConfig::ControlLoop *output);
-int ToProtoData(kortex_driver::LoopSelection input, Kinova::Api::ActuatorConfig::LoopSelection *output);
-int ToProtoData(kortex_driver::VectorDriveParameters input, Kinova::Api::ActuatorConfig::VectorDriveParameters *output);
-int ToProtoData(kortex_driver::EncoderDerivativeParameters input, Kinova::Api::ActuatorConfig::EncoderDerivativeParameters *output);
-int ToProtoData(kortex_driver::ControlLoopParameters input, Kinova::Api::ActuatorConfig::ControlLoopParameters *output);
-int ToProtoData(kortex_driver::FrequencyResponse input, Kinova::Api::ActuatorConfig::FrequencyResponse *output);
-int ToProtoData(kortex_driver::StepResponse input, Kinova::Api::ActuatorConfig::StepResponse *output);
-int ToProtoData(kortex_driver::RampResponse input, Kinova::Api::ActuatorConfig::RampResponse *output);
-int ToProtoData(kortex_driver::CustomDataSelection input, Kinova::Api::ActuatorConfig::CustomDataSelection *output);
-int ToProtoData(kortex_driver::CommandModeInformation input, Kinova::Api::ActuatorConfig::CommandModeInformation *output);
-int ToProtoData(kortex_driver::Servoing input, Kinova::Api::ActuatorConfig::Servoing *output);
-int ToProtoData(kortex_driver::PositionCommand input, Kinova::Api::ActuatorConfig::PositionCommand *output);
-int ToProtoData(kortex_driver::CoggingFeedforwardModeInformation input, Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation *output);
+int ToProtoData(kortex_driver::msg::AxisPosition input, Kinova::Api::ActuatorConfig::AxisPosition *output);
+int ToProtoData(kortex_driver::msg::AxisOffsets input, Kinova::Api::ActuatorConfig::AxisOffsets *output);
+int ToProtoData(kortex_driver::msg::TorqueCalibration input, Kinova::Api::ActuatorConfig::TorqueCalibration *output);
+int ToProtoData(kortex_driver::msg::TorqueOffset input, Kinova::Api::ActuatorConfig::TorqueOffset *output);
+int ToProtoData(kortex_driver::msg::ActuatorConfigControlModeInformation input, Kinova::Api::ActuatorConfig::ControlModeInformation *output);
+int ToProtoData(kortex_driver::msg::ControlLoop input, Kinova::Api::ActuatorConfig::ControlLoop *output);
+int ToProtoData(kortex_driver::msg::LoopSelection input, Kinova::Api::ActuatorConfig::LoopSelection *output);
+int ToProtoData(kortex_driver::msg::VectorDriveParameters input, Kinova::Api::ActuatorConfig::VectorDriveParameters *output);
+int ToProtoData(kortex_driver::msg::EncoderDerivativeParameters input, Kinova::Api::ActuatorConfig::EncoderDerivativeParameters *output);
+int ToProtoData(kortex_driver::msg::ControlLoopParameters input, Kinova::Api::ActuatorConfig::ControlLoopParameters *output);
+int ToProtoData(kortex_driver::msg::FrequencyResponse input, Kinova::Api::ActuatorConfig::FrequencyResponse *output);
+int ToProtoData(kortex_driver::msg::StepResponse input, Kinova::Api::ActuatorConfig::StepResponse *output);
+int ToProtoData(kortex_driver::msg::RampResponse input, Kinova::Api::ActuatorConfig::RampResponse *output);
+int ToProtoData(kortex_driver::msg::CustomDataSelection input, Kinova::Api::ActuatorConfig::CustomDataSelection *output);
+int ToProtoData(kortex_driver::msg::CommandModeInformation input, Kinova::Api::ActuatorConfig::CommandModeInformation *output);
+int ToProtoData(kortex_driver::msg::Servoing input, Kinova::Api::ActuatorConfig::Servoing *output);
+int ToProtoData(kortex_driver::msg::PositionCommand input, Kinova::Api::ActuatorConfig::PositionCommand *output);
+int ToProtoData(kortex_driver::msg::CoggingFeedforwardModeInformation input, Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation *output);
 
 #endif

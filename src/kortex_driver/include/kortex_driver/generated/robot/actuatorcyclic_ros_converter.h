@@ -17,7 +17,7 @@
 #ifndef _KORTEX_ACTUATORCYCLIC_ROS_CONVERTER_H_
 #define _KORTEX_ACTUATORCYCLIC_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,15 +41,15 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/ActuatorCyclic_MessageId.h"
-#include "kortex_driver/ActuatorCyclic_Command.h"
-#include "kortex_driver/ActuatorCyclic_Feedback.h"
-#include "kortex_driver/ActuatorCyclic_CustomData.h"
+#include "kortex_driver/msg/actuator_cyclic_message_id.hpp"
+#include "kortex_driver/msg/actuator_cyclic_command.hpp"
+#include "kortex_driver/msg/actuator_cyclic_feedback.hpp"
+#include "kortex_driver/msg/actuator_cyclic_custom_data.hpp"
 
 
-int ToRosData(Kinova::Api::ActuatorCyclic::MessageId input, kortex_driver::ActuatorCyclic_MessageId &output);
-int ToRosData(Kinova::Api::ActuatorCyclic::Command input, kortex_driver::ActuatorCyclic_Command &output);
-int ToRosData(Kinova::Api::ActuatorCyclic::Feedback input, kortex_driver::ActuatorCyclic_Feedback &output);
-int ToRosData(Kinova::Api::ActuatorCyclic::CustomData input, kortex_driver::ActuatorCyclic_CustomData &output);
+int ToRosData(Kinova::Api::ActuatorCyclic::MessageId input, kortex_driver::msg::ActuatorCyclicMessageId &output);
+int ToRosData(Kinova::Api::ActuatorCyclic::Command input, kortex_driver::msg::ActuatorCyclicCommand &output);
+int ToRosData(Kinova::Api::ActuatorCyclic::Feedback input, kortex_driver::msg::ActuatorCyclicFeedback &output);
+int ToRosData(Kinova::Api::ActuatorCyclic::CustomData input, kortex_driver::msg::ActuatorCyclicCustomData &output);
 
 #endif

@@ -17,180 +17,180 @@
 #ifndef _KORTEX_BASE_SERVICES_INTERFACE_H_
 #define _KORTEX_BASE_SERVICES_INTERFACE_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
 #include <cstdio>
 #include <iostream>
 #include <chrono>
-#include "kortex_driver/CreateUserProfile.h"
-#include "kortex_driver/UpdateUserProfile.h"
-#include "kortex_driver/ReadUserProfile.h"
-#include "kortex_driver/DeleteUserProfile.h"
-#include "kortex_driver/ReadAllUserProfiles.h"
-#include "kortex_driver/ReadAllUsers.h"
-#include "kortex_driver/ChangePassword.h"
-#include "kortex_driver/CreateSequence.h"
-#include "kortex_driver/UpdateSequence.h"
-#include "kortex_driver/ReadSequence.h"
-#include "kortex_driver/DeleteSequence.h"
-#include "kortex_driver/ReadAllSequences.h"
-#include "kortex_driver/PlaySequence.h"
-#include "kortex_driver/PlayAdvancedSequence.h"
-#include "kortex_driver/StopSequence.h"
-#include "kortex_driver/PauseSequence.h"
-#include "kortex_driver/ResumeSequence.h"
-#include "kortex_driver/CreateProtectionZone.h"
-#include "kortex_driver/UpdateProtectionZone.h"
-#include "kortex_driver/ReadProtectionZone.h"
-#include "kortex_driver/DeleteProtectionZone.h"
-#include "kortex_driver/ReadAllProtectionZones.h"
-#include "kortex_driver/CreateMapping.h"
-#include "kortex_driver/ReadMapping.h"
-#include "kortex_driver/UpdateMapping.h"
-#include "kortex_driver/DeleteMapping.h"
-#include "kortex_driver/ReadAllMappings.h"
-#include "kortex_driver/CreateMap.h"
-#include "kortex_driver/ReadMap.h"
-#include "kortex_driver/UpdateMap.h"
-#include "kortex_driver/DeleteMap.h"
-#include "kortex_driver/ReadAllMaps.h"
-#include "kortex_driver/ActivateMap.h"
-#include "kortex_driver/CreateAction.h"
-#include "kortex_driver/ReadAction.h"
-#include "kortex_driver/ReadAllActions.h"
-#include "kortex_driver/DeleteAction.h"
-#include "kortex_driver/UpdateAction.h"
-#include "kortex_driver/ExecuteActionFromReference.h"
-#include "kortex_driver/ExecuteAction.h"
-#include "kortex_driver/PauseAction.h"
-#include "kortex_driver/StopAction.h"
-#include "kortex_driver/ResumeAction.h"
-#include "kortex_driver/GetIPv4Configuration.h"
-#include "kortex_driver/SetIPv4Configuration.h"
-#include "kortex_driver/SetCommunicationInterfaceEnable.h"
-#include "kortex_driver/IsCommunicationInterfaceEnable.h"
-#include "kortex_driver/GetAvailableWifi.h"
-#include "kortex_driver/GetWifiInformation.h"
-#include "kortex_driver/AddWifiConfiguration.h"
-#include "kortex_driver/DeleteWifiConfiguration.h"
-#include "kortex_driver/GetAllConfiguredWifis.h"
-#include "kortex_driver/ConnectWifi.h"
-#include "kortex_driver/DisconnectWifi.h"
-#include "kortex_driver/GetConnectedWifiInformation.h"
-#include "kortex_driver/Base_Unsubscribe.h"
-#include "kortex_driver/OnNotificationConfigurationChangeTopic.h"
-#include "kortex_driver/ConfigurationChangeNotification.h"
-#include "kortex_driver/OnNotificationMappingInfoTopic.h"
-#include "kortex_driver/MappingInfoNotification.h"
-#include "kortex_driver/Base_OnNotificationControlModeTopic.h"
-#include "kortex_driver/Base_ControlModeNotification.h"
-#include "kortex_driver/OnNotificationOperatingModeTopic.h"
-#include "kortex_driver/OperatingModeNotification.h"
-#include "kortex_driver/OnNotificationSequenceInfoTopic.h"
-#include "kortex_driver/SequenceInfoNotification.h"
-#include "kortex_driver/OnNotificationProtectionZoneTopic.h"
-#include "kortex_driver/ProtectionZoneNotification.h"
-#include "kortex_driver/OnNotificationUserTopic.h"
-#include "kortex_driver/UserNotification.h"
-#include "kortex_driver/OnNotificationControllerTopic.h"
-#include "kortex_driver/ControllerNotification.h"
-#include "kortex_driver/OnNotificationActionTopic.h"
-#include "kortex_driver/ActionNotification.h"
-#include "kortex_driver/OnNotificationRobotEventTopic.h"
-#include "kortex_driver/RobotEventNotification.h"
-#include "kortex_driver/PlayCartesianTrajectory.h"
-#include "kortex_driver/PlayCartesianTrajectoryPosition.h"
-#include "kortex_driver/PlayCartesianTrajectoryOrientation.h"
-#include "kortex_driver/Stop.h"
-#include "kortex_driver/GetMeasuredCartesianPose.h"
-#include "kortex_driver/SendWrenchCommand.h"
-#include "kortex_driver/SendWrenchJoystickCommand.h"
-#include "kortex_driver/SendTwistJoystickCommand.h"
-#include "kortex_driver/SendTwistCommand.h"
-#include "kortex_driver/PlayJointTrajectory.h"
-#include "kortex_driver/PlaySelectedJointTrajectory.h"
-#include "kortex_driver/GetMeasuredJointAngles.h"
-#include "kortex_driver/SendJointSpeedsCommand.h"
-#include "kortex_driver/SendSelectedJointSpeedCommand.h"
-#include "kortex_driver/SendGripperCommand.h"
-#include "kortex_driver/GetMeasuredGripperMovement.h"
-#include "kortex_driver/SetAdmittance.h"
-#include "kortex_driver/SetOperatingMode.h"
-#include "kortex_driver/ApplyEmergencyStop.h"
-#include "kortex_driver/Base_ClearFaults.h"
-#include "kortex_driver/Base_GetControlMode.h"
-#include "kortex_driver/GetOperatingMode.h"
-#include "kortex_driver/SetServoingMode.h"
-#include "kortex_driver/GetServoingMode.h"
-#include "kortex_driver/OnNotificationServoingModeTopic.h"
-#include "kortex_driver/ServoingModeNotification.h"
-#include "kortex_driver/RestoreFactorySettings.h"
-#include "kortex_driver/OnNotificationFactoryTopic.h"
-#include "kortex_driver/FactoryNotification.h"
-#include "kortex_driver/GetAllConnectedControllers.h"
-#include "kortex_driver/GetControllerState.h"
-#include "kortex_driver/GetActuatorCount.h"
-#include "kortex_driver/StartWifiScan.h"
-#include "kortex_driver/GetConfiguredWifi.h"
-#include "kortex_driver/OnNotificationNetworkTopic.h"
-#include "kortex_driver/NetworkNotification.h"
-#include "kortex_driver/GetArmState.h"
-#include "kortex_driver/OnNotificationArmStateTopic.h"
-#include "kortex_driver/ArmStateNotification.h"
-#include "kortex_driver/GetIPv4Information.h"
-#include "kortex_driver/SetWifiCountryCode.h"
-#include "kortex_driver/GetWifiCountryCode.h"
-#include "kortex_driver/Base_SetCapSenseConfig.h"
-#include "kortex_driver/Base_GetCapSenseConfig.h"
-#include "kortex_driver/GetAllJointsSpeedHardLimitation.h"
-#include "kortex_driver/GetAllJointsTorqueHardLimitation.h"
-#include "kortex_driver/GetTwistHardLimitation.h"
-#include "kortex_driver/GetWrenchHardLimitation.h"
-#include "kortex_driver/SendJointSpeedsJoystickCommand.h"
-#include "kortex_driver/SendSelectedJointSpeedJoystickCommand.h"
-#include "kortex_driver/EnableBridge.h"
-#include "kortex_driver/DisableBridge.h"
-#include "kortex_driver/GetBridgeList.h"
-#include "kortex_driver/GetBridgeConfig.h"
-#include "kortex_driver/PlayPreComputedJointTrajectory.h"
-#include "kortex_driver/GetProductConfiguration.h"
-#include "kortex_driver/UpdateEndEffectorTypeConfiguration.h"
-#include "kortex_driver/RestoreFactoryProductConfiguration.h"
-#include "kortex_driver/GetTrajectoryErrorReport.h"
-#include "kortex_driver/GetAllJointsSpeedSoftLimitation.h"
-#include "kortex_driver/GetAllJointsTorqueSoftLimitation.h"
-#include "kortex_driver/GetTwistSoftLimitation.h"
-#include "kortex_driver/GetWrenchSoftLimitation.h"
-#include "kortex_driver/SetControllerConfigurationMode.h"
-#include "kortex_driver/GetControllerConfigurationMode.h"
-#include "kortex_driver/StartTeaching.h"
-#include "kortex_driver/StopTeaching.h"
-#include "kortex_driver/AddSequenceTasks.h"
-#include "kortex_driver/UpdateSequenceTask.h"
-#include "kortex_driver/SwapSequenceTasks.h"
-#include "kortex_driver/ReadSequenceTask.h"
-#include "kortex_driver/ReadAllSequenceTasks.h"
-#include "kortex_driver/DeleteSequenceTask.h"
-#include "kortex_driver/DeleteAllSequenceTasks.h"
-#include "kortex_driver/TakeSnapshot.h"
-#include "kortex_driver/GetFirmwareBundleVersions.h"
-#include "kortex_driver/ExecuteWaypointTrajectory.h"
-#include "kortex_driver/MoveSequenceTask.h"
-#include "kortex_driver/DuplicateMapping.h"
-#include "kortex_driver/DuplicateMap.h"
-#include "kortex_driver/SetControllerConfiguration.h"
-#include "kortex_driver/GetControllerConfiguration.h"
-#include "kortex_driver/GetAllControllerConfigurations.h"
-#include "kortex_driver/ComputeForwardKinematics.h"
-#include "kortex_driver/ComputeInverseKinematics.h"
-#include "kortex_driver/ValidateWaypointList.h"
+#include "kortex_driver/srv/create_user_profile.hpp"
+#include "kortex_driver/srv/update_user_profile.hpp"
+#include "kortex_driver/srv/read_user_profile.hpp"
+#include "kortex_driver/srv/delete_user_profile.hpp"
+#include "kortex_driver/srv/read_all_user_profiles.hpp"
+#include "kortex_driver/srv/read_all_users.hpp"
+#include "kortex_driver/srv/change_password.hpp"
+#include "kortex_driver/srv/create_sequence.hpp"
+#include "kortex_driver/srv/update_sequence.hpp"
+#include "kortex_driver/srv/read_sequence.hpp"
+#include "kortex_driver/srv/delete_sequence.hpp"
+#include "kortex_driver/srv/read_all_sequences.hpp"
+#include "kortex_driver/srv/play_sequence.hpp"
+#include "kortex_driver/srv/play_advanced_sequence.hpp"
+#include "kortex_driver/srv/stop_sequence.hpp"
+#include "kortex_driver/srv/pause_sequence.hpp"
+#include "kortex_driver/srv/resume_sequence.hpp"
+#include "kortex_driver/srv/create_protection_zone.hpp"
+#include "kortex_driver/srv/update_protection_zone.hpp"
+#include "kortex_driver/srv/read_protection_zone.hpp"
+#include "kortex_driver/srv/delete_protection_zone.hpp"
+#include "kortex_driver/srv/read_all_protection_zones.hpp"
+#include "kortex_driver/srv/create_mapping.hpp"
+#include "kortex_driver/srv/read_mapping.hpp"
+#include "kortex_driver/srv/update_mapping.hpp"
+#include "kortex_driver/srv/delete_mapping.hpp"
+#include "kortex_driver/srv/read_all_mappings.hpp"
+#include "kortex_driver/srv/create_map.hpp"
+#include "kortex_driver/srv/read_map.hpp"
+#include "kortex_driver/srv/update_map.hpp"
+#include "kortex_driver/srv/delete_map.hpp"
+#include "kortex_driver/srv/read_all_maps.hpp"
+#include "kortex_driver/srv/activate_map.hpp"
+#include "kortex_driver/srv/create_action.hpp"
+#include "kortex_driver/srv/read_action.hpp"
+#include "kortex_driver/srv/read_all_actions.hpp"
+#include "kortex_driver/srv/delete_action.hpp"
+#include "kortex_driver/srv/update_action.hpp"
+#include "kortex_driver/srv/execute_action_from_reference.hpp"
+#include "kortex_driver/srv/execute_action.hpp"
+#include "kortex_driver/srv/pause_action.hpp"
+#include "kortex_driver/srv/stop_action.hpp"
+#include "kortex_driver/srv/resume_action.hpp"
+#include "kortex_driver/srv/get_i_pv4_configuration.hpp"
+#include "kortex_driver/srv/set_i_pv4_configuration.hpp"
+#include "kortex_driver/srv/set_communication_interface_enable.hpp"
+#include "kortex_driver/srv/is_communication_interface_enable.hpp"
+#include "kortex_driver/srv/get_available_wifi.hpp"
+#include "kortex_driver/srv/get_wifi_information.hpp"
+#include "kortex_driver/srv/add_wifi_configuration.hpp"
+#include "kortex_driver/srv/delete_wifi_configuration.hpp"
+#include "kortex_driver/srv/get_all_configured_wifis.hpp"
+#include "kortex_driver/srv/connect_wifi.hpp"
+#include "kortex_driver/srv/disconnect_wifi.hpp"
+#include "kortex_driver/srv/get_connected_wifi_information.hpp"
+#include "kortex_driver/srv/base_unsubscribe.hpp"
+#include "kortex_driver/srv/on_notification_configuration_change_topic.hpp"
+#include "kortex_driver/msg/configuration_change_notification.hpp"
+#include "kortex_driver/srv/on_notification_mapping_info_topic.hpp"
+#include "kortex_driver/msg/mapping_info_notification.hpp"
+#include "kortex_driver/srv/base_on_notification_control_mode_topic.hpp"
+#include "kortex_driver/msg/base_control_mode_notification.hpp"
+#include "kortex_driver/srv/on_notification_operating_mode_topic.hpp"
+#include "kortex_driver/msg/operating_mode_notification.hpp"
+#include "kortex_driver/srv/on_notification_sequence_info_topic.hpp"
+#include "kortex_driver/msg/sequence_info_notification.hpp"
+#include "kortex_driver/srv/on_notification_protection_zone_topic.hpp"
+#include "kortex_driver/msg/protection_zone_notification.hpp"
+#include "kortex_driver/srv/on_notification_user_topic.hpp"
+#include "kortex_driver/msg/user_notification.hpp"
+#include "kortex_driver/srv/on_notification_controller_topic.hpp"
+#include "kortex_driver/msg/controller_notification.hpp"
+#include "kortex_driver/srv/on_notification_action_topic.hpp"
+#include "kortex_driver/msg/action_notification.hpp"
+#include "kortex_driver/srv/on_notification_robot_event_topic.hpp"
+#include "kortex_driver/msg/robot_event_notification.hpp"
+#include "kortex_driver/srv/play_cartesian_trajectory.hpp"
+#include "kortex_driver/srv/play_cartesian_trajectory_position.hpp"
+#include "kortex_driver/srv/play_cartesian_trajectory_orientation.hpp"
+#include "kortex_driver/srv/stop.hpp"
+#include "kortex_driver/srv/get_measured_cartesian_pose.hpp"
+#include "kortex_driver/srv/send_wrench_command.hpp"
+#include "kortex_driver/srv/send_wrench_joystick_command.hpp"
+#include "kortex_driver/srv/send_twist_joystick_command.hpp"
+#include "kortex_driver/srv/send_twist_command.hpp"
+#include "kortex_driver/srv/play_joint_trajectory.hpp"
+#include "kortex_driver/srv/play_selected_joint_trajectory.hpp"
+#include "kortex_driver/srv/get_measured_joint_angles.hpp"
+#include "kortex_driver/srv/send_joint_speeds_command.hpp"
+#include "kortex_driver/srv/send_selected_joint_speed_command.hpp"
+#include "kortex_driver/srv/send_gripper_command.hpp"
+#include "kortex_driver/srv/get_measured_gripper_movement.hpp"
+#include "kortex_driver/srv/set_admittance.hpp"
+#include "kortex_driver/srv/set_operating_mode.hpp"
+#include "kortex_driver/srv/apply_emergency_stop.hpp"
+#include "kortex_driver/srv/base_clear_faults.hpp"
+#include "kortex_driver/srv/base_get_control_mode.hpp"
+#include "kortex_driver/srv/get_operating_mode.hpp"
+#include "kortex_driver/srv/set_servoing_mode.hpp"
+#include "kortex_driver/srv/get_servoing_mode.hpp"
+#include "kortex_driver/srv/on_notification_servoing_mode_topic.hpp"
+#include "kortex_driver/msg/servoing_mode_notification.hpp"
+#include "kortex_driver/srv/restore_factory_settings.hpp"
+#include "kortex_driver/srv/on_notification_factory_topic.hpp"
+#include "kortex_driver/msg/factory_notification.hpp"
+#include "kortex_driver/srv/get_all_connected_controllers.hpp"
+#include "kortex_driver/srv/get_controller_state.hpp"
+#include "kortex_driver/srv/get_actuator_count.hpp"
+#include "kortex_driver/srv/start_wifi_scan.hpp"
+#include "kortex_driver/srv/get_configured_wifi.hpp"
+#include "kortex_driver/srv/on_notification_network_topic.hpp"
+#include "kortex_driver/msg/network_notification.hpp"
+#include "kortex_driver/srv/get_arm_state.hpp"
+#include "kortex_driver/srv/on_notification_arm_state_topic.hpp"
+#include "kortex_driver/msg/arm_state_notification.hpp"
+#include "kortex_driver/srv/get_i_pv4_information.hpp"
+#include "kortex_driver/srv/set_wifi_country_code.hpp"
+#include "kortex_driver/srv/get_wifi_country_code.hpp"
+#include "kortex_driver/srv/base_set_cap_sense_config.hpp"
+#include "kortex_driver/srv/base_get_cap_sense_config.hpp"
+#include "kortex_driver/srv/get_all_joints_speed_hard_limitation.hpp"
+#include "kortex_driver/srv/get_all_joints_torque_hard_limitation.hpp"
+#include "kortex_driver/srv/get_twist_hard_limitation.hpp"
+#include "kortex_driver/srv/get_wrench_hard_limitation.hpp"
+#include "kortex_driver/srv/send_joint_speeds_joystick_command.hpp"
+#include "kortex_driver/srv/send_selected_joint_speed_joystick_command.hpp"
+#include "kortex_driver/srv/enable_bridge.hpp"
+#include "kortex_driver/srv/disable_bridge.hpp"
+#include "kortex_driver/srv/get_bridge_list.hpp"
+#include "kortex_driver/srv/get_bridge_config.hpp"
+#include "kortex_driver/srv/play_pre_computed_joint_trajectory.hpp"
+#include "kortex_driver/srv/get_product_configuration.hpp"
+#include "kortex_driver/srv/update_end_effector_type_configuration.hpp"
+#include "kortex_driver/srv/restore_factory_product_configuration.hpp"
+#include "kortex_driver/srv/get_trajectory_error_report.hpp"
+#include "kortex_driver/srv/get_all_joints_speed_soft_limitation.hpp"
+#include "kortex_driver/srv/get_all_joints_torque_soft_limitation.hpp"
+#include "kortex_driver/srv/get_twist_soft_limitation.hpp"
+#include "kortex_driver/srv/get_wrench_soft_limitation.hpp"
+#include "kortex_driver/srv/set_controller_configuration_mode.hpp"
+#include "kortex_driver/srv/get_controller_configuration_mode.hpp"
+#include "kortex_driver/srv/start_teaching.hpp"
+#include "kortex_driver/srv/stop_teaching.hpp"
+#include "kortex_driver/srv/add_sequence_tasks.hpp"
+#include "kortex_driver/srv/update_sequence_task.hpp"
+#include "kortex_driver/srv/swap_sequence_tasks.hpp"
+#include "kortex_driver/srv/read_sequence_task.hpp"
+#include "kortex_driver/srv/read_all_sequence_tasks.hpp"
+#include "kortex_driver/srv/delete_sequence_task.hpp"
+#include "kortex_driver/srv/delete_all_sequence_tasks.hpp"
+#include "kortex_driver/srv/take_snapshot.hpp"
+#include "kortex_driver/srv/get_firmware_bundle_versions.hpp"
+#include "kortex_driver/srv/execute_waypoint_trajectory.hpp"
+#include "kortex_driver/srv/move_sequence_task.hpp"
+#include "kortex_driver/srv/duplicate_mapping.hpp"
+#include "kortex_driver/srv/duplicate_map.hpp"
+#include "kortex_driver/srv/set_controller_configuration.hpp"
+#include "kortex_driver/srv/get_controller_configuration.hpp"
+#include "kortex_driver/srv/get_all_controller_configurations.hpp"
+#include "kortex_driver/srv/compute_forward_kinematics.hpp"
+#include "kortex_driver/srv/compute_inverse_kinematics.hpp"
+#include "kortex_driver/srv/validate_waypoint_list.hpp"
 
-#include "kortex_driver/KortexError.h"
-#include "kortex_driver/SetDeviceID.h"
-#include "kortex_driver/SetApiOptions.h"
-#include "kortex_driver/ApiOptions.h"
+#include "kortex_driver/msg/kortex_error.hpp"
+#include "kortex_driver/srv/set_device_id.hpp"
+#include "kortex_driver/srv/set_api_options.hpp"
+#include "kortex_driver/msg/api_options.hpp"
 
 using namespace std;
 
@@ -199,170 +199,170 @@ class IBaseServices
     public:
         IBaseServices(ros::NodeHandle& node_handle) : m_node_handle(node_handle) {}
 
-        virtual bool SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res) = 0;
-        virtual bool SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res) = 0;
-        virtual bool CreateUserProfile(kortex_driver::CreateUserProfile::Request  &req, kortex_driver::CreateUserProfile::Response &res) = 0;
-        virtual bool UpdateUserProfile(kortex_driver::UpdateUserProfile::Request  &req, kortex_driver::UpdateUserProfile::Response &res) = 0;
-        virtual bool ReadUserProfile(kortex_driver::ReadUserProfile::Request  &req, kortex_driver::ReadUserProfile::Response &res) = 0;
-        virtual bool DeleteUserProfile(kortex_driver::DeleteUserProfile::Request  &req, kortex_driver::DeleteUserProfile::Response &res) = 0;
-        virtual bool ReadAllUserProfiles(kortex_driver::ReadAllUserProfiles::Request  &req, kortex_driver::ReadAllUserProfiles::Response &res) = 0;
-        virtual bool ReadAllUsers(kortex_driver::ReadAllUsers::Request  &req, kortex_driver::ReadAllUsers::Response &res) = 0;
-        virtual bool ChangePassword(kortex_driver::ChangePassword::Request  &req, kortex_driver::ChangePassword::Response &res) = 0;
-        virtual bool CreateSequence(kortex_driver::CreateSequence::Request  &req, kortex_driver::CreateSequence::Response &res) = 0;
-        virtual bool UpdateSequence(kortex_driver::UpdateSequence::Request  &req, kortex_driver::UpdateSequence::Response &res) = 0;
-        virtual bool ReadSequence(kortex_driver::ReadSequence::Request  &req, kortex_driver::ReadSequence::Response &res) = 0;
-        virtual bool DeleteSequence(kortex_driver::DeleteSequence::Request  &req, kortex_driver::DeleteSequence::Response &res) = 0;
-        virtual bool ReadAllSequences(kortex_driver::ReadAllSequences::Request  &req, kortex_driver::ReadAllSequences::Response &res) = 0;
-        virtual bool PlaySequence(kortex_driver::PlaySequence::Request  &req, kortex_driver::PlaySequence::Response &res) = 0;
-        virtual bool PlayAdvancedSequence(kortex_driver::PlayAdvancedSequence::Request  &req, kortex_driver::PlayAdvancedSequence::Response &res) = 0;
-        virtual bool StopSequence(kortex_driver::StopSequence::Request  &req, kortex_driver::StopSequence::Response &res) = 0;
-        virtual bool PauseSequence(kortex_driver::PauseSequence::Request  &req, kortex_driver::PauseSequence::Response &res) = 0;
-        virtual bool ResumeSequence(kortex_driver::ResumeSequence::Request  &req, kortex_driver::ResumeSequence::Response &res) = 0;
-        virtual bool CreateProtectionZone(kortex_driver::CreateProtectionZone::Request  &req, kortex_driver::CreateProtectionZone::Response &res) = 0;
-        virtual bool UpdateProtectionZone(kortex_driver::UpdateProtectionZone::Request  &req, kortex_driver::UpdateProtectionZone::Response &res) = 0;
-        virtual bool ReadProtectionZone(kortex_driver::ReadProtectionZone::Request  &req, kortex_driver::ReadProtectionZone::Response &res) = 0;
-        virtual bool DeleteProtectionZone(kortex_driver::DeleteProtectionZone::Request  &req, kortex_driver::DeleteProtectionZone::Response &res) = 0;
-        virtual bool ReadAllProtectionZones(kortex_driver::ReadAllProtectionZones::Request  &req, kortex_driver::ReadAllProtectionZones::Response &res) = 0;
-        virtual bool CreateMapping(kortex_driver::CreateMapping::Request  &req, kortex_driver::CreateMapping::Response &res) = 0;
-        virtual bool ReadMapping(kortex_driver::ReadMapping::Request  &req, kortex_driver::ReadMapping::Response &res) = 0;
-        virtual bool UpdateMapping(kortex_driver::UpdateMapping::Request  &req, kortex_driver::UpdateMapping::Response &res) = 0;
-        virtual bool DeleteMapping(kortex_driver::DeleteMapping::Request  &req, kortex_driver::DeleteMapping::Response &res) = 0;
-        virtual bool ReadAllMappings(kortex_driver::ReadAllMappings::Request  &req, kortex_driver::ReadAllMappings::Response &res) = 0;
-        virtual bool CreateMap(kortex_driver::CreateMap::Request  &req, kortex_driver::CreateMap::Response &res) = 0;
-        virtual bool ReadMap(kortex_driver::ReadMap::Request  &req, kortex_driver::ReadMap::Response &res) = 0;
-        virtual bool UpdateMap(kortex_driver::UpdateMap::Request  &req, kortex_driver::UpdateMap::Response &res) = 0;
-        virtual bool DeleteMap(kortex_driver::DeleteMap::Request  &req, kortex_driver::DeleteMap::Response &res) = 0;
-        virtual bool ReadAllMaps(kortex_driver::ReadAllMaps::Request  &req, kortex_driver::ReadAllMaps::Response &res) = 0;
-        virtual bool ActivateMap(kortex_driver::ActivateMap::Request  &req, kortex_driver::ActivateMap::Response &res) = 0;
-        virtual bool CreateAction(kortex_driver::CreateAction::Request  &req, kortex_driver::CreateAction::Response &res) = 0;
-        virtual bool ReadAction(kortex_driver::ReadAction::Request  &req, kortex_driver::ReadAction::Response &res) = 0;
-        virtual bool ReadAllActions(kortex_driver::ReadAllActions::Request  &req, kortex_driver::ReadAllActions::Response &res) = 0;
-        virtual bool DeleteAction(kortex_driver::DeleteAction::Request  &req, kortex_driver::DeleteAction::Response &res) = 0;
-        virtual bool UpdateAction(kortex_driver::UpdateAction::Request  &req, kortex_driver::UpdateAction::Response &res) = 0;
-        virtual bool ExecuteActionFromReference(kortex_driver::ExecuteActionFromReference::Request  &req, kortex_driver::ExecuteActionFromReference::Response &res) = 0;
-        virtual bool ExecuteAction(kortex_driver::ExecuteAction::Request  &req, kortex_driver::ExecuteAction::Response &res) = 0;
-        virtual bool PauseAction(kortex_driver::PauseAction::Request  &req, kortex_driver::PauseAction::Response &res) = 0;
-        virtual bool StopAction(kortex_driver::StopAction::Request  &req, kortex_driver::StopAction::Response &res) = 0;
-        virtual bool ResumeAction(kortex_driver::ResumeAction::Request  &req, kortex_driver::ResumeAction::Response &res) = 0;
-        virtual bool GetIPv4Configuration(kortex_driver::GetIPv4Configuration::Request  &req, kortex_driver::GetIPv4Configuration::Response &res) = 0;
-        virtual bool SetIPv4Configuration(kortex_driver::SetIPv4Configuration::Request  &req, kortex_driver::SetIPv4Configuration::Response &res) = 0;
-        virtual bool SetCommunicationInterfaceEnable(kortex_driver::SetCommunicationInterfaceEnable::Request  &req, kortex_driver::SetCommunicationInterfaceEnable::Response &res) = 0;
-        virtual bool IsCommunicationInterfaceEnable(kortex_driver::IsCommunicationInterfaceEnable::Request  &req, kortex_driver::IsCommunicationInterfaceEnable::Response &res) = 0;
-        virtual bool GetAvailableWifi(kortex_driver::GetAvailableWifi::Request  &req, kortex_driver::GetAvailableWifi::Response &res) = 0;
-        virtual bool GetWifiInformation(kortex_driver::GetWifiInformation::Request  &req, kortex_driver::GetWifiInformation::Response &res) = 0;
-        virtual bool AddWifiConfiguration(kortex_driver::AddWifiConfiguration::Request  &req, kortex_driver::AddWifiConfiguration::Response &res) = 0;
-        virtual bool DeleteWifiConfiguration(kortex_driver::DeleteWifiConfiguration::Request  &req, kortex_driver::DeleteWifiConfiguration::Response &res) = 0;
-        virtual bool GetAllConfiguredWifis(kortex_driver::GetAllConfiguredWifis::Request  &req, kortex_driver::GetAllConfiguredWifis::Response &res) = 0;
-        virtual bool ConnectWifi(kortex_driver::ConnectWifi::Request  &req, kortex_driver::ConnectWifi::Response &res) = 0;
-        virtual bool DisconnectWifi(kortex_driver::DisconnectWifi::Request  &req, kortex_driver::DisconnectWifi::Response &res) = 0;
-        virtual bool GetConnectedWifiInformation(kortex_driver::GetConnectedWifiInformation::Request  &req, kortex_driver::GetConnectedWifiInformation::Response &res) = 0;
-        virtual bool Base_Unsubscribe(kortex_driver::Base_Unsubscribe::Request  &req, kortex_driver::Base_Unsubscribe::Response &res) = 0;
-        virtual bool OnNotificationConfigurationChangeTopic(kortex_driver::OnNotificationConfigurationChangeTopic::Request  &req, kortex_driver::OnNotificationConfigurationChangeTopic::Response &res) = 0;
+        virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) = 0;
+        virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) = 0;
+        virtual bool CreateUserProfile(kortex_driver::srv::CreateUserProfile::Request  &req, kortex_driver::srv::CreateUserProfile::Response &res) = 0;
+        virtual bool UpdateUserProfile(kortex_driver::srv::UpdateUserProfile::Request  &req, kortex_driver::srv::UpdateUserProfile::Response &res) = 0;
+        virtual bool ReadUserProfile(kortex_driver::srv::ReadUserProfile::Request  &req, kortex_driver::srv::ReadUserProfile::Response &res) = 0;
+        virtual bool DeleteUserProfile(kortex_driver::srv::DeleteUserProfile::Request  &req, kortex_driver::srv::DeleteUserProfile::Response &res) = 0;
+        virtual bool ReadAllUserProfiles(kortex_driver::srv::ReadAllUserProfiles::Request  &req, kortex_driver::srv::ReadAllUserProfiles::Response &res) = 0;
+        virtual bool ReadAllUsers(kortex_driver::srv::ReadAllUsers::Request  &req, kortex_driver::srv::ReadAllUsers::Response &res) = 0;
+        virtual bool ChangePassword(kortex_driver::srv::ChangePassword::Request  &req, kortex_driver::srv::ChangePassword::Response &res) = 0;
+        virtual bool CreateSequence(kortex_driver::srv::CreateSequence::Request  &req, kortex_driver::srv::CreateSequence::Response &res) = 0;
+        virtual bool UpdateSequence(kortex_driver::srv::UpdateSequence::Request  &req, kortex_driver::srv::UpdateSequence::Response &res) = 0;
+        virtual bool ReadSequence(kortex_driver::srv::ReadSequence::Request  &req, kortex_driver::srv::ReadSequence::Response &res) = 0;
+        virtual bool DeleteSequence(kortex_driver::srv::DeleteSequence::Request  &req, kortex_driver::srv::DeleteSequence::Response &res) = 0;
+        virtual bool ReadAllSequences(kortex_driver::srv::ReadAllSequences::Request  &req, kortex_driver::srv::ReadAllSequences::Response &res) = 0;
+        virtual bool PlaySequence(kortex_driver::srv::PlaySequence::Request  &req, kortex_driver::srv::PlaySequence::Response &res) = 0;
+        virtual bool PlayAdvancedSequence(kortex_driver::srv::PlayAdvancedSequence::Request  &req, kortex_driver::srv::PlayAdvancedSequence::Response &res) = 0;
+        virtual bool StopSequence(kortex_driver::srv::StopSequence::Request  &req, kortex_driver::srv::StopSequence::Response &res) = 0;
+        virtual bool PauseSequence(kortex_driver::srv::PauseSequence::Request  &req, kortex_driver::srv::PauseSequence::Response &res) = 0;
+        virtual bool ResumeSequence(kortex_driver::srv::ResumeSequence::Request  &req, kortex_driver::srv::ResumeSequence::Response &res) = 0;
+        virtual bool CreateProtectionZone(kortex_driver::srv::CreateProtectionZone::Request  &req, kortex_driver::srv::CreateProtectionZone::Response &res) = 0;
+        virtual bool UpdateProtectionZone(kortex_driver::srv::UpdateProtectionZone::Request  &req, kortex_driver::srv::UpdateProtectionZone::Response &res) = 0;
+        virtual bool ReadProtectionZone(kortex_driver::srv::ReadProtectionZone::Request  &req, kortex_driver::srv::ReadProtectionZone::Response &res) = 0;
+        virtual bool DeleteProtectionZone(kortex_driver::srv::DeleteProtectionZone::Request  &req, kortex_driver::srv::DeleteProtectionZone::Response &res) = 0;
+        virtual bool ReadAllProtectionZones(kortex_driver::srv::ReadAllProtectionZones::Request  &req, kortex_driver::srv::ReadAllProtectionZones::Response &res) = 0;
+        virtual bool CreateMapping(kortex_driver::srv::CreateMapping::Request  &req, kortex_driver::srv::CreateMapping::Response &res) = 0;
+        virtual bool ReadMapping(kortex_driver::srv::ReadMapping::Request  &req, kortex_driver::srv::ReadMapping::Response &res) = 0;
+        virtual bool UpdateMapping(kortex_driver::srv::UpdateMapping::Request  &req, kortex_driver::srv::UpdateMapping::Response &res) = 0;
+        virtual bool DeleteMapping(kortex_driver::srv::DeleteMapping::Request  &req, kortex_driver::srv::DeleteMapping::Response &res) = 0;
+        virtual bool ReadAllMappings(kortex_driver::srv::ReadAllMappings::Request  &req, kortex_driver::srv::ReadAllMappings::Response &res) = 0;
+        virtual bool CreateMap(kortex_driver::srv::CreateMap::Request  &req, kortex_driver::srv::CreateMap::Response &res) = 0;
+        virtual bool ReadMap(kortex_driver::srv::ReadMap::Request  &req, kortex_driver::srv::ReadMap::Response &res) = 0;
+        virtual bool UpdateMap(kortex_driver::srv::UpdateMap::Request  &req, kortex_driver::srv::UpdateMap::Response &res) = 0;
+        virtual bool DeleteMap(kortex_driver::srv::DeleteMap::Request  &req, kortex_driver::srv::DeleteMap::Response &res) = 0;
+        virtual bool ReadAllMaps(kortex_driver::srv::ReadAllMaps::Request  &req, kortex_driver::srv::ReadAllMaps::Response &res) = 0;
+        virtual bool ActivateMap(kortex_driver::srv::ActivateMap::Request  &req, kortex_driver::srv::ActivateMap::Response &res) = 0;
+        virtual bool CreateAction(kortex_driver::srv::CreateAction::Request  &req, kortex_driver::srv::CreateAction::Response &res) = 0;
+        virtual bool ReadAction(kortex_driver::srv::ReadAction::Request  &req, kortex_driver::srv::ReadAction::Response &res) = 0;
+        virtual bool ReadAllActions(kortex_driver::srv::ReadAllActions::Request  &req, kortex_driver::srv::ReadAllActions::Response &res) = 0;
+        virtual bool DeleteAction(kortex_driver::srv::DeleteAction::Request  &req, kortex_driver::srv::DeleteAction::Response &res) = 0;
+        virtual bool UpdateAction(kortex_driver::srv::UpdateAction::Request  &req, kortex_driver::srv::UpdateAction::Response &res) = 0;
+        virtual bool ExecuteActionFromReference(kortex_driver::srv::ExecuteActionFromReference::Request  &req, kortex_driver::srv::ExecuteActionFromReference::Response &res) = 0;
+        virtual bool ExecuteAction(kortex_driver::srv::ExecuteAction::Request  &req, kortex_driver::srv::ExecuteAction::Response &res) = 0;
+        virtual bool PauseAction(kortex_driver::srv::PauseAction::Request  &req, kortex_driver::srv::PauseAction::Response &res) = 0;
+        virtual bool StopAction(kortex_driver::srv::StopAction::Request  &req, kortex_driver::srv::StopAction::Response &res) = 0;
+        virtual bool ResumeAction(kortex_driver::srv::ResumeAction::Request  &req, kortex_driver::srv::ResumeAction::Response &res) = 0;
+        virtual bool GetIPv4Configuration(kortex_driver::srv::GetIPv4Configuration::Request  &req, kortex_driver::srv::GetIPv4Configuration::Response &res) = 0;
+        virtual bool SetIPv4Configuration(kortex_driver::srv::SetIPv4Configuration::Request  &req, kortex_driver::srv::SetIPv4Configuration::Response &res) = 0;
+        virtual bool SetCommunicationInterfaceEnable(kortex_driver::srv::SetCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::SetCommunicationInterfaceEnable::Response &res) = 0;
+        virtual bool IsCommunicationInterfaceEnable(kortex_driver::srv::IsCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::IsCommunicationInterfaceEnable::Response &res) = 0;
+        virtual bool GetAvailableWifi(kortex_driver::srv::GetAvailableWifi::Request  &req, kortex_driver::srv::GetAvailableWifi::Response &res) = 0;
+        virtual bool GetWifiInformation(kortex_driver::srv::GetWifiInformation::Request  &req, kortex_driver::srv::GetWifiInformation::Response &res) = 0;
+        virtual bool AddWifiConfiguration(kortex_driver::srv::AddWifiConfiguration::Request  &req, kortex_driver::srv::AddWifiConfiguration::Response &res) = 0;
+        virtual bool DeleteWifiConfiguration(kortex_driver::srv::DeleteWifiConfiguration::Request  &req, kortex_driver::srv::DeleteWifiConfiguration::Response &res) = 0;
+        virtual bool GetAllConfiguredWifis(kortex_driver::srv::GetAllConfiguredWifis::Request  &req, kortex_driver::srv::GetAllConfiguredWifis::Response &res) = 0;
+        virtual bool ConnectWifi(kortex_driver::srv::ConnectWifi::Request  &req, kortex_driver::srv::ConnectWifi::Response &res) = 0;
+        virtual bool DisconnectWifi(kortex_driver::srv::DisconnectWifi::Request  &req, kortex_driver::srv::DisconnectWifi::Response &res) = 0;
+        virtual bool GetConnectedWifiInformation(kortex_driver::srv::GetConnectedWifiInformation::Request  &req, kortex_driver::srv::GetConnectedWifiInformation::Response &res) = 0;
+        virtual bool Base_Unsubscribe(kortex_driver::srv::BaseUnsubscribe::Request  &req, kortex_driver::srv::BaseUnsubscribe::Response &res) = 0;
+        virtual bool OnNotificationConfigurationChangeTopic(kortex_driver::srv::OnNotificationConfigurationChangeTopic::Request  &req, kortex_driver::srv::OnNotificationConfigurationChangeTopic::Response &res) = 0;
         virtual void cb_ConfigurationChangeTopic(Kinova::Api::Base::ConfigurationChangeNotification notif) = 0;
-        virtual bool OnNotificationMappingInfoTopic(kortex_driver::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::OnNotificationMappingInfoTopic::Response &res) = 0;
+        virtual bool OnNotificationMappingInfoTopic(kortex_driver::srv::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::srv::OnNotificationMappingInfoTopic::Response &res) = 0;
         virtual void cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoNotification notif) = 0;
-        virtual bool Base_OnNotificationControlModeTopic(kortex_driver::Base_OnNotificationControlModeTopic::Request  &req, kortex_driver::Base_OnNotificationControlModeTopic::Response &res) = 0;
+        virtual bool Base_OnNotificationControlModeTopic(kortex_driver::srv::BaseOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::BaseOnNotificationControlModeTopic::Response &res) = 0;
         virtual void cb_ControlModeTopic(Kinova::Api::Base::ControlModeNotification notif) = 0;
-        virtual bool OnNotificationOperatingModeTopic(kortex_driver::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::OnNotificationOperatingModeTopic::Response &res) = 0;
+        virtual bool OnNotificationOperatingModeTopic(kortex_driver::srv::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::srv::OnNotificationOperatingModeTopic::Response &res) = 0;
         virtual void cb_OperatingModeTopic(Kinova::Api::Base::OperatingModeNotification notif) = 0;
-        virtual bool OnNotificationSequenceInfoTopic(kortex_driver::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::OnNotificationSequenceInfoTopic::Response &res) = 0;
+        virtual bool OnNotificationSequenceInfoTopic(kortex_driver::srv::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::srv::OnNotificationSequenceInfoTopic::Response &res) = 0;
         virtual void cb_SequenceInfoTopic(Kinova::Api::Base::SequenceInfoNotification notif) = 0;
-        virtual bool OnNotificationProtectionZoneTopic(kortex_driver::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::OnNotificationProtectionZoneTopic::Response &res) = 0;
+        virtual bool OnNotificationProtectionZoneTopic(kortex_driver::srv::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::srv::OnNotificationProtectionZoneTopic::Response &res) = 0;
         virtual void cb_ProtectionZoneTopic(Kinova::Api::Base::ProtectionZoneNotification notif) = 0;
-        virtual bool OnNotificationUserTopic(kortex_driver::OnNotificationUserTopic::Request  &req, kortex_driver::OnNotificationUserTopic::Response &res) = 0;
+        virtual bool OnNotificationUserTopic(kortex_driver::srv::OnNotificationUserTopic::Request  &req, kortex_driver::srv::OnNotificationUserTopic::Response &res) = 0;
         virtual void cb_UserTopic(Kinova::Api::Base::UserNotification notif) = 0;
-        virtual bool OnNotificationControllerTopic(kortex_driver::OnNotificationControllerTopic::Request  &req, kortex_driver::OnNotificationControllerTopic::Response &res) = 0;
+        virtual bool OnNotificationControllerTopic(kortex_driver::srv::OnNotificationControllerTopic::Request  &req, kortex_driver::srv::OnNotificationControllerTopic::Response &res) = 0;
         virtual void cb_ControllerTopic(Kinova::Api::Base::ControllerNotification notif) = 0;
-        virtual bool OnNotificationActionTopic(kortex_driver::OnNotificationActionTopic::Request  &req, kortex_driver::OnNotificationActionTopic::Response &res) = 0;
+        virtual bool OnNotificationActionTopic(kortex_driver::srv::OnNotificationActionTopic::Request  &req, kortex_driver::srv::OnNotificationActionTopic::Response &res) = 0;
         virtual void cb_ActionTopic(Kinova::Api::Base::ActionNotification notif) = 0;
-        virtual bool OnNotificationRobotEventTopic(kortex_driver::OnNotificationRobotEventTopic::Request  &req, kortex_driver::OnNotificationRobotEventTopic::Response &res) = 0;
+        virtual bool OnNotificationRobotEventTopic(kortex_driver::srv::OnNotificationRobotEventTopic::Request  &req, kortex_driver::srv::OnNotificationRobotEventTopic::Response &res) = 0;
         virtual void cb_RobotEventTopic(Kinova::Api::Base::RobotEventNotification notif) = 0;
-        virtual bool PlayCartesianTrajectory(kortex_driver::PlayCartesianTrajectory::Request  &req, kortex_driver::PlayCartesianTrajectory::Response &res) = 0;
-        virtual bool PlayCartesianTrajectoryPosition(kortex_driver::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::PlayCartesianTrajectoryPosition::Response &res) = 0;
-        virtual bool PlayCartesianTrajectoryOrientation(kortex_driver::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::PlayCartesianTrajectoryOrientation::Response &res) = 0;
-        virtual bool Stop(kortex_driver::Stop::Request  &req, kortex_driver::Stop::Response &res) = 0;
-        virtual bool GetMeasuredCartesianPose(kortex_driver::GetMeasuredCartesianPose::Request  &req, kortex_driver::GetMeasuredCartesianPose::Response &res) = 0;
-        virtual bool SendWrenchCommand(kortex_driver::SendWrenchCommand::Request  &req, kortex_driver::SendWrenchCommand::Response &res) = 0;
-        virtual bool SendWrenchJoystickCommand(kortex_driver::SendWrenchJoystickCommand::Request  &req, kortex_driver::SendWrenchJoystickCommand::Response &res) = 0;
-        virtual bool SendTwistJoystickCommand(kortex_driver::SendTwistJoystickCommand::Request  &req, kortex_driver::SendTwistJoystickCommand::Response &res) = 0;
-        virtual bool SendTwistCommand(kortex_driver::SendTwistCommand::Request  &req, kortex_driver::SendTwistCommand::Response &res) = 0;
-        virtual bool PlayJointTrajectory(kortex_driver::PlayJointTrajectory::Request  &req, kortex_driver::PlayJointTrajectory::Response &res) = 0;
-        virtual bool PlaySelectedJointTrajectory(kortex_driver::PlaySelectedJointTrajectory::Request  &req, kortex_driver::PlaySelectedJointTrajectory::Response &res) = 0;
-        virtual bool GetMeasuredJointAngles(kortex_driver::GetMeasuredJointAngles::Request  &req, kortex_driver::GetMeasuredJointAngles::Response &res) = 0;
-        virtual bool SendJointSpeedsCommand(kortex_driver::SendJointSpeedsCommand::Request  &req, kortex_driver::SendJointSpeedsCommand::Response &res) = 0;
-        virtual bool SendSelectedJointSpeedCommand(kortex_driver::SendSelectedJointSpeedCommand::Request  &req, kortex_driver::SendSelectedJointSpeedCommand::Response &res) = 0;
-        virtual bool SendGripperCommand(kortex_driver::SendGripperCommand::Request  &req, kortex_driver::SendGripperCommand::Response &res) = 0;
-        virtual bool GetMeasuredGripperMovement(kortex_driver::GetMeasuredGripperMovement::Request  &req, kortex_driver::GetMeasuredGripperMovement::Response &res) = 0;
-        virtual bool SetAdmittance(kortex_driver::SetAdmittance::Request  &req, kortex_driver::SetAdmittance::Response &res) = 0;
-        virtual bool SetOperatingMode(kortex_driver::SetOperatingMode::Request  &req, kortex_driver::SetOperatingMode::Response &res) = 0;
-        virtual bool ApplyEmergencyStop(kortex_driver::ApplyEmergencyStop::Request  &req, kortex_driver::ApplyEmergencyStop::Response &res) = 0;
-        virtual bool Base_ClearFaults(kortex_driver::Base_ClearFaults::Request  &req, kortex_driver::Base_ClearFaults::Response &res) = 0;
-        virtual bool Base_GetControlMode(kortex_driver::Base_GetControlMode::Request  &req, kortex_driver::Base_GetControlMode::Response &res) = 0;
-        virtual bool GetOperatingMode(kortex_driver::GetOperatingMode::Request  &req, kortex_driver::GetOperatingMode::Response &res) = 0;
-        virtual bool SetServoingMode(kortex_driver::SetServoingMode::Request  &req, kortex_driver::SetServoingMode::Response &res) = 0;
-        virtual bool GetServoingMode(kortex_driver::GetServoingMode::Request  &req, kortex_driver::GetServoingMode::Response &res) = 0;
-        virtual bool OnNotificationServoingModeTopic(kortex_driver::OnNotificationServoingModeTopic::Request  &req, kortex_driver::OnNotificationServoingModeTopic::Response &res) = 0;
+        virtual bool PlayCartesianTrajectory(kortex_driver::srv::PlayCartesianTrajectory::Request  &req, kortex_driver::srv::PlayCartesianTrajectory::Response &res) = 0;
+        virtual bool PlayCartesianTrajectoryPosition(kortex_driver::srv::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryPosition::Response &res) = 0;
+        virtual bool PlayCartesianTrajectoryOrientation(kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response &res) = 0;
+        virtual bool Stop(kortex_driver::srv::Stop::Request  &req, kortex_driver::srv::Stop::Response &res) = 0;
+        virtual bool GetMeasuredCartesianPose(kortex_driver::srv::GetMeasuredCartesianPose::Request  &req, kortex_driver::srv::GetMeasuredCartesianPose::Response &res) = 0;
+        virtual bool SendWrenchCommand(kortex_driver::srv::SendWrenchCommand::Request  &req, kortex_driver::srv::SendWrenchCommand::Response &res) = 0;
+        virtual bool SendWrenchJoystickCommand(kortex_driver::srv::SendWrenchJoystickCommand::Request  &req, kortex_driver::srv::SendWrenchJoystickCommand::Response &res) = 0;
+        virtual bool SendTwistJoystickCommand(kortex_driver::srv::SendTwistJoystickCommand::Request  &req, kortex_driver::srv::SendTwistJoystickCommand::Response &res) = 0;
+        virtual bool SendTwistCommand(kortex_driver::srv::SendTwistCommand::Request  &req, kortex_driver::srv::SendTwistCommand::Response &res) = 0;
+        virtual bool PlayJointTrajectory(kortex_driver::srv::PlayJointTrajectory::Request  &req, kortex_driver::srv::PlayJointTrajectory::Response &res) = 0;
+        virtual bool PlaySelectedJointTrajectory(kortex_driver::srv::PlaySelectedJointTrajectory::Request  &req, kortex_driver::srv::PlaySelectedJointTrajectory::Response &res) = 0;
+        virtual bool GetMeasuredJointAngles(kortex_driver::srv::GetMeasuredJointAngles::Request  &req, kortex_driver::srv::GetMeasuredJointAngles::Response &res) = 0;
+        virtual bool SendJointSpeedsCommand(kortex_driver::srv::SendJointSpeedsCommand::Request  &req, kortex_driver::srv::SendJointSpeedsCommand::Response &res) = 0;
+        virtual bool SendSelectedJointSpeedCommand(kortex_driver::srv::SendSelectedJointSpeedCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedCommand::Response &res) = 0;
+        virtual bool SendGripperCommand(kortex_driver::srv::SendGripperCommand::Request  &req, kortex_driver::srv::SendGripperCommand::Response &res) = 0;
+        virtual bool GetMeasuredGripperMovement(kortex_driver::srv::GetMeasuredGripperMovement::Request  &req, kortex_driver::srv::GetMeasuredGripperMovement::Response &res) = 0;
+        virtual bool SetAdmittance(kortex_driver::srv::SetAdmittance::Request  &req, kortex_driver::srv::SetAdmittance::Response &res) = 0;
+        virtual bool SetOperatingMode(kortex_driver::srv::SetOperatingMode::Request  &req, kortex_driver::srv::SetOperatingMode::Response &res) = 0;
+        virtual bool ApplyEmergencyStop(kortex_driver::srv::ApplyEmergencyStop::Request  &req, kortex_driver::srv::ApplyEmergencyStop::Response &res) = 0;
+        virtual bool Base_ClearFaults(kortex_driver::srv::BaseClearFaults::Request  &req, kortex_driver::srv::BaseClearFaults::Response &res) = 0;
+        virtual bool Base_GetControlMode(kortex_driver::srv::BaseGetControlMode::Request  &req, kortex_driver::srv::BaseGetControlMode::Response &res) = 0;
+        virtual bool GetOperatingMode(kortex_driver::srv::GetOperatingMode::Request  &req, kortex_driver::srv::GetOperatingMode::Response &res) = 0;
+        virtual bool SetServoingMode(kortex_driver::srv::SetServoingMode::Request  &req, kortex_driver::srv::SetServoingMode::Response &res) = 0;
+        virtual bool GetServoingMode(kortex_driver::srv::GetServoingMode::Request  &req, kortex_driver::srv::GetServoingMode::Response &res) = 0;
+        virtual bool OnNotificationServoingModeTopic(kortex_driver::srv::OnNotificationServoingModeTopic::Request  &req, kortex_driver::srv::OnNotificationServoingModeTopic::Response &res) = 0;
         virtual void cb_ServoingModeTopic(Kinova::Api::Base::ServoingModeNotification notif) = 0;
-        virtual bool RestoreFactorySettings(kortex_driver::RestoreFactorySettings::Request  &req, kortex_driver::RestoreFactorySettings::Response &res) = 0;
-        virtual bool OnNotificationFactoryTopic(kortex_driver::OnNotificationFactoryTopic::Request  &req, kortex_driver::OnNotificationFactoryTopic::Response &res) = 0;
+        virtual bool RestoreFactorySettings(kortex_driver::srv::RestoreFactorySettings::Request  &req, kortex_driver::srv::RestoreFactorySettings::Response &res) = 0;
+        virtual bool OnNotificationFactoryTopic(kortex_driver::srv::OnNotificationFactoryTopic::Request  &req, kortex_driver::srv::OnNotificationFactoryTopic::Response &res) = 0;
         virtual void cb_FactoryTopic(Kinova::Api::Base::FactoryNotification notif) = 0;
-        virtual bool GetAllConnectedControllers(kortex_driver::GetAllConnectedControllers::Request  &req, kortex_driver::GetAllConnectedControllers::Response &res) = 0;
-        virtual bool GetControllerState(kortex_driver::GetControllerState::Request  &req, kortex_driver::GetControllerState::Response &res) = 0;
-        virtual bool GetActuatorCount(kortex_driver::GetActuatorCount::Request  &req, kortex_driver::GetActuatorCount::Response &res) = 0;
-        virtual bool StartWifiScan(kortex_driver::StartWifiScan::Request  &req, kortex_driver::StartWifiScan::Response &res) = 0;
-        virtual bool GetConfiguredWifi(kortex_driver::GetConfiguredWifi::Request  &req, kortex_driver::GetConfiguredWifi::Response &res) = 0;
-        virtual bool OnNotificationNetworkTopic(kortex_driver::OnNotificationNetworkTopic::Request  &req, kortex_driver::OnNotificationNetworkTopic::Response &res) = 0;
+        virtual bool GetAllConnectedControllers(kortex_driver::srv::GetAllConnectedControllers::Request  &req, kortex_driver::srv::GetAllConnectedControllers::Response &res) = 0;
+        virtual bool GetControllerState(kortex_driver::srv::GetControllerState::Request  &req, kortex_driver::srv::GetControllerState::Response &res) = 0;
+        virtual bool GetActuatorCount(kortex_driver::srv::GetActuatorCount::Request  &req, kortex_driver::srv::GetActuatorCount::Response &res) = 0;
+        virtual bool StartWifiScan(kortex_driver::srv::StartWifiScan::Request  &req, kortex_driver::srv::StartWifiScan::Response &res) = 0;
+        virtual bool GetConfiguredWifi(kortex_driver::srv::GetConfiguredWifi::Request  &req, kortex_driver::srv::GetConfiguredWifi::Response &res) = 0;
+        virtual bool OnNotificationNetworkTopic(kortex_driver::srv::OnNotificationNetworkTopic::Request  &req, kortex_driver::srv::OnNotificationNetworkTopic::Response &res) = 0;
         virtual void cb_NetworkTopic(Kinova::Api::Base::NetworkNotification notif) = 0;
-        virtual bool GetArmState(kortex_driver::GetArmState::Request  &req, kortex_driver::GetArmState::Response &res) = 0;
-        virtual bool OnNotificationArmStateTopic(kortex_driver::OnNotificationArmStateTopic::Request  &req, kortex_driver::OnNotificationArmStateTopic::Response &res) = 0;
+        virtual bool GetArmState(kortex_driver::srv::GetArmState::Request  &req, kortex_driver::srv::GetArmState::Response &res) = 0;
+        virtual bool OnNotificationArmStateTopic(kortex_driver::srv::OnNotificationArmStateTopic::Request  &req, kortex_driver::srv::OnNotificationArmStateTopic::Response &res) = 0;
         virtual void cb_ArmStateTopic(Kinova::Api::Base::ArmStateNotification notif) = 0;
-        virtual bool GetIPv4Information(kortex_driver::GetIPv4Information::Request  &req, kortex_driver::GetIPv4Information::Response &res) = 0;
-        virtual bool SetWifiCountryCode(kortex_driver::SetWifiCountryCode::Request  &req, kortex_driver::SetWifiCountryCode::Response &res) = 0;
-        virtual bool GetWifiCountryCode(kortex_driver::GetWifiCountryCode::Request  &req, kortex_driver::GetWifiCountryCode::Response &res) = 0;
-        virtual bool Base_SetCapSenseConfig(kortex_driver::Base_SetCapSenseConfig::Request  &req, kortex_driver::Base_SetCapSenseConfig::Response &res) = 0;
-        virtual bool Base_GetCapSenseConfig(kortex_driver::Base_GetCapSenseConfig::Request  &req, kortex_driver::Base_GetCapSenseConfig::Response &res) = 0;
-        virtual bool GetAllJointsSpeedHardLimitation(kortex_driver::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::GetAllJointsSpeedHardLimitation::Response &res) = 0;
-        virtual bool GetAllJointsTorqueHardLimitation(kortex_driver::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::GetAllJointsTorqueHardLimitation::Response &res) = 0;
-        virtual bool GetTwistHardLimitation(kortex_driver::GetTwistHardLimitation::Request  &req, kortex_driver::GetTwistHardLimitation::Response &res) = 0;
-        virtual bool GetWrenchHardLimitation(kortex_driver::GetWrenchHardLimitation::Request  &req, kortex_driver::GetWrenchHardLimitation::Response &res) = 0;
-        virtual bool SendJointSpeedsJoystickCommand(kortex_driver::SendJointSpeedsJoystickCommand::Request  &req, kortex_driver::SendJointSpeedsJoystickCommand::Response &res) = 0;
-        virtual bool SendSelectedJointSpeedJoystickCommand(kortex_driver::SendSelectedJointSpeedJoystickCommand::Request  &req, kortex_driver::SendSelectedJointSpeedJoystickCommand::Response &res) = 0;
-        virtual bool EnableBridge(kortex_driver::EnableBridge::Request  &req, kortex_driver::EnableBridge::Response &res) = 0;
-        virtual bool DisableBridge(kortex_driver::DisableBridge::Request  &req, kortex_driver::DisableBridge::Response &res) = 0;
-        virtual bool GetBridgeList(kortex_driver::GetBridgeList::Request  &req, kortex_driver::GetBridgeList::Response &res) = 0;
-        virtual bool GetBridgeConfig(kortex_driver::GetBridgeConfig::Request  &req, kortex_driver::GetBridgeConfig::Response &res) = 0;
-        virtual bool PlayPreComputedJointTrajectory(kortex_driver::PlayPreComputedJointTrajectory::Request  &req, kortex_driver::PlayPreComputedJointTrajectory::Response &res) = 0;
-        virtual bool GetProductConfiguration(kortex_driver::GetProductConfiguration::Request  &req, kortex_driver::GetProductConfiguration::Response &res) = 0;
-        virtual bool UpdateEndEffectorTypeConfiguration(kortex_driver::UpdateEndEffectorTypeConfiguration::Request  &req, kortex_driver::UpdateEndEffectorTypeConfiguration::Response &res) = 0;
-        virtual bool RestoreFactoryProductConfiguration(kortex_driver::RestoreFactoryProductConfiguration::Request  &req, kortex_driver::RestoreFactoryProductConfiguration::Response &res) = 0;
-        virtual bool GetTrajectoryErrorReport(kortex_driver::GetTrajectoryErrorReport::Request  &req, kortex_driver::GetTrajectoryErrorReport::Response &res) = 0;
-        virtual bool GetAllJointsSpeedSoftLimitation(kortex_driver::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::GetAllJointsSpeedSoftLimitation::Response &res) = 0;
-        virtual bool GetAllJointsTorqueSoftLimitation(kortex_driver::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::GetAllJointsTorqueSoftLimitation::Response &res) = 0;
-        virtual bool GetTwistSoftLimitation(kortex_driver::GetTwistSoftLimitation::Request  &req, kortex_driver::GetTwistSoftLimitation::Response &res) = 0;
-        virtual bool GetWrenchSoftLimitation(kortex_driver::GetWrenchSoftLimitation::Request  &req, kortex_driver::GetWrenchSoftLimitation::Response &res) = 0;
-        virtual bool SetControllerConfigurationMode(kortex_driver::SetControllerConfigurationMode::Request  &req, kortex_driver::SetControllerConfigurationMode::Response &res) = 0;
-        virtual bool GetControllerConfigurationMode(kortex_driver::GetControllerConfigurationMode::Request  &req, kortex_driver::GetControllerConfigurationMode::Response &res) = 0;
-        virtual bool StartTeaching(kortex_driver::StartTeaching::Request  &req, kortex_driver::StartTeaching::Response &res) = 0;
-        virtual bool StopTeaching(kortex_driver::StopTeaching::Request  &req, kortex_driver::StopTeaching::Response &res) = 0;
-        virtual bool AddSequenceTasks(kortex_driver::AddSequenceTasks::Request  &req, kortex_driver::AddSequenceTasks::Response &res) = 0;
-        virtual bool UpdateSequenceTask(kortex_driver::UpdateSequenceTask::Request  &req, kortex_driver::UpdateSequenceTask::Response &res) = 0;
-        virtual bool SwapSequenceTasks(kortex_driver::SwapSequenceTasks::Request  &req, kortex_driver::SwapSequenceTasks::Response &res) = 0;
-        virtual bool ReadSequenceTask(kortex_driver::ReadSequenceTask::Request  &req, kortex_driver::ReadSequenceTask::Response &res) = 0;
-        virtual bool ReadAllSequenceTasks(kortex_driver::ReadAllSequenceTasks::Request  &req, kortex_driver::ReadAllSequenceTasks::Response &res) = 0;
-        virtual bool DeleteSequenceTask(kortex_driver::DeleteSequenceTask::Request  &req, kortex_driver::DeleteSequenceTask::Response &res) = 0;
-        virtual bool DeleteAllSequenceTasks(kortex_driver::DeleteAllSequenceTasks::Request  &req, kortex_driver::DeleteAllSequenceTasks::Response &res) = 0;
-        virtual bool TakeSnapshot(kortex_driver::TakeSnapshot::Request  &req, kortex_driver::TakeSnapshot::Response &res) = 0;
-        virtual bool GetFirmwareBundleVersions(kortex_driver::GetFirmwareBundleVersions::Request  &req, kortex_driver::GetFirmwareBundleVersions::Response &res) = 0;
-        virtual bool ExecuteWaypointTrajectory(kortex_driver::ExecuteWaypointTrajectory::Request  &req, kortex_driver::ExecuteWaypointTrajectory::Response &res) = 0;
-        virtual bool MoveSequenceTask(kortex_driver::MoveSequenceTask::Request  &req, kortex_driver::MoveSequenceTask::Response &res) = 0;
-        virtual bool DuplicateMapping(kortex_driver::DuplicateMapping::Request  &req, kortex_driver::DuplicateMapping::Response &res) = 0;
-        virtual bool DuplicateMap(kortex_driver::DuplicateMap::Request  &req, kortex_driver::DuplicateMap::Response &res) = 0;
-        virtual bool SetControllerConfiguration(kortex_driver::SetControllerConfiguration::Request  &req, kortex_driver::SetControllerConfiguration::Response &res) = 0;
-        virtual bool GetControllerConfiguration(kortex_driver::GetControllerConfiguration::Request  &req, kortex_driver::GetControllerConfiguration::Response &res) = 0;
-        virtual bool GetAllControllerConfigurations(kortex_driver::GetAllControllerConfigurations::Request  &req, kortex_driver::GetAllControllerConfigurations::Response &res) = 0;
-        virtual bool ComputeForwardKinematics(kortex_driver::ComputeForwardKinematics::Request  &req, kortex_driver::ComputeForwardKinematics::Response &res) = 0;
-        virtual bool ComputeInverseKinematics(kortex_driver::ComputeInverseKinematics::Request  &req, kortex_driver::ComputeInverseKinematics::Response &res) = 0;
-        virtual bool ValidateWaypointList(kortex_driver::ValidateWaypointList::Request  &req, kortex_driver::ValidateWaypointList::Response &res) = 0;
+        virtual bool GetIPv4Information(kortex_driver::srv::GetIPv4Information::Request  &req, kortex_driver::srv::GetIPv4Information::Response &res) = 0;
+        virtual bool SetWifiCountryCode(kortex_driver::srv::SetWifiCountryCode::Request  &req, kortex_driver::srv::SetWifiCountryCode::Response &res) = 0;
+        virtual bool GetWifiCountryCode(kortex_driver::srv::GetWifiCountryCode::Request  &req, kortex_driver::srv::GetWifiCountryCode::Response &res) = 0;
+        virtual bool Base_SetCapSenseConfig(kortex_driver::srv::BaseSetCapSenseConfig::Request  &req, kortex_driver::srv::BaseSetCapSenseConfig::Response &res) = 0;
+        virtual bool Base_GetCapSenseConfig(kortex_driver::srv::BaseGetCapSenseConfig::Request  &req, kortex_driver::srv::BaseGetCapSenseConfig::Response &res) = 0;
+        virtual bool GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response &res) = 0;
+        virtual bool GetAllJointsTorqueHardLimitation(kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response &res) = 0;
+        virtual bool GetTwistHardLimitation(kortex_driver::srv::GetTwistHardLimitation::Request  &req, kortex_driver::srv::GetTwistHardLimitation::Response &res) = 0;
+        virtual bool GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHardLimitation::Request  &req, kortex_driver::srv::GetWrenchHardLimitation::Response &res) = 0;
+        virtual bool SendJointSpeedsJoystickCommand(kortex_driver::srv::SendJointSpeedsJoystickCommand::Request  &req, kortex_driver::srv::SendJointSpeedsJoystickCommand::Response &res) = 0;
+        virtual bool SendSelectedJointSpeedJoystickCommand(kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Response &res) = 0;
+        virtual bool EnableBridge(kortex_driver::srv::EnableBridge::Request  &req, kortex_driver::srv::EnableBridge::Response &res) = 0;
+        virtual bool DisableBridge(kortex_driver::srv::DisableBridge::Request  &req, kortex_driver::srv::DisableBridge::Response &res) = 0;
+        virtual bool GetBridgeList(kortex_driver::srv::GetBridgeList::Request  &req, kortex_driver::srv::GetBridgeList::Response &res) = 0;
+        virtual bool GetBridgeConfig(kortex_driver::srv::GetBridgeConfig::Request  &req, kortex_driver::srv::GetBridgeConfig::Response &res) = 0;
+        virtual bool PlayPreComputedJointTrajectory(kortex_driver::srv::PlayPreComputedJointTrajectory::Request  &req, kortex_driver::srv::PlayPreComputedJointTrajectory::Response &res) = 0;
+        virtual bool GetProductConfiguration(kortex_driver::srv::GetProductConfiguration::Request  &req, kortex_driver::srv::GetProductConfiguration::Response &res) = 0;
+        virtual bool UpdateEndEffectorTypeConfiguration(kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Request  &req, kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Response &res) = 0;
+        virtual bool RestoreFactoryProductConfiguration(kortex_driver::srv::RestoreFactoryProductConfiguration::Request  &req, kortex_driver::srv::RestoreFactoryProductConfiguration::Response &res) = 0;
+        virtual bool GetTrajectoryErrorReport(kortex_driver::srv::GetTrajectoryErrorReport::Request  &req, kortex_driver::srv::GetTrajectoryErrorReport::Response &res) = 0;
+        virtual bool GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response &res) = 0;
+        virtual bool GetAllJointsTorqueSoftLimitation(kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response &res) = 0;
+        virtual bool GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftLimitation::Request  &req, kortex_driver::srv::GetTwistSoftLimitation::Response &res) = 0;
+        virtual bool GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSoftLimitation::Request  &req, kortex_driver::srv::GetWrenchSoftLimitation::Response &res) = 0;
+        virtual bool SetControllerConfigurationMode(kortex_driver::srv::SetControllerConfigurationMode::Request  &req, kortex_driver::srv::SetControllerConfigurationMode::Response &res) = 0;
+        virtual bool GetControllerConfigurationMode(kortex_driver::srv::GetControllerConfigurationMode::Request  &req, kortex_driver::srv::GetControllerConfigurationMode::Response &res) = 0;
+        virtual bool StartTeaching(kortex_driver::srv::StartTeaching::Request  &req, kortex_driver::srv::StartTeaching::Response &res) = 0;
+        virtual bool StopTeaching(kortex_driver::srv::StopTeaching::Request  &req, kortex_driver::srv::StopTeaching::Response &res) = 0;
+        virtual bool AddSequenceTasks(kortex_driver::srv::AddSequenceTasks::Request  &req, kortex_driver::srv::AddSequenceTasks::Response &res) = 0;
+        virtual bool UpdateSequenceTask(kortex_driver::srv::UpdateSequenceTask::Request  &req, kortex_driver::srv::UpdateSequenceTask::Response &res) = 0;
+        virtual bool SwapSequenceTasks(kortex_driver::srv::SwapSequenceTasks::Request  &req, kortex_driver::srv::SwapSequenceTasks::Response &res) = 0;
+        virtual bool ReadSequenceTask(kortex_driver::srv::ReadSequenceTask::Request  &req, kortex_driver::srv::ReadSequenceTask::Response &res) = 0;
+        virtual bool ReadAllSequenceTasks(kortex_driver::srv::ReadAllSequenceTasks::Request  &req, kortex_driver::srv::ReadAllSequenceTasks::Response &res) = 0;
+        virtual bool DeleteSequenceTask(kortex_driver::srv::DeleteSequenceTask::Request  &req, kortex_driver::srv::DeleteSequenceTask::Response &res) = 0;
+        virtual bool DeleteAllSequenceTasks(kortex_driver::srv::DeleteAllSequenceTasks::Request  &req, kortex_driver::srv::DeleteAllSequenceTasks::Response &res) = 0;
+        virtual bool TakeSnapshot(kortex_driver::srv::TakeSnapshot::Request  &req, kortex_driver::srv::TakeSnapshot::Response &res) = 0;
+        virtual bool GetFirmwareBundleVersions(kortex_driver::srv::GetFirmwareBundleVersions::Request  &req, kortex_driver::srv::GetFirmwareBundleVersions::Response &res) = 0;
+        virtual bool ExecuteWaypointTrajectory(kortex_driver::srv::ExecuteWaypointTrajectory::Request  &req, kortex_driver::srv::ExecuteWaypointTrajectory::Response &res) = 0;
+        virtual bool MoveSequenceTask(kortex_driver::srv::MoveSequenceTask::Request  &req, kortex_driver::srv::MoveSequenceTask::Response &res) = 0;
+        virtual bool DuplicateMapping(kortex_driver::srv::DuplicateMapping::Request  &req, kortex_driver::srv::DuplicateMapping::Response &res) = 0;
+        virtual bool DuplicateMap(kortex_driver::srv::DuplicateMap::Request  &req, kortex_driver::srv::DuplicateMap::Response &res) = 0;
+        virtual bool SetControllerConfiguration(kortex_driver::srv::SetControllerConfiguration::Request  &req, kortex_driver::srv::SetControllerConfiguration::Response &res) = 0;
+        virtual bool GetControllerConfiguration(kortex_driver::srv::GetControllerConfiguration::Request  &req, kortex_driver::srv::GetControllerConfiguration::Response &res) = 0;
+        virtual bool GetAllControllerConfigurations(kortex_driver::srv::GetAllControllerConfigurations::Request  &req, kortex_driver::srv::GetAllControllerConfigurations::Response &res) = 0;
+        virtual bool ComputeForwardKinematics(kortex_driver::srv::ComputeForwardKinematics::Request  &req, kortex_driver::srv::ComputeForwardKinematics::Response &res) = 0;
+        virtual bool ComputeInverseKinematics(kortex_driver::srv::ComputeInverseKinematics::Request  &req, kortex_driver::srv::ComputeInverseKinematics::Response &res) = 0;
+        virtual bool ValidateWaypointList(kortex_driver::srv::ValidateWaypointList::Request  &req, kortex_driver::srv::ValidateWaypointList::Response &res) = 0;
 
 protected:
         ros::NodeHandle m_node_handle;

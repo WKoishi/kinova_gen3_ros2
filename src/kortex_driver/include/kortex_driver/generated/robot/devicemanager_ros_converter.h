@@ -17,7 +17,7 @@
 #ifndef _KORTEX_DEVICEMANAGER_ROS_CONVERTER_H_
 #define _KORTEX_DEVICEMANAGER_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,9 +41,9 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/DeviceHandles.h"
+#include "kortex_driver/msg/device_handles.hpp"
 
 
-int ToRosData(Kinova::Api::DeviceManager::DeviceHandles input, kortex_driver::DeviceHandles &output);
+int ToRosData(Kinova::Api::DeviceManager::DeviceHandles input, kortex_driver::msg::DeviceHandles &output);
 
 #endif

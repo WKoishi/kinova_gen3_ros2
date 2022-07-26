@@ -17,7 +17,7 @@
 #ifndef _KORTEX_PRODUCTCONFIGURATION_ROS_CONVERTER_H_
 #define _KORTEX_PRODUCTCONFIGURATION_ROS_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,11 +41,11 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 
 
-#include "kortex_driver/CompleteProductConfiguration.h"
-#include "kortex_driver/ProductConfigurationEndEffectorType.h"
+#include "kortex_driver/msg/complete_product_configuration.hpp"
+#include "kortex_driver/msg/product_configuration_end_effector_type.hpp"
 
 
-int ToRosData(Kinova::Api::ProductConfiguration::CompleteProductConfiguration input, kortex_driver::CompleteProductConfiguration &output);
-int ToRosData(Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input, kortex_driver::ProductConfigurationEndEffectorType &output);
+int ToRosData(Kinova::Api::ProductConfiguration::CompleteProductConfiguration input, kortex_driver::msg::CompleteProductConfiguration &output);
+int ToRosData(Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input, kortex_driver::msg::ProductConfigurationEndEffectorType &output);
 
 #endif

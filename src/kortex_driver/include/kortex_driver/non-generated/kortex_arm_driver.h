@@ -13,7 +13,7 @@
 *
 */
 
-#include <ros/ros.h>
+#include "rclcpp/rclcpp.hpp"
 #include <sensor_msgs/JointState.h>
 
 #include <thread>
@@ -34,7 +34,7 @@
 
 #include "kortex_driver/non-generated/kortex_math_util.h"
 
-#include "kortex_driver/BaseCyclic_Feedback.h"
+#include "kortex_driver/msg/base_cyclic_feedback.hpp"
 #include "kortex_driver/generated/robot/basecyclic_ros_converter.h"
 
 #include "kortex_driver/generated/robot/actuatorconfig_services.h"

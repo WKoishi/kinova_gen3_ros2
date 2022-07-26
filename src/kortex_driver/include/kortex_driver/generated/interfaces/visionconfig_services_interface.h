@@ -17,31 +17,31 @@
 #ifndef _KORTEX_VISIONCONFIG_SERVICES_INTERFACE_H_
 #define _KORTEX_VISIONCONFIG_SERVICES_INTERFACE_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
 #include <cstdio>
 #include <iostream>
 #include <chrono>
-#include "kortex_driver/SetSensorSettings.h"
-#include "kortex_driver/GetSensorSettings.h"
-#include "kortex_driver/GetOptionValue.h"
-#include "kortex_driver/SetOptionValue.h"
-#include "kortex_driver/GetOptionInformation.h"
-#include "kortex_driver/OnNotificationVisionTopic.h"
-#include "kortex_driver/VisionNotification.h"
-#include "kortex_driver/DoSensorFocusAction.h"
-#include "kortex_driver/GetIntrinsicParameters.h"
-#include "kortex_driver/GetIntrinsicParametersProfile.h"
-#include "kortex_driver/SetIntrinsicParameters.h"
-#include "kortex_driver/GetExtrinsicParameters.h"
-#include "kortex_driver/SetExtrinsicParameters.h"
+#include "kortex_driver/srv/set_sensor_settings.hpp"
+#include "kortex_driver/srv/get_sensor_settings.hpp"
+#include "kortex_driver/srv/get_option_value.hpp"
+#include "kortex_driver/srv/set_option_value.hpp"
+#include "kortex_driver/srv/get_option_information.hpp"
+#include "kortex_driver/srv/on_notification_vision_topic.hpp"
+#include "kortex_driver/msg/vision_notification.hpp"
+#include "kortex_driver/srv/do_sensor_focus_action.hpp"
+#include "kortex_driver/srv/get_intrinsic_parameters.hpp"
+#include "kortex_driver/srv/get_intrinsic_parameters_profile.hpp"
+#include "kortex_driver/srv/set_intrinsic_parameters.hpp"
+#include "kortex_driver/srv/get_extrinsic_parameters.hpp"
+#include "kortex_driver/srv/set_extrinsic_parameters.hpp"
 
-#include "kortex_driver/KortexError.h"
-#include "kortex_driver/SetDeviceID.h"
-#include "kortex_driver/SetApiOptions.h"
-#include "kortex_driver/ApiOptions.h"
+#include "kortex_driver/msg/kortex_error.hpp"
+#include "kortex_driver/srv/set_device_id.hpp"
+#include "kortex_driver/srv/set_api_options.hpp"
+#include "kortex_driver/msg/api_options.hpp"
 
 using namespace std;
 
@@ -50,21 +50,21 @@ class IVisionConfigServices
     public:
         IVisionConfigServices(ros::NodeHandle& node_handle) : m_node_handle(node_handle) {}
 
-        virtual bool SetDeviceID(kortex_driver::SetDeviceID::Request  &req, kortex_driver::SetDeviceID::Response &res) = 0;
-        virtual bool SetApiOptions(kortex_driver::SetApiOptions::Request  &req, kortex_driver::SetApiOptions::Response &res) = 0;
-        virtual bool SetSensorSettings(kortex_driver::SetSensorSettings::Request  &req, kortex_driver::SetSensorSettings::Response &res) = 0;
-        virtual bool GetSensorSettings(kortex_driver::GetSensorSettings::Request  &req, kortex_driver::GetSensorSettings::Response &res) = 0;
-        virtual bool GetOptionValue(kortex_driver::GetOptionValue::Request  &req, kortex_driver::GetOptionValue::Response &res) = 0;
-        virtual bool SetOptionValue(kortex_driver::SetOptionValue::Request  &req, kortex_driver::SetOptionValue::Response &res) = 0;
-        virtual bool GetOptionInformation(kortex_driver::GetOptionInformation::Request  &req, kortex_driver::GetOptionInformation::Response &res) = 0;
-        virtual bool OnNotificationVisionTopic(kortex_driver::OnNotificationVisionTopic::Request  &req, kortex_driver::OnNotificationVisionTopic::Response &res) = 0;
+        virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) = 0;
+        virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) = 0;
+        virtual bool SetSensorSettings(kortex_driver::srv::SetSensorSettings::Request  &req, kortex_driver::srv::SetSensorSettings::Response &res) = 0;
+        virtual bool GetSensorSettings(kortex_driver::srv::GetSensorSettings::Request  &req, kortex_driver::srv::GetSensorSettings::Response &res) = 0;
+        virtual bool GetOptionValue(kortex_driver::srv::GetOptionValue::Request  &req, kortex_driver::srv::GetOptionValue::Response &res) = 0;
+        virtual bool SetOptionValue(kortex_driver::srv::SetOptionValue::Request  &req, kortex_driver::srv::SetOptionValue::Response &res) = 0;
+        virtual bool GetOptionInformation(kortex_driver::srv::GetOptionInformation::Request  &req, kortex_driver::srv::GetOptionInformation::Response &res) = 0;
+        virtual bool OnNotificationVisionTopic(kortex_driver::srv::OnNotificationVisionTopic::Request  &req, kortex_driver::srv::OnNotificationVisionTopic::Response &res) = 0;
         virtual void cb_VisionTopic(Kinova::Api::VisionConfig::VisionNotification notif) = 0;
-        virtual bool DoSensorFocusAction(kortex_driver::DoSensorFocusAction::Request  &req, kortex_driver::DoSensorFocusAction::Response &res) = 0;
-        virtual bool GetIntrinsicParameters(kortex_driver::GetIntrinsicParameters::Request  &req, kortex_driver::GetIntrinsicParameters::Response &res) = 0;
-        virtual bool GetIntrinsicParametersProfile(kortex_driver::GetIntrinsicParametersProfile::Request  &req, kortex_driver::GetIntrinsicParametersProfile::Response &res) = 0;
-        virtual bool SetIntrinsicParameters(kortex_driver::SetIntrinsicParameters::Request  &req, kortex_driver::SetIntrinsicParameters::Response &res) = 0;
-        virtual bool GetExtrinsicParameters(kortex_driver::GetExtrinsicParameters::Request  &req, kortex_driver::GetExtrinsicParameters::Response &res) = 0;
-        virtual bool SetExtrinsicParameters(kortex_driver::SetExtrinsicParameters::Request  &req, kortex_driver::SetExtrinsicParameters::Response &res) = 0;
+        virtual bool DoSensorFocusAction(kortex_driver::srv::DoSensorFocusAction::Request  &req, kortex_driver::srv::DoSensorFocusAction::Response &res) = 0;
+        virtual bool GetIntrinsicParameters(kortex_driver::srv::GetIntrinsicParameters::Request  &req, kortex_driver::srv::GetIntrinsicParameters::Response &res) = 0;
+        virtual bool GetIntrinsicParametersProfile(kortex_driver::srv::GetIntrinsicParametersProfile::Request  &req, kortex_driver::srv::GetIntrinsicParametersProfile::Response &res) = 0;
+        virtual bool SetIntrinsicParameters(kortex_driver::srv::SetIntrinsicParameters::Request  &req, kortex_driver::srv::SetIntrinsicParameters::Response &res) = 0;
+        virtual bool GetExtrinsicParameters(kortex_driver::srv::GetExtrinsicParameters::Request  &req, kortex_driver::srv::GetExtrinsicParameters::Response &res) = 0;
+        virtual bool SetExtrinsicParameters(kortex_driver::srv::SetExtrinsicParameters::Request  &req, kortex_driver::srv::SetExtrinsicParameters::Response &res) = 0;
 
 protected:
         ros::NodeHandle m_node_handle;

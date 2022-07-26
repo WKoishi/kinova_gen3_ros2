@@ -13,13 +13,13 @@
 *
 */
 
-#include <ros/ros.h>
+#include "rclcpp/rclcpp.hpp"
 #include "std_msgs/Empty.h"
 #include <thread>
 #include "BaseClientRpc.h"
 
-#include "kortex_driver/TwistCommand.h"
-#include "kortex_driver/Base_JointSpeeds.h"
+#include "kortex_driver/msg/twist_command.hpp"
+#include "kortex_driver/msg/base_joint_speeds.hpp"
 
 #include "kortex_driver/generated/robot/base_proto_converter.h"
 #include "kortex_driver/non-generated/kortex_math_util.h"

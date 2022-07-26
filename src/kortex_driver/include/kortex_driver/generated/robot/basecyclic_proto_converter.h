@@ -17,7 +17,7 @@
 #ifndef _KORTEX_BASECYCLIC_PROTO_CONVERTER_H_
 #define _KORTEX_BASECYCLIC_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,21 +41,21 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/ActuatorCommand.h"
-#include "kortex_driver/ActuatorFeedback.h"
-#include "kortex_driver/ActuatorCustomData.h"
-#include "kortex_driver/BaseFeedback.h"
-#include "kortex_driver/BaseCyclic_CustomData.h"
-#include "kortex_driver/BaseCyclic_Command.h"
-#include "kortex_driver/BaseCyclic_Feedback.h"
+#include "kortex_driver/msg/actuator_command.hpp"
+#include "kortex_driver/msg/actuator_feedback.hpp"
+#include "kortex_driver/msg/actuator_custom_data.hpp"
+#include "kortex_driver/msg/base_feedback.hpp"
+#include "kortex_driver/msg/base_cyclic_custom_data.hpp"
+#include "kortex_driver/msg/base_cyclic_command.hpp"
+#include "kortex_driver/msg/base_cyclic_feedback.hpp"
 
 
-int ToProtoData(kortex_driver::ActuatorCommand input, Kinova::Api::BaseCyclic::ActuatorCommand *output);
-int ToProtoData(kortex_driver::ActuatorFeedback input, Kinova::Api::BaseCyclic::ActuatorFeedback *output);
-int ToProtoData(kortex_driver::ActuatorCustomData input, Kinova::Api::BaseCyclic::ActuatorCustomData *output);
-int ToProtoData(kortex_driver::BaseFeedback input, Kinova::Api::BaseCyclic::BaseFeedback *output);
-int ToProtoData(kortex_driver::BaseCyclic_CustomData input, Kinova::Api::BaseCyclic::CustomData *output);
-int ToProtoData(kortex_driver::BaseCyclic_Command input, Kinova::Api::BaseCyclic::Command *output);
-int ToProtoData(kortex_driver::BaseCyclic_Feedback input, Kinova::Api::BaseCyclic::Feedback *output);
+int ToProtoData(kortex_driver::msg::ActuatorCommand input, Kinova::Api::BaseCyclic::ActuatorCommand *output);
+int ToProtoData(kortex_driver::msg::ActuatorFeedback input, Kinova::Api::BaseCyclic::ActuatorFeedback *output);
+int ToProtoData(kortex_driver::msg::ActuatorCustomData input, Kinova::Api::BaseCyclic::ActuatorCustomData *output);
+int ToProtoData(kortex_driver::msg::BaseFeedback input, Kinova::Api::BaseCyclic::BaseFeedback *output);
+int ToProtoData(kortex_driver::msg::BaseCyclicCustomData input, Kinova::Api::BaseCyclic::CustomData *output);
+int ToProtoData(kortex_driver::msg::BaseCyclicCommand input, Kinova::Api::BaseCyclic::Command *output);
+int ToProtoData(kortex_driver::msg::BaseCyclicFeedback input, Kinova::Api::BaseCyclic::Feedback *output);
 
 #endif

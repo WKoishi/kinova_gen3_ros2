@@ -17,7 +17,7 @@
 #ifndef _KORTEX_DEVICEMANAGER_PROTO_CONVERTER_H_
 #define _KORTEX_DEVICEMANAGER_PROTO_CONVERTER_H_
 
-#include "ros/ros.h"
+#include "rclcpp/rclcpp.hpp"
 
 #include <string>
 #include <iostream>
@@ -41,9 +41,9 @@
 #include "kortex_driver/generated/robot/visionconfig_proto_converter.h"
 
 
-#include "kortex_driver/DeviceHandles.h"
+#include "kortex_driver/msg/device_handles.hpp"
 
 
-int ToProtoData(kortex_driver::DeviceHandles input, Kinova::Api::DeviceManager::DeviceHandles *output);
+int ToProtoData(kortex_driver::msg::DeviceHandles input, Kinova::Api::DeviceManager::DeviceHandles *output);
 
 #endif
