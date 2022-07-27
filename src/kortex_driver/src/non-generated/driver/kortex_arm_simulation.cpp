@@ -44,7 +44,7 @@ namespace
     static constexpr double MINIMUM_JOINT_VELOCITY_RAD_PER_SECONDS = 0.001;
 }
 
-KortexArmSimulation::KortexArmSimulation(ros::NodeHandle& node_handle): m_node_handle(node_handle),
+KortexArmSimulation::KortexArmSimulation(rclcpp::Node::SharedPtr node_handle): m_node_handle(node_handle),
                                                                         m_map_actions{},
                                                                         m_is_action_being_executed{false},
                                                                         m_action_preempted{false},

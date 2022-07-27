@@ -74,7 +74,7 @@ class KortexArmSimulation
 {
   public:
     KortexArmSimulation() = delete;
-    KortexArmSimulation(ros::NodeHandle& nh);
+    KortexArmSimulation(rclcpp::Node::SharedPtr nh);
     ~KortexArmSimulation();
     std::unordered_map<uint32_t, kortex_driver::Action> GetActionsMap() const {return m_map_actions;}
     int GetDOF() const {return m_degrees_of_freedom;}

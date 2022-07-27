@@ -24,7 +24,7 @@ using namespace std;
 class DeviceConfigSimulationServices : public IDeviceConfigServices
 {
     public:
-        DeviceConfigSimulationServices(ros::NodeHandle& node_handle);
+        DeviceConfigSimulationServices(rclcpp::Node::SharedPtr node_handle);
 
         virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) override;
         virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) override;

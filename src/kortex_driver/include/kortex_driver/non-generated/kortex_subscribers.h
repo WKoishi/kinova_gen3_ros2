@@ -29,12 +29,12 @@ class KortexSubscribers
 
 public:
     
-    KortexSubscribers(ros::NodeHandle& node_handle, Kinova::Api::Base::BaseClient* base);
+    KortexSubscribers(rclcpp::Node::SharedPtr node_handle, Kinova::Api::Base::BaseClient* base);
     ~KortexSubscribers();
 
 private:
 
-    ros::NodeHandle& m_node_handle;
+    rclcpp::Node::SharedPtr m_node_handle;
     Kinova::Api::Base::BaseClient* m_base;
 
     // Subscribers

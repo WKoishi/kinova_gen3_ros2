@@ -59,7 +59,7 @@ class JointTrajectoryActionServer
         };
 
         JointTrajectoryActionServer() = delete;
-        JointTrajectoryActionServer(const std::string& server_name, ros::NodeHandle& nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic, Kinova::Api::ControlConfig::ControlConfigClient* control_config, bool use_hard_limits = false);
+        JointTrajectoryActionServer(const std::string& server_name, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic, Kinova::Api::ControlConfig::ControlConfigClient* control_config, bool use_hard_limits = false);
         ~JointTrajectoryActionServer();
 
         ActionServerState getState() {return m_server_state;};

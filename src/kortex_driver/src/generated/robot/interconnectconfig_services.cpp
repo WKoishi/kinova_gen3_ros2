@@ -42,7 +42,7 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 #include "kortex_driver/generated/robot/interconnectconfig_services.h"
 
-InterconnectConfigRobotServices::InterconnectConfigRobotServices(ros::NodeHandle& node_handle, Kinova::Api::InterconnectConfig::InterconnectConfigClient* interconnectconfig, uint32_t device_id, uint32_t timeout_ms): 
+InterconnectConfigRobotServices::InterconnectConfigRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova::Api::InterconnectConfig::InterconnectConfigClient* interconnectconfig, uint32_t device_id, uint32_t timeout_ms): 
 	IInterconnectConfigServices(node_handle),
 	m_interconnectconfig(interconnectconfig),
 	m_current_device_id(device_id)

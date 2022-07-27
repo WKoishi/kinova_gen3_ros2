@@ -12,7 +12,7 @@
 
 #include "kortex_driver/non-generated/kortex_subscribers.h"
 
-KortexSubscribers::KortexSubscribers(ros::NodeHandle& node_handle, Kinova::Api::Base::BaseClient* base):
+KortexSubscribers::KortexSubscribers(rclcpp::Node::SharedPtr node_handle, Kinova::Api::Base::BaseClient* base):
 m_node_handle(node_handle), m_base(base)
 {
     std::string robot_name;

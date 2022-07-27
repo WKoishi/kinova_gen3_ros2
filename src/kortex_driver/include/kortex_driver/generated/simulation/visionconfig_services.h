@@ -24,7 +24,7 @@ using namespace std;
 class VisionConfigSimulationServices : public IVisionConfigServices
 {
     public:
-        VisionConfigSimulationServices(ros::NodeHandle& node_handle);
+        VisionConfigSimulationServices(rclcpp::Node::SharedPtr node_handle);
 
         virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) override;
         virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) override;

@@ -42,7 +42,7 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 #include "kortex_driver/generated/simulation/deviceconfig_services.h"
 
-DeviceConfigSimulationServices::DeviceConfigSimulationServices(ros::NodeHandle& node_handle): 
+DeviceConfigSimulationServices::DeviceConfigSimulationServices(rclcpp::Node::SharedPtr node_handle): 
 	IDeviceConfigServices(node_handle)
 {
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);

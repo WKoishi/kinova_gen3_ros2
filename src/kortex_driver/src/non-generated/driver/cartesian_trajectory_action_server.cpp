@@ -14,7 +14,7 @@
 #include <sstream>
 #include <fstream>
 
-CartesianTrajectoryActionServer::CartesianTrajectoryActionServer(const std::string& server_name, ros::NodeHandle& nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic):
+CartesianTrajectoryActionServer::CartesianTrajectoryActionServer(const std::string& server_name, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic):
     m_server_name(server_name),
     m_node_handle(nh),
     m_server(nh, server_name, boost::bind(&CartesianTrajectoryActionServer::goal_received_callback, this, _1), boost::bind(&CartesianTrajectoryActionServer::preempt_received_callback, this, _1), false),

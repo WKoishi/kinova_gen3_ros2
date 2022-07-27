@@ -27,7 +27,7 @@ using namespace std;
 class InterconnectConfigRobotServices : public IInterconnectConfigServices
 {
     public:
-        InterconnectConfigRobotServices(ros::NodeHandle& node_handle, Kinova::Api::InterconnectConfig::InterconnectConfigClient* interconnectconfig, uint32_t device_id, uint32_t timeout_ms);
+        InterconnectConfigRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova::Api::InterconnectConfig::InterconnectConfigClient* interconnectconfig, uint32_t device_id, uint32_t timeout_ms);
 
         virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) override;
         virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) override;

@@ -27,7 +27,7 @@ using namespace std;
 class DeviceConfigRobotServices : public IDeviceConfigServices
 {
     public:
-        DeviceConfigRobotServices(ros::NodeHandle& node_handle, Kinova::Api::DeviceConfig::DeviceConfigClient* deviceconfig, uint32_t device_id, uint32_t timeout_ms);
+        DeviceConfigRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova::Api::DeviceConfig::DeviceConfigClient* deviceconfig, uint32_t device_id, uint32_t timeout_ms);
 
         virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) override;
         virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) override;

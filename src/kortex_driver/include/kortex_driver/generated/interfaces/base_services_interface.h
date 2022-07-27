@@ -197,7 +197,7 @@ using namespace std;
 class IBaseServices
 {
     public:
-        IBaseServices(ros::NodeHandle& node_handle) : m_node_handle(node_handle) {}
+        IBaseServices(rclcpp::Node::SharedPtr node_handle) : m_node_handle(node_handle) {}
 
         virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) = 0;
         virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) = 0;

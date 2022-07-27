@@ -12,7 +12,7 @@
 
 #include "kortex_driver/non-generated/robotiq_gripper_command_action_server.h"
 
-RobotiqGripperCommandActionServer::RobotiqGripperCommandActionServer(const std::string& server_name, const std::string& gripper_joint_name, double gripper_joint_limit_min, double gripper_joint_limit_max, ros::NodeHandle& nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic):
+RobotiqGripperCommandActionServer::RobotiqGripperCommandActionServer(const std::string& server_name, const std::string& gripper_joint_name, double gripper_joint_limit_min, double gripper_joint_limit_max, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic):
     m_server_name(server_name),
     m_gripper_joint_name(gripper_joint_name),
     m_gripper_joint_limit_min(gripper_joint_limit_min),

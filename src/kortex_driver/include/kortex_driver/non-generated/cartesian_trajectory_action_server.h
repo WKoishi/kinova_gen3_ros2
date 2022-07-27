@@ -39,7 +39,7 @@ class CartesianTrajectoryActionServer
         };
 
         CartesianTrajectoryActionServer() = delete;
-        CartesianTrajectoryActionServer(const std::string& server_name, ros::NodeHandle& nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic);
+        CartesianTrajectoryActionServer(const std::string& server_name, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic);
         ~CartesianTrajectoryActionServer();
 
         ActionServerState getState() {return m_server_state;};

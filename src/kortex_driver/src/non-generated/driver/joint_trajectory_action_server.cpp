@@ -18,7 +18,7 @@ namespace {
     constexpr float STARTING_POINT_ARBITRARY_DURATION = 0.5f;
 }
 
-JointTrajectoryActionServer::JointTrajectoryActionServer(const std::string& server_name, ros::NodeHandle& nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic, Kinova::Api::ControlConfig::ControlConfigClient* control_config, bool use_hard_limits):
+JointTrajectoryActionServer::JointTrajectoryActionServer(const std::string& server_name, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic, Kinova::Api::ControlConfig::ControlConfigClient* control_config, bool use_hard_limits):
     m_server_name(server_name),
     m_node_handle(nh),
     m_server(nh, server_name, boost::bind(&JointTrajectoryActionServer::goal_received_callback, this, _1), boost::bind(&JointTrajectoryActionServer::preempt_received_callback, this, _1), false),

@@ -42,7 +42,7 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 #include "kortex_driver/generated/robot/base_services.h"
 
-BaseRobotServices::BaseRobotServices(ros::NodeHandle& node_handle, Kinova::Api::Base::BaseClient* base, uint32_t device_id, uint32_t timeout_ms): 
+BaseRobotServices::BaseRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova::Api::Base::BaseClient* base, uint32_t device_id, uint32_t timeout_ms): 
 	IBaseServices(node_handle),
 	m_base(base),
 	m_current_device_id(device_id)

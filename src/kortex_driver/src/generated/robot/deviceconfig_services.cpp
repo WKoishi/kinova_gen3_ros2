@@ -42,7 +42,7 @@
 #include "kortex_driver/generated/robot/visionconfig_ros_converter.h"
 #include "kortex_driver/generated/robot/deviceconfig_services.h"
 
-DeviceConfigRobotServices::DeviceConfigRobotServices(ros::NodeHandle& node_handle, Kinova::Api::DeviceConfig::DeviceConfigClient* deviceconfig, uint32_t device_id, uint32_t timeout_ms): 
+DeviceConfigRobotServices::DeviceConfigRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova::Api::DeviceConfig::DeviceConfigClient* deviceconfig, uint32_t device_id, uint32_t timeout_ms): 
 	IDeviceConfigServices(node_handle),
 	m_deviceconfig(deviceconfig),
 	m_current_device_id(device_id)
