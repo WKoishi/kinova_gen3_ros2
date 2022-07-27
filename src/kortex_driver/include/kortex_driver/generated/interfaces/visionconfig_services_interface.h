@@ -72,20 +72,20 @@ protected:
         ros::Publisher m_pub_VisionTopic;
         bool m_is_activated_VisionTopic;
 
-        ros::ServiceServer m_serviceSetDeviceID;
-        ros::ServiceServer m_serviceSetApiOptions;
+        rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;
+        rclcpp::Service<kortex_driver::srv::SetApiOptions>::SharedPtr m_serviceSetApiOptions;
 
-	ros::ServiceServer m_serviceSetSensorSettings;
-	ros::ServiceServer m_serviceGetSensorSettings;
-	ros::ServiceServer m_serviceGetOptionValue;
-	ros::ServiceServer m_serviceSetOptionValue;
-	ros::ServiceServer m_serviceGetOptionInformation;
-	ros::ServiceServer m_serviceOnNotificationVisionTopic;
-	ros::ServiceServer m_serviceDoSensorFocusAction;
-	ros::ServiceServer m_serviceGetIntrinsicParameters;
-	ros::ServiceServer m_serviceGetIntrinsicParametersProfile;
-	ros::ServiceServer m_serviceSetIntrinsicParameters;
-	ros::ServiceServer m_serviceGetExtrinsicParameters;
-	ros::ServiceServer m_serviceSetExtrinsicParameters;
+	rclcpp::Service<kortex_driver::srv::SetSensorSettings>::SharedPtr m_serviceSetSensorSettings;
+	rclcpp::Service<kortex_driver::srv::GetSensorSettings>::SharedPtr m_serviceGetSensorSettings;
+	rclcpp::Service<kortex_driver::srv::GetOptionValue>::SharedPtr m_serviceGetOptionValue;
+	rclcpp::Service<kortex_driver::srv::SetOptionValue>::SharedPtr m_serviceSetOptionValue;
+	rclcpp::Service<kortex_driver::srv::GetOptionInformation>::SharedPtr m_serviceGetOptionInformation;
+	rclcpp::Service<kortex_driver::srv::OnNotificationVisionTopic>::SharedPtr m_serviceOnNotificationVisionTopic;
+	rclcpp::Service<kortex_driver::srv::DoSensorFocusAction>::SharedPtr m_serviceDoSensorFocusAction;
+	rclcpp::Service<kortex_driver::srv::GetIntrinsicParameters>::SharedPtr m_serviceGetIntrinsicParameters;
+	rclcpp::Service<kortex_driver::srv::GetIntrinsicParametersProfile>::SharedPtr m_serviceGetIntrinsicParametersProfile;
+	rclcpp::Service<kortex_driver::srv::SetIntrinsicParameters>::SharedPtr m_serviceSetIntrinsicParameters;
+	rclcpp::Service<kortex_driver::srv::GetExtrinsicParameters>::SharedPtr m_serviceGetExtrinsicParameters;
+	rclcpp::Service<kortex_driver::srv::SetExtrinsicParameters>::SharedPtr m_serviceSetExtrinsicParameters;
 };
 #endif

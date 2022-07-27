@@ -72,22 +72,22 @@ protected:
         ros::NodeHandle m_node_handle;
         ros::Publisher m_pub_Error;
 
-        ros::ServiceServer m_serviceSetDeviceID;
-        ros::ServiceServer m_serviceSetApiOptions;
+        rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;
+        rclcpp::Service<kortex_driver::srv::SetApiOptions>::SharedPtr m_serviceSetApiOptions;
 
-	ros::ServiceServer m_serviceGetUARTConfiguration;
-	ros::ServiceServer m_serviceSetUARTConfiguration;
-	ros::ServiceServer m_serviceGetEthernetConfiguration;
-	ros::ServiceServer m_serviceSetEthernetConfiguration;
-	ros::ServiceServer m_serviceGetGPIOConfiguration;
-	ros::ServiceServer m_serviceSetGPIOConfiguration;
-	ros::ServiceServer m_serviceGetGPIOState;
-	ros::ServiceServer m_serviceSetGPIOState;
-	ros::ServiceServer m_serviceGetI2CConfiguration;
-	ros::ServiceServer m_serviceSetI2CConfiguration;
-	ros::ServiceServer m_serviceI2CRead;
-	ros::ServiceServer m_serviceI2CReadRegister;
-	ros::ServiceServer m_serviceI2CWrite;
-	ros::ServiceServer m_serviceI2CWriteRegister;
+	rclcpp::Service<kortex_driver::srv::GetUARTConfiguration>::SharedPtr m_serviceGetUARTConfiguration;
+	rclcpp::Service<kortex_driver::srv::SetUARTConfiguration>::SharedPtr m_serviceSetUARTConfiguration;
+	rclcpp::Service<kortex_driver::srv::GetEthernetConfiguration>::SharedPtr m_serviceGetEthernetConfiguration;
+	rclcpp::Service<kortex_driver::srv::SetEthernetConfiguration>::SharedPtr m_serviceSetEthernetConfiguration;
+	rclcpp::Service<kortex_driver::srv::GetGPIOConfiguration>::SharedPtr m_serviceGetGPIOConfiguration;
+	rclcpp::Service<kortex_driver::srv::SetGPIOConfiguration>::SharedPtr m_serviceSetGPIOConfiguration;
+	rclcpp::Service<kortex_driver::srv::GetGPIOState>::SharedPtr m_serviceGetGPIOState;
+	rclcpp::Service<kortex_driver::srv::SetGPIOState>::SharedPtr m_serviceSetGPIOState;
+	rclcpp::Service<kortex_driver::srv::GetI2CConfiguration>::SharedPtr m_serviceGetI2CConfiguration;
+	rclcpp::Service<kortex_driver::srv::SetI2CConfiguration>::SharedPtr m_serviceSetI2CConfiguration;
+	rclcpp::Service<kortex_driver::srv::I2CRead>::SharedPtr m_serviceI2CRead;
+	rclcpp::Service<kortex_driver::srv::I2CReadRegister>::SharedPtr m_serviceI2CReadRegister;
+	rclcpp::Service<kortex_driver::srv::I2CWrite>::SharedPtr m_serviceI2CWrite;
+	rclcpp::Service<kortex_driver::srv::I2CWriteRegister>::SharedPtr m_serviceI2CWriteRegister;
 };
 #endif

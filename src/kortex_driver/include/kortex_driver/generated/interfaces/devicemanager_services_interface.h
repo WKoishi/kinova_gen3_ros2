@@ -46,9 +46,9 @@ protected:
         ros::NodeHandle m_node_handle;
         ros::Publisher m_pub_Error;
 
-        ros::ServiceServer m_serviceSetDeviceID;
-        ros::ServiceServer m_serviceSetApiOptions;
+        rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;
+        rclcpp::Service<kortex_driver::srv::SetApiOptions>::SharedPtr m_serviceSetApiOptions;
 
-	ros::ServiceServer m_serviceReadAllDevices;
+	rclcpp::Service<kortex_driver::srv::ReadAllDevices>::SharedPtr m_serviceReadAllDevices;
 };
 #endif
