@@ -57,7 +57,7 @@ KortexArmDriver::KortexArmDriver(rclcpp::Node::SharedPtr nh):   m_node_handle(nh
     }
 
     // If we get here and no error was thrown we started the node correctly
-    ROS_INFO("%sThe Kortex driver has been initialized correctly!%s", GREEN_COLOR_CONSOLE, RESET_COLOR_CONSOLE);
+    RCLCPP_INFO(m_node_handle->get_logger(), "%sThe Kortex driver has been initialized correctly!%s", GREEN_COLOR_CONSOLE, RESET_COLOR_CONSOLE);
     ros::param::set("is_initialized", true);
 }
 
@@ -129,7 +129,7 @@ void KortexArmDriver::parseRosArguments()
     if (!ros::param::get("~sim", sim))
     {
         std::string error_string = "Simulation was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
     m_is_real_robot = !sim;
@@ -143,56 +143,56 @@ void KortexArmDriver::parseRosArguments()
             if (use_sim_time)
             {
                 std::string error_string = "ROS parameter /use_sim_time is true : you may experience problems and you should set it to false and restart the driver.";
-                ROS_WARN("%s", error_string.c_str());
+                RCLCPP_WARN(m_node_handle->get_logger(), "%s", error_string.c_str());
             }
         }
 
         if (!ros::param::get("~ip_address", m_ip_address))
         {
             std::string error_string = "IP address of the robot was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
         if (!ros::param::get("~username", m_username))
         {
             std::string error_string = "Username for the robot session was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
         if (!ros::param::get("~password", m_password))
         {
             std::string error_string = "Password for the robot session was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
         if (!ros::param::get("~use_hard_limits", m_use_hard_limits))
         {
             std::string error_string = "Usage of hard limits as soft was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
         if (!ros::param::get("~api_rpc_timeout_ms", m_api_rpc_timeout_ms))
         {
             std::string error_string = "API RPC timeout duration was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
         if (!ros::param::get("~api_session_inactivity_timeout_ms", m_api_session_inactivity_timeout_ms))
         {
             std::string error_string = "API session inactivity timeout duration was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
         
         if (!ros::param::get("~api_connection_inactivity_timeout_ms", m_api_connection_inactivity_timeout_ms))
         {
             std::string error_string = "API connection inactivity timeout duration was not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
@@ -201,48 +201,48 @@ void KortexArmDriver::parseRosArguments()
     if (!ros::param::get("~cyclic_data_publish_rate", m_cyclic_data_publish_rate))
     {
         std::string error_string = "Publish rate of the cyclic data was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
     if (!ros::param::get("~arm", m_arm_name))
     {
         std::string error_string = "Arm name was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
     if (!ros::param::get("~dof", m_degrees_of_freedom))
     {
         std::string error_string = "Number of degrees of freedom was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
     if (!ros::param::get("~joint_names", m_arm_joint_names))
     {
         std::string error_string = "Arm joint_names were not specified, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }    
 
     if (!ros::param::get("~gripper", m_gripper_name))
     {
         std::string error_string = "Gripper name was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
     std::string robot_name;
     if (!ros::param::get("~robot_name", robot_name))
     {
         std::string error_string = "Robot name was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
     if (!ros::param::get("~prefix", m_prefix))
     {
         std::string error_string = "Prefix name was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
@@ -252,7 +252,7 @@ void KortexArmDriver::parseRosArguments()
         if (!ros::param::get("~gripper_joint_names", m_gripper_joint_names))
         {
             std::string error_string = "Gripper joint names were not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
@@ -260,7 +260,7 @@ void KortexArmDriver::parseRosArguments()
         if (!ros::param::get("~gripper_joint_limits_min", m_gripper_joint_limits_min))
         {
             std::string error_string = "Gripper joint min limits were not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
@@ -268,7 +268,7 @@ void KortexArmDriver::parseRosArguments()
         if (!ros::param::get("~gripper_joint_limits_max", m_gripper_joint_limits_max))
         {
             std::string error_string = "Gripper joint max limits were not specified in the launch file, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
@@ -285,8 +285,8 @@ void KortexArmDriver::initApi()
     m_udp_transport->connect(m_ip_address, UDP_PORT);
 
     // Create the routers
-	m_tcp_router = new Kinova::Api::RouterClient(m_tcp_transport, [](Kinova::Api::KError err) { ROS_ERROR("Kortex API error was encountered with the TCP router: %s", err.toString().c_str()); });
-	m_udp_router = new Kinova::Api::RouterClient(m_udp_transport, [](Kinova::Api::KError err) { ROS_ERROR("Kortex API error was encountered with the UDP router: %s", err.toString().c_str()); });
+	m_tcp_router = new Kinova::Api::RouterClient(m_tcp_transport, [](Kinova::Api::KError err) { RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex API error was encountered with the TCP router: %s", err.toString().c_str()); });
+	m_udp_router = new Kinova::Api::RouterClient(m_udp_transport, [](Kinova::Api::KError err) { RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex API error was encountered with the UDP router: %s", err.toString().c_str()); });
     
     // Create the Protobuf services we are going to use in the ServiceProxy's
     m_actuator_config = new Kinova::Api::ActuatorConfig::ActuatorConfigClient(m_tcp_router);
@@ -313,15 +313,15 @@ void KortexArmDriver::initApi()
     try 
     {
         m_tcp_session_manager->CreateSession(createSessionInfo);
-        ROS_INFO("Session created successfully for TCP services");
+        RCLCPP_INFO(m_node_handle->get_logger(), "Session created successfully for TCP services");
 
         m_udp_session_manager->CreateSession(createSessionInfo);
-        ROS_INFO("Session created successfully for UDP services");
+        RCLCPP_INFO(m_node_handle->get_logger(), "Session created successfully for UDP services");
     }
     catch(std::runtime_error& ex_runtime)
     {
         std::string error_string = "The node could not connect to the arm. Did you specify the right IP address and is the arm powered on?";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw ex_runtime;
     }
 }
@@ -337,7 +337,7 @@ void KortexArmDriver::verifyProductConfiguration()
         if (product_config.model() != Kinova::Api::ProductConfiguration::ModelId::MODEL_ID_L53)
         {
             std::string error_string = "The arm model specified in the launch file doesn't match the detected arm's model, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
@@ -346,21 +346,21 @@ void KortexArmDriver::verifyProductConfiguration()
         if (product_config.model() != Kinova::Api::ProductConfiguration::ModelId::MODEL_ID_L31)
         {
             std::string error_string = "The arm model specified in the launch file doesn't match the detected arm's model, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
     else
     {
         std::string error_string = "The arm model specified in the launch file is not supported, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
     // Compare number of degrees of freedom specified in the launch file with the number of detected actuators
     if (product_config.degree_of_freedom() != m_degrees_of_freedom)
     {
         std::string error_string = "The degrees of freedom specified in the launch file doesn't match the detected number of actuators, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
@@ -370,7 +370,7 @@ void KortexArmDriver::verifyProductConfiguration()
         if (product_config.end_effector_type() != Kinova::Api::ProductConfiguration::EndEffectorType::END_EFFECTOR_TYPE_NOT_INSTALLED)
         {
             std::string error_string = "The gripper model specified in the launch file doesn't match the detected arm's gripper model, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
@@ -379,7 +379,7 @@ void KortexArmDriver::verifyProductConfiguration()
         if (product_config.end_effector_type() != Kinova::Api::ProductConfiguration::EndEffectorType::END_EFFECTOR_TYPE_ROBOTIQ_2F_85)
         {
             std::string error_string = "The gripper model specified in the launch file doesn't match the detected arm's gripper model, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
@@ -388,7 +388,7 @@ void KortexArmDriver::verifyProductConfiguration()
         if (product_config.end_effector_type() != Kinova::Api::ProductConfiguration::EndEffectorType::END_EFFECTOR_TYPE_ROBOTIQ_2F_140)
         {
             std::string error_string = "The gripper model specified in the launch file doesn't match the detected arm's gripper model, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
@@ -397,20 +397,20 @@ void KortexArmDriver::verifyProductConfiguration()
         if (product_config.end_effector_type() != Kinova::Api::ProductConfiguration::EndEffectorType::END_EFFECTOR_TYPE_L31_GRIPPER_2F)
         {
             std::string error_string = "The gripper model specified in the launch file doesn't match the detected arm's gripper model, shutting down the node...";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
     }
     else 
     {
         std::string error_string = "The gripper model specified in the launch file is not supported, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
     // Find all the devices and print the device ID's
-    ROS_INFO("-------------------------------------------------");
-    ROS_INFO("Scanning all devices in robot... ");
+    RCLCPP_INFO(m_node_handle->get_logger(), "-------------------------------------------------");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Scanning all devices in robot... ");
 
 // Loop through the devices to find the device ID's
     auto devices = m_device_manager->ReadAllDevices();
@@ -418,29 +418,29 @@ void KortexArmDriver::verifyProductConfiguration()
     {
         if (device.device_type() == Kinova::Api::Common::DeviceTypes::BASE)
         {
-            ROS_INFO("Base device was found on device identifier %u", device.device_identifier());
+            RCLCPP_INFO(m_node_handle->get_logger(), "Base device was found on device identifier %u", device.device_identifier());
         }
         else if (device.device_type() == Kinova::Api::Common::DeviceTypes::SMALL_ACTUATOR 
                  || device.device_type() == Kinova::Api::Common::DeviceTypes::MEDIUM_ACTUATOR
                  || device.device_type() == Kinova::Api::Common::DeviceTypes::BIG_ACTUATOR
                  || device.device_type() == Kinova::Api::Common::DeviceTypes::XBIG_ACTUATOR)
         {
-            ROS_INFO("Actuator device of type %s was found on device identifier %u", Kinova::Api::Common::DeviceTypes_Name(device.device_type()).c_str(), device.device_identifier());
+            RCLCPP_INFO(m_node_handle->get_logger(), "Actuator device of type %s was found on device identifier %u", Kinova::Api::Common::DeviceTypes_Name(device.device_type()).c_str(), device.device_identifier());
         }
         else if (device.device_type() == Kinova::Api::Common::DeviceTypes::INTERCONNECT)
         {
             m_interconnect_device_id = device.device_identifier();
             m_is_interconnect_module_present = true;
-            ROS_INFO("Interconnect device was found on device identifier %u", m_interconnect_device_id);
+            RCLCPP_INFO(m_node_handle->get_logger(), "Interconnect device was found on device identifier %u", m_interconnect_device_id);
         }
         else if (device.device_type() == Kinova::Api::Common::DeviceTypes::VISION)
         {
             m_vision_device_id = device.device_identifier();
             m_is_vision_module_present = true;
-            ROS_INFO("Vision device was found on device identifier %u", m_vision_device_id);
+            RCLCPP_INFO(m_node_handle->get_logger(), "Vision device was found on device identifier %u", m_vision_device_id);
         }
     }
-    ROS_INFO("-------------------------------------------------");
+    RCLCPP_INFO(m_node_handle->get_logger(), "-------------------------------------------------");
 	
 	// Set the ROS Param for the degrees of freedom
     m_node_handle.setParam("degrees_of_freedom", int(product_config.degree_of_freedom()));
@@ -457,8 +457,8 @@ void KortexArmDriver::initSubscribers()
 
 void KortexArmDriver::initRosServices()
 {
-    ROS_INFO("-------------------------------------------------");
-    ROS_INFO("Initializing Kortex Driver's services...");
+    RCLCPP_INFO(m_node_handle->get_logger(), "-------------------------------------------------");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Initializing Kortex Driver's services...");
     if (m_is_real_robot)
     {
         m_actuator_config_ros_services = new ActuatorConfigRobotServices(m_node_handle, m_actuator_config, 0, m_api_rpc_timeout_ms);
@@ -508,8 +508,8 @@ void KortexArmDriver::initRosServices()
         }
     }
     std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-    ROS_INFO("Kortex Driver's services initialized correctly.");
-    ROS_INFO("-------------------------------------------------");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Kortex Driver's services initialized correctly.");
+    RCLCPP_INFO(m_node_handle->get_logger(), "-------------------------------------------------");
 }
 
 void KortexArmDriver::startActionServers()
@@ -548,7 +548,7 @@ void KortexArmDriver::moveArmWithinJointLimits()
     }
     else 
     {
-        ROS_WARN("Unsupported number of actuators. Not moving the arm within joint limits");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Unsupported number of actuators. Not moving the arm within joint limits");
         return;
     }
 
@@ -616,10 +616,10 @@ void KortexArmDriver::publishRobotFeedback()
         }
         catch (Kinova::Api::KDetailedException& ex)
         {
-            ROS_WARN("Kortex exception while getting the base_feedback");
-		    ROS_WARN("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-		    ROS_WARN("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-		    ROS_WARN("Error description: %s\n", ex.what());
+            RCLCPP_WARN(m_node_handle->get_logger(), "Kortex exception while getting the base_feedback");
+		    RCLCPP_WARN(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+		    RCLCPP_WARN(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+		    RCLCPP_WARN(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
         }
         catch (std::runtime_error& ex_runtime)
         {
@@ -635,7 +635,7 @@ void KortexArmDriver::publishRobotFeedback()
         if (m_consecutive_base_cyclic_timeouts > MAX_CONSECUTIVE_TIMEOUTS_BEFORE_SHUTDOWN)
         {
             std::string error_string = "Too many consecutive timeouts : killing the node.";
-            ROS_ERROR("%s", error_string.c_str());
+            RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             ros::shutdown();
             return;
         }

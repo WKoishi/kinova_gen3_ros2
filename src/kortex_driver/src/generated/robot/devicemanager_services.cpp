@@ -90,15 +90,15 @@ bool DeviceManagerRobotServices::ReadAllDevices(kortex_driver::srv::ReadAllDevic
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);

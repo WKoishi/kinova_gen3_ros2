@@ -26,7 +26,7 @@ CartesianTrajectoryActionServer::CartesianTrajectoryActionServer(const std::stri
     if (!ros::param::get("~prefix", m_prefix))
     {
         std::string error_string = "Prefix name was not specified in the launch file, shutting down the node...";
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
     
@@ -46,45 +46,45 @@ CartesianTrajectoryActionServer::~CartesianTrajectoryActionServer()
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_ERROR("Kortex exception while unsubscribing to action notification.");
-        ROS_ERROR("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_ERROR("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_ERROR("Error description: %s\n", ex.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex exception while unsubscribing to action notification.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
         m_goal.setAborted();
     }
     catch (std::runtime_error& ex_runtime)
     {
-        ROS_ERROR("Runtime exception detected while unsubscribing to action notification.");
-        ROS_ERROR("%s", ex_runtime.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Runtime exception detected while unsubscribing to action notification.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_runtime.what());
         m_goal.setAborted();
     }
     catch (std::future_error& ex_future)
     {
-        ROS_ERROR("Future exception detected while unsubscribing to action notification.");
-        ROS_ERROR("%s", ex_future.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Future exception detected while unsubscribing to action notification.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_future.what());
         m_goal.setAborted();
     }
 }
 
 void CartesianTrajectoryActionServer::goal_received_callback(actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction>::GoalHandle new_goal_handle)
 {
-    ROS_INFO("New Cartesian goal received.");
+    RCLCPP_INFO(m_node_handle->get_logger(), "New Cartesian goal received.");
     if (!is_goal_acceptable(new_goal_handle))
     {
-        ROS_ERROR("Cartesian Trajectory Goal is rejected.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Cartesian Trajectory Goal is rejected.");
         new_goal_handle.setRejected();
         return;
     }
 
     if (m_server_state != ActionServerState::IDLE)
     {
-        ROS_WARN("There is already an active cartesian goal. It is being cancelled.");
+        RCLCPP_WARN(m_node_handle->get_logger(), "There is already an active cartesian goal. It is being cancelled.");
         // We have to call Stop after having received the ACTION_START notification from the arm
         stop_all_movement();
     }
 
     // Accept the goal
-    ROS_INFO("Cartesian Trajectory Goal is accepted.");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Cartesian Trajectory Goal is accepted.");
     m_goal = new_goal_handle;
     m_goal.setAccepted();
 
@@ -127,12 +127,12 @@ void CartesianTrajectoryActionServer::goal_received_callback(actionlib::ActionSe
         auto report = m_base->ValidateWaypointList(*proto_trajectory);
         if (report.trajectory_error_report().trajectory_error_elements_size() > 0)
         {
-            ROS_ERROR("Cartesian Trajectory failed validation in the arm.");
+            RCLCPP_ERROR(m_node_handle->get_logger(), "Cartesian Trajectory failed validation in the arm.");
             
             // Go through report and print errors
             for (unsigned int i = 0; i < report.trajectory_error_report().trajectory_error_elements_size(); i++)
             {
-                ROS_ERROR("Error %i : %s", i+1, report.trajectory_error_report().trajectory_error_elements(i).message().c_str());
+                RCLCPP_ERROR(m_node_handle->get_logger(), "Error %i : %s", i+1, report.trajectory_error_report().trajectory_error_elements(i).message().c_str());
             }
             new_goal_handle.setRejected();
             m_goal.setAborted();
@@ -150,22 +150,22 @@ void CartesianTrajectoryActionServer::goal_received_callback(actionlib::ActionSe
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_ERROR("Kortex exception while sending the trajectory");
-        ROS_ERROR("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_ERROR("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_ERROR("Error description: %s\n", ex.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex exception while sending the trajectory");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
         m_goal.setAborted();
     }
     catch (std::runtime_error& ex_runtime)
     {
-        ROS_ERROR("Runtime exception detected while sending the trajectory");
-        ROS_ERROR("%s", ex_runtime.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Runtime exception detected while sending the trajectory");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_runtime.what());
         m_goal.setAborted();
     }
     catch (std::future_error& ex_future)
     {
-        ROS_ERROR("Future exception detected while sending the trajectory");
-        ROS_ERROR("%s", ex_future.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Future exception detected while sending the trajectory");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_future.what());
         m_goal.setAborted();
     }
 }
@@ -205,7 +205,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
             // It should be starting
             if (m_server_state == ActionServerState::PRE_PROCESSING_PENDING)
             {
-                ROS_INFO("Preprocessing has started in the arm.");
+                RCLCPP_INFO(m_node_handle->get_logger(), "Preprocessing has started in the arm.");
                 set_server_state(ActionServerState::PRE_PROCESSING_IN_PROGRESS);
             }
             // We should not have received that
@@ -225,7 +225,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                 if (m_server_state == ActionServerState::PRE_PROCESSING_PENDING ||
                     m_server_state == ActionServerState::PRE_PROCESSING_IN_PROGRESS)
                 {
-                    ROS_INFO("Preprocessing has finished in the arm and goal has been accepted.");
+                    RCLCPP_INFO(m_node_handle->get_logger(), "Preprocessing has finished in the arm and goal has been accepted.");
                     set_server_state(ActionServerState::TRAJECTORY_EXECUTION_PENDING);
                 }
                 // FIXME KOR-3563 Sometimes the notifications arrive in the wrong order so it is possible to receive
@@ -272,7 +272,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                         i++;
                     }
 
-                    ROS_ERROR("%s", oss.str().c_str());
+                    RCLCPP_ERROR(m_node_handle->get_logger(), "%s", oss.str().c_str());
 
                     result.error_string = oss.str();
                     m_goal.setAborted(result);
@@ -293,7 +293,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                     m_server_state == ActionServerState::PRE_PROCESSING_IN_PROGRESS) && // FIXME KOR-3563 this happens if we received a ACTION_START before a ACTION_PREPROCESS_END
                     m_goal.getGoalStatus().status == actionlib_msgs::GoalStatus::ACTIVE)
                 {
-                    ROS_INFO("Trajectory has started.");
+                    RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory has started.");
                     set_server_state(ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS);
                     // Remember when the trajectory started
                     m_trajectory_start_time = std::chrono::system_clock::now();
@@ -303,7 +303,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                 else if ((m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING) &&
                         m_goal.getGoalStatus().status == actionlib_msgs::GoalStatus::PREEMPTING)
                 {
-                    ROS_INFO("Trajectory has started but goal was cancelled : stopping all movement.");
+                    RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory has started but goal was cancelled : stopping all movement.");
                     stop_all_movement();
                 }
                 // We should not have received that
@@ -334,7 +334,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                     (m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS ||
                     m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING))
                 {
-                    ROS_ERROR("Trajectory has been aborted.");
+                    RCLCPP_ERROR(m_node_handle->get_logger(), "Trajectory has been aborted.");
 
                     result.error_code = result.PATH_TOLERANCE_VIOLATED;
                     oss << "Trajectory execution failed in the arm with sub error code " << notif.abort_details() << std::endl;
@@ -349,7 +349,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                     result.error_string = oss.str();
                     m_goal.setAborted(result);
 
-                    ROS_ERROR("%s", oss.str().c_str());
+                    RCLCPP_ERROR(m_node_handle->get_logger(), "%s", oss.str().c_str());
                     set_server_state(ActionServerState::IDLE);
                 }
                 // The goal was cancelled and we received a ACTION_ABORT : this means the trajectory was cancelled successfully in the arm
@@ -357,7 +357,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                         (m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS ||
                         m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING))
                 {
-                    ROS_INFO("Trajectory has been cancelled successfully in the arm.");
+                    RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory has been cancelled successfully in the arm.");
                     m_goal.setCanceled();
                     set_server_state(ActionServerState::IDLE);
                 }
@@ -375,7 +375,7 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
                 if ((m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS))
                 {
                     result.error_code = result.SUCCESSFUL;
-                    ROS_INFO("Trajectory execution succeeded.");
+                    RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory execution succeeded.");
                     m_goal.setSucceeded(result);
                     
                     set_server_state(ActionServerState::IDLE);
@@ -389,11 +389,11 @@ void CartesianTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::A
             }
 
             case Kinova::Api::Base::ActionEvent::ACTION_PAUSE:
-                ROS_WARN("Action pause event was just received and this should never happen.");
+                RCLCPP_WARN(m_node_handle->get_logger(), "Action pause event was just received and this should never happen.");
                 break;
 
             default:
-                ROS_WARN("Unknown action event was just received and this should never happen.");
+                RCLCPP_WARN(m_node_handle->get_logger(), "Unknown action event was just received and this should never happen.");
                 break;
             }
         }
@@ -414,7 +414,7 @@ bool CartesianTrajectoryActionServer::is_goal_acceptable(actionlib::ActionServer
     // First check if goal is valid
     if (!goal_handle.isValid())
     {
-        ROS_ERROR("Invalid Cartesian goal.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Invalid Cartesian goal.");
         return false;
     }
 
@@ -424,7 +424,7 @@ bool CartesianTrajectoryActionServer::is_goal_acceptable(actionlib::ActionServer
     // Check if the trajectory contains at least 1 waypoint.
     if (goal->trajectory.size() == 0)
     {
-        ROS_ERROR("Empty Cartesian trajectory list.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Empty Cartesian trajectory list.");
         return false;
     }
 
@@ -433,14 +433,14 @@ bool CartesianTrajectoryActionServer::is_goal_acceptable(actionlib::ActionServer
 
 void CartesianTrajectoryActionServer::stop_all_movement()
 {
-    ROS_INFO("Calling Stop on the robot.");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Calling Stop on the robot.");
     try
     {
         m_base->Stop();
     }
     catch(const Kinova::Api::KBasicException& e)
     {
-        ROS_WARN("Stop failed : %s", e.what());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Stop failed : %s", e.what());
     }
 }
 
@@ -449,5 +449,5 @@ void CartesianTrajectoryActionServer::set_server_state(ActionServerState s)
     std::lock_guard<std::mutex> guard(m_server_state_lock);
     ActionServerState old_state = m_server_state;
     m_server_state = s;
-    ROS_INFO("State changed from %s to %s\n", actionServerStateNames[int(old_state)], actionServerStateNames[int(s)]);
+    RCLCPP_INFO(m_node_handle->get_logger(), "State changed from %s to %s\n", actionServerStateNames[int(old_state)], actionServerStateNames[int(s)]);
 }

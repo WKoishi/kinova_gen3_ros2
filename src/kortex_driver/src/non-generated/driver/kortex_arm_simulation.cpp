@@ -108,11 +108,11 @@ KortexArmSimulation::KortexArmSimulation(rclcpp::Node::SharedPtr node_handle): m
     }
 
     // Print out simulation configuration
-    ROS_INFO("Simulating arm with following characteristics:");
-    ROS_INFO("Arm type : %s", m_arm_name.c_str());
-    ROS_INFO("Gripper type : %s", m_gripper_name.empty() ? "None" : m_gripper_name.c_str());
-    ROS_INFO("Arm namespace : %s", m_robot_name.c_str());
-    ROS_INFO("URDF prefix : %s", m_prefix.c_str());
+    RCLCPP_INFO(m_node_handle->get_logger(), "Simulating arm with following characteristics:");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Arm type : %s", m_arm_name.c_str());
+    RCLCPP_INFO(m_node_handle->get_logger(), "Gripper type : %s", m_gripper_name.empty() ? "None" : m_gripper_name.c_str());
+    RCLCPP_INFO(m_node_handle->get_logger(), "Arm namespace : %s", m_robot_name.c_str());
+    RCLCPP_INFO(m_node_handle->get_logger(), "URDF prefix : %s", m_prefix.c_str());
 
     // Building the KDL chain from the robot description
     // The chain goes from 'base_link' to 'tool_frame'
@@ -120,13 +120,13 @@ KortexArmSimulation::KortexArmSimulation(rclcpp::Node::SharedPtr node_handle): m
     if (!kdl_parser::treeFromParam("robot_description", tree))
     {
         const std::string error_string("Failed to parse robot_description parameter to build the kinematic tree!"); 
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw(std::runtime_error(error_string));
     }
     if (!tree.getChain(m_prefix + "base_link", m_prefix + "tool_frame", m_chain))
     {
         const std::string error_string("Failed to extract kinematic chain from parsed tree!"); 
-        ROS_ERROR("%s", error_string.c_str());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw(std::runtime_error(error_string));
     }
     m_fk_solver.reset(new KDL::ChainFkSolverPos_recursive(m_chain));
@@ -293,7 +293,7 @@ kortex_driver::srv::CreateAction::Response KortexArmSimulation::CreateAction(con
             m_map_actions.emplace(std::make_pair(identifier, new_action));
             break;
         default:
-            ROS_ERROR("Unsupported action type %d : could not create simulated action.", new_action.handle.action_type);
+            RCLCPP_ERROR(m_node_handle->get_logger(), "Unsupported action type %d : could not create simulated action.", new_action.handle.action_type);
             break;
     }
     // Return ActionHandle for added action
@@ -342,16 +342,16 @@ kortex_driver::srv::DeleteAction::Response KortexArmSimulation::DeleteAction(con
         if (it != m_map_actions.end())
         {
             m_map_actions.erase(it);
-            ROS_INFO("Simulated action #%u properly deleted.", handle.identifier);
+            RCLCPP_INFO(m_node_handle->get_logger(), "Simulated action #%u properly deleted.", handle.identifier);
         }
         else
         {
-            ROS_WARN("Could not find simulated action #%u to delete in actions map.", handle.identifier);
+            RCLCPP_WARN(m_node_handle->get_logger(), "Could not find simulated action #%u to delete in actions map.", handle.identifier);
         }
     }
     else
     {
-        ROS_ERROR("Cannot delete default simulated actions.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Cannot delete default simulated actions.");
     }
     
     return kortex_driver::srv::DeleteAction::Response();
@@ -369,21 +369,21 @@ kortex_driver::srv::UpdateAction::Response KortexArmSimulation::UpdateAction(con
             if (it->second.handle.action_type == action.handle.action_type)
             {
                 it->second = action;
-                ROS_INFO("Simulated action #%u properly updated.", action.handle.identifier);
+                RCLCPP_INFO(m_node_handle->get_logger(), "Simulated action #%u properly updated.", action.handle.identifier);
             }
             else
             {
-                ROS_ERROR("Cannot update action with different type.");
+                RCLCPP_ERROR(m_node_handle->get_logger(), "Cannot update action with different type.");
             }
         }
         else
         {
-            ROS_ERROR("Could not find simulated action #%u to update in actions map.", action.handle.identifier);
+            RCLCPP_ERROR(m_node_handle->get_logger(), "Could not find simulated action #%u to update in actions map.", action.handle.identifier);
         }
     }
     else
     {
-       ROS_ERROR("Cannot update default simulated actions."); 
+       RCLCPP_ERROR(m_node_handle->get_logger(), "Cannot update default simulated actions."); 
     }
 
     return kortex_driver::srv::UpdateAction::Response();
@@ -400,7 +400,7 @@ kortex_driver::srv::ExecuteActionFromReference::Response KortexArmSimulation::Ex
     }
     else
     {
-        ROS_ERROR("Could not find action with given identifier %d", handle.identifier);
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Could not find action with given identifier %d", handle.identifier);
     }
     
     return kortex_driver::srv::ExecuteActionFromReference::Response();
@@ -420,7 +420,7 @@ kortex_driver::srv::ExecuteAction::Response KortexArmSimulation::ExecuteAction(c
             m_action_executor_thread = std::thread(&KortexArmSimulation::PlayAction, this, action);
             break;
         default:
-            ROS_ERROR("Unsupported action type %d : could not execute simulated action.", action.handle.action_type);
+            RCLCPP_ERROR(m_node_handle->get_logger(), "Unsupported action type %d : could not execute simulated action.", action.handle.action_type);
             break;
     }
 
@@ -655,14 +655,14 @@ bool KortexArmSimulation::SwitchControllerType(ControllerType new_type)
                 service.request.stop_controllers = m_trajectory_controllers_list;
                 break;
             default:
-                ROS_ERROR("Kortex arm simulator : Unsupported controller type %d", int(new_type));
+                RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex arm simulator : Unsupported controller type %d", int(new_type));
                 return false;
         }
 
         // Call the service
         if (!m_client_switch_controllers.call(service))
         {
-            ROS_ERROR("Failed to call the service for switching controllers");
+            RCLCPP_ERROR(m_node_handle->get_logger(), "Failed to call the service for switching controllers");
             success = false;
         }
         else
@@ -749,7 +749,7 @@ void KortexArmSimulation::PlayAction(const kortex_driver::msg::Action& action)
         {
             // Notify ACTION_ABORT
             end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_ABORT;
-            ROS_WARN("Action was aborted by user.");
+            RCLCPP_WARN(m_node_handle->get_logger(), "Action was aborted by user.");
         }
         // Action ended on its own
         else
@@ -759,7 +759,7 @@ void KortexArmSimulation::PlayAction(const kortex_driver::msg::Action& action)
                 // Notify ACTION_ABORT
                 end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_ABORT;
                 end_notif.abort_details = action_result.sub_code;
-                ROS_WARN("Action was failed : \nError code is %d\nSub-error code is %d\nError description is : %s", 
+                RCLCPP_WARN(m_node_handle->get_logger(), "Action was failed : \nError code is %d\nSub-error code is %d\nError description is : %s", 
                             action_result.code,
                             action_result.sub_code,
                             action_result.description.c_str());
@@ -1091,7 +1091,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteReachPose(const kort
     double delta_rot = dR.GetRotAngle(axis);
     double minimum_rotation_duration = delta_rot / m_max_cartesian_twist_angular; // in seconds
 
-    ROS_INFO("trans : %2.4f rot : %2.4f", minimum_translation_duration, minimum_rotation_duration);
+    RCLCPP_INFO(m_node_handle->get_logger(), "trans : %2.4f rot : %2.4f", minimum_translation_duration, minimum_rotation_duration);
 
     // The default value for the duration will be the longer duration of the two
     double duration = std::max(minimum_translation_duration, minimum_rotation_duration);
@@ -1116,7 +1116,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteReachPose(const kort
         double supplied_duration = constrained_pose.constraint.oneof_type.duration[0];
         if (duration > supplied_duration)
         {
-            ROS_WARN("Cannot use supplied duration %2.4f because the minimum duration based on velocity limits is %2.4f",
+            RCLCPP_WARN(m_node_handle->get_logger(), "Cannot use supplied duration %2.4f because the minimum duration based on velocity limits is %2.4f",
                         supplied_duration,
                         duration);
         }
@@ -1158,7 +1158,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteReachPose(const kort
         int code = m_ik_pos_solver->CartToJnt(previous, pos, current_joints);
         if (code != m_ik_pos_solver->E_NOERROR)
         {
-            ROS_ERROR("IK ERROR CODE = %d", code);
+            RCLCPP_ERROR(m_node_handle->get_logger(), "IK ERROR CODE = %d", code);
         }
 
         for (int i = 0; i < GetDOF(); i++)
@@ -1496,7 +1496,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendTwist(const kort
         int ik_result = m_ik_vel_solver->CartToJnt(commands_kdl, twist_kdl, joint_velocities);
         if (ik_result != m_ik_vel_solver->E_NOERROR)
         {
-            ROS_WARN("IK ERROR = %d", ik_result);
+            RCLCPP_WARN(m_node_handle->get_logger(), "IK ERROR = %d", ik_result);
         }
         
         // We need to know if the joint velocities have to be adjusted, and by what ratio

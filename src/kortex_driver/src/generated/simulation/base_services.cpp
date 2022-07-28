@@ -1127,7 +1127,7 @@ void BaseSimulationServices::cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoN
 
 bool BaseSimulationServices::Base_OnNotificationControlModeTopic(kortex_driver::srv::BaseOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::BaseOnNotificationControlModeTopic::Response &res)
 {
-	ROS_WARN("The base/activate_publishing_of_control_mode_topic service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/activate_publishing_of_control_mode_topic service is now deprecated and will be removed in a future release.");
 	
 	m_is_activated_ControlModeTopic = true;
 	
@@ -1304,7 +1304,7 @@ void BaseSimulationServices::cb_RobotEventTopic(Kinova::Api::Base::RobotEventNot
 
 bool BaseSimulationServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesianTrajectory::Request  &req, kortex_driver::srv::PlayCartesianTrajectory::Response &res)
 {
-	ROS_WARN("The base/play_cartesian_trajectory service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory service is now deprecated and will be removed in a future release.");
 	
 	
 	if (PlayCartesianTrajectoryHandler)
@@ -1320,7 +1320,7 @@ bool BaseSimulationServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCar
 
 bool BaseSimulationServices::PlayCartesianTrajectoryPosition(kortex_driver::srv::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryPosition::Response &res)
 {
-	ROS_WARN("The base/play_cartesian_trajectory_position service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_position service is now deprecated and will be removed in a future release.");
 	
 	
 	if (PlayCartesianTrajectoryPositionHandler)
@@ -1336,7 +1336,7 @@ bool BaseSimulationServices::PlayCartesianTrajectoryPosition(kortex_driver::srv:
 
 bool BaseSimulationServices::PlayCartesianTrajectoryOrientation(kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response &res)
 {
-	ROS_WARN("The base/play_cartesian_trajectory_orientation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_orientation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (PlayCartesianTrajectoryOrientationHandler)
@@ -1442,7 +1442,7 @@ bool BaseSimulationServices::SendTwistCommand(kortex_driver::srv::SendTwistComma
 
 bool BaseSimulationServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTrajectory::Request  &req, kortex_driver::srv::PlayJointTrajectory::Response &res)
 {
-	ROS_WARN("The base/play_joint_trajectory service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
 	
 	if (PlayJointTrajectoryHandler)
@@ -1458,7 +1458,7 @@ bool BaseSimulationServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTr
 
 bool BaseSimulationServices::PlaySelectedJointTrajectory(kortex_driver::srv::PlaySelectedJointTrajectory::Request  &req, kortex_driver::srv::PlaySelectedJointTrajectory::Response &res)
 {
-	ROS_WARN("The base/play_selected_joint_trajectory service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_selected_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
 	
 	if (PlaySelectedJointTrajectoryHandler)
@@ -1609,7 +1609,7 @@ bool BaseSimulationServices::Base_ClearFaults(kortex_driver::srv::BaseClearFault
 
 bool BaseSimulationServices::Base_GetControlMode(kortex_driver::srv::BaseGetControlMode::Request  &req, kortex_driver::srv::BaseGetControlMode::Response &res)
 {
-	ROS_WARN("The base/get_control_mode service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_control_mode service is now deprecated and will be removed in a future release.");
 	
 	
 	if (Base_GetControlModeHandler)
@@ -1938,7 +1938,7 @@ bool BaseSimulationServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetC
 
 bool BaseSimulationServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response &res)
 {
-	ROS_WARN("The base/get_all_joints_speed_hard_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_speed_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetAllJointsSpeedHardLimitationHandler)
@@ -1954,7 +1954,7 @@ bool BaseSimulationServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv:
 
 bool BaseSimulationServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response &res)
 {
-	ROS_WARN("The base/get_all_joints_torque_hard_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_torque_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetAllJointsTorqueHardLimitationHandler)
@@ -1970,7 +1970,7 @@ bool BaseSimulationServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv
 
 bool BaseSimulationServices::GetTwistHardLimitation(kortex_driver::srv::GetTwistHardLimitation::Request  &req, kortex_driver::srv::GetTwistHardLimitation::Response &res)
 {
-	ROS_WARN("The base/get_twist_hard_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_twist_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetTwistHardLimitationHandler)
@@ -1986,7 +1986,7 @@ bool BaseSimulationServices::GetTwistHardLimitation(kortex_driver::srv::GetTwist
 
 bool BaseSimulationServices::GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHardLimitation::Request  &req, kortex_driver::srv::GetWrenchHardLimitation::Response &res)
 {
-	ROS_WARN("The base/get_wrench_hard_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_wrench_hard_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetWrenchHardLimitationHandler)
@@ -2167,7 +2167,7 @@ bool BaseSimulationServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTra
 
 bool BaseSimulationServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response &res)
 {
-	ROS_WARN("The base/get_all_joints_speed_soft_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_speed_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetAllJointsSpeedSoftLimitationHandler)
@@ -2183,7 +2183,7 @@ bool BaseSimulationServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv:
 
 bool BaseSimulationServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response &res)
 {
-	ROS_WARN("The base/get_all_joints_torque_soft_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_torque_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetAllJointsTorqueSoftLimitationHandler)
@@ -2199,7 +2199,7 @@ bool BaseSimulationServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv
 
 bool BaseSimulationServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftLimitation::Request  &req, kortex_driver::srv::GetTwistSoftLimitation::Response &res)
 {
-	ROS_WARN("The base/get_twist_soft_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_twist_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetTwistSoftLimitationHandler)
@@ -2215,7 +2215,7 @@ bool BaseSimulationServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwist
 
 bool BaseSimulationServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSoftLimitation::Request  &req, kortex_driver::srv::GetWrenchSoftLimitation::Response &res)
 {
-	ROS_WARN("The base/get_wrench_soft_limitation service is now deprecated and will be removed in a future release.");
+	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_wrench_soft_limitation service is now deprecated and will be removed in a future release.");
 	
 	
 	if (GetWrenchSoftLimitationHandler)

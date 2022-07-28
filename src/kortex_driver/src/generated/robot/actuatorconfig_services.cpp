@@ -109,15 +109,15 @@ bool ActuatorConfigRobotServices::GetAxisOffsets(kortex_driver::srv::GetAxisOffs
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -142,15 +142,15 @@ bool ActuatorConfigRobotServices::SetAxisOffsets(kortex_driver::srv::SetAxisOffs
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -174,15 +174,15 @@ bool ActuatorConfigRobotServices::SetTorqueOffset(kortex_driver::srv::SetTorqueO
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -206,15 +206,15 @@ bool ActuatorConfigRobotServices::ActuatorConfig_GetControlMode(kortex_driver::s
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -239,15 +239,15 @@ bool ActuatorConfigRobotServices::SetControlMode(kortex_driver::srv::SetControlM
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -271,15 +271,15 @@ bool ActuatorConfigRobotServices::GetActivatedControlLoop(kortex_driver::srv::Ge
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -304,15 +304,15 @@ bool ActuatorConfigRobotServices::SetActivatedControlLoop(kortex_driver::srv::Se
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -338,15 +338,15 @@ bool ActuatorConfigRobotServices::GetControlLoopParameters(kortex_driver::srv::G
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -371,15 +371,15 @@ bool ActuatorConfigRobotServices::SetControlLoopParameters(kortex_driver::srv::S
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -403,15 +403,15 @@ bool ActuatorConfigRobotServices::SelectCustomData(kortex_driver::srv::SelectCus
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -435,15 +435,15 @@ bool ActuatorConfigRobotServices::GetSelectedCustomData(kortex_driver::srv::GetS
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -468,15 +468,15 @@ bool ActuatorConfigRobotServices::SetCommandMode(kortex_driver::srv::SetCommandM
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -498,15 +498,15 @@ bool ActuatorConfigRobotServices::ActuatorConfig_ClearFaults(kortex_driver::srv:
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -530,15 +530,15 @@ bool ActuatorConfigRobotServices::SetServoing(kortex_driver::srv::SetServoing::R
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -562,15 +562,15 @@ bool ActuatorConfigRobotServices::MoveToPosition(kortex_driver::srv::MoveToPosit
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -594,15 +594,15 @@ bool ActuatorConfigRobotServices::GetCommandMode(kortex_driver::srv::GetCommandM
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -627,15 +627,15 @@ bool ActuatorConfigRobotServices::GetServoing(kortex_driver::srv::GetServoing::R
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -660,15 +660,15 @@ bool ActuatorConfigRobotServices::GetTorqueOffset(kortex_driver::srv::GetTorqueO
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);
@@ -693,15 +693,15 @@ bool ActuatorConfigRobotServices::SetCoggingFeedforwardMode(kortex_driver::srv::
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	return true;
@@ -725,15 +725,15 @@ bool ActuatorConfigRobotServices::GetCoggingFeedforwardMode(kortex_driver::srv::
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error->publish(result_error);
-		ROS_INFO("Kortex exception");
-		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
-		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
-		ROS_INFO("KINOVA exception description: %s\n", ex.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "Kortex exception");
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
+		RCLCPP_INFO(m_node_handle->get_logger(), "KINOVA exception description: %s\n", ex.what());
 		return false;
 	}
 	catch (std::runtime_error& ex2)
 	{
-		ROS_INFO("%s", ex2.what());
+		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
 	ToRosData(output, res.output);

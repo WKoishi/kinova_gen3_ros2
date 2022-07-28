@@ -41,10 +41,10 @@ RobotiqGripperCommandActionServer::~RobotiqGripperCommandActionServer()
 
 void RobotiqGripperCommandActionServer::goal_received_callback(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle new_goal_handle)
 {
-    ROS_INFO("New goal received.");
+    RCLCPP_INFO(m_node_handle->get_logger(), "New goal received.");
     if (!is_goal_acceptable(new_goal_handle))
     {
-        ROS_ERROR("Gripper Command Goal is rejected.");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Gripper Command Goal is rejected.");
         new_goal_handle.setRejected();
         return;
     }
@@ -52,7 +52,7 @@ void RobotiqGripperCommandActionServer::goal_received_callback(actionlib::Action
     // Deal with active goals
     if (m_is_trajectory_running)
     {
-        ROS_WARN("There is already an active goal. It is being cancelled.");
+        RCLCPP_WARN(m_node_handle->get_logger(), "There is already an active goal. It is being cancelled.");
         stop_all_movement();
     }
 
@@ -86,14 +86,14 @@ void RobotiqGripperCommandActionServer::goal_received_callback(actionlib::Action
 // Called in a separate thread when a preempt request comes in from the Action Client
 void RobotiqGripperCommandActionServer::preempt_received_callback(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle goal_handle)
 {
-    ROS_WARN("Preempt received from client");
+    RCLCPP_WARN(m_node_handle->get_logger(), "Preempt received from client");
     if (m_is_trajectory_running)
     {
         stop_all_movement();
     }
     else 
     {
-        ROS_WARN("Trajectory is not running but we received a pre-empt request from client.");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Trajectory is not running but we received a pre-empt request from client.");
     }
 }
 
@@ -145,7 +145,7 @@ void RobotiqGripperCommandActionServer::gripper_position_polling_thread()
         }
         else
         {
-            ROS_ERROR("we're finished");
+            RCLCPP_ERROR(m_node_handle->get_logger(), "we're finished");
             m_goal.setAborted();
         }
     }
@@ -153,7 +153,7 @@ void RobotiqGripperCommandActionServer::gripper_position_polling_thread()
     // Timeout was reached
     else
     {
-        ROS_ERROR("BANG timeout");
+        RCLCPP_ERROR(m_node_handle->get_logger(), "BANG timeout");
         m_goal.setAborted();
     }
 
@@ -187,7 +187,7 @@ bool RobotiqGripperCommandActionServer::is_goal_tolerance_respected()
     double actual_gripper_position = feedback.interconnect().gripper_feedback().motor(0).position() / 100.0;
     double goal_as_relative_position = m_math_util.relative_position_from_absolute(m_goal.getGoal()->command.position, m_gripper_joint_limit_min, m_gripper_joint_limit_max);
 
-    ROS_INFO("%f and %f", actual_gripper_position, goal_as_relative_position);
+    RCLCPP_INFO(m_node_handle->get_logger(), "%f and %f", actual_gripper_position, goal_as_relative_position);
 
     return fabs(actual_gripper_position - goal_as_relative_position) < MAX_GRIPPER_RELATIVE_ERROR;
 }
@@ -202,7 +202,7 @@ void RobotiqGripperCommandActionServer::join_polling_thread()
 
 void RobotiqGripperCommandActionServer::stop_all_movement()
 {
-    ROS_INFO("Sending zero-speed Gripper Command on the robot.");
+    RCLCPP_INFO(m_node_handle->get_logger(), "Sending zero-speed Gripper Command on the robot.");
     try
     {
         m_base->SendGripperCommand(m_cancel_gripper_command);
@@ -212,6 +212,6 @@ void RobotiqGripperCommandActionServer::stop_all_movement()
     }
     catch(const Kinova::Api::KBasicException& e)
     {
-        ROS_ERROR("Sending a gripper speed of 0 failed : %s", e.what());
+        RCLCPP_ERROR(m_node_handle->get_logger(), "Sending a gripper speed of 0 failed : %s", e.what());
     }
 }

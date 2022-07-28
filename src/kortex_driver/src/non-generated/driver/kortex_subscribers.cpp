@@ -46,10 +46,10 @@ void KortexSubscribers::new_joint_speeds_cb(const kortex_driver::msg::BaseJointS
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_WARN("Kortex exception while sending joint speeds");
-        ROS_WARN("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_WARN("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_WARN("Error description: %s\n", ex.what());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Kortex exception while sending joint speeds");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
     }
     catch (std::runtime_error& ex_runtime)
     {
@@ -74,10 +74,10 @@ void KortexSubscribers::new_twist_cb(const kortex_driver::msg::TwistCommand& twi
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_WARN("Kortex exception while sending twist command");
-        ROS_WARN("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_WARN("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_WARN("Error description: %s\n", ex.what());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Kortex exception while sending twist command");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
     }
     catch (std::runtime_error& ex_runtime)
     {
@@ -94,10 +94,10 @@ void KortexSubscribers::clear_faults_cb(const std_msgs::Empty& dummy)
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_WARN("Kortex exception while clearing the faults");
-        ROS_WARN("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_WARN("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_WARN("Error description: %s\n", ex.what());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Kortex exception while clearing the faults");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
     }
     catch (std::runtime_error& ex_runtime)
     {
@@ -114,10 +114,10 @@ void KortexSubscribers::stop_cb(const std_msgs::Empty& dummy)
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_WARN("Kortex exception while clearing the faults");
-        ROS_WARN("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_WARN("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_WARN("Error description: %s\n", ex.what());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Kortex exception while clearing the faults");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
     }
     catch (std::runtime_error& ex_runtime)
     {
@@ -134,10 +134,10 @@ void KortexSubscribers::emergency_stop_cb(const std_msgs::Empty& dummy)
     }
     catch (Kinova::Api::KDetailedException& ex)
     {
-        ROS_WARN("Kortex exception while clearing the faults");
-        ROS_WARN("Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
-        ROS_WARN("Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
-        ROS_WARN("Error description: %s\n", ex.what());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Kortex exception while clearing the faults");
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
+        RCLCPP_WARN(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
     }
     catch (std::runtime_error& ex_runtime)
     {
