@@ -107,7 +107,7 @@ class IDeviceConfigServices
         virtual bool DeviceConfig_GetCapSenseConfig(kortex_driver::srv::DeviceConfigGetCapSenseConfig::Request  &req, kortex_driver::srv::DeviceConfigGetCapSenseConfig::Response &res) = 0;
 
 protected:
-        ros::NodeHandle m_node_handle;
+        rclcpp::Node::SharedPtr m_node_handle;
         ros::Publisher m_pub_Error;
         ros::Publisher m_pub_SafetyTopic;
         bool m_is_activated_SafetyTopic;

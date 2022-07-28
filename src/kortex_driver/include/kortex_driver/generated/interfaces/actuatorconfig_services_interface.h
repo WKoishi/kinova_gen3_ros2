@@ -81,7 +81,7 @@ class IActuatorConfigServices
         virtual bool GetCoggingFeedforwardMode(kortex_driver::srv::GetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::GetCoggingFeedforwardMode::Response &res) = 0;
 
 protected:
-        ros::NodeHandle m_node_handle;
+        rclcpp::Node::SharedPtr m_node_handle;
         ros::Publisher m_pub_Error;
 
         rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;

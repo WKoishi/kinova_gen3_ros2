@@ -67,7 +67,7 @@ class IVisionConfigServices
         virtual bool SetExtrinsicParameters(kortex_driver::srv::SetExtrinsicParameters::Request  &req, kortex_driver::srv::SetExtrinsicParameters::Response &res) = 0;
 
 protected:
-        ros::NodeHandle m_node_handle;
+        rclcpp::Node::SharedPtr m_node_handle;
         ros::Publisher m_pub_Error;
         ros::Publisher m_pub_VisionTopic;
         bool m_is_activated_VisionTopic;

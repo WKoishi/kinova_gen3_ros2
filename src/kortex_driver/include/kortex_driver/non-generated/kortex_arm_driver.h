@@ -71,7 +71,7 @@ class KortexArmDriver
 {
   public:
     KortexArmDriver() = delete;
-    KortexArmDriver(ros::NodeHandle nh);
+    KortexArmDriver(rclcpp::Node::SharedPtr nh);
     ~KortexArmDriver();
 
     void parseRosArguments();
@@ -84,7 +84,7 @@ class KortexArmDriver
 
   private:
 
-    ros::NodeHandle m_node_handle;
+    rclcpp::Node::SharedPtr m_node_handle;
 
     // False if in simulation
     bool m_is_real_robot;

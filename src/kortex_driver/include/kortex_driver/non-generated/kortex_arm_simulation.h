@@ -102,7 +102,7 @@ class KortexArmSimulation
 
   private:
     // ROS
-    ros::NodeHandle m_node_handle;
+    rclcpp::Node::SharedPtr m_node_handle;
 
     // Publishers
     ros::Publisher m_pub_action_topic;

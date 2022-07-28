@@ -12,7 +12,7 @@
 
 #include "kortex_driver/non-generated/kortex_arm_driver.h"
 
-KortexArmDriver::KortexArmDriver(ros::NodeHandle nh):   m_node_handle(nh), 
+KortexArmDriver::KortexArmDriver(rclcpp::Node::SharedPtr nh):   m_node_handle(nh), 
                                                         m_node_is_running(true), 
                                                         m_consecutive_base_cyclic_timeouts(0),
                                                         m_is_interconnect_module_present(false),

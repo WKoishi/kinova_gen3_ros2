@@ -105,7 +105,7 @@ class IControlConfigServices
         virtual void cb_ControlModeTopic(Kinova::Api::ControlConfig::ControlModeNotification notif) = 0;
 
 protected:
-        ros::NodeHandle m_node_handle;
+        rclcpp::Node::SharedPtr m_node_handle;
         ros::Publisher m_pub_Error;
         ros::Publisher m_pub_ControlConfigurationTopic;
         bool m_is_activated_ControlConfigurationTopic;

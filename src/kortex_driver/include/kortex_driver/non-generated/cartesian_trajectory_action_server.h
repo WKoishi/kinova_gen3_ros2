@@ -56,7 +56,7 @@ class CartesianTrajectoryActionServer
 
     private:
         // Members
-        ros::NodeHandle m_node_handle;
+        rclcpp::Node::SharedPtr m_node_handle;
         actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction> m_server;
 
         Kinova::Api::Common::NotificationHandle m_sub_action_notif_handle;
