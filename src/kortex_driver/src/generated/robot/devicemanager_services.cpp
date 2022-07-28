@@ -51,10 +51,10 @@ DeviceManagerRobotServices::DeviceManagerRobotServices(rclcpp::Node::SharedPtr n
 
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle->create_service("device_manager/set_device_id", &DeviceManagerRobotServices::SetDeviceID, this);
-	m_serviceSetApiOptions = m_node_handle->create_service("device_manager/set_api_options", &DeviceManagerRobotServices::SetApiOptions, this);
+	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("device_manager/set_device_id", &DeviceManagerRobotServices::SetDeviceID, this);
+	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("device_manager/set_api_options", &DeviceManagerRobotServices::SetApiOptions, this);
 
-	m_serviceReadAllDevices = m_node_handle->create_service("device_manager/read_all_devices", &DeviceManagerRobotServices::ReadAllDevices, this);
+	m_serviceReadAllDevices = m_node_handle->create_service<kortex_driver::srv::ReadAllDevices>("device_manager/read_all_devices", &DeviceManagerRobotServices::ReadAllDevices, this);
 }
 
 bool DeviceManagerRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
