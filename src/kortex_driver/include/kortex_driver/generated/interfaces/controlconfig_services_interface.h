@@ -19,6 +19,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
+#include <memory>
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -106,10 +107,10 @@ class IControlConfigServices
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;
-        ros::Publisher m_pub_Error;
-        ros::Publisher m_pub_ControlConfigurationTopic;
+        rclcpp::Publisher<kortex_driver::msg::KortexError>::SharedPtr m_pub_Error;
+        rclcpp::Publisher<kortex_driver::msg::ControlConfigurationNotification>::SharedPtr m_pub_ControlConfigurationTopic;
         bool m_is_activated_ControlConfigurationTopic;
-        ros::Publisher m_pub_ControlModeTopic;
+        rclcpp::Publisher<kortex_driver::msg::ControlConfigControlModeNotification>::SharedPtr m_pub_ControlModeTopic;
         bool m_is_activated_ControlModeTopic;
 
         rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;

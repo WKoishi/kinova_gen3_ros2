@@ -19,6 +19,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
+#include <memory>
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -366,34 +367,34 @@ class IBaseServices
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;
-        ros::Publisher m_pub_Error;
-        ros::Publisher m_pub_ConfigurationChangeTopic;
+        rclcpp::Publisher<kortex_driver::msg::KortexError>::SharedPtr m_pub_Error;
+        rclcpp::Publisher<kortex_driver::msg::ConfigurationChangeNotification>::SharedPtr m_pub_ConfigurationChangeTopic;
         bool m_is_activated_ConfigurationChangeTopic;
-        ros::Publisher m_pub_MappingInfoTopic;
+        rclcpp::Publisher<kortex_driver::msg::MappingInfoNotification>::SharedPtr m_pub_MappingInfoTopic;
         bool m_is_activated_MappingInfoTopic;
-        ros::Publisher m_pub_ControlModeTopic;
+        rclcpp::Publisher<kortex_driver::msg::BaseControlModeNotification>::SharedPtr m_pub_ControlModeTopic;
         bool m_is_activated_ControlModeTopic;
-        ros::Publisher m_pub_OperatingModeTopic;
+        rclcpp::Publisher<kortex_driver::msg::OperatingModeNotification>::SharedPtr m_pub_OperatingModeTopic;
         bool m_is_activated_OperatingModeTopic;
-        ros::Publisher m_pub_SequenceInfoTopic;
+        rclcpp::Publisher<kortex_driver::msg::SequenceInfoNotification>::SharedPtr m_pub_SequenceInfoTopic;
         bool m_is_activated_SequenceInfoTopic;
-        ros::Publisher m_pub_ProtectionZoneTopic;
+        rclcpp::Publisher<kortex_driver::msg::ProtectionZoneNotification>::SharedPtr m_pub_ProtectionZoneTopic;
         bool m_is_activated_ProtectionZoneTopic;
-        ros::Publisher m_pub_UserTopic;
+        rclcpp::Publisher<kortex_driver::msg::UserNotification>::SharedPtr m_pub_UserTopic;
         bool m_is_activated_UserTopic;
-        ros::Publisher m_pub_ControllerTopic;
+        rclcpp::Publisher<kortex_driver::msg::ControllerNotification>::SharedPtr m_pub_ControllerTopic;
         bool m_is_activated_ControllerTopic;
-        ros::Publisher m_pub_ActionTopic;
+        rclcpp::Publisher<kortex_driver::msg::ActionNotification>::SharedPtr m_pub_ActionTopic;
         bool m_is_activated_ActionTopic;
-        ros::Publisher m_pub_RobotEventTopic;
+        rclcpp::Publisher<kortex_driver::msg::RobotEventNotification>::SharedPtr m_pub_RobotEventTopic;
         bool m_is_activated_RobotEventTopic;
-        ros::Publisher m_pub_ServoingModeTopic;
+        rclcpp::Publisher<kortex_driver::msg::ServoingModeNotification>::SharedPtr m_pub_ServoingModeTopic;
         bool m_is_activated_ServoingModeTopic;
-        ros::Publisher m_pub_FactoryTopic;
+        rclcpp::Publisher<kortex_driver::msg::FactoryNotification>::SharedPtr m_pub_FactoryTopic;
         bool m_is_activated_FactoryTopic;
-        ros::Publisher m_pub_NetworkTopic;
+        rclcpp::Publisher<kortex_driver::msg::NetworkNotification>::SharedPtr m_pub_NetworkTopic;
         bool m_is_activated_NetworkTopic;
-        ros::Publisher m_pub_ArmStateTopic;
+        rclcpp::Publisher<kortex_driver::msg::ArmStateNotification>::SharedPtr m_pub_ArmStateTopic;
         bool m_is_activated_ArmStateTopic;
 
         rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;

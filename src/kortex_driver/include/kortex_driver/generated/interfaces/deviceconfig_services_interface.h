@@ -19,6 +19,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
+#include <memory>
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -108,8 +109,8 @@ class IDeviceConfigServices
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;
-        ros::Publisher m_pub_Error;
-        ros::Publisher m_pub_SafetyTopic;
+        rclcpp::Publisher<kortex_driver::msg::KortexError>::SharedPtr m_pub_Error;
+        rclcpp::Publisher<kortex_driver::msg::SafetyNotification>::SharedPtr m_pub_SafetyTopic;
         bool m_is_activated_SafetyTopic;
 
         rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;

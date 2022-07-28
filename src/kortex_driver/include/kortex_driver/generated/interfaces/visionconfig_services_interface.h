@@ -19,6 +19,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
+#include <memory>
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -68,8 +69,8 @@ class IVisionConfigServices
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;
-        ros::Publisher m_pub_Error;
-        ros::Publisher m_pub_VisionTopic;
+        rclcpp::Publisher<kortex_driver::msg::KortexError>::SharedPtr m_pub_Error;
+        rclcpp::Publisher<kortex_driver::msg::VisionNotification>::SharedPtr m_pub_VisionTopic;
         bool m_is_activated_VisionTopic;
 
         rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;

@@ -19,6 +19,7 @@
         "/opt/ros/humble/local/lib/python3.10/dist-packages"
     ],
     "files.associations": {
-        "system_error": "cpp"
+        "system_error": "cpp",
+        "memory": "cpp"
     }
 }

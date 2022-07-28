@@ -19,6 +19,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 
+#include <memory>
 #include <string>
 #include <iostream>
 #include <cstdio>
@@ -82,7 +83,7 @@ class IActuatorConfigServices
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;
-        ros::Publisher m_pub_Error;
+        rclcpp::Publisher<kortex_driver::msg::KortexError>::SharedPtr m_pub_Error;
 
         rclcpp::Service<kortex_driver::srv::SetDeviceID>::SharedPtr m_serviceSetDeviceID;
         rclcpp::Service<kortex_driver::srv::SetApiOptions>::SharedPtr m_serviceSetApiOptions;
