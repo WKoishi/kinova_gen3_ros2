@@ -47,23 +47,23 @@ InterconnectConfigSimulationServices::InterconnectConfigSimulationServices(rclcp
 {
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle.advertiseService("interconnect_config/set_device_id", &InterconnectConfigSimulationServices::SetDeviceID, this);
-	m_serviceSetApiOptions = m_node_handle.advertiseService("interconnect_config/set_api_options", &InterconnectConfigSimulationServices::SetApiOptions, this);
+	m_serviceSetDeviceID = m_node_handle->create_service("interconnect_config/set_device_id", &InterconnectConfigSimulationServices::SetDeviceID, this);
+	m_serviceSetApiOptions = m_node_handle->create_service("interconnect_config/set_api_options", &InterconnectConfigSimulationServices::SetApiOptions, this);
 
-	m_serviceGetUARTConfiguration = m_node_handle.advertiseService("interconnect_config/get_u_a_r_t_configuration", &InterconnectConfigSimulationServices::GetUARTConfiguration, this);
-	m_serviceSetUARTConfiguration = m_node_handle.advertiseService("interconnect_config/set_u_a_r_t_configuration", &InterconnectConfigSimulationServices::SetUARTConfiguration, this);
-	m_serviceGetEthernetConfiguration = m_node_handle.advertiseService("interconnect_config/get_ethernet_configuration", &InterconnectConfigSimulationServices::GetEthernetConfiguration, this);
-	m_serviceSetEthernetConfiguration = m_node_handle.advertiseService("interconnect_config/set_ethernet_configuration", &InterconnectConfigSimulationServices::SetEthernetConfiguration, this);
-	m_serviceGetGPIOConfiguration = m_node_handle.advertiseService("interconnect_config/get_g_p_i_o_configuration", &InterconnectConfigSimulationServices::GetGPIOConfiguration, this);
-	m_serviceSetGPIOConfiguration = m_node_handle.advertiseService("interconnect_config/set_g_p_i_o_configuration", &InterconnectConfigSimulationServices::SetGPIOConfiguration, this);
-	m_serviceGetGPIOState = m_node_handle.advertiseService("interconnect_config/get_g_p_i_o_state", &InterconnectConfigSimulationServices::GetGPIOState, this);
-	m_serviceSetGPIOState = m_node_handle.advertiseService("interconnect_config/set_g_p_i_o_state", &InterconnectConfigSimulationServices::SetGPIOState, this);
-	m_serviceGetI2CConfiguration = m_node_handle.advertiseService("interconnect_config/get_i2_c_configuration", &InterconnectConfigSimulationServices::GetI2CConfiguration, this);
-	m_serviceSetI2CConfiguration = m_node_handle.advertiseService("interconnect_config/set_i2_c_configuration", &InterconnectConfigSimulationServices::SetI2CConfiguration, this);
-	m_serviceI2CRead = m_node_handle.advertiseService("interconnect_config/i2_c_read", &InterconnectConfigSimulationServices::I2CRead, this);
-	m_serviceI2CReadRegister = m_node_handle.advertiseService("interconnect_config/i2_c_read_register", &InterconnectConfigSimulationServices::I2CReadRegister, this);
-	m_serviceI2CWrite = m_node_handle.advertiseService("interconnect_config/i2_c_write", &InterconnectConfigSimulationServices::I2CWrite, this);
-	m_serviceI2CWriteRegister = m_node_handle.advertiseService("interconnect_config/i2_c_write_register", &InterconnectConfigSimulationServices::I2CWriteRegister, this);
+	m_serviceGetUARTConfiguration = m_node_handle->create_service("interconnect_config/get_u_a_r_t_configuration", &InterconnectConfigSimulationServices::GetUARTConfiguration, this);
+	m_serviceSetUARTConfiguration = m_node_handle->create_service("interconnect_config/set_u_a_r_t_configuration", &InterconnectConfigSimulationServices::SetUARTConfiguration, this);
+	m_serviceGetEthernetConfiguration = m_node_handle->create_service("interconnect_config/get_ethernet_configuration", &InterconnectConfigSimulationServices::GetEthernetConfiguration, this);
+	m_serviceSetEthernetConfiguration = m_node_handle->create_service("interconnect_config/set_ethernet_configuration", &InterconnectConfigSimulationServices::SetEthernetConfiguration, this);
+	m_serviceGetGPIOConfiguration = m_node_handle->create_service("interconnect_config/get_g_p_i_o_configuration", &InterconnectConfigSimulationServices::GetGPIOConfiguration, this);
+	m_serviceSetGPIOConfiguration = m_node_handle->create_service("interconnect_config/set_g_p_i_o_configuration", &InterconnectConfigSimulationServices::SetGPIOConfiguration, this);
+	m_serviceGetGPIOState = m_node_handle->create_service("interconnect_config/get_g_p_i_o_state", &InterconnectConfigSimulationServices::GetGPIOState, this);
+	m_serviceSetGPIOState = m_node_handle->create_service("interconnect_config/set_g_p_i_o_state", &InterconnectConfigSimulationServices::SetGPIOState, this);
+	m_serviceGetI2CConfiguration = m_node_handle->create_service("interconnect_config/get_i2_c_configuration", &InterconnectConfigSimulationServices::GetI2CConfiguration, this);
+	m_serviceSetI2CConfiguration = m_node_handle->create_service("interconnect_config/set_i2_c_configuration", &InterconnectConfigSimulationServices::SetI2CConfiguration, this);
+	m_serviceI2CRead = m_node_handle->create_service("interconnect_config/i2_c_read", &InterconnectConfigSimulationServices::I2CRead, this);
+	m_serviceI2CReadRegister = m_node_handle->create_service("interconnect_config/i2_c_read_register", &InterconnectConfigSimulationServices::I2CReadRegister, this);
+	m_serviceI2CWrite = m_node_handle->create_service("interconnect_config/i2_c_write", &InterconnectConfigSimulationServices::I2CWrite, this);
+	m_serviceI2CWriteRegister = m_node_handle->create_service("interconnect_config/i2_c_write_register", &InterconnectConfigSimulationServices::I2CWriteRegister, this);
 }
 
 bool InterconnectConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)

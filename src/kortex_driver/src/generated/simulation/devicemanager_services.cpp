@@ -47,10 +47,10 @@ DeviceManagerSimulationServices::DeviceManagerSimulationServices(rclcpp::Node::S
 {
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle.advertiseService("device_manager/set_device_id", &DeviceManagerSimulationServices::SetDeviceID, this);
-	m_serviceSetApiOptions = m_node_handle.advertiseService("device_manager/set_api_options", &DeviceManagerSimulationServices::SetApiOptions, this);
+	m_serviceSetDeviceID = m_node_handle->create_service("device_manager/set_device_id", &DeviceManagerSimulationServices::SetDeviceID, this);
+	m_serviceSetApiOptions = m_node_handle->create_service("device_manager/set_api_options", &DeviceManagerSimulationServices::SetApiOptions, this);
 
-	m_serviceReadAllDevices = m_node_handle.advertiseService("device_manager/read_all_devices", &DeviceManagerSimulationServices::ReadAllDevices, this);
+	m_serviceReadAllDevices = m_node_handle->create_service("device_manager/read_all_devices", &DeviceManagerSimulationServices::ReadAllDevices, this);
 }
 
 bool DeviceManagerSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)

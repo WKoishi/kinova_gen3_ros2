@@ -47,29 +47,29 @@ ActuatorConfigSimulationServices::ActuatorConfigSimulationServices(rclcpp::Node:
 {
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle.advertiseService("actuator_config/set_device_id", &ActuatorConfigSimulationServices::SetDeviceID, this);
-	m_serviceSetApiOptions = m_node_handle.advertiseService("actuator_config/set_api_options", &ActuatorConfigSimulationServices::SetApiOptions, this);
+	m_serviceSetDeviceID = m_node_handle->create_service("actuator_config/set_device_id", &ActuatorConfigSimulationServices::SetDeviceID, this);
+	m_serviceSetApiOptions = m_node_handle->create_service("actuator_config/set_api_options", &ActuatorConfigSimulationServices::SetApiOptions, this);
 
-	m_serviceGetAxisOffsets = m_node_handle.advertiseService("actuator_config/get_axis_offsets", &ActuatorConfigSimulationServices::GetAxisOffsets, this);
-	m_serviceSetAxisOffsets = m_node_handle.advertiseService("actuator_config/set_axis_offsets", &ActuatorConfigSimulationServices::SetAxisOffsets, this);
-	m_serviceSetTorqueOffset = m_node_handle.advertiseService("actuator_config/set_torque_offset", &ActuatorConfigSimulationServices::SetTorqueOffset, this);
-	m_serviceActuatorConfig_GetControlMode = m_node_handle.advertiseService("actuator_config/get_control_mode", &ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode, this);
-	m_serviceSetControlMode = m_node_handle.advertiseService("actuator_config/set_control_mode", &ActuatorConfigSimulationServices::SetControlMode, this);
-	m_serviceGetActivatedControlLoop = m_node_handle.advertiseService("actuator_config/get_activated_control_loop", &ActuatorConfigSimulationServices::GetActivatedControlLoop, this);
-	m_serviceSetActivatedControlLoop = m_node_handle.advertiseService("actuator_config/set_activated_control_loop", &ActuatorConfigSimulationServices::SetActivatedControlLoop, this);
-	m_serviceGetControlLoopParameters = m_node_handle.advertiseService("actuator_config/get_control_loop_parameters", &ActuatorConfigSimulationServices::GetControlLoopParameters, this);
-	m_serviceSetControlLoopParameters = m_node_handle.advertiseService("actuator_config/set_control_loop_parameters", &ActuatorConfigSimulationServices::SetControlLoopParameters, this);
-	m_serviceSelectCustomData = m_node_handle.advertiseService("actuator_config/select_custom_data", &ActuatorConfigSimulationServices::SelectCustomData, this);
-	m_serviceGetSelectedCustomData = m_node_handle.advertiseService("actuator_config/get_selected_custom_data", &ActuatorConfigSimulationServices::GetSelectedCustomData, this);
-	m_serviceSetCommandMode = m_node_handle.advertiseService("actuator_config/set_command_mode", &ActuatorConfigSimulationServices::SetCommandMode, this);
-	m_serviceActuatorConfig_ClearFaults = m_node_handle.advertiseService("actuator_config/clear_faults", &ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults, this);
-	m_serviceSetServoing = m_node_handle.advertiseService("actuator_config/set_servoing", &ActuatorConfigSimulationServices::SetServoing, this);
-	m_serviceMoveToPosition = m_node_handle.advertiseService("actuator_config/move_to_position", &ActuatorConfigSimulationServices::MoveToPosition, this);
-	m_serviceGetCommandMode = m_node_handle.advertiseService("actuator_config/get_command_mode", &ActuatorConfigSimulationServices::GetCommandMode, this);
-	m_serviceGetServoing = m_node_handle.advertiseService("actuator_config/get_servoing", &ActuatorConfigSimulationServices::GetServoing, this);
-	m_serviceGetTorqueOffset = m_node_handle.advertiseService("actuator_config/get_torque_offset", &ActuatorConfigSimulationServices::GetTorqueOffset, this);
-	m_serviceSetCoggingFeedforwardMode = m_node_handle.advertiseService("actuator_config/set_cogging_feedforward_mode", &ActuatorConfigSimulationServices::SetCoggingFeedforwardMode, this);
-	m_serviceGetCoggingFeedforwardMode = m_node_handle.advertiseService("actuator_config/get_cogging_feedforward_mode", &ActuatorConfigSimulationServices::GetCoggingFeedforwardMode, this);
+	m_serviceGetAxisOffsets = m_node_handle->create_service("actuator_config/get_axis_offsets", &ActuatorConfigSimulationServices::GetAxisOffsets, this);
+	m_serviceSetAxisOffsets = m_node_handle->create_service("actuator_config/set_axis_offsets", &ActuatorConfigSimulationServices::SetAxisOffsets, this);
+	m_serviceSetTorqueOffset = m_node_handle->create_service("actuator_config/set_torque_offset", &ActuatorConfigSimulationServices::SetTorqueOffset, this);
+	m_serviceActuatorConfig_GetControlMode = m_node_handle->create_service("actuator_config/get_control_mode", &ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode, this);
+	m_serviceSetControlMode = m_node_handle->create_service("actuator_config/set_control_mode", &ActuatorConfigSimulationServices::SetControlMode, this);
+	m_serviceGetActivatedControlLoop = m_node_handle->create_service("actuator_config/get_activated_control_loop", &ActuatorConfigSimulationServices::GetActivatedControlLoop, this);
+	m_serviceSetActivatedControlLoop = m_node_handle->create_service("actuator_config/set_activated_control_loop", &ActuatorConfigSimulationServices::SetActivatedControlLoop, this);
+	m_serviceGetControlLoopParameters = m_node_handle->create_service("actuator_config/get_control_loop_parameters", &ActuatorConfigSimulationServices::GetControlLoopParameters, this);
+	m_serviceSetControlLoopParameters = m_node_handle->create_service("actuator_config/set_control_loop_parameters", &ActuatorConfigSimulationServices::SetControlLoopParameters, this);
+	m_serviceSelectCustomData = m_node_handle->create_service("actuator_config/select_custom_data", &ActuatorConfigSimulationServices::SelectCustomData, this);
+	m_serviceGetSelectedCustomData = m_node_handle->create_service("actuator_config/get_selected_custom_data", &ActuatorConfigSimulationServices::GetSelectedCustomData, this);
+	m_serviceSetCommandMode = m_node_handle->create_service("actuator_config/set_command_mode", &ActuatorConfigSimulationServices::SetCommandMode, this);
+	m_serviceActuatorConfig_ClearFaults = m_node_handle->create_service("actuator_config/clear_faults", &ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults, this);
+	m_serviceSetServoing = m_node_handle->create_service("actuator_config/set_servoing", &ActuatorConfigSimulationServices::SetServoing, this);
+	m_serviceMoveToPosition = m_node_handle->create_service("actuator_config/move_to_position", &ActuatorConfigSimulationServices::MoveToPosition, this);
+	m_serviceGetCommandMode = m_node_handle->create_service("actuator_config/get_command_mode", &ActuatorConfigSimulationServices::GetCommandMode, this);
+	m_serviceGetServoing = m_node_handle->create_service("actuator_config/get_servoing", &ActuatorConfigSimulationServices::GetServoing, this);
+	m_serviceGetTorqueOffset = m_node_handle->create_service("actuator_config/get_torque_offset", &ActuatorConfigSimulationServices::GetTorqueOffset, this);
+	m_serviceSetCoggingFeedforwardMode = m_node_handle->create_service("actuator_config/set_cogging_feedforward_mode", &ActuatorConfigSimulationServices::SetCoggingFeedforwardMode, this);
+	m_serviceGetCoggingFeedforwardMode = m_node_handle->create_service("actuator_config/get_cogging_feedforward_mode", &ActuatorConfigSimulationServices::GetCoggingFeedforwardMode, this);
 }
 
 bool ActuatorConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)

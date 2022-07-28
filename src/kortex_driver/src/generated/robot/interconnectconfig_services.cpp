@@ -51,23 +51,23 @@ InterconnectConfigRobotServices::InterconnectConfigRobotServices(rclcpp::Node::S
 
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle.advertiseService("interconnect_config/set_device_id", &InterconnectConfigRobotServices::SetDeviceID, this);
-	m_serviceSetApiOptions = m_node_handle.advertiseService("interconnect_config/set_api_options", &InterconnectConfigRobotServices::SetApiOptions, this);
+	m_serviceSetDeviceID = m_node_handle->create_service("interconnect_config/set_device_id", &InterconnectConfigRobotServices::SetDeviceID, this);
+	m_serviceSetApiOptions = m_node_handle->create_service("interconnect_config/set_api_options", &InterconnectConfigRobotServices::SetApiOptions, this);
 
-	m_serviceGetUARTConfiguration = m_node_handle.advertiseService("interconnect_config/get_u_a_r_t_configuration", &InterconnectConfigRobotServices::GetUARTConfiguration, this);
-	m_serviceSetUARTConfiguration = m_node_handle.advertiseService("interconnect_config/set_u_a_r_t_configuration", &InterconnectConfigRobotServices::SetUARTConfiguration, this);
-	m_serviceGetEthernetConfiguration = m_node_handle.advertiseService("interconnect_config/get_ethernet_configuration", &InterconnectConfigRobotServices::GetEthernetConfiguration, this);
-	m_serviceSetEthernetConfiguration = m_node_handle.advertiseService("interconnect_config/set_ethernet_configuration", &InterconnectConfigRobotServices::SetEthernetConfiguration, this);
-	m_serviceGetGPIOConfiguration = m_node_handle.advertiseService("interconnect_config/get_g_p_i_o_configuration", &InterconnectConfigRobotServices::GetGPIOConfiguration, this);
-	m_serviceSetGPIOConfiguration = m_node_handle.advertiseService("interconnect_config/set_g_p_i_o_configuration", &InterconnectConfigRobotServices::SetGPIOConfiguration, this);
-	m_serviceGetGPIOState = m_node_handle.advertiseService("interconnect_config/get_g_p_i_o_state", &InterconnectConfigRobotServices::GetGPIOState, this);
-	m_serviceSetGPIOState = m_node_handle.advertiseService("interconnect_config/set_g_p_i_o_state", &InterconnectConfigRobotServices::SetGPIOState, this);
-	m_serviceGetI2CConfiguration = m_node_handle.advertiseService("interconnect_config/get_i2_c_configuration", &InterconnectConfigRobotServices::GetI2CConfiguration, this);
-	m_serviceSetI2CConfiguration = m_node_handle.advertiseService("interconnect_config/set_i2_c_configuration", &InterconnectConfigRobotServices::SetI2CConfiguration, this);
-	m_serviceI2CRead = m_node_handle.advertiseService("interconnect_config/i2_c_read", &InterconnectConfigRobotServices::I2CRead, this);
-	m_serviceI2CReadRegister = m_node_handle.advertiseService("interconnect_config/i2_c_read_register", &InterconnectConfigRobotServices::I2CReadRegister, this);
-	m_serviceI2CWrite = m_node_handle.advertiseService("interconnect_config/i2_c_write", &InterconnectConfigRobotServices::I2CWrite, this);
-	m_serviceI2CWriteRegister = m_node_handle.advertiseService("interconnect_config/i2_c_write_register", &InterconnectConfigRobotServices::I2CWriteRegister, this);
+	m_serviceGetUARTConfiguration = m_node_handle->create_service("interconnect_config/get_u_a_r_t_configuration", &InterconnectConfigRobotServices::GetUARTConfiguration, this);
+	m_serviceSetUARTConfiguration = m_node_handle->create_service("interconnect_config/set_u_a_r_t_configuration", &InterconnectConfigRobotServices::SetUARTConfiguration, this);
+	m_serviceGetEthernetConfiguration = m_node_handle->create_service("interconnect_config/get_ethernet_configuration", &InterconnectConfigRobotServices::GetEthernetConfiguration, this);
+	m_serviceSetEthernetConfiguration = m_node_handle->create_service("interconnect_config/set_ethernet_configuration", &InterconnectConfigRobotServices::SetEthernetConfiguration, this);
+	m_serviceGetGPIOConfiguration = m_node_handle->create_service("interconnect_config/get_g_p_i_o_configuration", &InterconnectConfigRobotServices::GetGPIOConfiguration, this);
+	m_serviceSetGPIOConfiguration = m_node_handle->create_service("interconnect_config/set_g_p_i_o_configuration", &InterconnectConfigRobotServices::SetGPIOConfiguration, this);
+	m_serviceGetGPIOState = m_node_handle->create_service("interconnect_config/get_g_p_i_o_state", &InterconnectConfigRobotServices::GetGPIOState, this);
+	m_serviceSetGPIOState = m_node_handle->create_service("interconnect_config/set_g_p_i_o_state", &InterconnectConfigRobotServices::SetGPIOState, this);
+	m_serviceGetI2CConfiguration = m_node_handle->create_service("interconnect_config/get_i2_c_configuration", &InterconnectConfigRobotServices::GetI2CConfiguration, this);
+	m_serviceSetI2CConfiguration = m_node_handle->create_service("interconnect_config/set_i2_c_configuration", &InterconnectConfigRobotServices::SetI2CConfiguration, this);
+	m_serviceI2CRead = m_node_handle->create_service("interconnect_config/i2_c_read", &InterconnectConfigRobotServices::I2CRead, this);
+	m_serviceI2CReadRegister = m_node_handle->create_service("interconnect_config/i2_c_read_register", &InterconnectConfigRobotServices::I2CReadRegister, this);
+	m_serviceI2CWrite = m_node_handle->create_service("interconnect_config/i2_c_write", &InterconnectConfigRobotServices::I2CWrite, this);
+	m_serviceI2CWriteRegister = m_node_handle->create_service("interconnect_config/i2_c_write_register", &InterconnectConfigRobotServices::I2CWriteRegister, this);
 }
 
 bool InterconnectConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
