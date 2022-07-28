@@ -101,7 +101,7 @@ bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::srv::G
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -134,7 +134,7 @@ bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::srv::S
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -168,7 +168,7 @@ bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::sr
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -201,7 +201,7 @@ bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::sr
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -235,7 +235,7 @@ bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::srv::G
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -268,7 +268,7 @@ bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::srv::S
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -302,7 +302,7 @@ bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::srv::GetGPIOSt
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -335,7 +335,7 @@ bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::srv::SetGPIOSt
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -369,7 +369,7 @@ bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::srv::Ge
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -402,7 +402,7 @@ bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::srv::Se
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -436,7 +436,7 @@ bool InterconnectConfigRobotServices::I2CRead(kortex_driver::srv::I2CRead::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -471,7 +471,7 @@ bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::srv::I2CRea
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -504,7 +504,7 @@ bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::srv::I2CWrite::Req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -536,7 +536,7 @@ bool InterconnectConfigRobotServices::I2CWriteRegister(kortex_driver::srv::I2CWr
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);

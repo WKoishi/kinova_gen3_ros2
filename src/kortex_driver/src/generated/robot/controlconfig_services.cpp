@@ -119,7 +119,7 @@ bool ControlConfigRobotServices::SetGravityVector(kortex_driver::srv::SetGravity
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -151,7 +151,7 @@ bool ControlConfigRobotServices::GetGravityVector(kortex_driver::srv::GetGravity
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -184,7 +184,7 @@ bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::srv::SetPa
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -216,7 +216,7 @@ bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::srv::GetPa
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -249,7 +249,7 @@ bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::srv::SetToo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -281,7 +281,7 @@ bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::srv::GetToo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -321,7 +321,7 @@ bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -360,7 +360,7 @@ bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::srv::C
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -392,7 +392,7 @@ bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::srv::
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -424,7 +424,7 @@ bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::srv::
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -457,7 +457,7 @@ bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::srv
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -490,7 +490,7 @@ bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::srv::Set
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -522,7 +522,7 @@ bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::srv::Set
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -554,7 +554,7 @@ bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::srv::Se
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -586,7 +586,7 @@ bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::s
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -618,7 +618,7 @@ bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::srv::GetK
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -653,7 +653,7 @@ bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::srv::GetK
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -686,7 +686,7 @@ bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::srv::G
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -719,7 +719,7 @@ bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::srv::SetDe
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -751,7 +751,7 @@ bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::srv::SetD
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -783,7 +783,7 @@ bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::srv::SetDe
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -815,7 +815,7 @@ bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::srv::GetDesired
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -848,7 +848,7 @@ bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::srv::ResetGra
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -881,7 +881,7 @@ bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::srv::Res
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -914,7 +914,7 @@ bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::srv::Rese
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -949,7 +949,7 @@ bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::srv::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -984,7 +984,7 @@ bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::srv::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1019,7 +1019,7 @@ bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::srv::
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1054,7 +1054,7 @@ bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1094,7 +1094,7 @@ bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(ko
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);

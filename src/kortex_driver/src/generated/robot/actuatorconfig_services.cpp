@@ -105,7 +105,7 @@ bool ActuatorConfigRobotServices::GetAxisOffsets(kortex_driver::srv::GetAxisOffs
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -138,7 +138,7 @@ bool ActuatorConfigRobotServices::SetAxisOffsets(kortex_driver::srv::SetAxisOffs
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -170,7 +170,7 @@ bool ActuatorConfigRobotServices::SetTorqueOffset(kortex_driver::srv::SetTorqueO
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -202,7 +202,7 @@ bool ActuatorConfigRobotServices::ActuatorConfig_GetControlMode(kortex_driver::s
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -235,7 +235,7 @@ bool ActuatorConfigRobotServices::SetControlMode(kortex_driver::srv::SetControlM
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -267,7 +267,7 @@ bool ActuatorConfigRobotServices::GetActivatedControlLoop(kortex_driver::srv::Ge
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -300,7 +300,7 @@ bool ActuatorConfigRobotServices::SetActivatedControlLoop(kortex_driver::srv::Se
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -334,7 +334,7 @@ bool ActuatorConfigRobotServices::GetControlLoopParameters(kortex_driver::srv::G
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -367,7 +367,7 @@ bool ActuatorConfigRobotServices::SetControlLoopParameters(kortex_driver::srv::S
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -399,7 +399,7 @@ bool ActuatorConfigRobotServices::SelectCustomData(kortex_driver::srv::SelectCus
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -431,7 +431,7 @@ bool ActuatorConfigRobotServices::GetSelectedCustomData(kortex_driver::srv::GetS
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -464,7 +464,7 @@ bool ActuatorConfigRobotServices::SetCommandMode(kortex_driver::srv::SetCommandM
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -494,7 +494,7 @@ bool ActuatorConfigRobotServices::ActuatorConfig_ClearFaults(kortex_driver::srv:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -526,7 +526,7 @@ bool ActuatorConfigRobotServices::SetServoing(kortex_driver::srv::SetServoing::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -558,7 +558,7 @@ bool ActuatorConfigRobotServices::MoveToPosition(kortex_driver::srv::MoveToPosit
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -590,7 +590,7 @@ bool ActuatorConfigRobotServices::GetCommandMode(kortex_driver::srv::GetCommandM
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -623,7 +623,7 @@ bool ActuatorConfigRobotServices::GetServoing(kortex_driver::srv::GetServoing::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -656,7 +656,7 @@ bool ActuatorConfigRobotServices::GetTorqueOffset(kortex_driver::srv::GetTorqueO
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -689,7 +689,7 @@ bool ActuatorConfigRobotServices::SetCoggingFeedforwardMode(kortex_driver::srv::
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -721,7 +721,7 @@ bool ActuatorConfigRobotServices::GetCoggingFeedforwardMode(kortex_driver::srv::
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);

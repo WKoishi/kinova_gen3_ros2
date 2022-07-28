@@ -119,7 +119,7 @@ bool DeviceConfigRobotServices::GetRunMode(kortex_driver::srv::GetRunMode::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -152,7 +152,7 @@ bool DeviceConfigRobotServices::SetRunMode(kortex_driver::srv::SetRunMode::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -184,7 +184,7 @@ bool DeviceConfigRobotServices::GetDeviceType(kortex_driver::srv::GetDeviceType:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -217,7 +217,7 @@ bool DeviceConfigRobotServices::GetFirmwareVersion(kortex_driver::srv::GetFirmwa
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -250,7 +250,7 @@ bool DeviceConfigRobotServices::GetBootloaderVersion(kortex_driver::srv::GetBoot
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -283,7 +283,7 @@ bool DeviceConfigRobotServices::GetModelNumber(kortex_driver::srv::GetModelNumbe
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -316,7 +316,7 @@ bool DeviceConfigRobotServices::GetPartNumber(kortex_driver::srv::GetPartNumber:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -349,7 +349,7 @@ bool DeviceConfigRobotServices::GetSerialNumber(kortex_driver::srv::GetSerialNum
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -382,7 +382,7 @@ bool DeviceConfigRobotServices::GetMACAddress(kortex_driver::srv::GetMACAddress:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -415,7 +415,7 @@ bool DeviceConfigRobotServices::GetIPv4Settings(kortex_driver::srv::GetIPv4Setti
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -448,7 +448,7 @@ bool DeviceConfigRobotServices::SetIPv4Settings(kortex_driver::srv::SetIPv4Setti
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -480,7 +480,7 @@ bool DeviceConfigRobotServices::GetPartNumberRevision(kortex_driver::srv::GetPar
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -513,7 +513,7 @@ bool DeviceConfigRobotServices::RebootRequest(kortex_driver::srv::RebootRequest:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -545,7 +545,7 @@ bool DeviceConfigRobotServices::SetSafetyEnable(kortex_driver::srv::SetSafetyEna
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -577,7 +577,7 @@ bool DeviceConfigRobotServices::SetSafetyErrorThreshold(kortex_driver::srv::SetS
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -609,7 +609,7 @@ bool DeviceConfigRobotServices::SetSafetyWarningThreshold(kortex_driver::srv::Se
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -641,7 +641,7 @@ bool DeviceConfigRobotServices::SetSafetyConfiguration(kortex_driver::srv::SetSa
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -675,7 +675,7 @@ bool DeviceConfigRobotServices::GetSafetyConfiguration(kortex_driver::srv::GetSa
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -710,7 +710,7 @@ bool DeviceConfigRobotServices::GetSafetyInformation(kortex_driver::srv::GetSafe
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -745,7 +745,7 @@ bool DeviceConfigRobotServices::GetSafetyEnable(kortex_driver::srv::GetSafetyEna
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -780,7 +780,7 @@ bool DeviceConfigRobotServices::GetSafetyStatus(kortex_driver::srv::GetSafetySta
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -811,7 +811,7 @@ bool DeviceConfigRobotServices::ClearAllSafetyStatus(kortex_driver::srv::ClearAl
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -843,7 +843,7 @@ bool DeviceConfigRobotServices::ClearSafetyStatus(kortex_driver::srv::ClearSafet
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -875,7 +875,7 @@ bool DeviceConfigRobotServices::GetAllSafetyConfiguration(kortex_driver::srv::Ge
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -908,7 +908,7 @@ bool DeviceConfigRobotServices::GetAllSafetyInformation(kortex_driver::srv::GetA
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -939,7 +939,7 @@ bool DeviceConfigRobotServices::ResetSafetyDefaults(kortex_driver::srv::ResetSaf
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -978,7 +978,7 @@ bool DeviceConfigRobotServices::OnNotificationSafetyTopic(kortex_driver::srv::On
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1017,7 +1017,7 @@ bool DeviceConfigRobotServices::ExecuteCalibration(kortex_driver::srv::ExecuteCa
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1051,7 +1051,7 @@ bool DeviceConfigRobotServices::GetCalibrationResult(kortex_driver::srv::GetCali
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1086,7 +1086,7 @@ bool DeviceConfigRobotServices::StopCalibration(kortex_driver::srv::StopCalibrat
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1119,7 +1119,7 @@ bool DeviceConfigRobotServices::DeviceConfig_SetCapSenseConfig(kortex_driver::sr
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1151,7 +1151,7 @@ bool DeviceConfigRobotServices::DeviceConfig_GetCapSenseConfig(kortex_driver::sr
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);

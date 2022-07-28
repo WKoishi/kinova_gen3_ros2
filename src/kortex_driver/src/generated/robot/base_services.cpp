@@ -263,7 +263,7 @@ bool BaseRobotServices::CreateUserProfile(kortex_driver::srv::CreateUserProfile:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -296,7 +296,7 @@ bool BaseRobotServices::UpdateUserProfile(kortex_driver::srv::UpdateUserProfile:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -330,7 +330,7 @@ bool BaseRobotServices::ReadUserProfile(kortex_driver::srv::ReadUserProfile::Req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -363,7 +363,7 @@ bool BaseRobotServices::DeleteUserProfile(kortex_driver::srv::DeleteUserProfile:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -395,7 +395,7 @@ bool BaseRobotServices::ReadAllUserProfiles(kortex_driver::srv::ReadAllUserProfi
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -428,7 +428,7 @@ bool BaseRobotServices::ReadAllUsers(kortex_driver::srv::ReadAllUsers::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -461,7 +461,7 @@ bool BaseRobotServices::ChangePassword(kortex_driver::srv::ChangePassword::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -495,7 +495,7 @@ bool BaseRobotServices::CreateSequence(kortex_driver::srv::CreateSequence::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -528,7 +528,7 @@ bool BaseRobotServices::UpdateSequence(kortex_driver::srv::UpdateSequence::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -562,7 +562,7 @@ bool BaseRobotServices::ReadSequence(kortex_driver::srv::ReadSequence::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -595,7 +595,7 @@ bool BaseRobotServices::DeleteSequence(kortex_driver::srv::DeleteSequence::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -627,7 +627,7 @@ bool BaseRobotServices::ReadAllSequences(kortex_driver::srv::ReadAllSequences::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -660,7 +660,7 @@ bool BaseRobotServices::PlaySequence(kortex_driver::srv::PlaySequence::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -692,7 +692,7 @@ bool BaseRobotServices::PlayAdvancedSequence(kortex_driver::srv::PlayAdvancedSeq
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -722,7 +722,7 @@ bool BaseRobotServices::StopSequence(kortex_driver::srv::StopSequence::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -752,7 +752,7 @@ bool BaseRobotServices::PauseSequence(kortex_driver::srv::PauseSequence::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -782,7 +782,7 @@ bool BaseRobotServices::ResumeSequence(kortex_driver::srv::ResumeSequence::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -816,7 +816,7 @@ bool BaseRobotServices::CreateProtectionZone(kortex_driver::srv::CreateProtectio
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -849,7 +849,7 @@ bool BaseRobotServices::UpdateProtectionZone(kortex_driver::srv::UpdateProtectio
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -883,7 +883,7 @@ bool BaseRobotServices::ReadProtectionZone(kortex_driver::srv::ReadProtectionZon
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -916,7 +916,7 @@ bool BaseRobotServices::DeleteProtectionZone(kortex_driver::srv::DeleteProtectio
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -948,7 +948,7 @@ bool BaseRobotServices::ReadAllProtectionZones(kortex_driver::srv::ReadAllProtec
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -983,7 +983,7 @@ bool BaseRobotServices::CreateMapping(kortex_driver::srv::CreateMapping::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1018,7 +1018,7 @@ bool BaseRobotServices::ReadMapping(kortex_driver::srv::ReadMapping::Request  &r
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1051,7 +1051,7 @@ bool BaseRobotServices::UpdateMapping(kortex_driver::srv::UpdateMapping::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1083,7 +1083,7 @@ bool BaseRobotServices::DeleteMapping(kortex_driver::srv::DeleteMapping::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1115,7 +1115,7 @@ bool BaseRobotServices::ReadAllMappings(kortex_driver::srv::ReadAllMappings::Req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1150,7 +1150,7 @@ bool BaseRobotServices::CreateMap(kortex_driver::srv::CreateMap::Request  &req, 
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1185,7 +1185,7 @@ bool BaseRobotServices::ReadMap(kortex_driver::srv::ReadMap::Request  &req, kort
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1218,7 +1218,7 @@ bool BaseRobotServices::UpdateMap(kortex_driver::srv::UpdateMap::Request  &req, 
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1250,7 +1250,7 @@ bool BaseRobotServices::DeleteMap(kortex_driver::srv::DeleteMap::Request  &req, 
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1284,7 +1284,7 @@ bool BaseRobotServices::ReadAllMaps(kortex_driver::srv::ReadAllMaps::Request  &r
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1317,7 +1317,7 @@ bool BaseRobotServices::ActivateMap(kortex_driver::srv::ActivateMap::Request  &r
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1351,7 +1351,7 @@ bool BaseRobotServices::CreateAction(kortex_driver::srv::CreateAction::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1386,7 +1386,7 @@ bool BaseRobotServices::ReadAction(kortex_driver::srv::ReadAction::Request  &req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1421,7 +1421,7 @@ bool BaseRobotServices::ReadAllActions(kortex_driver::srv::ReadAllActions::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1454,7 +1454,7 @@ bool BaseRobotServices::DeleteAction(kortex_driver::srv::DeleteAction::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1486,7 +1486,7 @@ bool BaseRobotServices::UpdateAction(kortex_driver::srv::UpdateAction::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1518,7 +1518,7 @@ bool BaseRobotServices::ExecuteActionFromReference(kortex_driver::srv::ExecuteAc
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1550,7 +1550,7 @@ bool BaseRobotServices::ExecuteAction(kortex_driver::srv::ExecuteAction::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1580,7 +1580,7 @@ bool BaseRobotServices::PauseAction(kortex_driver::srv::PauseAction::Request  &r
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1610,7 +1610,7 @@ bool BaseRobotServices::StopAction(kortex_driver::srv::StopAction::Request  &req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1640,7 +1640,7 @@ bool BaseRobotServices::ResumeAction(kortex_driver::srv::ResumeAction::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1674,7 +1674,7 @@ bool BaseRobotServices::GetIPv4Configuration(kortex_driver::srv::GetIPv4Configur
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1707,7 +1707,7 @@ bool BaseRobotServices::SetIPv4Configuration(kortex_driver::srv::SetIPv4Configur
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1739,7 +1739,7 @@ bool BaseRobotServices::SetCommunicationInterfaceEnable(kortex_driver::srv::SetC
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1773,7 +1773,7 @@ bool BaseRobotServices::IsCommunicationInterfaceEnable(kortex_driver::srv::IsCom
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1806,7 +1806,7 @@ bool BaseRobotServices::GetAvailableWifi(kortex_driver::srv::GetAvailableWifi::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1841,7 +1841,7 @@ bool BaseRobotServices::GetWifiInformation(kortex_driver::srv::GetWifiInformatio
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1874,7 +1874,7 @@ bool BaseRobotServices::AddWifiConfiguration(kortex_driver::srv::AddWifiConfigur
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1906,7 +1906,7 @@ bool BaseRobotServices::DeleteWifiConfiguration(kortex_driver::srv::DeleteWifiCo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1938,7 +1938,7 @@ bool BaseRobotServices::GetAllConfiguredWifis(kortex_driver::srv::GetAllConfigur
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -1971,7 +1971,7 @@ bool BaseRobotServices::ConnectWifi(kortex_driver::srv::ConnectWifi::Request  &r
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2001,7 +2001,7 @@ bool BaseRobotServices::DisconnectWifi(kortex_driver::srv::DisconnectWifi::Reque
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2033,7 +2033,7 @@ bool BaseRobotServices::GetConnectedWifiInformation(kortex_driver::srv::GetConne
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2066,7 +2066,7 @@ bool BaseRobotServices::Base_Unsubscribe(kortex_driver::srv::BaseUnsubscribe::Re
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2105,7 +2105,7 @@ bool BaseRobotServices::OnNotificationConfigurationChangeTopic(kortex_driver::sr
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2151,7 +2151,7 @@ bool BaseRobotServices::OnNotificationMappingInfoTopic(kortex_driver::srv::OnNot
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2198,7 +2198,7 @@ bool BaseRobotServices::Base_OnNotificationControlModeTopic(kortex_driver::srv::
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2244,7 +2244,7 @@ bool BaseRobotServices::OnNotificationOperatingModeTopic(kortex_driver::srv::OnN
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2290,7 +2290,7 @@ bool BaseRobotServices::OnNotificationSequenceInfoTopic(kortex_driver::srv::OnNo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2336,7 +2336,7 @@ bool BaseRobotServices::OnNotificationProtectionZoneTopic(kortex_driver::srv::On
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2382,7 +2382,7 @@ bool BaseRobotServices::OnNotificationUserTopic(kortex_driver::srv::OnNotificati
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2428,7 +2428,7 @@ bool BaseRobotServices::OnNotificationControllerTopic(kortex_driver::srv::OnNoti
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2474,7 +2474,7 @@ bool BaseRobotServices::OnNotificationActionTopic(kortex_driver::srv::OnNotifica
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2520,7 +2520,7 @@ bool BaseRobotServices::OnNotificationRobotEventTopic(kortex_driver::srv::OnNoti
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2560,7 +2560,7 @@ bool BaseRobotServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesia
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2593,7 +2593,7 @@ bool BaseRobotServices::PlayCartesianTrajectoryPosition(kortex_driver::srv::Play
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2626,7 +2626,7 @@ bool BaseRobotServices::PlayCartesianTrajectoryOrientation(kortex_driver::srv::P
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2656,7 +2656,7 @@ bool BaseRobotServices::Stop(kortex_driver::srv::Stop::Request  &req, kortex_dri
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2688,7 +2688,7 @@ bool BaseRobotServices::GetMeasuredCartesianPose(kortex_driver::srv::GetMeasured
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2721,7 +2721,7 @@ bool BaseRobotServices::SendWrenchCommand(kortex_driver::srv::SendWrenchCommand:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2753,7 +2753,7 @@ bool BaseRobotServices::SendWrenchJoystickCommand(kortex_driver::srv::SendWrench
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2785,7 +2785,7 @@ bool BaseRobotServices::SendTwistJoystickCommand(kortex_driver::srv::SendTwistJo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2817,7 +2817,7 @@ bool BaseRobotServices::SendTwistCommand(kortex_driver::srv::SendTwistCommand::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2850,7 +2850,7 @@ bool BaseRobotServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTraject
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2883,7 +2883,7 @@ bool BaseRobotServices::PlaySelectedJointTrajectory(kortex_driver::srv::PlaySele
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2915,7 +2915,7 @@ bool BaseRobotServices::GetMeasuredJointAngles(kortex_driver::srv::GetMeasuredJo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2948,7 +2948,7 @@ bool BaseRobotServices::SendJointSpeedsCommand(kortex_driver::srv::SendJointSpee
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -2980,7 +2980,7 @@ bool BaseRobotServices::SendSelectedJointSpeedCommand(kortex_driver::srv::SendSe
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3012,7 +3012,7 @@ bool BaseRobotServices::SendGripperCommand(kortex_driver::srv::SendGripperComman
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3046,7 +3046,7 @@ bool BaseRobotServices::GetMeasuredGripperMovement(kortex_driver::srv::GetMeasur
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3079,7 +3079,7 @@ bool BaseRobotServices::SetAdmittance(kortex_driver::srv::SetAdmittance::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3111,7 +3111,7 @@ bool BaseRobotServices::SetOperatingMode(kortex_driver::srv::SetOperatingMode::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3141,7 +3141,7 @@ bool BaseRobotServices::ApplyEmergencyStop(kortex_driver::srv::ApplyEmergencySto
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3171,7 +3171,7 @@ bool BaseRobotServices::Base_ClearFaults(kortex_driver::srv::BaseClearFaults::Re
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3204,7 +3204,7 @@ bool BaseRobotServices::Base_GetControlMode(kortex_driver::srv::BaseGetControlMo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3237,7 +3237,7 @@ bool BaseRobotServices::GetOperatingMode(kortex_driver::srv::GetOperatingMode::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3270,7 +3270,7 @@ bool BaseRobotServices::SetServoingMode(kortex_driver::srv::SetServoingMode::Req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3302,7 +3302,7 @@ bool BaseRobotServices::GetServoingMode(kortex_driver::srv::GetServoingMode::Req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3342,7 +3342,7 @@ bool BaseRobotServices::OnNotificationServoingModeTopic(kortex_driver::srv::OnNo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3379,7 +3379,7 @@ bool BaseRobotServices::RestoreFactorySettings(kortex_driver::srv::RestoreFactor
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3418,7 +3418,7 @@ bool BaseRobotServices::OnNotificationFactoryTopic(kortex_driver::srv::OnNotific
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3457,7 +3457,7 @@ bool BaseRobotServices::GetAllConnectedControllers(kortex_driver::srv::GetAllCon
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3492,7 +3492,7 @@ bool BaseRobotServices::GetControllerState(kortex_driver::srv::GetControllerStat
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3525,7 +3525,7 @@ bool BaseRobotServices::GetActuatorCount(kortex_driver::srv::GetActuatorCount::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3556,7 +3556,7 @@ bool BaseRobotServices::StartWifiScan(kortex_driver::srv::StartWifiScan::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3590,7 +3590,7 @@ bool BaseRobotServices::GetConfiguredWifi(kortex_driver::srv::GetConfiguredWifi:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3630,7 +3630,7 @@ bool BaseRobotServices::OnNotificationNetworkTopic(kortex_driver::srv::OnNotific
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3669,7 +3669,7 @@ bool BaseRobotServices::GetArmState(kortex_driver::srv::GetArmState::Request  &r
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3709,7 +3709,7 @@ bool BaseRobotServices::OnNotificationArmStateTopic(kortex_driver::srv::OnNotifi
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3750,7 +3750,7 @@ bool BaseRobotServices::GetIPv4Information(kortex_driver::srv::GetIPv4Informatio
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3783,7 +3783,7 @@ bool BaseRobotServices::SetWifiCountryCode(kortex_driver::srv::SetWifiCountryCod
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3815,7 +3815,7 @@ bool BaseRobotServices::GetWifiCountryCode(kortex_driver::srv::GetWifiCountryCod
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3848,7 +3848,7 @@ bool BaseRobotServices::Base_SetCapSenseConfig(kortex_driver::srv::BaseSetCapSen
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3880,7 +3880,7 @@ bool BaseRobotServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetCapSen
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3914,7 +3914,7 @@ bool BaseRobotServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetA
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3948,7 +3948,7 @@ bool BaseRobotServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv::Get
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -3982,7 +3982,7 @@ bool BaseRobotServices::GetTwistHardLimitation(kortex_driver::srv::GetTwistHardL
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4016,7 +4016,7 @@ bool BaseRobotServices::GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHar
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4049,7 +4049,7 @@ bool BaseRobotServices::SendJointSpeedsJoystickCommand(kortex_driver::srv::SendJ
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4081,7 +4081,7 @@ bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::srv
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4115,7 +4115,7 @@ bool BaseRobotServices::EnableBridge(kortex_driver::srv::EnableBridge::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4150,7 +4150,7 @@ bool BaseRobotServices::DisableBridge(kortex_driver::srv::DisableBridge::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4183,7 +4183,7 @@ bool BaseRobotServices::GetBridgeList(kortex_driver::srv::GetBridgeList::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4218,7 +4218,7 @@ bool BaseRobotServices::GetBridgeConfig(kortex_driver::srv::GetBridgeConfig::Req
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4251,7 +4251,7 @@ bool BaseRobotServices::PlayPreComputedJointTrajectory(kortex_driver::srv::PlayP
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4283,7 +4283,7 @@ bool BaseRobotServices::GetProductConfiguration(kortex_driver::srv::GetProductCo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4316,7 +4316,7 @@ bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(kortex_driver::srv::U
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4346,7 +4346,7 @@ bool BaseRobotServices::RestoreFactoryProductConfiguration(kortex_driver::srv::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4378,7 +4378,7 @@ bool BaseRobotServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTrajecto
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4412,7 +4412,7 @@ bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetA
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4446,7 +4446,7 @@ bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv::Get
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4480,7 +4480,7 @@ bool BaseRobotServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftL
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4514,7 +4514,7 @@ bool BaseRobotServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSof
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4547,7 +4547,7 @@ bool BaseRobotServices::SetControllerConfigurationMode(kortex_driver::srv::SetCo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4579,7 +4579,7 @@ bool BaseRobotServices::GetControllerConfigurationMode(kortex_driver::srv::GetCo
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4612,7 +4612,7 @@ bool BaseRobotServices::StartTeaching(kortex_driver::srv::StartTeaching::Request
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4642,7 +4642,7 @@ bool BaseRobotServices::StopTeaching(kortex_driver::srv::StopTeaching::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4676,7 +4676,7 @@ bool BaseRobotServices::AddSequenceTasks(kortex_driver::srv::AddSequenceTasks::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4709,7 +4709,7 @@ bool BaseRobotServices::UpdateSequenceTask(kortex_driver::srv::UpdateSequenceTas
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4741,7 +4741,7 @@ bool BaseRobotServices::SwapSequenceTasks(kortex_driver::srv::SwapSequenceTasks:
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4775,7 +4775,7 @@ bool BaseRobotServices::ReadSequenceTask(kortex_driver::srv::ReadSequenceTask::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4810,7 +4810,7 @@ bool BaseRobotServices::ReadAllSequenceTasks(kortex_driver::srv::ReadAllSequence
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4843,7 +4843,7 @@ bool BaseRobotServices::DeleteSequenceTask(kortex_driver::srv::DeleteSequenceTas
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4875,7 +4875,7 @@ bool BaseRobotServices::DeleteAllSequenceTasks(kortex_driver::srv::DeleteAllSequ
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4907,7 +4907,7 @@ bool BaseRobotServices::TakeSnapshot(kortex_driver::srv::TakeSnapshot::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4939,7 +4939,7 @@ bool BaseRobotServices::GetFirmwareBundleVersions(kortex_driver::srv::GetFirmwar
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -4972,7 +4972,7 @@ bool BaseRobotServices::ExecuteWaypointTrajectory(kortex_driver::srv::ExecuteWay
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5004,7 +5004,7 @@ bool BaseRobotServices::MoveSequenceTask(kortex_driver::srv::MoveSequenceTask::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5038,7 +5038,7 @@ bool BaseRobotServices::DuplicateMapping(kortex_driver::srv::DuplicateMapping::R
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5073,7 +5073,7 @@ bool BaseRobotServices::DuplicateMap(kortex_driver::srv::DuplicateMap::Request  
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5106,7 +5106,7 @@ bool BaseRobotServices::SetControllerConfiguration(kortex_driver::srv::SetContro
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5140,7 +5140,7 @@ bool BaseRobotServices::GetControllerConfiguration(kortex_driver::srv::GetContro
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5173,7 +5173,7 @@ bool BaseRobotServices::GetAllControllerConfigurations(kortex_driver::srv::GetAl
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5208,7 +5208,7 @@ bool BaseRobotServices::ComputeForwardKinematics(kortex_driver::srv::ComputeForw
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5243,7 +5243,7 @@ bool BaseRobotServices::ComputeInverseKinematics(kortex_driver::srv::ComputeInve
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);
@@ -5278,7 +5278,7 @@ bool BaseRobotServices::ValidateWaypointList(kortex_driver::srv::ValidateWaypoin
 
 	catch (Kinova::Api::KDetailedException& ex)
 	{
-		result_error.subCode = ex.getErrorInfo().getError().error_sub_code();
+		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
 		m_pub_Error.publish(result_error);

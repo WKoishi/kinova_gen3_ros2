@@ -684,7 +684,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::FillKortexError(uint32_t co
 {
     kortex_driver::msg::KortexError error;
     error.code = code;
-    error.subCode = subCode;
+    error.sub_code = subCode;
     error.description = description;
     return error;
 }
@@ -758,10 +758,10 @@ void KortexArmSimulation::PlayAction(const kortex_driver::msg::Action& action)
             {
                 // Notify ACTION_ABORT
                 end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_ABORT;
-                end_notif.abort_details = action_result.subCode;
+                end_notif.abort_details = action_result.sub_code;
                 ROS_WARN("Action was failed : \nError code is %d\nSub-error code is %d\nError description is : %s", 
                             action_result.code,
-                            action_result.subCode,
+                            action_result.sub_code,
                             action_result.description.c_str());
             }
             else
@@ -1012,7 +1012,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteReachPose(const kort
 {
     kortex_driver::msg::KortexError result;
     result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
+    result.sub_code = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.reach_pose.size() != 1)
     {
         return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
@@ -1221,7 +1221,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendJointSpeeds(cons
 {
     kortex_driver::msg::KortexError result;
     result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
+    result.sub_code = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.send_joint_speeds.size() != 1)
     {
         return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
@@ -1356,7 +1356,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendTwist(const kort
 {
     kortex_driver::msg::KortexError result;
     result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
+    result.sub_code = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.send_twist_command.size() != 1)
     {
         return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
@@ -1568,7 +1568,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendGripperCommand(c
 {
     kortex_driver::msg::KortexError result;
     result.code = kortex_driver::msg::ErrorCodes::ERROR_NONE;
-    result.subCode = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
+    result.sub_code = kortex_driver::msg::SubErrorCodes::SUB_ERROR_NONE;
     if (action.oneof_action_parameters.send_gripper_command.size() != 1)
     {
         return FillKortexError(kortex_driver::msg::ErrorCodes::ERROR_DEVICE,
@@ -1648,7 +1648,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteTimeDelay(const kort
     else
     {
         result.code = kortex_driver::msg::ErrorCodes::ERROR_DEVICE;
-        result.subCode = kortex_driver::msg::SubErrorCodes::INVALID_PARAM;
+        result.sub_code = kortex_driver::msg::SubErrorCodes::INVALID_PARAM;
         result.description = "Error playing time delay action : action is malformed.";
     }
     return result;
