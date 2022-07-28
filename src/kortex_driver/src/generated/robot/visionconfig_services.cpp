@@ -102,7 +102,7 @@ bool VisionConfigRobotServices::SetSensorSettings(kortex_driver::srv::SetSensorS
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -136,7 +136,7 @@ bool VisionConfigRobotServices::GetSensorSettings(kortex_driver::srv::GetSensorS
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -171,7 +171,7 @@ bool VisionConfigRobotServices::GetOptionValue(kortex_driver::srv::GetOptionValu
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -204,7 +204,7 @@ bool VisionConfigRobotServices::SetOptionValue(kortex_driver::srv::SetOptionValu
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -238,7 +238,7 @@ bool VisionConfigRobotServices::GetOptionInformation(kortex_driver::srv::GetOpti
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -278,7 +278,7 @@ bool VisionConfigRobotServices::OnNotificationVisionTopic(kortex_driver::srv::On
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -297,7 +297,7 @@ void VisionConfigRobotServices::cb_VisionTopic(Kinova::Api::VisionConfig::Vision
 {
 	kortex_driver::msg::VisionNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_VisionTopic.publish(ros_msg);
+	m_pub_VisionTopic->publish(ros_msg);
 }
 
 bool VisionConfigRobotServices::DoSensorFocusAction(kortex_driver::srv::DoSensorFocusAction::Request  &req, kortex_driver::srv::DoSensorFocusAction::Response &res)
@@ -317,7 +317,7 @@ bool VisionConfigRobotServices::DoSensorFocusAction(kortex_driver::srv::DoSensor
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -351,7 +351,7 @@ bool VisionConfigRobotServices::GetIntrinsicParameters(kortex_driver::srv::GetIn
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -386,7 +386,7 @@ bool VisionConfigRobotServices::GetIntrinsicParametersProfile(kortex_driver::srv
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -419,7 +419,7 @@ bool VisionConfigRobotServices::SetIntrinsicParameters(kortex_driver::srv::SetIn
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -451,7 +451,7 @@ bool VisionConfigRobotServices::GetExtrinsicParameters(kortex_driver::srv::GetEx
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -484,7 +484,7 @@ bool VisionConfigRobotServices::SetExtrinsicParameters(kortex_driver::srv::SetEx
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());

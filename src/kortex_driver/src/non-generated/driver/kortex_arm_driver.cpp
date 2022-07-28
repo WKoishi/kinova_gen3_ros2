@@ -672,8 +672,8 @@ void KortexArmDriver::publishRobotFeedback()
             }
         }
 
-        m_pub_base_feedback.publish(base_feedback);
-        m_pub_joint_state.publish(joint_state);
+        m_pub_base_feedback->publish(base_feedback);
+        m_pub_joint_state->publish(joint_state);
 
         rate.sleep();
     }
@@ -684,7 +684,7 @@ void KortexArmDriver::publishSimulationFeedback()
     ros::Rate rate(m_cyclic_data_publish_rate);
     while (m_node_is_running)
     {
-        m_pub_base_feedback.publish(m_simulator->GetFeedback());
+        m_pub_base_feedback->publish(m_simulator->GetFeedback());
         rate.sleep();
     }
 }

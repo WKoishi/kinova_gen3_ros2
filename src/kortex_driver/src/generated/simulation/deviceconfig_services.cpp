@@ -508,7 +508,7 @@ void DeviceConfigSimulationServices::cb_SafetyTopic(Kinova::Api::Common::SafetyN
 {
 	kortex_driver::msg::SafetyNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_SafetyTopic.publish(ros_msg);
+	m_pub_SafetyTopic->publish(ros_msg);
 }
 
 bool DeviceConfigSimulationServices::ExecuteCalibration(kortex_driver::srv::ExecuteCalibration::Request  &req, kortex_driver::srv::ExecuteCalibration::Response &res)

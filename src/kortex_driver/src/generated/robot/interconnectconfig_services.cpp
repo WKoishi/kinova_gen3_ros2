@@ -104,7 +104,7 @@ bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::srv::G
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -137,7 +137,7 @@ bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::srv::S
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -171,7 +171,7 @@ bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::sr
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -204,7 +204,7 @@ bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::sr
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -238,7 +238,7 @@ bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::srv::G
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -271,7 +271,7 @@ bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::srv::S
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -305,7 +305,7 @@ bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::srv::GetGPIOSt
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -338,7 +338,7 @@ bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::srv::SetGPIOSt
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -372,7 +372,7 @@ bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::srv::Ge
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -405,7 +405,7 @@ bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::srv::Se
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -439,7 +439,7 @@ bool InterconnectConfigRobotServices::I2CRead(kortex_driver::srv::I2CRead::Reque
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -474,7 +474,7 @@ bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::srv::I2CRea
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -507,7 +507,7 @@ bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::srv::I2CWrite::Req
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -539,7 +539,7 @@ bool InterconnectConfigRobotServices::I2CWriteRegister(kortex_driver::srv::I2CWr
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());

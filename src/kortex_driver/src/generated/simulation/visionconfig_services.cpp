@@ -173,7 +173,7 @@ void VisionConfigSimulationServices::cb_VisionTopic(Kinova::Api::VisionConfig::V
 {
 	kortex_driver::msg::VisionNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_VisionTopic.publish(ros_msg);
+	m_pub_VisionTopic->publish(ros_msg);
 }
 
 bool VisionConfigSimulationServices::DoSensorFocusAction(kortex_driver::srv::DoSensorFocusAction::Request  &req, kortex_driver::srv::DoSensorFocusAction::Response &res)

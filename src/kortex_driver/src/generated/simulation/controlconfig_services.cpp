@@ -208,7 +208,7 @@ void ControlConfigSimulationServices::cb_ControlConfigurationTopic(Kinova::Api::
 {
 	kortex_driver::msg::ControlConfigurationNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ControlConfigurationTopic.publish(ros_msg);
+	m_pub_ControlConfigurationTopic->publish(ros_msg);
 }
 
 bool ControlConfigSimulationServices::ControlConfig_Unsubscribe(kortex_driver::srv::ControlConfigUnsubscribe::Request  &req, kortex_driver::srv::ControlConfigUnsubscribe::Response &res)
@@ -560,5 +560,5 @@ void ControlConfigSimulationServices::cb_ControlModeTopic(Kinova::Api::ControlCo
 {
 	kortex_driver::msg::ControlConfigControlModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ControlModeTopic.publish(ros_msg);
+	m_pub_ControlModeTopic->publish(ros_msg);
 }

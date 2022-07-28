@@ -122,7 +122,7 @@ bool ControlConfigRobotServices::SetGravityVector(kortex_driver::srv::SetGravity
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -154,7 +154,7 @@ bool ControlConfigRobotServices::GetGravityVector(kortex_driver::srv::GetGravity
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -187,7 +187,7 @@ bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::srv::SetPa
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -219,7 +219,7 @@ bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::srv::GetPa
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -252,7 +252,7 @@ bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::srv::SetToo
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -284,7 +284,7 @@ bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::srv::GetToo
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -324,7 +324,7 @@ bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -343,7 +343,7 @@ void ControlConfigRobotServices::cb_ControlConfigurationTopic(Kinova::Api::Contr
 {
 	kortex_driver::msg::ControlConfigurationNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ControlConfigurationTopic.publish(ros_msg);
+	m_pub_ControlConfigurationTopic->publish(ros_msg);
 }
 
 bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::srv::ControlConfigUnsubscribe::Request  &req, kortex_driver::srv::ControlConfigUnsubscribe::Response &res)
@@ -363,7 +363,7 @@ bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::srv::C
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -395,7 +395,7 @@ bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::srv::
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -427,7 +427,7 @@ bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::srv::
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -460,7 +460,7 @@ bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::srv
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -493,7 +493,7 @@ bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::srv::Set
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -525,7 +525,7 @@ bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::srv::Set
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -557,7 +557,7 @@ bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::srv::Se
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -589,7 +589,7 @@ bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::s
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -621,7 +621,7 @@ bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::srv::GetK
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -656,7 +656,7 @@ bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::srv::GetK
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -689,7 +689,7 @@ bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::srv::G
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -722,7 +722,7 @@ bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::srv::SetDe
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -754,7 +754,7 @@ bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::srv::SetD
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -786,7 +786,7 @@ bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::srv::SetDe
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -818,7 +818,7 @@ bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::srv::GetDesired
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -851,7 +851,7 @@ bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::srv::ResetGra
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -884,7 +884,7 @@ bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::srv::Res
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -917,7 +917,7 @@ bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::srv::Rese
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -952,7 +952,7 @@ bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::srv::R
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -987,7 +987,7 @@ bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::srv::R
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -1022,7 +1022,7 @@ bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::srv::
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -1057,7 +1057,7 @@ bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver:
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -1097,7 +1097,7 @@ bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(ko
 		result_error.sub_code = ex.getErrorInfo().getError().error_sub_code();
 		result_error.code = ex.getErrorInfo().getError().error_code();
 		result_error.description = ex.toString();
-		m_pub_Error.publish(result_error);
+		m_pub_Error->publish(result_error);
 		ROS_INFO("Kortex exception");
 		ROS_INFO("KINOVA exception error code: %d\n", ex.getErrorInfo().getError().error_code());
 		ROS_INFO("KINOVA exception error sub code: %d\n", ex.getErrorInfo().getError().error_sub_code());
@@ -1116,5 +1116,5 @@ void ControlConfigRobotServices::cb_ControlModeTopic(Kinova::Api::ControlConfig:
 {
 	kortex_driver::msg::ControlConfigControlModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ControlModeTopic.publish(ros_msg);
+	m_pub_ControlModeTopic->publish(ros_msg);
 }

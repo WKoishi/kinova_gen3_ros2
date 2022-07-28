@@ -709,7 +709,7 @@ void KortexArmSimulation::PlayAction(const kortex_driver::msg::Action& action)
     kortex_driver::msg::ActionNotification start_notif;
     start_notif.handle = action.handle;
     start_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_START;
-    m_pub_action_topic.publish(start_notif);
+    m_pub_action_topic->publish(start_notif);
     m_is_action_being_executed = true;
     m_current_action_type = action.handle.action_type;
     
@@ -770,7 +770,7 @@ void KortexArmSimulation::PlayAction(const kortex_driver::msg::Action& action)
                 end_notif.action_event = kortex_driver::msg::ActionEvent::ACTION_END;
             }
         }
-        m_pub_action_topic.publish(end_notif);
+        m_pub_action_topic->publish(end_notif);
     }
     
     m_is_action_being_executed = false;
@@ -1327,7 +1327,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendJointSpeeds(cons
                 // Send the position increments to the controllers
                 std_msgs::Float64 message;
                 message.data = commands[i];
-                m_pub_position_controllers[i].publish(message);
+                m_pub_position_controllers[i]->publish(message);
             }
 
             // Remember actual command as previous and actual velocity command as previous
@@ -1534,7 +1534,7 @@ kortex_driver::msg::KortexError KortexArmSimulation::ExecuteSendTwist(const kort
             // Send the position increments to the controllers
             std_msgs::Float64 message;
             message.data = commands[i];
-            m_pub_position_controllers[i].publish(message);
+            m_pub_position_controllers[i]->publish(message);
 
             // Check if joint is stopped or not
             stopped[i] = fabs(joint_velocities(i)) < MINIMUM_JOINT_VELOCITY_RAD_PER_SECONDS;

@@ -1100,7 +1100,7 @@ void BaseSimulationServices::cb_ConfigurationChangeTopic(Kinova::Api::Base::Conf
 {
 	kortex_driver::msg::ConfigurationChangeNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ConfigurationChangeTopic.publish(ros_msg);
+	m_pub_ConfigurationChangeTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationMappingInfoTopic(kortex_driver::srv::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::srv::OnNotificationMappingInfoTopic::Response &res)
@@ -1122,7 +1122,7 @@ void BaseSimulationServices::cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoN
 {
 	kortex_driver::msg::MappingInfoNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_MappingInfoTopic.publish(ros_msg);
+	m_pub_MappingInfoTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::Base_OnNotificationControlModeTopic(kortex_driver::srv::BaseOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::BaseOnNotificationControlModeTopic::Response &res)
@@ -1145,7 +1145,7 @@ void BaseSimulationServices::cb_ControlModeTopic(Kinova::Api::Base::ControlModeN
 {
 	kortex_driver::msg::BaseControlModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ControlModeTopic.publish(ros_msg);
+	m_pub_ControlModeTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationOperatingModeTopic(kortex_driver::srv::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::srv::OnNotificationOperatingModeTopic::Response &res)
@@ -1167,7 +1167,7 @@ void BaseSimulationServices::cb_OperatingModeTopic(Kinova::Api::Base::OperatingM
 {
 	kortex_driver::msg::OperatingModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_OperatingModeTopic.publish(ros_msg);
+	m_pub_OperatingModeTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationSequenceInfoTopic(kortex_driver::srv::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::srv::OnNotificationSequenceInfoTopic::Response &res)
@@ -1189,7 +1189,7 @@ void BaseSimulationServices::cb_SequenceInfoTopic(Kinova::Api::Base::SequenceInf
 {
 	kortex_driver::msg::SequenceInfoNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_SequenceInfoTopic.publish(ros_msg);
+	m_pub_SequenceInfoTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationProtectionZoneTopic(kortex_driver::srv::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::srv::OnNotificationProtectionZoneTopic::Response &res)
@@ -1211,7 +1211,7 @@ void BaseSimulationServices::cb_ProtectionZoneTopic(Kinova::Api::Base::Protectio
 {
 	kortex_driver::msg::ProtectionZoneNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ProtectionZoneTopic.publish(ros_msg);
+	m_pub_ProtectionZoneTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationUserTopic(kortex_driver::srv::OnNotificationUserTopic::Request  &req, kortex_driver::srv::OnNotificationUserTopic::Response &res)
@@ -1233,7 +1233,7 @@ void BaseSimulationServices::cb_UserTopic(Kinova::Api::Base::UserNotification no
 {
 	kortex_driver::msg::UserNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_UserTopic.publish(ros_msg);
+	m_pub_UserTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationControllerTopic(kortex_driver::srv::OnNotificationControllerTopic::Request  &req, kortex_driver::srv::OnNotificationControllerTopic::Response &res)
@@ -1255,7 +1255,7 @@ void BaseSimulationServices::cb_ControllerTopic(Kinova::Api::Base::ControllerNot
 {
 	kortex_driver::msg::ControllerNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ControllerTopic.publish(ros_msg);
+	m_pub_ControllerTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationActionTopic(kortex_driver::srv::OnNotificationActionTopic::Request  &req, kortex_driver::srv::OnNotificationActionTopic::Response &res)
@@ -1277,7 +1277,7 @@ void BaseSimulationServices::cb_ActionTopic(Kinova::Api::Base::ActionNotificatio
 {
 	kortex_driver::msg::ActionNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ActionTopic.publish(ros_msg);
+	m_pub_ActionTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::OnNotificationRobotEventTopic(kortex_driver::srv::OnNotificationRobotEventTopic::Request  &req, kortex_driver::srv::OnNotificationRobotEventTopic::Response &res)
@@ -1299,7 +1299,7 @@ void BaseSimulationServices::cb_RobotEventTopic(Kinova::Api::Base::RobotEventNot
 {
 	kortex_driver::msg::RobotEventNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_RobotEventTopic.publish(ros_msg);
+	m_pub_RobotEventTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesianTrajectory::Request  &req, kortex_driver::srv::PlayCartesianTrajectory::Response &res)
@@ -1687,7 +1687,7 @@ void BaseSimulationServices::cb_ServoingModeTopic(Kinova::Api::Base::ServoingMod
 {
 	kortex_driver::msg::ServoingModeNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ServoingModeTopic.publish(ros_msg);
+	m_pub_ServoingModeTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::RestoreFactorySettings(kortex_driver::srv::RestoreFactorySettings::Request  &req, kortex_driver::srv::RestoreFactorySettings::Response &res)
@@ -1724,7 +1724,7 @@ void BaseSimulationServices::cb_FactoryTopic(Kinova::Api::Base::FactoryNotificat
 {
 	kortex_driver::msg::FactoryNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_FactoryTopic.publish(ros_msg);
+	m_pub_FactoryTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::GetAllConnectedControllers(kortex_driver::srv::GetAllConnectedControllers::Request  &req, kortex_driver::srv::GetAllConnectedControllers::Response &res)
@@ -1821,7 +1821,7 @@ void BaseSimulationServices::cb_NetworkTopic(Kinova::Api::Base::NetworkNotificat
 {
 	kortex_driver::msg::NetworkNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_NetworkTopic.publish(ros_msg);
+	m_pub_NetworkTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::GetArmState(kortex_driver::srv::GetArmState::Request  &req, kortex_driver::srv::GetArmState::Response &res)
@@ -1858,7 +1858,7 @@ void BaseSimulationServices::cb_ArmStateTopic(Kinova::Api::Base::ArmStateNotific
 {
 	kortex_driver::msg::ArmStateNotification ros_msg;
 	ToRosData(notif, ros_msg);
-	m_pub_ArmStateTopic.publish(ros_msg);
+	m_pub_ArmStateTopic->publish(ros_msg);
 }
 
 bool BaseSimulationServices::GetIPv4Information(kortex_driver::srv::GetIPv4Information::Request  &req, kortex_driver::srv::GetIPv4Information::Response &res)
