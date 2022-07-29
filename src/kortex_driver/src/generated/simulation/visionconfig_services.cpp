@@ -49,21 +49,21 @@ VisionConfigSimulationServices::VisionConfigSimulationServices(rclcpp::Node::Sha
 	m_pub_VisionTopic = m_node_handle.advertise<kortex_driver::msg::VisionNotification>("vision_topic", 1000);
 	m_is_activated_VisionTopic = false;
 
-	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("vision_config/set_device_id", &VisionConfigSimulationServices::SetDeviceID);
-	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("vision_config/set_api_options", &VisionConfigSimulationServices::SetApiOptions);
+	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("vision_config/set_device_id", std::bind(&VisionConfigSimulationServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("vision_config/set_api_options", std::bind(&VisionConfigSimulationServices::SetApiOptions, this, std::placeholders::_1, std::placeholders::_2));
 
-	m_serviceSetSensorSettings = m_node_handle->create_service<kortex_driver::srv::SetSensorSettings>("vision_config/set_sensor_settings", &VisionConfigSimulationServices::SetSensorSettings);
-	m_serviceGetSensorSettings = m_node_handle->create_service<kortex_driver::srv::GetSensorSettings>("vision_config/get_sensor_settings", &VisionConfigSimulationServices::GetSensorSettings);
-	m_serviceGetOptionValue = m_node_handle->create_service<kortex_driver::srv::GetOptionValue>("vision_config/get_option_value", &VisionConfigSimulationServices::GetOptionValue);
-	m_serviceSetOptionValue = m_node_handle->create_service<kortex_driver::srv::SetOptionValue>("vision_config/set_option_value", &VisionConfigSimulationServices::SetOptionValue);
-	m_serviceGetOptionInformation = m_node_handle->create_service<kortex_driver::srv::GetOptionInformation>("vision_config/get_option_information", &VisionConfigSimulationServices::GetOptionInformation);
-	m_serviceOnNotificationVisionTopic = m_node_handle->create_service<kortex_driver::srv::OnNotificationVisionTopic>("vision_config/activate_publishing_of_vision_topic", &VisionConfigSimulationServices::OnNotificationVisionTopic);
-	m_serviceDoSensorFocusAction = m_node_handle->create_service<kortex_driver::srv::DoSensorFocusAction>("vision_config/do_sensor_focus_action", &VisionConfigSimulationServices::DoSensorFocusAction);
-	m_serviceGetIntrinsicParameters = m_node_handle->create_service<kortex_driver::srv::GetIntrinsicParameters>("vision_config/get_intrinsic_parameters", &VisionConfigSimulationServices::GetIntrinsicParameters);
-	m_serviceGetIntrinsicParametersProfile = m_node_handle->create_service<kortex_driver::srv::GetIntrinsicParametersProfile>("vision_config/get_intrinsic_parameters_profile", &VisionConfigSimulationServices::GetIntrinsicParametersProfile);
-	m_serviceSetIntrinsicParameters = m_node_handle->create_service<kortex_driver::srv::SetIntrinsicParameters>("vision_config/set_intrinsic_parameters", &VisionConfigSimulationServices::SetIntrinsicParameters);
-	m_serviceGetExtrinsicParameters = m_node_handle->create_service<kortex_driver::srv::GetExtrinsicParameters>("vision_config/get_extrinsic_parameters", &VisionConfigSimulationServices::GetExtrinsicParameters);
-	m_serviceSetExtrinsicParameters = m_node_handle->create_service<kortex_driver::srv::SetExtrinsicParameters>("vision_config/set_extrinsic_parameters", &VisionConfigSimulationServices::SetExtrinsicParameters);
+	m_serviceSetSensorSettings = m_node_handle->create_service<kortex_driver::srv::SetSensorSettings>("vision_config/set_sensor_settings", std::bind(&VisionConfigSimulationServices::SetSensorSettings, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetSensorSettings = m_node_handle->create_service<kortex_driver::srv::GetSensorSettings>("vision_config/get_sensor_settings", std::bind(&VisionConfigSimulationServices::GetSensorSettings, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetOptionValue = m_node_handle->create_service<kortex_driver::srv::GetOptionValue>("vision_config/get_option_value", std::bind(&VisionConfigSimulationServices::GetOptionValue, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetOptionValue = m_node_handle->create_service<kortex_driver::srv::SetOptionValue>("vision_config/set_option_value", std::bind(&VisionConfigSimulationServices::SetOptionValue, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetOptionInformation = m_node_handle->create_service<kortex_driver::srv::GetOptionInformation>("vision_config/get_option_information", std::bind(&VisionConfigSimulationServices::GetOptionInformation, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceOnNotificationVisionTopic = m_node_handle->create_service<kortex_driver::srv::OnNotificationVisionTopic>("vision_config/activate_publishing_of_vision_topic", std::bind(&VisionConfigSimulationServices::OnNotificationVisionTopic, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceDoSensorFocusAction = m_node_handle->create_service<kortex_driver::srv::DoSensorFocusAction>("vision_config/do_sensor_focus_action", std::bind(&VisionConfigSimulationServices::DoSensorFocusAction, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetIntrinsicParameters = m_node_handle->create_service<kortex_driver::srv::GetIntrinsicParameters>("vision_config/get_intrinsic_parameters", std::bind(&VisionConfigSimulationServices::GetIntrinsicParameters, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetIntrinsicParametersProfile = m_node_handle->create_service<kortex_driver::srv::GetIntrinsicParametersProfile>("vision_config/get_intrinsic_parameters_profile", std::bind(&VisionConfigSimulationServices::GetIntrinsicParametersProfile, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetIntrinsicParameters = m_node_handle->create_service<kortex_driver::srv::SetIntrinsicParameters>("vision_config/set_intrinsic_parameters", std::bind(&VisionConfigSimulationServices::SetIntrinsicParameters, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetExtrinsicParameters = m_node_handle->create_service<kortex_driver::srv::GetExtrinsicParameters>("vision_config/get_extrinsic_parameters", std::bind(&VisionConfigSimulationServices::GetExtrinsicParameters, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetExtrinsicParameters = m_node_handle->create_service<kortex_driver::srv::SetExtrinsicParameters>("vision_config/set_extrinsic_parameters", std::bind(&VisionConfigSimulationServices::SetExtrinsicParameters, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 bool VisionConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)

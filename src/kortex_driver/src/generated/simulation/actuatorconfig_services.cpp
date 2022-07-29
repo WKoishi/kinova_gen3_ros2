@@ -47,29 +47,29 @@ ActuatorConfigSimulationServices::ActuatorConfigSimulationServices(rclcpp::Node:
 {
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("actuator_config/set_device_id", &ActuatorConfigSimulationServices::SetDeviceID);
-	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("actuator_config/set_api_options", &ActuatorConfigSimulationServices::SetApiOptions);
+	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("actuator_config/set_device_id", std::bind(&ActuatorConfigSimulationServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("actuator_config/set_api_options", std::bind(&ActuatorConfigSimulationServices::SetApiOptions, this, std::placeholders::_1, std::placeholders::_2));
 
-	m_serviceGetAxisOffsets = m_node_handle->create_service<kortex_driver::srv::GetAxisOffsets>("actuator_config/get_axis_offsets", &ActuatorConfigSimulationServices::GetAxisOffsets);
-	m_serviceSetAxisOffsets = m_node_handle->create_service<kortex_driver::srv::SetAxisOffsets>("actuator_config/set_axis_offsets", &ActuatorConfigSimulationServices::SetAxisOffsets);
-	m_serviceSetTorqueOffset = m_node_handle->create_service<kortex_driver::srv::SetTorqueOffset>("actuator_config/set_torque_offset", &ActuatorConfigSimulationServices::SetTorqueOffset);
-	m_serviceActuatorConfig_GetControlMode = m_node_handle->create_service<kortex_driver::srv::ActuatorConfigGetControlMode>("actuator_config/get_control_mode", &ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode);
-	m_serviceSetControlMode = m_node_handle->create_service<kortex_driver::srv::SetControlMode>("actuator_config/set_control_mode", &ActuatorConfigSimulationServices::SetControlMode);
-	m_serviceGetActivatedControlLoop = m_node_handle->create_service<kortex_driver::srv::GetActivatedControlLoop>("actuator_config/get_activated_control_loop", &ActuatorConfigSimulationServices::GetActivatedControlLoop);
-	m_serviceSetActivatedControlLoop = m_node_handle->create_service<kortex_driver::srv::SetActivatedControlLoop>("actuator_config/set_activated_control_loop", &ActuatorConfigSimulationServices::SetActivatedControlLoop);
-	m_serviceGetControlLoopParameters = m_node_handle->create_service<kortex_driver::srv::GetControlLoopParameters>("actuator_config/get_control_loop_parameters", &ActuatorConfigSimulationServices::GetControlLoopParameters);
-	m_serviceSetControlLoopParameters = m_node_handle->create_service<kortex_driver::srv::SetControlLoopParameters>("actuator_config/set_control_loop_parameters", &ActuatorConfigSimulationServices::SetControlLoopParameters);
-	m_serviceSelectCustomData = m_node_handle->create_service<kortex_driver::srv::SelectCustomData>("actuator_config/select_custom_data", &ActuatorConfigSimulationServices::SelectCustomData);
-	m_serviceGetSelectedCustomData = m_node_handle->create_service<kortex_driver::srv::GetSelectedCustomData>("actuator_config/get_selected_custom_data", &ActuatorConfigSimulationServices::GetSelectedCustomData);
-	m_serviceSetCommandMode = m_node_handle->create_service<kortex_driver::srv::SetCommandMode>("actuator_config/set_command_mode", &ActuatorConfigSimulationServices::SetCommandMode);
-	m_serviceActuatorConfig_ClearFaults = m_node_handle->create_service<kortex_driver::srv::ActuatorConfigClearFaults>("actuator_config/clear_faults", &ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults);
-	m_serviceSetServoing = m_node_handle->create_service<kortex_driver::srv::SetServoing>("actuator_config/set_servoing", &ActuatorConfigSimulationServices::SetServoing);
-	m_serviceMoveToPosition = m_node_handle->create_service<kortex_driver::srv::MoveToPosition>("actuator_config/move_to_position", &ActuatorConfigSimulationServices::MoveToPosition);
-	m_serviceGetCommandMode = m_node_handle->create_service<kortex_driver::srv::GetCommandMode>("actuator_config/get_command_mode", &ActuatorConfigSimulationServices::GetCommandMode);
-	m_serviceGetServoing = m_node_handle->create_service<kortex_driver::srv::GetServoing>("actuator_config/get_servoing", &ActuatorConfigSimulationServices::GetServoing);
-	m_serviceGetTorqueOffset = m_node_handle->create_service<kortex_driver::srv::GetTorqueOffset>("actuator_config/get_torque_offset", &ActuatorConfigSimulationServices::GetTorqueOffset);
-	m_serviceSetCoggingFeedforwardMode = m_node_handle->create_service<kortex_driver::srv::SetCoggingFeedforwardMode>("actuator_config/set_cogging_feedforward_mode", &ActuatorConfigSimulationServices::SetCoggingFeedforwardMode);
-	m_serviceGetCoggingFeedforwardMode = m_node_handle->create_service<kortex_driver::srv::GetCoggingFeedforwardMode>("actuator_config/get_cogging_feedforward_mode", &ActuatorConfigSimulationServices::GetCoggingFeedforwardMode);
+	m_serviceGetAxisOffsets = m_node_handle->create_service<kortex_driver::srv::GetAxisOffsets>("actuator_config/get_axis_offsets", std::bind(&ActuatorConfigSimulationServices::GetAxisOffsets, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetAxisOffsets = m_node_handle->create_service<kortex_driver::srv::SetAxisOffsets>("actuator_config/set_axis_offsets", std::bind(&ActuatorConfigSimulationServices::SetAxisOffsets, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetTorqueOffset = m_node_handle->create_service<kortex_driver::srv::SetTorqueOffset>("actuator_config/set_torque_offset", std::bind(&ActuatorConfigSimulationServices::SetTorqueOffset, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceActuatorConfig_GetControlMode = m_node_handle->create_service<kortex_driver::srv::ActuatorConfigGetControlMode>("actuator_config/get_control_mode", std::bind(&ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetControlMode = m_node_handle->create_service<kortex_driver::srv::SetControlMode>("actuator_config/set_control_mode", std::bind(&ActuatorConfigSimulationServices::SetControlMode, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetActivatedControlLoop = m_node_handle->create_service<kortex_driver::srv::GetActivatedControlLoop>("actuator_config/get_activated_control_loop", std::bind(&ActuatorConfigSimulationServices::GetActivatedControlLoop, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetActivatedControlLoop = m_node_handle->create_service<kortex_driver::srv::SetActivatedControlLoop>("actuator_config/set_activated_control_loop", std::bind(&ActuatorConfigSimulationServices::SetActivatedControlLoop, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetControlLoopParameters = m_node_handle->create_service<kortex_driver::srv::GetControlLoopParameters>("actuator_config/get_control_loop_parameters", std::bind(&ActuatorConfigSimulationServices::GetControlLoopParameters, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetControlLoopParameters = m_node_handle->create_service<kortex_driver::srv::SetControlLoopParameters>("actuator_config/set_control_loop_parameters", std::bind(&ActuatorConfigSimulationServices::SetControlLoopParameters, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSelectCustomData = m_node_handle->create_service<kortex_driver::srv::SelectCustomData>("actuator_config/select_custom_data", std::bind(&ActuatorConfigSimulationServices::SelectCustomData, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetSelectedCustomData = m_node_handle->create_service<kortex_driver::srv::GetSelectedCustomData>("actuator_config/get_selected_custom_data", std::bind(&ActuatorConfigSimulationServices::GetSelectedCustomData, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetCommandMode = m_node_handle->create_service<kortex_driver::srv::SetCommandMode>("actuator_config/set_command_mode", std::bind(&ActuatorConfigSimulationServices::SetCommandMode, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceActuatorConfig_ClearFaults = m_node_handle->create_service<kortex_driver::srv::ActuatorConfigClearFaults>("actuator_config/clear_faults", std::bind(&ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetServoing = m_node_handle->create_service<kortex_driver::srv::SetServoing>("actuator_config/set_servoing", std::bind(&ActuatorConfigSimulationServices::SetServoing, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceMoveToPosition = m_node_handle->create_service<kortex_driver::srv::MoveToPosition>("actuator_config/move_to_position", std::bind(&ActuatorConfigSimulationServices::MoveToPosition, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetCommandMode = m_node_handle->create_service<kortex_driver::srv::GetCommandMode>("actuator_config/get_command_mode", std::bind(&ActuatorConfigSimulationServices::GetCommandMode, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetServoing = m_node_handle->create_service<kortex_driver::srv::GetServoing>("actuator_config/get_servoing", std::bind(&ActuatorConfigSimulationServices::GetServoing, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetTorqueOffset = m_node_handle->create_service<kortex_driver::srv::GetTorqueOffset>("actuator_config/get_torque_offset", std::bind(&ActuatorConfigSimulationServices::GetTorqueOffset, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetCoggingFeedforwardMode = m_node_handle->create_service<kortex_driver::srv::SetCoggingFeedforwardMode>("actuator_config/set_cogging_feedforward_mode", std::bind(&ActuatorConfigSimulationServices::SetCoggingFeedforwardMode, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetCoggingFeedforwardMode = m_node_handle->create_service<kortex_driver::srv::GetCoggingFeedforwardMode>("actuator_config/get_cogging_feedforward_mode", std::bind(&ActuatorConfigSimulationServices::GetCoggingFeedforwardMode, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 bool ActuatorConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)

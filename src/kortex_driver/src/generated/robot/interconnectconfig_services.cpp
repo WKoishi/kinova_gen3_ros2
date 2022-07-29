@@ -51,23 +51,23 @@ InterconnectConfigRobotServices::InterconnectConfigRobotServices(rclcpp::Node::S
 
 	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
-	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("interconnect_config/set_device_id", &InterconnectConfigRobotServices::SetDeviceID);
-	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("interconnect_config/set_api_options", &InterconnectConfigRobotServices::SetApiOptions);
+	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("interconnect_config/set_device_id", std::bind(&InterconnectConfigRobotServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("interconnect_config/set_api_options", std::bind(&InterconnectConfigRobotServices::SetApiOptions, this, std::placeholders::_1, std::placeholders::_2));
 
-	m_serviceGetUARTConfiguration = m_node_handle->create_service<kortex_driver::srv::GetUARTConfiguration>("interconnect_config/get_u_a_r_t_configuration", &InterconnectConfigRobotServices::GetUARTConfiguration);
-	m_serviceSetUARTConfiguration = m_node_handle->create_service<kortex_driver::srv::SetUARTConfiguration>("interconnect_config/set_u_a_r_t_configuration", &InterconnectConfigRobotServices::SetUARTConfiguration);
-	m_serviceGetEthernetConfiguration = m_node_handle->create_service<kortex_driver::srv::GetEthernetConfiguration>("interconnect_config/get_ethernet_configuration", &InterconnectConfigRobotServices::GetEthernetConfiguration);
-	m_serviceSetEthernetConfiguration = m_node_handle->create_service<kortex_driver::srv::SetEthernetConfiguration>("interconnect_config/set_ethernet_configuration", &InterconnectConfigRobotServices::SetEthernetConfiguration);
-	m_serviceGetGPIOConfiguration = m_node_handle->create_service<kortex_driver::srv::GetGPIOConfiguration>("interconnect_config/get_g_p_i_o_configuration", &InterconnectConfigRobotServices::GetGPIOConfiguration);
-	m_serviceSetGPIOConfiguration = m_node_handle->create_service<kortex_driver::srv::SetGPIOConfiguration>("interconnect_config/set_g_p_i_o_configuration", &InterconnectConfigRobotServices::SetGPIOConfiguration);
-	m_serviceGetGPIOState = m_node_handle->create_service<kortex_driver::srv::GetGPIOState>("interconnect_config/get_g_p_i_o_state", &InterconnectConfigRobotServices::GetGPIOState);
-	m_serviceSetGPIOState = m_node_handle->create_service<kortex_driver::srv::SetGPIOState>("interconnect_config/set_g_p_i_o_state", &InterconnectConfigRobotServices::SetGPIOState);
-	m_serviceGetI2CConfiguration = m_node_handle->create_service<kortex_driver::srv::GetI2CConfiguration>("interconnect_config/get_i2_c_configuration", &InterconnectConfigRobotServices::GetI2CConfiguration);
-	m_serviceSetI2CConfiguration = m_node_handle->create_service<kortex_driver::srv::SetI2CConfiguration>("interconnect_config/set_i2_c_configuration", &InterconnectConfigRobotServices::SetI2CConfiguration);
-	m_serviceI2CRead = m_node_handle->create_service<kortex_driver::srv::I2CRead>("interconnect_config/i2_c_read", &InterconnectConfigRobotServices::I2CRead);
-	m_serviceI2CReadRegister = m_node_handle->create_service<kortex_driver::srv::I2CReadRegister>("interconnect_config/i2_c_read_register", &InterconnectConfigRobotServices::I2CReadRegister);
-	m_serviceI2CWrite = m_node_handle->create_service<kortex_driver::srv::I2CWrite>("interconnect_config/i2_c_write", &InterconnectConfigRobotServices::I2CWrite);
-	m_serviceI2CWriteRegister = m_node_handle->create_service<kortex_driver::srv::I2CWriteRegister>("interconnect_config/i2_c_write_register", &InterconnectConfigRobotServices::I2CWriteRegister);
+	m_serviceGetUARTConfiguration = m_node_handle->create_service<kortex_driver::srv::GetUARTConfiguration>("interconnect_config/get_u_a_r_t_configuration", std::bind(&InterconnectConfigRobotServices::GetUARTConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetUARTConfiguration = m_node_handle->create_service<kortex_driver::srv::SetUARTConfiguration>("interconnect_config/set_u_a_r_t_configuration", std::bind(&InterconnectConfigRobotServices::SetUARTConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetEthernetConfiguration = m_node_handle->create_service<kortex_driver::srv::GetEthernetConfiguration>("interconnect_config/get_ethernet_configuration", std::bind(&InterconnectConfigRobotServices::GetEthernetConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetEthernetConfiguration = m_node_handle->create_service<kortex_driver::srv::SetEthernetConfiguration>("interconnect_config/set_ethernet_configuration", std::bind(&InterconnectConfigRobotServices::SetEthernetConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetGPIOConfiguration = m_node_handle->create_service<kortex_driver::srv::GetGPIOConfiguration>("interconnect_config/get_g_p_i_o_configuration", std::bind(&InterconnectConfigRobotServices::GetGPIOConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetGPIOConfiguration = m_node_handle->create_service<kortex_driver::srv::SetGPIOConfiguration>("interconnect_config/set_g_p_i_o_configuration", std::bind(&InterconnectConfigRobotServices::SetGPIOConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetGPIOState = m_node_handle->create_service<kortex_driver::srv::GetGPIOState>("interconnect_config/get_g_p_i_o_state", std::bind(&InterconnectConfigRobotServices::GetGPIOState, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetGPIOState = m_node_handle->create_service<kortex_driver::srv::SetGPIOState>("interconnect_config/set_g_p_i_o_state", std::bind(&InterconnectConfigRobotServices::SetGPIOState, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceGetI2CConfiguration = m_node_handle->create_service<kortex_driver::srv::GetI2CConfiguration>("interconnect_config/get_i2_c_configuration", std::bind(&InterconnectConfigRobotServices::GetI2CConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceSetI2CConfiguration = m_node_handle->create_service<kortex_driver::srv::SetI2CConfiguration>("interconnect_config/set_i2_c_configuration", std::bind(&InterconnectConfigRobotServices::SetI2CConfiguration, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceI2CRead = m_node_handle->create_service<kortex_driver::srv::I2CRead>("interconnect_config/i2_c_read", std::bind(&InterconnectConfigRobotServices::I2CRead, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceI2CReadRegister = m_node_handle->create_service<kortex_driver::srv::I2CReadRegister>("interconnect_config/i2_c_read_register", std::bind(&InterconnectConfigRobotServices::I2CReadRegister, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceI2CWrite = m_node_handle->create_service<kortex_driver::srv::I2CWrite>("interconnect_config/i2_c_write", std::bind(&InterconnectConfigRobotServices::I2CWrite, this, std::placeholders::_1, std::placeholders::_2));
+	m_serviceI2CWriteRegister = m_node_handle->create_service<kortex_driver::srv::I2CWriteRegister>("interconnect_config/i2_c_write_register", std::bind(&InterconnectConfigRobotServices::I2CWriteRegister, this, std::placeholders::_1, std::placeholders::_2));
 }
 
 bool InterconnectConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
