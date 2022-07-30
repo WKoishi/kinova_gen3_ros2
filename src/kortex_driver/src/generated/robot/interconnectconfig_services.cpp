@@ -72,14 +72,14 @@ InterconnectConfigRobotServices::InterconnectConfigRobotServices(rclcpp::Node::S
 
 bool InterconnectConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	m_current_device_id = req.device_id;
+	m_current_device_id = req->device_id;
 
 	return true;
 }
 
 bool InterconnectConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	m_api_options.timeout_ms = req.input.timeout_ms;
+	m_api_options.timeout_ms = req->input.timeout_ms;
 
 	return true;
 }
@@ -89,7 +89,7 @@ bool InterconnectConfigRobotServices::GetUARTConfiguration(const std::shared_ptr
 {
 	
 	Kinova::Api::Common::UARTDeviceIdentification input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::UARTConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -116,7 +116,7 @@ bool InterconnectConfigRobotServices::GetUARTConfiguration(const std::shared_ptr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -124,7 +124,7 @@ bool InterconnectConfigRobotServices::SetUARTConfiguration(const std::shared_ptr
 {
 	
 	Kinova::Api::Common::UARTConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -156,7 +156,7 @@ bool InterconnectConfigRobotServices::GetEthernetConfiguration(const std::shared
 {
 	
 	Kinova::Api::InterconnectConfig::EthernetDeviceIdentification input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::InterconnectConfig::EthernetConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -183,7 +183,7 @@ bool InterconnectConfigRobotServices::GetEthernetConfiguration(const std::shared
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -191,7 +191,7 @@ bool InterconnectConfigRobotServices::SetEthernetConfiguration(const std::shared
 {
 	
 	Kinova::Api::InterconnectConfig::EthernetConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -223,7 +223,7 @@ bool InterconnectConfigRobotServices::GetGPIOConfiguration(const std::shared_ptr
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOIdentification input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::InterconnectConfig::GPIOConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -250,7 +250,7 @@ bool InterconnectConfigRobotServices::GetGPIOConfiguration(const std::shared_ptr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -258,7 +258,7 @@ bool InterconnectConfigRobotServices::SetGPIOConfiguration(const std::shared_ptr
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -290,7 +290,7 @@ bool InterconnectConfigRobotServices::GetGPIOState(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOIdentification input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::InterconnectConfig::GPIOState output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -317,7 +317,7 @@ bool InterconnectConfigRobotServices::GetGPIOState(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -325,7 +325,7 @@ bool InterconnectConfigRobotServices::SetGPIOState(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOState input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -357,7 +357,7 @@ bool InterconnectConfigRobotServices::GetI2CConfiguration(const std::shared_ptr<
 {
 	
 	Kinova::Api::InterconnectConfig::I2CDeviceIdentification input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::InterconnectConfig::I2CConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -384,7 +384,7 @@ bool InterconnectConfigRobotServices::GetI2CConfiguration(const std::shared_ptr<
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -392,7 +392,7 @@ bool InterconnectConfigRobotServices::SetI2CConfiguration(const std::shared_ptr<
 {
 	
 	Kinova::Api::InterconnectConfig::I2CConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -424,7 +424,7 @@ bool InterconnectConfigRobotServices::I2CRead(const std::shared_ptr<kortex_drive
 {
 	
 	Kinova::Api::InterconnectConfig::I2CReadParameter input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::InterconnectConfig::I2CData output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -451,7 +451,7 @@ bool InterconnectConfigRobotServices::I2CRead(const std::shared_ptr<kortex_drive
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -459,7 +459,7 @@ bool InterconnectConfigRobotServices::I2CReadRegister(const std::shared_ptr<kort
 {
 	
 	Kinova::Api::InterconnectConfig::I2CReadRegisterParameter input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::InterconnectConfig::I2CData output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -486,7 +486,7 @@ bool InterconnectConfigRobotServices::I2CReadRegister(const std::shared_ptr<kort
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -494,7 +494,7 @@ bool InterconnectConfigRobotServices::I2CWrite(const std::shared_ptr<kortex_driv
 {
 	
 	Kinova::Api::InterconnectConfig::I2CWriteParameter input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -526,7 +526,7 @@ bool InterconnectConfigRobotServices::I2CWriteRegister(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try

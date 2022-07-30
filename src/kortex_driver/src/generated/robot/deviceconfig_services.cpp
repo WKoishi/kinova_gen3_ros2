@@ -92,14 +92,14 @@ DeviceConfigRobotServices::DeviceConfigRobotServices(rclcpp::Node::SharedPtr nod
 
 bool DeviceConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	m_current_device_id = req.device_id;
+	m_current_device_id = req->device_id;
 
 	return true;
 }
 
 bool DeviceConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	m_api_options.timeout_ms = req.input.timeout_ms;
+	m_api_options.timeout_ms = req->input.timeout_ms;
 
 	return true;
 }
@@ -134,7 +134,7 @@ bool DeviceConfigRobotServices::GetRunMode(const std::shared_ptr<kortex_driver::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -142,7 +142,7 @@ bool DeviceConfigRobotServices::SetRunMode(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::DeviceConfig::RunMode input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -199,7 +199,7 @@ bool DeviceConfigRobotServices::GetDeviceType(const std::shared_ptr<kortex_drive
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -232,7 +232,7 @@ bool DeviceConfigRobotServices::GetFirmwareVersion(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -265,7 +265,7 @@ bool DeviceConfigRobotServices::GetBootloaderVersion(const std::shared_ptr<korte
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -298,7 +298,7 @@ bool DeviceConfigRobotServices::GetModelNumber(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -331,7 +331,7 @@ bool DeviceConfigRobotServices::GetPartNumber(const std::shared_ptr<kortex_drive
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -364,7 +364,7 @@ bool DeviceConfigRobotServices::GetSerialNumber(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -397,7 +397,7 @@ bool DeviceConfigRobotServices::GetMACAddress(const std::shared_ptr<kortex_drive
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -430,7 +430,7 @@ bool DeviceConfigRobotServices::GetIPv4Settings(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -438,7 +438,7 @@ bool DeviceConfigRobotServices::SetIPv4Settings(const std::shared_ptr<kortex_dri
 {
 	
 	Kinova::Api::DeviceConfig::IPv4Settings input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -495,7 +495,7 @@ bool DeviceConfigRobotServices::GetPartNumberRevision(const std::shared_ptr<kort
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -503,7 +503,7 @@ bool DeviceConfigRobotServices::RebootRequest(const std::shared_ptr<kortex_drive
 {
 	
 	Kinova::Api::DeviceConfig::RebootRqst input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -535,7 +535,7 @@ bool DeviceConfigRobotServices::SetSafetyEnable(const std::shared_ptr<kortex_dri
 {
 	
 	Kinova::Api::DeviceConfig::SafetyEnable input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -567,7 +567,7 @@ bool DeviceConfigRobotServices::SetSafetyErrorThreshold(const std::shared_ptr<ko
 {
 	
 	Kinova::Api::DeviceConfig::SafetyThreshold input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -599,7 +599,7 @@ bool DeviceConfigRobotServices::SetSafetyWarningThreshold(const std::shared_ptr<
 {
 	
 	Kinova::Api::DeviceConfig::SafetyThreshold input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -631,7 +631,7 @@ bool DeviceConfigRobotServices::SetSafetyConfiguration(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::DeviceConfig::SafetyConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -663,7 +663,7 @@ bool DeviceConfigRobotServices::GetSafetyConfiguration(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::DeviceConfig::SafetyConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -690,7 +690,7 @@ bool DeviceConfigRobotServices::GetSafetyConfiguration(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -698,7 +698,7 @@ bool DeviceConfigRobotServices::GetSafetyInformation(const std::shared_ptr<korte
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::DeviceConfig::SafetyInformation output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -725,7 +725,7 @@ bool DeviceConfigRobotServices::GetSafetyInformation(const std::shared_ptr<korte
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -733,7 +733,7 @@ bool DeviceConfigRobotServices::GetSafetyEnable(const std::shared_ptr<kortex_dri
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::DeviceConfig::SafetyEnable output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -760,7 +760,7 @@ bool DeviceConfigRobotServices::GetSafetyEnable(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -768,7 +768,7 @@ bool DeviceConfigRobotServices::GetSafetyStatus(const std::shared_ptr<kortex_dri
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::DeviceConfig::SafetyStatus output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -795,7 +795,7 @@ bool DeviceConfigRobotServices::GetSafetyStatus(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -833,7 +833,7 @@ bool DeviceConfigRobotServices::ClearSafetyStatus(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -890,7 +890,7 @@ bool DeviceConfigRobotServices::GetAllSafetyConfiguration(const std::shared_ptr<
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -923,7 +923,7 @@ bool DeviceConfigRobotServices::GetAllSafetyInformation(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -964,7 +964,7 @@ bool DeviceConfigRobotServices::OnNotificationSafetyTopic(const std::shared_ptr<
 	if (m_is_activated_SafetyTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -993,7 +993,7 @@ bool DeviceConfigRobotServices::OnNotificationSafetyTopic(const std::shared_ptr<
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void DeviceConfigRobotServices::cb_SafetyTopic(Kinova::Api::Common::SafetyNotification notif)
@@ -1007,7 +1007,7 @@ bool DeviceConfigRobotServices::ExecuteCalibration(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::DeviceConfig::Calibration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1039,7 +1039,7 @@ bool DeviceConfigRobotServices::GetCalibrationResult(const std::shared_ptr<korte
 {
 	
 	Kinova::Api::DeviceConfig::CalibrationElement input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::DeviceConfig::CalibrationResult output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1066,7 +1066,7 @@ bool DeviceConfigRobotServices::GetCalibrationResult(const std::shared_ptr<korte
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1074,7 +1074,7 @@ bool DeviceConfigRobotServices::StopCalibration(const std::shared_ptr<kortex_dri
 {
 	
 	Kinova::Api::DeviceConfig::Calibration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::DeviceConfig::CalibrationResult output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1101,7 +1101,7 @@ bool DeviceConfigRobotServices::StopCalibration(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1109,7 +1109,7 @@ bool DeviceConfigRobotServices::DeviceConfig_SetCapSenseConfig(const std::shared
 {
 	
 	Kinova::Api::DeviceConfig::CapSenseConfig input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1166,6 +1166,6 @@ bool DeviceConfigRobotServices::DeviceConfig_GetCapSenseConfig(const std::shared
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }

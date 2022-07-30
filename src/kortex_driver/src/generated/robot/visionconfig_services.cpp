@@ -72,14 +72,14 @@ VisionConfigRobotServices::VisionConfigRobotServices(rclcpp::Node::SharedPtr nod
 
 bool VisionConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	m_current_device_id = req.device_id;
+	m_current_device_id = req->device_id;
 
 	return true;
 }
 
 bool VisionConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	m_api_options.timeout_ms = req.input.timeout_ms;
+	m_api_options.timeout_ms = req->input.timeout_ms;
 
 	return true;
 }
@@ -89,7 +89,7 @@ bool VisionConfigRobotServices::SetSensorSettings(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::VisionConfig::SensorSettings input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -121,7 +121,7 @@ bool VisionConfigRobotServices::GetSensorSettings(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::VisionConfig::SensorIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::VisionConfig::SensorSettings output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -148,7 +148,7 @@ bool VisionConfigRobotServices::GetSensorSettings(const std::shared_ptr<kortex_d
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -156,7 +156,7 @@ bool VisionConfigRobotServices::GetOptionValue(const std::shared_ptr<kortex_driv
 {
 	
 	Kinova::Api::VisionConfig::OptionIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::VisionConfig::OptionValue output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -183,7 +183,7 @@ bool VisionConfigRobotServices::GetOptionValue(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -191,7 +191,7 @@ bool VisionConfigRobotServices::SetOptionValue(const std::shared_ptr<kortex_driv
 {
 	
 	Kinova::Api::VisionConfig::OptionValue input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -223,7 +223,7 @@ bool VisionConfigRobotServices::GetOptionInformation(const std::shared_ptr<korte
 {
 	
 	Kinova::Api::VisionConfig::OptionIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::VisionConfig::OptionInformation output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -250,7 +250,7 @@ bool VisionConfigRobotServices::GetOptionInformation(const std::shared_ptr<korte
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -261,7 +261,7 @@ bool VisionConfigRobotServices::OnNotificationVisionTopic(const std::shared_ptr<
 	if (m_is_activated_VisionTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -290,7 +290,7 @@ bool VisionConfigRobotServices::OnNotificationVisionTopic(const std::shared_ptr<
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void VisionConfigRobotServices::cb_VisionTopic(Kinova::Api::VisionConfig::VisionNotification notif)
@@ -304,7 +304,7 @@ bool VisionConfigRobotServices::DoSensorFocusAction(const std::shared_ptr<kortex
 {
 	
 	Kinova::Api::VisionConfig::SensorFocusAction input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -336,7 +336,7 @@ bool VisionConfigRobotServices::GetIntrinsicParameters(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::VisionConfig::SensorIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::VisionConfig::IntrinsicParameters output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -363,7 +363,7 @@ bool VisionConfigRobotServices::GetIntrinsicParameters(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -371,7 +371,7 @@ bool VisionConfigRobotServices::GetIntrinsicParametersProfile(const std::shared_
 {
 	
 	Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::VisionConfig::IntrinsicParameters output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -398,7 +398,7 @@ bool VisionConfigRobotServices::GetIntrinsicParametersProfile(const std::shared_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -406,7 +406,7 @@ bool VisionConfigRobotServices::SetIntrinsicParameters(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::VisionConfig::IntrinsicParameters input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -463,7 +463,7 @@ bool VisionConfigRobotServices::GetExtrinsicParameters(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -471,7 +471,7 @@ bool VisionConfigRobotServices::SetExtrinsicParameters(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::VisionConfig::ExtrinsicParameters input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try

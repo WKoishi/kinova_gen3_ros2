@@ -78,14 +78,14 @@ ActuatorConfigRobotServices::ActuatorConfigRobotServices(rclcpp::Node::SharedPtr
 
 bool ActuatorConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	m_current_device_id = req.device_id;
+	m_current_device_id = req->device_id;
 
 	return true;
 }
 
 bool ActuatorConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	m_api_options.timeout_ms = req.input.timeout_ms;
+	m_api_options.timeout_ms = req->input.timeout_ms;
 
 	return true;
 }
@@ -120,7 +120,7 @@ bool ActuatorConfigRobotServices::GetAxisOffsets(const std::shared_ptr<kortex_dr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -128,7 +128,7 @@ bool ActuatorConfigRobotServices::SetAxisOffsets(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::ActuatorConfig::AxisPosition input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -160,7 +160,7 @@ bool ActuatorConfigRobotServices::SetTorqueOffset(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::ActuatorConfig::TorqueOffset input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -217,7 +217,7 @@ bool ActuatorConfigRobotServices::ActuatorConfig_GetControlMode(const std::share
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -225,7 +225,7 @@ bool ActuatorConfigRobotServices::SetControlMode(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::ActuatorConfig::ControlModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -282,7 +282,7 @@ bool ActuatorConfigRobotServices::GetActivatedControlLoop(const std::shared_ptr<
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -290,7 +290,7 @@ bool ActuatorConfigRobotServices::SetActivatedControlLoop(const std::shared_ptr<
 {
 	
 	Kinova::Api::ActuatorConfig::ControlLoop input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -322,7 +322,7 @@ bool ActuatorConfigRobotServices::GetControlLoopParameters(const std::shared_ptr
 {
 	
 	Kinova::Api::ActuatorConfig::LoopSelection input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::ActuatorConfig::ControlLoopParameters output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -349,7 +349,7 @@ bool ActuatorConfigRobotServices::GetControlLoopParameters(const std::shared_ptr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -357,7 +357,7 @@ bool ActuatorConfigRobotServices::SetControlLoopParameters(const std::shared_ptr
 {
 	
 	Kinova::Api::ActuatorConfig::ControlLoopParameters input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -389,7 +389,7 @@ bool ActuatorConfigRobotServices::SelectCustomData(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::ActuatorConfig::CustomDataSelection input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -446,7 +446,7 @@ bool ActuatorConfigRobotServices::GetSelectedCustomData(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -454,7 +454,7 @@ bool ActuatorConfigRobotServices::SetCommandMode(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::ActuatorConfig::CommandModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -516,7 +516,7 @@ bool ActuatorConfigRobotServices::SetServoing(const std::shared_ptr<kortex_drive
 {
 	
 	Kinova::Api::ActuatorConfig::Servoing input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -548,7 +548,7 @@ bool ActuatorConfigRobotServices::MoveToPosition(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::ActuatorConfig::PositionCommand input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -605,7 +605,7 @@ bool ActuatorConfigRobotServices::GetCommandMode(const std::shared_ptr<kortex_dr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -638,7 +638,7 @@ bool ActuatorConfigRobotServices::GetServoing(const std::shared_ptr<kortex_drive
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -671,7 +671,7 @@ bool ActuatorConfigRobotServices::GetTorqueOffset(const std::shared_ptr<kortex_d
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -679,7 +679,7 @@ bool ActuatorConfigRobotServices::SetCoggingFeedforwardMode(const std::shared_pt
 {
 	
 	Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -736,6 +736,6 @@ bool ActuatorConfigRobotServices::GetCoggingFeedforwardMode(const std::shared_pt
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }

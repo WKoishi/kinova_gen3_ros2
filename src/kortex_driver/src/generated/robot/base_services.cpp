@@ -234,14 +234,14 @@ BaseRobotServices::BaseRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova
 
 bool BaseRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	m_current_device_id = req.device_id;
+	m_current_device_id = req->device_id;
 
 	return true;
 }
 
 bool BaseRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	m_api_options.timeout_ms = req.input.timeout_ms;
+	m_api_options.timeout_ms = req->input.timeout_ms;
 
 	return true;
 }
@@ -251,7 +251,7 @@ bool BaseRobotServices::CreateUserProfile(const std::shared_ptr<kortex_driver::s
 {
 	
 	Kinova::Api::Base::FullUserProfile input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::UserProfileHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -278,7 +278,7 @@ bool BaseRobotServices::CreateUserProfile(const std::shared_ptr<kortex_driver::s
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -286,7 +286,7 @@ bool BaseRobotServices::UpdateUserProfile(const std::shared_ptr<kortex_driver::s
 {
 	
 	Kinova::Api::Base::UserProfile input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -318,7 +318,7 @@ bool BaseRobotServices::ReadUserProfile(const std::shared_ptr<kortex_driver::srv
 {
 	
 	Kinova::Api::Common::UserProfileHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::UserProfile output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -345,7 +345,7 @@ bool BaseRobotServices::ReadUserProfile(const std::shared_ptr<kortex_driver::srv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -353,7 +353,7 @@ bool BaseRobotServices::DeleteUserProfile(const std::shared_ptr<kortex_driver::s
 {
 	
 	Kinova::Api::Common::UserProfileHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -410,7 +410,7 @@ bool BaseRobotServices::ReadAllUserProfiles(const std::shared_ptr<kortex_driver:
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -443,7 +443,7 @@ bool BaseRobotServices::ReadAllUsers(const std::shared_ptr<kortex_driver::srv::R
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -451,7 +451,7 @@ bool BaseRobotServices::ChangePassword(const std::shared_ptr<kortex_driver::srv:
 {
 	
 	Kinova::Api::Base::PasswordChange input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -483,7 +483,7 @@ bool BaseRobotServices::CreateSequence(const std::shared_ptr<kortex_driver::srv:
 {
 	
 	Kinova::Api::Base::Sequence input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::SequenceHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -510,7 +510,7 @@ bool BaseRobotServices::CreateSequence(const std::shared_ptr<kortex_driver::srv:
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -518,7 +518,7 @@ bool BaseRobotServices::UpdateSequence(const std::shared_ptr<kortex_driver::srv:
 {
 	
 	Kinova::Api::Base::Sequence input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -550,7 +550,7 @@ bool BaseRobotServices::ReadSequence(const std::shared_ptr<kortex_driver::srv::R
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::Sequence output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -577,7 +577,7 @@ bool BaseRobotServices::ReadSequence(const std::shared_ptr<kortex_driver::srv::R
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -585,7 +585,7 @@ bool BaseRobotServices::DeleteSequence(const std::shared_ptr<kortex_driver::srv:
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -642,7 +642,7 @@ bool BaseRobotServices::ReadAllSequences(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -650,7 +650,7 @@ bool BaseRobotServices::PlaySequence(const std::shared_ptr<kortex_driver::srv::P
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -682,7 +682,7 @@ bool BaseRobotServices::PlayAdvancedSequence(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::AdvancedSequenceHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -804,7 +804,7 @@ bool BaseRobotServices::CreateProtectionZone(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::ProtectionZone input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::ProtectionZoneHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -831,7 +831,7 @@ bool BaseRobotServices::CreateProtectionZone(const std::shared_ptr<kortex_driver
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -839,7 +839,7 @@ bool BaseRobotServices::UpdateProtectionZone(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::ProtectionZone input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -871,7 +871,7 @@ bool BaseRobotServices::ReadProtectionZone(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::ProtectionZoneHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::ProtectionZone output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -898,7 +898,7 @@ bool BaseRobotServices::ReadProtectionZone(const std::shared_ptr<kortex_driver::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -906,7 +906,7 @@ bool BaseRobotServices::DeleteProtectionZone(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::ProtectionZoneHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -963,7 +963,7 @@ bool BaseRobotServices::ReadAllProtectionZones(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -971,7 +971,7 @@ bool BaseRobotServices::CreateMapping(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::Mapping input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::MappingHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -998,7 +998,7 @@ bool BaseRobotServices::CreateMapping(const std::shared_ptr<kortex_driver::srv::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1006,7 +1006,7 @@ bool BaseRobotServices::ReadMapping(const std::shared_ptr<kortex_driver::srv::Re
 {
 	
 	Kinova::Api::Base::MappingHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::Mapping output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1033,7 +1033,7 @@ bool BaseRobotServices::ReadMapping(const std::shared_ptr<kortex_driver::srv::Re
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1041,7 +1041,7 @@ bool BaseRobotServices::UpdateMapping(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::Mapping input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1073,7 +1073,7 @@ bool BaseRobotServices::DeleteMapping(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::MappingHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1130,7 +1130,7 @@ bool BaseRobotServices::ReadAllMappings(const std::shared_ptr<kortex_driver::srv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1138,7 +1138,7 @@ bool BaseRobotServices::CreateMap(const std::shared_ptr<kortex_driver::srv::Crea
 {
 	
 	Kinova::Api::Base::Map input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::MapHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1165,7 +1165,7 @@ bool BaseRobotServices::CreateMap(const std::shared_ptr<kortex_driver::srv::Crea
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1173,7 +1173,7 @@ bool BaseRobotServices::ReadMap(const std::shared_ptr<kortex_driver::srv::ReadMa
 {
 	
 	Kinova::Api::Base::MapHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::Map output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1200,7 +1200,7 @@ bool BaseRobotServices::ReadMap(const std::shared_ptr<kortex_driver::srv::ReadMa
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1208,7 +1208,7 @@ bool BaseRobotServices::UpdateMap(const std::shared_ptr<kortex_driver::srv::Upda
 {
 	
 	Kinova::Api::Base::Map input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1240,7 +1240,7 @@ bool BaseRobotServices::DeleteMap(const std::shared_ptr<kortex_driver::srv::Dele
 {
 	
 	Kinova::Api::Base::MapHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1272,7 +1272,7 @@ bool BaseRobotServices::ReadAllMaps(const std::shared_ptr<kortex_driver::srv::Re
 {
 	
 	Kinova::Api::Base::MappingHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::MapList output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1299,7 +1299,7 @@ bool BaseRobotServices::ReadAllMaps(const std::shared_ptr<kortex_driver::srv::Re
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1307,7 +1307,7 @@ bool BaseRobotServices::ActivateMap(const std::shared_ptr<kortex_driver::srv::Ac
 {
 	
 	Kinova::Api::Base::ActivateMapHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1339,7 +1339,7 @@ bool BaseRobotServices::CreateAction(const std::shared_ptr<kortex_driver::srv::C
 {
 	
 	Kinova::Api::Base::Action input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::ActionHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1366,7 +1366,7 @@ bool BaseRobotServices::CreateAction(const std::shared_ptr<kortex_driver::srv::C
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1374,7 +1374,7 @@ bool BaseRobotServices::ReadAction(const std::shared_ptr<kortex_driver::srv::Rea
 {
 	
 	Kinova::Api::Base::ActionHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::Action output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1401,7 +1401,7 @@ bool BaseRobotServices::ReadAction(const std::shared_ptr<kortex_driver::srv::Rea
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1409,7 +1409,7 @@ bool BaseRobotServices::ReadAllActions(const std::shared_ptr<kortex_driver::srv:
 {
 	
 	Kinova::Api::Base::RequestedActionType input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::ActionList output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1436,7 +1436,7 @@ bool BaseRobotServices::ReadAllActions(const std::shared_ptr<kortex_driver::srv:
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1444,7 +1444,7 @@ bool BaseRobotServices::DeleteAction(const std::shared_ptr<kortex_driver::srv::D
 {
 	
 	Kinova::Api::Base::ActionHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1476,7 +1476,7 @@ bool BaseRobotServices::UpdateAction(const std::shared_ptr<kortex_driver::srv::U
 {
 	
 	Kinova::Api::Base::Action input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1508,7 +1508,7 @@ bool BaseRobotServices::ExecuteActionFromReference(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::Base::ActionHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1540,7 +1540,7 @@ bool BaseRobotServices::ExecuteAction(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::Action input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1662,7 +1662,7 @@ bool BaseRobotServices::GetIPv4Configuration(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::IPv4Configuration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1689,7 +1689,7 @@ bool BaseRobotServices::GetIPv4Configuration(const std::shared_ptr<kortex_driver
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1697,7 +1697,7 @@ bool BaseRobotServices::SetIPv4Configuration(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::FullIPv4Configuration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1729,7 +1729,7 @@ bool BaseRobotServices::SetCommunicationInterfaceEnable(const std::shared_ptr<ko
 {
 	
 	Kinova::Api::Base::CommunicationInterfaceConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1761,7 +1761,7 @@ bool BaseRobotServices::IsCommunicationInterfaceEnable(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::CommunicationInterfaceConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1788,7 +1788,7 @@ bool BaseRobotServices::IsCommunicationInterfaceEnable(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1821,7 +1821,7 @@ bool BaseRobotServices::GetAvailableWifi(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1829,7 +1829,7 @@ bool BaseRobotServices::GetWifiInformation(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::Ssid input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::WifiInformation output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1856,7 +1856,7 @@ bool BaseRobotServices::GetWifiInformation(const std::shared_ptr<kortex_driver::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1864,7 +1864,7 @@ bool BaseRobotServices::AddWifiConfiguration(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::WifiConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1896,7 +1896,7 @@ bool BaseRobotServices::DeleteWifiConfiguration(const std::shared_ptr<kortex_dri
 {
 	
 	Kinova::Api::Base::Ssid input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -1953,7 +1953,7 @@ bool BaseRobotServices::GetAllConfiguredWifis(const std::shared_ptr<kortex_drive
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1961,7 +1961,7 @@ bool BaseRobotServices::ConnectWifi(const std::shared_ptr<kortex_driver::srv::Co
 {
 	
 	Kinova::Api::Base::Ssid input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2048,7 +2048,7 @@ bool BaseRobotServices::GetConnectedWifiInformation(const std::shared_ptr<kortex
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -2056,7 +2056,7 @@ bool BaseRobotServices::Base_Unsubscribe(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Common::NotificationHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2091,7 +2091,7 @@ bool BaseRobotServices::OnNotificationConfigurationChangeTopic(const std::shared
 	if (m_is_activated_ConfigurationChangeTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2120,7 +2120,7 @@ bool BaseRobotServices::OnNotificationConfigurationChangeTopic(const std::shared
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ConfigurationChangeTopic(Kinova::Api::Base::ConfigurationChangeNotification notif)
@@ -2137,7 +2137,7 @@ bool BaseRobotServices::OnNotificationMappingInfoTopic(const std::shared_ptr<kor
 	if (m_is_activated_MappingInfoTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2166,7 +2166,7 @@ bool BaseRobotServices::OnNotificationMappingInfoTopic(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoNotification notif)
@@ -2184,7 +2184,7 @@ bool BaseRobotServices::Base_OnNotificationControlModeTopic(const std::shared_pt
 	if (m_is_activated_ControlModeTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2213,7 +2213,7 @@ bool BaseRobotServices::Base_OnNotificationControlModeTopic(const std::shared_pt
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ControlModeTopic(Kinova::Api::Base::ControlModeNotification notif)
@@ -2230,7 +2230,7 @@ bool BaseRobotServices::OnNotificationOperatingModeTopic(const std::shared_ptr<k
 	if (m_is_activated_OperatingModeTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2259,7 +2259,7 @@ bool BaseRobotServices::OnNotificationOperatingModeTopic(const std::shared_ptr<k
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_OperatingModeTopic(Kinova::Api::Base::OperatingModeNotification notif)
@@ -2276,7 +2276,7 @@ bool BaseRobotServices::OnNotificationSequenceInfoTopic(const std::shared_ptr<ko
 	if (m_is_activated_SequenceInfoTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2305,7 +2305,7 @@ bool BaseRobotServices::OnNotificationSequenceInfoTopic(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_SequenceInfoTopic(Kinova::Api::Base::SequenceInfoNotification notif)
@@ -2322,7 +2322,7 @@ bool BaseRobotServices::OnNotificationProtectionZoneTopic(const std::shared_ptr<
 	if (m_is_activated_ProtectionZoneTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2351,7 +2351,7 @@ bool BaseRobotServices::OnNotificationProtectionZoneTopic(const std::shared_ptr<
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ProtectionZoneTopic(Kinova::Api::Base::ProtectionZoneNotification notif)
@@ -2368,7 +2368,7 @@ bool BaseRobotServices::OnNotificationUserTopic(const std::shared_ptr<kortex_dri
 	if (m_is_activated_UserTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2397,7 +2397,7 @@ bool BaseRobotServices::OnNotificationUserTopic(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_UserTopic(Kinova::Api::Base::UserNotification notif)
@@ -2414,7 +2414,7 @@ bool BaseRobotServices::OnNotificationControllerTopic(const std::shared_ptr<kort
 	if (m_is_activated_ControllerTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2443,7 +2443,7 @@ bool BaseRobotServices::OnNotificationControllerTopic(const std::shared_ptr<kort
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ControllerTopic(Kinova::Api::Base::ControllerNotification notif)
@@ -2460,7 +2460,7 @@ bool BaseRobotServices::OnNotificationActionTopic(const std::shared_ptr<kortex_d
 	if (m_is_activated_ActionTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2489,7 +2489,7 @@ bool BaseRobotServices::OnNotificationActionTopic(const std::shared_ptr<kortex_d
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ActionTopic(Kinova::Api::Base::ActionNotification notif)
@@ -2506,7 +2506,7 @@ bool BaseRobotServices::OnNotificationRobotEventTopic(const std::shared_ptr<kort
 	if (m_is_activated_RobotEventTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2535,7 +2535,7 @@ bool BaseRobotServices::OnNotificationRobotEventTopic(const std::shared_ptr<kort
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_RobotEventTopic(Kinova::Api::Base::RobotEventNotification notif)
@@ -2550,7 +2550,7 @@ bool BaseRobotServices::PlayCartesianTrajectory(const std::shared_ptr<kortex_dri
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedPose input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2583,7 +2583,7 @@ bool BaseRobotServices::PlayCartesianTrajectoryPosition(const std::shared_ptr<ko
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_position service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedPosition input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2616,7 +2616,7 @@ bool BaseRobotServices::PlayCartesianTrajectoryOrientation(const std::shared_ptr
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_orientation service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedOrientation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2703,7 +2703,7 @@ bool BaseRobotServices::GetMeasuredCartesianPose(const std::shared_ptr<kortex_dr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -2711,7 +2711,7 @@ bool BaseRobotServices::SendWrenchCommand(const std::shared_ptr<kortex_driver::s
 {
 	
 	Kinova::Api::Base::WrenchCommand input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2743,7 +2743,7 @@ bool BaseRobotServices::SendWrenchJoystickCommand(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::Base::WrenchCommand input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2775,7 +2775,7 @@ bool BaseRobotServices::SendTwistJoystickCommand(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::Base::TwistCommand input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2807,7 +2807,7 @@ bool BaseRobotServices::SendTwistCommand(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Base::TwistCommand input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2840,7 +2840,7 @@ bool BaseRobotServices::PlayJointTrajectory(const std::shared_ptr<kortex_driver:
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedJointAngles input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2873,7 +2873,7 @@ bool BaseRobotServices::PlaySelectedJointTrajectory(const std::shared_ptr<kortex
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_selected_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
 	Kinova::Api::Base::ConstrainedJointAngle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2930,7 +2930,7 @@ bool BaseRobotServices::GetMeasuredJointAngles(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -2938,7 +2938,7 @@ bool BaseRobotServices::SendJointSpeedsCommand(const std::shared_ptr<kortex_driv
 {
 	
 	Kinova::Api::Base::JointSpeeds input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -2970,7 +2970,7 @@ bool BaseRobotServices::SendSelectedJointSpeedCommand(const std::shared_ptr<kort
 {
 	
 	Kinova::Api::Base::JointSpeed input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3002,7 +3002,7 @@ bool BaseRobotServices::SendGripperCommand(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::GripperCommand input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3034,7 +3034,7 @@ bool BaseRobotServices::GetMeasuredGripperMovement(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::Base::GripperRequest input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::Gripper output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3061,7 +3061,7 @@ bool BaseRobotServices::GetMeasuredGripperMovement(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3069,7 +3069,7 @@ bool BaseRobotServices::SetAdmittance(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::Admittance input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3101,7 +3101,7 @@ bool BaseRobotServices::SetOperatingMode(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Base::OperatingModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3219,7 +3219,7 @@ bool BaseRobotServices::Base_GetControlMode(const std::shared_ptr<kortex_driver:
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3252,7 +3252,7 @@ bool BaseRobotServices::GetOperatingMode(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3260,7 +3260,7 @@ bool BaseRobotServices::SetServoingMode(const std::shared_ptr<kortex_driver::srv
 {
 	
 	Kinova::Api::Base::ServoingModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3317,7 +3317,7 @@ bool BaseRobotServices::GetServoingMode(const std::shared_ptr<kortex_driver::srv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3328,7 +3328,7 @@ bool BaseRobotServices::OnNotificationServoingModeTopic(const std::shared_ptr<ko
 	if (m_is_activated_ServoingModeTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3357,7 +3357,7 @@ bool BaseRobotServices::OnNotificationServoingModeTopic(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ServoingModeTopic(Kinova::Api::Base::ServoingModeNotification notif)
@@ -3404,7 +3404,7 @@ bool BaseRobotServices::OnNotificationFactoryTopic(const std::shared_ptr<kortex_
 	if (m_is_activated_FactoryTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3433,7 +3433,7 @@ bool BaseRobotServices::OnNotificationFactoryTopic(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_FactoryTopic(Kinova::Api::Base::FactoryNotification notif)
@@ -3472,7 +3472,7 @@ bool BaseRobotServices::GetAllConnectedControllers(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3480,7 +3480,7 @@ bool BaseRobotServices::GetControllerState(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::ControllerHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::ControllerState output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3507,7 +3507,7 @@ bool BaseRobotServices::GetControllerState(const std::shared_ptr<kortex_driver::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3540,7 +3540,7 @@ bool BaseRobotServices::GetActuatorCount(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3578,7 +3578,7 @@ bool BaseRobotServices::GetConfiguredWifi(const std::shared_ptr<kortex_driver::s
 {
 	
 	Kinova::Api::Base::Ssid input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::WifiConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3605,7 +3605,7 @@ bool BaseRobotServices::GetConfiguredWifi(const std::shared_ptr<kortex_driver::s
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3616,7 +3616,7 @@ bool BaseRobotServices::OnNotificationNetworkTopic(const std::shared_ptr<kortex_
 	if (m_is_activated_NetworkTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3645,7 +3645,7 @@ bool BaseRobotServices::OnNotificationNetworkTopic(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_NetworkTopic(Kinova::Api::Base::NetworkNotification notif)
@@ -3684,7 +3684,7 @@ bool BaseRobotServices::GetArmState(const std::shared_ptr<kortex_driver::srv::Ge
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3695,7 +3695,7 @@ bool BaseRobotServices::OnNotificationArmStateTopic(const std::shared_ptr<kortex
 	if (m_is_activated_ArmStateTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3724,7 +3724,7 @@ bool BaseRobotServices::OnNotificationArmStateTopic(const std::shared_ptr<kortex
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void BaseRobotServices::cb_ArmStateTopic(Kinova::Api::Base::ArmStateNotification notif)
@@ -3738,7 +3738,7 @@ bool BaseRobotServices::GetIPv4Information(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::IPv4Information output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3765,7 +3765,7 @@ bool BaseRobotServices::GetIPv4Information(const std::shared_ptr<kortex_driver::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3773,7 +3773,7 @@ bool BaseRobotServices::SetWifiCountryCode(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Common::CountryCode input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3830,7 +3830,7 @@ bool BaseRobotServices::GetWifiCountryCode(const std::shared_ptr<kortex_driver::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3838,7 +3838,7 @@ bool BaseRobotServices::Base_SetCapSenseConfig(const std::shared_ptr<kortex_driv
 {
 	
 	Kinova::Api::Base::CapSenseConfig input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -3895,7 +3895,7 @@ bool BaseRobotServices::Base_GetCapSenseConfig(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3929,7 +3929,7 @@ bool BaseRobotServices::GetAllJointsSpeedHardLimitation(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3963,7 +3963,7 @@ bool BaseRobotServices::GetAllJointsTorqueHardLimitation(const std::shared_ptr<k
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -3997,7 +3997,7 @@ bool BaseRobotServices::GetTwistHardLimitation(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4031,7 +4031,7 @@ bool BaseRobotServices::GetWrenchHardLimitation(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4039,7 +4039,7 @@ bool BaseRobotServices::SendJointSpeedsJoystickCommand(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::Base::JointSpeeds input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4071,7 +4071,7 @@ bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(const std::shared_
 {
 	
 	Kinova::Api::Base::JointSpeed input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4103,7 +4103,7 @@ bool BaseRobotServices::EnableBridge(const std::shared_ptr<kortex_driver::srv::E
 {
 	
 	Kinova::Api::Base::BridgeConfig input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::BridgeResult output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4130,7 +4130,7 @@ bool BaseRobotServices::EnableBridge(const std::shared_ptr<kortex_driver::srv::E
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4138,7 +4138,7 @@ bool BaseRobotServices::DisableBridge(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::BridgeIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::BridgeResult output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4165,7 +4165,7 @@ bool BaseRobotServices::DisableBridge(const std::shared_ptr<kortex_driver::srv::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4198,7 +4198,7 @@ bool BaseRobotServices::GetBridgeList(const std::shared_ptr<kortex_driver::srv::
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4206,7 +4206,7 @@ bool BaseRobotServices::GetBridgeConfig(const std::shared_ptr<kortex_driver::srv
 {
 	
 	Kinova::Api::Base::BridgeIdentifier input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::BridgeConfig output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4233,7 +4233,7 @@ bool BaseRobotServices::GetBridgeConfig(const std::shared_ptr<kortex_driver::srv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4241,7 +4241,7 @@ bool BaseRobotServices::PlayPreComputedJointTrajectory(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::Base::PreComputedJointTrajectory input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4298,7 +4298,7 @@ bool BaseRobotServices::GetProductConfiguration(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4306,7 +4306,7 @@ bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(const std::shared_ptr
 {
 	
 	Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4393,7 +4393,7 @@ bool BaseRobotServices::GetTrajectoryErrorReport(const std::shared_ptr<kortex_dr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4427,7 +4427,7 @@ bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4461,7 +4461,7 @@ bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(const std::shared_ptr<k
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4495,7 +4495,7 @@ bool BaseRobotServices::GetTwistSoftLimitation(const std::shared_ptr<kortex_driv
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4529,7 +4529,7 @@ bool BaseRobotServices::GetWrenchSoftLimitation(const std::shared_ptr<kortex_dri
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4537,7 +4537,7 @@ bool BaseRobotServices::SetControllerConfigurationMode(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::Base::ControllerConfigurationMode input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4594,7 +4594,7 @@ bool BaseRobotServices::GetControllerConfigurationMode(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4602,7 +4602,7 @@ bool BaseRobotServices::StartTeaching(const std::shared_ptr<kortex_driver::srv::
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4664,7 +4664,7 @@ bool BaseRobotServices::AddSequenceTasks(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Base::SequenceTasksConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::SequenceTasksRange output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4691,7 +4691,7 @@ bool BaseRobotServices::AddSequenceTasks(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4699,7 +4699,7 @@ bool BaseRobotServices::UpdateSequenceTask(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::SequenceTaskConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4731,7 +4731,7 @@ bool BaseRobotServices::SwapSequenceTasks(const std::shared_ptr<kortex_driver::s
 {
 	
 	Kinova::Api::Base::SequenceTasksPair input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4763,7 +4763,7 @@ bool BaseRobotServices::ReadSequenceTask(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::SequenceTask output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4790,7 +4790,7 @@ bool BaseRobotServices::ReadSequenceTask(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4798,7 +4798,7 @@ bool BaseRobotServices::ReadAllSequenceTasks(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::SequenceTasks output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4825,7 +4825,7 @@ bool BaseRobotServices::ReadAllSequenceTasks(const std::shared_ptr<kortex_driver
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4833,7 +4833,7 @@ bool BaseRobotServices::DeleteSequenceTask(const std::shared_ptr<kortex_driver::
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4865,7 +4865,7 @@ bool BaseRobotServices::DeleteAllSequenceTasks(const std::shared_ptr<kortex_driv
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4897,7 +4897,7 @@ bool BaseRobotServices::TakeSnapshot(const std::shared_ptr<kortex_driver::srv::T
 {
 	
 	Kinova::Api::Base::Snapshot input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4954,7 +4954,7 @@ bool BaseRobotServices::GetFirmwareBundleVersions(const std::shared_ptr<kortex_d
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -4962,7 +4962,7 @@ bool BaseRobotServices::ExecuteWaypointTrajectory(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::Base::WaypointList input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -4994,7 +4994,7 @@ bool BaseRobotServices::MoveSequenceTask(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Base::SequenceTasksPair input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -5026,7 +5026,7 @@ bool BaseRobotServices::DuplicateMapping(const std::shared_ptr<kortex_driver::sr
 {
 	
 	Kinova::Api::Base::MappingHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::MappingHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -5053,7 +5053,7 @@ bool BaseRobotServices::DuplicateMapping(const std::shared_ptr<kortex_driver::sr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -5061,7 +5061,7 @@ bool BaseRobotServices::DuplicateMap(const std::shared_ptr<kortex_driver::srv::D
 {
 	
 	Kinova::Api::Base::MapHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::MapHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -5088,7 +5088,7 @@ bool BaseRobotServices::DuplicateMap(const std::shared_ptr<kortex_driver::srv::D
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -5096,7 +5096,7 @@ bool BaseRobotServices::SetControllerConfiguration(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::Base::ControllerConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -5128,7 +5128,7 @@ bool BaseRobotServices::GetControllerConfiguration(const std::shared_ptr<kortex_
 {
 	
 	Kinova::Api::Base::ControllerHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::ControllerConfiguration output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -5155,7 +5155,7 @@ bool BaseRobotServices::GetControllerConfiguration(const std::shared_ptr<kortex_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -5188,7 +5188,7 @@ bool BaseRobotServices::GetAllControllerConfigurations(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -5196,7 +5196,7 @@ bool BaseRobotServices::ComputeForwardKinematics(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::Base::JointAngles input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::Pose output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -5223,7 +5223,7 @@ bool BaseRobotServices::ComputeForwardKinematics(const std::shared_ptr<kortex_dr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -5231,7 +5231,7 @@ bool BaseRobotServices::ComputeInverseKinematics(const std::shared_ptr<kortex_dr
 {
 	
 	Kinova::Api::Base::IKData input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::JointAngles output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -5258,7 +5258,7 @@ bool BaseRobotServices::ComputeInverseKinematics(const std::shared_ptr<kortex_dr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -5266,7 +5266,7 @@ bool BaseRobotServices::ValidateWaypointList(const std::shared_ptr<kortex_driver
 {
 	
 	Kinova::Api::Base::WaypointList input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Base::WaypointValidationReport output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -5293,6 +5293,6 @@ bool BaseRobotServices::ValidateWaypointList(const std::shared_ptr<kortex_driver
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }

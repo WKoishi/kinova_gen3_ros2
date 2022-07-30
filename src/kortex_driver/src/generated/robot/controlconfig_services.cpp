@@ -92,14 +92,14 @@ ControlConfigRobotServices::ControlConfigRobotServices(rclcpp::Node::SharedPtr n
 
 bool ControlConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	m_current_device_id = req.device_id;
+	m_current_device_id = req->device_id;
 
 	return true;
 }
 
 bool ControlConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	m_api_options.timeout_ms = req.input.timeout_ms;
+	m_api_options.timeout_ms = req->input.timeout_ms;
 
 	return true;
 }
@@ -109,7 +109,7 @@ bool ControlConfigRobotServices::SetGravityVector(const std::shared_ptr<kortex_d
 {
 	
 	Kinova::Api::ControlConfig::GravityVector input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -166,7 +166,7 @@ bool ControlConfigRobotServices::GetGravityVector(const std::shared_ptr<kortex_d
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -174,7 +174,7 @@ bool ControlConfigRobotServices::SetPayloadInformation(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -231,7 +231,7 @@ bool ControlConfigRobotServices::GetPayloadInformation(const std::shared_ptr<kor
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -239,7 +239,7 @@ bool ControlConfigRobotServices::SetToolConfiguration(const std::shared_ptr<kort
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -296,7 +296,7 @@ bool ControlConfigRobotServices::GetToolConfiguration(const std::shared_ptr<kort
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -307,7 +307,7 @@ bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(const s
 	if (m_is_activated_ControlConfigurationTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -336,7 +336,7 @@ bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(const s
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void ControlConfigRobotServices::cb_ControlConfigurationTopic(Kinova::Api::ControlConfig::ControlConfigurationNotification notif)
@@ -350,7 +350,7 @@ bool ControlConfigRobotServices::ControlConfig_Unsubscribe(const std::shared_ptr
 {
 	
 	Kinova::Api::Common::NotificationHandle input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -382,7 +382,7 @@ bool ControlConfigRobotServices::SetCartesianReferenceFrame(const std::shared_pt
 {
 	
 	Kinova::Api::ControlConfig::CartesianReferenceFrameInfo input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -439,7 +439,7 @@ bool ControlConfigRobotServices::GetCartesianReferenceFrame(const std::shared_pt
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -472,7 +472,7 @@ bool ControlConfigRobotServices::ControlConfig_GetControlMode(const std::shared_
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -480,7 +480,7 @@ bool ControlConfigRobotServices::SetJointSpeedSoftLimits(const std::shared_ptr<k
 {
 	
 	Kinova::Api::ControlConfig::JointSpeedSoftLimits input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -512,7 +512,7 @@ bool ControlConfigRobotServices::SetTwistLinearSoftLimit(const std::shared_ptr<k
 {
 	
 	Kinova::Api::ControlConfig::TwistLinearSoftLimit input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -544,7 +544,7 @@ bool ControlConfigRobotServices::SetTwistAngularSoftLimit(const std::shared_ptr<
 {
 	
 	Kinova::Api::ControlConfig::TwistAngularSoftLimit input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -576,7 +576,7 @@ bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(const std::share
 {
 	
 	Kinova::Api::ControlConfig::JointAccelerationSoftLimits input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -633,7 +633,7 @@ bool ControlConfigRobotServices::GetKinematicHardLimits(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -641,7 +641,7 @@ bool ControlConfigRobotServices::GetKinematicSoftLimits(const std::shared_ptr<ko
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::ControlConfig::KinematicLimits output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -668,7 +668,7 @@ bool ControlConfigRobotServices::GetKinematicSoftLimits(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -701,7 +701,7 @@ bool ControlConfigRobotServices::GetAllKinematicSoftLimits(const std::shared_ptr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -709,7 +709,7 @@ bool ControlConfigRobotServices::SetDesiredLinearTwist(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::ControlConfig::LinearTwist input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -741,7 +741,7 @@ bool ControlConfigRobotServices::SetDesiredAngularTwist(const std::shared_ptr<ko
 {
 	
 	Kinova::Api::ControlConfig::AngularTwist input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -773,7 +773,7 @@ bool ControlConfigRobotServices::SetDesiredJointSpeeds(const std::shared_ptr<kor
 {
 	
 	Kinova::Api::ControlConfig::JointSpeeds input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	kortex_driver::msg::KortexError result_error;
 	
 	try
@@ -830,7 +830,7 @@ bool ControlConfigRobotServices::GetDesiredSpeeds(const std::shared_ptr<kortex_d
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -863,7 +863,7 @@ bool ControlConfigRobotServices::ResetGravityVector(const std::shared_ptr<kortex
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -896,7 +896,7 @@ bool ControlConfigRobotServices::ResetPayloadInformation(const std::shared_ptr<k
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -929,7 +929,7 @@ bool ControlConfigRobotServices::ResetToolConfiguration(const std::shared_ptr<ko
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -937,7 +937,7 @@ bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(const std::shared_ptr
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::ControlConfig::JointSpeedSoftLimits output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -964,7 +964,7 @@ bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(const std::shared_ptr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -972,7 +972,7 @@ bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(const std::shared_ptr
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::ControlConfig::TwistLinearSoftLimit output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -999,7 +999,7 @@ bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(const std::shared_ptr
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1007,7 +1007,7 @@ bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(const std::shared_pt
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::ControlConfig::TwistAngularSoftLimit output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1034,7 +1034,7 @@ bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(const std::shared_pt
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1042,7 +1042,7 @@ bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(const std::sha
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::ControlConfig::JointAccelerationSoftLimits output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1069,7 +1069,7 @@ bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(const std::sha
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 
@@ -1080,7 +1080,7 @@ bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(co
 	if (m_is_activated_ControlModeTopic)
 		return true;
 	Kinova::Api::Common::NotificationOptions input;
-	ToProtoData(req.input, &input);
+	ToProtoData(req->input, &input);
 	Kinova::Api::Common::NotificationHandle output;
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1109,7 +1109,7 @@ bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(co
 		RCLCPP_INFO(m_node_handle->get_logger(), "%s", ex2.what());
 		return false;
 	}
-	ToRosData(output, res.output);
+	ToRosData(output, res->output);
 	return true;
 }
 void ControlConfigRobotServices::cb_ControlModeTopic(Kinova::Api::ControlConfig::ControlModeNotification notif)
