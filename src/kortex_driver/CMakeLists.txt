@@ -5,6 +5,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+add_definitions(-w)
+
 set(CONAN_TARGET_PLATFORM "x86")
 
 # Explicitely specify the build type in case the user did not do it
