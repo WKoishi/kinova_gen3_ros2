@@ -152,10 +152,10 @@ KortexArmSimulation::KortexArmSimulation(rclcpp::Node::SharedPtr node_handle): m
     // Create publishers and subscribers
     for (int i = 0; i < GetDOF(); i++)
     {
-        m_pub_position_controllers.push_back(m_node_handle.advertise<std_msgs::Float64>(
+        m_pub_position_controllers.push_back(m_node_handle->create_publisher<std_msgs::Float64>(
             "/" + m_robot_name + "/" + m_prefix + "joint_" + std::to_string(i+1) + "_position_controller/command", 1000));
     }
-    m_pub_action_topic = m_node_handle.advertise<kortex_driver::msg::ActionNotification>("action_topic", 1000);
+    m_pub_action_topic = m_node_handle->create_publisher<kortex_driver::msg::ActionNotification>("action_topic", 1000);
     m_sub_joint_state = m_node_handle.subscribe("/" + m_robot_name + "/" + "joint_states", 1, &KortexArmSimulation::cb_joint_states, this);
     m_feedback.actuators.resize(GetDOF());
     m_feedback.interconnect.oneof_tool_feedback.gripper_feedback.resize(1);

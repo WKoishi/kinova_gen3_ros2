@@ -45,8 +45,8 @@
 DeviceConfigSimulationServices::DeviceConfigSimulationServices(rclcpp::Node::SharedPtr node_handle): 
 	IDeviceConfigServices(node_handle)
 {
-	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
-	m_pub_SafetyTopic = m_node_handle.advertise<kortex_driver::msg::SafetyNotification>("safety_topic", 1000);
+	m_pub_Error = m_node_handle->create_publisher<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_SafetyTopic = m_node_handle->create_publisher<kortex_driver::msg::SafetyNotification>("safety_topic", 1000);
 	m_is_activated_SafetyTopic = false;
 
 	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("device_config/set_device_id", std::bind(&DeviceConfigSimulationServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));

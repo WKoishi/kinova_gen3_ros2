@@ -45,7 +45,7 @@
 InterconnectConfigSimulationServices::InterconnectConfigSimulationServices(rclcpp::Node::SharedPtr node_handle): 
 	IInterconnectConfigServices(node_handle)
 {
-	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_Error = m_node_handle->create_publisher<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
 	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("interconnect_config/set_device_id", std::bind(&InterconnectConfigSimulationServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));
 	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("interconnect_config/set_api_options", std::bind(&InterconnectConfigSimulationServices::SetApiOptions, this, std::placeholders::_1, std::placeholders::_2));

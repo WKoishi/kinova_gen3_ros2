@@ -45,10 +45,10 @@
 ControlConfigSimulationServices::ControlConfigSimulationServices(rclcpp::Node::SharedPtr node_handle): 
 	IControlConfigServices(node_handle)
 {
-	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
-	m_pub_ControlConfigurationTopic = m_node_handle.advertise<kortex_driver::msg::ControlConfigurationNotification>("control_configuration_topic", 1000);
+	m_pub_Error = m_node_handle->create_publisher<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_ControlConfigurationTopic = m_node_handle->create_publisher<kortex_driver::msg::ControlConfigurationNotification>("control_configuration_topic", 1000);
 	m_is_activated_ControlConfigurationTopic = false;
-	m_pub_ControlModeTopic = m_node_handle.advertise<kortex_driver::msg::ControlConfigControlModeNotification>("control_mode_topic", 1000);
+	m_pub_ControlModeTopic = m_node_handle->create_publisher<kortex_driver::msg::ControlConfigControlModeNotification>("control_mode_topic", 1000);
 	m_is_activated_ControlModeTopic = false;
 
 	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("control_config/set_device_id", std::bind(&ControlConfigSimulationServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));

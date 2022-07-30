@@ -49,7 +49,7 @@ DeviceManagerRobotServices::DeviceManagerRobotServices(rclcpp::Node::SharedPtr n
 {
 	m_api_options.timeout_ms = timeout_ms;
 
-	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_Error = m_node_handle->create_publisher<kortex_driver::msg::KortexError>("kortex_error", 1000);
 
 	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("device_manager/set_device_id", std::bind(&DeviceManagerRobotServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));
 	m_serviceSetApiOptions = m_node_handle->create_service<kortex_driver::srv::SetApiOptions>("device_manager/set_api_options", std::bind(&DeviceManagerRobotServices::SetApiOptions, this, std::placeholders::_1, std::placeholders::_2));

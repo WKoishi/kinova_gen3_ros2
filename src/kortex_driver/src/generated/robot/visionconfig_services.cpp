@@ -49,8 +49,8 @@ VisionConfigRobotServices::VisionConfigRobotServices(rclcpp::Node::SharedPtr nod
 {
 	m_api_options.timeout_ms = timeout_ms;
 
-	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
-	m_pub_VisionTopic = m_node_handle.advertise<kortex_driver::msg::VisionNotification>("vision_topic", 1000);
+	m_pub_Error = m_node_handle->create_publisher<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_VisionTopic = m_node_handle->create_publisher<kortex_driver::msg::VisionNotification>("vision_topic", 1000);
 	m_is_activated_VisionTopic = false;
 
 	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("vision_config/set_device_id", std::bind(&VisionConfigRobotServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));

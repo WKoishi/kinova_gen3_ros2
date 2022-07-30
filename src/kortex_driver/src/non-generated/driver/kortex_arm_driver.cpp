@@ -44,8 +44,8 @@ KortexArmDriver::KortexArmDriver(rclcpp::Node::SharedPtr nh):   m_node_handle(nh
     }
 
     // Start the thread to publish the feedback and joint states
-    m_pub_base_feedback = m_node_handle.advertise<kortex_driver::msg::BaseCyclicFeedback>("base_feedback", 1000);
-    m_pub_joint_state = m_node_handle.advertise<sensor_msgs::JointState>("base_feedback/joint_state", 1000);
+    m_pub_base_feedback = m_node_handle->create_publisher<kortex_driver::msg::BaseCyclicFeedback>("base_feedback", 1000);
+    m_pub_joint_state = m_node_handle->create_publisher<sensor_msgs::JointState>("base_feedback/joint_state", 1000);
     if (m_is_real_robot)
     {
         m_publish_feedback_thread = std::thread(&KortexArmDriver::publishRobotFeedback, this);

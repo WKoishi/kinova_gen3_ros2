@@ -45,34 +45,34 @@
 BaseSimulationServices::BaseSimulationServices(rclcpp::Node::SharedPtr node_handle): 
 	IBaseServices(node_handle)
 {
-	m_pub_Error = m_node_handle.advertise<kortex_driver::msg::KortexError>("kortex_error", 1000);
-	m_pub_ConfigurationChangeTopic = m_node_handle.advertise<kortex_driver::msg::ConfigurationChangeNotification>("configuration_change_topic", 1000);
+	m_pub_Error = m_node_handle->create_publisher<kortex_driver::msg::KortexError>("kortex_error", 1000);
+	m_pub_ConfigurationChangeTopic = m_node_handle->create_publisher<kortex_driver::msg::ConfigurationChangeNotification>("configuration_change_topic", 1000);
 	m_is_activated_ConfigurationChangeTopic = false;
-	m_pub_MappingInfoTopic = m_node_handle.advertise<kortex_driver::msg::MappingInfoNotification>("mapping_info_topic", 1000);
+	m_pub_MappingInfoTopic = m_node_handle->create_publisher<kortex_driver::msg::MappingInfoNotification>("mapping_info_topic", 1000);
 	m_is_activated_MappingInfoTopic = false;
-	m_pub_ControlModeTopic = m_node_handle.advertise<kortex_driver::msg::BaseControlModeNotification>("control_mode_topic", 1000);
+	m_pub_ControlModeTopic = m_node_handle->create_publisher<kortex_driver::msg::BaseControlModeNotification>("control_mode_topic", 1000);
 	m_is_activated_ControlModeTopic = false;
-	m_pub_OperatingModeTopic = m_node_handle.advertise<kortex_driver::msg::OperatingModeNotification>("operating_mode_topic", 1000);
+	m_pub_OperatingModeTopic = m_node_handle->create_publisher<kortex_driver::msg::OperatingModeNotification>("operating_mode_topic", 1000);
 	m_is_activated_OperatingModeTopic = false;
-	m_pub_SequenceInfoTopic = m_node_handle.advertise<kortex_driver::msg::SequenceInfoNotification>("sequence_info_topic", 1000);
+	m_pub_SequenceInfoTopic = m_node_handle->create_publisher<kortex_driver::msg::SequenceInfoNotification>("sequence_info_topic", 1000);
 	m_is_activated_SequenceInfoTopic = false;
-	m_pub_ProtectionZoneTopic = m_node_handle.advertise<kortex_driver::msg::ProtectionZoneNotification>("protection_zone_topic", 1000);
+	m_pub_ProtectionZoneTopic = m_node_handle->create_publisher<kortex_driver::msg::ProtectionZoneNotification>("protection_zone_topic", 1000);
 	m_is_activated_ProtectionZoneTopic = false;
-	m_pub_UserTopic = m_node_handle.advertise<kortex_driver::msg::UserNotification>("user_topic", 1000);
+	m_pub_UserTopic = m_node_handle->create_publisher<kortex_driver::msg::UserNotification>("user_topic", 1000);
 	m_is_activated_UserTopic = false;
-	m_pub_ControllerTopic = m_node_handle.advertise<kortex_driver::msg::ControllerNotification>("controller_topic", 1000);
+	m_pub_ControllerTopic = m_node_handle->create_publisher<kortex_driver::msg::ControllerNotification>("controller_topic", 1000);
 	m_is_activated_ControllerTopic = false;
-	m_pub_ActionTopic = m_node_handle.advertise<kortex_driver::msg::ActionNotification>("action_topic", 1000);
+	m_pub_ActionTopic = m_node_handle->create_publisher<kortex_driver::msg::ActionNotification>("action_topic", 1000);
 	m_is_activated_ActionTopic = false;
-	m_pub_RobotEventTopic = m_node_handle.advertise<kortex_driver::msg::RobotEventNotification>("robot_event_topic", 1000);
+	m_pub_RobotEventTopic = m_node_handle->create_publisher<kortex_driver::msg::RobotEventNotification>("robot_event_topic", 1000);
 	m_is_activated_RobotEventTopic = false;
-	m_pub_ServoingModeTopic = m_node_handle.advertise<kortex_driver::msg::ServoingModeNotification>("servoing_mode_topic", 1000);
+	m_pub_ServoingModeTopic = m_node_handle->create_publisher<kortex_driver::msg::ServoingModeNotification>("servoing_mode_topic", 1000);
 	m_is_activated_ServoingModeTopic = false;
-	m_pub_FactoryTopic = m_node_handle.advertise<kortex_driver::msg::FactoryNotification>("factory_topic", 1000);
+	m_pub_FactoryTopic = m_node_handle->create_publisher<kortex_driver::msg::FactoryNotification>("factory_topic", 1000);
 	m_is_activated_FactoryTopic = false;
-	m_pub_NetworkTopic = m_node_handle.advertise<kortex_driver::msg::NetworkNotification>("network_topic", 1000);
+	m_pub_NetworkTopic = m_node_handle->create_publisher<kortex_driver::msg::NetworkNotification>("network_topic", 1000);
 	m_is_activated_NetworkTopic = false;
-	m_pub_ArmStateTopic = m_node_handle.advertise<kortex_driver::msg::ArmStateNotification>("arm_state_topic", 1000);
+	m_pub_ArmStateTopic = m_node_handle->create_publisher<kortex_driver::msg::ArmStateNotification>("arm_state_topic", 1000);
 	m_is_activated_ArmStateTopic = false;
 
 	m_serviceSetDeviceID = m_node_handle->create_service<kortex_driver::srv::SetDeviceID>("base/set_device_id", std::bind(&BaseSimulationServices::SetDeviceID, this, std::placeholders::_1, std::placeholders::_2));
