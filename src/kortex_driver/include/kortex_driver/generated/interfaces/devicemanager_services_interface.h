@@ -39,9 +39,9 @@ class IDeviceManagerServices
     public:
         IDeviceManagerServices(rclcpp::Node::SharedPtr node_handle) : m_node_handle(node_handle) {}
 
-        virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) = 0;
-        virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) = 0;
-        virtual bool ReadAllDevices(kortex_driver::srv::ReadAllDevices::Request  &req, kortex_driver::srv::ReadAllDevices::Response &res) = 0;
+        virtual bool SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res) = 0;
+        virtual bool SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res) = 0;
+        virtual bool ReadAllDevices(const std::shared_ptr<kortex_driver::srv::ReadAllDevices::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllDevices::Response> res) = 0;
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;

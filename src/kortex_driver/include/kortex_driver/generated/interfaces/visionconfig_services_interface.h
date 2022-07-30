@@ -51,21 +51,21 @@ class IVisionConfigServices
     public:
         IVisionConfigServices(rclcpp::Node::SharedPtr node_handle) : m_node_handle(node_handle) {}
 
-        virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) = 0;
-        virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) = 0;
-        virtual bool SetSensorSettings(kortex_driver::srv::SetSensorSettings::Request  &req, kortex_driver::srv::SetSensorSettings::Response &res) = 0;
-        virtual bool GetSensorSettings(kortex_driver::srv::GetSensorSettings::Request  &req, kortex_driver::srv::GetSensorSettings::Response &res) = 0;
-        virtual bool GetOptionValue(kortex_driver::srv::GetOptionValue::Request  &req, kortex_driver::srv::GetOptionValue::Response &res) = 0;
-        virtual bool SetOptionValue(kortex_driver::srv::SetOptionValue::Request  &req, kortex_driver::srv::SetOptionValue::Response &res) = 0;
-        virtual bool GetOptionInformation(kortex_driver::srv::GetOptionInformation::Request  &req, kortex_driver::srv::GetOptionInformation::Response &res) = 0;
-        virtual bool OnNotificationVisionTopic(kortex_driver::srv::OnNotificationVisionTopic::Request  &req, kortex_driver::srv::OnNotificationVisionTopic::Response &res) = 0;
+        virtual bool SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res) = 0;
+        virtual bool SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res) = 0;
+        virtual bool SetSensorSettings(const std::shared_ptr<kortex_driver::srv::SetSensorSettings::Request> req, std::shared_ptr<kortex_driver::srv::SetSensorSettings::Response> res) = 0;
+        virtual bool GetSensorSettings(const std::shared_ptr<kortex_driver::srv::GetSensorSettings::Request> req, std::shared_ptr<kortex_driver::srv::GetSensorSettings::Response> res) = 0;
+        virtual bool GetOptionValue(const std::shared_ptr<kortex_driver::srv::GetOptionValue::Request> req, std::shared_ptr<kortex_driver::srv::GetOptionValue::Response> res) = 0;
+        virtual bool SetOptionValue(const std::shared_ptr<kortex_driver::srv::SetOptionValue::Request> req, std::shared_ptr<kortex_driver::srv::SetOptionValue::Response> res) = 0;
+        virtual bool GetOptionInformation(const std::shared_ptr<kortex_driver::srv::GetOptionInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetOptionInformation::Response> res) = 0;
+        virtual bool OnNotificationVisionTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationVisionTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationVisionTopic::Response> res) = 0;
         virtual void cb_VisionTopic(Kinova::Api::VisionConfig::VisionNotification notif) = 0;
-        virtual bool DoSensorFocusAction(kortex_driver::srv::DoSensorFocusAction::Request  &req, kortex_driver::srv::DoSensorFocusAction::Response &res) = 0;
-        virtual bool GetIntrinsicParameters(kortex_driver::srv::GetIntrinsicParameters::Request  &req, kortex_driver::srv::GetIntrinsicParameters::Response &res) = 0;
-        virtual bool GetIntrinsicParametersProfile(kortex_driver::srv::GetIntrinsicParametersProfile::Request  &req, kortex_driver::srv::GetIntrinsicParametersProfile::Response &res) = 0;
-        virtual bool SetIntrinsicParameters(kortex_driver::srv::SetIntrinsicParameters::Request  &req, kortex_driver::srv::SetIntrinsicParameters::Response &res) = 0;
-        virtual bool GetExtrinsicParameters(kortex_driver::srv::GetExtrinsicParameters::Request  &req, kortex_driver::srv::GetExtrinsicParameters::Response &res) = 0;
-        virtual bool SetExtrinsicParameters(kortex_driver::srv::SetExtrinsicParameters::Request  &req, kortex_driver::srv::SetExtrinsicParameters::Response &res) = 0;
+        virtual bool DoSensorFocusAction(const std::shared_ptr<kortex_driver::srv::DoSensorFocusAction::Request> req, std::shared_ptr<kortex_driver::srv::DoSensorFocusAction::Response> res) = 0;
+        virtual bool GetIntrinsicParameters(const std::shared_ptr<kortex_driver::srv::GetIntrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetIntrinsicParameters::Response> res) = 0;
+        virtual bool GetIntrinsicParametersProfile(const std::shared_ptr<kortex_driver::srv::GetIntrinsicParametersProfile::Request> req, std::shared_ptr<kortex_driver::srv::GetIntrinsicParametersProfile::Response> res) = 0;
+        virtual bool SetIntrinsicParameters(const std::shared_ptr<kortex_driver::srv::SetIntrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetIntrinsicParameters::Response> res) = 0;
+        virtual bool GetExtrinsicParameters(const std::shared_ptr<kortex_driver::srv::GetExtrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetExtrinsicParameters::Response> res) = 0;
+        virtual bool SetExtrinsicParameters(const std::shared_ptr<kortex_driver::srv::SetExtrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetExtrinsicParameters::Response> res) = 0;
 
 protected:
         rclcpp::Node::SharedPtr m_node_handle;

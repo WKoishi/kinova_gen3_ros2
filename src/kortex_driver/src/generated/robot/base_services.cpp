@@ -232,14 +232,14 @@ BaseRobotServices::BaseRobotServices(rclcpp::Node::SharedPtr node_handle, Kinova
 	m_serviceValidateWaypointList = m_node_handle->create_service<kortex_driver::srv::ValidateWaypointList>("base/validate_waypoint_list", std::bind(&BaseRobotServices::ValidateWaypointList, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool BaseRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool BaseRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool BaseRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool BaseRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -247,7 +247,7 @@ bool BaseRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request
 }
 
 
-bool BaseRobotServices::CreateUserProfile(kortex_driver::srv::CreateUserProfile::Request  &req, kortex_driver::srv::CreateUserProfile::Response &res)
+bool BaseRobotServices::CreateUserProfile(const std::shared_ptr<kortex_driver::srv::CreateUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::CreateUserProfile::Response> res)
 {
 	
 	Kinova::Api::Base::FullUserProfile input;
@@ -282,7 +282,7 @@ bool BaseRobotServices::CreateUserProfile(kortex_driver::srv::CreateUserProfile:
 	return true;
 }
 
-bool BaseRobotServices::UpdateUserProfile(kortex_driver::srv::UpdateUserProfile::Request  &req, kortex_driver::srv::UpdateUserProfile::Response &res)
+bool BaseRobotServices::UpdateUserProfile(const std::shared_ptr<kortex_driver::srv::UpdateUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::UpdateUserProfile::Response> res)
 {
 	
 	Kinova::Api::Base::UserProfile input;
@@ -314,7 +314,7 @@ bool BaseRobotServices::UpdateUserProfile(kortex_driver::srv::UpdateUserProfile:
 	return true;
 }
 
-bool BaseRobotServices::ReadUserProfile(kortex_driver::srv::ReadUserProfile::Request  &req, kortex_driver::srv::ReadUserProfile::Response &res)
+bool BaseRobotServices::ReadUserProfile(const std::shared_ptr<kortex_driver::srv::ReadUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::ReadUserProfile::Response> res)
 {
 	
 	Kinova::Api::Common::UserProfileHandle input;
@@ -349,7 +349,7 @@ bool BaseRobotServices::ReadUserProfile(kortex_driver::srv::ReadUserProfile::Req
 	return true;
 }
 
-bool BaseRobotServices::DeleteUserProfile(kortex_driver::srv::DeleteUserProfile::Request  &req, kortex_driver::srv::DeleteUserProfile::Response &res)
+bool BaseRobotServices::DeleteUserProfile(const std::shared_ptr<kortex_driver::srv::DeleteUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::DeleteUserProfile::Response> res)
 {
 	
 	Kinova::Api::Common::UserProfileHandle input;
@@ -381,7 +381,7 @@ bool BaseRobotServices::DeleteUserProfile(kortex_driver::srv::DeleteUserProfile:
 	return true;
 }
 
-bool BaseRobotServices::ReadAllUserProfiles(kortex_driver::srv::ReadAllUserProfiles::Request  &req, kortex_driver::srv::ReadAllUserProfiles::Response &res)
+bool BaseRobotServices::ReadAllUserProfiles(const std::shared_ptr<kortex_driver::srv::ReadAllUserProfiles::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllUserProfiles::Response> res)
 {
 	
 	Kinova::Api::Base::UserProfileList output;
@@ -414,7 +414,7 @@ bool BaseRobotServices::ReadAllUserProfiles(kortex_driver::srv::ReadAllUserProfi
 	return true;
 }
 
-bool BaseRobotServices::ReadAllUsers(kortex_driver::srv::ReadAllUsers::Request  &req, kortex_driver::srv::ReadAllUsers::Response &res)
+bool BaseRobotServices::ReadAllUsers(const std::shared_ptr<kortex_driver::srv::ReadAllUsers::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllUsers::Response> res)
 {
 	
 	Kinova::Api::Base::UserList output;
@@ -447,7 +447,7 @@ bool BaseRobotServices::ReadAllUsers(kortex_driver::srv::ReadAllUsers::Request  
 	return true;
 }
 
-bool BaseRobotServices::ChangePassword(kortex_driver::srv::ChangePassword::Request  &req, kortex_driver::srv::ChangePassword::Response &res)
+bool BaseRobotServices::ChangePassword(const std::shared_ptr<kortex_driver::srv::ChangePassword::Request> req, std::shared_ptr<kortex_driver::srv::ChangePassword::Response> res)
 {
 	
 	Kinova::Api::Base::PasswordChange input;
@@ -479,7 +479,7 @@ bool BaseRobotServices::ChangePassword(kortex_driver::srv::ChangePassword::Reque
 	return true;
 }
 
-bool BaseRobotServices::CreateSequence(kortex_driver::srv::CreateSequence::Request  &req, kortex_driver::srv::CreateSequence::Response &res)
+bool BaseRobotServices::CreateSequence(const std::shared_ptr<kortex_driver::srv::CreateSequence::Request> req, std::shared_ptr<kortex_driver::srv::CreateSequence::Response> res)
 {
 	
 	Kinova::Api::Base::Sequence input;
@@ -514,7 +514,7 @@ bool BaseRobotServices::CreateSequence(kortex_driver::srv::CreateSequence::Reque
 	return true;
 }
 
-bool BaseRobotServices::UpdateSequence(kortex_driver::srv::UpdateSequence::Request  &req, kortex_driver::srv::UpdateSequence::Response &res)
+bool BaseRobotServices::UpdateSequence(const std::shared_ptr<kortex_driver::srv::UpdateSequence::Request> req, std::shared_ptr<kortex_driver::srv::UpdateSequence::Response> res)
 {
 	
 	Kinova::Api::Base::Sequence input;
@@ -546,7 +546,7 @@ bool BaseRobotServices::UpdateSequence(kortex_driver::srv::UpdateSequence::Reque
 	return true;
 }
 
-bool BaseRobotServices::ReadSequence(kortex_driver::srv::ReadSequence::Request  &req, kortex_driver::srv::ReadSequence::Response &res)
+bool BaseRobotServices::ReadSequence(const std::shared_ptr<kortex_driver::srv::ReadSequence::Request> req, std::shared_ptr<kortex_driver::srv::ReadSequence::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
@@ -581,7 +581,7 @@ bool BaseRobotServices::ReadSequence(kortex_driver::srv::ReadSequence::Request  
 	return true;
 }
 
-bool BaseRobotServices::DeleteSequence(kortex_driver::srv::DeleteSequence::Request  &req, kortex_driver::srv::DeleteSequence::Response &res)
+bool BaseRobotServices::DeleteSequence(const std::shared_ptr<kortex_driver::srv::DeleteSequence::Request> req, std::shared_ptr<kortex_driver::srv::DeleteSequence::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
@@ -613,7 +613,7 @@ bool BaseRobotServices::DeleteSequence(kortex_driver::srv::DeleteSequence::Reque
 	return true;
 }
 
-bool BaseRobotServices::ReadAllSequences(kortex_driver::srv::ReadAllSequences::Request  &req, kortex_driver::srv::ReadAllSequences::Response &res)
+bool BaseRobotServices::ReadAllSequences(const std::shared_ptr<kortex_driver::srv::ReadAllSequences::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllSequences::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceList output;
@@ -646,7 +646,7 @@ bool BaseRobotServices::ReadAllSequences(kortex_driver::srv::ReadAllSequences::R
 	return true;
 }
 
-bool BaseRobotServices::PlaySequence(kortex_driver::srv::PlaySequence::Request  &req, kortex_driver::srv::PlaySequence::Response &res)
+bool BaseRobotServices::PlaySequence(const std::shared_ptr<kortex_driver::srv::PlaySequence::Request> req, std::shared_ptr<kortex_driver::srv::PlaySequence::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
@@ -678,7 +678,7 @@ bool BaseRobotServices::PlaySequence(kortex_driver::srv::PlaySequence::Request  
 	return true;
 }
 
-bool BaseRobotServices::PlayAdvancedSequence(kortex_driver::srv::PlayAdvancedSequence::Request  &req, kortex_driver::srv::PlayAdvancedSequence::Response &res)
+bool BaseRobotServices::PlayAdvancedSequence(const std::shared_ptr<kortex_driver::srv::PlayAdvancedSequence::Request> req, std::shared_ptr<kortex_driver::srv::PlayAdvancedSequence::Response> res)
 {
 	
 	Kinova::Api::Base::AdvancedSequenceHandle input;
@@ -710,7 +710,7 @@ bool BaseRobotServices::PlayAdvancedSequence(kortex_driver::srv::PlayAdvancedSeq
 	return true;
 }
 
-bool BaseRobotServices::StopSequence(kortex_driver::srv::StopSequence::Request  &req, kortex_driver::srv::StopSequence::Response &res)
+bool BaseRobotServices::StopSequence(const std::shared_ptr<kortex_driver::srv::StopSequence::Request> req, std::shared_ptr<kortex_driver::srv::StopSequence::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -740,7 +740,7 @@ bool BaseRobotServices::StopSequence(kortex_driver::srv::StopSequence::Request  
 	return true;
 }
 
-bool BaseRobotServices::PauseSequence(kortex_driver::srv::PauseSequence::Request  &req, kortex_driver::srv::PauseSequence::Response &res)
+bool BaseRobotServices::PauseSequence(const std::shared_ptr<kortex_driver::srv::PauseSequence::Request> req, std::shared_ptr<kortex_driver::srv::PauseSequence::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -770,7 +770,7 @@ bool BaseRobotServices::PauseSequence(kortex_driver::srv::PauseSequence::Request
 	return true;
 }
 
-bool BaseRobotServices::ResumeSequence(kortex_driver::srv::ResumeSequence::Request  &req, kortex_driver::srv::ResumeSequence::Response &res)
+bool BaseRobotServices::ResumeSequence(const std::shared_ptr<kortex_driver::srv::ResumeSequence::Request> req, std::shared_ptr<kortex_driver::srv::ResumeSequence::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -800,7 +800,7 @@ bool BaseRobotServices::ResumeSequence(kortex_driver::srv::ResumeSequence::Reque
 	return true;
 }
 
-bool BaseRobotServices::CreateProtectionZone(kortex_driver::srv::CreateProtectionZone::Request  &req, kortex_driver::srv::CreateProtectionZone::Response &res)
+bool BaseRobotServices::CreateProtectionZone(const std::shared_ptr<kortex_driver::srv::CreateProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::CreateProtectionZone::Response> res)
 {
 	
 	Kinova::Api::Base::ProtectionZone input;
@@ -835,7 +835,7 @@ bool BaseRobotServices::CreateProtectionZone(kortex_driver::srv::CreateProtectio
 	return true;
 }
 
-bool BaseRobotServices::UpdateProtectionZone(kortex_driver::srv::UpdateProtectionZone::Request  &req, kortex_driver::srv::UpdateProtectionZone::Response &res)
+bool BaseRobotServices::UpdateProtectionZone(const std::shared_ptr<kortex_driver::srv::UpdateProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::UpdateProtectionZone::Response> res)
 {
 	
 	Kinova::Api::Base::ProtectionZone input;
@@ -867,7 +867,7 @@ bool BaseRobotServices::UpdateProtectionZone(kortex_driver::srv::UpdateProtectio
 	return true;
 }
 
-bool BaseRobotServices::ReadProtectionZone(kortex_driver::srv::ReadProtectionZone::Request  &req, kortex_driver::srv::ReadProtectionZone::Response &res)
+bool BaseRobotServices::ReadProtectionZone(const std::shared_ptr<kortex_driver::srv::ReadProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::ReadProtectionZone::Response> res)
 {
 	
 	Kinova::Api::Base::ProtectionZoneHandle input;
@@ -902,7 +902,7 @@ bool BaseRobotServices::ReadProtectionZone(kortex_driver::srv::ReadProtectionZon
 	return true;
 }
 
-bool BaseRobotServices::DeleteProtectionZone(kortex_driver::srv::DeleteProtectionZone::Request  &req, kortex_driver::srv::DeleteProtectionZone::Response &res)
+bool BaseRobotServices::DeleteProtectionZone(const std::shared_ptr<kortex_driver::srv::DeleteProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::DeleteProtectionZone::Response> res)
 {
 	
 	Kinova::Api::Base::ProtectionZoneHandle input;
@@ -934,7 +934,7 @@ bool BaseRobotServices::DeleteProtectionZone(kortex_driver::srv::DeleteProtectio
 	return true;
 }
 
-bool BaseRobotServices::ReadAllProtectionZones(kortex_driver::srv::ReadAllProtectionZones::Request  &req, kortex_driver::srv::ReadAllProtectionZones::Response &res)
+bool BaseRobotServices::ReadAllProtectionZones(const std::shared_ptr<kortex_driver::srv::ReadAllProtectionZones::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllProtectionZones::Response> res)
 {
 	
 	Kinova::Api::Base::ProtectionZoneList output;
@@ -967,7 +967,7 @@ bool BaseRobotServices::ReadAllProtectionZones(kortex_driver::srv::ReadAllProtec
 	return true;
 }
 
-bool BaseRobotServices::CreateMapping(kortex_driver::srv::CreateMapping::Request  &req, kortex_driver::srv::CreateMapping::Response &res)
+bool BaseRobotServices::CreateMapping(const std::shared_ptr<kortex_driver::srv::CreateMapping::Request> req, std::shared_ptr<kortex_driver::srv::CreateMapping::Response> res)
 {
 	
 	Kinova::Api::Base::Mapping input;
@@ -1002,7 +1002,7 @@ bool BaseRobotServices::CreateMapping(kortex_driver::srv::CreateMapping::Request
 	return true;
 }
 
-bool BaseRobotServices::ReadMapping(kortex_driver::srv::ReadMapping::Request  &req, kortex_driver::srv::ReadMapping::Response &res)
+bool BaseRobotServices::ReadMapping(const std::shared_ptr<kortex_driver::srv::ReadMapping::Request> req, std::shared_ptr<kortex_driver::srv::ReadMapping::Response> res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
@@ -1037,7 +1037,7 @@ bool BaseRobotServices::ReadMapping(kortex_driver::srv::ReadMapping::Request  &r
 	return true;
 }
 
-bool BaseRobotServices::UpdateMapping(kortex_driver::srv::UpdateMapping::Request  &req, kortex_driver::srv::UpdateMapping::Response &res)
+bool BaseRobotServices::UpdateMapping(const std::shared_ptr<kortex_driver::srv::UpdateMapping::Request> req, std::shared_ptr<kortex_driver::srv::UpdateMapping::Response> res)
 {
 	
 	Kinova::Api::Base::Mapping input;
@@ -1069,7 +1069,7 @@ bool BaseRobotServices::UpdateMapping(kortex_driver::srv::UpdateMapping::Request
 	return true;
 }
 
-bool BaseRobotServices::DeleteMapping(kortex_driver::srv::DeleteMapping::Request  &req, kortex_driver::srv::DeleteMapping::Response &res)
+bool BaseRobotServices::DeleteMapping(const std::shared_ptr<kortex_driver::srv::DeleteMapping::Request> req, std::shared_ptr<kortex_driver::srv::DeleteMapping::Response> res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
@@ -1101,7 +1101,7 @@ bool BaseRobotServices::DeleteMapping(kortex_driver::srv::DeleteMapping::Request
 	return true;
 }
 
-bool BaseRobotServices::ReadAllMappings(kortex_driver::srv::ReadAllMappings::Request  &req, kortex_driver::srv::ReadAllMappings::Response &res)
+bool BaseRobotServices::ReadAllMappings(const std::shared_ptr<kortex_driver::srv::ReadAllMappings::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllMappings::Response> res)
 {
 	
 	Kinova::Api::Base::MappingList output;
@@ -1134,7 +1134,7 @@ bool BaseRobotServices::ReadAllMappings(kortex_driver::srv::ReadAllMappings::Req
 	return true;
 }
 
-bool BaseRobotServices::CreateMap(kortex_driver::srv::CreateMap::Request  &req, kortex_driver::srv::CreateMap::Response &res)
+bool BaseRobotServices::CreateMap(const std::shared_ptr<kortex_driver::srv::CreateMap::Request> req, std::shared_ptr<kortex_driver::srv::CreateMap::Response> res)
 {
 	
 	Kinova::Api::Base::Map input;
@@ -1169,7 +1169,7 @@ bool BaseRobotServices::CreateMap(kortex_driver::srv::CreateMap::Request  &req, 
 	return true;
 }
 
-bool BaseRobotServices::ReadMap(kortex_driver::srv::ReadMap::Request  &req, kortex_driver::srv::ReadMap::Response &res)
+bool BaseRobotServices::ReadMap(const std::shared_ptr<kortex_driver::srv::ReadMap::Request> req, std::shared_ptr<kortex_driver::srv::ReadMap::Response> res)
 {
 	
 	Kinova::Api::Base::MapHandle input;
@@ -1204,7 +1204,7 @@ bool BaseRobotServices::ReadMap(kortex_driver::srv::ReadMap::Request  &req, kort
 	return true;
 }
 
-bool BaseRobotServices::UpdateMap(kortex_driver::srv::UpdateMap::Request  &req, kortex_driver::srv::UpdateMap::Response &res)
+bool BaseRobotServices::UpdateMap(const std::shared_ptr<kortex_driver::srv::UpdateMap::Request> req, std::shared_ptr<kortex_driver::srv::UpdateMap::Response> res)
 {
 	
 	Kinova::Api::Base::Map input;
@@ -1236,7 +1236,7 @@ bool BaseRobotServices::UpdateMap(kortex_driver::srv::UpdateMap::Request  &req, 
 	return true;
 }
 
-bool BaseRobotServices::DeleteMap(kortex_driver::srv::DeleteMap::Request  &req, kortex_driver::srv::DeleteMap::Response &res)
+bool BaseRobotServices::DeleteMap(const std::shared_ptr<kortex_driver::srv::DeleteMap::Request> req, std::shared_ptr<kortex_driver::srv::DeleteMap::Response> res)
 {
 	
 	Kinova::Api::Base::MapHandle input;
@@ -1268,7 +1268,7 @@ bool BaseRobotServices::DeleteMap(kortex_driver::srv::DeleteMap::Request  &req, 
 	return true;
 }
 
-bool BaseRobotServices::ReadAllMaps(kortex_driver::srv::ReadAllMaps::Request  &req, kortex_driver::srv::ReadAllMaps::Response &res)
+bool BaseRobotServices::ReadAllMaps(const std::shared_ptr<kortex_driver::srv::ReadAllMaps::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllMaps::Response> res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
@@ -1303,7 +1303,7 @@ bool BaseRobotServices::ReadAllMaps(kortex_driver::srv::ReadAllMaps::Request  &r
 	return true;
 }
 
-bool BaseRobotServices::ActivateMap(kortex_driver::srv::ActivateMap::Request  &req, kortex_driver::srv::ActivateMap::Response &res)
+bool BaseRobotServices::ActivateMap(const std::shared_ptr<kortex_driver::srv::ActivateMap::Request> req, std::shared_ptr<kortex_driver::srv::ActivateMap::Response> res)
 {
 	
 	Kinova::Api::Base::ActivateMapHandle input;
@@ -1335,7 +1335,7 @@ bool BaseRobotServices::ActivateMap(kortex_driver::srv::ActivateMap::Request  &r
 	return true;
 }
 
-bool BaseRobotServices::CreateAction(kortex_driver::srv::CreateAction::Request  &req, kortex_driver::srv::CreateAction::Response &res)
+bool BaseRobotServices::CreateAction(const std::shared_ptr<kortex_driver::srv::CreateAction::Request> req, std::shared_ptr<kortex_driver::srv::CreateAction::Response> res)
 {
 	
 	Kinova::Api::Base::Action input;
@@ -1370,7 +1370,7 @@ bool BaseRobotServices::CreateAction(kortex_driver::srv::CreateAction::Request  
 	return true;
 }
 
-bool BaseRobotServices::ReadAction(kortex_driver::srv::ReadAction::Request  &req, kortex_driver::srv::ReadAction::Response &res)
+bool BaseRobotServices::ReadAction(const std::shared_ptr<kortex_driver::srv::ReadAction::Request> req, std::shared_ptr<kortex_driver::srv::ReadAction::Response> res)
 {
 	
 	Kinova::Api::Base::ActionHandle input;
@@ -1405,7 +1405,7 @@ bool BaseRobotServices::ReadAction(kortex_driver::srv::ReadAction::Request  &req
 	return true;
 }
 
-bool BaseRobotServices::ReadAllActions(kortex_driver::srv::ReadAllActions::Request  &req, kortex_driver::srv::ReadAllActions::Response &res)
+bool BaseRobotServices::ReadAllActions(const std::shared_ptr<kortex_driver::srv::ReadAllActions::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllActions::Response> res)
 {
 	
 	Kinova::Api::Base::RequestedActionType input;
@@ -1440,7 +1440,7 @@ bool BaseRobotServices::ReadAllActions(kortex_driver::srv::ReadAllActions::Reque
 	return true;
 }
 
-bool BaseRobotServices::DeleteAction(kortex_driver::srv::DeleteAction::Request  &req, kortex_driver::srv::DeleteAction::Response &res)
+bool BaseRobotServices::DeleteAction(const std::shared_ptr<kortex_driver::srv::DeleteAction::Request> req, std::shared_ptr<kortex_driver::srv::DeleteAction::Response> res)
 {
 	
 	Kinova::Api::Base::ActionHandle input;
@@ -1472,7 +1472,7 @@ bool BaseRobotServices::DeleteAction(kortex_driver::srv::DeleteAction::Request  
 	return true;
 }
 
-bool BaseRobotServices::UpdateAction(kortex_driver::srv::UpdateAction::Request  &req, kortex_driver::srv::UpdateAction::Response &res)
+bool BaseRobotServices::UpdateAction(const std::shared_ptr<kortex_driver::srv::UpdateAction::Request> req, std::shared_ptr<kortex_driver::srv::UpdateAction::Response> res)
 {
 	
 	Kinova::Api::Base::Action input;
@@ -1504,7 +1504,7 @@ bool BaseRobotServices::UpdateAction(kortex_driver::srv::UpdateAction::Request  
 	return true;
 }
 
-bool BaseRobotServices::ExecuteActionFromReference(kortex_driver::srv::ExecuteActionFromReference::Request  &req, kortex_driver::srv::ExecuteActionFromReference::Response &res)
+bool BaseRobotServices::ExecuteActionFromReference(const std::shared_ptr<kortex_driver::srv::ExecuteActionFromReference::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteActionFromReference::Response> res)
 {
 	
 	Kinova::Api::Base::ActionHandle input;
@@ -1536,7 +1536,7 @@ bool BaseRobotServices::ExecuteActionFromReference(kortex_driver::srv::ExecuteAc
 	return true;
 }
 
-bool BaseRobotServices::ExecuteAction(kortex_driver::srv::ExecuteAction::Request  &req, kortex_driver::srv::ExecuteAction::Response &res)
+bool BaseRobotServices::ExecuteAction(const std::shared_ptr<kortex_driver::srv::ExecuteAction::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteAction::Response> res)
 {
 	
 	Kinova::Api::Base::Action input;
@@ -1568,7 +1568,7 @@ bool BaseRobotServices::ExecuteAction(kortex_driver::srv::ExecuteAction::Request
 	return true;
 }
 
-bool BaseRobotServices::PauseAction(kortex_driver::srv::PauseAction::Request  &req, kortex_driver::srv::PauseAction::Response &res)
+bool BaseRobotServices::PauseAction(const std::shared_ptr<kortex_driver::srv::PauseAction::Request> req, std::shared_ptr<kortex_driver::srv::PauseAction::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1598,7 +1598,7 @@ bool BaseRobotServices::PauseAction(kortex_driver::srv::PauseAction::Request  &r
 	return true;
 }
 
-bool BaseRobotServices::StopAction(kortex_driver::srv::StopAction::Request  &req, kortex_driver::srv::StopAction::Response &res)
+bool BaseRobotServices::StopAction(const std::shared_ptr<kortex_driver::srv::StopAction::Request> req, std::shared_ptr<kortex_driver::srv::StopAction::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1628,7 +1628,7 @@ bool BaseRobotServices::StopAction(kortex_driver::srv::StopAction::Request  &req
 	return true;
 }
 
-bool BaseRobotServices::ResumeAction(kortex_driver::srv::ResumeAction::Request  &req, kortex_driver::srv::ResumeAction::Response &res)
+bool BaseRobotServices::ResumeAction(const std::shared_ptr<kortex_driver::srv::ResumeAction::Request> req, std::shared_ptr<kortex_driver::srv::ResumeAction::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -1658,7 +1658,7 @@ bool BaseRobotServices::ResumeAction(kortex_driver::srv::ResumeAction::Request  
 	return true;
 }
 
-bool BaseRobotServices::GetIPv4Configuration(kortex_driver::srv::GetIPv4Configuration::Request  &req, kortex_driver::srv::GetIPv4Configuration::Response &res)
+bool BaseRobotServices::GetIPv4Configuration(const std::shared_ptr<kortex_driver::srv::GetIPv4Configuration::Request> req, std::shared_ptr<kortex_driver::srv::GetIPv4Configuration::Response> res)
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
@@ -1693,7 +1693,7 @@ bool BaseRobotServices::GetIPv4Configuration(kortex_driver::srv::GetIPv4Configur
 	return true;
 }
 
-bool BaseRobotServices::SetIPv4Configuration(kortex_driver::srv::SetIPv4Configuration::Request  &req, kortex_driver::srv::SetIPv4Configuration::Response &res)
+bool BaseRobotServices::SetIPv4Configuration(const std::shared_ptr<kortex_driver::srv::SetIPv4Configuration::Request> req, std::shared_ptr<kortex_driver::srv::SetIPv4Configuration::Response> res)
 {
 	
 	Kinova::Api::Base::FullIPv4Configuration input;
@@ -1725,7 +1725,7 @@ bool BaseRobotServices::SetIPv4Configuration(kortex_driver::srv::SetIPv4Configur
 	return true;
 }
 
-bool BaseRobotServices::SetCommunicationInterfaceEnable(kortex_driver::srv::SetCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::SetCommunicationInterfaceEnable::Response &res)
+bool BaseRobotServices::SetCommunicationInterfaceEnable(const std::shared_ptr<kortex_driver::srv::SetCommunicationInterfaceEnable::Request> req, std::shared_ptr<kortex_driver::srv::SetCommunicationInterfaceEnable::Response> res)
 {
 	
 	Kinova::Api::Base::CommunicationInterfaceConfiguration input;
@@ -1757,7 +1757,7 @@ bool BaseRobotServices::SetCommunicationInterfaceEnable(kortex_driver::srv::SetC
 	return true;
 }
 
-bool BaseRobotServices::IsCommunicationInterfaceEnable(kortex_driver::srv::IsCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::IsCommunicationInterfaceEnable::Response &res)
+bool BaseRobotServices::IsCommunicationInterfaceEnable(const std::shared_ptr<kortex_driver::srv::IsCommunicationInterfaceEnable::Request> req, std::shared_ptr<kortex_driver::srv::IsCommunicationInterfaceEnable::Response> res)
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
@@ -1792,7 +1792,7 @@ bool BaseRobotServices::IsCommunicationInterfaceEnable(kortex_driver::srv::IsCom
 	return true;
 }
 
-bool BaseRobotServices::GetAvailableWifi(kortex_driver::srv::GetAvailableWifi::Request  &req, kortex_driver::srv::GetAvailableWifi::Response &res)
+bool BaseRobotServices::GetAvailableWifi(const std::shared_ptr<kortex_driver::srv::GetAvailableWifi::Request> req, std::shared_ptr<kortex_driver::srv::GetAvailableWifi::Response> res)
 {
 	
 	Kinova::Api::Base::WifiInformationList output;
@@ -1825,7 +1825,7 @@ bool BaseRobotServices::GetAvailableWifi(kortex_driver::srv::GetAvailableWifi::R
 	return true;
 }
 
-bool BaseRobotServices::GetWifiInformation(kortex_driver::srv::GetWifiInformation::Request  &req, kortex_driver::srv::GetWifiInformation::Response &res)
+bool BaseRobotServices::GetWifiInformation(const std::shared_ptr<kortex_driver::srv::GetWifiInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetWifiInformation::Response> res)
 {
 	
 	Kinova::Api::Base::Ssid input;
@@ -1860,7 +1860,7 @@ bool BaseRobotServices::GetWifiInformation(kortex_driver::srv::GetWifiInformatio
 	return true;
 }
 
-bool BaseRobotServices::AddWifiConfiguration(kortex_driver::srv::AddWifiConfiguration::Request  &req, kortex_driver::srv::AddWifiConfiguration::Response &res)
+bool BaseRobotServices::AddWifiConfiguration(const std::shared_ptr<kortex_driver::srv::AddWifiConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::AddWifiConfiguration::Response> res)
 {
 	
 	Kinova::Api::Base::WifiConfiguration input;
@@ -1892,7 +1892,7 @@ bool BaseRobotServices::AddWifiConfiguration(kortex_driver::srv::AddWifiConfigur
 	return true;
 }
 
-bool BaseRobotServices::DeleteWifiConfiguration(kortex_driver::srv::DeleteWifiConfiguration::Request  &req, kortex_driver::srv::DeleteWifiConfiguration::Response &res)
+bool BaseRobotServices::DeleteWifiConfiguration(const std::shared_ptr<kortex_driver::srv::DeleteWifiConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::DeleteWifiConfiguration::Response> res)
 {
 	
 	Kinova::Api::Base::Ssid input;
@@ -1924,7 +1924,7 @@ bool BaseRobotServices::DeleteWifiConfiguration(kortex_driver::srv::DeleteWifiCo
 	return true;
 }
 
-bool BaseRobotServices::GetAllConfiguredWifis(kortex_driver::srv::GetAllConfiguredWifis::Request  &req, kortex_driver::srv::GetAllConfiguredWifis::Response &res)
+bool BaseRobotServices::GetAllConfiguredWifis(const std::shared_ptr<kortex_driver::srv::GetAllConfiguredWifis::Request> req, std::shared_ptr<kortex_driver::srv::GetAllConfiguredWifis::Response> res)
 {
 	
 	Kinova::Api::Base::WifiConfigurationList output;
@@ -1957,7 +1957,7 @@ bool BaseRobotServices::GetAllConfiguredWifis(kortex_driver::srv::GetAllConfigur
 	return true;
 }
 
-bool BaseRobotServices::ConnectWifi(kortex_driver::srv::ConnectWifi::Request  &req, kortex_driver::srv::ConnectWifi::Response &res)
+bool BaseRobotServices::ConnectWifi(const std::shared_ptr<kortex_driver::srv::ConnectWifi::Request> req, std::shared_ptr<kortex_driver::srv::ConnectWifi::Response> res)
 {
 	
 	Kinova::Api::Base::Ssid input;
@@ -1989,7 +1989,7 @@ bool BaseRobotServices::ConnectWifi(kortex_driver::srv::ConnectWifi::Request  &r
 	return true;
 }
 
-bool BaseRobotServices::DisconnectWifi(kortex_driver::srv::DisconnectWifi::Request  &req, kortex_driver::srv::DisconnectWifi::Response &res)
+bool BaseRobotServices::DisconnectWifi(const std::shared_ptr<kortex_driver::srv::DisconnectWifi::Request> req, std::shared_ptr<kortex_driver::srv::DisconnectWifi::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2019,7 +2019,7 @@ bool BaseRobotServices::DisconnectWifi(kortex_driver::srv::DisconnectWifi::Reque
 	return true;
 }
 
-bool BaseRobotServices::GetConnectedWifiInformation(kortex_driver::srv::GetConnectedWifiInformation::Request  &req, kortex_driver::srv::GetConnectedWifiInformation::Response &res)
+bool BaseRobotServices::GetConnectedWifiInformation(const std::shared_ptr<kortex_driver::srv::GetConnectedWifiInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetConnectedWifiInformation::Response> res)
 {
 	
 	Kinova::Api::Base::WifiInformation output;
@@ -2052,7 +2052,7 @@ bool BaseRobotServices::GetConnectedWifiInformation(kortex_driver::srv::GetConne
 	return true;
 }
 
-bool BaseRobotServices::Base_Unsubscribe(kortex_driver::srv::BaseUnsubscribe::Request  &req, kortex_driver::srv::BaseUnsubscribe::Response &res)
+bool BaseRobotServices::Base_Unsubscribe(const std::shared_ptr<kortex_driver::srv::BaseUnsubscribe::Request> req, std::shared_ptr<kortex_driver::srv::BaseUnsubscribe::Response> res)
 {
 	
 	Kinova::Api::Common::NotificationHandle input;
@@ -2084,7 +2084,7 @@ bool BaseRobotServices::Base_Unsubscribe(kortex_driver::srv::BaseUnsubscribe::Re
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationConfigurationChangeTopic(kortex_driver::srv::OnNotificationConfigurationChangeTopic::Request  &req, kortex_driver::srv::OnNotificationConfigurationChangeTopic::Response &res)
+bool BaseRobotServices::OnNotificationConfigurationChangeTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationConfigurationChangeTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationConfigurationChangeTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2130,7 +2130,7 @@ void BaseRobotServices::cb_ConfigurationChangeTopic(Kinova::Api::Base::Configura
 	m_pub_ConfigurationChangeTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationMappingInfoTopic(kortex_driver::srv::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::srv::OnNotificationMappingInfoTopic::Response &res)
+bool BaseRobotServices::OnNotificationMappingInfoTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationMappingInfoTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationMappingInfoTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2176,7 +2176,7 @@ void BaseRobotServices::cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoNotifi
 	m_pub_MappingInfoTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::Base_OnNotificationControlModeTopic(kortex_driver::srv::BaseOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::BaseOnNotificationControlModeTopic::Response &res)
+bool BaseRobotServices::Base_OnNotificationControlModeTopic(const std::shared_ptr<kortex_driver::srv::BaseOnNotificationControlModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::BaseOnNotificationControlModeTopic::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/activate_publishing_of_control_mode_topic service is now deprecated and will be removed in a future release.");
 	
@@ -2223,7 +2223,7 @@ void BaseRobotServices::cb_ControlModeTopic(Kinova::Api::Base::ControlModeNotifi
 	m_pub_ControlModeTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationOperatingModeTopic(kortex_driver::srv::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::srv::OnNotificationOperatingModeTopic::Response &res)
+bool BaseRobotServices::OnNotificationOperatingModeTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationOperatingModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationOperatingModeTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2269,7 +2269,7 @@ void BaseRobotServices::cb_OperatingModeTopic(Kinova::Api::Base::OperatingModeNo
 	m_pub_OperatingModeTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationSequenceInfoTopic(kortex_driver::srv::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::srv::OnNotificationSequenceInfoTopic::Response &res)
+bool BaseRobotServices::OnNotificationSequenceInfoTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationSequenceInfoTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationSequenceInfoTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2315,7 +2315,7 @@ void BaseRobotServices::cb_SequenceInfoTopic(Kinova::Api::Base::SequenceInfoNoti
 	m_pub_SequenceInfoTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationProtectionZoneTopic(kortex_driver::srv::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::srv::OnNotificationProtectionZoneTopic::Response &res)
+bool BaseRobotServices::OnNotificationProtectionZoneTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationProtectionZoneTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationProtectionZoneTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2361,7 +2361,7 @@ void BaseRobotServices::cb_ProtectionZoneTopic(Kinova::Api::Base::ProtectionZone
 	m_pub_ProtectionZoneTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationUserTopic(kortex_driver::srv::OnNotificationUserTopic::Request  &req, kortex_driver::srv::OnNotificationUserTopic::Response &res)
+bool BaseRobotServices::OnNotificationUserTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationUserTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationUserTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2407,7 +2407,7 @@ void BaseRobotServices::cb_UserTopic(Kinova::Api::Base::UserNotification notif)
 	m_pub_UserTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationControllerTopic(kortex_driver::srv::OnNotificationControllerTopic::Request  &req, kortex_driver::srv::OnNotificationControllerTopic::Response &res)
+bool BaseRobotServices::OnNotificationControllerTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationControllerTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationControllerTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2453,7 +2453,7 @@ void BaseRobotServices::cb_ControllerTopic(Kinova::Api::Base::ControllerNotifica
 	m_pub_ControllerTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationActionTopic(kortex_driver::srv::OnNotificationActionTopic::Request  &req, kortex_driver::srv::OnNotificationActionTopic::Response &res)
+bool BaseRobotServices::OnNotificationActionTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationActionTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationActionTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2499,7 +2499,7 @@ void BaseRobotServices::cb_ActionTopic(Kinova::Api::Base::ActionNotification not
 	m_pub_ActionTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::OnNotificationRobotEventTopic(kortex_driver::srv::OnNotificationRobotEventTopic::Request  &req, kortex_driver::srv::OnNotificationRobotEventTopic::Response &res)
+bool BaseRobotServices::OnNotificationRobotEventTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationRobotEventTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationRobotEventTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -2545,7 +2545,7 @@ void BaseRobotServices::cb_RobotEventTopic(Kinova::Api::Base::RobotEventNotifica
 	m_pub_RobotEventTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesianTrajectory::Request  &req, kortex_driver::srv::PlayCartesianTrajectory::Response &res)
+bool BaseRobotServices::PlayCartesianTrajectory(const std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectory::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory service is now deprecated and will be removed in a future release.");
 	
@@ -2578,7 +2578,7 @@ bool BaseRobotServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesia
 	return true;
 }
 
-bool BaseRobotServices::PlayCartesianTrajectoryPosition(kortex_driver::srv::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryPosition::Response &res)
+bool BaseRobotServices::PlayCartesianTrajectoryPosition(const std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryPosition::Request> req, std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryPosition::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_position service is now deprecated and will be removed in a future release.");
 	
@@ -2611,7 +2611,7 @@ bool BaseRobotServices::PlayCartesianTrajectoryPosition(kortex_driver::srv::Play
 	return true;
 }
 
-bool BaseRobotServices::PlayCartesianTrajectoryOrientation(kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response &res)
+bool BaseRobotServices::PlayCartesianTrajectoryOrientation(const std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request> req, std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_orientation service is now deprecated and will be removed in a future release.");
 	
@@ -2644,7 +2644,7 @@ bool BaseRobotServices::PlayCartesianTrajectoryOrientation(kortex_driver::srv::P
 	return true;
 }
 
-bool BaseRobotServices::Stop(kortex_driver::srv::Stop::Request  &req, kortex_driver::srv::Stop::Response &res)
+bool BaseRobotServices::Stop(const std::shared_ptr<kortex_driver::srv::Stop::Request> req, std::shared_ptr<kortex_driver::srv::Stop::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -2674,7 +2674,7 @@ bool BaseRobotServices::Stop(kortex_driver::srv::Stop::Request  &req, kortex_dri
 	return true;
 }
 
-bool BaseRobotServices::GetMeasuredCartesianPose(kortex_driver::srv::GetMeasuredCartesianPose::Request  &req, kortex_driver::srv::GetMeasuredCartesianPose::Response &res)
+bool BaseRobotServices::GetMeasuredCartesianPose(const std::shared_ptr<kortex_driver::srv::GetMeasuredCartesianPose::Request> req, std::shared_ptr<kortex_driver::srv::GetMeasuredCartesianPose::Response> res)
 {
 	
 	Kinova::Api::Base::Pose output;
@@ -2707,7 +2707,7 @@ bool BaseRobotServices::GetMeasuredCartesianPose(kortex_driver::srv::GetMeasured
 	return true;
 }
 
-bool BaseRobotServices::SendWrenchCommand(kortex_driver::srv::SendWrenchCommand::Request  &req, kortex_driver::srv::SendWrenchCommand::Response &res)
+bool BaseRobotServices::SendWrenchCommand(const std::shared_ptr<kortex_driver::srv::SendWrenchCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendWrenchCommand::Response> res)
 {
 	
 	Kinova::Api::Base::WrenchCommand input;
@@ -2739,7 +2739,7 @@ bool BaseRobotServices::SendWrenchCommand(kortex_driver::srv::SendWrenchCommand:
 	return true;
 }
 
-bool BaseRobotServices::SendWrenchJoystickCommand(kortex_driver::srv::SendWrenchJoystickCommand::Request  &req, kortex_driver::srv::SendWrenchJoystickCommand::Response &res)
+bool BaseRobotServices::SendWrenchJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendWrenchJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendWrenchJoystickCommand::Response> res)
 {
 	
 	Kinova::Api::Base::WrenchCommand input;
@@ -2771,7 +2771,7 @@ bool BaseRobotServices::SendWrenchJoystickCommand(kortex_driver::srv::SendWrench
 	return true;
 }
 
-bool BaseRobotServices::SendTwistJoystickCommand(kortex_driver::srv::SendTwistJoystickCommand::Request  &req, kortex_driver::srv::SendTwistJoystickCommand::Response &res)
+bool BaseRobotServices::SendTwistJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendTwistJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendTwistJoystickCommand::Response> res)
 {
 	
 	Kinova::Api::Base::TwistCommand input;
@@ -2803,7 +2803,7 @@ bool BaseRobotServices::SendTwistJoystickCommand(kortex_driver::srv::SendTwistJo
 	return true;
 }
 
-bool BaseRobotServices::SendTwistCommand(kortex_driver::srv::SendTwistCommand::Request  &req, kortex_driver::srv::SendTwistCommand::Response &res)
+bool BaseRobotServices::SendTwistCommand(const std::shared_ptr<kortex_driver::srv::SendTwistCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendTwistCommand::Response> res)
 {
 	
 	Kinova::Api::Base::TwistCommand input;
@@ -2835,7 +2835,7 @@ bool BaseRobotServices::SendTwistCommand(kortex_driver::srv::SendTwistCommand::R
 	return true;
 }
 
-bool BaseRobotServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTrajectory::Request  &req, kortex_driver::srv::PlayJointTrajectory::Response &res)
+bool BaseRobotServices::PlayJointTrajectory(const std::shared_ptr<kortex_driver::srv::PlayJointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlayJointTrajectory::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
@@ -2868,7 +2868,7 @@ bool BaseRobotServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTraject
 	return true;
 }
 
-bool BaseRobotServices::PlaySelectedJointTrajectory(kortex_driver::srv::PlaySelectedJointTrajectory::Request  &req, kortex_driver::srv::PlaySelectedJointTrajectory::Response &res)
+bool BaseRobotServices::PlaySelectedJointTrajectory(const std::shared_ptr<kortex_driver::srv::PlaySelectedJointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlaySelectedJointTrajectory::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_selected_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
@@ -2901,7 +2901,7 @@ bool BaseRobotServices::PlaySelectedJointTrajectory(kortex_driver::srv::PlaySele
 	return true;
 }
 
-bool BaseRobotServices::GetMeasuredJointAngles(kortex_driver::srv::GetMeasuredJointAngles::Request  &req, kortex_driver::srv::GetMeasuredJointAngles::Response &res)
+bool BaseRobotServices::GetMeasuredJointAngles(const std::shared_ptr<kortex_driver::srv::GetMeasuredJointAngles::Request> req, std::shared_ptr<kortex_driver::srv::GetMeasuredJointAngles::Response> res)
 {
 	
 	Kinova::Api::Base::JointAngles output;
@@ -2934,7 +2934,7 @@ bool BaseRobotServices::GetMeasuredJointAngles(kortex_driver::srv::GetMeasuredJo
 	return true;
 }
 
-bool BaseRobotServices::SendJointSpeedsCommand(kortex_driver::srv::SendJointSpeedsCommand::Request  &req, kortex_driver::srv::SendJointSpeedsCommand::Response &res)
+bool BaseRobotServices::SendJointSpeedsCommand(const std::shared_ptr<kortex_driver::srv::SendJointSpeedsCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendJointSpeedsCommand::Response> res)
 {
 	
 	Kinova::Api::Base::JointSpeeds input;
@@ -2966,7 +2966,7 @@ bool BaseRobotServices::SendJointSpeedsCommand(kortex_driver::srv::SendJointSpee
 	return true;
 }
 
-bool BaseRobotServices::SendSelectedJointSpeedCommand(kortex_driver::srv::SendSelectedJointSpeedCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedCommand::Response &res)
+bool BaseRobotServices::SendSelectedJointSpeedCommand(const std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedCommand::Response> res)
 {
 	
 	Kinova::Api::Base::JointSpeed input;
@@ -2998,7 +2998,7 @@ bool BaseRobotServices::SendSelectedJointSpeedCommand(kortex_driver::srv::SendSe
 	return true;
 }
 
-bool BaseRobotServices::SendGripperCommand(kortex_driver::srv::SendGripperCommand::Request  &req, kortex_driver::srv::SendGripperCommand::Response &res)
+bool BaseRobotServices::SendGripperCommand(const std::shared_ptr<kortex_driver::srv::SendGripperCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendGripperCommand::Response> res)
 {
 	
 	Kinova::Api::Base::GripperCommand input;
@@ -3030,7 +3030,7 @@ bool BaseRobotServices::SendGripperCommand(kortex_driver::srv::SendGripperComman
 	return true;
 }
 
-bool BaseRobotServices::GetMeasuredGripperMovement(kortex_driver::srv::GetMeasuredGripperMovement::Request  &req, kortex_driver::srv::GetMeasuredGripperMovement::Response &res)
+bool BaseRobotServices::GetMeasuredGripperMovement(const std::shared_ptr<kortex_driver::srv::GetMeasuredGripperMovement::Request> req, std::shared_ptr<kortex_driver::srv::GetMeasuredGripperMovement::Response> res)
 {
 	
 	Kinova::Api::Base::GripperRequest input;
@@ -3065,7 +3065,7 @@ bool BaseRobotServices::GetMeasuredGripperMovement(kortex_driver::srv::GetMeasur
 	return true;
 }
 
-bool BaseRobotServices::SetAdmittance(kortex_driver::srv::SetAdmittance::Request  &req, kortex_driver::srv::SetAdmittance::Response &res)
+bool BaseRobotServices::SetAdmittance(const std::shared_ptr<kortex_driver::srv::SetAdmittance::Request> req, std::shared_ptr<kortex_driver::srv::SetAdmittance::Response> res)
 {
 	
 	Kinova::Api::Base::Admittance input;
@@ -3097,7 +3097,7 @@ bool BaseRobotServices::SetAdmittance(kortex_driver::srv::SetAdmittance::Request
 	return true;
 }
 
-bool BaseRobotServices::SetOperatingMode(kortex_driver::srv::SetOperatingMode::Request  &req, kortex_driver::srv::SetOperatingMode::Response &res)
+bool BaseRobotServices::SetOperatingMode(const std::shared_ptr<kortex_driver::srv::SetOperatingMode::Request> req, std::shared_ptr<kortex_driver::srv::SetOperatingMode::Response> res)
 {
 	
 	Kinova::Api::Base::OperatingModeInformation input;
@@ -3129,7 +3129,7 @@ bool BaseRobotServices::SetOperatingMode(kortex_driver::srv::SetOperatingMode::R
 	return true;
 }
 
-bool BaseRobotServices::ApplyEmergencyStop(kortex_driver::srv::ApplyEmergencyStop::Request  &req, kortex_driver::srv::ApplyEmergencyStop::Response &res)
+bool BaseRobotServices::ApplyEmergencyStop(const std::shared_ptr<kortex_driver::srv::ApplyEmergencyStop::Request> req, std::shared_ptr<kortex_driver::srv::ApplyEmergencyStop::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3159,7 +3159,7 @@ bool BaseRobotServices::ApplyEmergencyStop(kortex_driver::srv::ApplyEmergencySto
 	return true;
 }
 
-bool BaseRobotServices::Base_ClearFaults(kortex_driver::srv::BaseClearFaults::Request  &req, kortex_driver::srv::BaseClearFaults::Response &res)
+bool BaseRobotServices::Base_ClearFaults(const std::shared_ptr<kortex_driver::srv::BaseClearFaults::Request> req, std::shared_ptr<kortex_driver::srv::BaseClearFaults::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3189,7 +3189,7 @@ bool BaseRobotServices::Base_ClearFaults(kortex_driver::srv::BaseClearFaults::Re
 	return true;
 }
 
-bool BaseRobotServices::Base_GetControlMode(kortex_driver::srv::BaseGetControlMode::Request  &req, kortex_driver::srv::BaseGetControlMode::Response &res)
+bool BaseRobotServices::Base_GetControlMode(const std::shared_ptr<kortex_driver::srv::BaseGetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::BaseGetControlMode::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_control_mode service is now deprecated and will be removed in a future release.");
 	
@@ -3223,7 +3223,7 @@ bool BaseRobotServices::Base_GetControlMode(kortex_driver::srv::BaseGetControlMo
 	return true;
 }
 
-bool BaseRobotServices::GetOperatingMode(kortex_driver::srv::GetOperatingMode::Request  &req, kortex_driver::srv::GetOperatingMode::Response &res)
+bool BaseRobotServices::GetOperatingMode(const std::shared_ptr<kortex_driver::srv::GetOperatingMode::Request> req, std::shared_ptr<kortex_driver::srv::GetOperatingMode::Response> res)
 {
 	
 	Kinova::Api::Base::OperatingModeInformation output;
@@ -3256,7 +3256,7 @@ bool BaseRobotServices::GetOperatingMode(kortex_driver::srv::GetOperatingMode::R
 	return true;
 }
 
-bool BaseRobotServices::SetServoingMode(kortex_driver::srv::SetServoingMode::Request  &req, kortex_driver::srv::SetServoingMode::Response &res)
+bool BaseRobotServices::SetServoingMode(const std::shared_ptr<kortex_driver::srv::SetServoingMode::Request> req, std::shared_ptr<kortex_driver::srv::SetServoingMode::Response> res)
 {
 	
 	Kinova::Api::Base::ServoingModeInformation input;
@@ -3288,7 +3288,7 @@ bool BaseRobotServices::SetServoingMode(kortex_driver::srv::SetServoingMode::Req
 	return true;
 }
 
-bool BaseRobotServices::GetServoingMode(kortex_driver::srv::GetServoingMode::Request  &req, kortex_driver::srv::GetServoingMode::Response &res)
+bool BaseRobotServices::GetServoingMode(const std::shared_ptr<kortex_driver::srv::GetServoingMode::Request> req, std::shared_ptr<kortex_driver::srv::GetServoingMode::Response> res)
 {
 	
 	Kinova::Api::Base::ServoingModeInformation output;
@@ -3321,7 +3321,7 @@ bool BaseRobotServices::GetServoingMode(kortex_driver::srv::GetServoingMode::Req
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationServoingModeTopic(kortex_driver::srv::OnNotificationServoingModeTopic::Request  &req, kortex_driver::srv::OnNotificationServoingModeTopic::Response &res)
+bool BaseRobotServices::OnNotificationServoingModeTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationServoingModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationServoingModeTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3367,7 +3367,7 @@ void BaseRobotServices::cb_ServoingModeTopic(Kinova::Api::Base::ServoingModeNoti
 	m_pub_ServoingModeTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::RestoreFactorySettings(kortex_driver::srv::RestoreFactorySettings::Request  &req, kortex_driver::srv::RestoreFactorySettings::Response &res)
+bool BaseRobotServices::RestoreFactorySettings(const std::shared_ptr<kortex_driver::srv::RestoreFactorySettings::Request> req, std::shared_ptr<kortex_driver::srv::RestoreFactorySettings::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3397,7 +3397,7 @@ bool BaseRobotServices::RestoreFactorySettings(kortex_driver::srv::RestoreFactor
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationFactoryTopic(kortex_driver::srv::OnNotificationFactoryTopic::Request  &req, kortex_driver::srv::OnNotificationFactoryTopic::Response &res)
+bool BaseRobotServices::OnNotificationFactoryTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationFactoryTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationFactoryTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3443,7 +3443,7 @@ void BaseRobotServices::cb_FactoryTopic(Kinova::Api::Base::FactoryNotification n
 	m_pub_FactoryTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::GetAllConnectedControllers(kortex_driver::srv::GetAllConnectedControllers::Request  &req, kortex_driver::srv::GetAllConnectedControllers::Response &res)
+bool BaseRobotServices::GetAllConnectedControllers(const std::shared_ptr<kortex_driver::srv::GetAllConnectedControllers::Request> req, std::shared_ptr<kortex_driver::srv::GetAllConnectedControllers::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerList output;
@@ -3476,7 +3476,7 @@ bool BaseRobotServices::GetAllConnectedControllers(kortex_driver::srv::GetAllCon
 	return true;
 }
 
-bool BaseRobotServices::GetControllerState(kortex_driver::srv::GetControllerState::Request  &req, kortex_driver::srv::GetControllerState::Response &res)
+bool BaseRobotServices::GetControllerState(const std::shared_ptr<kortex_driver::srv::GetControllerState::Request> req, std::shared_ptr<kortex_driver::srv::GetControllerState::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerHandle input;
@@ -3511,7 +3511,7 @@ bool BaseRobotServices::GetControllerState(kortex_driver::srv::GetControllerStat
 	return true;
 }
 
-bool BaseRobotServices::GetActuatorCount(kortex_driver::srv::GetActuatorCount::Request  &req, kortex_driver::srv::GetActuatorCount::Response &res)
+bool BaseRobotServices::GetActuatorCount(const std::shared_ptr<kortex_driver::srv::GetActuatorCount::Request> req, std::shared_ptr<kortex_driver::srv::GetActuatorCount::Response> res)
 {
 	
 	Kinova::Api::Base::ActuatorInformation output;
@@ -3544,7 +3544,7 @@ bool BaseRobotServices::GetActuatorCount(kortex_driver::srv::GetActuatorCount::R
 	return true;
 }
 
-bool BaseRobotServices::StartWifiScan(kortex_driver::srv::StartWifiScan::Request  &req, kortex_driver::srv::StartWifiScan::Response &res)
+bool BaseRobotServices::StartWifiScan(const std::shared_ptr<kortex_driver::srv::StartWifiScan::Request> req, std::shared_ptr<kortex_driver::srv::StartWifiScan::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -3574,7 +3574,7 @@ bool BaseRobotServices::StartWifiScan(kortex_driver::srv::StartWifiScan::Request
 	return true;
 }
 
-bool BaseRobotServices::GetConfiguredWifi(kortex_driver::srv::GetConfiguredWifi::Request  &req, kortex_driver::srv::GetConfiguredWifi::Response &res)
+bool BaseRobotServices::GetConfiguredWifi(const std::shared_ptr<kortex_driver::srv::GetConfiguredWifi::Request> req, std::shared_ptr<kortex_driver::srv::GetConfiguredWifi::Response> res)
 {
 	
 	Kinova::Api::Base::Ssid input;
@@ -3609,7 +3609,7 @@ bool BaseRobotServices::GetConfiguredWifi(kortex_driver::srv::GetConfiguredWifi:
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationNetworkTopic(kortex_driver::srv::OnNotificationNetworkTopic::Request  &req, kortex_driver::srv::OnNotificationNetworkTopic::Response &res)
+bool BaseRobotServices::OnNotificationNetworkTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationNetworkTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationNetworkTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3655,7 +3655,7 @@ void BaseRobotServices::cb_NetworkTopic(Kinova::Api::Base::NetworkNotification n
 	m_pub_NetworkTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::GetArmState(kortex_driver::srv::GetArmState::Request  &req, kortex_driver::srv::GetArmState::Response &res)
+bool BaseRobotServices::GetArmState(const std::shared_ptr<kortex_driver::srv::GetArmState::Request> req, std::shared_ptr<kortex_driver::srv::GetArmState::Response> res)
 {
 	
 	Kinova::Api::Base::ArmStateInformation output;
@@ -3688,7 +3688,7 @@ bool BaseRobotServices::GetArmState(kortex_driver::srv::GetArmState::Request  &r
 	return true;
 }
 
-bool BaseRobotServices::OnNotificationArmStateTopic(kortex_driver::srv::OnNotificationArmStateTopic::Request  &req, kortex_driver::srv::OnNotificationArmStateTopic::Response &res)
+bool BaseRobotServices::OnNotificationArmStateTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationArmStateTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationArmStateTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -3734,7 +3734,7 @@ void BaseRobotServices::cb_ArmStateTopic(Kinova::Api::Base::ArmStateNotification
 	m_pub_ArmStateTopic->publish(ros_msg);
 }
 
-bool BaseRobotServices::GetIPv4Information(kortex_driver::srv::GetIPv4Information::Request  &req, kortex_driver::srv::GetIPv4Information::Response &res)
+bool BaseRobotServices::GetIPv4Information(const std::shared_ptr<kortex_driver::srv::GetIPv4Information::Request> req, std::shared_ptr<kortex_driver::srv::GetIPv4Information::Response> res)
 {
 	
 	Kinova::Api::Base::NetworkHandle input;
@@ -3769,7 +3769,7 @@ bool BaseRobotServices::GetIPv4Information(kortex_driver::srv::GetIPv4Informatio
 	return true;
 }
 
-bool BaseRobotServices::SetWifiCountryCode(kortex_driver::srv::SetWifiCountryCode::Request  &req, kortex_driver::srv::SetWifiCountryCode::Response &res)
+bool BaseRobotServices::SetWifiCountryCode(const std::shared_ptr<kortex_driver::srv::SetWifiCountryCode::Request> req, std::shared_ptr<kortex_driver::srv::SetWifiCountryCode::Response> res)
 {
 	
 	Kinova::Api::Common::CountryCode input;
@@ -3801,7 +3801,7 @@ bool BaseRobotServices::SetWifiCountryCode(kortex_driver::srv::SetWifiCountryCod
 	return true;
 }
 
-bool BaseRobotServices::GetWifiCountryCode(kortex_driver::srv::GetWifiCountryCode::Request  &req, kortex_driver::srv::GetWifiCountryCode::Response &res)
+bool BaseRobotServices::GetWifiCountryCode(const std::shared_ptr<kortex_driver::srv::GetWifiCountryCode::Request> req, std::shared_ptr<kortex_driver::srv::GetWifiCountryCode::Response> res)
 {
 	
 	Kinova::Api::Common::CountryCode output;
@@ -3834,7 +3834,7 @@ bool BaseRobotServices::GetWifiCountryCode(kortex_driver::srv::GetWifiCountryCod
 	return true;
 }
 
-bool BaseRobotServices::Base_SetCapSenseConfig(kortex_driver::srv::BaseSetCapSenseConfig::Request  &req, kortex_driver::srv::BaseSetCapSenseConfig::Response &res)
+bool BaseRobotServices::Base_SetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::BaseSetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::BaseSetCapSenseConfig::Response> res)
 {
 	
 	Kinova::Api::Base::CapSenseConfig input;
@@ -3866,7 +3866,7 @@ bool BaseRobotServices::Base_SetCapSenseConfig(kortex_driver::srv::BaseSetCapSen
 	return true;
 }
 
-bool BaseRobotServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetCapSenseConfig::Request  &req, kortex_driver::srv::BaseGetCapSenseConfig::Response &res)
+bool BaseRobotServices::Base_GetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::BaseGetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::BaseGetCapSenseConfig::Response> res)
 {
 	
 	Kinova::Api::Base::CapSenseConfig output;
@@ -3899,7 +3899,7 @@ bool BaseRobotServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetCapSen
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsSpeedHardLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_speed_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -3933,7 +3933,7 @@ bool BaseRobotServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetA
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsTorqueHardLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_torque_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -3967,7 +3967,7 @@ bool BaseRobotServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv::Get
 	return true;
 }
 
-bool BaseRobotServices::GetTwistHardLimitation(kortex_driver::srv::GetTwistHardLimitation::Request  &req, kortex_driver::srv::GetTwistHardLimitation::Response &res)
+bool BaseRobotServices::GetTwistHardLimitation(const std::shared_ptr<kortex_driver::srv::GetTwistHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetTwistHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_twist_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -4001,7 +4001,7 @@ bool BaseRobotServices::GetTwistHardLimitation(kortex_driver::srv::GetTwistHardL
 	return true;
 }
 
-bool BaseRobotServices::GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHardLimitation::Request  &req, kortex_driver::srv::GetWrenchHardLimitation::Response &res)
+bool BaseRobotServices::GetWrenchHardLimitation(const std::shared_ptr<kortex_driver::srv::GetWrenchHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetWrenchHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_wrench_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -4035,7 +4035,7 @@ bool BaseRobotServices::GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHar
 	return true;
 }
 
-bool BaseRobotServices::SendJointSpeedsJoystickCommand(kortex_driver::srv::SendJointSpeedsJoystickCommand::Request  &req, kortex_driver::srv::SendJointSpeedsJoystickCommand::Response &res)
+bool BaseRobotServices::SendJointSpeedsJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendJointSpeedsJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendJointSpeedsJoystickCommand::Response> res)
 {
 	
 	Kinova::Api::Base::JointSpeeds input;
@@ -4067,7 +4067,7 @@ bool BaseRobotServices::SendJointSpeedsJoystickCommand(kortex_driver::srv::SendJ
 	return true;
 }
 
-bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Response &res)
+bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Response> res)
 {
 	
 	Kinova::Api::Base::JointSpeed input;
@@ -4099,7 +4099,7 @@ bool BaseRobotServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::srv
 	return true;
 }
 
-bool BaseRobotServices::EnableBridge(kortex_driver::srv::EnableBridge::Request  &req, kortex_driver::srv::EnableBridge::Response &res)
+bool BaseRobotServices::EnableBridge(const std::shared_ptr<kortex_driver::srv::EnableBridge::Request> req, std::shared_ptr<kortex_driver::srv::EnableBridge::Response> res)
 {
 	
 	Kinova::Api::Base::BridgeConfig input;
@@ -4134,7 +4134,7 @@ bool BaseRobotServices::EnableBridge(kortex_driver::srv::EnableBridge::Request  
 	return true;
 }
 
-bool BaseRobotServices::DisableBridge(kortex_driver::srv::DisableBridge::Request  &req, kortex_driver::srv::DisableBridge::Response &res)
+bool BaseRobotServices::DisableBridge(const std::shared_ptr<kortex_driver::srv::DisableBridge::Request> req, std::shared_ptr<kortex_driver::srv::DisableBridge::Response> res)
 {
 	
 	Kinova::Api::Base::BridgeIdentifier input;
@@ -4169,7 +4169,7 @@ bool BaseRobotServices::DisableBridge(kortex_driver::srv::DisableBridge::Request
 	return true;
 }
 
-bool BaseRobotServices::GetBridgeList(kortex_driver::srv::GetBridgeList::Request  &req, kortex_driver::srv::GetBridgeList::Response &res)
+bool BaseRobotServices::GetBridgeList(const std::shared_ptr<kortex_driver::srv::GetBridgeList::Request> req, std::shared_ptr<kortex_driver::srv::GetBridgeList::Response> res)
 {
 	
 	Kinova::Api::Base::BridgeList output;
@@ -4202,7 +4202,7 @@ bool BaseRobotServices::GetBridgeList(kortex_driver::srv::GetBridgeList::Request
 	return true;
 }
 
-bool BaseRobotServices::GetBridgeConfig(kortex_driver::srv::GetBridgeConfig::Request  &req, kortex_driver::srv::GetBridgeConfig::Response &res)
+bool BaseRobotServices::GetBridgeConfig(const std::shared_ptr<kortex_driver::srv::GetBridgeConfig::Request> req, std::shared_ptr<kortex_driver::srv::GetBridgeConfig::Response> res)
 {
 	
 	Kinova::Api::Base::BridgeIdentifier input;
@@ -4237,7 +4237,7 @@ bool BaseRobotServices::GetBridgeConfig(kortex_driver::srv::GetBridgeConfig::Req
 	return true;
 }
 
-bool BaseRobotServices::PlayPreComputedJointTrajectory(kortex_driver::srv::PlayPreComputedJointTrajectory::Request  &req, kortex_driver::srv::PlayPreComputedJointTrajectory::Response &res)
+bool BaseRobotServices::PlayPreComputedJointTrajectory(const std::shared_ptr<kortex_driver::srv::PlayPreComputedJointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlayPreComputedJointTrajectory::Response> res)
 {
 	
 	Kinova::Api::Base::PreComputedJointTrajectory input;
@@ -4269,7 +4269,7 @@ bool BaseRobotServices::PlayPreComputedJointTrajectory(kortex_driver::srv::PlayP
 	return true;
 }
 
-bool BaseRobotServices::GetProductConfiguration(kortex_driver::srv::GetProductConfiguration::Request  &req, kortex_driver::srv::GetProductConfiguration::Response &res)
+bool BaseRobotServices::GetProductConfiguration(const std::shared_ptr<kortex_driver::srv::GetProductConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetProductConfiguration::Response> res)
 {
 	
 	Kinova::Api::ProductConfiguration::CompleteProductConfiguration output;
@@ -4302,7 +4302,7 @@ bool BaseRobotServices::GetProductConfiguration(kortex_driver::srv::GetProductCo
 	return true;
 }
 
-bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Request  &req, kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Response &res)
+bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(const std::shared_ptr<kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Response> res)
 {
 	
 	Kinova::Api::ProductConfiguration::ProductConfigurationEndEffectorType input;
@@ -4334,7 +4334,7 @@ bool BaseRobotServices::UpdateEndEffectorTypeConfiguration(kortex_driver::srv::U
 	return true;
 }
 
-bool BaseRobotServices::RestoreFactoryProductConfiguration(kortex_driver::srv::RestoreFactoryProductConfiguration::Request  &req, kortex_driver::srv::RestoreFactoryProductConfiguration::Response &res)
+bool BaseRobotServices::RestoreFactoryProductConfiguration(const std::shared_ptr<kortex_driver::srv::RestoreFactoryProductConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::RestoreFactoryProductConfiguration::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4364,7 +4364,7 @@ bool BaseRobotServices::RestoreFactoryProductConfiguration(kortex_driver::srv::R
 	return true;
 }
 
-bool BaseRobotServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTrajectoryErrorReport::Request  &req, kortex_driver::srv::GetTrajectoryErrorReport::Response &res)
+bool BaseRobotServices::GetTrajectoryErrorReport(const std::shared_ptr<kortex_driver::srv::GetTrajectoryErrorReport::Request> req, std::shared_ptr<kortex_driver::srv::GetTrajectoryErrorReport::Response> res)
 {
 	
 	Kinova::Api::Base::TrajectoryErrorReport output;
@@ -4397,7 +4397,7 @@ bool BaseRobotServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTrajecto
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_speed_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -4431,7 +4431,7 @@ bool BaseRobotServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetA
 	return true;
 }
 
-bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response &res)
+bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_torque_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -4465,7 +4465,7 @@ bool BaseRobotServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv::Get
 	return true;
 }
 
-bool BaseRobotServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftLimitation::Request  &req, kortex_driver::srv::GetTwistSoftLimitation::Response &res)
+bool BaseRobotServices::GetTwistSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetTwistSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetTwistSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_twist_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -4499,7 +4499,7 @@ bool BaseRobotServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftL
 	return true;
 }
 
-bool BaseRobotServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSoftLimitation::Request  &req, kortex_driver::srv::GetWrenchSoftLimitation::Response &res)
+bool BaseRobotServices::GetWrenchSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetWrenchSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetWrenchSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_wrench_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -4533,7 +4533,7 @@ bool BaseRobotServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSof
 	return true;
 }
 
-bool BaseRobotServices::SetControllerConfigurationMode(kortex_driver::srv::SetControllerConfigurationMode::Request  &req, kortex_driver::srv::SetControllerConfigurationMode::Response &res)
+bool BaseRobotServices::SetControllerConfigurationMode(const std::shared_ptr<kortex_driver::srv::SetControllerConfigurationMode::Request> req, std::shared_ptr<kortex_driver::srv::SetControllerConfigurationMode::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerConfigurationMode input;
@@ -4565,7 +4565,7 @@ bool BaseRobotServices::SetControllerConfigurationMode(kortex_driver::srv::SetCo
 	return true;
 }
 
-bool BaseRobotServices::GetControllerConfigurationMode(kortex_driver::srv::GetControllerConfigurationMode::Request  &req, kortex_driver::srv::GetControllerConfigurationMode::Response &res)
+bool BaseRobotServices::GetControllerConfigurationMode(const std::shared_ptr<kortex_driver::srv::GetControllerConfigurationMode::Request> req, std::shared_ptr<kortex_driver::srv::GetControllerConfigurationMode::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerConfigurationMode output;
@@ -4598,7 +4598,7 @@ bool BaseRobotServices::GetControllerConfigurationMode(kortex_driver::srv::GetCo
 	return true;
 }
 
-bool BaseRobotServices::StartTeaching(kortex_driver::srv::StartTeaching::Request  &req, kortex_driver::srv::StartTeaching::Response &res)
+bool BaseRobotServices::StartTeaching(const std::shared_ptr<kortex_driver::srv::StartTeaching::Request> req, std::shared_ptr<kortex_driver::srv::StartTeaching::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
@@ -4630,7 +4630,7 @@ bool BaseRobotServices::StartTeaching(kortex_driver::srv::StartTeaching::Request
 	return true;
 }
 
-bool BaseRobotServices::StopTeaching(kortex_driver::srv::StopTeaching::Request  &req, kortex_driver::srv::StopTeaching::Response &res)
+bool BaseRobotServices::StopTeaching(const std::shared_ptr<kortex_driver::srv::StopTeaching::Request> req, std::shared_ptr<kortex_driver::srv::StopTeaching::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -4660,7 +4660,7 @@ bool BaseRobotServices::StopTeaching(kortex_driver::srv::StopTeaching::Request  
 	return true;
 }
 
-bool BaseRobotServices::AddSequenceTasks(kortex_driver::srv::AddSequenceTasks::Request  &req, kortex_driver::srv::AddSequenceTasks::Response &res)
+bool BaseRobotServices::AddSequenceTasks(const std::shared_ptr<kortex_driver::srv::AddSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::AddSequenceTasks::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTasksConfiguration input;
@@ -4695,7 +4695,7 @@ bool BaseRobotServices::AddSequenceTasks(kortex_driver::srv::AddSequenceTasks::R
 	return true;
 }
 
-bool BaseRobotServices::UpdateSequenceTask(kortex_driver::srv::UpdateSequenceTask::Request  &req, kortex_driver::srv::UpdateSequenceTask::Response &res)
+bool BaseRobotServices::UpdateSequenceTask(const std::shared_ptr<kortex_driver::srv::UpdateSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::UpdateSequenceTask::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTaskConfiguration input;
@@ -4727,7 +4727,7 @@ bool BaseRobotServices::UpdateSequenceTask(kortex_driver::srv::UpdateSequenceTas
 	return true;
 }
 
-bool BaseRobotServices::SwapSequenceTasks(kortex_driver::srv::SwapSequenceTasks::Request  &req, kortex_driver::srv::SwapSequenceTasks::Response &res)
+bool BaseRobotServices::SwapSequenceTasks(const std::shared_ptr<kortex_driver::srv::SwapSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::SwapSequenceTasks::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTasksPair input;
@@ -4759,7 +4759,7 @@ bool BaseRobotServices::SwapSequenceTasks(kortex_driver::srv::SwapSequenceTasks:
 	return true;
 }
 
-bool BaseRobotServices::ReadSequenceTask(kortex_driver::srv::ReadSequenceTask::Request  &req, kortex_driver::srv::ReadSequenceTask::Response &res)
+bool BaseRobotServices::ReadSequenceTask(const std::shared_ptr<kortex_driver::srv::ReadSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::ReadSequenceTask::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
@@ -4794,7 +4794,7 @@ bool BaseRobotServices::ReadSequenceTask(kortex_driver::srv::ReadSequenceTask::R
 	return true;
 }
 
-bool BaseRobotServices::ReadAllSequenceTasks(kortex_driver::srv::ReadAllSequenceTasks::Request  &req, kortex_driver::srv::ReadAllSequenceTasks::Response &res)
+bool BaseRobotServices::ReadAllSequenceTasks(const std::shared_ptr<kortex_driver::srv::ReadAllSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllSequenceTasks::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
@@ -4829,7 +4829,7 @@ bool BaseRobotServices::ReadAllSequenceTasks(kortex_driver::srv::ReadAllSequence
 	return true;
 }
 
-bool BaseRobotServices::DeleteSequenceTask(kortex_driver::srv::DeleteSequenceTask::Request  &req, kortex_driver::srv::DeleteSequenceTask::Response &res)
+bool BaseRobotServices::DeleteSequenceTask(const std::shared_ptr<kortex_driver::srv::DeleteSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::DeleteSequenceTask::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTaskHandle input;
@@ -4861,7 +4861,7 @@ bool BaseRobotServices::DeleteSequenceTask(kortex_driver::srv::DeleteSequenceTas
 	return true;
 }
 
-bool BaseRobotServices::DeleteAllSequenceTasks(kortex_driver::srv::DeleteAllSequenceTasks::Request  &req, kortex_driver::srv::DeleteAllSequenceTasks::Response &res)
+bool BaseRobotServices::DeleteAllSequenceTasks(const std::shared_ptr<kortex_driver::srv::DeleteAllSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::DeleteAllSequenceTasks::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceHandle input;
@@ -4893,7 +4893,7 @@ bool BaseRobotServices::DeleteAllSequenceTasks(kortex_driver::srv::DeleteAllSequ
 	return true;
 }
 
-bool BaseRobotServices::TakeSnapshot(kortex_driver::srv::TakeSnapshot::Request  &req, kortex_driver::srv::TakeSnapshot::Response &res)
+bool BaseRobotServices::TakeSnapshot(const std::shared_ptr<kortex_driver::srv::TakeSnapshot::Request> req, std::shared_ptr<kortex_driver::srv::TakeSnapshot::Response> res)
 {
 	
 	Kinova::Api::Base::Snapshot input;
@@ -4925,7 +4925,7 @@ bool BaseRobotServices::TakeSnapshot(kortex_driver::srv::TakeSnapshot::Request  
 	return true;
 }
 
-bool BaseRobotServices::GetFirmwareBundleVersions(kortex_driver::srv::GetFirmwareBundleVersions::Request  &req, kortex_driver::srv::GetFirmwareBundleVersions::Response &res)
+bool BaseRobotServices::GetFirmwareBundleVersions(const std::shared_ptr<kortex_driver::srv::GetFirmwareBundleVersions::Request> req, std::shared_ptr<kortex_driver::srv::GetFirmwareBundleVersions::Response> res)
 {
 	
 	Kinova::Api::Base::FirmwareBundleVersions output;
@@ -4958,7 +4958,7 @@ bool BaseRobotServices::GetFirmwareBundleVersions(kortex_driver::srv::GetFirmwar
 	return true;
 }
 
-bool BaseRobotServices::ExecuteWaypointTrajectory(kortex_driver::srv::ExecuteWaypointTrajectory::Request  &req, kortex_driver::srv::ExecuteWaypointTrajectory::Response &res)
+bool BaseRobotServices::ExecuteWaypointTrajectory(const std::shared_ptr<kortex_driver::srv::ExecuteWaypointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteWaypointTrajectory::Response> res)
 {
 	
 	Kinova::Api::Base::WaypointList input;
@@ -4990,7 +4990,7 @@ bool BaseRobotServices::ExecuteWaypointTrajectory(kortex_driver::srv::ExecuteWay
 	return true;
 }
 
-bool BaseRobotServices::MoveSequenceTask(kortex_driver::srv::MoveSequenceTask::Request  &req, kortex_driver::srv::MoveSequenceTask::Response &res)
+bool BaseRobotServices::MoveSequenceTask(const std::shared_ptr<kortex_driver::srv::MoveSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::MoveSequenceTask::Response> res)
 {
 	
 	Kinova::Api::Base::SequenceTasksPair input;
@@ -5022,7 +5022,7 @@ bool BaseRobotServices::MoveSequenceTask(kortex_driver::srv::MoveSequenceTask::R
 	return true;
 }
 
-bool BaseRobotServices::DuplicateMapping(kortex_driver::srv::DuplicateMapping::Request  &req, kortex_driver::srv::DuplicateMapping::Response &res)
+bool BaseRobotServices::DuplicateMapping(const std::shared_ptr<kortex_driver::srv::DuplicateMapping::Request> req, std::shared_ptr<kortex_driver::srv::DuplicateMapping::Response> res)
 {
 	
 	Kinova::Api::Base::MappingHandle input;
@@ -5057,7 +5057,7 @@ bool BaseRobotServices::DuplicateMapping(kortex_driver::srv::DuplicateMapping::R
 	return true;
 }
 
-bool BaseRobotServices::DuplicateMap(kortex_driver::srv::DuplicateMap::Request  &req, kortex_driver::srv::DuplicateMap::Response &res)
+bool BaseRobotServices::DuplicateMap(const std::shared_ptr<kortex_driver::srv::DuplicateMap::Request> req, std::shared_ptr<kortex_driver::srv::DuplicateMap::Response> res)
 {
 	
 	Kinova::Api::Base::MapHandle input;
@@ -5092,7 +5092,7 @@ bool BaseRobotServices::DuplicateMap(kortex_driver::srv::DuplicateMap::Request  
 	return true;
 }
 
-bool BaseRobotServices::SetControllerConfiguration(kortex_driver::srv::SetControllerConfiguration::Request  &req, kortex_driver::srv::SetControllerConfiguration::Response &res)
+bool BaseRobotServices::SetControllerConfiguration(const std::shared_ptr<kortex_driver::srv::SetControllerConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetControllerConfiguration::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerConfiguration input;
@@ -5124,7 +5124,7 @@ bool BaseRobotServices::SetControllerConfiguration(kortex_driver::srv::SetContro
 	return true;
 }
 
-bool BaseRobotServices::GetControllerConfiguration(kortex_driver::srv::GetControllerConfiguration::Request  &req, kortex_driver::srv::GetControllerConfiguration::Response &res)
+bool BaseRobotServices::GetControllerConfiguration(const std::shared_ptr<kortex_driver::srv::GetControllerConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetControllerConfiguration::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerHandle input;
@@ -5159,7 +5159,7 @@ bool BaseRobotServices::GetControllerConfiguration(kortex_driver::srv::GetContro
 	return true;
 }
 
-bool BaseRobotServices::GetAllControllerConfigurations(kortex_driver::srv::GetAllControllerConfigurations::Request  &req, kortex_driver::srv::GetAllControllerConfigurations::Response &res)
+bool BaseRobotServices::GetAllControllerConfigurations(const std::shared_ptr<kortex_driver::srv::GetAllControllerConfigurations::Request> req, std::shared_ptr<kortex_driver::srv::GetAllControllerConfigurations::Response> res)
 {
 	
 	Kinova::Api::Base::ControllerConfigurationList output;
@@ -5192,7 +5192,7 @@ bool BaseRobotServices::GetAllControllerConfigurations(kortex_driver::srv::GetAl
 	return true;
 }
 
-bool BaseRobotServices::ComputeForwardKinematics(kortex_driver::srv::ComputeForwardKinematics::Request  &req, kortex_driver::srv::ComputeForwardKinematics::Response &res)
+bool BaseRobotServices::ComputeForwardKinematics(const std::shared_ptr<kortex_driver::srv::ComputeForwardKinematics::Request> req, std::shared_ptr<kortex_driver::srv::ComputeForwardKinematics::Response> res)
 {
 	
 	Kinova::Api::Base::JointAngles input;
@@ -5227,7 +5227,7 @@ bool BaseRobotServices::ComputeForwardKinematics(kortex_driver::srv::ComputeForw
 	return true;
 }
 
-bool BaseRobotServices::ComputeInverseKinematics(kortex_driver::srv::ComputeInverseKinematics::Request  &req, kortex_driver::srv::ComputeInverseKinematics::Response &res)
+bool BaseRobotServices::ComputeInverseKinematics(const std::shared_ptr<kortex_driver::srv::ComputeInverseKinematics::Request> req, std::shared_ptr<kortex_driver::srv::ComputeInverseKinematics::Response> res)
 {
 	
 	Kinova::Api::Base::IKData input;
@@ -5262,7 +5262,7 @@ bool BaseRobotServices::ComputeInverseKinematics(kortex_driver::srv::ComputeInve
 	return true;
 }
 
-bool BaseRobotServices::ValidateWaypointList(kortex_driver::srv::ValidateWaypointList::Request  &req, kortex_driver::srv::ValidateWaypointList::Response &res)
+bool BaseRobotServices::ValidateWaypointList(const std::shared_ptr<kortex_driver::srv::ValidateWaypointList::Request> req, std::shared_ptr<kortex_driver::srv::ValidateWaypointList::Response> res)
 {
 	
 	Kinova::Api::Base::WaypointList input;

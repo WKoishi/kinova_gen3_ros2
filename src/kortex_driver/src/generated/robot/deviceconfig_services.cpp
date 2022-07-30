@@ -90,14 +90,14 @@ DeviceConfigRobotServices::DeviceConfigRobotServices(rclcpp::Node::SharedPtr nod
 	m_serviceDeviceConfig_GetCapSenseConfig = m_node_handle->create_service<kortex_driver::srv::DeviceConfigGetCapSenseConfig>("device_config/get_cap_sense_config", std::bind(&DeviceConfigRobotServices::DeviceConfig_GetCapSenseConfig, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool DeviceConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool DeviceConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool DeviceConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -105,7 +105,7 @@ bool DeviceConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions:
 }
 
 
-bool DeviceConfigRobotServices::GetRunMode(kortex_driver::srv::GetRunMode::Request  &req, kortex_driver::srv::GetRunMode::Response &res)
+bool DeviceConfigRobotServices::GetRunMode(const std::shared_ptr<kortex_driver::srv::GetRunMode::Request> req, std::shared_ptr<kortex_driver::srv::GetRunMode::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::RunMode output;
@@ -138,7 +138,7 @@ bool DeviceConfigRobotServices::GetRunMode(kortex_driver::srv::GetRunMode::Reque
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetRunMode(kortex_driver::srv::SetRunMode::Request  &req, kortex_driver::srv::SetRunMode::Response &res)
+bool DeviceConfigRobotServices::SetRunMode(const std::shared_ptr<kortex_driver::srv::SetRunMode::Request> req, std::shared_ptr<kortex_driver::srv::SetRunMode::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::RunMode input;
@@ -170,7 +170,7 @@ bool DeviceConfigRobotServices::SetRunMode(kortex_driver::srv::SetRunMode::Reque
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetDeviceType(kortex_driver::srv::GetDeviceType::Request  &req, kortex_driver::srv::GetDeviceType::Response &res)
+bool DeviceConfigRobotServices::GetDeviceType(const std::shared_ptr<kortex_driver::srv::GetDeviceType::Request> req, std::shared_ptr<kortex_driver::srv::GetDeviceType::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::DeviceType output;
@@ -203,7 +203,7 @@ bool DeviceConfigRobotServices::GetDeviceType(kortex_driver::srv::GetDeviceType:
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetFirmwareVersion(kortex_driver::srv::GetFirmwareVersion::Request  &req, kortex_driver::srv::GetFirmwareVersion::Response &res)
+bool DeviceConfigRobotServices::GetFirmwareVersion(const std::shared_ptr<kortex_driver::srv::GetFirmwareVersion::Request> req, std::shared_ptr<kortex_driver::srv::GetFirmwareVersion::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::FirmwareVersion output;
@@ -236,7 +236,7 @@ bool DeviceConfigRobotServices::GetFirmwareVersion(kortex_driver::srv::GetFirmwa
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetBootloaderVersion(kortex_driver::srv::GetBootloaderVersion::Request  &req, kortex_driver::srv::GetBootloaderVersion::Response &res)
+bool DeviceConfigRobotServices::GetBootloaderVersion(const std::shared_ptr<kortex_driver::srv::GetBootloaderVersion::Request> req, std::shared_ptr<kortex_driver::srv::GetBootloaderVersion::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::BootloaderVersion output;
@@ -269,7 +269,7 @@ bool DeviceConfigRobotServices::GetBootloaderVersion(kortex_driver::srv::GetBoot
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetModelNumber(kortex_driver::srv::GetModelNumber::Request  &req, kortex_driver::srv::GetModelNumber::Response &res)
+bool DeviceConfigRobotServices::GetModelNumber(const std::shared_ptr<kortex_driver::srv::GetModelNumber::Request> req, std::shared_ptr<kortex_driver::srv::GetModelNumber::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::ModelNumber output;
@@ -302,7 +302,7 @@ bool DeviceConfigRobotServices::GetModelNumber(kortex_driver::srv::GetModelNumbe
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetPartNumber(kortex_driver::srv::GetPartNumber::Request  &req, kortex_driver::srv::GetPartNumber::Response &res)
+bool DeviceConfigRobotServices::GetPartNumber(const std::shared_ptr<kortex_driver::srv::GetPartNumber::Request> req, std::shared_ptr<kortex_driver::srv::GetPartNumber::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::PartNumber output;
@@ -335,7 +335,7 @@ bool DeviceConfigRobotServices::GetPartNumber(kortex_driver::srv::GetPartNumber:
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetSerialNumber(kortex_driver::srv::GetSerialNumber::Request  &req, kortex_driver::srv::GetSerialNumber::Response &res)
+bool DeviceConfigRobotServices::GetSerialNumber(const std::shared_ptr<kortex_driver::srv::GetSerialNumber::Request> req, std::shared_ptr<kortex_driver::srv::GetSerialNumber::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SerialNumber output;
@@ -368,7 +368,7 @@ bool DeviceConfigRobotServices::GetSerialNumber(kortex_driver::srv::GetSerialNum
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetMACAddress(kortex_driver::srv::GetMACAddress::Request  &req, kortex_driver::srv::GetMACAddress::Response &res)
+bool DeviceConfigRobotServices::GetMACAddress(const std::shared_ptr<kortex_driver::srv::GetMACAddress::Request> req, std::shared_ptr<kortex_driver::srv::GetMACAddress::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::MACAddress output;
@@ -401,7 +401,7 @@ bool DeviceConfigRobotServices::GetMACAddress(kortex_driver::srv::GetMACAddress:
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetIPv4Settings(kortex_driver::srv::GetIPv4Settings::Request  &req, kortex_driver::srv::GetIPv4Settings::Response &res)
+bool DeviceConfigRobotServices::GetIPv4Settings(const std::shared_ptr<kortex_driver::srv::GetIPv4Settings::Request> req, std::shared_ptr<kortex_driver::srv::GetIPv4Settings::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::IPv4Settings output;
@@ -434,7 +434,7 @@ bool DeviceConfigRobotServices::GetIPv4Settings(kortex_driver::srv::GetIPv4Setti
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetIPv4Settings(kortex_driver::srv::SetIPv4Settings::Request  &req, kortex_driver::srv::SetIPv4Settings::Response &res)
+bool DeviceConfigRobotServices::SetIPv4Settings(const std::shared_ptr<kortex_driver::srv::SetIPv4Settings::Request> req, std::shared_ptr<kortex_driver::srv::SetIPv4Settings::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::IPv4Settings input;
@@ -466,7 +466,7 @@ bool DeviceConfigRobotServices::SetIPv4Settings(kortex_driver::srv::SetIPv4Setti
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetPartNumberRevision(kortex_driver::srv::GetPartNumberRevision::Request  &req, kortex_driver::srv::GetPartNumberRevision::Response &res)
+bool DeviceConfigRobotServices::GetPartNumberRevision(const std::shared_ptr<kortex_driver::srv::GetPartNumberRevision::Request> req, std::shared_ptr<kortex_driver::srv::GetPartNumberRevision::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::PartNumberRevision output;
@@ -499,7 +499,7 @@ bool DeviceConfigRobotServices::GetPartNumberRevision(kortex_driver::srv::GetPar
 	return true;
 }
 
-bool DeviceConfigRobotServices::RebootRequest(kortex_driver::srv::RebootRequest::Request  &req, kortex_driver::srv::RebootRequest::Response &res)
+bool DeviceConfigRobotServices::RebootRequest(const std::shared_ptr<kortex_driver::srv::RebootRequest::Request> req, std::shared_ptr<kortex_driver::srv::RebootRequest::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::RebootRqst input;
@@ -531,7 +531,7 @@ bool DeviceConfigRobotServices::RebootRequest(kortex_driver::srv::RebootRequest:
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetSafetyEnable(kortex_driver::srv::SetSafetyEnable::Request  &req, kortex_driver::srv::SetSafetyEnable::Response &res)
+bool DeviceConfigRobotServices::SetSafetyEnable(const std::shared_ptr<kortex_driver::srv::SetSafetyEnable::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyEnable::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SafetyEnable input;
@@ -563,7 +563,7 @@ bool DeviceConfigRobotServices::SetSafetyEnable(kortex_driver::srv::SetSafetyEna
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetSafetyErrorThreshold(kortex_driver::srv::SetSafetyErrorThreshold::Request  &req, kortex_driver::srv::SetSafetyErrorThreshold::Response &res)
+bool DeviceConfigRobotServices::SetSafetyErrorThreshold(const std::shared_ptr<kortex_driver::srv::SetSafetyErrorThreshold::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyErrorThreshold::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SafetyThreshold input;
@@ -595,7 +595,7 @@ bool DeviceConfigRobotServices::SetSafetyErrorThreshold(kortex_driver::srv::SetS
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetSafetyWarningThreshold(kortex_driver::srv::SetSafetyWarningThreshold::Request  &req, kortex_driver::srv::SetSafetyWarningThreshold::Response &res)
+bool DeviceConfigRobotServices::SetSafetyWarningThreshold(const std::shared_ptr<kortex_driver::srv::SetSafetyWarningThreshold::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyWarningThreshold::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SafetyThreshold input;
@@ -627,7 +627,7 @@ bool DeviceConfigRobotServices::SetSafetyWarningThreshold(kortex_driver::srv::Se
 	return true;
 }
 
-bool DeviceConfigRobotServices::SetSafetyConfiguration(kortex_driver::srv::SetSafetyConfiguration::Request  &req, kortex_driver::srv::SetSafetyConfiguration::Response &res)
+bool DeviceConfigRobotServices::SetSafetyConfiguration(const std::shared_ptr<kortex_driver::srv::SetSafetyConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyConfiguration::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SafetyConfiguration input;
@@ -659,7 +659,7 @@ bool DeviceConfigRobotServices::SetSafetyConfiguration(kortex_driver::srv::SetSa
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetSafetyConfiguration(kortex_driver::srv::GetSafetyConfiguration::Request  &req, kortex_driver::srv::GetSafetyConfiguration::Response &res)
+bool DeviceConfigRobotServices::GetSafetyConfiguration(const std::shared_ptr<kortex_driver::srv::GetSafetyConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyConfiguration::Response> res)
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
@@ -694,7 +694,7 @@ bool DeviceConfigRobotServices::GetSafetyConfiguration(kortex_driver::srv::GetSa
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetSafetyInformation(kortex_driver::srv::GetSafetyInformation::Request  &req, kortex_driver::srv::GetSafetyInformation::Response &res)
+bool DeviceConfigRobotServices::GetSafetyInformation(const std::shared_ptr<kortex_driver::srv::GetSafetyInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyInformation::Response> res)
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
@@ -729,7 +729,7 @@ bool DeviceConfigRobotServices::GetSafetyInformation(kortex_driver::srv::GetSafe
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetSafetyEnable(kortex_driver::srv::GetSafetyEnable::Request  &req, kortex_driver::srv::GetSafetyEnable::Response &res)
+bool DeviceConfigRobotServices::GetSafetyEnable(const std::shared_ptr<kortex_driver::srv::GetSafetyEnable::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyEnable::Response> res)
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
@@ -764,7 +764,7 @@ bool DeviceConfigRobotServices::GetSafetyEnable(kortex_driver::srv::GetSafetyEna
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetSafetyStatus(kortex_driver::srv::GetSafetyStatus::Request  &req, kortex_driver::srv::GetSafetyStatus::Response &res)
+bool DeviceConfigRobotServices::GetSafetyStatus(const std::shared_ptr<kortex_driver::srv::GetSafetyStatus::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyStatus::Response> res)
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
@@ -799,7 +799,7 @@ bool DeviceConfigRobotServices::GetSafetyStatus(kortex_driver::srv::GetSafetySta
 	return true;
 }
 
-bool DeviceConfigRobotServices::ClearAllSafetyStatus(kortex_driver::srv::ClearAllSafetyStatus::Request  &req, kortex_driver::srv::ClearAllSafetyStatus::Response &res)
+bool DeviceConfigRobotServices::ClearAllSafetyStatus(const std::shared_ptr<kortex_driver::srv::ClearAllSafetyStatus::Request> req, std::shared_ptr<kortex_driver::srv::ClearAllSafetyStatus::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -829,7 +829,7 @@ bool DeviceConfigRobotServices::ClearAllSafetyStatus(kortex_driver::srv::ClearAl
 	return true;
 }
 
-bool DeviceConfigRobotServices::ClearSafetyStatus(kortex_driver::srv::ClearSafetyStatus::Request  &req, kortex_driver::srv::ClearSafetyStatus::Response &res)
+bool DeviceConfigRobotServices::ClearSafetyStatus(const std::shared_ptr<kortex_driver::srv::ClearSafetyStatus::Request> req, std::shared_ptr<kortex_driver::srv::ClearSafetyStatus::Response> res)
 {
 	
 	Kinova::Api::Common::SafetyHandle input;
@@ -861,7 +861,7 @@ bool DeviceConfigRobotServices::ClearSafetyStatus(kortex_driver::srv::ClearSafet
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetAllSafetyConfiguration(kortex_driver::srv::GetAllSafetyConfiguration::Request  &req, kortex_driver::srv::GetAllSafetyConfiguration::Response &res)
+bool DeviceConfigRobotServices::GetAllSafetyConfiguration(const std::shared_ptr<kortex_driver::srv::GetAllSafetyConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetAllSafetyConfiguration::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SafetyConfigurationList output;
@@ -894,7 +894,7 @@ bool DeviceConfigRobotServices::GetAllSafetyConfiguration(kortex_driver::srv::Ge
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetAllSafetyInformation(kortex_driver::srv::GetAllSafetyInformation::Request  &req, kortex_driver::srv::GetAllSafetyInformation::Response &res)
+bool DeviceConfigRobotServices::GetAllSafetyInformation(const std::shared_ptr<kortex_driver::srv::GetAllSafetyInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllSafetyInformation::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::SafetyInformationList output;
@@ -927,7 +927,7 @@ bool DeviceConfigRobotServices::GetAllSafetyInformation(kortex_driver::srv::GetA
 	return true;
 }
 
-bool DeviceConfigRobotServices::ResetSafetyDefaults(kortex_driver::srv::ResetSafetyDefaults::Request  &req, kortex_driver::srv::ResetSafetyDefaults::Response &res)
+bool DeviceConfigRobotServices::ResetSafetyDefaults(const std::shared_ptr<kortex_driver::srv::ResetSafetyDefaults::Request> req, std::shared_ptr<kortex_driver::srv::ResetSafetyDefaults::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -957,7 +957,7 @@ bool DeviceConfigRobotServices::ResetSafetyDefaults(kortex_driver::srv::ResetSaf
 	return true;
 }
 
-bool DeviceConfigRobotServices::OnNotificationSafetyTopic(kortex_driver::srv::OnNotificationSafetyTopic::Request  &req, kortex_driver::srv::OnNotificationSafetyTopic::Response &res)
+bool DeviceConfigRobotServices::OnNotificationSafetyTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationSafetyTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationSafetyTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -1003,7 +1003,7 @@ void DeviceConfigRobotServices::cb_SafetyTopic(Kinova::Api::Common::SafetyNotifi
 	m_pub_SafetyTopic->publish(ros_msg);
 }
 
-bool DeviceConfigRobotServices::ExecuteCalibration(kortex_driver::srv::ExecuteCalibration::Request  &req, kortex_driver::srv::ExecuteCalibration::Response &res)
+bool DeviceConfigRobotServices::ExecuteCalibration(const std::shared_ptr<kortex_driver::srv::ExecuteCalibration::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteCalibration::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::Calibration input;
@@ -1035,7 +1035,7 @@ bool DeviceConfigRobotServices::ExecuteCalibration(kortex_driver::srv::ExecuteCa
 	return true;
 }
 
-bool DeviceConfigRobotServices::GetCalibrationResult(kortex_driver::srv::GetCalibrationResult::Request  &req, kortex_driver::srv::GetCalibrationResult::Response &res)
+bool DeviceConfigRobotServices::GetCalibrationResult(const std::shared_ptr<kortex_driver::srv::GetCalibrationResult::Request> req, std::shared_ptr<kortex_driver::srv::GetCalibrationResult::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::CalibrationElement input;
@@ -1070,7 +1070,7 @@ bool DeviceConfigRobotServices::GetCalibrationResult(kortex_driver::srv::GetCali
 	return true;
 }
 
-bool DeviceConfigRobotServices::StopCalibration(kortex_driver::srv::StopCalibration::Request  &req, kortex_driver::srv::StopCalibration::Response &res)
+bool DeviceConfigRobotServices::StopCalibration(const std::shared_ptr<kortex_driver::srv::StopCalibration::Request> req, std::shared_ptr<kortex_driver::srv::StopCalibration::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::Calibration input;
@@ -1105,7 +1105,7 @@ bool DeviceConfigRobotServices::StopCalibration(kortex_driver::srv::StopCalibrat
 	return true;
 }
 
-bool DeviceConfigRobotServices::DeviceConfig_SetCapSenseConfig(kortex_driver::srv::DeviceConfigSetCapSenseConfig::Request  &req, kortex_driver::srv::DeviceConfigSetCapSenseConfig::Response &res)
+bool DeviceConfigRobotServices::DeviceConfig_SetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::DeviceConfigSetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::DeviceConfigSetCapSenseConfig::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::CapSenseConfig input;
@@ -1137,7 +1137,7 @@ bool DeviceConfigRobotServices::DeviceConfig_SetCapSenseConfig(kortex_driver::sr
 	return true;
 }
 
-bool DeviceConfigRobotServices::DeviceConfig_GetCapSenseConfig(kortex_driver::srv::DeviceConfigGetCapSenseConfig::Request  &req, kortex_driver::srv::DeviceConfigGetCapSenseConfig::Response &res)
+bool DeviceConfigRobotServices::DeviceConfig_GetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::DeviceConfigGetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::DeviceConfigGetCapSenseConfig::Response> res)
 {
 	
 	Kinova::Api::DeviceConfig::CapSenseConfig output;

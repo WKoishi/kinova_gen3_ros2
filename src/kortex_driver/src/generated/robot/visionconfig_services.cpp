@@ -70,14 +70,14 @@ VisionConfigRobotServices::VisionConfigRobotServices(rclcpp::Node::SharedPtr nod
 	m_serviceSetExtrinsicParameters = m_node_handle->create_service<kortex_driver::srv::SetExtrinsicParameters>("vision_config/set_extrinsic_parameters", std::bind(&VisionConfigRobotServices::SetExtrinsicParameters, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool VisionConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool VisionConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool VisionConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool VisionConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -85,7 +85,7 @@ bool VisionConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions:
 }
 
 
-bool VisionConfigRobotServices::SetSensorSettings(kortex_driver::srv::SetSensorSettings::Request  &req, kortex_driver::srv::SetSensorSettings::Response &res)
+bool VisionConfigRobotServices::SetSensorSettings(const std::shared_ptr<kortex_driver::srv::SetSensorSettings::Request> req, std::shared_ptr<kortex_driver::srv::SetSensorSettings::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::SensorSettings input;
@@ -117,7 +117,7 @@ bool VisionConfigRobotServices::SetSensorSettings(kortex_driver::srv::SetSensorS
 	return true;
 }
 
-bool VisionConfigRobotServices::GetSensorSettings(kortex_driver::srv::GetSensorSettings::Request  &req, kortex_driver::srv::GetSensorSettings::Response &res)
+bool VisionConfigRobotServices::GetSensorSettings(const std::shared_ptr<kortex_driver::srv::GetSensorSettings::Request> req, std::shared_ptr<kortex_driver::srv::GetSensorSettings::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::SensorIdentifier input;
@@ -152,7 +152,7 @@ bool VisionConfigRobotServices::GetSensorSettings(kortex_driver::srv::GetSensorS
 	return true;
 }
 
-bool VisionConfigRobotServices::GetOptionValue(kortex_driver::srv::GetOptionValue::Request  &req, kortex_driver::srv::GetOptionValue::Response &res)
+bool VisionConfigRobotServices::GetOptionValue(const std::shared_ptr<kortex_driver::srv::GetOptionValue::Request> req, std::shared_ptr<kortex_driver::srv::GetOptionValue::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::OptionIdentifier input;
@@ -187,7 +187,7 @@ bool VisionConfigRobotServices::GetOptionValue(kortex_driver::srv::GetOptionValu
 	return true;
 }
 
-bool VisionConfigRobotServices::SetOptionValue(kortex_driver::srv::SetOptionValue::Request  &req, kortex_driver::srv::SetOptionValue::Response &res)
+bool VisionConfigRobotServices::SetOptionValue(const std::shared_ptr<kortex_driver::srv::SetOptionValue::Request> req, std::shared_ptr<kortex_driver::srv::SetOptionValue::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::OptionValue input;
@@ -219,7 +219,7 @@ bool VisionConfigRobotServices::SetOptionValue(kortex_driver::srv::SetOptionValu
 	return true;
 }
 
-bool VisionConfigRobotServices::GetOptionInformation(kortex_driver::srv::GetOptionInformation::Request  &req, kortex_driver::srv::GetOptionInformation::Response &res)
+bool VisionConfigRobotServices::GetOptionInformation(const std::shared_ptr<kortex_driver::srv::GetOptionInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetOptionInformation::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::OptionIdentifier input;
@@ -254,7 +254,7 @@ bool VisionConfigRobotServices::GetOptionInformation(kortex_driver::srv::GetOpti
 	return true;
 }
 
-bool VisionConfigRobotServices::OnNotificationVisionTopic(kortex_driver::srv::OnNotificationVisionTopic::Request  &req, kortex_driver::srv::OnNotificationVisionTopic::Response &res)
+bool VisionConfigRobotServices::OnNotificationVisionTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationVisionTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationVisionTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -300,7 +300,7 @@ void VisionConfigRobotServices::cb_VisionTopic(Kinova::Api::VisionConfig::Vision
 	m_pub_VisionTopic->publish(ros_msg);
 }
 
-bool VisionConfigRobotServices::DoSensorFocusAction(kortex_driver::srv::DoSensorFocusAction::Request  &req, kortex_driver::srv::DoSensorFocusAction::Response &res)
+bool VisionConfigRobotServices::DoSensorFocusAction(const std::shared_ptr<kortex_driver::srv::DoSensorFocusAction::Request> req, std::shared_ptr<kortex_driver::srv::DoSensorFocusAction::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::SensorFocusAction input;
@@ -332,7 +332,7 @@ bool VisionConfigRobotServices::DoSensorFocusAction(kortex_driver::srv::DoSensor
 	return true;
 }
 
-bool VisionConfigRobotServices::GetIntrinsicParameters(kortex_driver::srv::GetIntrinsicParameters::Request  &req, kortex_driver::srv::GetIntrinsicParameters::Response &res)
+bool VisionConfigRobotServices::GetIntrinsicParameters(const std::shared_ptr<kortex_driver::srv::GetIntrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetIntrinsicParameters::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::SensorIdentifier input;
@@ -367,7 +367,7 @@ bool VisionConfigRobotServices::GetIntrinsicParameters(kortex_driver::srv::GetIn
 	return true;
 }
 
-bool VisionConfigRobotServices::GetIntrinsicParametersProfile(kortex_driver::srv::GetIntrinsicParametersProfile::Request  &req, kortex_driver::srv::GetIntrinsicParametersProfile::Response &res)
+bool VisionConfigRobotServices::GetIntrinsicParametersProfile(const std::shared_ptr<kortex_driver::srv::GetIntrinsicParametersProfile::Request> req, std::shared_ptr<kortex_driver::srv::GetIntrinsicParametersProfile::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::IntrinsicProfileIdentifier input;
@@ -402,7 +402,7 @@ bool VisionConfigRobotServices::GetIntrinsicParametersProfile(kortex_driver::srv
 	return true;
 }
 
-bool VisionConfigRobotServices::SetIntrinsicParameters(kortex_driver::srv::SetIntrinsicParameters::Request  &req, kortex_driver::srv::SetIntrinsicParameters::Response &res)
+bool VisionConfigRobotServices::SetIntrinsicParameters(const std::shared_ptr<kortex_driver::srv::SetIntrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetIntrinsicParameters::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::IntrinsicParameters input;
@@ -434,7 +434,7 @@ bool VisionConfigRobotServices::SetIntrinsicParameters(kortex_driver::srv::SetIn
 	return true;
 }
 
-bool VisionConfigRobotServices::GetExtrinsicParameters(kortex_driver::srv::GetExtrinsicParameters::Request  &req, kortex_driver::srv::GetExtrinsicParameters::Response &res)
+bool VisionConfigRobotServices::GetExtrinsicParameters(const std::shared_ptr<kortex_driver::srv::GetExtrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetExtrinsicParameters::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::ExtrinsicParameters output;
@@ -467,7 +467,7 @@ bool VisionConfigRobotServices::GetExtrinsicParameters(kortex_driver::srv::GetEx
 	return true;
 }
 
-bool VisionConfigRobotServices::SetExtrinsicParameters(kortex_driver::srv::SetExtrinsicParameters::Request  &req, kortex_driver::srv::SetExtrinsicParameters::Response &res)
+bool VisionConfigRobotServices::SetExtrinsicParameters(const std::shared_ptr<kortex_driver::srv::SetExtrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetExtrinsicParameters::Response> res)
 {
 	
 	Kinova::Api::VisionConfig::ExtrinsicParameters input;

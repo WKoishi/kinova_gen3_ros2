@@ -76,14 +76,14 @@ ActuatorConfigRobotServices::ActuatorConfigRobotServices(rclcpp::Node::SharedPtr
 	m_serviceGetCoggingFeedforwardMode = m_node_handle->create_service<kortex_driver::srv::GetCoggingFeedforwardMode>("actuator_config/get_cogging_feedforward_mode", std::bind(&ActuatorConfigRobotServices::GetCoggingFeedforwardMode, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool ActuatorConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool ActuatorConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool ActuatorConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -91,7 +91,7 @@ bool ActuatorConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOption
 }
 
 
-bool ActuatorConfigRobotServices::GetAxisOffsets(kortex_driver::srv::GetAxisOffsets::Request  &req, kortex_driver::srv::GetAxisOffsets::Response &res)
+bool ActuatorConfigRobotServices::GetAxisOffsets(const std::shared_ptr<kortex_driver::srv::GetAxisOffsets::Request> req, std::shared_ptr<kortex_driver::srv::GetAxisOffsets::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::AxisOffsets output;
@@ -124,7 +124,7 @@ bool ActuatorConfigRobotServices::GetAxisOffsets(kortex_driver::srv::GetAxisOffs
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetAxisOffsets(kortex_driver::srv::SetAxisOffsets::Request  &req, kortex_driver::srv::SetAxisOffsets::Response &res)
+bool ActuatorConfigRobotServices::SetAxisOffsets(const std::shared_ptr<kortex_driver::srv::SetAxisOffsets::Request> req, std::shared_ptr<kortex_driver::srv::SetAxisOffsets::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::AxisPosition input;
@@ -156,7 +156,7 @@ bool ActuatorConfigRobotServices::SetAxisOffsets(kortex_driver::srv::SetAxisOffs
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetTorqueOffset(kortex_driver::srv::SetTorqueOffset::Request  &req, kortex_driver::srv::SetTorqueOffset::Response &res)
+bool ActuatorConfigRobotServices::SetTorqueOffset(const std::shared_ptr<kortex_driver::srv::SetTorqueOffset::Request> req, std::shared_ptr<kortex_driver::srv::SetTorqueOffset::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::TorqueOffset input;
@@ -188,7 +188,7 @@ bool ActuatorConfigRobotServices::SetTorqueOffset(kortex_driver::srv::SetTorqueO
 	return true;
 }
 
-bool ActuatorConfigRobotServices::ActuatorConfig_GetControlMode(kortex_driver::srv::ActuatorConfigGetControlMode::Request  &req, kortex_driver::srv::ActuatorConfigGetControlMode::Response &res)
+bool ActuatorConfigRobotServices::ActuatorConfig_GetControlMode(const std::shared_ptr<kortex_driver::srv::ActuatorConfigGetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::ActuatorConfigGetControlMode::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::ControlModeInformation output;
@@ -221,7 +221,7 @@ bool ActuatorConfigRobotServices::ActuatorConfig_GetControlMode(kortex_driver::s
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetControlMode(kortex_driver::srv::SetControlMode::Request  &req, kortex_driver::srv::SetControlMode::Response &res)
+bool ActuatorConfigRobotServices::SetControlMode(const std::shared_ptr<kortex_driver::srv::SetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::SetControlMode::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::ControlModeInformation input;
@@ -253,7 +253,7 @@ bool ActuatorConfigRobotServices::SetControlMode(kortex_driver::srv::SetControlM
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetActivatedControlLoop(kortex_driver::srv::GetActivatedControlLoop::Request  &req, kortex_driver::srv::GetActivatedControlLoop::Response &res)
+bool ActuatorConfigRobotServices::GetActivatedControlLoop(const std::shared_ptr<kortex_driver::srv::GetActivatedControlLoop::Request> req, std::shared_ptr<kortex_driver::srv::GetActivatedControlLoop::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::ControlLoop output;
@@ -286,7 +286,7 @@ bool ActuatorConfigRobotServices::GetActivatedControlLoop(kortex_driver::srv::Ge
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetActivatedControlLoop(kortex_driver::srv::SetActivatedControlLoop::Request  &req, kortex_driver::srv::SetActivatedControlLoop::Response &res)
+bool ActuatorConfigRobotServices::SetActivatedControlLoop(const std::shared_ptr<kortex_driver::srv::SetActivatedControlLoop::Request> req, std::shared_ptr<kortex_driver::srv::SetActivatedControlLoop::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::ControlLoop input;
@@ -318,7 +318,7 @@ bool ActuatorConfigRobotServices::SetActivatedControlLoop(kortex_driver::srv::Se
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetControlLoopParameters(kortex_driver::srv::GetControlLoopParameters::Request  &req, kortex_driver::srv::GetControlLoopParameters::Response &res)
+bool ActuatorConfigRobotServices::GetControlLoopParameters(const std::shared_ptr<kortex_driver::srv::GetControlLoopParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetControlLoopParameters::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::LoopSelection input;
@@ -353,7 +353,7 @@ bool ActuatorConfigRobotServices::GetControlLoopParameters(kortex_driver::srv::G
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetControlLoopParameters(kortex_driver::srv::SetControlLoopParameters::Request  &req, kortex_driver::srv::SetControlLoopParameters::Response &res)
+bool ActuatorConfigRobotServices::SetControlLoopParameters(const std::shared_ptr<kortex_driver::srv::SetControlLoopParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetControlLoopParameters::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::ControlLoopParameters input;
@@ -385,7 +385,7 @@ bool ActuatorConfigRobotServices::SetControlLoopParameters(kortex_driver::srv::S
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SelectCustomData(kortex_driver::srv::SelectCustomData::Request  &req, kortex_driver::srv::SelectCustomData::Response &res)
+bool ActuatorConfigRobotServices::SelectCustomData(const std::shared_ptr<kortex_driver::srv::SelectCustomData::Request> req, std::shared_ptr<kortex_driver::srv::SelectCustomData::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::CustomDataSelection input;
@@ -417,7 +417,7 @@ bool ActuatorConfigRobotServices::SelectCustomData(kortex_driver::srv::SelectCus
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetSelectedCustomData(kortex_driver::srv::GetSelectedCustomData::Request  &req, kortex_driver::srv::GetSelectedCustomData::Response &res)
+bool ActuatorConfigRobotServices::GetSelectedCustomData(const std::shared_ptr<kortex_driver::srv::GetSelectedCustomData::Request> req, std::shared_ptr<kortex_driver::srv::GetSelectedCustomData::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::CustomDataSelection output;
@@ -450,7 +450,7 @@ bool ActuatorConfigRobotServices::GetSelectedCustomData(kortex_driver::srv::GetS
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetCommandMode(kortex_driver::srv::SetCommandMode::Request  &req, kortex_driver::srv::SetCommandMode::Response &res)
+bool ActuatorConfigRobotServices::SetCommandMode(const std::shared_ptr<kortex_driver::srv::SetCommandMode::Request> req, std::shared_ptr<kortex_driver::srv::SetCommandMode::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::CommandModeInformation input;
@@ -482,7 +482,7 @@ bool ActuatorConfigRobotServices::SetCommandMode(kortex_driver::srv::SetCommandM
 	return true;
 }
 
-bool ActuatorConfigRobotServices::ActuatorConfig_ClearFaults(kortex_driver::srv::ActuatorConfigClearFaults::Request  &req, kortex_driver::srv::ActuatorConfigClearFaults::Response &res)
+bool ActuatorConfigRobotServices::ActuatorConfig_ClearFaults(const std::shared_ptr<kortex_driver::srv::ActuatorConfigClearFaults::Request> req, std::shared_ptr<kortex_driver::srv::ActuatorConfigClearFaults::Response> res)
 {
 	
 	kortex_driver::msg::KortexError result_error;
@@ -512,7 +512,7 @@ bool ActuatorConfigRobotServices::ActuatorConfig_ClearFaults(kortex_driver::srv:
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetServoing(kortex_driver::srv::SetServoing::Request  &req, kortex_driver::srv::SetServoing::Response &res)
+bool ActuatorConfigRobotServices::SetServoing(const std::shared_ptr<kortex_driver::srv::SetServoing::Request> req, std::shared_ptr<kortex_driver::srv::SetServoing::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::Servoing input;
@@ -544,7 +544,7 @@ bool ActuatorConfigRobotServices::SetServoing(kortex_driver::srv::SetServoing::R
 	return true;
 }
 
-bool ActuatorConfigRobotServices::MoveToPosition(kortex_driver::srv::MoveToPosition::Request  &req, kortex_driver::srv::MoveToPosition::Response &res)
+bool ActuatorConfigRobotServices::MoveToPosition(const std::shared_ptr<kortex_driver::srv::MoveToPosition::Request> req, std::shared_ptr<kortex_driver::srv::MoveToPosition::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::PositionCommand input;
@@ -576,7 +576,7 @@ bool ActuatorConfigRobotServices::MoveToPosition(kortex_driver::srv::MoveToPosit
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetCommandMode(kortex_driver::srv::GetCommandMode::Request  &req, kortex_driver::srv::GetCommandMode::Response &res)
+bool ActuatorConfigRobotServices::GetCommandMode(const std::shared_ptr<kortex_driver::srv::GetCommandMode::Request> req, std::shared_ptr<kortex_driver::srv::GetCommandMode::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::CommandModeInformation output;
@@ -609,7 +609,7 @@ bool ActuatorConfigRobotServices::GetCommandMode(kortex_driver::srv::GetCommandM
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetServoing(kortex_driver::srv::GetServoing::Request  &req, kortex_driver::srv::GetServoing::Response &res)
+bool ActuatorConfigRobotServices::GetServoing(const std::shared_ptr<kortex_driver::srv::GetServoing::Request> req, std::shared_ptr<kortex_driver::srv::GetServoing::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::Servoing output;
@@ -642,7 +642,7 @@ bool ActuatorConfigRobotServices::GetServoing(kortex_driver::srv::GetServoing::R
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetTorqueOffset(kortex_driver::srv::GetTorqueOffset::Request  &req, kortex_driver::srv::GetTorqueOffset::Response &res)
+bool ActuatorConfigRobotServices::GetTorqueOffset(const std::shared_ptr<kortex_driver::srv::GetTorqueOffset::Request> req, std::shared_ptr<kortex_driver::srv::GetTorqueOffset::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::TorqueOffset output;
@@ -675,7 +675,7 @@ bool ActuatorConfigRobotServices::GetTorqueOffset(kortex_driver::srv::GetTorqueO
 	return true;
 }
 
-bool ActuatorConfigRobotServices::SetCoggingFeedforwardMode(kortex_driver::srv::SetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::SetCoggingFeedforwardMode::Response &res)
+bool ActuatorConfigRobotServices::SetCoggingFeedforwardMode(const std::shared_ptr<kortex_driver::srv::SetCoggingFeedforwardMode::Request> req, std::shared_ptr<kortex_driver::srv::SetCoggingFeedforwardMode::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation input;
@@ -707,7 +707,7 @@ bool ActuatorConfigRobotServices::SetCoggingFeedforwardMode(kortex_driver::srv::
 	return true;
 }
 
-bool ActuatorConfigRobotServices::GetCoggingFeedforwardMode(kortex_driver::srv::GetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::GetCoggingFeedforwardMode::Response &res)
+bool ActuatorConfigRobotServices::GetCoggingFeedforwardMode(const std::shared_ptr<kortex_driver::srv::GetCoggingFeedforwardMode::Request> req, std::shared_ptr<kortex_driver::srv::GetCoggingFeedforwardMode::Response> res)
 {
 	
 	Kinova::Api::ActuatorConfig::CoggingFeedforwardModeInformation output;

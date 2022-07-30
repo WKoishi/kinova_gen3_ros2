@@ -57,14 +57,14 @@ DeviceManagerRobotServices::DeviceManagerRobotServices(rclcpp::Node::SharedPtr n
 	m_serviceReadAllDevices = m_node_handle->create_service<kortex_driver::srv::ReadAllDevices>("device_manager/read_all_devices", std::bind(&DeviceManagerRobotServices::ReadAllDevices, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool DeviceManagerRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool DeviceManagerRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool DeviceManagerRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool DeviceManagerRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -72,7 +72,7 @@ bool DeviceManagerRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions
 }
 
 
-bool DeviceManagerRobotServices::ReadAllDevices(kortex_driver::srv::ReadAllDevices::Request  &req, kortex_driver::srv::ReadAllDevices::Response &res)
+bool DeviceManagerRobotServices::ReadAllDevices(const std::shared_ptr<kortex_driver::srv::ReadAllDevices::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllDevices::Response> res)
 {
 	
 	Kinova::Api::DeviceManager::DeviceHandles output;

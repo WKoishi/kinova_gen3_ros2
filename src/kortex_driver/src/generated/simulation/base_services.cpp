@@ -228,20 +228,20 @@ BaseSimulationServices::BaseSimulationServices(rclcpp::Node::SharedPtr node_hand
 	m_serviceValidateWaypointList = m_node_handle->create_service<kortex_driver::srv::ValidateWaypointList>("base/validate_waypoint_list", std::bind(&BaseSimulationServices::ValidateWaypointList, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool BaseSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool BaseSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool BaseSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool BaseSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool BaseSimulationServices::CreateUserProfile(kortex_driver::srv::CreateUserProfile::Request  &req, kortex_driver::srv::CreateUserProfile::Response &res)
+bool BaseSimulationServices::CreateUserProfile(const std::shared_ptr<kortex_driver::srv::CreateUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::CreateUserProfile::Response> res)
 {
 	
 	
@@ -256,7 +256,7 @@ bool BaseSimulationServices::CreateUserProfile(kortex_driver::srv::CreateUserPro
 	return true;
 }
 
-bool BaseSimulationServices::UpdateUserProfile(kortex_driver::srv::UpdateUserProfile::Request  &req, kortex_driver::srv::UpdateUserProfile::Response &res)
+bool BaseSimulationServices::UpdateUserProfile(const std::shared_ptr<kortex_driver::srv::UpdateUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::UpdateUserProfile::Response> res)
 {
 	
 	
@@ -271,7 +271,7 @@ bool BaseSimulationServices::UpdateUserProfile(kortex_driver::srv::UpdateUserPro
 	return true;
 }
 
-bool BaseSimulationServices::ReadUserProfile(kortex_driver::srv::ReadUserProfile::Request  &req, kortex_driver::srv::ReadUserProfile::Response &res)
+bool BaseSimulationServices::ReadUserProfile(const std::shared_ptr<kortex_driver::srv::ReadUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::ReadUserProfile::Response> res)
 {
 	
 	
@@ -286,7 +286,7 @@ bool BaseSimulationServices::ReadUserProfile(kortex_driver::srv::ReadUserProfile
 	return true;
 }
 
-bool BaseSimulationServices::DeleteUserProfile(kortex_driver::srv::DeleteUserProfile::Request  &req, kortex_driver::srv::DeleteUserProfile::Response &res)
+bool BaseSimulationServices::DeleteUserProfile(const std::shared_ptr<kortex_driver::srv::DeleteUserProfile::Request> req, std::shared_ptr<kortex_driver::srv::DeleteUserProfile::Response> res)
 {
 	
 	
@@ -301,7 +301,7 @@ bool BaseSimulationServices::DeleteUserProfile(kortex_driver::srv::DeleteUserPro
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllUserProfiles(kortex_driver::srv::ReadAllUserProfiles::Request  &req, kortex_driver::srv::ReadAllUserProfiles::Response &res)
+bool BaseSimulationServices::ReadAllUserProfiles(const std::shared_ptr<kortex_driver::srv::ReadAllUserProfiles::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllUserProfiles::Response> res)
 {
 	
 	
@@ -316,7 +316,7 @@ bool BaseSimulationServices::ReadAllUserProfiles(kortex_driver::srv::ReadAllUser
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllUsers(kortex_driver::srv::ReadAllUsers::Request  &req, kortex_driver::srv::ReadAllUsers::Response &res)
+bool BaseSimulationServices::ReadAllUsers(const std::shared_ptr<kortex_driver::srv::ReadAllUsers::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllUsers::Response> res)
 {
 	
 	
@@ -331,7 +331,7 @@ bool BaseSimulationServices::ReadAllUsers(kortex_driver::srv::ReadAllUsers::Requ
 	return true;
 }
 
-bool BaseSimulationServices::ChangePassword(kortex_driver::srv::ChangePassword::Request  &req, kortex_driver::srv::ChangePassword::Response &res)
+bool BaseSimulationServices::ChangePassword(const std::shared_ptr<kortex_driver::srv::ChangePassword::Request> req, std::shared_ptr<kortex_driver::srv::ChangePassword::Response> res)
 {
 	
 	
@@ -346,7 +346,7 @@ bool BaseSimulationServices::ChangePassword(kortex_driver::srv::ChangePassword::
 	return true;
 }
 
-bool BaseSimulationServices::CreateSequence(kortex_driver::srv::CreateSequence::Request  &req, kortex_driver::srv::CreateSequence::Response &res)
+bool BaseSimulationServices::CreateSequence(const std::shared_ptr<kortex_driver::srv::CreateSequence::Request> req, std::shared_ptr<kortex_driver::srv::CreateSequence::Response> res)
 {
 	
 	
@@ -361,7 +361,7 @@ bool BaseSimulationServices::CreateSequence(kortex_driver::srv::CreateSequence::
 	return true;
 }
 
-bool BaseSimulationServices::UpdateSequence(kortex_driver::srv::UpdateSequence::Request  &req, kortex_driver::srv::UpdateSequence::Response &res)
+bool BaseSimulationServices::UpdateSequence(const std::shared_ptr<kortex_driver::srv::UpdateSequence::Request> req, std::shared_ptr<kortex_driver::srv::UpdateSequence::Response> res)
 {
 	
 	
@@ -376,7 +376,7 @@ bool BaseSimulationServices::UpdateSequence(kortex_driver::srv::UpdateSequence::
 	return true;
 }
 
-bool BaseSimulationServices::ReadSequence(kortex_driver::srv::ReadSequence::Request  &req, kortex_driver::srv::ReadSequence::Response &res)
+bool BaseSimulationServices::ReadSequence(const std::shared_ptr<kortex_driver::srv::ReadSequence::Request> req, std::shared_ptr<kortex_driver::srv::ReadSequence::Response> res)
 {
 	
 	
@@ -391,7 +391,7 @@ bool BaseSimulationServices::ReadSequence(kortex_driver::srv::ReadSequence::Requ
 	return true;
 }
 
-bool BaseSimulationServices::DeleteSequence(kortex_driver::srv::DeleteSequence::Request  &req, kortex_driver::srv::DeleteSequence::Response &res)
+bool BaseSimulationServices::DeleteSequence(const std::shared_ptr<kortex_driver::srv::DeleteSequence::Request> req, std::shared_ptr<kortex_driver::srv::DeleteSequence::Response> res)
 {
 	
 	
@@ -406,7 +406,7 @@ bool BaseSimulationServices::DeleteSequence(kortex_driver::srv::DeleteSequence::
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllSequences(kortex_driver::srv::ReadAllSequences::Request  &req, kortex_driver::srv::ReadAllSequences::Response &res)
+bool BaseSimulationServices::ReadAllSequences(const std::shared_ptr<kortex_driver::srv::ReadAllSequences::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllSequences::Response> res)
 {
 	
 	
@@ -421,7 +421,7 @@ bool BaseSimulationServices::ReadAllSequences(kortex_driver::srv::ReadAllSequenc
 	return true;
 }
 
-bool BaseSimulationServices::PlaySequence(kortex_driver::srv::PlaySequence::Request  &req, kortex_driver::srv::PlaySequence::Response &res)
+bool BaseSimulationServices::PlaySequence(const std::shared_ptr<kortex_driver::srv::PlaySequence::Request> req, std::shared_ptr<kortex_driver::srv::PlaySequence::Response> res)
 {
 	
 	
@@ -436,7 +436,7 @@ bool BaseSimulationServices::PlaySequence(kortex_driver::srv::PlaySequence::Requ
 	return true;
 }
 
-bool BaseSimulationServices::PlayAdvancedSequence(kortex_driver::srv::PlayAdvancedSequence::Request  &req, kortex_driver::srv::PlayAdvancedSequence::Response &res)
+bool BaseSimulationServices::PlayAdvancedSequence(const std::shared_ptr<kortex_driver::srv::PlayAdvancedSequence::Request> req, std::shared_ptr<kortex_driver::srv::PlayAdvancedSequence::Response> res)
 {
 	
 	
@@ -451,7 +451,7 @@ bool BaseSimulationServices::PlayAdvancedSequence(kortex_driver::srv::PlayAdvanc
 	return true;
 }
 
-bool BaseSimulationServices::StopSequence(kortex_driver::srv::StopSequence::Request  &req, kortex_driver::srv::StopSequence::Response &res)
+bool BaseSimulationServices::StopSequence(const std::shared_ptr<kortex_driver::srv::StopSequence::Request> req, std::shared_ptr<kortex_driver::srv::StopSequence::Response> res)
 {
 	
 	
@@ -466,7 +466,7 @@ bool BaseSimulationServices::StopSequence(kortex_driver::srv::StopSequence::Requ
 	return true;
 }
 
-bool BaseSimulationServices::PauseSequence(kortex_driver::srv::PauseSequence::Request  &req, kortex_driver::srv::PauseSequence::Response &res)
+bool BaseSimulationServices::PauseSequence(const std::shared_ptr<kortex_driver::srv::PauseSequence::Request> req, std::shared_ptr<kortex_driver::srv::PauseSequence::Response> res)
 {
 	
 	
@@ -481,7 +481,7 @@ bool BaseSimulationServices::PauseSequence(kortex_driver::srv::PauseSequence::Re
 	return true;
 }
 
-bool BaseSimulationServices::ResumeSequence(kortex_driver::srv::ResumeSequence::Request  &req, kortex_driver::srv::ResumeSequence::Response &res)
+bool BaseSimulationServices::ResumeSequence(const std::shared_ptr<kortex_driver::srv::ResumeSequence::Request> req, std::shared_ptr<kortex_driver::srv::ResumeSequence::Response> res)
 {
 	
 	
@@ -496,7 +496,7 @@ bool BaseSimulationServices::ResumeSequence(kortex_driver::srv::ResumeSequence::
 	return true;
 }
 
-bool BaseSimulationServices::CreateProtectionZone(kortex_driver::srv::CreateProtectionZone::Request  &req, kortex_driver::srv::CreateProtectionZone::Response &res)
+bool BaseSimulationServices::CreateProtectionZone(const std::shared_ptr<kortex_driver::srv::CreateProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::CreateProtectionZone::Response> res)
 {
 	
 	
@@ -511,7 +511,7 @@ bool BaseSimulationServices::CreateProtectionZone(kortex_driver::srv::CreateProt
 	return true;
 }
 
-bool BaseSimulationServices::UpdateProtectionZone(kortex_driver::srv::UpdateProtectionZone::Request  &req, kortex_driver::srv::UpdateProtectionZone::Response &res)
+bool BaseSimulationServices::UpdateProtectionZone(const std::shared_ptr<kortex_driver::srv::UpdateProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::UpdateProtectionZone::Response> res)
 {
 	
 	
@@ -526,7 +526,7 @@ bool BaseSimulationServices::UpdateProtectionZone(kortex_driver::srv::UpdateProt
 	return true;
 }
 
-bool BaseSimulationServices::ReadProtectionZone(kortex_driver::srv::ReadProtectionZone::Request  &req, kortex_driver::srv::ReadProtectionZone::Response &res)
+bool BaseSimulationServices::ReadProtectionZone(const std::shared_ptr<kortex_driver::srv::ReadProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::ReadProtectionZone::Response> res)
 {
 	
 	
@@ -541,7 +541,7 @@ bool BaseSimulationServices::ReadProtectionZone(kortex_driver::srv::ReadProtecti
 	return true;
 }
 
-bool BaseSimulationServices::DeleteProtectionZone(kortex_driver::srv::DeleteProtectionZone::Request  &req, kortex_driver::srv::DeleteProtectionZone::Response &res)
+bool BaseSimulationServices::DeleteProtectionZone(const std::shared_ptr<kortex_driver::srv::DeleteProtectionZone::Request> req, std::shared_ptr<kortex_driver::srv::DeleteProtectionZone::Response> res)
 {
 	
 	
@@ -556,7 +556,7 @@ bool BaseSimulationServices::DeleteProtectionZone(kortex_driver::srv::DeleteProt
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllProtectionZones(kortex_driver::srv::ReadAllProtectionZones::Request  &req, kortex_driver::srv::ReadAllProtectionZones::Response &res)
+bool BaseSimulationServices::ReadAllProtectionZones(const std::shared_ptr<kortex_driver::srv::ReadAllProtectionZones::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllProtectionZones::Response> res)
 {
 	
 	
@@ -571,7 +571,7 @@ bool BaseSimulationServices::ReadAllProtectionZones(kortex_driver::srv::ReadAllP
 	return true;
 }
 
-bool BaseSimulationServices::CreateMapping(kortex_driver::srv::CreateMapping::Request  &req, kortex_driver::srv::CreateMapping::Response &res)
+bool BaseSimulationServices::CreateMapping(const std::shared_ptr<kortex_driver::srv::CreateMapping::Request> req, std::shared_ptr<kortex_driver::srv::CreateMapping::Response> res)
 {
 	
 	
@@ -586,7 +586,7 @@ bool BaseSimulationServices::CreateMapping(kortex_driver::srv::CreateMapping::Re
 	return true;
 }
 
-bool BaseSimulationServices::ReadMapping(kortex_driver::srv::ReadMapping::Request  &req, kortex_driver::srv::ReadMapping::Response &res)
+bool BaseSimulationServices::ReadMapping(const std::shared_ptr<kortex_driver::srv::ReadMapping::Request> req, std::shared_ptr<kortex_driver::srv::ReadMapping::Response> res)
 {
 	
 	
@@ -601,7 +601,7 @@ bool BaseSimulationServices::ReadMapping(kortex_driver::srv::ReadMapping::Reques
 	return true;
 }
 
-bool BaseSimulationServices::UpdateMapping(kortex_driver::srv::UpdateMapping::Request  &req, kortex_driver::srv::UpdateMapping::Response &res)
+bool BaseSimulationServices::UpdateMapping(const std::shared_ptr<kortex_driver::srv::UpdateMapping::Request> req, std::shared_ptr<kortex_driver::srv::UpdateMapping::Response> res)
 {
 	
 	
@@ -616,7 +616,7 @@ bool BaseSimulationServices::UpdateMapping(kortex_driver::srv::UpdateMapping::Re
 	return true;
 }
 
-bool BaseSimulationServices::DeleteMapping(kortex_driver::srv::DeleteMapping::Request  &req, kortex_driver::srv::DeleteMapping::Response &res)
+bool BaseSimulationServices::DeleteMapping(const std::shared_ptr<kortex_driver::srv::DeleteMapping::Request> req, std::shared_ptr<kortex_driver::srv::DeleteMapping::Response> res)
 {
 	
 	
@@ -631,7 +631,7 @@ bool BaseSimulationServices::DeleteMapping(kortex_driver::srv::DeleteMapping::Re
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllMappings(kortex_driver::srv::ReadAllMappings::Request  &req, kortex_driver::srv::ReadAllMappings::Response &res)
+bool BaseSimulationServices::ReadAllMappings(const std::shared_ptr<kortex_driver::srv::ReadAllMappings::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllMappings::Response> res)
 {
 	
 	
@@ -646,7 +646,7 @@ bool BaseSimulationServices::ReadAllMappings(kortex_driver::srv::ReadAllMappings
 	return true;
 }
 
-bool BaseSimulationServices::CreateMap(kortex_driver::srv::CreateMap::Request  &req, kortex_driver::srv::CreateMap::Response &res)
+bool BaseSimulationServices::CreateMap(const std::shared_ptr<kortex_driver::srv::CreateMap::Request> req, std::shared_ptr<kortex_driver::srv::CreateMap::Response> res)
 {
 	
 	
@@ -661,7 +661,7 @@ bool BaseSimulationServices::CreateMap(kortex_driver::srv::CreateMap::Request  &
 	return true;
 }
 
-bool BaseSimulationServices::ReadMap(kortex_driver::srv::ReadMap::Request  &req, kortex_driver::srv::ReadMap::Response &res)
+bool BaseSimulationServices::ReadMap(const std::shared_ptr<kortex_driver::srv::ReadMap::Request> req, std::shared_ptr<kortex_driver::srv::ReadMap::Response> res)
 {
 	
 	
@@ -676,7 +676,7 @@ bool BaseSimulationServices::ReadMap(kortex_driver::srv::ReadMap::Request  &req,
 	return true;
 }
 
-bool BaseSimulationServices::UpdateMap(kortex_driver::srv::UpdateMap::Request  &req, kortex_driver::srv::UpdateMap::Response &res)
+bool BaseSimulationServices::UpdateMap(const std::shared_ptr<kortex_driver::srv::UpdateMap::Request> req, std::shared_ptr<kortex_driver::srv::UpdateMap::Response> res)
 {
 	
 	
@@ -691,7 +691,7 @@ bool BaseSimulationServices::UpdateMap(kortex_driver::srv::UpdateMap::Request  &
 	return true;
 }
 
-bool BaseSimulationServices::DeleteMap(kortex_driver::srv::DeleteMap::Request  &req, kortex_driver::srv::DeleteMap::Response &res)
+bool BaseSimulationServices::DeleteMap(const std::shared_ptr<kortex_driver::srv::DeleteMap::Request> req, std::shared_ptr<kortex_driver::srv::DeleteMap::Response> res)
 {
 	
 	
@@ -706,7 +706,7 @@ bool BaseSimulationServices::DeleteMap(kortex_driver::srv::DeleteMap::Request  &
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllMaps(kortex_driver::srv::ReadAllMaps::Request  &req, kortex_driver::srv::ReadAllMaps::Response &res)
+bool BaseSimulationServices::ReadAllMaps(const std::shared_ptr<kortex_driver::srv::ReadAllMaps::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllMaps::Response> res)
 {
 	
 	
@@ -721,7 +721,7 @@ bool BaseSimulationServices::ReadAllMaps(kortex_driver::srv::ReadAllMaps::Reques
 	return true;
 }
 
-bool BaseSimulationServices::ActivateMap(kortex_driver::srv::ActivateMap::Request  &req, kortex_driver::srv::ActivateMap::Response &res)
+bool BaseSimulationServices::ActivateMap(const std::shared_ptr<kortex_driver::srv::ActivateMap::Request> req, std::shared_ptr<kortex_driver::srv::ActivateMap::Response> res)
 {
 	
 	
@@ -736,7 +736,7 @@ bool BaseSimulationServices::ActivateMap(kortex_driver::srv::ActivateMap::Reques
 	return true;
 }
 
-bool BaseSimulationServices::CreateAction(kortex_driver::srv::CreateAction::Request  &req, kortex_driver::srv::CreateAction::Response &res)
+bool BaseSimulationServices::CreateAction(const std::shared_ptr<kortex_driver::srv::CreateAction::Request> req, std::shared_ptr<kortex_driver::srv::CreateAction::Response> res)
 {
 	
 	
@@ -751,7 +751,7 @@ bool BaseSimulationServices::CreateAction(kortex_driver::srv::CreateAction::Requ
 	return true;
 }
 
-bool BaseSimulationServices::ReadAction(kortex_driver::srv::ReadAction::Request  &req, kortex_driver::srv::ReadAction::Response &res)
+bool BaseSimulationServices::ReadAction(const std::shared_ptr<kortex_driver::srv::ReadAction::Request> req, std::shared_ptr<kortex_driver::srv::ReadAction::Response> res)
 {
 	
 	
@@ -766,7 +766,7 @@ bool BaseSimulationServices::ReadAction(kortex_driver::srv::ReadAction::Request 
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllActions(kortex_driver::srv::ReadAllActions::Request  &req, kortex_driver::srv::ReadAllActions::Response &res)
+bool BaseSimulationServices::ReadAllActions(const std::shared_ptr<kortex_driver::srv::ReadAllActions::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllActions::Response> res)
 {
 	
 	
@@ -781,7 +781,7 @@ bool BaseSimulationServices::ReadAllActions(kortex_driver::srv::ReadAllActions::
 	return true;
 }
 
-bool BaseSimulationServices::DeleteAction(kortex_driver::srv::DeleteAction::Request  &req, kortex_driver::srv::DeleteAction::Response &res)
+bool BaseSimulationServices::DeleteAction(const std::shared_ptr<kortex_driver::srv::DeleteAction::Request> req, std::shared_ptr<kortex_driver::srv::DeleteAction::Response> res)
 {
 	
 	
@@ -796,7 +796,7 @@ bool BaseSimulationServices::DeleteAction(kortex_driver::srv::DeleteAction::Requ
 	return true;
 }
 
-bool BaseSimulationServices::UpdateAction(kortex_driver::srv::UpdateAction::Request  &req, kortex_driver::srv::UpdateAction::Response &res)
+bool BaseSimulationServices::UpdateAction(const std::shared_ptr<kortex_driver::srv::UpdateAction::Request> req, std::shared_ptr<kortex_driver::srv::UpdateAction::Response> res)
 {
 	
 	
@@ -811,7 +811,7 @@ bool BaseSimulationServices::UpdateAction(kortex_driver::srv::UpdateAction::Requ
 	return true;
 }
 
-bool BaseSimulationServices::ExecuteActionFromReference(kortex_driver::srv::ExecuteActionFromReference::Request  &req, kortex_driver::srv::ExecuteActionFromReference::Response &res)
+bool BaseSimulationServices::ExecuteActionFromReference(const std::shared_ptr<kortex_driver::srv::ExecuteActionFromReference::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteActionFromReference::Response> res)
 {
 	
 	
@@ -826,7 +826,7 @@ bool BaseSimulationServices::ExecuteActionFromReference(kortex_driver::srv::Exec
 	return true;
 }
 
-bool BaseSimulationServices::ExecuteAction(kortex_driver::srv::ExecuteAction::Request  &req, kortex_driver::srv::ExecuteAction::Response &res)
+bool BaseSimulationServices::ExecuteAction(const std::shared_ptr<kortex_driver::srv::ExecuteAction::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteAction::Response> res)
 {
 	
 	
@@ -841,7 +841,7 @@ bool BaseSimulationServices::ExecuteAction(kortex_driver::srv::ExecuteAction::Re
 	return true;
 }
 
-bool BaseSimulationServices::PauseAction(kortex_driver::srv::PauseAction::Request  &req, kortex_driver::srv::PauseAction::Response &res)
+bool BaseSimulationServices::PauseAction(const std::shared_ptr<kortex_driver::srv::PauseAction::Request> req, std::shared_ptr<kortex_driver::srv::PauseAction::Response> res)
 {
 	
 	
@@ -856,7 +856,7 @@ bool BaseSimulationServices::PauseAction(kortex_driver::srv::PauseAction::Reques
 	return true;
 }
 
-bool BaseSimulationServices::StopAction(kortex_driver::srv::StopAction::Request  &req, kortex_driver::srv::StopAction::Response &res)
+bool BaseSimulationServices::StopAction(const std::shared_ptr<kortex_driver::srv::StopAction::Request> req, std::shared_ptr<kortex_driver::srv::StopAction::Response> res)
 {
 	
 	
@@ -871,7 +871,7 @@ bool BaseSimulationServices::StopAction(kortex_driver::srv::StopAction::Request 
 	return true;
 }
 
-bool BaseSimulationServices::ResumeAction(kortex_driver::srv::ResumeAction::Request  &req, kortex_driver::srv::ResumeAction::Response &res)
+bool BaseSimulationServices::ResumeAction(const std::shared_ptr<kortex_driver::srv::ResumeAction::Request> req, std::shared_ptr<kortex_driver::srv::ResumeAction::Response> res)
 {
 	
 	
@@ -886,7 +886,7 @@ bool BaseSimulationServices::ResumeAction(kortex_driver::srv::ResumeAction::Requ
 	return true;
 }
 
-bool BaseSimulationServices::GetIPv4Configuration(kortex_driver::srv::GetIPv4Configuration::Request  &req, kortex_driver::srv::GetIPv4Configuration::Response &res)
+bool BaseSimulationServices::GetIPv4Configuration(const std::shared_ptr<kortex_driver::srv::GetIPv4Configuration::Request> req, std::shared_ptr<kortex_driver::srv::GetIPv4Configuration::Response> res)
 {
 	
 	
@@ -901,7 +901,7 @@ bool BaseSimulationServices::GetIPv4Configuration(kortex_driver::srv::GetIPv4Con
 	return true;
 }
 
-bool BaseSimulationServices::SetIPv4Configuration(kortex_driver::srv::SetIPv4Configuration::Request  &req, kortex_driver::srv::SetIPv4Configuration::Response &res)
+bool BaseSimulationServices::SetIPv4Configuration(const std::shared_ptr<kortex_driver::srv::SetIPv4Configuration::Request> req, std::shared_ptr<kortex_driver::srv::SetIPv4Configuration::Response> res)
 {
 	
 	
@@ -916,7 +916,7 @@ bool BaseSimulationServices::SetIPv4Configuration(kortex_driver::srv::SetIPv4Con
 	return true;
 }
 
-bool BaseSimulationServices::SetCommunicationInterfaceEnable(kortex_driver::srv::SetCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::SetCommunicationInterfaceEnable::Response &res)
+bool BaseSimulationServices::SetCommunicationInterfaceEnable(const std::shared_ptr<kortex_driver::srv::SetCommunicationInterfaceEnable::Request> req, std::shared_ptr<kortex_driver::srv::SetCommunicationInterfaceEnable::Response> res)
 {
 	
 	
@@ -931,7 +931,7 @@ bool BaseSimulationServices::SetCommunicationInterfaceEnable(kortex_driver::srv:
 	return true;
 }
 
-bool BaseSimulationServices::IsCommunicationInterfaceEnable(kortex_driver::srv::IsCommunicationInterfaceEnable::Request  &req, kortex_driver::srv::IsCommunicationInterfaceEnable::Response &res)
+bool BaseSimulationServices::IsCommunicationInterfaceEnable(const std::shared_ptr<kortex_driver::srv::IsCommunicationInterfaceEnable::Request> req, std::shared_ptr<kortex_driver::srv::IsCommunicationInterfaceEnable::Response> res)
 {
 	
 	
@@ -946,7 +946,7 @@ bool BaseSimulationServices::IsCommunicationInterfaceEnable(kortex_driver::srv::
 	return true;
 }
 
-bool BaseSimulationServices::GetAvailableWifi(kortex_driver::srv::GetAvailableWifi::Request  &req, kortex_driver::srv::GetAvailableWifi::Response &res)
+bool BaseSimulationServices::GetAvailableWifi(const std::shared_ptr<kortex_driver::srv::GetAvailableWifi::Request> req, std::shared_ptr<kortex_driver::srv::GetAvailableWifi::Response> res)
 {
 	
 	
@@ -961,7 +961,7 @@ bool BaseSimulationServices::GetAvailableWifi(kortex_driver::srv::GetAvailableWi
 	return true;
 }
 
-bool BaseSimulationServices::GetWifiInformation(kortex_driver::srv::GetWifiInformation::Request  &req, kortex_driver::srv::GetWifiInformation::Response &res)
+bool BaseSimulationServices::GetWifiInformation(const std::shared_ptr<kortex_driver::srv::GetWifiInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetWifiInformation::Response> res)
 {
 	
 	
@@ -976,7 +976,7 @@ bool BaseSimulationServices::GetWifiInformation(kortex_driver::srv::GetWifiInfor
 	return true;
 }
 
-bool BaseSimulationServices::AddWifiConfiguration(kortex_driver::srv::AddWifiConfiguration::Request  &req, kortex_driver::srv::AddWifiConfiguration::Response &res)
+bool BaseSimulationServices::AddWifiConfiguration(const std::shared_ptr<kortex_driver::srv::AddWifiConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::AddWifiConfiguration::Response> res)
 {
 	
 	
@@ -991,7 +991,7 @@ bool BaseSimulationServices::AddWifiConfiguration(kortex_driver::srv::AddWifiCon
 	return true;
 }
 
-bool BaseSimulationServices::DeleteWifiConfiguration(kortex_driver::srv::DeleteWifiConfiguration::Request  &req, kortex_driver::srv::DeleteWifiConfiguration::Response &res)
+bool BaseSimulationServices::DeleteWifiConfiguration(const std::shared_ptr<kortex_driver::srv::DeleteWifiConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::DeleteWifiConfiguration::Response> res)
 {
 	
 	
@@ -1006,7 +1006,7 @@ bool BaseSimulationServices::DeleteWifiConfiguration(kortex_driver::srv::DeleteW
 	return true;
 }
 
-bool BaseSimulationServices::GetAllConfiguredWifis(kortex_driver::srv::GetAllConfiguredWifis::Request  &req, kortex_driver::srv::GetAllConfiguredWifis::Response &res)
+bool BaseSimulationServices::GetAllConfiguredWifis(const std::shared_ptr<kortex_driver::srv::GetAllConfiguredWifis::Request> req, std::shared_ptr<kortex_driver::srv::GetAllConfiguredWifis::Response> res)
 {
 	
 	
@@ -1021,7 +1021,7 @@ bool BaseSimulationServices::GetAllConfiguredWifis(kortex_driver::srv::GetAllCon
 	return true;
 }
 
-bool BaseSimulationServices::ConnectWifi(kortex_driver::srv::ConnectWifi::Request  &req, kortex_driver::srv::ConnectWifi::Response &res)
+bool BaseSimulationServices::ConnectWifi(const std::shared_ptr<kortex_driver::srv::ConnectWifi::Request> req, std::shared_ptr<kortex_driver::srv::ConnectWifi::Response> res)
 {
 	
 	
@@ -1036,7 +1036,7 @@ bool BaseSimulationServices::ConnectWifi(kortex_driver::srv::ConnectWifi::Reques
 	return true;
 }
 
-bool BaseSimulationServices::DisconnectWifi(kortex_driver::srv::DisconnectWifi::Request  &req, kortex_driver::srv::DisconnectWifi::Response &res)
+bool BaseSimulationServices::DisconnectWifi(const std::shared_ptr<kortex_driver::srv::DisconnectWifi::Request> req, std::shared_ptr<kortex_driver::srv::DisconnectWifi::Response> res)
 {
 	
 	
@@ -1051,7 +1051,7 @@ bool BaseSimulationServices::DisconnectWifi(kortex_driver::srv::DisconnectWifi::
 	return true;
 }
 
-bool BaseSimulationServices::GetConnectedWifiInformation(kortex_driver::srv::GetConnectedWifiInformation::Request  &req, kortex_driver::srv::GetConnectedWifiInformation::Response &res)
+bool BaseSimulationServices::GetConnectedWifiInformation(const std::shared_ptr<kortex_driver::srv::GetConnectedWifiInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetConnectedWifiInformation::Response> res)
 {
 	
 	
@@ -1066,7 +1066,7 @@ bool BaseSimulationServices::GetConnectedWifiInformation(kortex_driver::srv::Get
 	return true;
 }
 
-bool BaseSimulationServices::Base_Unsubscribe(kortex_driver::srv::BaseUnsubscribe::Request  &req, kortex_driver::srv::BaseUnsubscribe::Response &res)
+bool BaseSimulationServices::Base_Unsubscribe(const std::shared_ptr<kortex_driver::srv::BaseUnsubscribe::Request> req, std::shared_ptr<kortex_driver::srv::BaseUnsubscribe::Response> res)
 {
 	
 	
@@ -1081,7 +1081,7 @@ bool BaseSimulationServices::Base_Unsubscribe(kortex_driver::srv::BaseUnsubscrib
 	return true;
 }
 
-bool BaseSimulationServices::OnNotificationConfigurationChangeTopic(kortex_driver::srv::OnNotificationConfigurationChangeTopic::Request  &req, kortex_driver::srv::OnNotificationConfigurationChangeTopic::Response &res)
+bool BaseSimulationServices::OnNotificationConfigurationChangeTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationConfigurationChangeTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationConfigurationChangeTopic::Response> res)
 {
 	
 	m_is_activated_ConfigurationChangeTopic = true;
@@ -1103,7 +1103,7 @@ void BaseSimulationServices::cb_ConfigurationChangeTopic(Kinova::Api::Base::Conf
 	m_pub_ConfigurationChangeTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationMappingInfoTopic(kortex_driver::srv::OnNotificationMappingInfoTopic::Request  &req, kortex_driver::srv::OnNotificationMappingInfoTopic::Response &res)
+bool BaseSimulationServices::OnNotificationMappingInfoTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationMappingInfoTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationMappingInfoTopic::Response> res)
 {
 	
 	m_is_activated_MappingInfoTopic = true;
@@ -1125,7 +1125,7 @@ void BaseSimulationServices::cb_MappingInfoTopic(Kinova::Api::Base::MappingInfoN
 	m_pub_MappingInfoTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::Base_OnNotificationControlModeTopic(kortex_driver::srv::BaseOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::BaseOnNotificationControlModeTopic::Response &res)
+bool BaseSimulationServices::Base_OnNotificationControlModeTopic(const std::shared_ptr<kortex_driver::srv::BaseOnNotificationControlModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::BaseOnNotificationControlModeTopic::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/activate_publishing_of_control_mode_topic service is now deprecated and will be removed in a future release.");
 	
@@ -1148,7 +1148,7 @@ void BaseSimulationServices::cb_ControlModeTopic(Kinova::Api::Base::ControlModeN
 	m_pub_ControlModeTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationOperatingModeTopic(kortex_driver::srv::OnNotificationOperatingModeTopic::Request  &req, kortex_driver::srv::OnNotificationOperatingModeTopic::Response &res)
+bool BaseSimulationServices::OnNotificationOperatingModeTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationOperatingModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationOperatingModeTopic::Response> res)
 {
 	
 	m_is_activated_OperatingModeTopic = true;
@@ -1170,7 +1170,7 @@ void BaseSimulationServices::cb_OperatingModeTopic(Kinova::Api::Base::OperatingM
 	m_pub_OperatingModeTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationSequenceInfoTopic(kortex_driver::srv::OnNotificationSequenceInfoTopic::Request  &req, kortex_driver::srv::OnNotificationSequenceInfoTopic::Response &res)
+bool BaseSimulationServices::OnNotificationSequenceInfoTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationSequenceInfoTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationSequenceInfoTopic::Response> res)
 {
 	
 	m_is_activated_SequenceInfoTopic = true;
@@ -1192,7 +1192,7 @@ void BaseSimulationServices::cb_SequenceInfoTopic(Kinova::Api::Base::SequenceInf
 	m_pub_SequenceInfoTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationProtectionZoneTopic(kortex_driver::srv::OnNotificationProtectionZoneTopic::Request  &req, kortex_driver::srv::OnNotificationProtectionZoneTopic::Response &res)
+bool BaseSimulationServices::OnNotificationProtectionZoneTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationProtectionZoneTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationProtectionZoneTopic::Response> res)
 {
 	
 	m_is_activated_ProtectionZoneTopic = true;
@@ -1214,7 +1214,7 @@ void BaseSimulationServices::cb_ProtectionZoneTopic(Kinova::Api::Base::Protectio
 	m_pub_ProtectionZoneTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationUserTopic(kortex_driver::srv::OnNotificationUserTopic::Request  &req, kortex_driver::srv::OnNotificationUserTopic::Response &res)
+bool BaseSimulationServices::OnNotificationUserTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationUserTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationUserTopic::Response> res)
 {
 	
 	m_is_activated_UserTopic = true;
@@ -1236,7 +1236,7 @@ void BaseSimulationServices::cb_UserTopic(Kinova::Api::Base::UserNotification no
 	m_pub_UserTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationControllerTopic(kortex_driver::srv::OnNotificationControllerTopic::Request  &req, kortex_driver::srv::OnNotificationControllerTopic::Response &res)
+bool BaseSimulationServices::OnNotificationControllerTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationControllerTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationControllerTopic::Response> res)
 {
 	
 	m_is_activated_ControllerTopic = true;
@@ -1258,7 +1258,7 @@ void BaseSimulationServices::cb_ControllerTopic(Kinova::Api::Base::ControllerNot
 	m_pub_ControllerTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationActionTopic(kortex_driver::srv::OnNotificationActionTopic::Request  &req, kortex_driver::srv::OnNotificationActionTopic::Response &res)
+bool BaseSimulationServices::OnNotificationActionTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationActionTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationActionTopic::Response> res)
 {
 	
 	m_is_activated_ActionTopic = true;
@@ -1280,7 +1280,7 @@ void BaseSimulationServices::cb_ActionTopic(Kinova::Api::Base::ActionNotificatio
 	m_pub_ActionTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::OnNotificationRobotEventTopic(kortex_driver::srv::OnNotificationRobotEventTopic::Request  &req, kortex_driver::srv::OnNotificationRobotEventTopic::Response &res)
+bool BaseSimulationServices::OnNotificationRobotEventTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationRobotEventTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationRobotEventTopic::Response> res)
 {
 	
 	m_is_activated_RobotEventTopic = true;
@@ -1302,7 +1302,7 @@ void BaseSimulationServices::cb_RobotEventTopic(Kinova::Api::Base::RobotEventNot
 	m_pub_RobotEventTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCartesianTrajectory::Request  &req, kortex_driver::srv::PlayCartesianTrajectory::Response &res)
+bool BaseSimulationServices::PlayCartesianTrajectory(const std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectory::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory service is now deprecated and will be removed in a future release.");
 	
@@ -1318,7 +1318,7 @@ bool BaseSimulationServices::PlayCartesianTrajectory(kortex_driver::srv::PlayCar
 	return true;
 }
 
-bool BaseSimulationServices::PlayCartesianTrajectoryPosition(kortex_driver::srv::PlayCartesianTrajectoryPosition::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryPosition::Response &res)
+bool BaseSimulationServices::PlayCartesianTrajectoryPosition(const std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryPosition::Request> req, std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryPosition::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_position service is now deprecated and will be removed in a future release.");
 	
@@ -1334,7 +1334,7 @@ bool BaseSimulationServices::PlayCartesianTrajectoryPosition(kortex_driver::srv:
 	return true;
 }
 
-bool BaseSimulationServices::PlayCartesianTrajectoryOrientation(kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request  &req, kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response &res)
+bool BaseSimulationServices::PlayCartesianTrajectoryOrientation(const std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryOrientation::Request> req, std::shared_ptr<kortex_driver::srv::PlayCartesianTrajectoryOrientation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_cartesian_trajectory_orientation service is now deprecated and will be removed in a future release.");
 	
@@ -1350,7 +1350,7 @@ bool BaseSimulationServices::PlayCartesianTrajectoryOrientation(kortex_driver::s
 	return true;
 }
 
-bool BaseSimulationServices::Stop(kortex_driver::srv::Stop::Request  &req, kortex_driver::srv::Stop::Response &res)
+bool BaseSimulationServices::Stop(const std::shared_ptr<kortex_driver::srv::Stop::Request> req, std::shared_ptr<kortex_driver::srv::Stop::Response> res)
 {
 	
 	
@@ -1365,7 +1365,7 @@ bool BaseSimulationServices::Stop(kortex_driver::srv::Stop::Request  &req, korte
 	return true;
 }
 
-bool BaseSimulationServices::GetMeasuredCartesianPose(kortex_driver::srv::GetMeasuredCartesianPose::Request  &req, kortex_driver::srv::GetMeasuredCartesianPose::Response &res)
+bool BaseSimulationServices::GetMeasuredCartesianPose(const std::shared_ptr<kortex_driver::srv::GetMeasuredCartesianPose::Request> req, std::shared_ptr<kortex_driver::srv::GetMeasuredCartesianPose::Response> res)
 {
 	
 	
@@ -1380,7 +1380,7 @@ bool BaseSimulationServices::GetMeasuredCartesianPose(kortex_driver::srv::GetMea
 	return true;
 }
 
-bool BaseSimulationServices::SendWrenchCommand(kortex_driver::srv::SendWrenchCommand::Request  &req, kortex_driver::srv::SendWrenchCommand::Response &res)
+bool BaseSimulationServices::SendWrenchCommand(const std::shared_ptr<kortex_driver::srv::SendWrenchCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendWrenchCommand::Response> res)
 {
 	
 	
@@ -1395,7 +1395,7 @@ bool BaseSimulationServices::SendWrenchCommand(kortex_driver::srv::SendWrenchCom
 	return true;
 }
 
-bool BaseSimulationServices::SendWrenchJoystickCommand(kortex_driver::srv::SendWrenchJoystickCommand::Request  &req, kortex_driver::srv::SendWrenchJoystickCommand::Response &res)
+bool BaseSimulationServices::SendWrenchJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendWrenchJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendWrenchJoystickCommand::Response> res)
 {
 	
 	
@@ -1410,7 +1410,7 @@ bool BaseSimulationServices::SendWrenchJoystickCommand(kortex_driver::srv::SendW
 	return true;
 }
 
-bool BaseSimulationServices::SendTwistJoystickCommand(kortex_driver::srv::SendTwistJoystickCommand::Request  &req, kortex_driver::srv::SendTwistJoystickCommand::Response &res)
+bool BaseSimulationServices::SendTwistJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendTwistJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendTwistJoystickCommand::Response> res)
 {
 	
 	
@@ -1425,7 +1425,7 @@ bool BaseSimulationServices::SendTwistJoystickCommand(kortex_driver::srv::SendTw
 	return true;
 }
 
-bool BaseSimulationServices::SendTwistCommand(kortex_driver::srv::SendTwistCommand::Request  &req, kortex_driver::srv::SendTwistCommand::Response &res)
+bool BaseSimulationServices::SendTwistCommand(const std::shared_ptr<kortex_driver::srv::SendTwistCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendTwistCommand::Response> res)
 {
 	
 	
@@ -1440,7 +1440,7 @@ bool BaseSimulationServices::SendTwistCommand(kortex_driver::srv::SendTwistComma
 	return true;
 }
 
-bool BaseSimulationServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTrajectory::Request  &req, kortex_driver::srv::PlayJointTrajectory::Response &res)
+bool BaseSimulationServices::PlayJointTrajectory(const std::shared_ptr<kortex_driver::srv::PlayJointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlayJointTrajectory::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
@@ -1456,7 +1456,7 @@ bool BaseSimulationServices::PlayJointTrajectory(kortex_driver::srv::PlayJointTr
 	return true;
 }
 
-bool BaseSimulationServices::PlaySelectedJointTrajectory(kortex_driver::srv::PlaySelectedJointTrajectory::Request  &req, kortex_driver::srv::PlaySelectedJointTrajectory::Response &res)
+bool BaseSimulationServices::PlaySelectedJointTrajectory(const std::shared_ptr<kortex_driver::srv::PlaySelectedJointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlaySelectedJointTrajectory::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/play_selected_joint_trajectory service is now deprecated and will be removed in a future release.");
 	
@@ -1472,7 +1472,7 @@ bool BaseSimulationServices::PlaySelectedJointTrajectory(kortex_driver::srv::Pla
 	return true;
 }
 
-bool BaseSimulationServices::GetMeasuredJointAngles(kortex_driver::srv::GetMeasuredJointAngles::Request  &req, kortex_driver::srv::GetMeasuredJointAngles::Response &res)
+bool BaseSimulationServices::GetMeasuredJointAngles(const std::shared_ptr<kortex_driver::srv::GetMeasuredJointAngles::Request> req, std::shared_ptr<kortex_driver::srv::GetMeasuredJointAngles::Response> res)
 {
 	
 	
@@ -1487,7 +1487,7 @@ bool BaseSimulationServices::GetMeasuredJointAngles(kortex_driver::srv::GetMeasu
 	return true;
 }
 
-bool BaseSimulationServices::SendJointSpeedsCommand(kortex_driver::srv::SendJointSpeedsCommand::Request  &req, kortex_driver::srv::SendJointSpeedsCommand::Response &res)
+bool BaseSimulationServices::SendJointSpeedsCommand(const std::shared_ptr<kortex_driver::srv::SendJointSpeedsCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendJointSpeedsCommand::Response> res)
 {
 	
 	
@@ -1502,7 +1502,7 @@ bool BaseSimulationServices::SendJointSpeedsCommand(kortex_driver::srv::SendJoin
 	return true;
 }
 
-bool BaseSimulationServices::SendSelectedJointSpeedCommand(kortex_driver::srv::SendSelectedJointSpeedCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedCommand::Response &res)
+bool BaseSimulationServices::SendSelectedJointSpeedCommand(const std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedCommand::Response> res)
 {
 	
 	
@@ -1517,7 +1517,7 @@ bool BaseSimulationServices::SendSelectedJointSpeedCommand(kortex_driver::srv::S
 	return true;
 }
 
-bool BaseSimulationServices::SendGripperCommand(kortex_driver::srv::SendGripperCommand::Request  &req, kortex_driver::srv::SendGripperCommand::Response &res)
+bool BaseSimulationServices::SendGripperCommand(const std::shared_ptr<kortex_driver::srv::SendGripperCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendGripperCommand::Response> res)
 {
 	
 	
@@ -1532,7 +1532,7 @@ bool BaseSimulationServices::SendGripperCommand(kortex_driver::srv::SendGripperC
 	return true;
 }
 
-bool BaseSimulationServices::GetMeasuredGripperMovement(kortex_driver::srv::GetMeasuredGripperMovement::Request  &req, kortex_driver::srv::GetMeasuredGripperMovement::Response &res)
+bool BaseSimulationServices::GetMeasuredGripperMovement(const std::shared_ptr<kortex_driver::srv::GetMeasuredGripperMovement::Request> req, std::shared_ptr<kortex_driver::srv::GetMeasuredGripperMovement::Response> res)
 {
 	
 	
@@ -1547,7 +1547,7 @@ bool BaseSimulationServices::GetMeasuredGripperMovement(kortex_driver::srv::GetM
 	return true;
 }
 
-bool BaseSimulationServices::SetAdmittance(kortex_driver::srv::SetAdmittance::Request  &req, kortex_driver::srv::SetAdmittance::Response &res)
+bool BaseSimulationServices::SetAdmittance(const std::shared_ptr<kortex_driver::srv::SetAdmittance::Request> req, std::shared_ptr<kortex_driver::srv::SetAdmittance::Response> res)
 {
 	
 	
@@ -1562,7 +1562,7 @@ bool BaseSimulationServices::SetAdmittance(kortex_driver::srv::SetAdmittance::Re
 	return true;
 }
 
-bool BaseSimulationServices::SetOperatingMode(kortex_driver::srv::SetOperatingMode::Request  &req, kortex_driver::srv::SetOperatingMode::Response &res)
+bool BaseSimulationServices::SetOperatingMode(const std::shared_ptr<kortex_driver::srv::SetOperatingMode::Request> req, std::shared_ptr<kortex_driver::srv::SetOperatingMode::Response> res)
 {
 	
 	
@@ -1577,7 +1577,7 @@ bool BaseSimulationServices::SetOperatingMode(kortex_driver::srv::SetOperatingMo
 	return true;
 }
 
-bool BaseSimulationServices::ApplyEmergencyStop(kortex_driver::srv::ApplyEmergencyStop::Request  &req, kortex_driver::srv::ApplyEmergencyStop::Response &res)
+bool BaseSimulationServices::ApplyEmergencyStop(const std::shared_ptr<kortex_driver::srv::ApplyEmergencyStop::Request> req, std::shared_ptr<kortex_driver::srv::ApplyEmergencyStop::Response> res)
 {
 	
 	
@@ -1592,7 +1592,7 @@ bool BaseSimulationServices::ApplyEmergencyStop(kortex_driver::srv::ApplyEmergen
 	return true;
 }
 
-bool BaseSimulationServices::Base_ClearFaults(kortex_driver::srv::BaseClearFaults::Request  &req, kortex_driver::srv::BaseClearFaults::Response &res)
+bool BaseSimulationServices::Base_ClearFaults(const std::shared_ptr<kortex_driver::srv::BaseClearFaults::Request> req, std::shared_ptr<kortex_driver::srv::BaseClearFaults::Response> res)
 {
 	
 	
@@ -1607,7 +1607,7 @@ bool BaseSimulationServices::Base_ClearFaults(kortex_driver::srv::BaseClearFault
 	return true;
 }
 
-bool BaseSimulationServices::Base_GetControlMode(kortex_driver::srv::BaseGetControlMode::Request  &req, kortex_driver::srv::BaseGetControlMode::Response &res)
+bool BaseSimulationServices::Base_GetControlMode(const std::shared_ptr<kortex_driver::srv::BaseGetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::BaseGetControlMode::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_control_mode service is now deprecated and will be removed in a future release.");
 	
@@ -1623,7 +1623,7 @@ bool BaseSimulationServices::Base_GetControlMode(kortex_driver::srv::BaseGetCont
 	return true;
 }
 
-bool BaseSimulationServices::GetOperatingMode(kortex_driver::srv::GetOperatingMode::Request  &req, kortex_driver::srv::GetOperatingMode::Response &res)
+bool BaseSimulationServices::GetOperatingMode(const std::shared_ptr<kortex_driver::srv::GetOperatingMode::Request> req, std::shared_ptr<kortex_driver::srv::GetOperatingMode::Response> res)
 {
 	
 	
@@ -1638,7 +1638,7 @@ bool BaseSimulationServices::GetOperatingMode(kortex_driver::srv::GetOperatingMo
 	return true;
 }
 
-bool BaseSimulationServices::SetServoingMode(kortex_driver::srv::SetServoingMode::Request  &req, kortex_driver::srv::SetServoingMode::Response &res)
+bool BaseSimulationServices::SetServoingMode(const std::shared_ptr<kortex_driver::srv::SetServoingMode::Request> req, std::shared_ptr<kortex_driver::srv::SetServoingMode::Response> res)
 {
 	
 	
@@ -1653,7 +1653,7 @@ bool BaseSimulationServices::SetServoingMode(kortex_driver::srv::SetServoingMode
 	return true;
 }
 
-bool BaseSimulationServices::GetServoingMode(kortex_driver::srv::GetServoingMode::Request  &req, kortex_driver::srv::GetServoingMode::Response &res)
+bool BaseSimulationServices::GetServoingMode(const std::shared_ptr<kortex_driver::srv::GetServoingMode::Request> req, std::shared_ptr<kortex_driver::srv::GetServoingMode::Response> res)
 {
 	
 	
@@ -1668,7 +1668,7 @@ bool BaseSimulationServices::GetServoingMode(kortex_driver::srv::GetServoingMode
 	return true;
 }
 
-bool BaseSimulationServices::OnNotificationServoingModeTopic(kortex_driver::srv::OnNotificationServoingModeTopic::Request  &req, kortex_driver::srv::OnNotificationServoingModeTopic::Response &res)
+bool BaseSimulationServices::OnNotificationServoingModeTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationServoingModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationServoingModeTopic::Response> res)
 {
 	
 	m_is_activated_ServoingModeTopic = true;
@@ -1690,7 +1690,7 @@ void BaseSimulationServices::cb_ServoingModeTopic(Kinova::Api::Base::ServoingMod
 	m_pub_ServoingModeTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::RestoreFactorySettings(kortex_driver::srv::RestoreFactorySettings::Request  &req, kortex_driver::srv::RestoreFactorySettings::Response &res)
+bool BaseSimulationServices::RestoreFactorySettings(const std::shared_ptr<kortex_driver::srv::RestoreFactorySettings::Request> req, std::shared_ptr<kortex_driver::srv::RestoreFactorySettings::Response> res)
 {
 	
 	
@@ -1705,7 +1705,7 @@ bool BaseSimulationServices::RestoreFactorySettings(kortex_driver::srv::RestoreF
 	return true;
 }
 
-bool BaseSimulationServices::OnNotificationFactoryTopic(kortex_driver::srv::OnNotificationFactoryTopic::Request  &req, kortex_driver::srv::OnNotificationFactoryTopic::Response &res)
+bool BaseSimulationServices::OnNotificationFactoryTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationFactoryTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationFactoryTopic::Response> res)
 {
 	
 	m_is_activated_FactoryTopic = true;
@@ -1727,7 +1727,7 @@ void BaseSimulationServices::cb_FactoryTopic(Kinova::Api::Base::FactoryNotificat
 	m_pub_FactoryTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::GetAllConnectedControllers(kortex_driver::srv::GetAllConnectedControllers::Request  &req, kortex_driver::srv::GetAllConnectedControllers::Response &res)
+bool BaseSimulationServices::GetAllConnectedControllers(const std::shared_ptr<kortex_driver::srv::GetAllConnectedControllers::Request> req, std::shared_ptr<kortex_driver::srv::GetAllConnectedControllers::Response> res)
 {
 	
 	
@@ -1742,7 +1742,7 @@ bool BaseSimulationServices::GetAllConnectedControllers(kortex_driver::srv::GetA
 	return true;
 }
 
-bool BaseSimulationServices::GetControllerState(kortex_driver::srv::GetControllerState::Request  &req, kortex_driver::srv::GetControllerState::Response &res)
+bool BaseSimulationServices::GetControllerState(const std::shared_ptr<kortex_driver::srv::GetControllerState::Request> req, std::shared_ptr<kortex_driver::srv::GetControllerState::Response> res)
 {
 	
 	
@@ -1757,7 +1757,7 @@ bool BaseSimulationServices::GetControllerState(kortex_driver::srv::GetControlle
 	return true;
 }
 
-bool BaseSimulationServices::GetActuatorCount(kortex_driver::srv::GetActuatorCount::Request  &req, kortex_driver::srv::GetActuatorCount::Response &res)
+bool BaseSimulationServices::GetActuatorCount(const std::shared_ptr<kortex_driver::srv::GetActuatorCount::Request> req, std::shared_ptr<kortex_driver::srv::GetActuatorCount::Response> res)
 {
 	
 	
@@ -1772,7 +1772,7 @@ bool BaseSimulationServices::GetActuatorCount(kortex_driver::srv::GetActuatorCou
 	return true;
 }
 
-bool BaseSimulationServices::StartWifiScan(kortex_driver::srv::StartWifiScan::Request  &req, kortex_driver::srv::StartWifiScan::Response &res)
+bool BaseSimulationServices::StartWifiScan(const std::shared_ptr<kortex_driver::srv::StartWifiScan::Request> req, std::shared_ptr<kortex_driver::srv::StartWifiScan::Response> res)
 {
 	
 	
@@ -1787,7 +1787,7 @@ bool BaseSimulationServices::StartWifiScan(kortex_driver::srv::StartWifiScan::Re
 	return true;
 }
 
-bool BaseSimulationServices::GetConfiguredWifi(kortex_driver::srv::GetConfiguredWifi::Request  &req, kortex_driver::srv::GetConfiguredWifi::Response &res)
+bool BaseSimulationServices::GetConfiguredWifi(const std::shared_ptr<kortex_driver::srv::GetConfiguredWifi::Request> req, std::shared_ptr<kortex_driver::srv::GetConfiguredWifi::Response> res)
 {
 	
 	
@@ -1802,7 +1802,7 @@ bool BaseSimulationServices::GetConfiguredWifi(kortex_driver::srv::GetConfigured
 	return true;
 }
 
-bool BaseSimulationServices::OnNotificationNetworkTopic(kortex_driver::srv::OnNotificationNetworkTopic::Request  &req, kortex_driver::srv::OnNotificationNetworkTopic::Response &res)
+bool BaseSimulationServices::OnNotificationNetworkTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationNetworkTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationNetworkTopic::Response> res)
 {
 	
 	m_is_activated_NetworkTopic = true;
@@ -1824,7 +1824,7 @@ void BaseSimulationServices::cb_NetworkTopic(Kinova::Api::Base::NetworkNotificat
 	m_pub_NetworkTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::GetArmState(kortex_driver::srv::GetArmState::Request  &req, kortex_driver::srv::GetArmState::Response &res)
+bool BaseSimulationServices::GetArmState(const std::shared_ptr<kortex_driver::srv::GetArmState::Request> req, std::shared_ptr<kortex_driver::srv::GetArmState::Response> res)
 {
 	
 	
@@ -1839,7 +1839,7 @@ bool BaseSimulationServices::GetArmState(kortex_driver::srv::GetArmState::Reques
 	return true;
 }
 
-bool BaseSimulationServices::OnNotificationArmStateTopic(kortex_driver::srv::OnNotificationArmStateTopic::Request  &req, kortex_driver::srv::OnNotificationArmStateTopic::Response &res)
+bool BaseSimulationServices::OnNotificationArmStateTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationArmStateTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationArmStateTopic::Response> res)
 {
 	
 	m_is_activated_ArmStateTopic = true;
@@ -1861,7 +1861,7 @@ void BaseSimulationServices::cb_ArmStateTopic(Kinova::Api::Base::ArmStateNotific
 	m_pub_ArmStateTopic->publish(ros_msg);
 }
 
-bool BaseSimulationServices::GetIPv4Information(kortex_driver::srv::GetIPv4Information::Request  &req, kortex_driver::srv::GetIPv4Information::Response &res)
+bool BaseSimulationServices::GetIPv4Information(const std::shared_ptr<kortex_driver::srv::GetIPv4Information::Request> req, std::shared_ptr<kortex_driver::srv::GetIPv4Information::Response> res)
 {
 	
 	
@@ -1876,7 +1876,7 @@ bool BaseSimulationServices::GetIPv4Information(kortex_driver::srv::GetIPv4Infor
 	return true;
 }
 
-bool BaseSimulationServices::SetWifiCountryCode(kortex_driver::srv::SetWifiCountryCode::Request  &req, kortex_driver::srv::SetWifiCountryCode::Response &res)
+bool BaseSimulationServices::SetWifiCountryCode(const std::shared_ptr<kortex_driver::srv::SetWifiCountryCode::Request> req, std::shared_ptr<kortex_driver::srv::SetWifiCountryCode::Response> res)
 {
 	
 	
@@ -1891,7 +1891,7 @@ bool BaseSimulationServices::SetWifiCountryCode(kortex_driver::srv::SetWifiCount
 	return true;
 }
 
-bool BaseSimulationServices::GetWifiCountryCode(kortex_driver::srv::GetWifiCountryCode::Request  &req, kortex_driver::srv::GetWifiCountryCode::Response &res)
+bool BaseSimulationServices::GetWifiCountryCode(const std::shared_ptr<kortex_driver::srv::GetWifiCountryCode::Request> req, std::shared_ptr<kortex_driver::srv::GetWifiCountryCode::Response> res)
 {
 	
 	
@@ -1906,7 +1906,7 @@ bool BaseSimulationServices::GetWifiCountryCode(kortex_driver::srv::GetWifiCount
 	return true;
 }
 
-bool BaseSimulationServices::Base_SetCapSenseConfig(kortex_driver::srv::BaseSetCapSenseConfig::Request  &req, kortex_driver::srv::BaseSetCapSenseConfig::Response &res)
+bool BaseSimulationServices::Base_SetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::BaseSetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::BaseSetCapSenseConfig::Response> res)
 {
 	
 	
@@ -1921,7 +1921,7 @@ bool BaseSimulationServices::Base_SetCapSenseConfig(kortex_driver::srv::BaseSetC
 	return true;
 }
 
-bool BaseSimulationServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetCapSenseConfig::Request  &req, kortex_driver::srv::BaseGetCapSenseConfig::Response &res)
+bool BaseSimulationServices::Base_GetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::BaseGetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::BaseGetCapSenseConfig::Response> res)
 {
 	
 	
@@ -1936,7 +1936,7 @@ bool BaseSimulationServices::Base_GetCapSenseConfig(kortex_driver::srv::BaseGetC
 	return true;
 }
 
-bool BaseSimulationServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response &res)
+bool BaseSimulationServices::GetAllJointsSpeedHardLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_speed_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -1952,7 +1952,7 @@ bool BaseSimulationServices::GetAllJointsSpeedHardLimitation(kortex_driver::srv:
 	return true;
 }
 
-bool BaseSimulationServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response &res)
+bool BaseSimulationServices::GetAllJointsTorqueHardLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_torque_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -1968,7 +1968,7 @@ bool BaseSimulationServices::GetAllJointsTorqueHardLimitation(kortex_driver::srv
 	return true;
 }
 
-bool BaseSimulationServices::GetTwistHardLimitation(kortex_driver::srv::GetTwistHardLimitation::Request  &req, kortex_driver::srv::GetTwistHardLimitation::Response &res)
+bool BaseSimulationServices::GetTwistHardLimitation(const std::shared_ptr<kortex_driver::srv::GetTwistHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetTwistHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_twist_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -1984,7 +1984,7 @@ bool BaseSimulationServices::GetTwistHardLimitation(kortex_driver::srv::GetTwist
 	return true;
 }
 
-bool BaseSimulationServices::GetWrenchHardLimitation(kortex_driver::srv::GetWrenchHardLimitation::Request  &req, kortex_driver::srv::GetWrenchHardLimitation::Response &res)
+bool BaseSimulationServices::GetWrenchHardLimitation(const std::shared_ptr<kortex_driver::srv::GetWrenchHardLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetWrenchHardLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_wrench_hard_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -2000,7 +2000,7 @@ bool BaseSimulationServices::GetWrenchHardLimitation(kortex_driver::srv::GetWren
 	return true;
 }
 
-bool BaseSimulationServices::SendJointSpeedsJoystickCommand(kortex_driver::srv::SendJointSpeedsJoystickCommand::Request  &req, kortex_driver::srv::SendJointSpeedsJoystickCommand::Response &res)
+bool BaseSimulationServices::SendJointSpeedsJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendJointSpeedsJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendJointSpeedsJoystickCommand::Response> res)
 {
 	
 	
@@ -2015,7 +2015,7 @@ bool BaseSimulationServices::SendJointSpeedsJoystickCommand(kortex_driver::srv::
 	return true;
 }
 
-bool BaseSimulationServices::SendSelectedJointSpeedJoystickCommand(kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Request  &req, kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Response &res)
+bool BaseSimulationServices::SendSelectedJointSpeedJoystickCommand(const std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Request> req, std::shared_ptr<kortex_driver::srv::SendSelectedJointSpeedJoystickCommand::Response> res)
 {
 	
 	
@@ -2030,7 +2030,7 @@ bool BaseSimulationServices::SendSelectedJointSpeedJoystickCommand(kortex_driver
 	return true;
 }
 
-bool BaseSimulationServices::EnableBridge(kortex_driver::srv::EnableBridge::Request  &req, kortex_driver::srv::EnableBridge::Response &res)
+bool BaseSimulationServices::EnableBridge(const std::shared_ptr<kortex_driver::srv::EnableBridge::Request> req, std::shared_ptr<kortex_driver::srv::EnableBridge::Response> res)
 {
 	
 	
@@ -2045,7 +2045,7 @@ bool BaseSimulationServices::EnableBridge(kortex_driver::srv::EnableBridge::Requ
 	return true;
 }
 
-bool BaseSimulationServices::DisableBridge(kortex_driver::srv::DisableBridge::Request  &req, kortex_driver::srv::DisableBridge::Response &res)
+bool BaseSimulationServices::DisableBridge(const std::shared_ptr<kortex_driver::srv::DisableBridge::Request> req, std::shared_ptr<kortex_driver::srv::DisableBridge::Response> res)
 {
 	
 	
@@ -2060,7 +2060,7 @@ bool BaseSimulationServices::DisableBridge(kortex_driver::srv::DisableBridge::Re
 	return true;
 }
 
-bool BaseSimulationServices::GetBridgeList(kortex_driver::srv::GetBridgeList::Request  &req, kortex_driver::srv::GetBridgeList::Response &res)
+bool BaseSimulationServices::GetBridgeList(const std::shared_ptr<kortex_driver::srv::GetBridgeList::Request> req, std::shared_ptr<kortex_driver::srv::GetBridgeList::Response> res)
 {
 	
 	
@@ -2075,7 +2075,7 @@ bool BaseSimulationServices::GetBridgeList(kortex_driver::srv::GetBridgeList::Re
 	return true;
 }
 
-bool BaseSimulationServices::GetBridgeConfig(kortex_driver::srv::GetBridgeConfig::Request  &req, kortex_driver::srv::GetBridgeConfig::Response &res)
+bool BaseSimulationServices::GetBridgeConfig(const std::shared_ptr<kortex_driver::srv::GetBridgeConfig::Request> req, std::shared_ptr<kortex_driver::srv::GetBridgeConfig::Response> res)
 {
 	
 	
@@ -2090,7 +2090,7 @@ bool BaseSimulationServices::GetBridgeConfig(kortex_driver::srv::GetBridgeConfig
 	return true;
 }
 
-bool BaseSimulationServices::PlayPreComputedJointTrajectory(kortex_driver::srv::PlayPreComputedJointTrajectory::Request  &req, kortex_driver::srv::PlayPreComputedJointTrajectory::Response &res)
+bool BaseSimulationServices::PlayPreComputedJointTrajectory(const std::shared_ptr<kortex_driver::srv::PlayPreComputedJointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::PlayPreComputedJointTrajectory::Response> res)
 {
 	
 	
@@ -2105,7 +2105,7 @@ bool BaseSimulationServices::PlayPreComputedJointTrajectory(kortex_driver::srv::
 	return true;
 }
 
-bool BaseSimulationServices::GetProductConfiguration(kortex_driver::srv::GetProductConfiguration::Request  &req, kortex_driver::srv::GetProductConfiguration::Response &res)
+bool BaseSimulationServices::GetProductConfiguration(const std::shared_ptr<kortex_driver::srv::GetProductConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetProductConfiguration::Response> res)
 {
 	
 	
@@ -2120,7 +2120,7 @@ bool BaseSimulationServices::GetProductConfiguration(kortex_driver::srv::GetProd
 	return true;
 }
 
-bool BaseSimulationServices::UpdateEndEffectorTypeConfiguration(kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Request  &req, kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Response &res)
+bool BaseSimulationServices::UpdateEndEffectorTypeConfiguration(const std::shared_ptr<kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::UpdateEndEffectorTypeConfiguration::Response> res)
 {
 	
 	
@@ -2135,7 +2135,7 @@ bool BaseSimulationServices::UpdateEndEffectorTypeConfiguration(kortex_driver::s
 	return true;
 }
 
-bool BaseSimulationServices::RestoreFactoryProductConfiguration(kortex_driver::srv::RestoreFactoryProductConfiguration::Request  &req, kortex_driver::srv::RestoreFactoryProductConfiguration::Response &res)
+bool BaseSimulationServices::RestoreFactoryProductConfiguration(const std::shared_ptr<kortex_driver::srv::RestoreFactoryProductConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::RestoreFactoryProductConfiguration::Response> res)
 {
 	
 	
@@ -2150,7 +2150,7 @@ bool BaseSimulationServices::RestoreFactoryProductConfiguration(kortex_driver::s
 	return true;
 }
 
-bool BaseSimulationServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTrajectoryErrorReport::Request  &req, kortex_driver::srv::GetTrajectoryErrorReport::Response &res)
+bool BaseSimulationServices::GetTrajectoryErrorReport(const std::shared_ptr<kortex_driver::srv::GetTrajectoryErrorReport::Request> req, std::shared_ptr<kortex_driver::srv::GetTrajectoryErrorReport::Response> res)
 {
 	
 	
@@ -2165,7 +2165,7 @@ bool BaseSimulationServices::GetTrajectoryErrorReport(kortex_driver::srv::GetTra
 	return true;
 }
 
-bool BaseSimulationServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response &res)
+bool BaseSimulationServices::GetAllJointsSpeedSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsSpeedSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_speed_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -2181,7 +2181,7 @@ bool BaseSimulationServices::GetAllJointsSpeedSoftLimitation(kortex_driver::srv:
 	return true;
 }
 
-bool BaseSimulationServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request  &req, kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response &res)
+bool BaseSimulationServices::GetAllJointsTorqueSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllJointsTorqueSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_all_joints_torque_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -2197,7 +2197,7 @@ bool BaseSimulationServices::GetAllJointsTorqueSoftLimitation(kortex_driver::srv
 	return true;
 }
 
-bool BaseSimulationServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwistSoftLimitation::Request  &req, kortex_driver::srv::GetTwistSoftLimitation::Response &res)
+bool BaseSimulationServices::GetTwistSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetTwistSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetTwistSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_twist_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -2213,7 +2213,7 @@ bool BaseSimulationServices::GetTwistSoftLimitation(kortex_driver::srv::GetTwist
 	return true;
 }
 
-bool BaseSimulationServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWrenchSoftLimitation::Request  &req, kortex_driver::srv::GetWrenchSoftLimitation::Response &res)
+bool BaseSimulationServices::GetWrenchSoftLimitation(const std::shared_ptr<kortex_driver::srv::GetWrenchSoftLimitation::Request> req, std::shared_ptr<kortex_driver::srv::GetWrenchSoftLimitation::Response> res)
 {
 	RCLCPP_WARN(m_node_handle->get_logger(), "The base/get_wrench_soft_limitation service is now deprecated and will be removed in a future release.");
 	
@@ -2229,7 +2229,7 @@ bool BaseSimulationServices::GetWrenchSoftLimitation(kortex_driver::srv::GetWren
 	return true;
 }
 
-bool BaseSimulationServices::SetControllerConfigurationMode(kortex_driver::srv::SetControllerConfigurationMode::Request  &req, kortex_driver::srv::SetControllerConfigurationMode::Response &res)
+bool BaseSimulationServices::SetControllerConfigurationMode(const std::shared_ptr<kortex_driver::srv::SetControllerConfigurationMode::Request> req, std::shared_ptr<kortex_driver::srv::SetControllerConfigurationMode::Response> res)
 {
 	
 	
@@ -2244,7 +2244,7 @@ bool BaseSimulationServices::SetControllerConfigurationMode(kortex_driver::srv::
 	return true;
 }
 
-bool BaseSimulationServices::GetControllerConfigurationMode(kortex_driver::srv::GetControllerConfigurationMode::Request  &req, kortex_driver::srv::GetControllerConfigurationMode::Response &res)
+bool BaseSimulationServices::GetControllerConfigurationMode(const std::shared_ptr<kortex_driver::srv::GetControllerConfigurationMode::Request> req, std::shared_ptr<kortex_driver::srv::GetControllerConfigurationMode::Response> res)
 {
 	
 	
@@ -2259,7 +2259,7 @@ bool BaseSimulationServices::GetControllerConfigurationMode(kortex_driver::srv::
 	return true;
 }
 
-bool BaseSimulationServices::StartTeaching(kortex_driver::srv::StartTeaching::Request  &req, kortex_driver::srv::StartTeaching::Response &res)
+bool BaseSimulationServices::StartTeaching(const std::shared_ptr<kortex_driver::srv::StartTeaching::Request> req, std::shared_ptr<kortex_driver::srv::StartTeaching::Response> res)
 {
 	
 	
@@ -2274,7 +2274,7 @@ bool BaseSimulationServices::StartTeaching(kortex_driver::srv::StartTeaching::Re
 	return true;
 }
 
-bool BaseSimulationServices::StopTeaching(kortex_driver::srv::StopTeaching::Request  &req, kortex_driver::srv::StopTeaching::Response &res)
+bool BaseSimulationServices::StopTeaching(const std::shared_ptr<kortex_driver::srv::StopTeaching::Request> req, std::shared_ptr<kortex_driver::srv::StopTeaching::Response> res)
 {
 	
 	
@@ -2289,7 +2289,7 @@ bool BaseSimulationServices::StopTeaching(kortex_driver::srv::StopTeaching::Requ
 	return true;
 }
 
-bool BaseSimulationServices::AddSequenceTasks(kortex_driver::srv::AddSequenceTasks::Request  &req, kortex_driver::srv::AddSequenceTasks::Response &res)
+bool BaseSimulationServices::AddSequenceTasks(const std::shared_ptr<kortex_driver::srv::AddSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::AddSequenceTasks::Response> res)
 {
 	
 	
@@ -2304,7 +2304,7 @@ bool BaseSimulationServices::AddSequenceTasks(kortex_driver::srv::AddSequenceTas
 	return true;
 }
 
-bool BaseSimulationServices::UpdateSequenceTask(kortex_driver::srv::UpdateSequenceTask::Request  &req, kortex_driver::srv::UpdateSequenceTask::Response &res)
+bool BaseSimulationServices::UpdateSequenceTask(const std::shared_ptr<kortex_driver::srv::UpdateSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::UpdateSequenceTask::Response> res)
 {
 	
 	
@@ -2319,7 +2319,7 @@ bool BaseSimulationServices::UpdateSequenceTask(kortex_driver::srv::UpdateSequen
 	return true;
 }
 
-bool BaseSimulationServices::SwapSequenceTasks(kortex_driver::srv::SwapSequenceTasks::Request  &req, kortex_driver::srv::SwapSequenceTasks::Response &res)
+bool BaseSimulationServices::SwapSequenceTasks(const std::shared_ptr<kortex_driver::srv::SwapSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::SwapSequenceTasks::Response> res)
 {
 	
 	
@@ -2334,7 +2334,7 @@ bool BaseSimulationServices::SwapSequenceTasks(kortex_driver::srv::SwapSequenceT
 	return true;
 }
 
-bool BaseSimulationServices::ReadSequenceTask(kortex_driver::srv::ReadSequenceTask::Request  &req, kortex_driver::srv::ReadSequenceTask::Response &res)
+bool BaseSimulationServices::ReadSequenceTask(const std::shared_ptr<kortex_driver::srv::ReadSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::ReadSequenceTask::Response> res)
 {
 	
 	
@@ -2349,7 +2349,7 @@ bool BaseSimulationServices::ReadSequenceTask(kortex_driver::srv::ReadSequenceTa
 	return true;
 }
 
-bool BaseSimulationServices::ReadAllSequenceTasks(kortex_driver::srv::ReadAllSequenceTasks::Request  &req, kortex_driver::srv::ReadAllSequenceTasks::Response &res)
+bool BaseSimulationServices::ReadAllSequenceTasks(const std::shared_ptr<kortex_driver::srv::ReadAllSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllSequenceTasks::Response> res)
 {
 	
 	
@@ -2364,7 +2364,7 @@ bool BaseSimulationServices::ReadAllSequenceTasks(kortex_driver::srv::ReadAllSeq
 	return true;
 }
 
-bool BaseSimulationServices::DeleteSequenceTask(kortex_driver::srv::DeleteSequenceTask::Request  &req, kortex_driver::srv::DeleteSequenceTask::Response &res)
+bool BaseSimulationServices::DeleteSequenceTask(const std::shared_ptr<kortex_driver::srv::DeleteSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::DeleteSequenceTask::Response> res)
 {
 	
 	
@@ -2379,7 +2379,7 @@ bool BaseSimulationServices::DeleteSequenceTask(kortex_driver::srv::DeleteSequen
 	return true;
 }
 
-bool BaseSimulationServices::DeleteAllSequenceTasks(kortex_driver::srv::DeleteAllSequenceTasks::Request  &req, kortex_driver::srv::DeleteAllSequenceTasks::Response &res)
+bool BaseSimulationServices::DeleteAllSequenceTasks(const std::shared_ptr<kortex_driver::srv::DeleteAllSequenceTasks::Request> req, std::shared_ptr<kortex_driver::srv::DeleteAllSequenceTasks::Response> res)
 {
 	
 	
@@ -2394,7 +2394,7 @@ bool BaseSimulationServices::DeleteAllSequenceTasks(kortex_driver::srv::DeleteAl
 	return true;
 }
 
-bool BaseSimulationServices::TakeSnapshot(kortex_driver::srv::TakeSnapshot::Request  &req, kortex_driver::srv::TakeSnapshot::Response &res)
+bool BaseSimulationServices::TakeSnapshot(const std::shared_ptr<kortex_driver::srv::TakeSnapshot::Request> req, std::shared_ptr<kortex_driver::srv::TakeSnapshot::Response> res)
 {
 	
 	
@@ -2409,7 +2409,7 @@ bool BaseSimulationServices::TakeSnapshot(kortex_driver::srv::TakeSnapshot::Requ
 	return true;
 }
 
-bool BaseSimulationServices::GetFirmwareBundleVersions(kortex_driver::srv::GetFirmwareBundleVersions::Request  &req, kortex_driver::srv::GetFirmwareBundleVersions::Response &res)
+bool BaseSimulationServices::GetFirmwareBundleVersions(const std::shared_ptr<kortex_driver::srv::GetFirmwareBundleVersions::Request> req, std::shared_ptr<kortex_driver::srv::GetFirmwareBundleVersions::Response> res)
 {
 	
 	
@@ -2424,7 +2424,7 @@ bool BaseSimulationServices::GetFirmwareBundleVersions(kortex_driver::srv::GetFi
 	return true;
 }
 
-bool BaseSimulationServices::ExecuteWaypointTrajectory(kortex_driver::srv::ExecuteWaypointTrajectory::Request  &req, kortex_driver::srv::ExecuteWaypointTrajectory::Response &res)
+bool BaseSimulationServices::ExecuteWaypointTrajectory(const std::shared_ptr<kortex_driver::srv::ExecuteWaypointTrajectory::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteWaypointTrajectory::Response> res)
 {
 	
 	
@@ -2439,7 +2439,7 @@ bool BaseSimulationServices::ExecuteWaypointTrajectory(kortex_driver::srv::Execu
 	return true;
 }
 
-bool BaseSimulationServices::MoveSequenceTask(kortex_driver::srv::MoveSequenceTask::Request  &req, kortex_driver::srv::MoveSequenceTask::Response &res)
+bool BaseSimulationServices::MoveSequenceTask(const std::shared_ptr<kortex_driver::srv::MoveSequenceTask::Request> req, std::shared_ptr<kortex_driver::srv::MoveSequenceTask::Response> res)
 {
 	
 	
@@ -2454,7 +2454,7 @@ bool BaseSimulationServices::MoveSequenceTask(kortex_driver::srv::MoveSequenceTa
 	return true;
 }
 
-bool BaseSimulationServices::DuplicateMapping(kortex_driver::srv::DuplicateMapping::Request  &req, kortex_driver::srv::DuplicateMapping::Response &res)
+bool BaseSimulationServices::DuplicateMapping(const std::shared_ptr<kortex_driver::srv::DuplicateMapping::Request> req, std::shared_ptr<kortex_driver::srv::DuplicateMapping::Response> res)
 {
 	
 	
@@ -2469,7 +2469,7 @@ bool BaseSimulationServices::DuplicateMapping(kortex_driver::srv::DuplicateMappi
 	return true;
 }
 
-bool BaseSimulationServices::DuplicateMap(kortex_driver::srv::DuplicateMap::Request  &req, kortex_driver::srv::DuplicateMap::Response &res)
+bool BaseSimulationServices::DuplicateMap(const std::shared_ptr<kortex_driver::srv::DuplicateMap::Request> req, std::shared_ptr<kortex_driver::srv::DuplicateMap::Response> res)
 {
 	
 	
@@ -2484,7 +2484,7 @@ bool BaseSimulationServices::DuplicateMap(kortex_driver::srv::DuplicateMap::Requ
 	return true;
 }
 
-bool BaseSimulationServices::SetControllerConfiguration(kortex_driver::srv::SetControllerConfiguration::Request  &req, kortex_driver::srv::SetControllerConfiguration::Response &res)
+bool BaseSimulationServices::SetControllerConfiguration(const std::shared_ptr<kortex_driver::srv::SetControllerConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetControllerConfiguration::Response> res)
 {
 	
 	
@@ -2499,7 +2499,7 @@ bool BaseSimulationServices::SetControllerConfiguration(kortex_driver::srv::SetC
 	return true;
 }
 
-bool BaseSimulationServices::GetControllerConfiguration(kortex_driver::srv::GetControllerConfiguration::Request  &req, kortex_driver::srv::GetControllerConfiguration::Response &res)
+bool BaseSimulationServices::GetControllerConfiguration(const std::shared_ptr<kortex_driver::srv::GetControllerConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetControllerConfiguration::Response> res)
 {
 	
 	
@@ -2514,7 +2514,7 @@ bool BaseSimulationServices::GetControllerConfiguration(kortex_driver::srv::GetC
 	return true;
 }
 
-bool BaseSimulationServices::GetAllControllerConfigurations(kortex_driver::srv::GetAllControllerConfigurations::Request  &req, kortex_driver::srv::GetAllControllerConfigurations::Response &res)
+bool BaseSimulationServices::GetAllControllerConfigurations(const std::shared_ptr<kortex_driver::srv::GetAllControllerConfigurations::Request> req, std::shared_ptr<kortex_driver::srv::GetAllControllerConfigurations::Response> res)
 {
 	
 	
@@ -2529,7 +2529,7 @@ bool BaseSimulationServices::GetAllControllerConfigurations(kortex_driver::srv::
 	return true;
 }
 
-bool BaseSimulationServices::ComputeForwardKinematics(kortex_driver::srv::ComputeForwardKinematics::Request  &req, kortex_driver::srv::ComputeForwardKinematics::Response &res)
+bool BaseSimulationServices::ComputeForwardKinematics(const std::shared_ptr<kortex_driver::srv::ComputeForwardKinematics::Request> req, std::shared_ptr<kortex_driver::srv::ComputeForwardKinematics::Response> res)
 {
 	
 	
@@ -2544,7 +2544,7 @@ bool BaseSimulationServices::ComputeForwardKinematics(kortex_driver::srv::Comput
 	return true;
 }
 
-bool BaseSimulationServices::ComputeInverseKinematics(kortex_driver::srv::ComputeInverseKinematics::Request  &req, kortex_driver::srv::ComputeInverseKinematics::Response &res)
+bool BaseSimulationServices::ComputeInverseKinematics(const std::shared_ptr<kortex_driver::srv::ComputeInverseKinematics::Request> req, std::shared_ptr<kortex_driver::srv::ComputeInverseKinematics::Response> res)
 {
 	
 	
@@ -2559,7 +2559,7 @@ bool BaseSimulationServices::ComputeInverseKinematics(kortex_driver::srv::Comput
 	return true;
 }
 
-bool BaseSimulationServices::ValidateWaypointList(kortex_driver::srv::ValidateWaypointList::Request  &req, kortex_driver::srv::ValidateWaypointList::Response &res)
+bool BaseSimulationServices::ValidateWaypointList(const std::shared_ptr<kortex_driver::srv::ValidateWaypointList::Request> req, std::shared_ptr<kortex_driver::srv::ValidateWaypointList::Response> res)
 {
 	
 	

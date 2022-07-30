@@ -72,20 +72,20 @@ ActuatorConfigSimulationServices::ActuatorConfigSimulationServices(rclcpp::Node:
 	m_serviceGetCoggingFeedforwardMode = m_node_handle->create_service<kortex_driver::srv::GetCoggingFeedforwardMode>("actuator_config/get_cogging_feedforward_mode", std::bind(&ActuatorConfigSimulationServices::GetCoggingFeedforwardMode, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool ActuatorConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool ActuatorConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool ActuatorConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool ActuatorConfigSimulationServices::GetAxisOffsets(kortex_driver::srv::GetAxisOffsets::Request  &req, kortex_driver::srv::GetAxisOffsets::Response &res)
+bool ActuatorConfigSimulationServices::GetAxisOffsets(const std::shared_ptr<kortex_driver::srv::GetAxisOffsets::Request> req, std::shared_ptr<kortex_driver::srv::GetAxisOffsets::Response> res)
 {
 	
 	
@@ -100,7 +100,7 @@ bool ActuatorConfigSimulationServices::GetAxisOffsets(kortex_driver::srv::GetAxi
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetAxisOffsets(kortex_driver::srv::SetAxisOffsets::Request  &req, kortex_driver::srv::SetAxisOffsets::Response &res)
+bool ActuatorConfigSimulationServices::SetAxisOffsets(const std::shared_ptr<kortex_driver::srv::SetAxisOffsets::Request> req, std::shared_ptr<kortex_driver::srv::SetAxisOffsets::Response> res)
 {
 	
 	
@@ -115,7 +115,7 @@ bool ActuatorConfigSimulationServices::SetAxisOffsets(kortex_driver::srv::SetAxi
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetTorqueOffset(kortex_driver::srv::SetTorqueOffset::Request  &req, kortex_driver::srv::SetTorqueOffset::Response &res)
+bool ActuatorConfigSimulationServices::SetTorqueOffset(const std::shared_ptr<kortex_driver::srv::SetTorqueOffset::Request> req, std::shared_ptr<kortex_driver::srv::SetTorqueOffset::Response> res)
 {
 	
 	
@@ -130,7 +130,7 @@ bool ActuatorConfigSimulationServices::SetTorqueOffset(kortex_driver::srv::SetTo
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode(kortex_driver::srv::ActuatorConfigGetControlMode::Request  &req, kortex_driver::srv::ActuatorConfigGetControlMode::Response &res)
+bool ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode(const std::shared_ptr<kortex_driver::srv::ActuatorConfigGetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::ActuatorConfigGetControlMode::Response> res)
 {
 	
 	
@@ -145,7 +145,7 @@ bool ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode(kortex_driv
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetControlMode(kortex_driver::srv::SetControlMode::Request  &req, kortex_driver::srv::SetControlMode::Response &res)
+bool ActuatorConfigSimulationServices::SetControlMode(const std::shared_ptr<kortex_driver::srv::SetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::SetControlMode::Response> res)
 {
 	
 	
@@ -160,7 +160,7 @@ bool ActuatorConfigSimulationServices::SetControlMode(kortex_driver::srv::SetCon
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetActivatedControlLoop(kortex_driver::srv::GetActivatedControlLoop::Request  &req, kortex_driver::srv::GetActivatedControlLoop::Response &res)
+bool ActuatorConfigSimulationServices::GetActivatedControlLoop(const std::shared_ptr<kortex_driver::srv::GetActivatedControlLoop::Request> req, std::shared_ptr<kortex_driver::srv::GetActivatedControlLoop::Response> res)
 {
 	
 	
@@ -175,7 +175,7 @@ bool ActuatorConfigSimulationServices::GetActivatedControlLoop(kortex_driver::sr
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetActivatedControlLoop(kortex_driver::srv::SetActivatedControlLoop::Request  &req, kortex_driver::srv::SetActivatedControlLoop::Response &res)
+bool ActuatorConfigSimulationServices::SetActivatedControlLoop(const std::shared_ptr<kortex_driver::srv::SetActivatedControlLoop::Request> req, std::shared_ptr<kortex_driver::srv::SetActivatedControlLoop::Response> res)
 {
 	
 	
@@ -190,7 +190,7 @@ bool ActuatorConfigSimulationServices::SetActivatedControlLoop(kortex_driver::sr
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetControlLoopParameters(kortex_driver::srv::GetControlLoopParameters::Request  &req, kortex_driver::srv::GetControlLoopParameters::Response &res)
+bool ActuatorConfigSimulationServices::GetControlLoopParameters(const std::shared_ptr<kortex_driver::srv::GetControlLoopParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetControlLoopParameters::Response> res)
 {
 	
 	
@@ -205,7 +205,7 @@ bool ActuatorConfigSimulationServices::GetControlLoopParameters(kortex_driver::s
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetControlLoopParameters(kortex_driver::srv::SetControlLoopParameters::Request  &req, kortex_driver::srv::SetControlLoopParameters::Response &res)
+bool ActuatorConfigSimulationServices::SetControlLoopParameters(const std::shared_ptr<kortex_driver::srv::SetControlLoopParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetControlLoopParameters::Response> res)
 {
 	
 	
@@ -220,7 +220,7 @@ bool ActuatorConfigSimulationServices::SetControlLoopParameters(kortex_driver::s
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SelectCustomData(kortex_driver::srv::SelectCustomData::Request  &req, kortex_driver::srv::SelectCustomData::Response &res)
+bool ActuatorConfigSimulationServices::SelectCustomData(const std::shared_ptr<kortex_driver::srv::SelectCustomData::Request> req, std::shared_ptr<kortex_driver::srv::SelectCustomData::Response> res)
 {
 	
 	
@@ -235,7 +235,7 @@ bool ActuatorConfigSimulationServices::SelectCustomData(kortex_driver::srv::Sele
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetSelectedCustomData(kortex_driver::srv::GetSelectedCustomData::Request  &req, kortex_driver::srv::GetSelectedCustomData::Response &res)
+bool ActuatorConfigSimulationServices::GetSelectedCustomData(const std::shared_ptr<kortex_driver::srv::GetSelectedCustomData::Request> req, std::shared_ptr<kortex_driver::srv::GetSelectedCustomData::Response> res)
 {
 	
 	
@@ -250,7 +250,7 @@ bool ActuatorConfigSimulationServices::GetSelectedCustomData(kortex_driver::srv:
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetCommandMode(kortex_driver::srv::SetCommandMode::Request  &req, kortex_driver::srv::SetCommandMode::Response &res)
+bool ActuatorConfigSimulationServices::SetCommandMode(const std::shared_ptr<kortex_driver::srv::SetCommandMode::Request> req, std::shared_ptr<kortex_driver::srv::SetCommandMode::Response> res)
 {
 	
 	
@@ -265,7 +265,7 @@ bool ActuatorConfigSimulationServices::SetCommandMode(kortex_driver::srv::SetCom
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults(kortex_driver::srv::ActuatorConfigClearFaults::Request  &req, kortex_driver::srv::ActuatorConfigClearFaults::Response &res)
+bool ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults(const std::shared_ptr<kortex_driver::srv::ActuatorConfigClearFaults::Request> req, std::shared_ptr<kortex_driver::srv::ActuatorConfigClearFaults::Response> res)
 {
 	
 	
@@ -280,7 +280,7 @@ bool ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults(kortex_driver:
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetServoing(kortex_driver::srv::SetServoing::Request  &req, kortex_driver::srv::SetServoing::Response &res)
+bool ActuatorConfigSimulationServices::SetServoing(const std::shared_ptr<kortex_driver::srv::SetServoing::Request> req, std::shared_ptr<kortex_driver::srv::SetServoing::Response> res)
 {
 	
 	
@@ -295,7 +295,7 @@ bool ActuatorConfigSimulationServices::SetServoing(kortex_driver::srv::SetServoi
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::MoveToPosition(kortex_driver::srv::MoveToPosition::Request  &req, kortex_driver::srv::MoveToPosition::Response &res)
+bool ActuatorConfigSimulationServices::MoveToPosition(const std::shared_ptr<kortex_driver::srv::MoveToPosition::Request> req, std::shared_ptr<kortex_driver::srv::MoveToPosition::Response> res)
 {
 	
 	
@@ -310,7 +310,7 @@ bool ActuatorConfigSimulationServices::MoveToPosition(kortex_driver::srv::MoveTo
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetCommandMode(kortex_driver::srv::GetCommandMode::Request  &req, kortex_driver::srv::GetCommandMode::Response &res)
+bool ActuatorConfigSimulationServices::GetCommandMode(const std::shared_ptr<kortex_driver::srv::GetCommandMode::Request> req, std::shared_ptr<kortex_driver::srv::GetCommandMode::Response> res)
 {
 	
 	
@@ -325,7 +325,7 @@ bool ActuatorConfigSimulationServices::GetCommandMode(kortex_driver::srv::GetCom
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetServoing(kortex_driver::srv::GetServoing::Request  &req, kortex_driver::srv::GetServoing::Response &res)
+bool ActuatorConfigSimulationServices::GetServoing(const std::shared_ptr<kortex_driver::srv::GetServoing::Request> req, std::shared_ptr<kortex_driver::srv::GetServoing::Response> res)
 {
 	
 	
@@ -340,7 +340,7 @@ bool ActuatorConfigSimulationServices::GetServoing(kortex_driver::srv::GetServoi
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetTorqueOffset(kortex_driver::srv::GetTorqueOffset::Request  &req, kortex_driver::srv::GetTorqueOffset::Response &res)
+bool ActuatorConfigSimulationServices::GetTorqueOffset(const std::shared_ptr<kortex_driver::srv::GetTorqueOffset::Request> req, std::shared_ptr<kortex_driver::srv::GetTorqueOffset::Response> res)
 {
 	
 	
@@ -355,7 +355,7 @@ bool ActuatorConfigSimulationServices::GetTorqueOffset(kortex_driver::srv::GetTo
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::SetCoggingFeedforwardMode(kortex_driver::srv::SetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::SetCoggingFeedforwardMode::Response &res)
+bool ActuatorConfigSimulationServices::SetCoggingFeedforwardMode(const std::shared_ptr<kortex_driver::srv::SetCoggingFeedforwardMode::Request> req, std::shared_ptr<kortex_driver::srv::SetCoggingFeedforwardMode::Response> res)
 {
 	
 	
@@ -370,7 +370,7 @@ bool ActuatorConfigSimulationServices::SetCoggingFeedforwardMode(kortex_driver::
 	return true;
 }
 
-bool ActuatorConfigSimulationServices::GetCoggingFeedforwardMode(kortex_driver::srv::GetCoggingFeedforwardMode::Request  &req, kortex_driver::srv::GetCoggingFeedforwardMode::Response &res)
+bool ActuatorConfigSimulationServices::GetCoggingFeedforwardMode(const std::shared_ptr<kortex_driver::srv::GetCoggingFeedforwardMode::Request> req, std::shared_ptr<kortex_driver::srv::GetCoggingFeedforwardMode::Response> res)
 {
 	
 	

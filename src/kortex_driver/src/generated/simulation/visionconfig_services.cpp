@@ -66,20 +66,20 @@ VisionConfigSimulationServices::VisionConfigSimulationServices(rclcpp::Node::Sha
 	m_serviceSetExtrinsicParameters = m_node_handle->create_service<kortex_driver::srv::SetExtrinsicParameters>("vision_config/set_extrinsic_parameters", std::bind(&VisionConfigSimulationServices::SetExtrinsicParameters, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool VisionConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool VisionConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool VisionConfigSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool VisionConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool VisionConfigSimulationServices::SetSensorSettings(kortex_driver::srv::SetSensorSettings::Request  &req, kortex_driver::srv::SetSensorSettings::Response &res)
+bool VisionConfigSimulationServices::SetSensorSettings(const std::shared_ptr<kortex_driver::srv::SetSensorSettings::Request> req, std::shared_ptr<kortex_driver::srv::SetSensorSettings::Response> res)
 {
 	
 	
@@ -94,7 +94,7 @@ bool VisionConfigSimulationServices::SetSensorSettings(kortex_driver::srv::SetSe
 	return true;
 }
 
-bool VisionConfigSimulationServices::GetSensorSettings(kortex_driver::srv::GetSensorSettings::Request  &req, kortex_driver::srv::GetSensorSettings::Response &res)
+bool VisionConfigSimulationServices::GetSensorSettings(const std::shared_ptr<kortex_driver::srv::GetSensorSettings::Request> req, std::shared_ptr<kortex_driver::srv::GetSensorSettings::Response> res)
 {
 	
 	
@@ -109,7 +109,7 @@ bool VisionConfigSimulationServices::GetSensorSettings(kortex_driver::srv::GetSe
 	return true;
 }
 
-bool VisionConfigSimulationServices::GetOptionValue(kortex_driver::srv::GetOptionValue::Request  &req, kortex_driver::srv::GetOptionValue::Response &res)
+bool VisionConfigSimulationServices::GetOptionValue(const std::shared_ptr<kortex_driver::srv::GetOptionValue::Request> req, std::shared_ptr<kortex_driver::srv::GetOptionValue::Response> res)
 {
 	
 	
@@ -124,7 +124,7 @@ bool VisionConfigSimulationServices::GetOptionValue(kortex_driver::srv::GetOptio
 	return true;
 }
 
-bool VisionConfigSimulationServices::SetOptionValue(kortex_driver::srv::SetOptionValue::Request  &req, kortex_driver::srv::SetOptionValue::Response &res)
+bool VisionConfigSimulationServices::SetOptionValue(const std::shared_ptr<kortex_driver::srv::SetOptionValue::Request> req, std::shared_ptr<kortex_driver::srv::SetOptionValue::Response> res)
 {
 	
 	
@@ -139,7 +139,7 @@ bool VisionConfigSimulationServices::SetOptionValue(kortex_driver::srv::SetOptio
 	return true;
 }
 
-bool VisionConfigSimulationServices::GetOptionInformation(kortex_driver::srv::GetOptionInformation::Request  &req, kortex_driver::srv::GetOptionInformation::Response &res)
+bool VisionConfigSimulationServices::GetOptionInformation(const std::shared_ptr<kortex_driver::srv::GetOptionInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetOptionInformation::Response> res)
 {
 	
 	
@@ -154,7 +154,7 @@ bool VisionConfigSimulationServices::GetOptionInformation(kortex_driver::srv::Ge
 	return true;
 }
 
-bool VisionConfigSimulationServices::OnNotificationVisionTopic(kortex_driver::srv::OnNotificationVisionTopic::Request  &req, kortex_driver::srv::OnNotificationVisionTopic::Response &res)
+bool VisionConfigSimulationServices::OnNotificationVisionTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationVisionTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationVisionTopic::Response> res)
 {
 	
 	m_is_activated_VisionTopic = true;
@@ -176,7 +176,7 @@ void VisionConfigSimulationServices::cb_VisionTopic(Kinova::Api::VisionConfig::V
 	m_pub_VisionTopic->publish(ros_msg);
 }
 
-bool VisionConfigSimulationServices::DoSensorFocusAction(kortex_driver::srv::DoSensorFocusAction::Request  &req, kortex_driver::srv::DoSensorFocusAction::Response &res)
+bool VisionConfigSimulationServices::DoSensorFocusAction(const std::shared_ptr<kortex_driver::srv::DoSensorFocusAction::Request> req, std::shared_ptr<kortex_driver::srv::DoSensorFocusAction::Response> res)
 {
 	
 	
@@ -191,7 +191,7 @@ bool VisionConfigSimulationServices::DoSensorFocusAction(kortex_driver::srv::DoS
 	return true;
 }
 
-bool VisionConfigSimulationServices::GetIntrinsicParameters(kortex_driver::srv::GetIntrinsicParameters::Request  &req, kortex_driver::srv::GetIntrinsicParameters::Response &res)
+bool VisionConfigSimulationServices::GetIntrinsicParameters(const std::shared_ptr<kortex_driver::srv::GetIntrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetIntrinsicParameters::Response> res)
 {
 	
 	
@@ -206,7 +206,7 @@ bool VisionConfigSimulationServices::GetIntrinsicParameters(kortex_driver::srv::
 	return true;
 }
 
-bool VisionConfigSimulationServices::GetIntrinsicParametersProfile(kortex_driver::srv::GetIntrinsicParametersProfile::Request  &req, kortex_driver::srv::GetIntrinsicParametersProfile::Response &res)
+bool VisionConfigSimulationServices::GetIntrinsicParametersProfile(const std::shared_ptr<kortex_driver::srv::GetIntrinsicParametersProfile::Request> req, std::shared_ptr<kortex_driver::srv::GetIntrinsicParametersProfile::Response> res)
 {
 	
 	
@@ -221,7 +221,7 @@ bool VisionConfigSimulationServices::GetIntrinsicParametersProfile(kortex_driver
 	return true;
 }
 
-bool VisionConfigSimulationServices::SetIntrinsicParameters(kortex_driver::srv::SetIntrinsicParameters::Request  &req, kortex_driver::srv::SetIntrinsicParameters::Response &res)
+bool VisionConfigSimulationServices::SetIntrinsicParameters(const std::shared_ptr<kortex_driver::srv::SetIntrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetIntrinsicParameters::Response> res)
 {
 	
 	
@@ -236,7 +236,7 @@ bool VisionConfigSimulationServices::SetIntrinsicParameters(kortex_driver::srv::
 	return true;
 }
 
-bool VisionConfigSimulationServices::GetExtrinsicParameters(kortex_driver::srv::GetExtrinsicParameters::Request  &req, kortex_driver::srv::GetExtrinsicParameters::Response &res)
+bool VisionConfigSimulationServices::GetExtrinsicParameters(const std::shared_ptr<kortex_driver::srv::GetExtrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::GetExtrinsicParameters::Response> res)
 {
 	
 	
@@ -251,7 +251,7 @@ bool VisionConfigSimulationServices::GetExtrinsicParameters(kortex_driver::srv::
 	return true;
 }
 
-bool VisionConfigSimulationServices::SetExtrinsicParameters(kortex_driver::srv::SetExtrinsicParameters::Request  &req, kortex_driver::srv::SetExtrinsicParameters::Response &res)
+bool VisionConfigSimulationServices::SetExtrinsicParameters(const std::shared_ptr<kortex_driver::srv::SetExtrinsicParameters::Request> req, std::shared_ptr<kortex_driver::srv::SetExtrinsicParameters::Response> res)
 {
 	
 	

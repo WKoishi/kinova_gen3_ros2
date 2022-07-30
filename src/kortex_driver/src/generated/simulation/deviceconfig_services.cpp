@@ -86,20 +86,20 @@ DeviceConfigSimulationServices::DeviceConfigSimulationServices(rclcpp::Node::Sha
 	m_serviceDeviceConfig_GetCapSenseConfig = m_node_handle->create_service<kortex_driver::srv::DeviceConfigGetCapSenseConfig>("device_config/get_cap_sense_config", std::bind(&DeviceConfigSimulationServices::DeviceConfig_GetCapSenseConfig, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool DeviceConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool DeviceConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool DeviceConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool DeviceConfigSimulationServices::GetRunMode(kortex_driver::srv::GetRunMode::Request  &req, kortex_driver::srv::GetRunMode::Response &res)
+bool DeviceConfigSimulationServices::GetRunMode(const std::shared_ptr<kortex_driver::srv::GetRunMode::Request> req, std::shared_ptr<kortex_driver::srv::GetRunMode::Response> res)
 {
 	
 	
@@ -114,7 +114,7 @@ bool DeviceConfigSimulationServices::GetRunMode(kortex_driver::srv::GetRunMode::
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetRunMode(kortex_driver::srv::SetRunMode::Request  &req, kortex_driver::srv::SetRunMode::Response &res)
+bool DeviceConfigSimulationServices::SetRunMode(const std::shared_ptr<kortex_driver::srv::SetRunMode::Request> req, std::shared_ptr<kortex_driver::srv::SetRunMode::Response> res)
 {
 	
 	
@@ -129,7 +129,7 @@ bool DeviceConfigSimulationServices::SetRunMode(kortex_driver::srv::SetRunMode::
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetDeviceType(kortex_driver::srv::GetDeviceType::Request  &req, kortex_driver::srv::GetDeviceType::Response &res)
+bool DeviceConfigSimulationServices::GetDeviceType(const std::shared_ptr<kortex_driver::srv::GetDeviceType::Request> req, std::shared_ptr<kortex_driver::srv::GetDeviceType::Response> res)
 {
 	
 	
@@ -144,7 +144,7 @@ bool DeviceConfigSimulationServices::GetDeviceType(kortex_driver::srv::GetDevice
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetFirmwareVersion(kortex_driver::srv::GetFirmwareVersion::Request  &req, kortex_driver::srv::GetFirmwareVersion::Response &res)
+bool DeviceConfigSimulationServices::GetFirmwareVersion(const std::shared_ptr<kortex_driver::srv::GetFirmwareVersion::Request> req, std::shared_ptr<kortex_driver::srv::GetFirmwareVersion::Response> res)
 {
 	
 	
@@ -159,7 +159,7 @@ bool DeviceConfigSimulationServices::GetFirmwareVersion(kortex_driver::srv::GetF
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetBootloaderVersion(kortex_driver::srv::GetBootloaderVersion::Request  &req, kortex_driver::srv::GetBootloaderVersion::Response &res)
+bool DeviceConfigSimulationServices::GetBootloaderVersion(const std::shared_ptr<kortex_driver::srv::GetBootloaderVersion::Request> req, std::shared_ptr<kortex_driver::srv::GetBootloaderVersion::Response> res)
 {
 	
 	
@@ -174,7 +174,7 @@ bool DeviceConfigSimulationServices::GetBootloaderVersion(kortex_driver::srv::Ge
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetModelNumber(kortex_driver::srv::GetModelNumber::Request  &req, kortex_driver::srv::GetModelNumber::Response &res)
+bool DeviceConfigSimulationServices::GetModelNumber(const std::shared_ptr<kortex_driver::srv::GetModelNumber::Request> req, std::shared_ptr<kortex_driver::srv::GetModelNumber::Response> res)
 {
 	
 	
@@ -189,7 +189,7 @@ bool DeviceConfigSimulationServices::GetModelNumber(kortex_driver::srv::GetModel
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetPartNumber(kortex_driver::srv::GetPartNumber::Request  &req, kortex_driver::srv::GetPartNumber::Response &res)
+bool DeviceConfigSimulationServices::GetPartNumber(const std::shared_ptr<kortex_driver::srv::GetPartNumber::Request> req, std::shared_ptr<kortex_driver::srv::GetPartNumber::Response> res)
 {
 	
 	
@@ -204,7 +204,7 @@ bool DeviceConfigSimulationServices::GetPartNumber(kortex_driver::srv::GetPartNu
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetSerialNumber(kortex_driver::srv::GetSerialNumber::Request  &req, kortex_driver::srv::GetSerialNumber::Response &res)
+bool DeviceConfigSimulationServices::GetSerialNumber(const std::shared_ptr<kortex_driver::srv::GetSerialNumber::Request> req, std::shared_ptr<kortex_driver::srv::GetSerialNumber::Response> res)
 {
 	
 	
@@ -219,7 +219,7 @@ bool DeviceConfigSimulationServices::GetSerialNumber(kortex_driver::srv::GetSeri
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetMACAddress(kortex_driver::srv::GetMACAddress::Request  &req, kortex_driver::srv::GetMACAddress::Response &res)
+bool DeviceConfigSimulationServices::GetMACAddress(const std::shared_ptr<kortex_driver::srv::GetMACAddress::Request> req, std::shared_ptr<kortex_driver::srv::GetMACAddress::Response> res)
 {
 	
 	
@@ -234,7 +234,7 @@ bool DeviceConfigSimulationServices::GetMACAddress(kortex_driver::srv::GetMACAdd
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetIPv4Settings(kortex_driver::srv::GetIPv4Settings::Request  &req, kortex_driver::srv::GetIPv4Settings::Response &res)
+bool DeviceConfigSimulationServices::GetIPv4Settings(const std::shared_ptr<kortex_driver::srv::GetIPv4Settings::Request> req, std::shared_ptr<kortex_driver::srv::GetIPv4Settings::Response> res)
 {
 	
 	
@@ -249,7 +249,7 @@ bool DeviceConfigSimulationServices::GetIPv4Settings(kortex_driver::srv::GetIPv4
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetIPv4Settings(kortex_driver::srv::SetIPv4Settings::Request  &req, kortex_driver::srv::SetIPv4Settings::Response &res)
+bool DeviceConfigSimulationServices::SetIPv4Settings(const std::shared_ptr<kortex_driver::srv::SetIPv4Settings::Request> req, std::shared_ptr<kortex_driver::srv::SetIPv4Settings::Response> res)
 {
 	
 	
@@ -264,7 +264,7 @@ bool DeviceConfigSimulationServices::SetIPv4Settings(kortex_driver::srv::SetIPv4
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetPartNumberRevision(kortex_driver::srv::GetPartNumberRevision::Request  &req, kortex_driver::srv::GetPartNumberRevision::Response &res)
+bool DeviceConfigSimulationServices::GetPartNumberRevision(const std::shared_ptr<kortex_driver::srv::GetPartNumberRevision::Request> req, std::shared_ptr<kortex_driver::srv::GetPartNumberRevision::Response> res)
 {
 	
 	
@@ -279,7 +279,7 @@ bool DeviceConfigSimulationServices::GetPartNumberRevision(kortex_driver::srv::G
 	return true;
 }
 
-bool DeviceConfigSimulationServices::RebootRequest(kortex_driver::srv::RebootRequest::Request  &req, kortex_driver::srv::RebootRequest::Response &res)
+bool DeviceConfigSimulationServices::RebootRequest(const std::shared_ptr<kortex_driver::srv::RebootRequest::Request> req, std::shared_ptr<kortex_driver::srv::RebootRequest::Response> res)
 {
 	
 	
@@ -294,7 +294,7 @@ bool DeviceConfigSimulationServices::RebootRequest(kortex_driver::srv::RebootReq
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetSafetyEnable(kortex_driver::srv::SetSafetyEnable::Request  &req, kortex_driver::srv::SetSafetyEnable::Response &res)
+bool DeviceConfigSimulationServices::SetSafetyEnable(const std::shared_ptr<kortex_driver::srv::SetSafetyEnable::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyEnable::Response> res)
 {
 	
 	
@@ -309,7 +309,7 @@ bool DeviceConfigSimulationServices::SetSafetyEnable(kortex_driver::srv::SetSafe
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetSafetyErrorThreshold(kortex_driver::srv::SetSafetyErrorThreshold::Request  &req, kortex_driver::srv::SetSafetyErrorThreshold::Response &res)
+bool DeviceConfigSimulationServices::SetSafetyErrorThreshold(const std::shared_ptr<kortex_driver::srv::SetSafetyErrorThreshold::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyErrorThreshold::Response> res)
 {
 	
 	
@@ -324,7 +324,7 @@ bool DeviceConfigSimulationServices::SetSafetyErrorThreshold(kortex_driver::srv:
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetSafetyWarningThreshold(kortex_driver::srv::SetSafetyWarningThreshold::Request  &req, kortex_driver::srv::SetSafetyWarningThreshold::Response &res)
+bool DeviceConfigSimulationServices::SetSafetyWarningThreshold(const std::shared_ptr<kortex_driver::srv::SetSafetyWarningThreshold::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyWarningThreshold::Response> res)
 {
 	
 	
@@ -339,7 +339,7 @@ bool DeviceConfigSimulationServices::SetSafetyWarningThreshold(kortex_driver::sr
 	return true;
 }
 
-bool DeviceConfigSimulationServices::SetSafetyConfiguration(kortex_driver::srv::SetSafetyConfiguration::Request  &req, kortex_driver::srv::SetSafetyConfiguration::Response &res)
+bool DeviceConfigSimulationServices::SetSafetyConfiguration(const std::shared_ptr<kortex_driver::srv::SetSafetyConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetSafetyConfiguration::Response> res)
 {
 	
 	
@@ -354,7 +354,7 @@ bool DeviceConfigSimulationServices::SetSafetyConfiguration(kortex_driver::srv::
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetSafetyConfiguration(kortex_driver::srv::GetSafetyConfiguration::Request  &req, kortex_driver::srv::GetSafetyConfiguration::Response &res)
+bool DeviceConfigSimulationServices::GetSafetyConfiguration(const std::shared_ptr<kortex_driver::srv::GetSafetyConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyConfiguration::Response> res)
 {
 	
 	
@@ -369,7 +369,7 @@ bool DeviceConfigSimulationServices::GetSafetyConfiguration(kortex_driver::srv::
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetSafetyInformation(kortex_driver::srv::GetSafetyInformation::Request  &req, kortex_driver::srv::GetSafetyInformation::Response &res)
+bool DeviceConfigSimulationServices::GetSafetyInformation(const std::shared_ptr<kortex_driver::srv::GetSafetyInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyInformation::Response> res)
 {
 	
 	
@@ -384,7 +384,7 @@ bool DeviceConfigSimulationServices::GetSafetyInformation(kortex_driver::srv::Ge
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetSafetyEnable(kortex_driver::srv::GetSafetyEnable::Request  &req, kortex_driver::srv::GetSafetyEnable::Response &res)
+bool DeviceConfigSimulationServices::GetSafetyEnable(const std::shared_ptr<kortex_driver::srv::GetSafetyEnable::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyEnable::Response> res)
 {
 	
 	
@@ -399,7 +399,7 @@ bool DeviceConfigSimulationServices::GetSafetyEnable(kortex_driver::srv::GetSafe
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetSafetyStatus(kortex_driver::srv::GetSafetyStatus::Request  &req, kortex_driver::srv::GetSafetyStatus::Response &res)
+bool DeviceConfigSimulationServices::GetSafetyStatus(const std::shared_ptr<kortex_driver::srv::GetSafetyStatus::Request> req, std::shared_ptr<kortex_driver::srv::GetSafetyStatus::Response> res)
 {
 	
 	
@@ -414,7 +414,7 @@ bool DeviceConfigSimulationServices::GetSafetyStatus(kortex_driver::srv::GetSafe
 	return true;
 }
 
-bool DeviceConfigSimulationServices::ClearAllSafetyStatus(kortex_driver::srv::ClearAllSafetyStatus::Request  &req, kortex_driver::srv::ClearAllSafetyStatus::Response &res)
+bool DeviceConfigSimulationServices::ClearAllSafetyStatus(const std::shared_ptr<kortex_driver::srv::ClearAllSafetyStatus::Request> req, std::shared_ptr<kortex_driver::srv::ClearAllSafetyStatus::Response> res)
 {
 	
 	
@@ -429,7 +429,7 @@ bool DeviceConfigSimulationServices::ClearAllSafetyStatus(kortex_driver::srv::Cl
 	return true;
 }
 
-bool DeviceConfigSimulationServices::ClearSafetyStatus(kortex_driver::srv::ClearSafetyStatus::Request  &req, kortex_driver::srv::ClearSafetyStatus::Response &res)
+bool DeviceConfigSimulationServices::ClearSafetyStatus(const std::shared_ptr<kortex_driver::srv::ClearSafetyStatus::Request> req, std::shared_ptr<kortex_driver::srv::ClearSafetyStatus::Response> res)
 {
 	
 	
@@ -444,7 +444,7 @@ bool DeviceConfigSimulationServices::ClearSafetyStatus(kortex_driver::srv::Clear
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetAllSafetyConfiguration(kortex_driver::srv::GetAllSafetyConfiguration::Request  &req, kortex_driver::srv::GetAllSafetyConfiguration::Response &res)
+bool DeviceConfigSimulationServices::GetAllSafetyConfiguration(const std::shared_ptr<kortex_driver::srv::GetAllSafetyConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetAllSafetyConfiguration::Response> res)
 {
 	
 	
@@ -459,7 +459,7 @@ bool DeviceConfigSimulationServices::GetAllSafetyConfiguration(kortex_driver::sr
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetAllSafetyInformation(kortex_driver::srv::GetAllSafetyInformation::Request  &req, kortex_driver::srv::GetAllSafetyInformation::Response &res)
+bool DeviceConfigSimulationServices::GetAllSafetyInformation(const std::shared_ptr<kortex_driver::srv::GetAllSafetyInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetAllSafetyInformation::Response> res)
 {
 	
 	
@@ -474,7 +474,7 @@ bool DeviceConfigSimulationServices::GetAllSafetyInformation(kortex_driver::srv:
 	return true;
 }
 
-bool DeviceConfigSimulationServices::ResetSafetyDefaults(kortex_driver::srv::ResetSafetyDefaults::Request  &req, kortex_driver::srv::ResetSafetyDefaults::Response &res)
+bool DeviceConfigSimulationServices::ResetSafetyDefaults(const std::shared_ptr<kortex_driver::srv::ResetSafetyDefaults::Request> req, std::shared_ptr<kortex_driver::srv::ResetSafetyDefaults::Response> res)
 {
 	
 	
@@ -489,7 +489,7 @@ bool DeviceConfigSimulationServices::ResetSafetyDefaults(kortex_driver::srv::Res
 	return true;
 }
 
-bool DeviceConfigSimulationServices::OnNotificationSafetyTopic(kortex_driver::srv::OnNotificationSafetyTopic::Request  &req, kortex_driver::srv::OnNotificationSafetyTopic::Response &res)
+bool DeviceConfigSimulationServices::OnNotificationSafetyTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationSafetyTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationSafetyTopic::Response> res)
 {
 	
 	m_is_activated_SafetyTopic = true;
@@ -511,7 +511,7 @@ void DeviceConfigSimulationServices::cb_SafetyTopic(Kinova::Api::Common::SafetyN
 	m_pub_SafetyTopic->publish(ros_msg);
 }
 
-bool DeviceConfigSimulationServices::ExecuteCalibration(kortex_driver::srv::ExecuteCalibration::Request  &req, kortex_driver::srv::ExecuteCalibration::Response &res)
+bool DeviceConfigSimulationServices::ExecuteCalibration(const std::shared_ptr<kortex_driver::srv::ExecuteCalibration::Request> req, std::shared_ptr<kortex_driver::srv::ExecuteCalibration::Response> res)
 {
 	
 	
@@ -526,7 +526,7 @@ bool DeviceConfigSimulationServices::ExecuteCalibration(kortex_driver::srv::Exec
 	return true;
 }
 
-bool DeviceConfigSimulationServices::GetCalibrationResult(kortex_driver::srv::GetCalibrationResult::Request  &req, kortex_driver::srv::GetCalibrationResult::Response &res)
+bool DeviceConfigSimulationServices::GetCalibrationResult(const std::shared_ptr<kortex_driver::srv::GetCalibrationResult::Request> req, std::shared_ptr<kortex_driver::srv::GetCalibrationResult::Response> res)
 {
 	
 	
@@ -541,7 +541,7 @@ bool DeviceConfigSimulationServices::GetCalibrationResult(kortex_driver::srv::Ge
 	return true;
 }
 
-bool DeviceConfigSimulationServices::StopCalibration(kortex_driver::srv::StopCalibration::Request  &req, kortex_driver::srv::StopCalibration::Response &res)
+bool DeviceConfigSimulationServices::StopCalibration(const std::shared_ptr<kortex_driver::srv::StopCalibration::Request> req, std::shared_ptr<kortex_driver::srv::StopCalibration::Response> res)
 {
 	
 	
@@ -556,7 +556,7 @@ bool DeviceConfigSimulationServices::StopCalibration(kortex_driver::srv::StopCal
 	return true;
 }
 
-bool DeviceConfigSimulationServices::DeviceConfig_SetCapSenseConfig(kortex_driver::srv::DeviceConfigSetCapSenseConfig::Request  &req, kortex_driver::srv::DeviceConfigSetCapSenseConfig::Response &res)
+bool DeviceConfigSimulationServices::DeviceConfig_SetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::DeviceConfigSetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::DeviceConfigSetCapSenseConfig::Response> res)
 {
 	
 	
@@ -571,7 +571,7 @@ bool DeviceConfigSimulationServices::DeviceConfig_SetCapSenseConfig(kortex_drive
 	return true;
 }
 
-bool DeviceConfigSimulationServices::DeviceConfig_GetCapSenseConfig(kortex_driver::srv::DeviceConfigGetCapSenseConfig::Request  &req, kortex_driver::srv::DeviceConfigGetCapSenseConfig::Response &res)
+bool DeviceConfigSimulationServices::DeviceConfig_GetCapSenseConfig(const std::shared_ptr<kortex_driver::srv::DeviceConfigGetCapSenseConfig::Request> req, std::shared_ptr<kortex_driver::srv::DeviceConfigGetCapSenseConfig::Response> res)
 {
 	
 	

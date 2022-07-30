@@ -70,14 +70,14 @@ InterconnectConfigRobotServices::InterconnectConfigRobotServices(rclcpp::Node::S
 	m_serviceI2CWriteRegister = m_node_handle->create_service<kortex_driver::srv::I2CWriteRegister>("interconnect_config/i2_c_write_register", std::bind(&InterconnectConfigRobotServices::I2CWriteRegister, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool InterconnectConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool InterconnectConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool InterconnectConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -85,7 +85,7 @@ bool InterconnectConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOp
 }
 
 
-bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::srv::GetUARTConfiguration::Request  &req, kortex_driver::srv::GetUARTConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetUARTConfiguration(const std::shared_ptr<kortex_driver::srv::GetUARTConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetUARTConfiguration::Response> res)
 {
 	
 	Kinova::Api::Common::UARTDeviceIdentification input;
@@ -120,7 +120,7 @@ bool InterconnectConfigRobotServices::GetUARTConfiguration(kortex_driver::srv::G
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::srv::SetUARTConfiguration::Request  &req, kortex_driver::srv::SetUARTConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetUARTConfiguration(const std::shared_ptr<kortex_driver::srv::SetUARTConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetUARTConfiguration::Response> res)
 {
 	
 	Kinova::Api::Common::UARTConfiguration input;
@@ -152,7 +152,7 @@ bool InterconnectConfigRobotServices::SetUARTConfiguration(kortex_driver::srv::S
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::srv::GetEthernetConfiguration::Request  &req, kortex_driver::srv::GetEthernetConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetEthernetConfiguration(const std::shared_ptr<kortex_driver::srv::GetEthernetConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetEthernetConfiguration::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::EthernetDeviceIdentification input;
@@ -187,7 +187,7 @@ bool InterconnectConfigRobotServices::GetEthernetConfiguration(kortex_driver::sr
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::srv::SetEthernetConfiguration::Request  &req, kortex_driver::srv::SetEthernetConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetEthernetConfiguration(const std::shared_ptr<kortex_driver::srv::SetEthernetConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetEthernetConfiguration::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::EthernetConfiguration input;
@@ -219,7 +219,7 @@ bool InterconnectConfigRobotServices::SetEthernetConfiguration(kortex_driver::sr
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::srv::GetGPIOConfiguration::Request  &req, kortex_driver::srv::GetGPIOConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetGPIOConfiguration(const std::shared_ptr<kortex_driver::srv::GetGPIOConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetGPIOConfiguration::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOIdentification input;
@@ -254,7 +254,7 @@ bool InterconnectConfigRobotServices::GetGPIOConfiguration(kortex_driver::srv::G
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::srv::SetGPIOConfiguration::Request  &req, kortex_driver::srv::SetGPIOConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetGPIOConfiguration(const std::shared_ptr<kortex_driver::srv::SetGPIOConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetGPIOConfiguration::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOConfiguration input;
@@ -286,7 +286,7 @@ bool InterconnectConfigRobotServices::SetGPIOConfiguration(kortex_driver::srv::S
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::srv::GetGPIOState::Request  &req, kortex_driver::srv::GetGPIOState::Response &res)
+bool InterconnectConfigRobotServices::GetGPIOState(const std::shared_ptr<kortex_driver::srv::GetGPIOState::Request> req, std::shared_ptr<kortex_driver::srv::GetGPIOState::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOIdentification input;
@@ -321,7 +321,7 @@ bool InterconnectConfigRobotServices::GetGPIOState(kortex_driver::srv::GetGPIOSt
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::srv::SetGPIOState::Request  &req, kortex_driver::srv::SetGPIOState::Response &res)
+bool InterconnectConfigRobotServices::SetGPIOState(const std::shared_ptr<kortex_driver::srv::SetGPIOState::Request> req, std::shared_ptr<kortex_driver::srv::SetGPIOState::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::GPIOState input;
@@ -353,7 +353,7 @@ bool InterconnectConfigRobotServices::SetGPIOState(kortex_driver::srv::SetGPIOSt
 	return true;
 }
 
-bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::srv::GetI2CConfiguration::Request  &req, kortex_driver::srv::GetI2CConfiguration::Response &res)
+bool InterconnectConfigRobotServices::GetI2CConfiguration(const std::shared_ptr<kortex_driver::srv::GetI2CConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetI2CConfiguration::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CDeviceIdentification input;
@@ -388,7 +388,7 @@ bool InterconnectConfigRobotServices::GetI2CConfiguration(kortex_driver::srv::Ge
 	return true;
 }
 
-bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::srv::SetI2CConfiguration::Request  &req, kortex_driver::srv::SetI2CConfiguration::Response &res)
+bool InterconnectConfigRobotServices::SetI2CConfiguration(const std::shared_ptr<kortex_driver::srv::SetI2CConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetI2CConfiguration::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CConfiguration input;
@@ -420,7 +420,7 @@ bool InterconnectConfigRobotServices::SetI2CConfiguration(kortex_driver::srv::Se
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CRead(kortex_driver::srv::I2CRead::Request  &req, kortex_driver::srv::I2CRead::Response &res)
+bool InterconnectConfigRobotServices::I2CRead(const std::shared_ptr<kortex_driver::srv::I2CRead::Request> req, std::shared_ptr<kortex_driver::srv::I2CRead::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CReadParameter input;
@@ -455,7 +455,7 @@ bool InterconnectConfigRobotServices::I2CRead(kortex_driver::srv::I2CRead::Reque
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::srv::I2CReadRegister::Request  &req, kortex_driver::srv::I2CReadRegister::Response &res)
+bool InterconnectConfigRobotServices::I2CReadRegister(const std::shared_ptr<kortex_driver::srv::I2CReadRegister::Request> req, std::shared_ptr<kortex_driver::srv::I2CReadRegister::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CReadRegisterParameter input;
@@ -490,7 +490,7 @@ bool InterconnectConfigRobotServices::I2CReadRegister(kortex_driver::srv::I2CRea
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::srv::I2CWrite::Request  &req, kortex_driver::srv::I2CWrite::Response &res)
+bool InterconnectConfigRobotServices::I2CWrite(const std::shared_ptr<kortex_driver::srv::I2CWrite::Request> req, std::shared_ptr<kortex_driver::srv::I2CWrite::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CWriteParameter input;
@@ -522,7 +522,7 @@ bool InterconnectConfigRobotServices::I2CWrite(kortex_driver::srv::I2CWrite::Req
 	return true;
 }
 
-bool InterconnectConfigRobotServices::I2CWriteRegister(kortex_driver::srv::I2CWriteRegister::Request  &req, kortex_driver::srv::I2CWriteRegister::Response &res)
+bool InterconnectConfigRobotServices::I2CWriteRegister(const std::shared_ptr<kortex_driver::srv::I2CWriteRegister::Request> req, std::shared_ptr<kortex_driver::srv::I2CWriteRegister::Response> res)
 {
 	
 	Kinova::Api::InterconnectConfig::I2CWriteRegisterParameter input;

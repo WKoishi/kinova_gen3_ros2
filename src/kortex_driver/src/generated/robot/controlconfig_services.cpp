@@ -90,14 +90,14 @@ ControlConfigRobotServices::ControlConfigRobotServices(rclcpp::Node::SharedPtr n
 	m_serviceControlConfig_OnNotificationControlModeTopic = m_node_handle->create_service<kortex_driver::srv::ControlConfigOnNotificationControlModeTopic>("control_config/activate_publishing_of_control_mode_topic", std::bind(&ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool ControlConfigRobotServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool ControlConfigRobotServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	m_current_device_id = req.device_id;
 
 	return true;
 }
 
-bool ControlConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool ControlConfigRobotServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	m_api_options.timeout_ms = req.input.timeout_ms;
 
@@ -105,7 +105,7 @@ bool ControlConfigRobotServices::SetApiOptions(kortex_driver::srv::SetApiOptions
 }
 
 
-bool ControlConfigRobotServices::SetGravityVector(kortex_driver::srv::SetGravityVector::Request  &req, kortex_driver::srv::SetGravityVector::Response &res)
+bool ControlConfigRobotServices::SetGravityVector(const std::shared_ptr<kortex_driver::srv::SetGravityVector::Request> req, std::shared_ptr<kortex_driver::srv::SetGravityVector::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::GravityVector input;
@@ -137,7 +137,7 @@ bool ControlConfigRobotServices::SetGravityVector(kortex_driver::srv::SetGravity
 	return true;
 }
 
-bool ControlConfigRobotServices::GetGravityVector(kortex_driver::srv::GetGravityVector::Request  &req, kortex_driver::srv::GetGravityVector::Response &res)
+bool ControlConfigRobotServices::GetGravityVector(const std::shared_ptr<kortex_driver::srv::GetGravityVector::Request> req, std::shared_ptr<kortex_driver::srv::GetGravityVector::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::GravityVector output;
@@ -170,7 +170,7 @@ bool ControlConfigRobotServices::GetGravityVector(kortex_driver::srv::GetGravity
 	return true;
 }
 
-bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::srv::SetPayloadInformation::Request  &req, kortex_driver::srv::SetPayloadInformation::Response &res)
+bool ControlConfigRobotServices::SetPayloadInformation(const std::shared_ptr<kortex_driver::srv::SetPayloadInformation::Request> req, std::shared_ptr<kortex_driver::srv::SetPayloadInformation::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation input;
@@ -202,7 +202,7 @@ bool ControlConfigRobotServices::SetPayloadInformation(kortex_driver::srv::SetPa
 	return true;
 }
 
-bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::srv::GetPayloadInformation::Request  &req, kortex_driver::srv::GetPayloadInformation::Response &res)
+bool ControlConfigRobotServices::GetPayloadInformation(const std::shared_ptr<kortex_driver::srv::GetPayloadInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetPayloadInformation::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation output;
@@ -235,7 +235,7 @@ bool ControlConfigRobotServices::GetPayloadInformation(kortex_driver::srv::GetPa
 	return true;
 }
 
-bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::srv::SetToolConfiguration::Request  &req, kortex_driver::srv::SetToolConfiguration::Response &res)
+bool ControlConfigRobotServices::SetToolConfiguration(const std::shared_ptr<kortex_driver::srv::SetToolConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetToolConfiguration::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration input;
@@ -267,7 +267,7 @@ bool ControlConfigRobotServices::SetToolConfiguration(kortex_driver::srv::SetToo
 	return true;
 }
 
-bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::srv::GetToolConfiguration::Request  &req, kortex_driver::srv::GetToolConfiguration::Response &res)
+bool ControlConfigRobotServices::GetToolConfiguration(const std::shared_ptr<kortex_driver::srv::GetToolConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetToolConfiguration::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration output;
@@ -300,7 +300,7 @@ bool ControlConfigRobotServices::GetToolConfiguration(kortex_driver::srv::GetToo
 	return true;
 }
 
-bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(kortex_driver::srv::OnNotificationControlConfigurationTopic::Request  &req, kortex_driver::srv::OnNotificationControlConfigurationTopic::Response &res)
+bool ControlConfigRobotServices::OnNotificationControlConfigurationTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationControlConfigurationTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationControlConfigurationTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times
@@ -346,7 +346,7 @@ void ControlConfigRobotServices::cb_ControlConfigurationTopic(Kinova::Api::Contr
 	m_pub_ControlConfigurationTopic->publish(ros_msg);
 }
 
-bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::srv::ControlConfigUnsubscribe::Request  &req, kortex_driver::srv::ControlConfigUnsubscribe::Response &res)
+bool ControlConfigRobotServices::ControlConfig_Unsubscribe(const std::shared_ptr<kortex_driver::srv::ControlConfigUnsubscribe::Request> req, std::shared_ptr<kortex_driver::srv::ControlConfigUnsubscribe::Response> res)
 {
 	
 	Kinova::Api::Common::NotificationHandle input;
@@ -378,7 +378,7 @@ bool ControlConfigRobotServices::ControlConfig_Unsubscribe(kortex_driver::srv::C
 	return true;
 }
 
-bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::srv::SetCartesianReferenceFrame::Request  &req, kortex_driver::srv::SetCartesianReferenceFrame::Response &res)
+bool ControlConfigRobotServices::SetCartesianReferenceFrame(const std::shared_ptr<kortex_driver::srv::SetCartesianReferenceFrame::Request> req, std::shared_ptr<kortex_driver::srv::SetCartesianReferenceFrame::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::CartesianReferenceFrameInfo input;
@@ -410,7 +410,7 @@ bool ControlConfigRobotServices::SetCartesianReferenceFrame(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::srv::GetCartesianReferenceFrame::Request  &req, kortex_driver::srv::GetCartesianReferenceFrame::Response &res)
+bool ControlConfigRobotServices::GetCartesianReferenceFrame(const std::shared_ptr<kortex_driver::srv::GetCartesianReferenceFrame::Request> req, std::shared_ptr<kortex_driver::srv::GetCartesianReferenceFrame::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::CartesianReferenceFrameInfo output;
@@ -443,7 +443,7 @@ bool ControlConfigRobotServices::GetCartesianReferenceFrame(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::srv::ControlConfigGetControlMode::Request  &req, kortex_driver::srv::ControlConfigGetControlMode::Response &res)
+bool ControlConfigRobotServices::ControlConfig_GetControlMode(const std::shared_ptr<kortex_driver::srv::ControlConfigGetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::ControlConfigGetControlMode::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation output;
@@ -476,7 +476,7 @@ bool ControlConfigRobotServices::ControlConfig_GetControlMode(kortex_driver::srv
 	return true;
 }
 
-bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::srv::SetJointSpeedSoftLimits::Request  &req, kortex_driver::srv::SetJointSpeedSoftLimits::Response &res)
+bool ControlConfigRobotServices::SetJointSpeedSoftLimits(const std::shared_ptr<kortex_driver::srv::SetJointSpeedSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::SetJointSpeedSoftLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::JointSpeedSoftLimits input;
@@ -508,7 +508,7 @@ bool ControlConfigRobotServices::SetJointSpeedSoftLimits(kortex_driver::srv::Set
 	return true;
 }
 
-bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::srv::SetTwistLinearSoftLimit::Request  &req, kortex_driver::srv::SetTwistLinearSoftLimit::Response &res)
+bool ControlConfigRobotServices::SetTwistLinearSoftLimit(const std::shared_ptr<kortex_driver::srv::SetTwistLinearSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::SetTwistLinearSoftLimit::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::TwistLinearSoftLimit input;
@@ -540,7 +540,7 @@ bool ControlConfigRobotServices::SetTwistLinearSoftLimit(kortex_driver::srv::Set
 	return true;
 }
 
-bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::srv::SetTwistAngularSoftLimit::Request  &req, kortex_driver::srv::SetTwistAngularSoftLimit::Response &res)
+bool ControlConfigRobotServices::SetTwistAngularSoftLimit(const std::shared_ptr<kortex_driver::srv::SetTwistAngularSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::SetTwistAngularSoftLimit::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::TwistAngularSoftLimit input;
@@ -572,7 +572,7 @@ bool ControlConfigRobotServices::SetTwistAngularSoftLimit(kortex_driver::srv::Se
 	return true;
 }
 
-bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::srv::SetJointAccelerationSoftLimits::Request  &req, kortex_driver::srv::SetJointAccelerationSoftLimits::Response &res)
+bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(const std::shared_ptr<kortex_driver::srv::SetJointAccelerationSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::SetJointAccelerationSoftLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::JointAccelerationSoftLimits input;
@@ -604,7 +604,7 @@ bool ControlConfigRobotServices::SetJointAccelerationSoftLimits(kortex_driver::s
 	return true;
 }
 
-bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::srv::GetKinematicHardLimits::Request  &req, kortex_driver::srv::GetKinematicHardLimits::Response &res)
+bool ControlConfigRobotServices::GetKinematicHardLimits(const std::shared_ptr<kortex_driver::srv::GetKinematicHardLimits::Request> req, std::shared_ptr<kortex_driver::srv::GetKinematicHardLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::KinematicLimits output;
@@ -637,7 +637,7 @@ bool ControlConfigRobotServices::GetKinematicHardLimits(kortex_driver::srv::GetK
 	return true;
 }
 
-bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::srv::GetKinematicSoftLimits::Request  &req, kortex_driver::srv::GetKinematicSoftLimits::Response &res)
+bool ControlConfigRobotServices::GetKinematicSoftLimits(const std::shared_ptr<kortex_driver::srv::GetKinematicSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::GetKinematicSoftLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
@@ -672,7 +672,7 @@ bool ControlConfigRobotServices::GetKinematicSoftLimits(kortex_driver::srv::GetK
 	return true;
 }
 
-bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::srv::GetAllKinematicSoftLimits::Request  &req, kortex_driver::srv::GetAllKinematicSoftLimits::Response &res)
+bool ControlConfigRobotServices::GetAllKinematicSoftLimits(const std::shared_ptr<kortex_driver::srv::GetAllKinematicSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::GetAllKinematicSoftLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::KinematicLimitsList output;
@@ -705,7 +705,7 @@ bool ControlConfigRobotServices::GetAllKinematicSoftLimits(kortex_driver::srv::G
 	return true;
 }
 
-bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::srv::SetDesiredLinearTwist::Request  &req, kortex_driver::srv::SetDesiredLinearTwist::Response &res)
+bool ControlConfigRobotServices::SetDesiredLinearTwist(const std::shared_ptr<kortex_driver::srv::SetDesiredLinearTwist::Request> req, std::shared_ptr<kortex_driver::srv::SetDesiredLinearTwist::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::LinearTwist input;
@@ -737,7 +737,7 @@ bool ControlConfigRobotServices::SetDesiredLinearTwist(kortex_driver::srv::SetDe
 	return true;
 }
 
-bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::srv::SetDesiredAngularTwist::Request  &req, kortex_driver::srv::SetDesiredAngularTwist::Response &res)
+bool ControlConfigRobotServices::SetDesiredAngularTwist(const std::shared_ptr<kortex_driver::srv::SetDesiredAngularTwist::Request> req, std::shared_ptr<kortex_driver::srv::SetDesiredAngularTwist::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::AngularTwist input;
@@ -769,7 +769,7 @@ bool ControlConfigRobotServices::SetDesiredAngularTwist(kortex_driver::srv::SetD
 	return true;
 }
 
-bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::srv::SetDesiredJointSpeeds::Request  &req, kortex_driver::srv::SetDesiredJointSpeeds::Response &res)
+bool ControlConfigRobotServices::SetDesiredJointSpeeds(const std::shared_ptr<kortex_driver::srv::SetDesiredJointSpeeds::Request> req, std::shared_ptr<kortex_driver::srv::SetDesiredJointSpeeds::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::JointSpeeds input;
@@ -801,7 +801,7 @@ bool ControlConfigRobotServices::SetDesiredJointSpeeds(kortex_driver::srv::SetDe
 	return true;
 }
 
-bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::srv::GetDesiredSpeeds::Request  &req, kortex_driver::srv::GetDesiredSpeeds::Response &res)
+bool ControlConfigRobotServices::GetDesiredSpeeds(const std::shared_ptr<kortex_driver::srv::GetDesiredSpeeds::Request> req, std::shared_ptr<kortex_driver::srv::GetDesiredSpeeds::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::DesiredSpeeds output;
@@ -834,7 +834,7 @@ bool ControlConfigRobotServices::GetDesiredSpeeds(kortex_driver::srv::GetDesired
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::srv::ResetGravityVector::Request  &req, kortex_driver::srv::ResetGravityVector::Response &res)
+bool ControlConfigRobotServices::ResetGravityVector(const std::shared_ptr<kortex_driver::srv::ResetGravityVector::Request> req, std::shared_ptr<kortex_driver::srv::ResetGravityVector::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::GravityVector output;
@@ -867,7 +867,7 @@ bool ControlConfigRobotServices::ResetGravityVector(kortex_driver::srv::ResetGra
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::srv::ResetPayloadInformation::Request  &req, kortex_driver::srv::ResetPayloadInformation::Response &res)
+bool ControlConfigRobotServices::ResetPayloadInformation(const std::shared_ptr<kortex_driver::srv::ResetPayloadInformation::Request> req, std::shared_ptr<kortex_driver::srv::ResetPayloadInformation::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::PayloadInformation output;
@@ -900,7 +900,7 @@ bool ControlConfigRobotServices::ResetPayloadInformation(kortex_driver::srv::Res
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::srv::ResetToolConfiguration::Request  &req, kortex_driver::srv::ResetToolConfiguration::Response &res)
+bool ControlConfigRobotServices::ResetToolConfiguration(const std::shared_ptr<kortex_driver::srv::ResetToolConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::ResetToolConfiguration::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ToolConfiguration output;
@@ -933,7 +933,7 @@ bool ControlConfigRobotServices::ResetToolConfiguration(kortex_driver::srv::Rese
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::srv::ResetJointSpeedSoftLimits::Request  &req, kortex_driver::srv::ResetJointSpeedSoftLimits::Response &res)
+bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(const std::shared_ptr<kortex_driver::srv::ResetJointSpeedSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::ResetJointSpeedSoftLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
@@ -968,7 +968,7 @@ bool ControlConfigRobotServices::ResetJointSpeedSoftLimits(kortex_driver::srv::R
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::srv::ResetTwistLinearSoftLimit::Request  &req, kortex_driver::srv::ResetTwistLinearSoftLimit::Response &res)
+bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(const std::shared_ptr<kortex_driver::srv::ResetTwistLinearSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::ResetTwistLinearSoftLimit::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
@@ -1003,7 +1003,7 @@ bool ControlConfigRobotServices::ResetTwistLinearSoftLimit(kortex_driver::srv::R
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::srv::ResetTwistAngularSoftLimit::Request  &req, kortex_driver::srv::ResetTwistAngularSoftLimit::Response &res)
+bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(const std::shared_ptr<kortex_driver::srv::ResetTwistAngularSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::ResetTwistAngularSoftLimit::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
@@ -1038,7 +1038,7 @@ bool ControlConfigRobotServices::ResetTwistAngularSoftLimit(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver::srv::ResetJointAccelerationSoftLimits::Request  &req, kortex_driver::srv::ResetJointAccelerationSoftLimits::Response &res)
+bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(const std::shared_ptr<kortex_driver::srv::ResetJointAccelerationSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::ResetJointAccelerationSoftLimits::Response> res)
 {
 	
 	Kinova::Api::ControlConfig::ControlModeInformation input;
@@ -1073,7 +1073,7 @@ bool ControlConfigRobotServices::ResetJointAccelerationSoftLimits(kortex_driver:
 	return true;
 }
 
-bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Response &res)
+bool ControlConfigRobotServices::ControlConfig_OnNotificationControlModeTopic(const std::shared_ptr<kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Response> res)
 {
 	
 	// If the notification is already activated, don't activate multiple times

@@ -66,20 +66,20 @@ InterconnectConfigSimulationServices::InterconnectConfigSimulationServices(rclcp
 	m_serviceI2CWriteRegister = m_node_handle->create_service<kortex_driver::srv::I2CWriteRegister>("interconnect_config/i2_c_write_register", std::bind(&InterconnectConfigSimulationServices::I2CWriteRegister, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool InterconnectConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool InterconnectConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool InterconnectConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool InterconnectConfigSimulationServices::GetUARTConfiguration(kortex_driver::srv::GetUARTConfiguration::Request  &req, kortex_driver::srv::GetUARTConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::GetUARTConfiguration(const std::shared_ptr<kortex_driver::srv::GetUARTConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetUARTConfiguration::Response> res)
 {
 	
 	
@@ -94,7 +94,7 @@ bool InterconnectConfigSimulationServices::GetUARTConfiguration(kortex_driver::s
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::SetUARTConfiguration(kortex_driver::srv::SetUARTConfiguration::Request  &req, kortex_driver::srv::SetUARTConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::SetUARTConfiguration(const std::shared_ptr<kortex_driver::srv::SetUARTConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetUARTConfiguration::Response> res)
 {
 	
 	
@@ -109,7 +109,7 @@ bool InterconnectConfigSimulationServices::SetUARTConfiguration(kortex_driver::s
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::GetEthernetConfiguration(kortex_driver::srv::GetEthernetConfiguration::Request  &req, kortex_driver::srv::GetEthernetConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::GetEthernetConfiguration(const std::shared_ptr<kortex_driver::srv::GetEthernetConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetEthernetConfiguration::Response> res)
 {
 	
 	
@@ -124,7 +124,7 @@ bool InterconnectConfigSimulationServices::GetEthernetConfiguration(kortex_drive
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::SetEthernetConfiguration(kortex_driver::srv::SetEthernetConfiguration::Request  &req, kortex_driver::srv::SetEthernetConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::SetEthernetConfiguration(const std::shared_ptr<kortex_driver::srv::SetEthernetConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetEthernetConfiguration::Response> res)
 {
 	
 	
@@ -139,7 +139,7 @@ bool InterconnectConfigSimulationServices::SetEthernetConfiguration(kortex_drive
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::GetGPIOConfiguration(kortex_driver::srv::GetGPIOConfiguration::Request  &req, kortex_driver::srv::GetGPIOConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::GetGPIOConfiguration(const std::shared_ptr<kortex_driver::srv::GetGPIOConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetGPIOConfiguration::Response> res)
 {
 	
 	
@@ -154,7 +154,7 @@ bool InterconnectConfigSimulationServices::GetGPIOConfiguration(kortex_driver::s
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::SetGPIOConfiguration(kortex_driver::srv::SetGPIOConfiguration::Request  &req, kortex_driver::srv::SetGPIOConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::SetGPIOConfiguration(const std::shared_ptr<kortex_driver::srv::SetGPIOConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetGPIOConfiguration::Response> res)
 {
 	
 	
@@ -169,7 +169,7 @@ bool InterconnectConfigSimulationServices::SetGPIOConfiguration(kortex_driver::s
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::GetGPIOState(kortex_driver::srv::GetGPIOState::Request  &req, kortex_driver::srv::GetGPIOState::Response &res)
+bool InterconnectConfigSimulationServices::GetGPIOState(const std::shared_ptr<kortex_driver::srv::GetGPIOState::Request> req, std::shared_ptr<kortex_driver::srv::GetGPIOState::Response> res)
 {
 	
 	
@@ -184,7 +184,7 @@ bool InterconnectConfigSimulationServices::GetGPIOState(kortex_driver::srv::GetG
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::SetGPIOState(kortex_driver::srv::SetGPIOState::Request  &req, kortex_driver::srv::SetGPIOState::Response &res)
+bool InterconnectConfigSimulationServices::SetGPIOState(const std::shared_ptr<kortex_driver::srv::SetGPIOState::Request> req, std::shared_ptr<kortex_driver::srv::SetGPIOState::Response> res)
 {
 	
 	
@@ -199,7 +199,7 @@ bool InterconnectConfigSimulationServices::SetGPIOState(kortex_driver::srv::SetG
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::GetI2CConfiguration(kortex_driver::srv::GetI2CConfiguration::Request  &req, kortex_driver::srv::GetI2CConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::GetI2CConfiguration(const std::shared_ptr<kortex_driver::srv::GetI2CConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetI2CConfiguration::Response> res)
 {
 	
 	
@@ -214,7 +214,7 @@ bool InterconnectConfigSimulationServices::GetI2CConfiguration(kortex_driver::sr
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::SetI2CConfiguration(kortex_driver::srv::SetI2CConfiguration::Request  &req, kortex_driver::srv::SetI2CConfiguration::Response &res)
+bool InterconnectConfigSimulationServices::SetI2CConfiguration(const std::shared_ptr<kortex_driver::srv::SetI2CConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetI2CConfiguration::Response> res)
 {
 	
 	
@@ -229,7 +229,7 @@ bool InterconnectConfigSimulationServices::SetI2CConfiguration(kortex_driver::sr
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::I2CRead(kortex_driver::srv::I2CRead::Request  &req, kortex_driver::srv::I2CRead::Response &res)
+bool InterconnectConfigSimulationServices::I2CRead(const std::shared_ptr<kortex_driver::srv::I2CRead::Request> req, std::shared_ptr<kortex_driver::srv::I2CRead::Response> res)
 {
 	
 	
@@ -244,7 +244,7 @@ bool InterconnectConfigSimulationServices::I2CRead(kortex_driver::srv::I2CRead::
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::I2CReadRegister(kortex_driver::srv::I2CReadRegister::Request  &req, kortex_driver::srv::I2CReadRegister::Response &res)
+bool InterconnectConfigSimulationServices::I2CReadRegister(const std::shared_ptr<kortex_driver::srv::I2CReadRegister::Request> req, std::shared_ptr<kortex_driver::srv::I2CReadRegister::Response> res)
 {
 	
 	
@@ -259,7 +259,7 @@ bool InterconnectConfigSimulationServices::I2CReadRegister(kortex_driver::srv::I
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::I2CWrite(kortex_driver::srv::I2CWrite::Request  &req, kortex_driver::srv::I2CWrite::Response &res)
+bool InterconnectConfigSimulationServices::I2CWrite(const std::shared_ptr<kortex_driver::srv::I2CWrite::Request> req, std::shared_ptr<kortex_driver::srv::I2CWrite::Response> res)
 {
 	
 	
@@ -274,7 +274,7 @@ bool InterconnectConfigSimulationServices::I2CWrite(kortex_driver::srv::I2CWrite
 	return true;
 }
 
-bool InterconnectConfigSimulationServices::I2CWriteRegister(kortex_driver::srv::I2CWriteRegister::Request  &req, kortex_driver::srv::I2CWriteRegister::Response &res)
+bool InterconnectConfigSimulationServices::I2CWriteRegister(const std::shared_ptr<kortex_driver::srv::I2CWriteRegister::Request> req, std::shared_ptr<kortex_driver::srv::I2CWriteRegister::Response> res)
 {
 	
 	

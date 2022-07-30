@@ -26,10 +26,10 @@ class DeviceManagerSimulationServices : public IDeviceManagerServices
     public:
         DeviceManagerSimulationServices(rclcpp::Node::SharedPtr node_handle);
 
-        virtual bool SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res) override;
-        virtual bool SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res) override;
+        virtual bool SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res) override;
+        virtual bool SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res) override;
         std::function<kortex_driver::srv::ReadAllDevices::Response(const kortex_driver::srv::ReadAllDevices::Request&)> ReadAllDevicesHandler = nullptr;
-        virtual bool ReadAllDevices(kortex_driver::srv::ReadAllDevices::Request  &req, kortex_driver::srv::ReadAllDevices::Response &res) override;
+        virtual bool ReadAllDevices(const std::shared_ptr<kortex_driver::srv::ReadAllDevices::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllDevices::Response> res) override;
 
 };
 #endif

@@ -53,20 +53,20 @@ DeviceManagerSimulationServices::DeviceManagerSimulationServices(rclcpp::Node::S
 	m_serviceReadAllDevices = m_node_handle->create_service<kortex_driver::srv::ReadAllDevices>("device_manager/read_all_devices", std::bind(&DeviceManagerSimulationServices::ReadAllDevices, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool DeviceManagerSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool DeviceManagerSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool DeviceManagerSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool DeviceManagerSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool DeviceManagerSimulationServices::ReadAllDevices(kortex_driver::srv::ReadAllDevices::Request  &req, kortex_driver::srv::ReadAllDevices::Response &res)
+bool DeviceManagerSimulationServices::ReadAllDevices(const std::shared_ptr<kortex_driver::srv::ReadAllDevices::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllDevices::Response> res)
 {
 	
 	

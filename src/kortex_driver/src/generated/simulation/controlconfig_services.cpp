@@ -86,20 +86,20 @@ ControlConfigSimulationServices::ControlConfigSimulationServices(rclcpp::Node::S
 	m_serviceControlConfig_OnNotificationControlModeTopic = m_node_handle->create_service<kortex_driver::srv::ControlConfigOnNotificationControlModeTopic>("control_config/activate_publishing_of_control_mode_topic", std::bind(&ControlConfigSimulationServices::ControlConfig_OnNotificationControlModeTopic, this, std::placeholders::_1, std::placeholders::_2));
 }
 
-bool ControlConfigSimulationServices::SetDeviceID(kortex_driver::srv::SetDeviceID::Request  &req, kortex_driver::srv::SetDeviceID::Response &res)
+bool ControlConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetApiOptions(kortex_driver::srv::SetApiOptions::Request  &req, kortex_driver::srv::SetApiOptions::Response &res)
+bool ControlConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
 	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 
-bool ControlConfigSimulationServices::SetGravityVector(kortex_driver::srv::SetGravityVector::Request  &req, kortex_driver::srv::SetGravityVector::Response &res)
+bool ControlConfigSimulationServices::SetGravityVector(const std::shared_ptr<kortex_driver::srv::SetGravityVector::Request> req, std::shared_ptr<kortex_driver::srv::SetGravityVector::Response> res)
 {
 	
 	
@@ -114,7 +114,7 @@ bool ControlConfigSimulationServices::SetGravityVector(kortex_driver::srv::SetGr
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetGravityVector(kortex_driver::srv::GetGravityVector::Request  &req, kortex_driver::srv::GetGravityVector::Response &res)
+bool ControlConfigSimulationServices::GetGravityVector(const std::shared_ptr<kortex_driver::srv::GetGravityVector::Request> req, std::shared_ptr<kortex_driver::srv::GetGravityVector::Response> res)
 {
 	
 	
@@ -129,7 +129,7 @@ bool ControlConfigSimulationServices::GetGravityVector(kortex_driver::srv::GetGr
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetPayloadInformation(kortex_driver::srv::SetPayloadInformation::Request  &req, kortex_driver::srv::SetPayloadInformation::Response &res)
+bool ControlConfigSimulationServices::SetPayloadInformation(const std::shared_ptr<kortex_driver::srv::SetPayloadInformation::Request> req, std::shared_ptr<kortex_driver::srv::SetPayloadInformation::Response> res)
 {
 	
 	
@@ -144,7 +144,7 @@ bool ControlConfigSimulationServices::SetPayloadInformation(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetPayloadInformation(kortex_driver::srv::GetPayloadInformation::Request  &req, kortex_driver::srv::GetPayloadInformation::Response &res)
+bool ControlConfigSimulationServices::GetPayloadInformation(const std::shared_ptr<kortex_driver::srv::GetPayloadInformation::Request> req, std::shared_ptr<kortex_driver::srv::GetPayloadInformation::Response> res)
 {
 	
 	
@@ -159,7 +159,7 @@ bool ControlConfigSimulationServices::GetPayloadInformation(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetToolConfiguration(kortex_driver::srv::SetToolConfiguration::Request  &req, kortex_driver::srv::SetToolConfiguration::Response &res)
+bool ControlConfigSimulationServices::SetToolConfiguration(const std::shared_ptr<kortex_driver::srv::SetToolConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::SetToolConfiguration::Response> res)
 {
 	
 	
@@ -174,7 +174,7 @@ bool ControlConfigSimulationServices::SetToolConfiguration(kortex_driver::srv::S
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetToolConfiguration(kortex_driver::srv::GetToolConfiguration::Request  &req, kortex_driver::srv::GetToolConfiguration::Response &res)
+bool ControlConfigSimulationServices::GetToolConfiguration(const std::shared_ptr<kortex_driver::srv::GetToolConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::GetToolConfiguration::Response> res)
 {
 	
 	
@@ -189,7 +189,7 @@ bool ControlConfigSimulationServices::GetToolConfiguration(kortex_driver::srv::G
 	return true;
 }
 
-bool ControlConfigSimulationServices::OnNotificationControlConfigurationTopic(kortex_driver::srv::OnNotificationControlConfigurationTopic::Request  &req, kortex_driver::srv::OnNotificationControlConfigurationTopic::Response &res)
+bool ControlConfigSimulationServices::OnNotificationControlConfigurationTopic(const std::shared_ptr<kortex_driver::srv::OnNotificationControlConfigurationTopic::Request> req, std::shared_ptr<kortex_driver::srv::OnNotificationControlConfigurationTopic::Response> res)
 {
 	
 	m_is_activated_ControlConfigurationTopic = true;
@@ -211,7 +211,7 @@ void ControlConfigSimulationServices::cb_ControlConfigurationTopic(Kinova::Api::
 	m_pub_ControlConfigurationTopic->publish(ros_msg);
 }
 
-bool ControlConfigSimulationServices::ControlConfig_Unsubscribe(kortex_driver::srv::ControlConfigUnsubscribe::Request  &req, kortex_driver::srv::ControlConfigUnsubscribe::Response &res)
+bool ControlConfigSimulationServices::ControlConfig_Unsubscribe(const std::shared_ptr<kortex_driver::srv::ControlConfigUnsubscribe::Request> req, std::shared_ptr<kortex_driver::srv::ControlConfigUnsubscribe::Response> res)
 {
 	
 	
@@ -226,7 +226,7 @@ bool ControlConfigSimulationServices::ControlConfig_Unsubscribe(kortex_driver::s
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetCartesianReferenceFrame(kortex_driver::srv::SetCartesianReferenceFrame::Request  &req, kortex_driver::srv::SetCartesianReferenceFrame::Response &res)
+bool ControlConfigSimulationServices::SetCartesianReferenceFrame(const std::shared_ptr<kortex_driver::srv::SetCartesianReferenceFrame::Request> req, std::shared_ptr<kortex_driver::srv::SetCartesianReferenceFrame::Response> res)
 {
 	
 	
@@ -241,7 +241,7 @@ bool ControlConfigSimulationServices::SetCartesianReferenceFrame(kortex_driver::
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetCartesianReferenceFrame(kortex_driver::srv::GetCartesianReferenceFrame::Request  &req, kortex_driver::srv::GetCartesianReferenceFrame::Response &res)
+bool ControlConfigSimulationServices::GetCartesianReferenceFrame(const std::shared_ptr<kortex_driver::srv::GetCartesianReferenceFrame::Request> req, std::shared_ptr<kortex_driver::srv::GetCartesianReferenceFrame::Response> res)
 {
 	
 	
@@ -256,7 +256,7 @@ bool ControlConfigSimulationServices::GetCartesianReferenceFrame(kortex_driver::
 	return true;
 }
 
-bool ControlConfigSimulationServices::ControlConfig_GetControlMode(kortex_driver::srv::ControlConfigGetControlMode::Request  &req, kortex_driver::srv::ControlConfigGetControlMode::Response &res)
+bool ControlConfigSimulationServices::ControlConfig_GetControlMode(const std::shared_ptr<kortex_driver::srv::ControlConfigGetControlMode::Request> req, std::shared_ptr<kortex_driver::srv::ControlConfigGetControlMode::Response> res)
 {
 	
 	
@@ -271,7 +271,7 @@ bool ControlConfigSimulationServices::ControlConfig_GetControlMode(kortex_driver
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetJointSpeedSoftLimits(kortex_driver::srv::SetJointSpeedSoftLimits::Request  &req, kortex_driver::srv::SetJointSpeedSoftLimits::Response &res)
+bool ControlConfigSimulationServices::SetJointSpeedSoftLimits(const std::shared_ptr<kortex_driver::srv::SetJointSpeedSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::SetJointSpeedSoftLimits::Response> res)
 {
 	
 	
@@ -286,7 +286,7 @@ bool ControlConfigSimulationServices::SetJointSpeedSoftLimits(kortex_driver::srv
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetTwistLinearSoftLimit(kortex_driver::srv::SetTwistLinearSoftLimit::Request  &req, kortex_driver::srv::SetTwistLinearSoftLimit::Response &res)
+bool ControlConfigSimulationServices::SetTwistLinearSoftLimit(const std::shared_ptr<kortex_driver::srv::SetTwistLinearSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::SetTwistLinearSoftLimit::Response> res)
 {
 	
 	
@@ -301,7 +301,7 @@ bool ControlConfigSimulationServices::SetTwistLinearSoftLimit(kortex_driver::srv
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetTwistAngularSoftLimit(kortex_driver::srv::SetTwistAngularSoftLimit::Request  &req, kortex_driver::srv::SetTwistAngularSoftLimit::Response &res)
+bool ControlConfigSimulationServices::SetTwistAngularSoftLimit(const std::shared_ptr<kortex_driver::srv::SetTwistAngularSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::SetTwistAngularSoftLimit::Response> res)
 {
 	
 	
@@ -316,7 +316,7 @@ bool ControlConfigSimulationServices::SetTwistAngularSoftLimit(kortex_driver::sr
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetJointAccelerationSoftLimits(kortex_driver::srv::SetJointAccelerationSoftLimits::Request  &req, kortex_driver::srv::SetJointAccelerationSoftLimits::Response &res)
+bool ControlConfigSimulationServices::SetJointAccelerationSoftLimits(const std::shared_ptr<kortex_driver::srv::SetJointAccelerationSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::SetJointAccelerationSoftLimits::Response> res)
 {
 	
 	
@@ -331,7 +331,7 @@ bool ControlConfigSimulationServices::SetJointAccelerationSoftLimits(kortex_driv
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetKinematicHardLimits(kortex_driver::srv::GetKinematicHardLimits::Request  &req, kortex_driver::srv::GetKinematicHardLimits::Response &res)
+bool ControlConfigSimulationServices::GetKinematicHardLimits(const std::shared_ptr<kortex_driver::srv::GetKinematicHardLimits::Request> req, std::shared_ptr<kortex_driver::srv::GetKinematicHardLimits::Response> res)
 {
 	
 	
@@ -346,7 +346,7 @@ bool ControlConfigSimulationServices::GetKinematicHardLimits(kortex_driver::srv:
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetKinematicSoftLimits(kortex_driver::srv::GetKinematicSoftLimits::Request  &req, kortex_driver::srv::GetKinematicSoftLimits::Response &res)
+bool ControlConfigSimulationServices::GetKinematicSoftLimits(const std::shared_ptr<kortex_driver::srv::GetKinematicSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::GetKinematicSoftLimits::Response> res)
 {
 	
 	
@@ -361,7 +361,7 @@ bool ControlConfigSimulationServices::GetKinematicSoftLimits(kortex_driver::srv:
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetAllKinematicSoftLimits(kortex_driver::srv::GetAllKinematicSoftLimits::Request  &req, kortex_driver::srv::GetAllKinematicSoftLimits::Response &res)
+bool ControlConfigSimulationServices::GetAllKinematicSoftLimits(const std::shared_ptr<kortex_driver::srv::GetAllKinematicSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::GetAllKinematicSoftLimits::Response> res)
 {
 	
 	
@@ -376,7 +376,7 @@ bool ControlConfigSimulationServices::GetAllKinematicSoftLimits(kortex_driver::s
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetDesiredLinearTwist(kortex_driver::srv::SetDesiredLinearTwist::Request  &req, kortex_driver::srv::SetDesiredLinearTwist::Response &res)
+bool ControlConfigSimulationServices::SetDesiredLinearTwist(const std::shared_ptr<kortex_driver::srv::SetDesiredLinearTwist::Request> req, std::shared_ptr<kortex_driver::srv::SetDesiredLinearTwist::Response> res)
 {
 	
 	
@@ -391,7 +391,7 @@ bool ControlConfigSimulationServices::SetDesiredLinearTwist(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetDesiredAngularTwist(kortex_driver::srv::SetDesiredAngularTwist::Request  &req, kortex_driver::srv::SetDesiredAngularTwist::Response &res)
+bool ControlConfigSimulationServices::SetDesiredAngularTwist(const std::shared_ptr<kortex_driver::srv::SetDesiredAngularTwist::Request> req, std::shared_ptr<kortex_driver::srv::SetDesiredAngularTwist::Response> res)
 {
 	
 	
@@ -406,7 +406,7 @@ bool ControlConfigSimulationServices::SetDesiredAngularTwist(kortex_driver::srv:
 	return true;
 }
 
-bool ControlConfigSimulationServices::SetDesiredJointSpeeds(kortex_driver::srv::SetDesiredJointSpeeds::Request  &req, kortex_driver::srv::SetDesiredJointSpeeds::Response &res)
+bool ControlConfigSimulationServices::SetDesiredJointSpeeds(const std::shared_ptr<kortex_driver::srv::SetDesiredJointSpeeds::Request> req, std::shared_ptr<kortex_driver::srv::SetDesiredJointSpeeds::Response> res)
 {
 	
 	
@@ -421,7 +421,7 @@ bool ControlConfigSimulationServices::SetDesiredJointSpeeds(kortex_driver::srv::
 	return true;
 }
 
-bool ControlConfigSimulationServices::GetDesiredSpeeds(kortex_driver::srv::GetDesiredSpeeds::Request  &req, kortex_driver::srv::GetDesiredSpeeds::Response &res)
+bool ControlConfigSimulationServices::GetDesiredSpeeds(const std::shared_ptr<kortex_driver::srv::GetDesiredSpeeds::Request> req, std::shared_ptr<kortex_driver::srv::GetDesiredSpeeds::Response> res)
 {
 	
 	
@@ -436,7 +436,7 @@ bool ControlConfigSimulationServices::GetDesiredSpeeds(kortex_driver::srv::GetDe
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetGravityVector(kortex_driver::srv::ResetGravityVector::Request  &req, kortex_driver::srv::ResetGravityVector::Response &res)
+bool ControlConfigSimulationServices::ResetGravityVector(const std::shared_ptr<kortex_driver::srv::ResetGravityVector::Request> req, std::shared_ptr<kortex_driver::srv::ResetGravityVector::Response> res)
 {
 	
 	
@@ -451,7 +451,7 @@ bool ControlConfigSimulationServices::ResetGravityVector(kortex_driver::srv::Res
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetPayloadInformation(kortex_driver::srv::ResetPayloadInformation::Request  &req, kortex_driver::srv::ResetPayloadInformation::Response &res)
+bool ControlConfigSimulationServices::ResetPayloadInformation(const std::shared_ptr<kortex_driver::srv::ResetPayloadInformation::Request> req, std::shared_ptr<kortex_driver::srv::ResetPayloadInformation::Response> res)
 {
 	
 	
@@ -466,7 +466,7 @@ bool ControlConfigSimulationServices::ResetPayloadInformation(kortex_driver::srv
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetToolConfiguration(kortex_driver::srv::ResetToolConfiguration::Request  &req, kortex_driver::srv::ResetToolConfiguration::Response &res)
+bool ControlConfigSimulationServices::ResetToolConfiguration(const std::shared_ptr<kortex_driver::srv::ResetToolConfiguration::Request> req, std::shared_ptr<kortex_driver::srv::ResetToolConfiguration::Response> res)
 {
 	
 	
@@ -481,7 +481,7 @@ bool ControlConfigSimulationServices::ResetToolConfiguration(kortex_driver::srv:
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetJointSpeedSoftLimits(kortex_driver::srv::ResetJointSpeedSoftLimits::Request  &req, kortex_driver::srv::ResetJointSpeedSoftLimits::Response &res)
+bool ControlConfigSimulationServices::ResetJointSpeedSoftLimits(const std::shared_ptr<kortex_driver::srv::ResetJointSpeedSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::ResetJointSpeedSoftLimits::Response> res)
 {
 	
 	
@@ -496,7 +496,7 @@ bool ControlConfigSimulationServices::ResetJointSpeedSoftLimits(kortex_driver::s
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetTwistLinearSoftLimit(kortex_driver::srv::ResetTwistLinearSoftLimit::Request  &req, kortex_driver::srv::ResetTwistLinearSoftLimit::Response &res)
+bool ControlConfigSimulationServices::ResetTwistLinearSoftLimit(const std::shared_ptr<kortex_driver::srv::ResetTwistLinearSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::ResetTwistLinearSoftLimit::Response> res)
 {
 	
 	
@@ -511,7 +511,7 @@ bool ControlConfigSimulationServices::ResetTwistLinearSoftLimit(kortex_driver::s
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetTwistAngularSoftLimit(kortex_driver::srv::ResetTwistAngularSoftLimit::Request  &req, kortex_driver::srv::ResetTwistAngularSoftLimit::Response &res)
+bool ControlConfigSimulationServices::ResetTwistAngularSoftLimit(const std::shared_ptr<kortex_driver::srv::ResetTwistAngularSoftLimit::Request> req, std::shared_ptr<kortex_driver::srv::ResetTwistAngularSoftLimit::Response> res)
 {
 	
 	
@@ -526,7 +526,7 @@ bool ControlConfigSimulationServices::ResetTwistAngularSoftLimit(kortex_driver::
 	return true;
 }
 
-bool ControlConfigSimulationServices::ResetJointAccelerationSoftLimits(kortex_driver::srv::ResetJointAccelerationSoftLimits::Request  &req, kortex_driver::srv::ResetJointAccelerationSoftLimits::Response &res)
+bool ControlConfigSimulationServices::ResetJointAccelerationSoftLimits(const std::shared_ptr<kortex_driver::srv::ResetJointAccelerationSoftLimits::Request> req, std::shared_ptr<kortex_driver::srv::ResetJointAccelerationSoftLimits::Response> res)
 {
 	
 	
@@ -541,7 +541,7 @@ bool ControlConfigSimulationServices::ResetJointAccelerationSoftLimits(kortex_dr
 	return true;
 }
 
-bool ControlConfigSimulationServices::ControlConfig_OnNotificationControlModeTopic(kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Request  &req, kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Response &res)
+bool ControlConfigSimulationServices::ControlConfig_OnNotificationControlModeTopic(const std::shared_ptr<kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Request> req, std::shared_ptr<kortex_driver::srv::ControlConfigOnNotificationControlModeTopic::Response> res)
 {
 	
 	m_is_activated_ControlModeTopic = true;
