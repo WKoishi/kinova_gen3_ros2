@@ -80,9 +80,9 @@ int ToProtoData(kortex_driver::msg::InterconnectCyclicCustomData input, Kinova::
 	output->set_custom_data_13(input.custom_data_13);
 	output->set_custom_data_14(input.custom_data_14);
 	output->set_custom_data_15(input.custom_data_15);
-	if(input.oneof_tool_customData.gripper_custom_data.size() > 0)
+	if(input.oneof_tool_custom_data.gripper_custom_data.size() > 0)
 	{
-		ToProtoData(input.oneof_tool_customData.gripper_custom_data[0], output->mutable_gripper_custom_data());
+		ToProtoData(input.oneof_tool_custom_data.gripper_custom_data[0], output->mutable_gripper_custom_data());
 	}
 	
 	return 0;

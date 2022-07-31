@@ -108,9 +108,9 @@ int ToRosData(Kinova::Api::InterconnectCyclic::CustomData input, kortex_driver::
 	
 		case Kinova::Api::InterconnectCyclic::CustomData::kGripperCustomData:
 		{
-			decltype(output.oneof_tool_customData.gripper_custom_data)::value_type temp;
+			decltype(output.oneof_tool_custom_data.gripper_custom_data)::value_type temp;
 			ToRosData(input.gripper_custom_data(), temp);
-			output.oneof_tool_customData.gripper_custom_data.push_back(temp);
+			output.oneof_tool_custom_data.gripper_custom_data.push_back(temp);
 			break;
 		}}
 	
