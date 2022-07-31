@@ -119,15 +119,15 @@ int ToRosData(Kinova::Api::ActuatorConfig::ControlLoopParameters input, kortex_d
 	output.loop_selection = input.loop_selection();
 	output.error_saturation = input.error_saturation();
 	output.output_saturation = input.output_saturation();
-	output.kAz.clear();
+	output.k_az.clear();
 	for(int i = 0; i < input.kaz_size(); i++)
 	{
-		output.kAz.push_back(input.kaz(i));
+		output.k_az.push_back(input.kaz(i));
 	}
-	output.kBz.clear();
+	output.k_bz.clear();
 	for(int i = 0; i < input.kbz_size(); i++)
 	{
-		output.kBz.push_back(input.kbz(i));
+		output.k_bz.push_back(input.kbz(i));
 	}
 	output.error_dead_band = input.error_dead_band();
 

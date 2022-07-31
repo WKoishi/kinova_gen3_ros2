@@ -102,14 +102,14 @@ int ToProtoData(kortex_driver::msg::ControlLoopParameters input, Kinova::Api::Ac
 	output->set_error_saturation(input.error_saturation);
 	output->set_output_saturation(input.output_saturation);
 	output->clear_kaz();
-	for(int i = 0; i < input.kAz.size(); i++)
+	for(int i = 0; i < input.k_az.size(); i++)
 	{
-		output->add_kaz(input.kAz[i]);
+		output->add_kaz(input.k_az[i]);
 	}
 	output->clear_kbz();
-	for(int i = 0; i < input.kBz.size(); i++)
+	for(int i = 0; i < input.k_bz.size(); i++)
 	{
-		output->add_kbz(input.kBz[i]);
+		output->add_kbz(input.k_bz[i]);
 	}
 	output->set_error_dead_band(input.error_dead_band);
 	
