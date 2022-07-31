@@ -88,13 +88,13 @@ ControlConfigSimulationServices::ControlConfigSimulationServices(rclcpp::Node::S
 
 bool ControlConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool ControlConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -109,7 +109,7 @@ bool ControlConfigSimulationServices::SetGravityVector(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_gravity_vector is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_gravity_vector is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -124,7 +124,7 @@ bool ControlConfigSimulationServices::GetGravityVector(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_gravity_vector is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_gravity_vector is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -139,7 +139,7 @@ bool ControlConfigSimulationServices::SetPayloadInformation(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_payload_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_payload_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -154,7 +154,7 @@ bool ControlConfigSimulationServices::GetPayloadInformation(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_payload_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_payload_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -169,7 +169,7 @@ bool ControlConfigSimulationServices::SetToolConfiguration(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_tool_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_tool_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -184,7 +184,7 @@ bool ControlConfigSimulationServices::GetToolConfiguration(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_tool_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_tool_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -200,7 +200,7 @@ bool ControlConfigSimulationServices::OnNotificationControlConfigurationTopic(co
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/activate_publishing_of_control_configuration_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/activate_publishing_of_control_configuration_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -221,7 +221,7 @@ bool ControlConfigSimulationServices::ControlConfig_Unsubscribe(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/unsubscribe is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/unsubscribe is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -236,7 +236,7 @@ bool ControlConfigSimulationServices::SetCartesianReferenceFrame(const std::shar
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_cartesian_reference_frame is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_cartesian_reference_frame is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -251,7 +251,7 @@ bool ControlConfigSimulationServices::GetCartesianReferenceFrame(const std::shar
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_cartesian_reference_frame is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_cartesian_reference_frame is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -266,7 +266,7 @@ bool ControlConfigSimulationServices::ControlConfig_GetControlMode(const std::sh
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_control_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_control_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -281,7 +281,7 @@ bool ControlConfigSimulationServices::SetJointSpeedSoftLimits(const std::shared_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_joint_speed_soft_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_joint_speed_soft_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -296,7 +296,7 @@ bool ControlConfigSimulationServices::SetTwistLinearSoftLimit(const std::shared_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_twist_linear_soft_limit is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_twist_linear_soft_limit is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -311,7 +311,7 @@ bool ControlConfigSimulationServices::SetTwistAngularSoftLimit(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_twist_angular_soft_limit is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_twist_angular_soft_limit is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -326,7 +326,7 @@ bool ControlConfigSimulationServices::SetJointAccelerationSoftLimits(const std::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_joint_acceleration_soft_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_joint_acceleration_soft_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -341,7 +341,7 @@ bool ControlConfigSimulationServices::GetKinematicHardLimits(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_kinematic_hard_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_kinematic_hard_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -356,7 +356,7 @@ bool ControlConfigSimulationServices::GetKinematicSoftLimits(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_kinematic_soft_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_kinematic_soft_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -371,7 +371,7 @@ bool ControlConfigSimulationServices::GetAllKinematicSoftLimits(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_all_kinematic_soft_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_all_kinematic_soft_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -386,7 +386,7 @@ bool ControlConfigSimulationServices::SetDesiredLinearTwist(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_desired_linear_twist is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_desired_linear_twist is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -401,7 +401,7 @@ bool ControlConfigSimulationServices::SetDesiredAngularTwist(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_desired_angular_twist is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_desired_angular_twist is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -416,7 +416,7 @@ bool ControlConfigSimulationServices::SetDesiredJointSpeeds(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/set_desired_joint_speeds is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/set_desired_joint_speeds is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -431,7 +431,7 @@ bool ControlConfigSimulationServices::GetDesiredSpeeds(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/get_desired_speeds is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/get_desired_speeds is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -446,7 +446,7 @@ bool ControlConfigSimulationServices::ResetGravityVector(const std::shared_ptr<k
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_gravity_vector is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_gravity_vector is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -461,7 +461,7 @@ bool ControlConfigSimulationServices::ResetPayloadInformation(const std::shared_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_payload_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_payload_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -476,7 +476,7 @@ bool ControlConfigSimulationServices::ResetToolConfiguration(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_tool_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_tool_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -491,7 +491,7 @@ bool ControlConfigSimulationServices::ResetJointSpeedSoftLimits(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_joint_speed_soft_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_joint_speed_soft_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -506,7 +506,7 @@ bool ControlConfigSimulationServices::ResetTwistLinearSoftLimit(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_twist_linear_soft_limit is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_twist_linear_soft_limit is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -521,7 +521,7 @@ bool ControlConfigSimulationServices::ResetTwistAngularSoftLimit(const std::shar
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_twist_angular_soft_limit is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_twist_angular_soft_limit is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -536,7 +536,7 @@ bool ControlConfigSimulationServices::ResetJointAccelerationSoftLimits(const std
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/reset_joint_acceleration_soft_limits is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/reset_joint_acceleration_soft_limits is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -552,7 +552,7 @@ bool ControlConfigSimulationServices::ControlConfig_OnNotificationControlModeTop
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for control_config/activate_publishing_of_control_mode_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for control_config/activate_publishing_of_control_mode_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }

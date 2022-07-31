@@ -55,13 +55,13 @@ DeviceManagerSimulationServices::DeviceManagerSimulationServices(rclcpp::Node::S
 
 bool DeviceManagerSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool DeviceManagerSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -76,7 +76,7 @@ bool DeviceManagerSimulationServices::ReadAllDevices(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_manager/read_all_devices is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_manager/read_all_devices is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }

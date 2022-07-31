@@ -230,13 +230,13 @@ BaseSimulationServices::BaseSimulationServices(rclcpp::Node::SharedPtr node_hand
 
 bool BaseSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool BaseSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -251,7 +251,7 @@ bool BaseSimulationServices::CreateUserProfile(const std::shared_ptr<kortex_driv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/create_user_profile is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/create_user_profile is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -266,7 +266,7 @@ bool BaseSimulationServices::UpdateUserProfile(const std::shared_ptr<kortex_driv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_user_profile is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_user_profile is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -281,7 +281,7 @@ bool BaseSimulationServices::ReadUserProfile(const std::shared_ptr<kortex_driver
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_user_profile is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_user_profile is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -296,7 +296,7 @@ bool BaseSimulationServices::DeleteUserProfile(const std::shared_ptr<kortex_driv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_user_profile is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_user_profile is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -311,7 +311,7 @@ bool BaseSimulationServices::ReadAllUserProfiles(const std::shared_ptr<kortex_dr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_user_profiles is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_user_profiles is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -326,7 +326,7 @@ bool BaseSimulationServices::ReadAllUsers(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_users is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_users is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -341,7 +341,7 @@ bool BaseSimulationServices::ChangePassword(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/change_password is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/change_password is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -356,7 +356,7 @@ bool BaseSimulationServices::CreateSequence(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/create_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/create_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -371,7 +371,7 @@ bool BaseSimulationServices::UpdateSequence(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -386,7 +386,7 @@ bool BaseSimulationServices::ReadSequence(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -401,7 +401,7 @@ bool BaseSimulationServices::DeleteSequence(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -416,7 +416,7 @@ bool BaseSimulationServices::ReadAllSequences(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_sequences is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_sequences is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -431,7 +431,7 @@ bool BaseSimulationServices::PlaySequence(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -446,7 +446,7 @@ bool BaseSimulationServices::PlayAdvancedSequence(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_advanced_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_advanced_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -461,7 +461,7 @@ bool BaseSimulationServices::StopSequence(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/stop_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/stop_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -476,7 +476,7 @@ bool BaseSimulationServices::PauseSequence(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/pause_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/pause_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -491,7 +491,7 @@ bool BaseSimulationServices::ResumeSequence(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/resume_sequence is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/resume_sequence is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -506,7 +506,7 @@ bool BaseSimulationServices::CreateProtectionZone(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/create_protection_zone is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/create_protection_zone is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -521,7 +521,7 @@ bool BaseSimulationServices::UpdateProtectionZone(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_protection_zone is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_protection_zone is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -536,7 +536,7 @@ bool BaseSimulationServices::ReadProtectionZone(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_protection_zone is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_protection_zone is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -551,7 +551,7 @@ bool BaseSimulationServices::DeleteProtectionZone(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_protection_zone is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_protection_zone is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -566,7 +566,7 @@ bool BaseSimulationServices::ReadAllProtectionZones(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_protection_zones is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_protection_zones is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -581,7 +581,7 @@ bool BaseSimulationServices::CreateMapping(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/create_mapping is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/create_mapping is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -596,7 +596,7 @@ bool BaseSimulationServices::ReadMapping(const std::shared_ptr<kortex_driver::sr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_mapping is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_mapping is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -611,7 +611,7 @@ bool BaseSimulationServices::UpdateMapping(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_mapping is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_mapping is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -626,7 +626,7 @@ bool BaseSimulationServices::DeleteMapping(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_mapping is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_mapping is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -641,7 +641,7 @@ bool BaseSimulationServices::ReadAllMappings(const std::shared_ptr<kortex_driver
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_mappings is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_mappings is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -656,7 +656,7 @@ bool BaseSimulationServices::CreateMap(const std::shared_ptr<kortex_driver::srv:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/create_map is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/create_map is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -671,7 +671,7 @@ bool BaseSimulationServices::ReadMap(const std::shared_ptr<kortex_driver::srv::R
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_map is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_map is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -686,7 +686,7 @@ bool BaseSimulationServices::UpdateMap(const std::shared_ptr<kortex_driver::srv:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_map is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_map is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -701,7 +701,7 @@ bool BaseSimulationServices::DeleteMap(const std::shared_ptr<kortex_driver::srv:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_map is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_map is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -716,7 +716,7 @@ bool BaseSimulationServices::ReadAllMaps(const std::shared_ptr<kortex_driver::sr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_maps is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_maps is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -731,7 +731,7 @@ bool BaseSimulationServices::ActivateMap(const std::shared_ptr<kortex_driver::sr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_map is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_map is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -746,7 +746,7 @@ bool BaseSimulationServices::CreateAction(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/create_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/create_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -761,7 +761,7 @@ bool BaseSimulationServices::ReadAction(const std::shared_ptr<kortex_driver::srv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -776,7 +776,7 @@ bool BaseSimulationServices::ReadAllActions(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_actions is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_actions is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -791,7 +791,7 @@ bool BaseSimulationServices::DeleteAction(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -806,7 +806,7 @@ bool BaseSimulationServices::UpdateAction(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -821,7 +821,7 @@ bool BaseSimulationServices::ExecuteActionFromReference(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/execute_action_from_reference is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/execute_action_from_reference is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -836,7 +836,7 @@ bool BaseSimulationServices::ExecuteAction(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/execute_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/execute_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -851,7 +851,7 @@ bool BaseSimulationServices::PauseAction(const std::shared_ptr<kortex_driver::sr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/pause_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/pause_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -866,7 +866,7 @@ bool BaseSimulationServices::StopAction(const std::shared_ptr<kortex_driver::srv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/stop_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/stop_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -881,7 +881,7 @@ bool BaseSimulationServices::ResumeAction(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/resume_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/resume_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -896,7 +896,7 @@ bool BaseSimulationServices::GetIPv4Configuration(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_i_pv4_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_i_pv4_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -911,7 +911,7 @@ bool BaseSimulationServices::SetIPv4Configuration(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_i_pv4_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_i_pv4_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -926,7 +926,7 @@ bool BaseSimulationServices::SetCommunicationInterfaceEnable(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_communication_interface_enable is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_communication_interface_enable is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -941,7 +941,7 @@ bool BaseSimulationServices::IsCommunicationInterfaceEnable(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/is_communication_interface_enable is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/is_communication_interface_enable is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -956,7 +956,7 @@ bool BaseSimulationServices::GetAvailableWifi(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_available_wifi is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_available_wifi is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -971,7 +971,7 @@ bool BaseSimulationServices::GetWifiInformation(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_wifi_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_wifi_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -986,7 +986,7 @@ bool BaseSimulationServices::AddWifiConfiguration(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/add_wifi_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/add_wifi_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1001,7 +1001,7 @@ bool BaseSimulationServices::DeleteWifiConfiguration(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_wifi_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_wifi_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1016,7 +1016,7 @@ bool BaseSimulationServices::GetAllConfiguredWifis(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_configured_wifis is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_configured_wifis is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1031,7 +1031,7 @@ bool BaseSimulationServices::ConnectWifi(const std::shared_ptr<kortex_driver::sr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/connect_wifi is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/connect_wifi is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1046,7 +1046,7 @@ bool BaseSimulationServices::DisconnectWifi(const std::shared_ptr<kortex_driver:
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/disconnect_wifi is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/disconnect_wifi is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1061,7 +1061,7 @@ bool BaseSimulationServices::GetConnectedWifiInformation(const std::shared_ptr<k
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_connected_wifi_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_connected_wifi_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1076,7 +1076,7 @@ bool BaseSimulationServices::Base_Unsubscribe(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/unsubscribe is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/unsubscribe is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1092,7 +1092,7 @@ bool BaseSimulationServices::OnNotificationConfigurationChangeTopic(const std::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_configuration_change_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_configuration_change_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1114,7 +1114,7 @@ bool BaseSimulationServices::OnNotificationMappingInfoTopic(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_mapping_info_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_mapping_info_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1137,7 +1137,7 @@ bool BaseSimulationServices::Base_OnNotificationControlModeTopic(const std::shar
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_control_mode_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_control_mode_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1159,7 +1159,7 @@ bool BaseSimulationServices::OnNotificationOperatingModeTopic(const std::shared_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_operating_mode_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_operating_mode_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1181,7 +1181,7 @@ bool BaseSimulationServices::OnNotificationSequenceInfoTopic(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_sequence_info_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_sequence_info_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1203,7 +1203,7 @@ bool BaseSimulationServices::OnNotificationProtectionZoneTopic(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_protection_zone_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_protection_zone_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1225,7 +1225,7 @@ bool BaseSimulationServices::OnNotificationUserTopic(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_user_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_user_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1247,7 +1247,7 @@ bool BaseSimulationServices::OnNotificationControllerTopic(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_controller_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_controller_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1269,7 +1269,7 @@ bool BaseSimulationServices::OnNotificationActionTopic(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_action_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_action_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1291,7 +1291,7 @@ bool BaseSimulationServices::OnNotificationRobotEventTopic(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_robot_event_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_robot_event_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1313,7 +1313,7 @@ bool BaseSimulationServices::PlayCartesianTrajectory(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_cartesian_trajectory is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_cartesian_trajectory is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1329,7 +1329,7 @@ bool BaseSimulationServices::PlayCartesianTrajectoryPosition(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_cartesian_trajectory_position is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_cartesian_trajectory_position is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1345,7 +1345,7 @@ bool BaseSimulationServices::PlayCartesianTrajectoryOrientation(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_cartesian_trajectory_orientation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_cartesian_trajectory_orientation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1360,7 +1360,7 @@ bool BaseSimulationServices::Stop(const std::shared_ptr<kortex_driver::srv::Stop
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/stop is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/stop is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1375,7 +1375,7 @@ bool BaseSimulationServices::GetMeasuredCartesianPose(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_measured_cartesian_pose is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_measured_cartesian_pose is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1390,7 +1390,7 @@ bool BaseSimulationServices::SendWrenchCommand(const std::shared_ptr<kortex_driv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_wrench_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_wrench_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1405,7 +1405,7 @@ bool BaseSimulationServices::SendWrenchJoystickCommand(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_wrench_joystick_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_wrench_joystick_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1420,7 +1420,7 @@ bool BaseSimulationServices::SendTwistJoystickCommand(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_twist_joystick_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_twist_joystick_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1435,7 +1435,7 @@ bool BaseSimulationServices::SendTwistCommand(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_twist_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_twist_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1451,7 +1451,7 @@ bool BaseSimulationServices::PlayJointTrajectory(const std::shared_ptr<kortex_dr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_joint_trajectory is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_joint_trajectory is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1467,7 +1467,7 @@ bool BaseSimulationServices::PlaySelectedJointTrajectory(const std::shared_ptr<k
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_selected_joint_trajectory is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_selected_joint_trajectory is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1482,7 +1482,7 @@ bool BaseSimulationServices::GetMeasuredJointAngles(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_measured_joint_angles is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_measured_joint_angles is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1497,7 +1497,7 @@ bool BaseSimulationServices::SendJointSpeedsCommand(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_joint_speeds_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_joint_speeds_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1512,7 +1512,7 @@ bool BaseSimulationServices::SendSelectedJointSpeedCommand(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_selected_joint_speed_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_selected_joint_speed_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1527,7 +1527,7 @@ bool BaseSimulationServices::SendGripperCommand(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_gripper_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_gripper_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1542,7 +1542,7 @@ bool BaseSimulationServices::GetMeasuredGripperMovement(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_measured_gripper_movement is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_measured_gripper_movement is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1557,7 +1557,7 @@ bool BaseSimulationServices::SetAdmittance(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_admittance is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_admittance is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1572,7 +1572,7 @@ bool BaseSimulationServices::SetOperatingMode(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_operating_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_operating_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1587,7 +1587,7 @@ bool BaseSimulationServices::ApplyEmergencyStop(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/apply_emergency_stop is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/apply_emergency_stop is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1602,7 +1602,7 @@ bool BaseSimulationServices::Base_ClearFaults(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/clear_faults is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/clear_faults is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1618,7 +1618,7 @@ bool BaseSimulationServices::Base_GetControlMode(const std::shared_ptr<kortex_dr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_control_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_control_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1633,7 +1633,7 @@ bool BaseSimulationServices::GetOperatingMode(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_operating_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_operating_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1648,7 +1648,7 @@ bool BaseSimulationServices::SetServoingMode(const std::shared_ptr<kortex_driver
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_servoing_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_servoing_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1663,7 +1663,7 @@ bool BaseSimulationServices::GetServoingMode(const std::shared_ptr<kortex_driver
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_servoing_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_servoing_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1679,7 +1679,7 @@ bool BaseSimulationServices::OnNotificationServoingModeTopic(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_servoing_mode_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_servoing_mode_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1700,7 +1700,7 @@ bool BaseSimulationServices::RestoreFactorySettings(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/restore_factory_settings is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/restore_factory_settings is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1716,7 +1716,7 @@ bool BaseSimulationServices::OnNotificationFactoryTopic(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_factory_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_factory_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1737,7 +1737,7 @@ bool BaseSimulationServices::GetAllConnectedControllers(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_connected_controllers is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_connected_controllers is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1752,7 +1752,7 @@ bool BaseSimulationServices::GetControllerState(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_controller_state is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_controller_state is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1767,7 +1767,7 @@ bool BaseSimulationServices::GetActuatorCount(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_actuator_count is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_actuator_count is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1782,7 +1782,7 @@ bool BaseSimulationServices::StartWifiScan(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/start_wifi_scan is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/start_wifi_scan is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1797,7 +1797,7 @@ bool BaseSimulationServices::GetConfiguredWifi(const std::shared_ptr<kortex_driv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_configured_wifi is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_configured_wifi is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1813,7 +1813,7 @@ bool BaseSimulationServices::OnNotificationNetworkTopic(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_network_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_network_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1834,7 +1834,7 @@ bool BaseSimulationServices::GetArmState(const std::shared_ptr<kortex_driver::sr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_arm_state is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_arm_state is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1850,7 +1850,7 @@ bool BaseSimulationServices::OnNotificationArmStateTopic(const std::shared_ptr<k
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/activate_publishing_of_arm_state_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/activate_publishing_of_arm_state_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1871,7 +1871,7 @@ bool BaseSimulationServices::GetIPv4Information(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_i_pv4_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_i_pv4_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1886,7 +1886,7 @@ bool BaseSimulationServices::SetWifiCountryCode(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_wifi_country_code is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_wifi_country_code is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1901,7 +1901,7 @@ bool BaseSimulationServices::GetWifiCountryCode(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_wifi_country_code is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_wifi_country_code is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1916,7 +1916,7 @@ bool BaseSimulationServices::Base_SetCapSenseConfig(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_cap_sense_config is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_cap_sense_config is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1931,7 +1931,7 @@ bool BaseSimulationServices::Base_GetCapSenseConfig(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_cap_sense_config is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_cap_sense_config is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1947,7 +1947,7 @@ bool BaseSimulationServices::GetAllJointsSpeedHardLimitation(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_joints_speed_hard_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_joints_speed_hard_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1963,7 +1963,7 @@ bool BaseSimulationServices::GetAllJointsTorqueHardLimitation(const std::shared_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_joints_torque_hard_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_joints_torque_hard_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1979,7 +1979,7 @@ bool BaseSimulationServices::GetTwistHardLimitation(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_twist_hard_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_twist_hard_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -1995,7 +1995,7 @@ bool BaseSimulationServices::GetWrenchHardLimitation(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_wrench_hard_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_wrench_hard_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2010,7 +2010,7 @@ bool BaseSimulationServices::SendJointSpeedsJoystickCommand(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_joint_speeds_joystick_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_joint_speeds_joystick_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2025,7 +2025,7 @@ bool BaseSimulationServices::SendSelectedJointSpeedJoystickCommand(const std::sh
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/send_selected_joint_speed_joystick_command is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/send_selected_joint_speed_joystick_command is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2040,7 +2040,7 @@ bool BaseSimulationServices::EnableBridge(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/enable_bridge is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/enable_bridge is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2055,7 +2055,7 @@ bool BaseSimulationServices::DisableBridge(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/disable_bridge is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/disable_bridge is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2070,7 +2070,7 @@ bool BaseSimulationServices::GetBridgeList(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_bridge_list is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_bridge_list is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2085,7 +2085,7 @@ bool BaseSimulationServices::GetBridgeConfig(const std::shared_ptr<kortex_driver
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_bridge_config is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_bridge_config is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2100,7 +2100,7 @@ bool BaseSimulationServices::PlayPreComputedJointTrajectory(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/play_pre_computed_joint_trajectory is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/play_pre_computed_joint_trajectory is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2115,7 +2115,7 @@ bool BaseSimulationServices::GetProductConfiguration(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_product_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_product_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2130,7 +2130,7 @@ bool BaseSimulationServices::UpdateEndEffectorTypeConfiguration(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_end_effector_type_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_end_effector_type_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2145,7 +2145,7 @@ bool BaseSimulationServices::RestoreFactoryProductConfiguration(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/restore_factory_product_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/restore_factory_product_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2160,7 +2160,7 @@ bool BaseSimulationServices::GetTrajectoryErrorReport(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_trajectory_error_report is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_trajectory_error_report is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2176,7 +2176,7 @@ bool BaseSimulationServices::GetAllJointsSpeedSoftLimitation(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_joints_speed_soft_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_joints_speed_soft_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2192,7 +2192,7 @@ bool BaseSimulationServices::GetAllJointsTorqueSoftLimitation(const std::shared_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_joints_torque_soft_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_joints_torque_soft_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2208,7 +2208,7 @@ bool BaseSimulationServices::GetTwistSoftLimitation(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_twist_soft_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_twist_soft_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2224,7 +2224,7 @@ bool BaseSimulationServices::GetWrenchSoftLimitation(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_wrench_soft_limitation is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_wrench_soft_limitation is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2239,7 +2239,7 @@ bool BaseSimulationServices::SetControllerConfigurationMode(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_controller_configuration_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_controller_configuration_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2254,7 +2254,7 @@ bool BaseSimulationServices::GetControllerConfigurationMode(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_controller_configuration_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_controller_configuration_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2269,7 +2269,7 @@ bool BaseSimulationServices::StartTeaching(const std::shared_ptr<kortex_driver::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/start_teaching is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/start_teaching is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2284,7 +2284,7 @@ bool BaseSimulationServices::StopTeaching(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/stop_teaching is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/stop_teaching is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2299,7 +2299,7 @@ bool BaseSimulationServices::AddSequenceTasks(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/add_sequence_tasks is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/add_sequence_tasks is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2314,7 +2314,7 @@ bool BaseSimulationServices::UpdateSequenceTask(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/update_sequence_task is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/update_sequence_task is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2329,7 +2329,7 @@ bool BaseSimulationServices::SwapSequenceTasks(const std::shared_ptr<kortex_driv
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/swap_sequence_tasks is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/swap_sequence_tasks is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2344,7 +2344,7 @@ bool BaseSimulationServices::ReadSequenceTask(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_sequence_task is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_sequence_task is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2359,7 +2359,7 @@ bool BaseSimulationServices::ReadAllSequenceTasks(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/read_all_sequence_tasks is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/read_all_sequence_tasks is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2374,7 +2374,7 @@ bool BaseSimulationServices::DeleteSequenceTask(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_sequence_task is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_sequence_task is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2389,7 +2389,7 @@ bool BaseSimulationServices::DeleteAllSequenceTasks(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/delete_all_sequence_tasks is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/delete_all_sequence_tasks is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2404,7 +2404,7 @@ bool BaseSimulationServices::TakeSnapshot(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/take_snapshot is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/take_snapshot is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2419,7 +2419,7 @@ bool BaseSimulationServices::GetFirmwareBundleVersions(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_firmware_bundle_versions is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_firmware_bundle_versions is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2434,7 +2434,7 @@ bool BaseSimulationServices::ExecuteWaypointTrajectory(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/execute_waypoint_trajectory is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/execute_waypoint_trajectory is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2449,7 +2449,7 @@ bool BaseSimulationServices::MoveSequenceTask(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/move_sequence_task is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/move_sequence_task is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2464,7 +2464,7 @@ bool BaseSimulationServices::DuplicateMapping(const std::shared_ptr<kortex_drive
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/duplicate_mapping is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/duplicate_mapping is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2479,7 +2479,7 @@ bool BaseSimulationServices::DuplicateMap(const std::shared_ptr<kortex_driver::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/duplicate_map is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/duplicate_map is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2494,7 +2494,7 @@ bool BaseSimulationServices::SetControllerConfiguration(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/set_controller_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/set_controller_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2509,7 +2509,7 @@ bool BaseSimulationServices::GetControllerConfiguration(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_controller_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_controller_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2524,7 +2524,7 @@ bool BaseSimulationServices::GetAllControllerConfigurations(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/get_all_controller_configurations is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/get_all_controller_configurations is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2539,7 +2539,7 @@ bool BaseSimulationServices::ComputeForwardKinematics(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/compute_forward_kinematics is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/compute_forward_kinematics is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2554,7 +2554,7 @@ bool BaseSimulationServices::ComputeInverseKinematics(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/compute_inverse_kinematics is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/compute_inverse_kinematics is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -2569,7 +2569,7 @@ bool BaseSimulationServices::ValidateWaypointList(const std::shared_ptr<kortex_d
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for base/validate_waypoint_list is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for base/validate_waypoint_list is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }

@@ -74,13 +74,13 @@ ActuatorConfigSimulationServices::ActuatorConfigSimulationServices(rclcpp::Node:
 
 bool ActuatorConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool ActuatorConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -95,7 +95,7 @@ bool ActuatorConfigSimulationServices::GetAxisOffsets(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_axis_offsets is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_axis_offsets is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -110,7 +110,7 @@ bool ActuatorConfigSimulationServices::SetAxisOffsets(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_axis_offsets is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_axis_offsets is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -125,7 +125,7 @@ bool ActuatorConfigSimulationServices::SetTorqueOffset(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_torque_offset is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_torque_offset is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -140,7 +140,7 @@ bool ActuatorConfigSimulationServices::ActuatorConfig_GetControlMode(const std::
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_control_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_control_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -155,7 +155,7 @@ bool ActuatorConfigSimulationServices::SetControlMode(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_control_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_control_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -170,7 +170,7 @@ bool ActuatorConfigSimulationServices::GetActivatedControlLoop(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_activated_control_loop is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_activated_control_loop is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -185,7 +185,7 @@ bool ActuatorConfigSimulationServices::SetActivatedControlLoop(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_activated_control_loop is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_activated_control_loop is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -200,7 +200,7 @@ bool ActuatorConfigSimulationServices::GetControlLoopParameters(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_control_loop_parameters is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_control_loop_parameters is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -215,7 +215,7 @@ bool ActuatorConfigSimulationServices::SetControlLoopParameters(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_control_loop_parameters is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_control_loop_parameters is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -230,7 +230,7 @@ bool ActuatorConfigSimulationServices::SelectCustomData(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/select_custom_data is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/select_custom_data is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -245,7 +245,7 @@ bool ActuatorConfigSimulationServices::GetSelectedCustomData(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_selected_custom_data is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_selected_custom_data is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -260,7 +260,7 @@ bool ActuatorConfigSimulationServices::SetCommandMode(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_command_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_command_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -275,7 +275,7 @@ bool ActuatorConfigSimulationServices::ActuatorConfig_ClearFaults(const std::sha
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/clear_faults is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/clear_faults is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -290,7 +290,7 @@ bool ActuatorConfigSimulationServices::SetServoing(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_servoing is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_servoing is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -305,7 +305,7 @@ bool ActuatorConfigSimulationServices::MoveToPosition(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/move_to_position is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/move_to_position is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -320,7 +320,7 @@ bool ActuatorConfigSimulationServices::GetCommandMode(const std::shared_ptr<kort
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_command_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_command_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -335,7 +335,7 @@ bool ActuatorConfigSimulationServices::GetServoing(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_servoing is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_servoing is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -350,7 +350,7 @@ bool ActuatorConfigSimulationServices::GetTorqueOffset(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_torque_offset is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_torque_offset is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -365,7 +365,7 @@ bool ActuatorConfigSimulationServices::SetCoggingFeedforwardMode(const std::shar
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/set_cogging_feedforward_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/set_cogging_feedforward_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -380,7 +380,7 @@ bool ActuatorConfigSimulationServices::GetCoggingFeedforwardMode(const std::shar
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for actuator_config/get_cogging_feedforward_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for actuator_config/get_cogging_feedforward_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }

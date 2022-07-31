@@ -68,13 +68,13 @@ VisionConfigSimulationServices::VisionConfigSimulationServices(rclcpp::Node::Sha
 
 bool VisionConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool VisionConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -89,7 +89,7 @@ bool VisionConfigSimulationServices::SetSensorSettings(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/set_sensor_settings is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/set_sensor_settings is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -104,7 +104,7 @@ bool VisionConfigSimulationServices::GetSensorSettings(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/get_sensor_settings is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/get_sensor_settings is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -119,7 +119,7 @@ bool VisionConfigSimulationServices::GetOptionValue(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/get_option_value is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/get_option_value is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -134,7 +134,7 @@ bool VisionConfigSimulationServices::SetOptionValue(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/set_option_value is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/set_option_value is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -149,7 +149,7 @@ bool VisionConfigSimulationServices::GetOptionInformation(const std::shared_ptr<
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/get_option_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/get_option_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -165,7 +165,7 @@ bool VisionConfigSimulationServices::OnNotificationVisionTopic(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/activate_publishing_of_vision_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/activate_publishing_of_vision_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -186,7 +186,7 @@ bool VisionConfigSimulationServices::DoSensorFocusAction(const std::shared_ptr<k
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/do_sensor_focus_action is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/do_sensor_focus_action is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -201,7 +201,7 @@ bool VisionConfigSimulationServices::GetIntrinsicParameters(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/get_intrinsic_parameters is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/get_intrinsic_parameters is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -216,7 +216,7 @@ bool VisionConfigSimulationServices::GetIntrinsicParametersProfile(const std::sh
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/get_intrinsic_parameters_profile is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/get_intrinsic_parameters_profile is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -231,7 +231,7 @@ bool VisionConfigSimulationServices::SetIntrinsicParameters(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/set_intrinsic_parameters is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/set_intrinsic_parameters is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -246,7 +246,7 @@ bool VisionConfigSimulationServices::GetExtrinsicParameters(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/get_extrinsic_parameters is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/get_extrinsic_parameters is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -261,7 +261,7 @@ bool VisionConfigSimulationServices::SetExtrinsicParameters(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for vision_config/set_extrinsic_parameters is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for vision_config/set_extrinsic_parameters is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }

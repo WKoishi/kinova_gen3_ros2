@@ -68,13 +68,13 @@ InterconnectConfigSimulationServices::InterconnectConfigSimulationServices(rclcp
 
 bool InterconnectConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool InterconnectConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -89,7 +89,7 @@ bool InterconnectConfigSimulationServices::GetUARTConfiguration(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/get_u_a_r_t_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/get_u_a_r_t_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -104,7 +104,7 @@ bool InterconnectConfigSimulationServices::SetUARTConfiguration(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/set_u_a_r_t_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/set_u_a_r_t_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -119,7 +119,7 @@ bool InterconnectConfigSimulationServices::GetEthernetConfiguration(const std::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/get_ethernet_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/get_ethernet_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -134,7 +134,7 @@ bool InterconnectConfigSimulationServices::SetEthernetConfiguration(const std::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/set_ethernet_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/set_ethernet_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -149,7 +149,7 @@ bool InterconnectConfigSimulationServices::GetGPIOConfiguration(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/get_g_p_i_o_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/get_g_p_i_o_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -164,7 +164,7 @@ bool InterconnectConfigSimulationServices::SetGPIOConfiguration(const std::share
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/set_g_p_i_o_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/set_g_p_i_o_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -179,7 +179,7 @@ bool InterconnectConfigSimulationServices::GetGPIOState(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/get_g_p_i_o_state is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/get_g_p_i_o_state is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -194,7 +194,7 @@ bool InterconnectConfigSimulationServices::SetGPIOState(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/set_g_p_i_o_state is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/set_g_p_i_o_state is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -209,7 +209,7 @@ bool InterconnectConfigSimulationServices::GetI2CConfiguration(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/get_i2_c_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/get_i2_c_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -224,7 +224,7 @@ bool InterconnectConfigSimulationServices::SetI2CConfiguration(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/set_i2_c_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/set_i2_c_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -239,7 +239,7 @@ bool InterconnectConfigSimulationServices::I2CRead(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/i2_c_read is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/i2_c_read is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -254,7 +254,7 @@ bool InterconnectConfigSimulationServices::I2CReadRegister(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/i2_c_read_register is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/i2_c_read_register is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -269,7 +269,7 @@ bool InterconnectConfigSimulationServices::I2CWrite(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/i2_c_write is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/i2_c_write is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -284,7 +284,7 @@ bool InterconnectConfigSimulationServices::I2CWriteRegister(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for interconnect_config/i2_c_write_register is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for interconnect_config/i2_c_write_register is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }

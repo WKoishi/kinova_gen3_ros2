@@ -88,13 +88,13 @@ DeviceConfigSimulationServices::DeviceConfigSimulationServices(rclcpp::Node::Sha
 
 bool DeviceConfigSimulationServices::SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
 bool DeviceConfigSimulationServices::SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res)
 {
-	ROS_WARN_ONCE("The SetDeviceID service is not implemented in simulation, and has no effect.");
+	RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The SetDeviceID service is not implemented in simulation, and has no effect.");
 	return true;
 }
 
@@ -109,7 +109,7 @@ bool DeviceConfigSimulationServices::GetRunMode(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_run_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_run_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -124,7 +124,7 @@ bool DeviceConfigSimulationServices::SetRunMode(const std::shared_ptr<kortex_dri
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_run_mode is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_run_mode is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -139,7 +139,7 @@ bool DeviceConfigSimulationServices::GetDeviceType(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_device_type is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_device_type is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -154,7 +154,7 @@ bool DeviceConfigSimulationServices::GetFirmwareVersion(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_firmware_version is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_firmware_version is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -169,7 +169,7 @@ bool DeviceConfigSimulationServices::GetBootloaderVersion(const std::shared_ptr<
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_bootloader_version is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_bootloader_version is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -184,7 +184,7 @@ bool DeviceConfigSimulationServices::GetModelNumber(const std::shared_ptr<kortex
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_model_number is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_model_number is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -199,7 +199,7 @@ bool DeviceConfigSimulationServices::GetPartNumber(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_part_number is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_part_number is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -214,7 +214,7 @@ bool DeviceConfigSimulationServices::GetSerialNumber(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_serial_number is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_serial_number is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -229,7 +229,7 @@ bool DeviceConfigSimulationServices::GetMACAddress(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_m_a_c_address is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_m_a_c_address is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -244,7 +244,7 @@ bool DeviceConfigSimulationServices::GetIPv4Settings(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_i_pv4_settings is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_i_pv4_settings is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -259,7 +259,7 @@ bool DeviceConfigSimulationServices::SetIPv4Settings(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_i_pv4_settings is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_i_pv4_settings is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -274,7 +274,7 @@ bool DeviceConfigSimulationServices::GetPartNumberRevision(const std::shared_ptr
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_part_number_revision is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_part_number_revision is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -289,7 +289,7 @@ bool DeviceConfigSimulationServices::RebootRequest(const std::shared_ptr<kortex_
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/reboot_request is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/reboot_request is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -304,7 +304,7 @@ bool DeviceConfigSimulationServices::SetSafetyEnable(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_safety_enable is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_safety_enable is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -319,7 +319,7 @@ bool DeviceConfigSimulationServices::SetSafetyErrorThreshold(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_safety_error_threshold is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_safety_error_threshold is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -334,7 +334,7 @@ bool DeviceConfigSimulationServices::SetSafetyWarningThreshold(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_safety_warning_threshold is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_safety_warning_threshold is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -349,7 +349,7 @@ bool DeviceConfigSimulationServices::SetSafetyConfiguration(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_safety_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_safety_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -364,7 +364,7 @@ bool DeviceConfigSimulationServices::GetSafetyConfiguration(const std::shared_pt
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_safety_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_safety_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -379,7 +379,7 @@ bool DeviceConfigSimulationServices::GetSafetyInformation(const std::shared_ptr<
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_safety_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_safety_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -394,7 +394,7 @@ bool DeviceConfigSimulationServices::GetSafetyEnable(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_safety_enable is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_safety_enable is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -409,7 +409,7 @@ bool DeviceConfigSimulationServices::GetSafetyStatus(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_safety_status is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_safety_status is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -424,7 +424,7 @@ bool DeviceConfigSimulationServices::ClearAllSafetyStatus(const std::shared_ptr<
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/clear_all_safety_status is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/clear_all_safety_status is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -439,7 +439,7 @@ bool DeviceConfigSimulationServices::ClearSafetyStatus(const std::shared_ptr<kor
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/clear_safety_status is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/clear_safety_status is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -454,7 +454,7 @@ bool DeviceConfigSimulationServices::GetAllSafetyConfiguration(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_all_safety_configuration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_all_safety_configuration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -469,7 +469,7 @@ bool DeviceConfigSimulationServices::GetAllSafetyInformation(const std::shared_p
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_all_safety_information is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_all_safety_information is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -484,7 +484,7 @@ bool DeviceConfigSimulationServices::ResetSafetyDefaults(const std::shared_ptr<k
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/reset_safety_defaults is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/reset_safety_defaults is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -500,7 +500,7 @@ bool DeviceConfigSimulationServices::OnNotificationSafetyTopic(const std::shared
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/activate_publishing_of_safety_topic is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/activate_publishing_of_safety_topic is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -521,7 +521,7 @@ bool DeviceConfigSimulationServices::ExecuteCalibration(const std::shared_ptr<ko
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/execute_calibration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/execute_calibration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -536,7 +536,7 @@ bool DeviceConfigSimulationServices::GetCalibrationResult(const std::shared_ptr<
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_calibration_result is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_calibration_result is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -551,7 +551,7 @@ bool DeviceConfigSimulationServices::StopCalibration(const std::shared_ptr<korte
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/stop_calibration is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/stop_calibration is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -566,7 +566,7 @@ bool DeviceConfigSimulationServices::DeviceConfig_SetCapSenseConfig(const std::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/set_cap_sense_config is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/set_cap_sense_config is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
@@ -581,7 +581,7 @@ bool DeviceConfigSimulationServices::DeviceConfig_GetCapSenseConfig(const std::s
 	}
 	else
 	{
-		ROS_WARN_ONCE("The simulation handler for device_config/get_cap_sense_config is not implemented, so the service calls will return the default response.");
+		RCLCPP_WARN_ONCE(m_node_handle->get_logger(), "The simulation handler for device_config/get_cap_sense_config is not implemented, so the service calls will return the default response.");
 	}
 	return true;
 }
