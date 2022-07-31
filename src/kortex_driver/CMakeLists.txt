@@ -20,6 +20,7 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 find_package(unique_identifier_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
@@ -138,6 +139,7 @@ add_library(kortex_driver_generated_files ${generated_files})
 ament_target_dependencies(kortex_driver_generated_files
   rclcpp
   std_msgs
+  sensor_msgs
   builtin_interfaces
 )
 rosidl_get_typesupport_target(cpp_typesupport_target
