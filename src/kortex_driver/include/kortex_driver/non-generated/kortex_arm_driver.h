@@ -14,7 +14,7 @@
 */
 
 #include "rclcpp/rclcpp.hpp"
-#include <sensor_msgs/JointState.h>
+#include "sensor_msgs/msg/joint_state.hpp"
 
 #include <thread>
 

@@ -15,7 +15,7 @@
 
 // ROS
 #include "rclcpp/rclcpp.hpp"
-#include <std_msgs/Empty.h>
+#include "std_msgs/msg/empty.hpp"
 #include <control_msgs/JointTrajectoryControllerState.h>
 #include <control_msgs/FollowJointTrajectoryAction.h>
 #include <control_msgs/GripperCommandAction.h>
