@@ -28,7 +28,7 @@ class DeviceManagerSimulationServices : public IDeviceManagerServices
 
         virtual bool SetDeviceID(const std::shared_ptr<kortex_driver::srv::SetDeviceID::Request> req, std::shared_ptr<kortex_driver::srv::SetDeviceID::Response> res) override;
         virtual bool SetApiOptions(const std::shared_ptr<kortex_driver::srv::SetApiOptions::Request> req, std::shared_ptr<kortex_driver::srv::SetApiOptions::Response> res) override;
-        std::function<kortex_driver::srv::ReadAllDevices::Response(const kortex_driver::srv::ReadAllDevices::Request&)> ReadAllDevicesHandler = nullptr;
+        std::function<std::shared_ptr<kortex_driver::srv::ReadAllDevices::Response>(const std::shared_ptr<kortex_driver::srv::ReadAllDevices::Request>)> ReadAllDevicesHandler = nullptr;
         virtual bool ReadAllDevices(const std::shared_ptr<kortex_driver::srv::ReadAllDevices::Request> req, std::shared_ptr<kortex_driver::srv::ReadAllDevices::Response> res) override;
 
 };
