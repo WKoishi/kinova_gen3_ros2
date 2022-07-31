@@ -178,17 +178,17 @@ int ToProtoData(kortex_driver::msg::CalibrationParameter input, Kinova::Api::Dev
 {
 	
 	output->set_calibration_parameter_identifier(input.calibration_parameter_identifier);
-	if(input.oneof_value.signedIntValue.size() > 0)
+	if(input.oneof_value.signed_int_value.size() > 0)
 	{
-		output->set_signedintvalue(input.oneof_value.signedIntValue[0]);
+		output->set_signedintvalue(input.oneof_value.signed_int_value[0]);
 	}
-	if(input.oneof_value.unsignedIntValue.size() > 0)
+	if(input.oneof_value.unsigned_int_value.size() > 0)
 	{
-		output->set_unsignedintvalue(input.oneof_value.unsignedIntValue[0]);
+		output->set_unsignedintvalue(input.oneof_value.unsigned_int_value[0]);
 	}
-	if(input.oneof_value.floatValue.size() > 0)
+	if(input.oneof_value.float_value.size() > 0)
 	{
-		output->set_floatvalue(input.oneof_value.floatValue[0]);
+		output->set_floatvalue(input.oneof_value.float_value[0]);
 	}
 	
 	return 0;
