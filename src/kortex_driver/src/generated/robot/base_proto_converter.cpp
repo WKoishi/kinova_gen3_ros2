@@ -1632,9 +1632,9 @@ int ToProtoData(kortex_driver::msg::BridgeList input, Kinova::Api::Base::BridgeL
 {
 	 
 	output->clear_bridgeconfig();
-	for(int i = 0; i < input.bridgeConfig.size(); i++)
+	for(int i = 0; i < input.bridge_config.size(); i++)
 	{
-		ToProtoData(input.bridgeConfig[i], output->add_bridgeconfig());
+		ToProtoData(input.bridge_config[i], output->add_bridgeconfig());
 	}
 	
 	return 0;

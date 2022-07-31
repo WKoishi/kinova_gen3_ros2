@@ -2193,12 +2193,12 @@ int ToRosData(Kinova::Api::Base::CapSenseConfig input, kortex_driver::msg::BaseC
 int ToRosData(Kinova::Api::Base::BridgeList input, kortex_driver::msg::BridgeList &output)
 {
 	
-	output.bridgeConfig.clear();
+	output.bridge_config.clear();
 	for(int i = 0; i < input.bridgeconfig_size(); i++)
 	{
-		decltype(output.bridgeConfig)::value_type temp;
+		decltype(output.bridge_config)::value_type temp;
 		ToRosData(input.bridgeconfig(i), temp);
-		output.bridgeConfig.push_back(temp);
+		output.bridge_config.push_back(temp);
 	}
 
 	
