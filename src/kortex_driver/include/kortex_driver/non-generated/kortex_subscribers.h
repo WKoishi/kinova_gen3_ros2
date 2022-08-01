@@ -38,18 +38,18 @@ private:
     Kinova::Api::Base::BaseClient* m_base;
 
     // Subscribers
-    ros::Subscriber m_joint_speeds_sub;
-    ros::Subscriber m_twist_sub;
-    ros::Subscriber m_clear_faults_sub;
-    ros::Subscriber m_stop_sub;
-    ros::Subscriber m_emergency_stop_sub;
+    rclcpp::Subscription<kortex_driver::msg::BaseJointSpeeds>::SharedPtr m_joint_speeds_sub;
+    rclcpp::Subscription<kortex_driver::msg::TwistCommand>::SharedPtr m_twist_sub;
+    rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr m_clear_faults_sub;
+    rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr m_stop_sub;
+    rclcpp::Subscription<std_msgs::msg::Empty>::SharedPtr m_emergency_stop_sub;
 
     // Callbacks
-    void new_joint_speeds_cb(const kortex_driver::Base_JointSpeeds& joint_speeds);
-    void new_twist_cb(const kortex_driver::TwistCommand& twist);
-    void clear_faults_cb(const std_msgs::Empty& empty);
-    void stop_cb(const std_msgs::Empty& empty);
-    void emergency_stop_cb(const std_msgs::Empty& empty);
+    void new_joint_speeds_cb(const std::shared_ptr<kortex_driver::msg::BaseJointSpeeds> joint_speeds);
+    void new_twist_cb(const std::shared_ptr<kortex_driver::msg::TwistCommand> twist);
+    void clear_faults_cb(const std::shared_ptr<std_msgs::msg::Empty> empty);
+    void stop_cb(const std::shared_ptr<std_msgs::msg::Empty> empty);
+    void emergency_stop_cb(const std::shared_ptr<std_msgs::msg::Empty> empty);
 };
 
 #endif //_KORTEX_SUBSCRIBERS_H_
