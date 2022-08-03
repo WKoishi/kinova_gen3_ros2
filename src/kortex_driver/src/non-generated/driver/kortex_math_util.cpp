@@ -112,6 +112,11 @@ float KortexMathUtil::findDistanceToBoundary(float value, float limit)
     return distance;
 }
 
+double KortexMathUtil::duration_toSec(const builtin_interfaces::msg::Duration& duration)
+{
+    return static_cast<double>(duration.sec) + 1e-9 * static_cast<double>(duration.nanosec);
+}
+
 kortex_driver::msg::Twist KortexMathUtil::substractTwists(const kortex_driver::msg::Twist& a, const kortex_driver::msg::Twist& b)
 {
     kortex_driver::msg::Twist c;
