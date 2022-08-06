@@ -146,6 +146,7 @@ ament_target_dependencies(kortex_driver_generated_files
   action_msgs
   control_msgs
   builtin_interfaces
+  moveit_ros_planning_interface
 )
 rosidl_get_typesupport_target(cpp_typesupport_target
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
