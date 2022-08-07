@@ -64,6 +64,8 @@ foreach(folder ${msg_generated_dir_list})
   list(APPEND msg_file_list ${msg_file_rel})
 endforeach()
 
+list(APPEND msg_file_list "msg/generated/ErrorCodes.msg")
+list(APPEND msg_file_list "msg/generated/SubErrorCodes.msg")
 list(APPEND msg_file_list "msg/non_generated/ApiOptions.msg")
 list(APPEND msg_file_list "msg/non_generated/KortexError.msg")
 
