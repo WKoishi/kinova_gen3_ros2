@@ -14,8 +14,8 @@
 */
 
 #include "rclcpp/rclcpp.hpp"
-#include <actionlib/server/simple_action_server.h>
-#include <control_msgs/GripperCommandAction.h>
+#include "rclcpp_action/rclcpp_action.hpp"
+#include "control_msgs/action/gripper_command.hpp"
 #include <chrono>
 #include <mutex>
 #include <thread>
@@ -39,11 +39,14 @@ class RobotiqGripperCommandActionServer
         RobotiqGripperCommandActionServer() = delete;
         RobotiqGripperCommandActionServer(const std::string& server_name, const std::string& gripper_joint_name, double gripper_joint_limit_min, double gripper_joint_limit_max, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic);
         ~RobotiqGripperCommandActionServer();
+
+        using GripperCommandAction = control_msgs::action::GripperCommand;
+        using GoalHandle_GripperCommandAction = rclcpp_action::ServerGoalHandle<GripperCommandAction>;
    
     private:
         // Members
         rclcpp::Node::SharedPtr m_node_handle;
-        actionlib::ActionServer<control_msgs::GripperCommandAction> m_server;
+        rclcpp_action::Server<GripperCommandAction>::SharedPtr m_server;
 
         Kinova::Api::Common::NotificationHandle m_sub_action_notif_handle;
 
@@ -54,8 +57,8 @@ class RobotiqGripperCommandActionServer
 
         std::string m_server_name;
 
-        control_msgs::GripperCommandFeedback     m_feedback;
-        actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle m_goal;
+        GripperCommandAction::Feedback    m_feedback;
+        // actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle m_goal;
         std::chrono::system_clock::time_point m_trajectory_start_time;
         
         bool m_is_trajectory_running;
@@ -70,15 +73,16 @@ class RobotiqGripperCommandActionServer
         double      m_gripper_joint_limit_max;
 
         // Action Server Callbacks
-        void goal_received_callback(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle new_goal_handle);
-        void preempt_received_callback(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle goal_handle);
+        rclcpp_action::GoalResponse ros_goal_callback(const rclcpp_action::GoalUUID& uuid, std::shared_ptr<const GripperCommandAction::Goal> goal);
+        rclcpp_action::CancelResponse ros_cancel_callback(const std::shared_ptr<GoalHandle_GripperCommandAction> goal_handle);
+        void ros_accepted_callback(const std::shared_ptr<GoalHandle_GripperCommandAction> new_goal_handle);
 
         // Polling thread function
-        void gripper_position_polling_thread();
+        void gripper_position_polling_thread(const std::shared_ptr<GoalHandle_GripperCommandAction> goal_handle);
 
         // Private methods
-        bool is_goal_acceptable(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle goal_handle);
-        bool is_goal_tolerance_respected();
+        bool is_goal_acceptable(const std::shared_ptr<const GripperCommandAction::Goal> goal);
+        bool is_goal_tolerance_respected(const std::shared_ptr<const GripperCommandAction::Goal> goal);
         void stop_all_movement();
         void join_polling_thread();
 };

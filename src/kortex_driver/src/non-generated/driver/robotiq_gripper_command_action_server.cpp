@@ -18,7 +18,6 @@ RobotiqGripperCommandActionServer::RobotiqGripperCommandActionServer(const std::
     m_gripper_joint_limit_min(gripper_joint_limit_min),
     m_gripper_joint_limit_max(gripper_joint_limit_max),
     m_node_handle(nh),
-    m_server(nh, server_name, boost::bind(&RobotiqGripperCommandActionServer::goal_received_callback, this, _1), boost::bind(&RobotiqGripperCommandActionServer::preempt_received_callback, this, _1), false),
     m_base(base),
     m_base_cyclic(base_cyclic),
     m_is_trajectory_running(false)
@@ -31,7 +30,13 @@ RobotiqGripperCommandActionServer::RobotiqGripperCommandActionServer(const std::
     f->set_value(0);
 
     // Ready to receive goal
-    m_server.start();
+    m_server = rclcpp_action::create_server<GripperCommandAction>(
+        m_node_handle, m_server_name,
+        std::bind(&RobotiqGripperCommandActionServer::ros_goal_callback, this, std::placeholders::_1, std::placeholders::_2),
+        std::bind(&RobotiqGripperCommandActionServer::ros_cancel_callback, this, std::placeholders::_1),
+        std::bind(&RobotiqGripperCommandActionServer::ros_accepted_callback, this, std::placeholders::_1));
+
+    // m_server.start();
 }
 
 RobotiqGripperCommandActionServer::~RobotiqGripperCommandActionServer()
@@ -39,16 +44,22 @@ RobotiqGripperCommandActionServer::~RobotiqGripperCommandActionServer()
     join_polling_thread();
 }
 
-void RobotiqGripperCommandActionServer::goal_received_callback(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle new_goal_handle)
+rclcpp_action::GoalResponse RobotiqGripperCommandActionServer::ros_goal_callback(const rclcpp_action::GoalUUID& uuid, std::shared_ptr<const GripperCommandAction::Goal> goal)
 {
+    (void)uuid;
     RCLCPP_INFO(m_node_handle->get_logger(), "New goal received.");
-    if (!is_goal_acceptable(new_goal_handle))
+    if (!is_goal_acceptable(goal))
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "Gripper Command Goal is rejected.");
-        new_goal_handle.setRejected();
-        return;
+        // new_goal_handle.setRejected();
+        return rclcpp_action::GoalResponse::REJECT;
     }
 
+    return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
+}
+
+void RobotiqGripperCommandActionServer::ros_accepted_callback(const std::shared_ptr<GoalHandle_GripperCommandAction> new_goal_handle)
+{
     // Deal with active goals
     if (m_is_trajectory_running)
     {
@@ -56,12 +67,12 @@ void RobotiqGripperCommandActionServer::goal_received_callback(actionlib::Action
         stop_all_movement();
     }
 
-    // Accept the goal
-    m_goal = new_goal_handle;
-    m_goal.setAccepted();
+    // // Accept the goal
+    // m_goal = new_goal_handle;
+    // m_goal.setAccepted();
 
     // Construct the Protobuf gripper command
-    control_msgs::GripperCommand ros_gripper_command = m_goal.getGoal()->command;
+    control_msgs::msg::GripperCommand ros_gripper_command = new_goal_handle->get_goal()->command;
     Kinova::Api::Base::GripperCommand proto_gripper_command;
 
     proto_gripper_command.set_mode(Kinova::Api::Base::GripperMode::GRIPPER_POSITION);
@@ -80,12 +91,14 @@ void RobotiqGripperCommandActionServer::goal_received_callback(actionlib::Action
 
     // Start the thread to monitor the position
     join_polling_thread();
-    m_gripper_position_polling_thread = std::thread(&RobotiqGripperCommandActionServer::gripper_position_polling_thread, this);
+    m_gripper_position_polling_thread = std::thread{std::bind(&RobotiqGripperCommandActionServer::gripper_position_polling_thread, this, std::placeholders::_1),
+                                                        new_goal_handle};
 }
 
 // Called in a separate thread when a preempt request comes in from the Action Client
-void RobotiqGripperCommandActionServer::preempt_received_callback(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle goal_handle)
+rclcpp_action::CancelResponse RobotiqGripperCommandActionServer::ros_cancel_callback(const std::shared_ptr<GoalHandle_GripperCommandAction> goal_handle)
 {
+    (void)goal_handle;
     RCLCPP_WARN(m_node_handle->get_logger(), "Preempt received from client");
     if (m_is_trajectory_running)
     {
@@ -95,10 +108,12 @@ void RobotiqGripperCommandActionServer::preempt_received_callback(actionlib::Act
     {
         RCLCPP_WARN(m_node_handle->get_logger(), "Trajectory is not running but we received a pre-empt request from client.");
     }
+
+    return rclcpp_action::CancelResponse::ACCEPT;
 }
 
 // Called in a separate thread when a notification comes in
-void RobotiqGripperCommandActionServer::gripper_position_polling_thread()
+void RobotiqGripperCommandActionServer::gripper_position_polling_thread(const std::shared_ptr<GoalHandle_GripperCommandAction> goal_handle)
 {
     std::chrono::system_clock::time_point now = m_trajectory_start_time = std::chrono::system_clock::now();
     Kinova::Api::BaseCyclic::Feedback feedback = m_base_cyclic->RefreshFeedback();
@@ -106,6 +121,7 @@ void RobotiqGripperCommandActionServer::gripper_position_polling_thread()
     double previous_gripper_position = feedback.interconnect().gripper_feedback().motor(0).position() / 100.0; 
     double actual_gripper_position;
     int n_stuck = 0;
+    auto result_msg = std::make_shared<GripperCommandAction::Result>();
 
     // Break the loop if the trajectory is not running or if the trajectory lasted more than the timeout limit
     while(m_is_trajectory_running && (std::chrono::duration<double>(now - m_trajectory_start_time).count() < GRIPPER_TRAJECTORY_TIME_LIMIT))
@@ -139,14 +155,14 @@ void RobotiqGripperCommandActionServer::gripper_position_polling_thread()
     // The trajectory is not running, meaning it's finished or it was stopped
     if (!m_is_trajectory_running)
     {        
-        if (is_goal_tolerance_respected())
+        if (is_goal_tolerance_respected(goal_handle->get_goal()))
         {
-            m_goal.setSucceeded();
+            goal_handle->succeed(result_msg);
         }
         else
         {
             RCLCPP_ERROR(m_node_handle->get_logger(), "we're finished");
-            m_goal.setAborted();
+            goal_handle->abort(result_msg);
         }
     }
 
@@ -154,25 +170,25 @@ void RobotiqGripperCommandActionServer::gripper_position_polling_thread()
     else
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "BANG timeout");
-        m_goal.setAborted();
+        goal_handle->abort(result_msg);
     }
 
     return;
 }
 
-bool RobotiqGripperCommandActionServer::is_goal_acceptable(actionlib::ActionServer<control_msgs::GripperCommandAction>::GoalHandle goal_handle)
+bool RobotiqGripperCommandActionServer::is_goal_acceptable(const std::shared_ptr<const GripperCommandAction::Goal> goal)
 {
-    // First check if goal is valid
-    if (!goal_handle.isValid())
-    { 
-        return false;
-    }
+    // // First check if goal is valid
+    // if (!goal_handle.isValid())
+    // { 
+    //     return false;
+    // }
 
-    // Retrieve the goal
-    control_msgs::GripperCommandGoalConstPtr goal = goal_handle.getGoal();
+    // // Retrieve the goal
+    // control_msgs::GripperCommandGoalConstPtr goal = goal_handle.getGoal();
 
     // If the position is not in the joint limits range, reject the goal
-    double relative_position = m_math_util.relative_position_from_absolute(goal_handle.getGoal()->command.position, m_gripper_joint_limit_min, m_gripper_joint_limit_max);
+    double relative_position = m_math_util.relative_position_from_absolute(goal->command.position, m_gripper_joint_limit_min, m_gripper_joint_limit_max);
     if (relative_position > 1 || relative_position < 0)
     {
         return false;
@@ -181,11 +197,11 @@ bool RobotiqGripperCommandActionServer::is_goal_acceptable(actionlib::ActionServ
     return true;
 }
 
-bool RobotiqGripperCommandActionServer::is_goal_tolerance_respected()
+bool RobotiqGripperCommandActionServer::is_goal_tolerance_respected(const std::shared_ptr<const GripperCommandAction::Goal> goal)
 {
     Kinova::Api::BaseCyclic::Feedback feedback = m_base_cyclic->RefreshFeedback();
     double actual_gripper_position = feedback.interconnect().gripper_feedback().motor(0).position() / 100.0;
-    double goal_as_relative_position = m_math_util.relative_position_from_absolute(m_goal.getGoal()->command.position, m_gripper_joint_limit_min, m_gripper_joint_limit_max);
+    double goal_as_relative_position = m_math_util.relative_position_from_absolute(goal->command.position, m_gripper_joint_limit_min, m_gripper_joint_limit_max);
 
     RCLCPP_INFO(m_node_handle->get_logger(), "%f and %f", actual_gripper_position, goal_as_relative_position);
 

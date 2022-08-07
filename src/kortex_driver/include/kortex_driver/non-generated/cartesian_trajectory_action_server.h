@@ -14,7 +14,7 @@
 */
 
 #include "rclcpp/rclcpp.hpp"
-#include <actionlib/server/simple_action_server.h>
+#include "rclcpp_action/rclcpp_action.hpp"
 #include <chrono>
 #include <mutex>
 
@@ -54,10 +54,13 @@ class CartesianTrajectoryActionServer
             "TRAJECTORY_EXECUTION_IN_PROGRESS"
         };
 
+        using FollowCartesianTrajectoryAction = kortex_driver::action::FollowCartesianTrajectory;
+        using GoalHandle_FollowCartesianTrajectoryAction = rclcpp_action::ServerGoalHandle<FollowCartesianTrajectoryAction>;
+
     private:
         // Members
         rclcpp::Node::SharedPtr m_node_handle;
-        actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction> m_server;
+        rclcpp_action::Server<FollowCartesianTrajectoryAction>::SharedPtr m_server;
 
         Kinova::Api::Common::NotificationHandle m_sub_action_notif_handle;
         
@@ -67,7 +70,6 @@ class CartesianTrajectoryActionServer
 
         std::string m_server_name;
 
-        actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction>::GoalHandle m_goal;
         std::chrono::system_clock::time_point m_trajectory_start_time;
         std::chrono::system_clock::time_point m_trajectory_end_time;
 
@@ -79,14 +81,19 @@ class CartesianTrajectoryActionServer
         std::string m_prefix;
 
         // Action Server Callbacks
-        void goal_received_callback(actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction>::GoalHandle new_goal_handle);
-        void preempt_received_callback(actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction>::GoalHandle goal_handle);
+        rclcpp_action::GoalResponse ros_goal_callback(const rclcpp_action::GoalUUID& uuid, std::shared_ptr<const FollowCartesianTrajectoryAction::Goal> goal);
+        rclcpp_action::CancelResponse ros_cancel_callback(const std::shared_ptr<GoalHandle_FollowCartesianTrajectoryAction> goal_handle);
+        void ros_accepted_callback(const std::shared_ptr<GoalHandle_FollowCartesianTrajectoryAction> new_goal_handle);
 
+        struct KortexCallback {
+            std::shared_ptr<GoalHandle_FollowCartesianTrajectoryAction> goal_handle;
+        } kortex_callback;
+        
         // Kortex Notifications Callbacks
         void action_notif_callback(Kinova::Api::Base::ActionNotification notif);
 
         // Private methods
-        bool is_goal_acceptable(actionlib::ActionServer<kortex_driver::FollowCartesianTrajectoryAction>::GoalHandle goal_handle);
+        bool is_goal_acceptable(const std::shared_ptr<const FollowCartesianTrajectoryAction::Goal> goal);
         bool is_goal_tolerance_respected(bool enable_prints, bool check_time_tolerance);
         void stop_all_movement();
 

@@ -21,7 +21,6 @@ namespace {
 JointTrajectoryActionServer::JointTrajectoryActionServer(const std::string& server_name, rclcpp::Node::SharedPtr nh, Kinova::Api::Base::BaseClient* base, Kinova::Api::BaseCyclic::BaseCyclicClient* base_cyclic, Kinova::Api::ControlConfig::ControlConfigClient* control_config, bool use_hard_limits):
     m_server_name(server_name),
     m_node_handle(nh),
-    m_server(nh, server_name, boost::bind(&JointTrajectoryActionServer::goal_received_callback, this, _1), boost::bind(&JointTrajectoryActionServer::preempt_received_callback, this, _1), false),
     m_base(base),
     m_base_cyclic(base_cyclic),
     m_control_config(control_config),
@@ -29,23 +28,23 @@ JointTrajectoryActionServer::JointTrajectoryActionServer(const std::string& serv
     m_use_hard_limits(use_hard_limits)
 {
     // Get the ROS params
-    if (!ros::param::get("~default_goal_time_tolerance", m_default_goal_time_tolerance))
+    if (!m_node_handle->get_parameter("~default_goal_time_tolerance", m_default_goal_time_tolerance))
     {
         RCLCPP_WARN(m_node_handle->get_logger(), "Parameter default_goal_time_tolerance was not specified; assuming 0.5 as default value.");
         m_default_goal_time_tolerance = 0.5;
     }
-    if (!ros::param::get("~default_goal_tolerance", m_default_goal_tolerance))
+    if (!m_node_handle->get_parameter("~default_goal_tolerance", m_default_goal_tolerance))
     {
         RCLCPP_WARN(m_node_handle->get_logger(), "Parameter default_goal_tolerance was not specified; assuming 0.005 as default value.");
         m_default_goal_tolerance = 0.005;
     }
-    if (!ros::param::get("~prefix", m_prefix))
+    if (!m_node_handle->get_parameter("~prefix", m_prefix))
     {
         std::string error_string = "Prefix name was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
-    if (!ros::param::get("~joint_names", m_joint_names))
+    if (!m_node_handle->get_parameter("~joint_names", m_joint_names))
     {
         std::string error_string = "Parameter joint_names was not specified";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -59,7 +58,12 @@ JointTrajectoryActionServer::JointTrajectoryActionServer(const std::string& serv
     m_sub_action_notif_handle = m_base->OnNotificationActionTopic(std::bind(&JointTrajectoryActionServer::action_notif_callback, this, std::placeholders::_1), Kinova::Api::Common::NotificationOptions());
 
     // Ready to receive goal
-    m_server.start();
+    m_server = rclcpp_action::create_server<FollowJointTrajectoryAction>(
+        m_node_handle, m_server_name,
+        std::bind(&JointTrajectoryActionServer::ros_goal_callback, this, std::placeholders::_1, std::placeholders::_2),
+        std::bind(&JointTrajectoryActionServer::ros_cancel_callback, this, std::placeholders::_1),
+        std::bind(&JointTrajectoryActionServer::ros_accepted_callback, this, std::placeholders::_1));
+
     set_server_state(ActionServerState::IDLE);
 }
 
@@ -68,15 +72,28 @@ JointTrajectoryActionServer::~JointTrajectoryActionServer()
     m_base->Unsubscribe(m_sub_action_notif_handle);
 }
 
-void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer<control_msgs::FollowJointTrajectoryAction>::GoalHandle new_goal_handle)
+rclcpp_action::GoalResponse JointTrajectoryActionServer::ros_goal_callback(const rclcpp_action::GoalUUID& uuid, std::shared_ptr<const FollowJointTrajectoryAction::Goal> goal)
 {
+    (void)uuid;
+
     RCLCPP_INFO(m_node_handle->get_logger(), "New goal received.");
-    if (!is_goal_acceptable(new_goal_handle))
+    if (!is_goal_acceptable(goal))
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "Joint Trajectory Goal is rejected.");
-        new_goal_handle.setRejected();
-        return;
+        // new_goal_handle.setRejected();
+        return rclcpp_action::GoalResponse::REJECT;
     }
+    RCLCPP_INFO(m_node_handle->get_logger(), "Joint Trajectory Goal is accepted.");
+
+    return rclcpp_action::GoalResponse::ACCEPT_AND_EXECUTE;
+}
+
+void JointTrajectoryActionServer::ros_accepted_callback(const std::shared_ptr<GoalHandle_FollowJointTrajectoryAction> new_goal_handle)
+{
+    const auto result_msg = std::make_shared<FollowJointTrajectoryAction::Result>();
+
+    // Accept the goal
+    kortex_callback.goal_handle = new_goal_handle;
 
     if (m_server_state != ActionServerState::IDLE)
     {
@@ -85,10 +102,10 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
         stop_all_movement();
     }
 
-    // Accept the goal
-    RCLCPP_INFO(m_node_handle->get_logger(), "Joint Trajectory Goal is accepted.");
-    m_goal = new_goal_handle;
-    m_goal.setAccepted();
+    // // Accept the goal
+    // RCLCPP_INFO(m_node_handle->get_logger(), "Joint Trajectory Goal is accepted.");
+    // m_goal = new_goal_handle;
+    // m_goal.setAccepted();
 
     // Construct the Protobuf object trajectory
     Kinova::Api::Base::WaypointList proto_trajectory;
@@ -108,7 +125,7 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
     // myfile.close();
 
     // Copy the trajectory points from the ROS structure to the Protobuf structure
-    for (unsigned int i = 0; i < new_goal_handle.getGoal()->trajectory.points.size(); i++)
+    for (unsigned int i = 0; i < new_goal_handle->get_goal()->trajectory.points.size(); i++)
     {
         // Create the waypoint
         Kinova::Api::Base::Waypoint* proto_waypoint = proto_trajectory.add_waypoints();
@@ -116,7 +133,7 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
         auto angular_waypoint = proto_waypoint->mutable_angular_waypoint();
         
         // Calculate the duration of this waypoint
-        const auto traj_point = new_goal_handle.getGoal()->trajectory.points.at(i);
+        const auto traj_point = new_goal_handle->get_goal()->trajectory.points.at(i);
         float waypoint_duration;
         // FIXME We have to include the starting point for the trajectory as the first waypoint AND since optimal durations are not
         //       supported yet, we also have to give it a non-zero duration. Putting something too small gives errors so I've put 
@@ -127,8 +144,8 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
         }
         else
         {
-            auto previous_wp_duration = new_goal_handle.getGoal()->trajectory.points.at(i-1).time_from_start.toSec();
-            waypoint_duration = traj_point.time_from_start.toSec() - previous_wp_duration;
+            auto previous_wp_duration = KortexMathUtil::duration_toSec(new_goal_handle->get_goal()->trajectory.points.at(i-1).time_from_start);
+            waypoint_duration = KortexMathUtil::duration_toSec(traj_point.time_from_start) - previous_wp_duration;
             // Very small durations are rejected so we cap them
             if (waypoint_duration < 0.01)
             {
@@ -168,7 +185,7 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
                 RCLCPP_ERROR(m_node_handle->get_logger(), "Error %i : %s", i+1, report.trajectory_error_report().trajectory_error_elements(i).message().c_str());
             }
             setAngularTrajectorySoftLimits(m_soft_limits);
-            new_goal_handle.setAborted();
+            new_goal_handle->abort(result_msg);
             return;
         }
     }
@@ -178,19 +195,19 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
         RCLCPP_ERROR(m_node_handle->get_logger(), "Error code: %s\n", Kinova::Api::ErrorCodes_Name(ex.getErrorInfo().getError().error_code()).c_str());
         RCLCPP_ERROR(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
         RCLCPP_ERROR(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
-        m_goal.setAborted();
+        new_goal_handle->abort(result_msg);
     }
     catch (std::runtime_error& ex_runtime)
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "Runtime exception detected while sending the trajectory");
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_runtime.what());
-        m_goal.setAborted();
+        new_goal_handle->abort(result_msg);
     }
     catch (std::future_error& ex_future)
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "Future exception detected while getting feedback");
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_future.what());
-        m_goal.setAborted();
+        new_goal_handle->abort(result_msg);
     }
     
     try
@@ -211,31 +228,34 @@ void JointTrajectoryActionServer::goal_received_callback(actionlib::ActionServer
         RCLCPP_ERROR(m_node_handle->get_logger(), "Error sub code: %s\n", Kinova::Api::SubErrorCodes_Name(Kinova::Api::SubErrorCodes(ex.getErrorInfo().getError().error_sub_code())).c_str());
         RCLCPP_ERROR(m_node_handle->get_logger(), "Error description: %s\n", ex.what());
         setAngularTrajectorySoftLimits(m_soft_limits);
-        m_goal.setAborted();
+        new_goal_handle->abort(result_msg);
     }
     catch (std::runtime_error& ex_runtime)
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "Runtime exception detected while sending the trajectory");
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_runtime.what());
         setAngularTrajectorySoftLimits(m_soft_limits);
-        m_goal.setAborted();
+        new_goal_handle->abort(result_msg);
     }
     catch (std::future_error& ex_future)
     {
         RCLCPP_ERROR(m_node_handle->get_logger(), "Future exception detected while getting feedback");
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", ex_future.what());
         setAngularTrajectorySoftLimits(m_soft_limits);
-        m_goal.setAborted();
+        new_goal_handle->abort(result_msg);
     }
 }
 
 // Called in a separate thread when a preempt request comes in from the Action Client
-void JointTrajectoryActionServer::preempt_received_callback(actionlib::ActionServer<control_msgs::FollowJointTrajectoryAction>::GoalHandle goal_handle)
+rclcpp_action::CancelResponse JointTrajectoryActionServer::ros_cancel_callback(const std::shared_ptr<GoalHandle_FollowJointTrajectoryAction> goal_handle)
 {
+    (void)goal_handle;
     if (m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS)
     {
         stop_all_movement();
     }
+
+    return rclcpp_action::CancelResponse::ACCEPT;
 }
 
 // Called in a separate thread when a notification comes in
@@ -244,10 +264,10 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
     Kinova::Api::Base::ActionEvent event = notif.action_event();
     Kinova::Api::Base::ActionHandle handle = notif.handle();
     Kinova::Api::Base::ActionType type = handle.action_type();
-    ROS_DEBUG("Action notification received of type %s", Kinova::Api::Base::ActionEvent_Name(event).c_str());
+    RCLCPP_DEBUG(m_node_handle->get_logger(), "Action notification received of type %s", Kinova::Api::Base::ActionEvent_Name(event).c_str());
     std::lock_guard<std::mutex> guard(m_action_notification_thread_lock);
 
-    control_msgs::FollowJointTrajectoryResult result;
+    auto result = std::make_shared<FollowJointTrajectoryAction::Result>();
     std::ostringstream oss;
 
     if (type == Kinova::Api::Base::ActionType::EXECUTE_WAYPOINT_LIST)
@@ -265,7 +285,7 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
             // We should not have received that
             else
             {
-                ROS_DEBUG("Notification mismatch : received ACTION_PREPROCESS_START but we are in %s", actionServerStateNames[int(m_server_state)]);
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification mismatch : received ACTION_PREPROCESS_START but we are in %s", actionServerStateNames[int(m_server_state)]);
             }
             break;
 
@@ -283,13 +303,13 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
             // When this bug will be fixed this else if can be removed
             else if (m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS)
             {
-                ROS_DEBUG("Notification order mismatch : We received the ACTION_PREPROCESS_END after the ACTION_START");
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification order mismatch : We received the ACTION_PREPROCESS_END after the ACTION_START");
                 break;
             }
             // We should not have received that
             else
             {
-                ROS_DEBUG("Notification mismatch : received ACTION_PREPROCESS_END but we are in %s", actionServerStateNames[int(m_server_state)]);
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification mismatch : received ACTION_PREPROCESS_END but we are in %s", actionServerStateNames[int(m_server_state)]);
             }
             break;
 
@@ -300,7 +320,7 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
             {
                 RCLCPP_ERROR(m_node_handle->get_logger(), "Preprocessing has finished in the arm and goal has been rejected. Fetching the error report from the arm...");
 
-                result.error_code = result.INVALID_GOAL;
+                result->error_code = result->INVALID_GOAL;
 
                 // Get the error report and show errors here
                 Kinova::Api::Base::TrajectoryErrorReport report = m_base->GetTrajectoryErrorReport();
@@ -324,15 +344,15 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
 
                 RCLCPP_ERROR(m_node_handle->get_logger(), "%s", oss.str().c_str());
 
-                result.error_string = oss.str();
-                m_goal.setAborted(result);
+                result->error_string = oss.str();
+                kortex_callback.goal_handle->abort(result);
 
                 set_server_state(ActionServerState::IDLE);
             }
             // We should not have received that
             else
             {
-                ROS_DEBUG("Notification mismatch : received ACTION_PREPROCESS_ABORT but we are in %s", actionServerStateNames[int(m_server_state)]);
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification mismatch : received ACTION_PREPROCESS_ABORT but we are in %s", actionServerStateNames[int(m_server_state)]);
             }
             break;
 
@@ -341,7 +361,7 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
             // The preprocessing was done and the goal is still active (not preempted)
             if ((m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING ||
                  m_server_state == ActionServerState::PRE_PROCESSING_IN_PROGRESS) && // FIXME KOR-3563 this happens if we received a ACTION_START before a ACTION_PREPROCESS_END
-                 m_goal.getGoalStatus().status == actionlib_msgs::GoalStatus::ACTIVE)
+                 kortex_callback.goal_handle->is_active())
             {
                 RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory has started.");
                 set_server_state(ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS);
@@ -351,7 +371,7 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
             // The preprocessing was done but the goal put to "PREEMPTING" by the client while preprocessing
             // The stop_all_movement() call will trigger a ACTION_ABORT notification
             else if ((m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING) &&
-                      m_goal.getGoalStatus().status == actionlib_msgs::GoalStatus::PREEMPTING)
+                      kortex_callback.goal_handle->is_canceling())
             {
                 RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory has started but goal was cancelled : stopping all movement.");
                 stop_all_movement();
@@ -359,7 +379,7 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
             // We should not have received that
             else
             {
-                ROS_DEBUG("Notification mismatch : received ACTION_START but we are in %s", actionServerStateNames[int(m_server_state)]);
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification mismatch : received ACTION_START but we are in %s", actionServerStateNames[int(m_server_state)]);
             }
             break;
 
@@ -371,7 +391,7 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
                 auto info = notif.trajectory_info(i);
                 if (info.trajectory_info_type() == Kinova::Api::Base::TrajectoryInfoType::WAYPOINT_REACHED)
                 {
-                    ROS_DEBUG("Waypoint %d reached", info.waypoint_index());
+                    RCLCPP_DEBUG(m_node_handle->get_logger(), "Waypoint %d reached", info.waypoint_index());
                 }
             }
             break;
@@ -380,13 +400,13 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
         // The action was started in the arm, but it aborted
         case Kinova::Api::Base::ActionEvent::ACTION_ABORT:
             // The goal is still active, but we received a ABORT before starting, or during execution
-            if (m_goal.getGoalStatus().status == actionlib_msgs::GoalStatus::ACTIVE &&
+            if (kortex_callback.goal_handle->is_active() &&
                 (m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS ||
                  m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING))
             {
                 RCLCPP_ERROR(m_node_handle->get_logger(), "Trajectory has been aborted.");
 
-                result.error_code = result.PATH_TOLERANCE_VIOLATED;
+                result->error_code = result->PATH_TOLERANCE_VIOLATED;
                 oss << "Trajectory execution failed in the arm with sub error code " << notif.abort_details() << std::endl;
                 if (notif.abort_details() == Kinova::Api::SubErrorCodes::CONTROL_WRONG_STARTING_POINT)
                 {
@@ -396,25 +416,25 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
                 {
                     oss << "The speed while executing the trajectory was too damn high and caused the robot to stop." << std::endl;
                 }
-                result.error_string = oss.str();
-                m_goal.setAborted(result);
+                result->error_string = oss.str();
+                kortex_callback.goal_handle->abort(result);
 
                 RCLCPP_ERROR(m_node_handle->get_logger(), "%s", oss.str().c_str());
                 set_server_state(ActionServerState::IDLE);
             }
             // The goal was cancelled and we received a ACTION_ABORT : this means the trajectory was cancelled successfully in the arm
-            else if  (m_goal.getGoalStatus().status == actionlib_msgs::GoalStatus::PREEMPTING &&
+            else if  (kortex_callback.goal_handle->is_canceling() &&
                      (m_server_state == ActionServerState::TRAJECTORY_EXECUTION_IN_PROGRESS ||
                       m_server_state == ActionServerState::TRAJECTORY_EXECUTION_PENDING))
             {
                 RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory has been cancelled successfully in the arm.");
-                m_goal.setCanceled();
+                kortex_callback.goal_handle->canceled(result);
                 set_server_state(ActionServerState::IDLE);
             }
             // We should not have received that
             else
             {
-                ROS_DEBUG("Notification mismatch : received ACTION_ABORT but we are in %s", actionServerStateNames[int(m_server_state)]);
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification mismatch : received ACTION_ABORT but we are in %s", actionServerStateNames[int(m_server_state)]);
             }
             break;
 
@@ -431,38 +451,38 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
                 {
                     std::this_thread::sleep_for(std::chrono::milliseconds(100));
                 }
-                bool is_tolerance_respected = is_goal_tolerance_respected(true, true);
+                bool is_tolerance_respected = is_goal_tolerance_respected(kortex_callback.goal_handle->get_goal(), true, true);
                 if (is_tolerance_respected)
                 {
-                    result.error_code = result.SUCCESSFUL;
+                    result->error_code = result->SUCCESSFUL;
                     RCLCPP_INFO(m_node_handle->get_logger(), "Trajectory execution succeeded.");
-                    m_goal.setSucceeded(result);
+                    kortex_callback.goal_handle->succeed(result);
                 }
                 else
                 {
-                    result.error_code = result.PATH_TOLERANCE_VIOLATED;
+                    result->error_code = result->PATH_TOLERANCE_VIOLATED;
                     oss << "After validation, trajectory execution failed in the arm with sub error code " << Kinova::Api::SubErrorCodes_Name(notif.abort_details());
-                    result.error_string = oss.str();
+                    result->error_string = oss.str();
 
                     RCLCPP_ERROR(m_node_handle->get_logger(), "%s", oss.str().c_str());
-                    m_goal.setAborted(result);
+                    kortex_callback.goal_handle->abort(result);
                 }
                 set_server_state(ActionServerState::IDLE);
             }
             // We should not have received that
             else
             {
-                ROS_DEBUG("Notification mismatch : received ACTION_END but we are in %s", actionServerStateNames[int(m_server_state)]);
+                RCLCPP_DEBUG(m_node_handle->get_logger(), "Notification mismatch : received ACTION_END but we are in %s", actionServerStateNames[int(m_server_state)]);
             }
             break;
         }
 
         case Kinova::Api::Base::ActionEvent::ACTION_PAUSE:
-            ROS_DEBUG("Action pause event was just received and this should never happen.");
+            RCLCPP_DEBUG(m_node_handle->get_logger(), "Action pause event was just received and this should never happen.");
             break;
 
         default:
-            ROS_DEBUG("Unknown action event was just received and this should never happen.");
+            RCLCPP_DEBUG(m_node_handle->get_logger(), "Unknown action event was just received and this should never happen.");
             break;
         }
     }
@@ -475,17 +495,17 @@ void JointTrajectoryActionServer::action_notif_callback(Kinova::Api::Base::Actio
     oss.flush();
 }
 
-bool JointTrajectoryActionServer::is_goal_acceptable(actionlib::ActionServer<control_msgs::FollowJointTrajectoryAction>::GoalHandle goal_handle)
+bool JointTrajectoryActionServer::is_goal_acceptable(const std::shared_ptr<const FollowJointTrajectoryAction::Goal> goal)
 {
-    // First check if goal is valid
-    if (!goal_handle.isValid())
-    {
-        RCLCPP_ERROR(m_node_handle->get_logger(), "Invalid goal.");
-        return false;
-    }
+    // // First check if goal is valid
+    // if (!goal_handle.isValid())
+    // {
+    //     RCLCPP_ERROR(m_node_handle->get_logger(), "Invalid goal.");
+    //     return false;
+    // }
 
-    // Retrieve the goal
-    control_msgs::FollowJointTrajectoryGoalConstPtr goal = goal_handle.getGoal();
+    // // Retrieve the goal
+    // control_msgs::FollowJointTrajectoryGoalConstPtr goal = goal_handle.getGoal();
 
     // Goal does not command the right number of actuators
     if (goal->trajectory.joint_names.size() != m_joint_names.size())
@@ -516,7 +536,7 @@ bool JointTrajectoryActionServer::is_goal_acceptable(actionlib::ActionServer<con
     return true;
 }
 
-bool JointTrajectoryActionServer::is_goal_tolerance_respected(bool enable_prints, bool check_time_tolerance)
+bool JointTrajectoryActionServer::is_goal_tolerance_respected(const std::shared_ptr<const FollowJointTrajectoryAction::Goal> goal, bool enable_prints, bool check_time_tolerance)
 {
     // Get feedback from arm (retry if timeouts occur)
     bool is_goal_respected = true;
@@ -533,14 +553,14 @@ bool JointTrajectoryActionServer::is_goal_tolerance_respected(bool enable_prints
         {
         }
     }
-    auto goal = m_goal.getGoal();
+    // auto goal = m_goal.getGoal();
 
     // Check the goal_time_tolerance for trajectory execution
     if (check_time_tolerance)
     {
         double actual_trajectory_duration = std::chrono::duration<double>(m_trajectory_end_time - m_trajectory_start_time).count();
-        double desired_trajectory_duration = goal->trajectory.points.at(goal->trajectory.points.size()-1).time_from_start.toSec() + STARTING_POINT_ARBITRARY_DURATION;
-        double time_tolerance = goal->goal_time_tolerance.toSec() == 0.0 ? m_default_goal_time_tolerance : goal->goal_time_tolerance.toSec();
+        double desired_trajectory_duration = KortexMathUtil::duration_toSec(goal->trajectory.points.at(goal->trajectory.points.size()-1).time_from_start) + STARTING_POINT_ARBITRARY_DURATION;
+        double time_tolerance = KortexMathUtil::duration_toSec(goal->goal_time_tolerance) == 0.0 ? m_default_goal_time_tolerance : KortexMathUtil::duration_toSec(goal->goal_time_tolerance);
         if (actual_trajectory_duration > desired_trajectory_duration + time_tolerance )
         {
             if (enable_prints)
@@ -560,7 +580,7 @@ bool JointTrajectoryActionServer::is_goal_tolerance_respected(bool enable_prints
     std::vector<double> goal_tolerances;
     if (goal->goal_tolerance.empty())
     {
-        ROS_DEBUG("Goal did not specify tolerances, using default tolerance of %f radians for every joint.", m_default_goal_tolerance);
+        RCLCPP_DEBUG(m_node_handle->get_logger(), "Goal did not specify tolerances, using default tolerance of %f radians for every joint.", m_default_goal_tolerance);
         for (int i = 0; i < m_joint_names.size(); i++)
         {
             goal_tolerances.push_back(m_default_goal_tolerance);
@@ -660,7 +680,7 @@ AngularTrajectorySoftLimits JointTrajectoryActionServer::getAngularTrajectorySof
 
 void JointTrajectoryActionServer::setAngularTrajectorySoftLimitsToMax()
 {
-    ROS_DEBUG("Setting soft limits to hard");
+    RCLCPP_DEBUG(m_node_handle->get_logger(), "Setting soft limits to hard");
     try
     {
         const Kinova::Api::ControlConfig::ControlMode target_control_mode = Kinova::Api::ControlConfig::ANGULAR_TRAJECTORY;
@@ -694,7 +714,7 @@ void JointTrajectoryActionServer::setAngularTrajectorySoftLimitsToMax()
 
 void JointTrajectoryActionServer::setAngularTrajectorySoftLimits(const AngularTrajectorySoftLimits& limits)
 {
-    ROS_DEBUG("Setting back soft limits");
+    RCLCPP_DEBUG(m_node_handle->get_logger(), "Setting back soft limits");
     if (!limits.empty())
     {
         try
