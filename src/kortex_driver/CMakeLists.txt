@@ -24,6 +24,8 @@ find_package(unique_identifier_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(action_msgs REQUIRED)
 find_package(control_msgs REQUIRED)
+find_package(controller_manager_msgs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(Boost REQUIRED COMPONENTS system)
@@ -145,6 +147,8 @@ ament_target_dependencies(kortex_driver_generated_files
   sensor_msgs
   action_msgs
   control_msgs
+  controller_manager_msgs
+  trajectory_msgs
   builtin_interfaces
   moveit_ros_planning_interface
 )
