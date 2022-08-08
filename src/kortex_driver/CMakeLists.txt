@@ -5,9 +5,14 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
+set(CMAKE_CXX_STANDARD 14)
+add_definitions(-D_OS_UNIX)
+
 add_definitions(-w)
 
-set(CONAN_TARGET_PLATFORM "x86")
+if(NOT CONAN_TARGET_PLATFORM)
+  set(CONAN_TARGET_PLATFORM "x86")
+endif()
 
 # Explicitely specify the build type in case the user did not do it
 if(NOT CMAKE_BUILD_TYPE)
