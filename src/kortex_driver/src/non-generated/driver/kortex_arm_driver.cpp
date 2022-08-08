@@ -20,7 +20,7 @@ KortexArmDriver::KortexArmDriver(rclcpp::Node::SharedPtr nh):   m_node_handle(nh
                                                         m_simulator{}
 {
     // Parameter to let the other nodes know this node is up
-    ros::param::set("is_initialized", false);
+    m_node_handle->set_parameter(rclcpp::Parameter("is_initialized", false));
 
     parseRosArguments();
     
@@ -45,7 +45,7 @@ KortexArmDriver::KortexArmDriver(rclcpp::Node::SharedPtr nh):   m_node_handle(nh
 
     // Start the thread to publish the feedback and joint states
     m_pub_base_feedback = m_node_handle->create_publisher<kortex_driver::msg::BaseCyclicFeedback>("base_feedback", 1000);
-    m_pub_joint_state = m_node_handle->create_publisher<sensor_msgs::JointState>("base_feedback/joint_state", 1000);
+    m_pub_joint_state = m_node_handle->create_publisher<sensor_msgs::msg::JointState>("base_feedback/joint_state", 1000);
     if (m_is_real_robot)
     {
         m_publish_feedback_thread = std::thread(&KortexArmDriver::publishRobotFeedback, this);
@@ -58,7 +58,7 @@ KortexArmDriver::KortexArmDriver(rclcpp::Node::SharedPtr nh):   m_node_handle(nh
 
     // If we get here and no error was thrown we started the node correctly
     RCLCPP_INFO(m_node_handle->get_logger(), "%sThe Kortex driver has been initialized correctly!%s", GREEN_COLOR_CONSOLE, RESET_COLOR_CONSOLE);
-    ros::param::set("is_initialized", true);
+    m_node_handle->set_parameter(rclcpp::Parameter("is_initialized", true));
 }
 
 KortexArmDriver::~KortexArmDriver()
@@ -126,7 +126,7 @@ KortexArmDriver::~KortexArmDriver()
 void KortexArmDriver::parseRosArguments()
 {
     bool sim;
-    if (!ros::param::get("~sim", sim))
+    if (!m_node_handle->get_parameter("~sim", sim))
     {
         std::string error_string = "Simulation was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -138,7 +138,7 @@ void KortexArmDriver::parseRosArguments()
     if (m_is_real_robot)
     {
         bool use_sim_time = false;
-        if (ros::param::get("/use_sim_time", use_sim_time))
+        if (m_node_handle->get_parameter("/use_sim_time", use_sim_time))
         {
             if (use_sim_time)
             {
@@ -147,49 +147,49 @@ void KortexArmDriver::parseRosArguments()
             }
         }
 
-        if (!ros::param::get("~ip_address", m_ip_address))
+        if (!m_node_handle->get_parameter("~ip_address", m_ip_address))
         {
             std::string error_string = "IP address of the robot was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
-        if (!ros::param::get("~username", m_username))
+        if (!m_node_handle->get_parameter("~username", m_username))
         {
             std::string error_string = "Username for the robot session was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
-        if (!ros::param::get("~password", m_password))
+        if (!m_node_handle->get_parameter("~password", m_password))
         {
             std::string error_string = "Password for the robot session was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
-        if (!ros::param::get("~use_hard_limits", m_use_hard_limits))
+        if (!m_node_handle->get_parameter("~use_hard_limits", m_use_hard_limits))
         {
             std::string error_string = "Usage of hard limits as soft was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
-        if (!ros::param::get("~api_rpc_timeout_ms", m_api_rpc_timeout_ms))
+        if (!m_node_handle->get_parameter("~api_rpc_timeout_ms", m_api_rpc_timeout_ms))
         {
             std::string error_string = "API RPC timeout duration was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
 
-        if (!ros::param::get("~api_session_inactivity_timeout_ms", m_api_session_inactivity_timeout_ms))
+        if (!m_node_handle->get_parameter("~api_session_inactivity_timeout_ms", m_api_session_inactivity_timeout_ms))
         {
             std::string error_string = "API session inactivity timeout duration was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
             throw new std::runtime_error(error_string);
         }
         
-        if (!ros::param::get("~api_connection_inactivity_timeout_ms", m_api_connection_inactivity_timeout_ms))
+        if (!m_node_handle->get_parameter("~api_connection_inactivity_timeout_ms", m_api_connection_inactivity_timeout_ms))
         {
             std::string error_string = "API connection inactivity timeout duration was not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -198,48 +198,48 @@ void KortexArmDriver::parseRosArguments()
     }
     
 
-    if (!ros::param::get("~cyclic_data_publish_rate", m_cyclic_data_publish_rate))
+    if (!m_node_handle->get_parameter("~cyclic_data_publish_rate", m_cyclic_data_publish_rate))
     {
         std::string error_string = "Publish rate of the cyclic data was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
-    if (!ros::param::get("~arm", m_arm_name))
+    if (!m_node_handle->get_parameter("~arm", m_arm_name))
     {
         std::string error_string = "Arm name was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
-    if (!ros::param::get("~dof", m_degrees_of_freedom))
+    if (!m_node_handle->get_parameter("~dof", m_degrees_of_freedom))
     {
         std::string error_string = "Number of degrees of freedom was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
 
-    if (!ros::param::get("~joint_names", m_arm_joint_names))
+    if (!m_node_handle->get_parameter("~joint_names", m_arm_joint_names))
     {
         std::string error_string = "Arm joint_names were not specified, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }    
 
-    if (!ros::param::get("~gripper", m_gripper_name))
+    if (!m_node_handle->get_parameter("~gripper", m_gripper_name))
     {
         std::string error_string = "Gripper name was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
     std::string robot_name;
-    if (!ros::param::get("~robot_name", robot_name))
+    if (!m_node_handle->get_parameter("~robot_name", robot_name))
     {
         std::string error_string = "Robot name was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
         throw new std::runtime_error(error_string);
     }
-    if (!ros::param::get("~prefix", m_prefix))
+    if (!m_node_handle->get_parameter("~prefix", m_prefix))
     {
         std::string error_string = "Prefix name was not specified in the launch file, shutting down the node...";
         RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -249,7 +249,7 @@ void KortexArmDriver::parseRosArguments()
     if (isGripperPresent())
     {
         // Get the gripper_joint_names size
-        if (!ros::param::get("~gripper_joint_names", m_gripper_joint_names))
+        if (!m_node_handle->get_parameter("~gripper_joint_names", m_gripper_joint_names))
         {
             std::string error_string = "Gripper joint names were not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -257,7 +257,7 @@ void KortexArmDriver::parseRosArguments()
         }
 
         // Get the gripper_joint_limits size
-        if (!ros::param::get("~gripper_joint_limits_min", m_gripper_joint_limits_min))
+        if (!m_node_handle->get_parameter("~gripper_joint_limits_min", m_gripper_joint_limits_min))
         {
             std::string error_string = "Gripper joint min limits were not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -265,7 +265,7 @@ void KortexArmDriver::parseRosArguments()
         }
 
         // Get the gripper_joint_limits size
-        if (!ros::param::get("~gripper_joint_limits_max", m_gripper_joint_limits_max))
+        if (!m_node_handle->get_parameter("~gripper_joint_limits_max", m_gripper_joint_limits_max))
         {
             std::string error_string = "Gripper joint max limits were not specified in the launch file, shutting down the node...";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
@@ -285,8 +285,8 @@ void KortexArmDriver::initApi()
     m_udp_transport->connect(m_ip_address, UDP_PORT);
 
     // Create the routers
-	m_tcp_router = new Kinova::Api::RouterClient(m_tcp_transport, [](Kinova::Api::KError err) { RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex API error was encountered with the TCP router: %s", err.toString().c_str()); });
-	m_udp_router = new Kinova::Api::RouterClient(m_udp_transport, [](Kinova::Api::KError err) { RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex API error was encountered with the UDP router: %s", err.toString().c_str()); });
+	m_tcp_router = new Kinova::Api::RouterClient(m_tcp_transport, [this](Kinova::Api::KError err) { RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex API error was encountered with the TCP router: %s", err.toString().c_str()); });
+	m_udp_router = new Kinova::Api::RouterClient(m_udp_transport, [this](Kinova::Api::KError err) { RCLCPP_ERROR(m_node_handle->get_logger(), "Kortex API error was encountered with the UDP router: %s", err.toString().c_str()); });
     
     // Create the Protobuf services we are going to use in the ServiceProxy's
     m_actuator_config = new Kinova::Api::ActuatorConfig::ActuatorConfigClient(m_tcp_router);
@@ -443,11 +443,11 @@ void KortexArmDriver::verifyProductConfiguration()
     RCLCPP_INFO(m_node_handle->get_logger(), "-------------------------------------------------");
 	
 	// Set the ROS Param for the degrees of freedom
-    m_node_handle.setParam("degrees_of_freedom", int(product_config.degree_of_freedom()));
-    m_node_handle.setParam("is_gripper_present", isGripperPresent());
-    m_node_handle.setParam("gripper_joint_names", m_gripper_joint_names);
-	m_node_handle.setParam("has_vision_module", m_is_vision_module_present);
-    m_node_handle.setParam("has_interconnect_module", m_is_interconnect_module_present);
+    m_node_handle->set_parameter(rclcpp::Parameter("degrees_of_freedom", int(product_config.degree_of_freedom())));
+    m_node_handle->set_parameter(rclcpp::Parameter("is_gripper_present", isGripperPresent()));
+    m_node_handle->set_parameter(rclcpp::Parameter("gripper_joint_names", m_gripper_joint_names));
+	m_node_handle->set_parameter(rclcpp::Parameter("has_vision_module", m_is_vision_module_present));
+    m_node_handle->set_parameter(rclcpp::Parameter("has_interconnect_module", m_is_interconnect_module_present));
 }
 
 void KortexArmDriver::initSubscribers()
@@ -605,9 +605,9 @@ void KortexArmDriver::publishRobotFeedback()
 {
 
     Kinova::Api::BaseCyclic::Feedback feedback_from_api;
-    sensor_msgs::JointState joint_state;
+    sensor_msgs::msg::JointState joint_state;
 
-    ros::Rate rate(m_cyclic_data_publish_rate);
+    rclcpp::Rate rate(m_cyclic_data_publish_rate);
     while (m_node_is_running)
     {
         try 
@@ -623,12 +623,12 @@ void KortexArmDriver::publishRobotFeedback()
         }
         catch (std::runtime_error& ex_runtime)
         {
-            ROS_DEBUG("Runtime exception detected while getting feedback! %d", ++m_consecutive_base_cyclic_timeouts);
-            ROS_DEBUG("%s", ex_runtime.what());
+            RCLCPP_DEBUG(m_node_handle->get_logger(), "Runtime exception detected while getting feedback! %d", ++m_consecutive_base_cyclic_timeouts);
+            RCLCPP_DEBUG(m_node_handle->get_logger(), "%s", ex_runtime.what());
         }
         catch (std::future_error& ex_future)
         {
-            ROS_DEBUG("Future exception detected while getting feedback : %s", ex_future.what());
+            RCLCPP_DEBUG(m_node_handle->get_logger(), "Future exception detected while getting feedback : %s", ex_future.what());
         }
 
         // If the arm has disconnected, the node cannot continue running
@@ -636,7 +636,7 @@ void KortexArmDriver::publishRobotFeedback()
         {
             std::string error_string = "Too many consecutive timeouts : killing the node.";
             RCLCPP_ERROR(m_node_handle->get_logger(), "%s", error_string.c_str());
-            ros::shutdown();
+            rclcpp::shutdown();
             return;
         }
 
@@ -648,7 +648,7 @@ void KortexArmDriver::publishRobotFeedback()
         joint_state.position.resize(base_feedback.actuators.size() + base_feedback.interconnect.oneof_tool_feedback.gripper_feedback[0].motor.size());
         joint_state.velocity.resize(base_feedback.actuators.size() + base_feedback.interconnect.oneof_tool_feedback.gripper_feedback[0].motor.size());
         joint_state.effort.resize(base_feedback.actuators.size() + base_feedback.interconnect.oneof_tool_feedback.gripper_feedback[0].motor.size());
-        joint_state.header.stamp = ros::Time::now();
+        joint_state.header.stamp = m_node_handle->get_clock()->now();
 
         for (int i = 0; i < base_feedback.actuators.size(); i++)
         {
@@ -681,7 +681,7 @@ void KortexArmDriver::publishRobotFeedback()
 
 void KortexArmDriver::publishSimulationFeedback()
 {
-    ros::Rate rate(m_cyclic_data_publish_rate);
+    rclcpp::Rate rate(m_cyclic_data_publish_rate);
     while (m_node_is_running)
     {
         m_pub_base_feedback->publish(m_simulator->GetFeedback());

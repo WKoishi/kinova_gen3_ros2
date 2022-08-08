@@ -107,8 +107,8 @@ class KortexArmDriver
     std::string m_gripper_name;
     std::string m_prefix;
     std::vector<std::string> m_gripper_joint_names;
-    std::vector<float> m_gripper_joint_limits_min;
-    std::vector<float> m_gripper_joint_limits_max;
+    std::vector<double> m_gripper_joint_limits_min;
+    std::vector<double> m_gripper_joint_limits_max;
 
     int m_degrees_of_freedom;
 
@@ -158,8 +158,8 @@ class KortexArmDriver
     int m_consecutive_base_cyclic_timeouts;
     std::mutex m_is_trajectory_running_lock;
     std::thread m_publish_feedback_thread;
-    ros::Publisher m_pub_base_feedback;
-    ros::Publisher m_pub_joint_state;
+    rclcpp::Publisher<kortex_driver::msg::BaseCyclicFeedback>::SharedPtr m_pub_base_feedback;
+    rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr m_pub_joint_state;
     KortexMathUtil m_math_util;
     
     // Private methods

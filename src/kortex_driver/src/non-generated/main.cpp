@@ -14,17 +14,18 @@
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "kortex_arm_driver");
+    rclcpp::init(argc, argv);
 
     // if(ros::console::set_logger_level(ROSCONSOLE_DEFAULT_NAME, ros::console::levels::Debug) ) {
     //     ros::console::notifyLoggerLevelsChanged();
     // }
     
-    ros::NodeHandle n;
+    std::shared_ptr<rclcpp::Node> n = rclcpp::Node::make_shared("kortex_arm_driver");
 
     KortexArmDriver kortex_arm_driver(n);
 
-    ros::spin();
+    rclcpp::spin(n);
+    rclcpp::shutdown();
 
     return 1;
 }
