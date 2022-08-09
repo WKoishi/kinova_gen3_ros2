@@ -33,7 +33,6 @@ find_package(controller_manager_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system)
 #find_package(message_package REQUIRED)
 
 file(GLOB_RECURSE generated_files RELATIVE ${PROJECT_SOURCE_DIR} "src/generated/robot/*.cpp" "src/generated/simulation/*.cpp")
@@ -131,17 +130,9 @@ elseif("${CONAN_TARGET_PLATFORM}" STREQUAL "jetson")
                   ENV TARGET=jetson)
 endif()
 
-include_directories(include include/${PROJECT_NAME})
-include_directories(include ${Boost_INCLUDE_DIRS})
-include_directories(include ${PROJECT_SOURCE_DIR}/src)
+# include_directories(include include/${PROJECT_NAME})
+# include_directories(include ${PROJECT_SOURCE_DIR}/src)
 include_directories(include ${PROJECT_SOURCE_DIR}/include)
-
-include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/client)
-include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/client_stubs)
-include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/messages)
-include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include/common)
-include_directories(include ${PROJECT_SOURCE_DIR}/../kortex_api/include)
-link_directories(${PROJECT_SOURCE_DIR}/../kortex_api/lib/release)
 
 # Generated files library
 add_library(kortex_driver_generated_files ${generated_files})
@@ -163,19 +154,19 @@ rosidl_get_typesupport_target(cpp_typesupport_target
   ${PROJECT_NAME} "rosidl_typesupport_cpp")
 target_link_libraries(kortex_driver_generated_files "${cpp_typesupport_target}")
 
-target_link_libraries(kortex_driver_generated_files CONAN_PKG::kortex_api_cpp ${catkin_LIBRARIES} gcov)
+target_link_libraries(kortex_driver_generated_files CONAN_PKG::kortex_api_cpp gcov)
 
 # Remove deprecation warnings from Kortex API
 target_compile_options(kortex_driver_generated_files PRIVATE "-Wno-deprecated-declarations")
 
 # Non-generated files library (driver implementation)
 add_library(kortex_arm_driver_implementation ${non_generated_files})
-target_link_libraries(kortex_arm_driver_implementation CONAN_PKG::kortex_api_cpp ${catkin_LIBRARIES} gcov kortex_driver_generated_files)
+target_link_libraries(kortex_arm_driver_implementation CONAN_PKG::kortex_api_cpp gcov kortex_driver_generated_files)
 add_dependencies(kortex_arm_driver_implementation kortex_driver_generated_files)
 
 # Entry point executable for the driver
 add_executable(kortex_arm_driver src/non-generated/main.cpp)
-target_link_libraries(kortex_arm_driver CONAN_PKG::kortex_api_cpp ${catkin_LIBRARIES} gcov kortex_arm_driver_implementation)
+target_link_libraries(kortex_arm_driver CONAN_PKG::kortex_api_cpp gcov kortex_arm_driver_implementation)
 add_dependencies(kortex_arm_driver kortex_arm_driver_implementation)
 
 # message(WARNING "${msg_file_rel}")
