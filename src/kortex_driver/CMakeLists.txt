@@ -8,8 +8,6 @@ endif()
 set(CMAKE_CXX_STANDARD 14)
 add_definitions(-D_OS_UNIX)
 
-add_definitions(-w)
-
 if(NOT CONAN_TARGET_PLATFORM)
   set(CONAN_TARGET_PLATFORM "x86")
 endif()
@@ -156,8 +154,8 @@ target_link_libraries(kortex_driver_generated_files "${cpp_typesupport_target}")
 
 target_link_libraries(kortex_driver_generated_files CONAN_PKG::kortex_api_cpp gcov)
 
-# Remove deprecation warnings from Kortex API
-target_compile_options(kortex_driver_generated_files PRIVATE "-Wno-deprecated-declarations")
+# Remove deprecation warnings and unused parameter warnings from Kortex API
+target_compile_options(kortex_driver_generated_files PRIVATE "-Wno-deprecated-declarations" "-Wno-unused-parameter")
 
 # Non-generated files library (driver implementation)
 add_library(kortex_arm_driver_implementation ${non_generated_files})
